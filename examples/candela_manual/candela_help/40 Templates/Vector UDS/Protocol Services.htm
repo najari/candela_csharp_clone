@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Protocol Services</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="vector-uds-template---protocol-services">Vector UDS Template - Protocol Services</h1>
+
+<h2 id="ReadPIDData">Protocol Service 01 ReadPIDData</h2>
+<h3 id="service-4f-external-test-equipment-configuration-1">Service 4F External Test Equipment Configuration #1</h3>
+<p>The positive response of PID 4F has 4 bytes...</p>
+<ul>
+<li>Maximum value for Equivalence Ratio</li>
+<li>Maximum value for Oxygen Sensor Voltage</li>
+<li>Maximum value for Oxygen Sensor Current</li>
+<li>Maximum value for Intake Manifold Absolut Pressure</li>
+</ul>
+<p>... that - if greater than 0x00 - are used to <strong>calculate the scaling of other PIDs</strong>.</p>
+<p>Example: the 4th value (&quot;Byte D&quot;) from <strong>PID 0x4F</strong> is used in the other <strong>PID 0x0B</strong> &quot;Intake Manifold Absolute Pressure&quot;:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">&quot;Byte D&quot; of PID 0x4F</th>
+<th align="left">Scaling for Value of 0x0B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0x00</td>
+<td align="left">1 kPa per bit</td>
+</tr>
+<tr class="even">
+<td align="right"><code>&gt;</code> 0x00</td>
+<td align="left">Byte D * 10/255 kPa per bit</td>
+</tr>
+</tbody>
+</table>
+<p>The CANdela data model <strong>does not describe this dependency</strong> of a conversion (data type) on the return value of another PID (neither has the standardized ODX data model).</p>
+<p><strong>CANoe.DiVa</strong> (as of 2018) does not support this dependency, either:</p>
+<ul>
+<li>DiVa checks positive or negative responses of the respective PIDs,</li>
+<li>but evaluation of concrete values needs human interaction, anyway,
+<ul>
+<li>DiVa does not use the variable scaling.</li>
+</ul></li>
+</ul>
+
+<h2 id="ReadInfoTypeData">Protocol Service 09 RequestVehicleInformation - ReadInfoTypeData</h2>
+<p><span id="VUDS-R830" class="rqDef">[VUDS-R830]</span> The &quot;Number of Data Items&quot; is in OBDII 0x09 but not in WWH-OBD 0x22, see the Diagnostic Class Template <a class='rqRef' href='../../40%20Templates/Vector%20UDS/Diagnostic%20Class%20Templates.htm#VUDS-R576' title="">[VUDS-R576]</a>.</p>
+<ul>
+<li>For this purpose, Protocol Service &quot;0x09... ReadInfoTypeData&quot; contains (CDS-74042 v13)...
+<ul>
+<li>before the &quot;InfoTypeData&quot;</li>
+<li>a proxy &quot;Number of Data Items&quot;</li>
+<li>with destiny &quot;any&quot;,</li>
+<li>length 8 bits.</li>
+</ul></li>
+</ul>
+<h2 id="protocol-service-19-05">Protocol Service 19 05</h2>
+<p><span id="VUDS-D1905" class="rqDef">[VUDS-D1905]</span> In v13.0 (CDS-72038 2020-02), 19 05 has been <strong>dropped</strong>.</p>
+<h3 id="motivation">Motivation</h3>
+<ul>
+<li>UDS defines this service as <code>19 05 &lt;SnapshotRecordNumber&gt;</code>.</li>
+<li>The template contained <code>19 05 00</code> (it set <code>&lt;SnapshotRecordNumber&gt;</code> to constant 0x00).</li>
+<li>SnapshotRecordNumber 0x00 reads the OBD Freeze Frame.</li>
+<li>The AUTOSAR DEM Specification limits the value to 0x00 (chapter 4.1 &quot;Limitations&quot; as of AUTOSAR 4.3.1)</li>
+<li>From Vector experience, other values are not relevant in practice for this service.</li>
+<li>MICROSAR code generation assumes the value 0x00 (it does not support <code>19 05 &lt;SnapshotRecordNumber&gt;</code>).</li>
+<li>The service may become obsolete with the new OBDonUDS (to come).</li>
+</ul>
+
+<h2 id="PS1906iter">Protocol Service 19 06</h2>
+<p><span id="VUDS-R840" class="rqDef">[VUDS-R840]</span> In Protocol Service 0x19 0x06, in the positive response, the iteration has min=0 (CDS-71384 v12).</p>
+<ul>
+<li>It is a valid situation that no Extended Data gets transmitted.</li>
+</ul>
+
+<h2 id="protocol-services-19-0f-19-10-19-11-mirror-memory-cds-71997-v13">Protocol Services 19 0F, 19 10, 19 11 (Mirror Memory) (CDS-71997 v13)</h2>
+<p><span id="VUDS-D890" class="rqDef">[VUDS-D890]</span> Protocol Services 0x19 0x0F, 0x19 0x10 and 0x19 0x11 have been removed:</p>
+<ul>
+<li>($19) ReadDtcInformation - Report mirror memory DTC by status mask</li>
+<li>($19) ReadDtcInformation - Report mirror memory DTC extended data record by DTC number
+<ul>
+<li>Contains the ExtendedDataRecordNumber, we won't migrate this to the AUTOSAR Fault Memory of v13.</li>
+</ul></li>
+<li>($19) ReadDtcInformation - Report number of mirror memory DTC by status mask</li>
+</ul>
+
+<h2 id="user-defined-fault-memory">Protocol Services 19 17, 19 18, 19 19 (User-Defined Fault Memory) (CDS-42510 9.0)</h2>
+<p>These Protocol Services describe the <a href="../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm">User-Defined Fault Memory in CANdela</a>.</p>
+<p>They are used in the <a href="../../40%20Templates/Vector%20UDS/Diagnostic%20Class%20Templates.htm#user-defined-fault-memories">User Defined Fault Memories</a> Diagnostic Class Template.</p>
+<p>The Protocol Services contain a Variable Value Component (see the <a href="../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm">Feature</a>) for the <strong>memory selection</strong> byte.</p>
+<p>The DTC Status proxy component in 19 17 response before + within the iteration are separate (CDS-68938 9.1).</p>
+<h2 id="PS24">Protocol Service 0x24</h2>
+<p><span id="VUDS-R8240" class="rqDef">[VUDS-R8240]</span> In ProtocolService $24, Positive Response, the component &quot;Scaling Data&quot; is &quot;required&quot; (CDS-71901 v13).</p>
+<ul>
+<li>Motivation: when you check the service in a diagnostic instance, CANdelaStudio automatically fills in a data object.</li>
+</ul>
+<h2 id="PS27Rq">Protocol Service 0x27</h2>
+<p>Protocol Service 0x27 Request Seed has an optional proxy component &quot;Security Access Data Record&quot; (CDS-70797 v11).</p>
+<p>Note: <strong>CANdesc</strong> supports this proxy component for all OEMs, as a callout to the <strong>application</strong>: it gets the entire data and has to handle the data on its own.</p>
+<h2 id="PS28NodeIdent">Protocol Service 0x28 CommunicationControl - EnhancedAddressInformation</h2>
+<p>With UDS 2013, 0x28 has an optional Request parameter nodeIdentificationNumber (2 bytes), for the following values of the control type (subfunction) parameter:</p>
+<ul>
+<li>0x04 enableRxAndDisableTxWithEnhancedAddressInformation</li>
+<li>0x05 enableRxAndTxWithEnhancedAddressInformation</li>
+</ul>
+<p>The number identifies a node on a sub-network, e.g. a LIN node. The value 0x0000 is reserved.</p>
+
+<h2 id="Auth">Protocol Service 0x29</h2>
+<p><span id="VUDS-R8290" class="rqDef">[VUDS-R8290]</span> The template supports UDS 14229-1:2019 service 0x29, with the subfunctions</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Subfunction</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">00</td>
+<td align="left">DeAuthentication</td>
+</tr>
+<tr class="even">
+<td align="left">01</td>
+<td align="left">VerifyCertificateUnidirectional</td>
+</tr>
+<tr class="odd">
+<td align="left">02</td>
+<td align="left">VerifyCertificateBidirectional</td>
+</tr>
+<tr class="even">
+<td align="left">03</td>
+<td align="left">ProofOfOwnership</td>
+</tr>
+<tr class="odd">
+<td align="left">08</td>
+<td align="left">AuthenticationConfiguration</td>
+</tr>
+</tbody>
+</table>
+<p>In order to use Authorization, ...</p>
+<ul>
+<li>for a security source, the predefined Security Jobs <a class='rqRef' href='../../40%20Templates/Vector%20UDS/Diagnostic%20Class%20Templates.htm#VUDS-R529' title="">[VUDS-R529]</a> complement the functionality of the Protocol Service</li>
+<li>the State Group <a href="../../30%20Features/State%20Dependency/Authorization.htm">Authorization</a> allows service blocking / change of Authorization</li>
+<li>... using <a href="../../30%20Features/State%20Dependency/State%20Transitions.htm">State Transitions</a>.</li>
+</ul>
+
+<h2 id="PS2C">Protocol Service 0x2C</h2>
+<p><span id="VUDS-R850" class="rqDef">[VUDS-R850]</span> Functional addressing for Protocol Service and Service 0x2C is off by default (CDS-40743 8.5 SP2).</p>
+<p><span id="VUDS-R855" class="rqDef">[VUDS-R855]</span> The &quot;Identifier&quot; Component has a text table <a class='rqRef' href='../../30 Features\Protocol Service\Variable Value Component.htm#PS-R450' title="Text Table">[PS-R450]</a> &quot;Short Identifier&quot; with range 0x00 .. 0xFF assigned.</p>
+<ul>
+<li>the same text table is also assigned <a class='rqRef' href='../../30 Features\Diagnostic Class Template\Used Protocol Service.htm#DCLT-R400' title="">[DCLT-R400]</a> in the Diagnostic Class Templates that use the Procotol Service, see <a class='rqRef' href='../../40%20Templates/Vector%20UDS/Diagnostic%20Class%20Templates.htm#VUDS-R540' title="">[VUDS-R540]</a>.</li>
+</ul>
+<p><strong>Trade-off</strong> for the text table:</p>
+<ul>
+<li>Use a <strong>single open range, like 0x00 .. 0xFF</strong>
+<ul>
+<li>Benefit: at service tool run-time, the user/tool is able to select <strong>any 1-byte value</strong> as the identifier</li>
+</ul></li>
+<li>Use <strong>few entries only, like 0x00, 0x01, 0x02, 0x03</strong>
+<ul>
+<li>Benefit: this <strong>reduces the ROM size</strong> in the AUTOSAR DCM implementation
+<ul>
+<li>the DCM requires that each supported dynamic DID in the F2xx range is configured and marked as dynamic DID.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="PS34">Protocol Service 0x34</h2>
+<ul>
+<li>The <strong>Request</strong> uses a <strong>Multiplexer</strong> to handle variable sizes of the parameters:
+<ul>
+<li><strong>Data Format Identifier</strong> (describes compression and encryption)</li>
+<li><strong>Address and Length Format Identifier</strong> (the Selector)
+<ul>
+<li>bits 7-4 define the number of bytes of the Memory Size parameter</li>
+<li>bits 3-0 define the number of bytes of the Memory Address parameter</li>
+</ul></li>
+<li><strong>Memory Address and Size</strong> (the Multiplexer)</li>
+<li>Effect in a Diagnostic Instance:
+<ul>
+<li>you have to specify a data object and the constant value for the Data Format Identifier,</li>
+<li>you <strong>cannot</strong> specify the value for the Address and Length Format Identifier (since it is defined in the Fixed Data Component in the template).</li>
+</ul></li>
+</ul></li>
+<li>The <strong>Positive Response</strong> contains two independent Proxy Components:
+<ul>
+<li><strong>Length Format Identifier</strong> (bits 7-4 define the number of bytes of the following parameter)</li>
+<li><strong>Maximum Number of Block Length</strong></li>
+<li>Effect in a Diagnostic Instance:
+<ul>
+<li>you have to specify a data object (1 byte) and the constant value for the Length Format Identifier,</li>
+<li>as well as for the Maximum Number of Block length.</li>
+<li>E.g. if Maximum Number of Block length is a data object that refers a 2 Byte data type, the Length Format Identifier must be <code>(2 &lt;&lt; 4)</code> = 32.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2 id="PS36">Protocol Service 0x36</h2>
+<h3 id="one-combined-protocol-service">One Combined Protocol Service</h3>
+<p>The Protocol Service 0x36 is used after either of two other Protocol Services:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Initiating Protocol Service</th>
+<th align="center">Direction</th>
+<th align="center">Data in 0x36 Request</th>
+<th align="right">Data in 0x36 Positive Response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0x34 Request Download</td>
+<td align="center">to the ECU</td>
+<td align="center"><strong>transfer data</strong></td>
+<td align="right">optional checksum</td>
+</tr>
+<tr class="even">
+<td align="left">0x35 Request Upload</td>
+<td align="center">from the ECU</td>
+<td align="center">optional memory range</td>
+<td align="right"><strong>transfer data</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Note: the optional data may be required by manufacturer specifications. If they were not actually used, two separate 0x36 Protocol Services would make sense:</p>
+<ul>
+<li>one for download, with data in the request only</li>
+<li>one for upload, with data in the positive response only</li>
+</ul>
+<h3 id="parameters">Parameters</h3>
+<p>Request and positive response contain separate components for the parameters from the UDS Spec (CDS-42470 8.5 SP3):</p>
+<ul>
+<li>#2 Block Sequence Counter (1 byte)</li>
+<li>#3 Transfer Request / Response Parameter Record (0..n bytes)</li>
+</ul>
+<p>Both parameters are described using a <a href="../../30%20Features/Protocol%20Service/Proxy%20Component.htm">proxy component</a> with semantics &quot;any&quot; (i.e. do not define the structure).</p>
+
+<h2 id="PS38">Protocol Service 0x38 for <span id='_index_446728139'>File Transfer</span> (CDS-37446 v11)</h2>
+<p><span id="VUDS-R860" class="rqDef">[VUDS-R860]</span> The template contains Protocol Service 0x38 for file transfer from and to the ECU.</p>
+<h3 id="protocol-service">Protocol Service</h3>
+<div class="figure">
+<img src="Images/0x38%20Request%20File%20Transfer.jpg" alt="0x38 Request File Transfer" />
+<p class="caption">0x38 Request File Transfer</p>
+</div>
+<p><span id="VUDS-R860-PS" class="rqDef">[VUDS-R860-PS]</span> The template contains one Protocol Service for each mode of operation of 0x38.</p>
+<p>The requests and positive responses...</p>
+<ul>
+<li>contain multiple components,</li>
+<li>some describe the same data in multiple Protocol Services
+<ul>
+<li>e.g. &quot;File Path and Name&quot;</li>
+</ul></li>
+</ul>
+<h4 id="x38-request">0x38 Request</h4>
+<p><strong>Structure</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">01 Add</th>
+<th align="center">02 Delete</th>
+<th align="center">03 Replace</th>
+<th align="center">04 Read</th>
+<th align="center">05 Read Dir</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">filePathAndNameLength</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="left">filePathAndName</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x (= Dir)</td>
+</tr>
+<tr class="odd">
+<td align="left">dataFormatIdentifier</td>
+<td align="center">x</td>
+<td align="center">-</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left">fileSizeParameterLength</td>
+<td align="center">x</td>
+<td align="center">-</td>
+<td align="center">x</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left">fileSizeUnCompressed</td>
+<td align="center">x</td>
+<td align="center">-</td>
+<td align="center">x</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left">fileSizeCompressed</td>
+<td align="center">x</td>
+<td align="center">-</td>
+<td align="center">x</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+</tbody>
+</table>
+<p>In the CANdela data model, Protocol Service Components for the same purpose can be combined using <strong>Combined Components</strong> in the Diagnostic Class Template (see below):</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Combined Component</th>
+<th align="left">Length in bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">File Path and Name</td>
+<td align="left">3..</td>
+</tr>
+<tr class="even">
+<td align="left">Data Format Identifier</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">File Size</td>
+<td align="left">3..</td>
+</tr>
+</tbody>
+</table>
+<h4 id="x38-positive-response">0x38 Positive Response</h4>
+<p>Structure:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">01 Add</th>
+<th align="center">02 Delete</th>
+<th align="center">03 Replace</th>
+<th align="center">04 Read</th>
+<th align="center">05 Read Dir</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">lengthFormatIdentifier</td>
+<td align="center">x</td>
+<td align="center">-</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="left">maxNumberOfBlockLength</td>
+<td align="center">x</td>
+<td align="center">-</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="left">dataFormatIdentifier</td>
+<td align="center">x</td>
+<td align="center">-</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x (= 0x00)</td>
+</tr>
+<tr class="even">
+<td align="left">fileSizeOrDirInfoParameterLength</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="left">fileSizeUnCompressedOrDirInfoLength</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="left">fileSizeCompressed</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">x</td>
+<td align="center">-</td>
+</tr>
+</tbody>
+</table>
+<p>Combined Components:</p>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Combined Component</th>
+<th align="left">Length in bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variable Size Block Length</td>
+<td align="left">2..6 (1 Byte LengthFormatIdentifier, assumed max. 5 Byte Max Number of Block Length)</td>
+</tr>
+<tr class="even">
+<td align="left">Data Format Identifier</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">File Size</td>
+<td align="left">3..</td>
+</tr>
+<tr class="even">
+<td align="left">Dir Info</td>
+<td align="left">2..</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagnostic-class-template-file-transfer">Diagnostic Class Template &quot;File Transfer&quot;</h3>
+<p><span id="VUDS-R860-DClT" class="rqDef">[VUDS-R860-DClT]</span> In the <strong>diagnostic class template</strong>, components that describe the same data in multiple Protocol Services are combined (as listed in chapter above):</p>
+<div class="figure">
+<img src="Images/0x38%20Combined%20Components.jpg" alt="0x38 Combined Components in the Diagnostic Class Template" />
+<p class="caption">0x38 Combined Components in the Diagnostic Class Template</p>
+</div>
+<p><span id="VUDS-R860-Transfer" class="rqDef">[VUDS-R860-Transfer]</span> The Diagnostic Class Template additionally contains Protocol Services 0x36 (Transmit) and 0x37 (Stop).</p>
+<ul>
+<li><strong>Note</strong>:
+<ul>
+<li>Service &quot;Stop&quot; for Protocol Service 0x37 &quot;Request TransferExit&quot; occurs in both <strong>Upload/Download</strong> and <strong>File Transfer</strong>.</li>
+<li>You can <strong>check the &quot;Stop&quot; service only once</strong> within a variant.</li>
+</ul></li>
+<li>Reason:
+<ul>
+<li>in the template, 0x37 &quot;Request TransferExit&quot; contains a data proxy component</li>
+<li>... but no identifier component.</li>
+<li>When sent over the line, the byte sequence before the proxy component must uniquely identify the proxy component.</li>
+<li>With multiple 0x37 within a variant, that prefix byte sequence would be non-unique.</li>
+</ul></li>
+<li>Then why can I have multiple services for 0x36?
+<ul>
+<li>In the template, 0x36 &quot;TransferData&quot; only has proxies with semantics &quot;any&quot; (shown as &quot;x&quot;), for which CANdelaStudio does not provide a telegram table in the diagnostic instance.</li>
+</ul></li>
+</ul>
+<h3 id="diagnostic-instance-file-transfer">Diagnostic Instance &quot;File Transfer&quot;</h3>
+<ul>
+<li><span id="VUDS-R860-DiagInst" class="rqDef">[VUDS-R860-DiagInst]</span> As a default, the File Transfer diagnostic instance does not exist in the base variant.</li>
+<li>In order to use it, check it in the &quot;Supported Diagnostic Classes&quot; section.</li>
+<li>The diagnostic instance contains multiple telegram tables for the respective 0x38 parameters
+<ul>
+<li>more will be shown when you check the respective service:</li>
+</ul></li>
+</ul>
+<div class="figure">
+<img src="Images/0x38%20Diagnostic%20Instance.jpg" alt="0x38 in Diagnostic Instance" />
+<p class="caption">0x38 in Diagnostic Instance</p>
+</div>
+<ul>
+<li>for parameter &quot;File Path and Name&quot;,
+<ul>
+<li>you may use the data type &quot;String (2 Byte Size Info)&quot;</li>
+</ul></li>
+<li>for parameter &quot;Data Format Identifier&quot;,
+<ul>
+<li>you may use a bitfield with 2 data objects,</li>
+<li>each using data type &quot;Unsigned (4 Bit)&quot;.</li>
+</ul></li>
+</ul>
+<h3 id="code-generation-for-file-transfer">Code Generation for File Transfer</h3>
+<p>Vector code generation supports 0x38 only as <strong>callout into the application</strong> (custom service processor), there is no more specific support (as of 2018).</p>
+
+<h2 id="PS8604">Protocol Service 0x86 Subfunction 0x04 reportActivatedEvents</h2>
+<p>If in service 0x86 the subfunction 0x04 is activated, the service 0x86 has to be implemented completely by the application.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Authorization in CANdela Data <a class='rqRef' href='../../30 Features\State Dependency\Authorization.htm#AUTH-R100' title="">[AUTH-R100]</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service (Feature)</a></li>
+<li><a href="../../40%20Templates/Vector%20UDS/Diagnostic%20Class%20Templates.htm">Diagnostic Class Templates</a></li>
+<li><a href="Introduction.htm">Vector UDS Template - Introduction</a></li>
+<li><a href="../../30%20Features/State%20Dependency/State%20Group.htm">State Group</a></li>
+</ul>
+</body>
+</html>

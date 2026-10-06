@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Vector Diagnostic Toolchain</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="vector-diagnostic-toolchain">Vector Diagnostic Toolchain</h1>
+<h2 id="candela-approach-by-vector">CANdela Approach by Vector</h2>
+<p>Vector tools cover the entire diagnostic toolchain:</p>
+<div class="figure">
+<img src="Images/VModel.jpg" alt="The CANdela Tool Chain" />
+<p class="caption">The CANdela Tool Chain</p>
+</div>
+<ul>
+<li>CANdela is the solution for the diagnostic challenge of the in-creasing amount of ECUs built into more and more vehicle platforms</li>
+<li>CANdela is a process-oriented approach using frontloading – spend more attention to a high-quality specification at the very beginning</li>
+<li>a concise and formal specification</li>
+<li>avoids misinterpretation</li>
+<li>allows auto-code for ECU software implementation</li>
+<li>serves as direct data supply for diagnostic testers</li>
+<li>open interfaces and data exchange simplify the integration into existing tool environments - done for several OEMs in the past</li>
+<li>used and proven in real car projects - tremendous amount of savings at the OEM and the supplier</li>
+</ul>
+<p>For detailed information about Vector tools, see the &quot;Products&quot; section in the <strong>Vector homepage vector.com</strong>.</p>
+
+<h2 id="preevision---requirements-and-autosar-system-design">PREEvision - Requirements and AUTOSAR System Design</h2>
+
+<p>PREEvision may be used for requirements modelling and documentation at the <strong>vehicle-level</strong>:</p>
+<ul>
+<li><strong>High-level diagnostic requirements documentation</strong>
+<ul>
+<li>matches to the requirements documentation features of PREEvision.</li>
+<li>Example: “A DTC is required for any abnormal system or component state that results in a customer-observable symptom, or use of a customer-observable back-up or default strategy”.</li>
+</ul></li>
+<li><strong>Lower-level diagnostic requirements</strong> that follow from the high-level requirement
+<ul>
+<li>are able to be documented and/or modelled in PREEvision.</li>
+<li>Example: “Motor-control circuits will provide DTCs for open-load, high-side short-circuit to ground, low-side short-circuit to battery, over-temperature and over-load conditions”.</li>
+</ul></li>
+</ul>
+<h2 id="candelastudio---specify-ecu-diagnostics">CANdelaStudio - Specify ECU Diagnostics</h2>
+<p>CANdelaStudio lets you view, edit and export CANdela data (CDD), i.e. diagnostic data of control units in the automotive industry and in related areas.</p>
+<p>CANdelaStudio especially provides import and export for <a href="../30%20Features/ODX/ODX.htm">ODX</a>. ODX files are also usable in the Vector diagnostic toolchain, but are better suited for use with test systems than for an ECU implementation.</p>
+<p>With regard to requirements modelling, CANdelaStudio is used for <strong>detailed diagnostic specifications</strong> at the <strong>ECU-level</strong>:</p>
+<ul>
+<li><strong>Detailed specification of the diagnostic attributes for each diagnostic entity</strong>
+<ul>
+<li>Example: what extended information (e.g. snapshot) is available for a DTC, mirror memory, etc.</li>
+<li>Diagnostic entities: DTC, measurement, control...</li>
+<li>This is complemented by the template-based nature of CANdela, which sets out, for example, the services that are to be provided by a given ECU.</li>
+</ul></li>
+</ul>
+<h2 id="authoring-odxstudio">Authoring: ODXStudio</h2>
+<p>ODXStudio is a user oriented authoring tool for diagnostic data in ODX format. It utilizes the native ODX data model (versions 2.0.1 and 2.2.0) to allow an optimal roundtrip.</p>
+<p>Custom perspectives adapt to OEM specific ODX authoring guidelines and simplify editing.</p>
+<p>The ECU perspective provides a comfortable approach for editing UDS data.</p>
+<p>ODX-F container generation supports a flash process.</p>
+<h2 id="CANdesc">CANdesc - Implement ECU Diagnostics</h2>
+<p>CANdesc uses CANdela or ODX data to generate the protocol part of the ECU implementation: it provides a fast and correct implementation of the OEM specific diagnostic protocol. By this, it preserves data consistency between diagnostic specification and implementation.</p>
+<p>The application software (functional part of the ECU implementation) must be provided manually, it is connected via a standardized interface.</p>
+
+<h2 id="microsar">MICROSAR Diag</h2>
+<p>MICROSAR Diag provides an AUTOSAR compatible implementation of the UDS protocol (basis software):</p>
+<p>Some diagnostic modules are:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">DCM</td>
+<td align="left">Diagnostic Communication Manager: implements UDS and OBDII services in the ECU</td>
+</tr>
+<tr class="even">
+<td align="left">DEM</td>
+<td align="left">Diagnostic Event Manager: manage detected system events (errors and environmental data)</td>
+</tr>
+<tr class="odd">
+<td align="left">FIM</td>
+<td align="left">Function Inhibition Manager</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="canoe-canape---diagnostic-test-of-ecus">CANoe, CANape - Diagnostic Test of ECUs</h2>
+<p>The Vector tools CANoe, CANalyzer and CANape have add-on diagnostic tester functionality. They consume CANdela or ODX data and communicate with an ECU.</p>
+<h2 id="indigo---diagnostic-tester">Indigo - Diagnostic Tester</h2>
+<p>Indigo is a use-case driven Diagnostic Test System that addresses the daily diagnostic tasks with specialized use-case views. It is vehicle oriented and allows to view and modify vehicle-wide parameters and serves as a starting point to dive into the ECUs.</p>
+<h2 id="DiVa">CANoe Option DiVa - Diagnostic Validation and Integration of ECUs</h2>
+<p>CANoe.DiVa is a test environment for automated validation of ECU diagnostic software: it uses CANdela or ODX data to generate ECU test cases and automates test execution in CANoe.</p>
+<h2 id="vflash---efficient-and-user-oriented-reprogramming">vFlash - Efficient and User-Oriented Reprogramming</h2>
+<p>vFlash supports high-speed flashing over CAN, CAN FD, FlexRay, LIN and Ethernet (DoIP and SoAd).</p>
+<p>It handles different protocols and flash sequences in one tool.</p>
+<p>vFlash provides an intuitive GUI for configuration and execution as well as an automation interface.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a></li>
+<li><a href="../30%20Features/Installation/Bundled%20Products.htm">Bundled Products</a></li>
+<li><a href="../30%20Features/ODX/ODX.htm">ODX</a></li>
+</ul>
+</body>
+</html>

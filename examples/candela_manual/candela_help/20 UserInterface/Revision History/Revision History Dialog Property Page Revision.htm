@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Revision History Dialog Property Page Revision</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="revision-history-dialog---property-page-edit-revision">Revision History Dialog - Property Page &quot;Edit Revision&quot;</h1>
+<div class="figure">
+<img src="Images/Revision%20History%20Property%20Page%20Revision.jpg" alt="Revision History Property Page &quot;Edit Revision&quot;" />
+<p class="caption">Revision History Property Page &quot;Edit Revision&quot;</p>
+</div>
+<h2 id="version-format">Version Format</h2>
+<p>The revision dialog enforces the right <a href="../../30%20Features/Revision%20History/Revision%20History.htm#format">revision version format</a>:</p>
+<ul>
+<li>if the version format is empty, the dialog allows any input</li>
+<li>if the version format is not a correct regular expression, the dialog writes a message to the output window and treats it as empty (but does not replace the wrong format string)</li>
+<li>When creating a document from a template, CANdelaStudio does not allow an instantiation of the document if the template contains an incorrect version format (empty version format is allowed). </li>
+<li>if the version format is not empty, the dialog allows only input that matches the version format</li>
+<li>the dialog visualizes the version format: a tooltip shows the human readable version format description</li>
+<li>when the user creates a new revision, the dialog suggests a version by &quot;auto-incrementing&quot; the latest existing revision version (as in 4.0), <em>but</em> additionally checks this new Version against the version format - if it does not match, it leaves the edit-field initially empty. </li>
+<li>when the version format has changed, there may be entries with incorrect revision versions which shall be corrected. When editing an existing entry, usually the old invalid entry is copied to the text input control. The control does not allow incorrect letters, therefore it must be set empty in this situation.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Revision%20History/Revision%20History%20Dialog.htm">Revision History Dialog</a></li>
+</ul>
+</body>
+</html>

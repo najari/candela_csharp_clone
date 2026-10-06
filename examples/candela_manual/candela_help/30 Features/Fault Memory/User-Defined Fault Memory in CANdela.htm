@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>User-Defined Fault Memory in CANdela</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="user-defined-fault-memory-in-candela-cds-42498-9.0">User-Defined Fault Memory in CANdela (CDS-42498 9.0)</h1>
+<p>See also the <a href="Fault%20Memory.htm">Fault Memory</a> introduction, <a href="Fault%20Memory%20in%20UDS.htm">Fault Memory in UDS</a> and <a href="Fault%20Memory%20in%20CANdela.htm">Fault Memory in CANdela</a>.</p>
+<div class="figure">
+<img src="Images/User-Defined%20Fault%20Memory.jpg" alt="User-Defined Fault Memory" />
+<p class="caption">User-Defined Fault Memory</p>
+</div>
+<h2 id="definition">Definition</h2>
+<p><span id="UDFM-D100" class="rqDef">[UDFM-D100]</span> a <strong>Protocol Service for User-Defined Fault Memory</strong> starts with one of the three constant byte sequences 19 17 / 19 18 / 19 19.</p>
+<p><span id="UDFM-D105" class="rqDef">[UDFM-D105]</span> a <strong>DTC List for User-Defined Fault Memory only</strong> is a DTC List used only in Protocol Services for User-Defined Fault Memory <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D100' title="">[UDFM-D100]</a>, no other Protocol Services.</p>
+<p>Note: it is possible to mix Protocol Services for User-Defined Fault Memory and other ones in one diagnostic class template.</p>
+<h2 id="recommended-modelling">Recommended Modelling</h2>
+<p><span id="UDFM-D110" class="rqDef">[UDFM-D110]</span> Recommended Modelling for User Defined Fault Memory - allows to <strong>create additional user defined fault memories</strong> in a variant:</p>
+<ul>
+<li>The template contains the <strong>ProtocolServices</strong> 19 17, 19 18 and 19 19.
+<ul>
+<li>Example: the <a href="../../40%20Templates/Vector%20UDS/Protocol%20Services.htm">Vector UDS Template</a></li>
+</ul></li>
+<li>For the <strong>DTC</strong>, they contain a 3 byte <a href="../../30%20Features/Protocol%20Service/Proxy%20Component.htm">Proxy Component</a> with semantics <code>dtc</code>.</li>
+<li>For the <strong>memory selection</strong> byte, they contain a <a href="../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm">Variable Value Component</a>.</li>
+<li>A <strong>separate diagnostic class template</strong> uses these Protocol Services.
+<ul>
+<li>Note: CANdelaStudio does not provide a separate class type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R200' title="">[DCLT-R200]</a> for user-defined fault memory, use &quot;Fault Memory&quot;.</li>
+</ul></li>
+<li>The <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#text-table">text table at the Used Protocol Service</a> allows to restrict the set of user-defined fault memories (UDS: 0..255).</li>
+<li>Due to the use of a variable value component, ...
+<ul>
+<li>the Diagnostic Class Template is <strong>not a singleton</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R150-multiple' title="">[DCLT-R150-multiple]</a>,</li>
+<li>therefore in a document, a new user-defined fault memory can be created as a new diagnostic instance.</li>
+</ul></li>
+<li>Note: the AUTOSAR DEM Specification supports only IDs in the range 0x10 to 0xFF (chapter 4.1 &quot;Limitations&quot; as of AUTOSAR 4.3.1)</li>
+</ul>
+<h2 id="alternative-modelling">Alternative Modelling</h2>
+<p><span id="UDFM-D120" class="rqDef">[UDFM-D120]</span> This modelling provides one <strong>single user defined fault memory</strong> in a variant. If differs from the modelling recommended above as follows:</p>
+<ul>
+<li>For the <strong>memory selection</strong> byte, the Protocol Services contain a <a href="../../30%20Features/Protocol%20Service/Constant%20Component.htm">Constant Component</a>;
+<ul>
+<li>the constant value is arbitrary.</li>
+</ul></li>
+<li>Therefore, ...
+<ul>
+<li>the Diagnostic Class Template is a <strong>singleton</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R150-singleton' title="">[DCLT-R150-singleton]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="data-model">Data Model</h2>
+<p><span id="UDFM-R200" class="rqDef">[UDFM-R200]</span> A DTC List for User-Defined Fault Memory only <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D105' title="">[UDFM-D105]</a> takes the DTC Columns from the Error Code Table of the respective byte size <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R001' title="">[ECT-R001]</a>.</p>
+<ul>
+<li>If the Protocol Service has been correctly modelled, this is the &quot;Primary/User-Defined/WWH-OBD&quot; Error Code Table <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R001-3' title="">[ECT-R001-3]</a>.</li>
+</ul>
+<p><a class='rqRef' href='../../30%20Features/DTC/Available%20DTCs.htm#DTCP-R002-UDFM' title="">[DTCP-R002-UDFM]</a> A DTC List for User-Defined Fault Memory only <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D105' title="">[UDFM-D105]</a> must <strong>not</strong> contain references to the <strong>DTC Pool</strong>.</p>
+<h2 id="migration">Migration</h2>
+<p><span id="UDFM-R400" class="rqDef">[UDFM-R400]</span></p>
+<ul>
+<li>When loading a pre 9.0 file in CANdelaStudio 9.0,</li>
+<li>in a DTC List for User-Defined Fault Memory only <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D105' title="">[UDFM-D105]</a>,</li>
+<li>if a DTC is referenced from the DTC Pool <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-D020' title="DTC Referencing">[DTC-D020]</a>,</li>
+<li>then CANdelaStudio replaces the reference with a copy <a class='rqRef' href='../../30%20Features/DTC/DTC%20Operations.htm#DTCOP-R050' title="Replace Reference with Copy">[DTCOP-R050]</a>.</li>
+</ul>
+<h2 id="toolchain">Use in the Vector Toolchain</h2>
+<h3 id="autosar">AUTOSAR</h3>
+<p>Up to R18 (2017-03), the embedded software generator did not support User Defined Fault Memory.</p>
+<h3 id="candesc-code-generation">CANdesc code generation</h3>
+<ul>
+<li>CANdesc creates dispatch table entries for service 0x19 and the respective subfunction (0x17 / 0x18 / 0x19)</li>
+<li>With Vector DEM:
+<ul>
+<li>Vector DEM supports <strong>only one SecondaryMemory</strong>.</li>
+<li>CANdesc checks the Memory Selection parameter, <strong>accepts</strong> only the <strong>first one</strong> defined in the CDD and rejects all other requests.</li>
+<li>CANdesc does not forward the Memory Selection to the Vector DEM but just asks for &quot;SecondaryMemory&quot;.</li>
+</ul></li>
+<li>Not with Vector DEM:
+<ul>
+<li>the application is responsible for accessing the appropriate User Defined Fault Memory,</li>
+<li>CANdesc passes all request parameters to the application.</li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC (Feature)</a></li>
+<li>Introduction to <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li>User-Defined Fault Memory in <a href="../../40%20Templates/Vector%20UDS/Protocol%20Services.htm#user-defined-fault-memory">Vector UDS Template</a></li>
+</ul>
+</body>
+</html>

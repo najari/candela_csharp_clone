@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Update Diagnostic Objects</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="update-diagnostic-objects">Update Diagnostic Objects</h1>
+<p><span id="RQOP-R500" class="rqDef">[RQOP-R500]</span> CANdelaStudio shall provide an operation to update diagnostic objects from requirements.</p>
+<p>Since 8.0 SP2, the two operations “Generate” and “Update” have been combined into one.</p>
+<p>This operation is also available in a combined operation <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R270' title="">[MENU-R270]</a> via the ribbon tab Data Exchange.</p>
+<p><span id="RQOP-R510" class="rqDef">[RQOP-R510]</span> creation, modification or deletion of Diagnostic Objects shall not be possible in a locked variant in Standard View <a class='rqRef' href='../../30%20Features/Variant/Lock%20Variant.htm#VAR-R010' title="isLocked">[VAR-R010]</a>.</p>
+<h2 id="basic-conditions">Basic Conditions</h2>
+<ul>
+<li><span id="RQOP-R500-UpdateDiagObj" class="rqDef">[RQOP-R500-UpdateDiagObj]</span>: the &quot;Update diagnostic objects from requirements&quot; operation in the requirements area shall apply to diagnostic objects in the selected library or variant <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a>.</li>
+</ul>
+<p><span id="RQ-R528" class="rqDef">[RQ-R528.1]</span>: in standard mode, create/modify diagnostic objects only if authorization and length restrictions of existing diagnostic objects permits.</p>
+<p>Example: respect authorization of diagnostic instance for creation of data objects and DTCs, modification of diagnostic instance name/description.</p>
+<p><strong>R530.0</strong>: process only the <strong>current language</strong> of the CANdela document (as for manual editing by the user).</p>
+<p><strong>R531.1</strong>: provide execution for 1..n selected (“locally”) or for all requirements.</p>
+<p>If executed locally: recursively process all requirements contained in the selected ones (even contained requirements that are not selected); generate and update diagnostic objects within the diagnostic object selected in the diagnostic object tree, or inform user if this is not possible (e.g. for data requirement and diagnostic class selected).</p>
+<p><span id="RQ-R552" class="rqDef">[RQ-R552]</span>: in <strong>shared diagnostic instances</strong>, CANdelaStudio generates objects...</p>
+<ul>
+<li>without confirmation</li>
+<li>but possibly replaces the reference by a copy, see the next chapter <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R520' title="">[RQ-R520]</a>.</li>
+</ul>
+<p><strong>R554.0</strong>: the <strong>order of created diagnostic objects</strong> shall reflect the order of the requirements as far as possible.</p>
+<p><span id="RQ-R534-a" class="rqDef">[RQ-R534-a]</span> CANdelaStudio shall...</p>
+<ul>
+<li>for each <strong>new</strong> diagnostic object,</li>
+<li>store the requirement <strong>ID</strong> in the property of <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100' title="Associate Diagnostic Object with Requirement">[RQ-R100]</a>.</li>
+</ul>
+<h2 id="handling-of-referenced-diagnostic-instances-cds-41683-v11">Handling of Referenced Diagnostic Instances (CDS-41683 v11)</h2>
+<p><span id="RQ-R520" class="rqDef">[RQ-R520]</span> The following applies to any object...</p>
+<ul>
+<li>that must be modified</li>
+<li>that is referenced in multiple variants or the DTC Pool</li>
+<li>that may be modified (due to authorization).</li>
+</ul>
+<p><span id="RQ-R520-Copy" class="rqDef">[RQ-R520-Copy]</span> If property &quot;Update of Diagnostic Objects&quot; is &quot;Replace References with Copy&quot; <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R096-Copy' title="">[RQ-R096-Copy]</a>, the &quot;Update Diagnostic Objects&quot; operation...</p>
+<ul>
+<li>replaces the object with a copy in the selected variant (as of D001), i.e.
+<ul>
+<li>for referenced DIDs and diagnostic instances: replaces it with a copy;</li>
+<li>for a DTC referencing into DTC pool:
+<ul>
+<li>replaces it with a copy,</li>
+<li>additionally ensures the diagnostic instance is a copy.</li>
+</ul></li>
+</ul></li>
+<li>then modifies the copy;</li>
+<li><p>writes an info message with a hyperlink into the current variant, like</p>
+<pre><code>  Replacing DTC 0x123456 with a copy in variant &quot;&lt;variant name&gt;&quot;.</code></pre></li>
+<li><p>skips (does not update) objects that are required as reference, with a message like</p>
+<pre><code>  Skipping DTC 0x123456 required as reference from DTC Pool.
+  Skipping diagnostic instance &quot;Temperature&quot; required as reference.</code></pre></li>
+</ul>
+<p><span id="RQ-R520-UpdateRefs" class="rqDef">[RQ-R520-UpdateRefs]</span> If property &quot;Update of Diagnostic Objects&quot; is &quot;Update References&quot; <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R096-UpdateRefs' title="">[RQ-R096-UpdateRefs]</a>, the &quot;Update Diagnostic Objects&quot; operation...</p>
+<ul>
+<li>keeps the referencing of diagnostic instances,</li>
+<li>so updates may take effect in multiple variants.</li>
+</ul>
+<h2 id="heading">Heading</h2>
+<p><span id="RQ-R530-Heading" class="rqDef">[RQ-R530-Heading]</span>: generate nothing for <strong>headings</strong>.</p>
+<h2 id="diaginst-requirement">DiagInst Requirement</h2>
+<div class="figure">
+<img src="Images/Update%20Diagnostic%20Objects%20for%20DiagInstRequirement.jpg" alt="Overview of Updating from Diagnostic Instance Requirement" />
+<p class="caption">Overview of Updating from Diagnostic Instance Requirement</p>
+</div>
+
+<h3 id="algorithm-diaginst-requirement-for-a-diagnostic-instance">Algorithm: DiagInst Requirement for a Diagnostic Instance</h3>
+<p>Precondition: the requirement does <em>not</em> have the special DiagClass value of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DID' title="">[RQ-R030-DID]</a>.</p>
+<p><span id="RQ-R530-DiagInst" class="rqDef">[RQ-R530-DiagInst]</span> Update diagnostic objects from the requirement as follows:</p>
+<ul>
+<li>If the requirement is linked with a DID
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R530-DID' title="">[RQ-R530-DID]</a> inconsistent, skip it with a warning</li>
+</ul></li>
+<li>If the requirement is not linked
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R536' title="Provide Diagnostic Class">[RQ-R536]</a> Provide the diagnostic class:
+<ul>
+<li>determine the diagnostic class template</li>
+<li>create a diagnostic class for the diagnostic class template</li>
+</ul></li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R570' title="">[RQ-R570]</a> Check if a matching diagnostic instance exists</li>
+<li>If no:
+<ul>
+<li>Check if the diagnostic class is &quot;DID Enabled&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001' title="">[DCL-D001]</a></li>
+<li>If yes:
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R575' title="">[RQ-R575]</a> Check if a matching DID exists</li>
+<li>If yes:
+<ul>
+<li>do <em>not</em> update the properties of the DID (but only those of the diagnostic instance, below)</li>
+</ul></li>
+<li>If no:
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R550' title="">[RQ-R550]</a> create a DID from the requirement</li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560' title="Update Diagnostic Object Properties">[RQ-R560]</a> Set the DID properties</li>
+</ul></li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R555' title="">[RQ-R555]</a> Create a diagnostic instance for the new or matching DID</li>
+</ul></li>
+<li>If no:
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R558' title="">[RQ-R558]</a> Create a diagnostic instance (without DID)</li>
+</ul></li>
+</ul></li>
+<li>Link the existing or new diagnostic instance with the requirement</li>
+</ul></li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560' title="Update Diagnostic Object Properties">[RQ-R560]</a> Set the properties of the (originally or just now) linked diagnostic instance</li>
+</ul>
+<p>Note: according with this algorithm, two Diagnostic Instance Requirements that have the same name will produce just one DID, due to <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R575' title="">[RQ-R575]</a>. If this is not desired, the requirements must have different names.</p>
+<h3 id="algorithm-diaginst-requirement-for-a-did">Algorithm: DiagInst Requirement for a DID</h3>
+<p>Precondition: the requirement <em>has</em> the special DiagClass value of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DID' title="">[RQ-R030-DID]</a>.</p>
+<p><span id="RQ-R540" class="rqDef">[RQ-R540]</span> Update diagnostic objects from the requirement as follows:</p>
+<ul>
+<li>If the requirement is linked with a diagnostic instance
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R540-DiagInst' title="">[RQ-R540-DiagInst]</a> skip it with a warning</li>
+</ul></li>
+<li>If the requirement is not linked
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R575' title="">[RQ-R575]</a> Check if a matching DID exists</li>
+<li>If no:
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R550' title="">[RQ-R550]</a> create a DID from the requirement</li>
+</ul></li>
+<li>Link the existing or new DID with the requirement</li>
+</ul></li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560' title="Update Diagnostic Object Properties">[RQ-R560]</a> Set the properties of the (originally or just now) linked DID</li>
+</ul>
+<h3 id="warning-link-conflict-with-did">Warning: Link Conflict with DID</h3>
+<p><span id="RQ-R530-DID" class="rqDef">[RQ-R530-DID]</span> For...</p>
+<ul>
+<li>a DiagInst Requirement that does <em>not</em> have the special DiagClass value of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DID' title="">[RQ-R030-DID]</a>,</li>
+<li>if it is linked with a DID,</li>
+<li>the diagnostic data (DID) is not consistent with the requirement,</li>
+<li>CANdelaStudio shall report a warning and <strong>skip</strong> the requirement.</li>
+</ul>
+<p>Note: CANdelaStudio does not try to make the data consistent (which would mean to probably delete the DID and create a diagnostic instance instead).</p>
+<h3 id="warning-link-conflict-with-diagnostic-instance">Warning: Link Conflict with Diagnostic Instance</h3>
+<p><span id="RQ-R540-DiagInst" class="rqDef">[RQ-R540-DiagInst]</span> For...</p>
+<ul>
+<li>a DiagInst Requirement that <em>does</em> have the special DiagClass value of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DID' title="">[RQ-R030-DID]</a>,</li>
+<li>if it is linked with a diagnostic instance,</li>
+<li>the diagnostic data (i.e. diagnostic instance) is not consistent with the requirement,</li>
+<li>CANdelaStudio shall report a warning and <strong>skip</strong> the requirement.</li>
+</ul>
+<p>Note: CANdelaStudio does not try to make the data consistent (which would mean to probably delete the diagnostic instance and create a DID instead).</p>
+<h3 id="create-a-did-from-a-requirement">Create a DID from a Requirement</h3>
+<p><span id="RQ-R550" class="rqDef">[RQ-R550]</span> CANdelaStudio shall...</p>
+<ul>
+<li>create a DID <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R200' title="New">[DID-R200]</a> from the diagnostic instance requirement,</li>
+<li>and,
+<ul>
+<li>if the &quot;Identifier&quot; property is non-empty,</li>
+<li>and it does not violate a constraint (e.g. 3 byte value, or duplicate with existing identifier),</li>
+<li>then <span id="RQ-R550-UseIdentifier" class="rqDef">[RQ-R550-UseIdentifier]</span> use it for the DID Identifier,</li>
+<li>otherwise use an available identifier, as when the user creates a new DID <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R200' title="New">[DID-R200]</a>.</li>
+</ul></li>
+</ul>
+<p><span id="RQ-R550-Format" class="rqDef">[RQ-R550-Format]</span> The identifier number may be...</p>
+<ul>
+<li>hexadecimal with leading &quot;0x&quot;, like &quot;0x0107&quot;, or</li>
+<li>decimal like &quot;263.</li>
+</ul>
+<p>See also <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-UpdateDIDIdentifier' title="">[RQ-R560-UpdateDIDIdentifier]</a> for updating an existing DID.</p>
+<h3 id="create-a-diagnostic-instance-for-a-did">Create a Diagnostic Instance for a DID</h3>
+<p><span id="RQ-R555" class="rqDef">[RQ-R555]</span> CANdelaStudio shall (CDS-39520 U040 8.5 SP2)...</p>
+<ul>
+<li><strong>create a diagnostic instance from the DID</strong> of <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R550' title="">[RQ-R550]</a>,</li>
+<li>as specified in Diagnostic Instance Creation from DID <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DI-R020' title="Diagnostic Instance Creation from DID">[DI-R020]</a>.</li>
+</ul>
+<h3 id="create-a-diagnostic-instance-without-did">Create a Diagnostic Instance without DID</h3>
+<p><span id="RQ-R558" class="rqDef">[RQ-R558]</span> CANdelaStudio shall...</p>
+<ul>
+<li><strong>create a new diagnostic instance</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DI-R010' title="Diagnostic Instance Creation">[DI-R010]</a> from the diagnostic instance requirement.</li>
+</ul>
+<p>Identifier:</p>
+<ul>
+<li><strong>if</strong> the &quot;Identifier&quot; property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Identifier' title="Requirement &quot;Identifier&quot; Property">[RQ-R030-Identifier]</a> is non-empty, </li>
+<li><strong>then</strong> CANdelaStudio uses it for the diagnostic instance Identifier (or any other specification <a class='rqRef' href='../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm#PS-R400-Specification' title="Variable Value Component &quot;Specification&quot;">[PS-R400-Specification]</a>) (CDS-39520 U030 8.5 SP2).</li>
+<li><strong>else</strong> if the diagnostic class type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R200' title="">[DCLT-R200]</a> is &quot;routine&quot;,
+<ul>
+<li><span id="RQ-R558-Routine" class="rqDef">[RQ-R558-Routine]</span> then CANdelaStudio creates a routine identifier unique in the variant (CDC-43914 9.1 SP1);</li>
+<li>for non-&quot;routine&quot;, it creates an identifier unique in the diagnostic class.</li>
+<li>Independent of the diagnostic class type, CANdelaStudio uses an identifier in a valid range of the text table configured for the diagnostic class <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#DCLT-R400' title="">[DCLT-R400]</a>.</li>
+</ul></li>
+</ul>
+<h3 id="check-if-a-matching-diagnostic-instance-exists">Check if A Matching Diagnostic Instance Exists</h3>
+<p><span id="RQ-R570" class="rqDef">[RQ-R570]</span> A Diagnostic Instance matches a DiagInst Requirement, if...</p>
+<ul>
+<li>the <strong>name</strong> of the diagnostic instance requirement equals the qualifier or name of a diagnostic instance</li>
+<li>in this order</li>
+<li>in the diagnostic class determined,</li>
+<li>or on top-level for singletons.</li>
+<li>Note: this condition intentionally does not consider whether the diagnostic instance is a &quot;DID Definition&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D110' title="Diagnostic Instance as DID Definition">[DI-D110]</a>.</li>
+</ul>
+<h3 id="check-if-a-matching-did-exists">Check if A Matching DID Exists</h3>
+<p><span id="RQ-R575" class="rqDef">[RQ-R575]</span> A DID matches a DiagInst Requirement, if...</p>
+<ul>
+<li>the <strong>name</strong> of the diagnostic instance requirement equals the qualifier or name of a DID</li>
+<li>or <span id="RQ-R575-MatchIdentifier" class="rqDef">[RQ-R575-MatchIdentifier]</span> (CDS-39287 8.5 SP2) the &quot;Identifier&quot; property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Identifier' title="Requirement &quot;Identifier&quot; Property">[RQ-R030-Identifier]</a> is non-empty and matches the DID Identifier (CDS-39520 U020 8.5 SP2)</li>
+<li>in this order.
+<ul>
+<li>Motivation: the DID name must be unique, but the DID identifier may be duplicate, depending on <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R008' title="Allow Duplicate DIDs">[DID-R008]</a>.</li>
+</ul></li>
+</ul>
+<p>Note: in case duplicate DID identifiers are allowed in the document <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R008' title="Allow Duplicate DIDs">[DID-R008]</a>, there may be multiple matching DIDs. The algorithms above will use the first one (in the order the DIDs are stored in the document).</p>
+<h3 id="provide-the-diagnostic-class">Provide the Diagnostic Class</h3>
+<p><span id="RQ-R536" class="rqDef" title="Provide Diagnostic Class">[RQ-R536 Provide Diagnostic Class]</span></p>
+<ol style="list-style-type: decimal">
+<li>determine the diagnostic class template</li>
+<li>create a diagnostic class for the diagnostic class template</li>
+</ol>
+<p>Note: see <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R546-DiagClass' title="">[RQ-R546-DiagClass]</a> for DiagClass at DTC Requirement.</p>
+<p><span id="RQ-R536-L" class="rqDef" title="Determine Diagnostic Class">[RQ-R536-L Determine Diagnostic Class]</span> Determine the <strong>diagnostic class</strong> for a <strong>DiagInst Requirement</strong> as follows:</p>
+<p><span id="RQ-R536-L1" class="rqDef" title="Attribute &quot;SourceRequirementHeadings&quot;">[RQ-R536-L1 Attribute &quot;SourceRequirementHeadings&quot;]</span> Use-case:  an external application puts requirements into headings with fixed names - specify at the CANdela diagnostic class template for which heading it applies:</p>
+<ul>
+<li>If the requirement is contained in a <strong>Heading H</strong>,</li>
+<li>and any diagnostic class template D that supports requirements <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R300' title="">[DCLT-R300]</a> contains a string (not multi-language) <strong>attribute</strong>, qualifier &quot;<strong>SourceRequirementHeadings</strong>”,</li>
+<li>and <strong>the attribute contains the name of H</strong> (in a comma-separated list),</li>
+<li>then CANdelaStudio shall create diagnostic objects in the first diagnostic class that refers to such a diagnostic class template D (CDS-28568 8.0 SP2).</li>
+</ul>
+<p><span id="RQ-R536-L2" class="rqDef">[RQ-R536-L2]</span> If the requirement is <strong>contained in a Heading</strong> which...</p>
+<ul>
+<li>is <strong>linked to a diagnostic class</strong>, or</li>
+<li>the <strong>name of the Heading</strong> equals the qualifier or name (in this order) of a diagnostic class template,</li>
+<li>then use that diagnostic class.</li>
+</ul>
+<p><span id="RQ-R536-L3" class="rqDef">[RQ-R536-L3]</span> If the <strong>requirement property “DiagClass”</strong> denotes...</p>
+<ul>
+<li>the qualifier or name of an existing <strong>diagnostic class</strong>, or</li>
+<li>of an existing <strong>diagnostic class template</strong> (in that order),</li>
+<li>then use that one.</li>
+<li>Assumption: the special value of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DID' title="">[RQ-R030-DID]</a> does not represent any existing diagnostic class.</li>
+</ul>
+<p><span id="RQ-R536-L4" class="rqDef">[RQ-R536-L4]</span> Otherwise, ...</p>
+<ul>
+<li>if the parent of the DiagInstRequirement is a <strong>Heading</strong>,</li>
+<li>and the name of the heading denotes...
+<ul>
+<li>the qualifier or name of an existing diagnostic class,</li>
+<li>or the qualifier or name of an existing diagnostic class template</li>
+<li>in that order,</li>
+</ul>
+then use that one.</li>
+</ul>
+<p><span id="RQ-R536-L5" class="rqDef">[RQ-R536-L5]</span> otherwise, <strong>determine the diagnostic class type</strong> from the requirements type as follows (if such a diagnostic class exists, use the first existing one, otherwise create one and use it):</p>
+<table style="width:98%;">
+<colgroup>
+<col width="36%" />
+<col width="61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Requirement type</th>
+<th align="left">Diagnostic class type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Data DiagInst Requirement</td>
+<td align="left">Stored Data (if the “Services” property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Services' title="Requirement &quot;Services&quot; Property">[RQ-R030-Services]</a> of the requirement refers to a service that has data in request)<br />
+Current Data (otherwise)<br />
+Note: no Identification, no Variant Coding (cf. CDS-29089)</td>
+</tr>
+<tr class="even">
+<td align="left">FaultMemory DiagInst Requirement</td>
+<td align="left">FaultMemory</td>
+</tr>
+<tr class="odd">
+<td align="left">Routine DiagInst Requirement</td>
+<td align="left">Routine</td>
+</tr>
+<tr class="even">
+<td align="left">IOControl DiagInst Requirement</td>
+<td align="left">Control</td>
+</tr>
+</tbody>
+</table>
+<p>Note: in CANdelaStudio, the diagnostic class qualifier and type are shown in the property dialog of a diagnostic class.</p>
+<h2 id="data-requirement">Data Requirement</h2>
+<h3 id="creation">Creation</h3>
+<p><strong>R542.2</strong>: if for a <strong>data requirement</strong> no data object exists, and it is <strong>not contained</strong> in a diagnostic instance requirement, skip it. Inform the user about this.</p>
+
+<p><span id="RQ-R544-Data" class="rqDef" title="Create Data Requirement">[RQ-R544-Data.3 Create Data Requirement]</span>: if for a <strong>data requirement</strong> no data object exists, and it <strong>is contained</strong> in a diagnostic instance requirement D, then</p>
+<p><span id="RQ-R544-a" class="rqDef">[RQ-R544-a]</span> if D is linked with a DID, then create a data object in the DID that is linked with D (CDC-39298 8.5),</p>
+<p><span id="RQ-R544-b" class="rqDef">[RQ-R544-b]</span> otherwise, create a data object in the diagnostic instance that is linked with D.</p>
+<p><span id="RQ-R544-DataType" class="rqDef">[RQ-R544-DataType]</span> To determine the data type, use...</p>
+<ul>
+<li>the <strong>default data type</strong> <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R094' title="Default Data Type">[RQ-R094]</a>, and the...</li>
+<li>BitLen and...</li>
+<li>DisplayFormat Data Requirement properties</li>
+</ul>
+<p>as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Data Requirement</th>
+<th align="left">Use data type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">no BitLen</td>
+<td align="left">Default</td>
+</tr>
+<tr class="even">
+<td align="left">BitLen, no DisplayFormat</td>
+<td align="left">Use first data type with matching BitLen, prefer identity data type with quantity atom</td>
+</tr>
+<tr class="odd">
+<td align="left">BitLen and DisplayFormat</td>
+<td align="left">Use first data type with matching BitLen and DisplayFormat (as previous constellation), otherwise use default</td>
+</tr>
+</tbody>
+</table>
+<p>Note: specify the default data type in the <a href="../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm">Property Page &quot;Settings&quot;</a>.</p>
+<h3 id="using-services">Using Services</h3>
+<p><span id="RQ-R544-ServicesAtData" class="rqDef">[RQ-R544-ServicesAtData]</span> If the “Services” property of the requirement <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-ServicesAtData' title="">[RQ-R030-ServicesAtData]</a>...</p>
+<ul>
+<li>specifies an existing service, and</li>
+<li>optionally even indicates a primitive in that service that has a telegram table for semantics &quot;data&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#CPC-R100' title="">[CPC-R100]</a>,</li>
+<li>then put the data object into that telegram table;</li>
+<li>otherwise, put it into the <strong>first telegram table</strong> with semantics &quot;data&quot;
+<ul>
+<li>&quot;first&quot; = the order shown in CANdelaStudio.</li>
+</ul></li>
+</ul>
+<p>Note: typically, the data read service contains only one telegram table (for a combined proxy component) in the positive response, in this case the “Services” string “Read” is sufficient in generating diagnostic objects, there is no need to specify “Read PR”.</p>
+<p>Note: if the “Services” property denotes e.g. “Start” request, and that primitive does not contain a telegram table, then do not create a data object (even if the positive response contains a telegram table).</p>
+<p>Note: mind the restrictions of <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R528' title="">[RQ-R528]</a>!</p>
+<p>Note: “first one” does not refer to the order of combined components in the DiagClassTemplate!</p>
+<h3 id="setting-istodo">Setting isToDo</h3>
+<p><span id="RQ-R545" class="rqDef" title="Set isToDo">[RQ-R545 Set isToDo]</span>: if a data object is created for a data requirement, then set “isTodo” of the data requirement <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R160' title="Property isTodo">[RQ-R160]</a> to true.</p>
+<blockquote>
+<p>Motivation: allow to find the data objects in order to select a different data type.</p>
+</blockquote>
+<h3 id="moving-data-objects">Moving Data Objects</h3>
+<p><strong>R532.1</strong> (new in 8.0 SP2): during update, after creating all links, ...</p>
+<ul>
+<li>if a requirement P is linked to a diagnostic object DO,</li>
+<li>and the parent of P is linked to a diagnostic object X that is not the parent of DO,</li>
+<li>then move DO to be contained in X (at the end of the child list).</li>
+</ul>
+<h2 id="dtc-requirement">DTC Requirement</h2>
+<p><span id="RQ-R546" class="rqDef" title="Creation of DTCs">[RQ-R546.3 Creation of DTCs]</span></p>
+<p><span id="RQ-R546-DTCPool" class="rqDef">[RQ-R546-DTCPool]</span> If ECU authorization allows creation of <strong>DTCs</strong> in pool only, create DTCs in the pool, link to them from the diagnostic instance as described in the following (note: the requirements GUI does not show info whether DTC is linked to pool or exists locally).</p>
+<p><span id="RQ-R546-InDI" class="rqDef">[RQ-R546-InDI]</span> If for a <strong>DTC requirement</strong> no DTC exists, and it <strong>is contained</strong> in a FaultMemory DiagInst Requirement F, then create a DTC in the diagnostic instance that is mapped to F.</p>
+<p><span id="RQ-R546-DiagClass" class="rqDef">[RQ-R546-DiagClass]</span> If the <strong>DTC requirement property “DiagClass”</strong> <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DiagClassDTC' title="Requirement &quot;DiagClass&quot; Property at DTC">[RQ-R030-DiagClassDTC]</a> denotes...</p>
+<ul>
+<li>the qualifier or name (in that order) of an existing <strong>diagnostic class template</strong> with type Fault Memory,</li>
+<li>then put the DTC in the existing diagnostic instance of the diagnostic class template, or create it.</li>
+</ul>
+<p><span id="RQ-R546-InFM" class="rqDef">[RQ-R546-InFM]</span> Otherwise, if the DTC is not contained in a FaultMemory DiagInst Requirement, then create a DTC in Fault Memory.</p>
+<p><span id="RQ-R546-InFMMultiple" class="rqDef">[RQ-R546-InFMMultiple]</span> If the document contains <strong>multiple fault memories</strong>, use the one with biggest DTC size (e.g. 3 bytes, not 2 bytes; 4 bytes, not 3 bytes).</p>
+<p>Note: do this even if the DTC requirement is not contained in a FaultMemory DiagInst Requirement.</p>
+<p><span id="RQ-R546-Code" class="rqDef">[RQ-R546-Code]</span> If a DTC requirement has a code, it shall be stored in the code of the new DTC.</p>
+<p><span id="RQ-R546-NewCode" class="rqDef">[RQ-R546-NewCode]</span> Otherwise, a new DTC code shall be used (like e.g. in “Paste Contents”).</p>
+<p><span id="RQ-R546-Empty" class="rqDef">[RQ-R546-Empty]</span> If a field in a DTC requirement is empty, the update fills the according field in the created DTC as if the DTC had been created by clicking on the magic line: it assigns the default value of the DTC Column (CDC-43842 9.1), with special handling for an empty default value. See <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R080' title="Default Value">[DTCC-R080]</a>.</p>
+<p><span id="RQ-R546-Duplicate" class="rqDef">[RQ-R546-Duplicate]</span> If the Requirements list contains a duplicate DTC code, the &quot;Update diagnostic objects&quot; ignores the second one with a log message (like in 8.5).</p>
+<h2 id="vehicle-system-group">Vehicle System Group</h2>
+<p><span id="RQ-R548" class="rqDef">[RQ-R548]</span>: if...</p>
+<ul>
+<li>for a VehicleSystemGroup Requirement no Vehicle System Group exists (i.e. not linked and none with matching name/qualifier),</li>
+<li>then CANdelaStudio shall create one...</li>
+<li>and set the Semantics property from the property of the Requirement.</li>
+</ul>
+<h2 id="text-requirement">Text Requirement</h2>
+<p><span id="RQ-R530-Text" class="rqDef">[RQ-R530-Text]</span> : generate nothing for <strong>text requirements</strong>.</p>
+<h2 id="updating-diagnostic-object-properties">Updating Diagnostic Object Properties</h2>
+<h3 id="general-rules">General Rules</h3>
+<p><span id="RQ-R560" class="rqDef" title="Update Diagnostic Object Properties">[RQ-R560 Update Diagnostic Object Properties]</span>: CANdelaStudio shall...</p>
+<ul>
+<li><span id="RQ-R560-New" class="rqDef">[RQ-R560-New]</span> for a new diagnostic object:
+<ul>
+<li><strong>initially set properties</strong> from the requirement properties,</li>
+</ul></li>
+<li><span id="RQ-R560-Update" class="rqDef">[RQ-R560-Update]</span> for a compatible <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R105' title="Compatible Types">[RQ-R105]</a> already linked diagnostic object,
+<ul>
+<li><strong>update properties</strong> from the requirement properties.</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Note: do not update properties if diagnostic object and requirement are <strong>not compatible</strong>, e.g. do not modify the name of diagnostic objects associated with a heading or a text requirement.</p>
+</blockquote>
+<p><span id="RQ-R560-SkipEmpty" class="rqDef">[RQ-R560-SkipEmpty]</span>: CANdelaStudio shall skip requirement properties that are <strong>empty</strong>.</p>
+<blockquote>
+<p>Motivation: treat these properties as “unspecified”, not as “intentionally empty”.</p>
+</blockquote>
+<h3 id="basic-properties">Basic Properties</h3>
+<p>Note: for updating, the requirements <strong>ID</strong> is not relevant (since it is the <strong>basis</strong> for determining the linked diagnostic object).</p>
+<p><span id="RQ-R560-Name" class="rqDef">[RQ-R560-Name]</span> store the requirement <strong>name</strong> in the name and <a href="../../30%20Features/Common%20Properties/Qualifier.htm#generating-from-names">use it for the qualifier as in manual editing</a>.</p>
+<ul>
+<li><span id="RQ-R560-NameDTC" class="rqDef">[RQ-R560-NameDTC]</span> for a DTC Requirement, store the requirement <strong>name</strong> in the error text.</li>
+</ul>
+<p><span id="RQ-R560-Description" class="rqDef">[RQ-R560-Description]</span> store the requirement <strong>description</strong> in the description.</p>
+<ul>
+<li><span id="RQ-R560-DescriptionDTC" class="rqDef">[RQ-R560-DescriptionDTC]</span> for a DTC Requirement, store the requirement <strong>description</strong> in the DTC description, see <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R020' title="General Properties">[RQ-R020]</a>.</li>
+</ul>
+<h3 id="attributes">Attributes</h3>
+<p><span id="RQ-R560-Attribute" class="rqDef">[RQ-R560-Attribute]</span> For a non-empty <strong>user-defined property</strong> for <strong>all requirement types</strong> <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040-ForType' title="">[RQ-R040-ForType]</a>, store the property in an attribute ...</p>
+<ul>
+<li>if the attribute is associated as described in <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100-Prop' title="Association with Attribute">[RQ-R100-Prop]</a></li>
+<li>and the requirement property can be converted by a value conversion (see <a class='rqRef' href='../../30%20Features/Common%20Properties/Value%20Conversions.htm#CONV-R010' title="Value Conversion">[CONV-R010]</a>) to a value,
+<ul>
+<li>handling an int requirement as &quot;unsigned&quot;,</li>
+<li>then override the attribute with that value,</li>
+</ul></li>
+<li>else do not change the attribute (if it is already overridden, do not reset to default!)</li>
+<li>and write a warning to the log.</li>
+<li>for DTC requirements see <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-DTCUserDefined' title="">[RQ-R560-DTCUserDefined]</a>.</li>
+</ul>
+<h3 id="did-properties">DID Properties</h3>
+<p><span id="RQ-R560-UpdateDIDIdentifier" class="rqDef">[RQ-R560-UpdateDIDIdentifier]</span> If...</p>
+<ul>
+<li>the requirement &quot;Identifier&quot; property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Identifier' title="Requirement &quot;Identifier&quot; Property">[RQ-R030-Identifier]</a> is non-empty,</li>
+<li>and the operation <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R212' title="Modify Identifier">[DID-R212]</a> allows the update,</li>
+<li>then CANdelaStudio shall update the DID Identifier from the &quot;Identifier&quot; property using that operation,</li>
+<li>otherwise skip the property.</li>
+</ul>
+<p>For the number format, see <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R550-Format' title="">[RQ-R550-Format]</a>.</p>
+<h3 id="diagnostic-instance-properties">Diagnostic Instance Properties</h3>
+<p><span id="RQ-R560-UpdateDiagInstIdentifier" class="rqDef">[RQ-R560-UpdateDiagInstIdentifier]</span> If...</p>
+<ul>
+<li>the requirement &quot;Identifier&quot; property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Identifier' title="Requirement &quot;Identifier&quot; Property">[RQ-R030-Identifier]</a> is non-empty,</li>
+<li>and constraints are not violated,</li>
+<li>then CANdelaStudio shall update the diagnostic instance Identifier from the &quot;Identifier&quot; property.</li>
+</ul>
+<p><span id="RQ-R560-Services" class="rqDef">[RQ-R560-Services]</span> CANdelaStudio...</p>
+<ul>
+<li>creates services in the diagnostic instance as specified by the “services” property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030' title="Specific Properties">[RQ-R030]</a>, ...
+<ul>
+<li>matching each part of the “services” property with the qualifier of the used ProtocolService in a CANdela diagnostic class.</li>
+<li>For a new diagnostic instance, if no “services” are specified, it uses the default from the diagnostic class template (as in GUI).</li>
+</ul></li>
+<li><span id="RQ-R560-DelService" class="rqDef">[RQ-R560-DelService]</span> deletes a service (CDS-72013 v13) if ...
+<ul>
+<li>the document is for manufacturer <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R110' title="">[DOC-R110]</a> John Deere,</li>
+<li>the &quot;Services&quot; requirements property is non-empty, and</li>
+<li>the property value does not contain the service, and</li>
+<li>the service is not mandatory <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#DCLT-R310' title="Used Protocol Service Convention">[DCLT-R310]</a></li>
+<li>and (in general) the diagnostic instance is modifiable.</li>
+</ul></li>
+</ul>
+<p>upon Update from Requirements</p>
+<ul>
+<li>Do not delete any service.</li>
+</ul>
+<p><span id="RQ-R560-VehicleSystemGroups" class="rqDef">[RQ-R560-VehicleSystemGroups]</span> CANdelaStudio shall...</p>
+<ul>
+<li>if VehicleSystemGroups is an empty string, do nothing.</li>
+<li>use the VehicleSystemGroups property to associate the created diagnostic instance with Vehicle System Groups (based on matching name).
+<ul>
+<li>if necessary, create a Vehicle System Group.</li>
+<li>The Vehicle System Groups may have existed in the CANdela document before generating, or may have been created during generating.</li>
+</ul></li>
+<li>If a Vehicle System Group is associated with the diagnostic instance but not contained in the Vehicle System Groups requirement property, then drop the association.</li>
+<li>Do not delete any Vehicly System Group.</li>
+<li>Fulfill e.g. length consistency conditions like when the user interactively creates a new diagnostic instance (e.g. add dummy data object, but only if there would be no data objects created from requirements.</li>
+</ul>
+<h3 id="dtc-properties">DTC Properties</h3>
+<p><span id="RQ-R560-DTCCode" class="rqDef">[RQ-R560-DTCCode]</span> Do not update the <strong>DTC code</strong>.</p>
+<blockquote>
+<p>Motivation: after the user changed these, they should not be automatically updated from requirements, the user should modify them intentionally. They will be shown as differing.</p>
+</blockquote>
+<p><span id="RQ-R560-DTCUserDefined" class="rqDef">[RQ-R560-DTCUserDefined]</span> Store non-empty user-defined properties of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a>...</p>
+<ul>
+<li>... in the additional column of a CANdela DTC,</li>
+<li>if the additional DTC column of CANdela is associated as described in <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100-DTCProp' title="Association with DTC Column">[RQ-R100-DTCProp]</a>.</li>
+</ul>
+<p><span id="RQ-R560-DTCVehicleSystemGroups" class="rqDef">[RQ-R560-DTCVehicleSystemGroups]</span> CANdelaStudio shall handle the Vehicle System Group Association at a DTC like for a diagnostic instance <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-VehicleSystemGroups' title="">[RQ-R560-VehicleSystemGroups]</a>.</p>
+<h3 id="data-object-properties">Data Object Properties</h3>
+<p><span id="RQ-R560-DataObject" class="rqDef">[RQ-R560-DataObject]</span> CANdelaStudio shall not update the <strong>data type</strong> associated with data object (only use them for new data objects <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R544-DataType' title="">[RQ-R544-DataType]</a>).</p>
+<blockquote>
+<p>Motivation: after the user changed these, they should not be automatically updated from requirements, the user should modify them intentionally. They will be shown as differing.</p>
+</blockquote>
+<h3 id="vehicle-system-group-1">Vehicle System Group</h3>
+<p><span id="RQ-R560-VSGSemantics" class="rqDef">[RQ-R560-VSGSemantics]</span>: if...</p>
+<ul>
+<li>the Semantics property is non-empty,</li>
+<li>then CANdelaStudio shell assign it to the Vehicle System Group semantics.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Requirements <a href="Requirements.htm">Feature</a></li>
+<li>Requirements <a href="Data%20Model.htm">Data Model</a></li>
+<li><a href="Update%20Requirements.htm">Update Requirements</a></li>
+</ul>
+</body>
+</html>

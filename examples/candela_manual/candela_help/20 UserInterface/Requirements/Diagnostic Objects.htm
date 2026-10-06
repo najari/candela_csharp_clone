@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Objects</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="property-page-diagnostic-objects">Property Page &quot;Diagnostic Objects&quot;</h1>
+<p>See also the <a href="../../30%20Features/Requirements/Requirements.htm">Requirements Feature</a>.</p>
+<p>CANdelaStudio shows the page &quot;Diagnostic Objects&quot; at the bottom or to the right in the &quot;Requirements&quot; tree node:</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Requirements.jpg" alt="Requirements Pool" />
+<p class="caption">Requirements Pool</p>
+</div>
+<p>The tree and list of the &quot;Diagnostic Objects&quot; page shall follow the general rules described for <a href="Requirements.htm">requirements</a>.</p>
+<h2 id="overview-tree">Overview Tree</h2>
+<ul>
+<li>The left side is a tree representing the hierarchy of diagnostic objects of the selected variant.</li>
+<li>The order of the diagnostic objects in the tree shall correspond with the order in the global CANdela tree.</li>
+<li>Not supported diagnostic objects e.g. (reserved data objects, bit fields) shall be omitted.</li>
+<li>The Diagnostic Instances shall be shown in a folder of the corresponding diagnostic class.</li>
+</ul>
+<h3 id="requirements-and-dids">Requirements and DIDs</h3>
+<p><span id="RQUI-R230-DIDs" class="rqDef">[RQUI-R230-DIDs]</span> the user interface shall show a &quot;DIDs&quot; node as first child of the variant root node (CDS-41052 8.5 SP2).</p>
+<ul>
+<li>For a &quot;DID Definition&quot; diagnostic instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D110' title="Diagnostic Instance as DID Definition">[DI-D110]</a>, the user interface shall...
+<ul>
+<li><span id="RQUI-R230-DIDNot" class="rqDef">[RQUI-R230-DIDNot]</span> ... <strong>not show the DID</strong>;</li>
+<li><span id="RQUI-R230-DIChildren" class="rqDef">[RQUI-R230-DIChildren]</span> ... show the <strong>data objects from the DID</strong> as <strong>children</strong> of the diagnostic instance (CDC-39298 8.5).</li>
+</ul></li>
+<li>For a DID <em>not</em> used <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-D001-d' title="">[DID-D001-d]</a> by a &quot;DID Definition&quot; diagnostic instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D110' title="Diagnostic Instance as DID Definition">[DI-D110]</a>, the user interface shall...
+<ul>
+<li><span id="RQUI-R230-DID" class="rqDef">[RQUI-R230-DID]</span> ... <strong>show the DID</strong> under the &quot;DIDs&quot; node;</li>
+<li><span id="RQUI-R230-DIDChildren" class="rqDef">[RQUI-R230-DIDChildren]</span> ... show the <strong>data objects from the DID</strong> as <strong>children</strong> of the &quot;DIDs&quot; node.</li>
+</ul></li>
+</ul>
+<h2 id="detail-tree">Detail Tree</h2>
+<ul>
+<li>The right side of the diagnostic object linking is a tree.</li>
+<li>It shows the contents of the diagnostic object selected in the Overview Tree (left).</li>
+<li>Columns:
+<ul>
+<li>diagnostic object (typically the name),</li>
+<li>the assigned requirement ID,</li>
+<li>diagnostic object details.</li>
+</ul></li>
+<li>If no requirement is assigned, a “-“ is shown for the requirement ID.</li>
+</ul>
+<h2 id="filter">Filter</h2>
+<p><span id="RQUI-R300" class="rqDef">[RQUI-R300]</span> Filter for <strong>Text</strong> (CDS-26762 9.1)</p>
+<ul>
+<li>the control at the top right provides a filter for all displayed texts</li>
+<li>when you reset the filter, CANdelaStudio keeps the selection.</li>
+</ul>
+<p><span id="RQUI-R310" class="rqDef">[RQUI-R310]</span> Filter for <strong>Link Status</strong></p>
+<ul>
+<li>The filter can be selected in the combo box above the list view.</li>
+<li>In the list view, CANdelaStudio shows only objects matching the selected filter.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Requirements/Link%20Status.htm">Link Status</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../30%20Features/Requirements/Requirements.htm">Requirements Feature</a></li>
+<li><a href="Requirements.htm">Requirements User Interface</a></li>
+</ul>
+</body>
+</html>

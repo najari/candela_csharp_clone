@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Variants</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="chapter-variants">Chapter “Variants”</h1>
+<div class="figure">
+<img src="Images/Variants.jpg" alt="Dialog &quot;Variants&quot;" />
+<p class="caption">Dialog &quot;Variants&quot;</p>
+</div>
+<p>Chapter “Variants” shows a list of all variants contained in the document (CDS-1033 3.0).</p>
+<p>The table contains three columns:</p>
+<ul>
+<li><p>Column “Name” contains the name of the variant.</p></li>
+<li><p>Column “Identifying Pattern” contains a summary of values that allow detection of the variant at runtime (like the upper table in the entry mask of chapter “<a href="Identifying%20Patterns.htm">Identifying patterns</a>”).</p></li>
+<li><p>Column “Description” contains the description of the variant (shown as pure text with line-breaks replaced by blanks)</p></li>
+</ul>
+<p>The table is read-only.</p>
+<p>The table shows the extended variants (not the base variant) in the order defined in the document. Therefore, the table is not sortable.</p>
+<p>Button [Variant Wizard] or clicking the magic line creates a new variant using the <a href="Variant%20Wizard.htm">Variant Wizard</a>.</p>
+<p>The context menu allows to</p>
+<ul>
+<li>Copy/Paste</li>
+<li>Delete</li>
+<li>export to ODX</li>
+<li>navigate to that variant to ODX</li>
+<li>open the property dialog.</li>
+</ul>
+<h2 id="lock-variant">Lock Variant</h2>
+<p><strong>R050.1</strong>: provide the <a href="../../30%20Features/Variant/Lock%20Variant.htm#lock">Lock operation</a> in GUI, as:</p>
+<p>a) no “Lock Variant” button in right side of extended variant!</p>
+<p>b) “Lock” in context menu of extended variant in tree (below “Reference As Base Variant”; sensitive iff. the variant is not locked)</p>
+<p>Let the user confirm the operation, like “After locking the variant, you cannot edit its diagnostic instances and services any more. All data types referenced in the variant will be read-only. All referenced DTCs will be copied locally into the variant.”.</p>
+<p>Note: the protection applies only to Standard View!</p>
+<p><strong>R060.0</strong>: for variants that are locked, show the tree node in a special way (“lock” overlay to the existing symbol).</p>
+
+<p><strong>R065.0 (Frontend)</strong>:</p>
+<p>a) when user starts to edit a <a href="../../10%20Introduction/CANdela%20Glossary.htm#container">container</a> in a locked variant: show info that editing is not possible due to variant lock (analogous to behavior for write-protected container)</p>
+<p>b) when user starts to edit a write-protected container in a non-locked variant which is referenced in a locked variant: show info that editing is not possible due to write-protection (= missing authorization)</p>
+<p>c) when user starts to edit a writable container in a non-locked variant which is referenced in a locked variant: show info that editing is not possible due to locked variant. If container is not “required as reference”, then additionally give a hint that user must first replace the reference by a copy.</p>
+<p>d) for all objects in a container which is referenced in a locked variant: do not allow editing in the object property dialog (set controls insensitive, analogous to behavior for write-protected container)</p>
+<p><strong>R070.2 (Frontend)</strong>:</p>
+<p>a) do not show locked variants in the variant selection of import pool.</p>
+<p>b) Tree node “States/Dependencies”: in the variant selection combo box, add a postfix “(locked)” (German “(gesperrt)”) to each locked variant (cf. same behavior of corresponding combo boxes of the tab cards of the vehicle system group entry mask).</p>
+<p>c) Tree node “States/Dependencies”: in “Editing” mode, disable inline editing of the table if a locked variant is selected (via the variant selection combo box, or on entry).</p>
+
+<p>Note: nothing to do in DTC overview, because for copying/referencing, it shows only Fault Memory diagInstances with modifyPrimary = true.</p>
+<p><strong>R250.1 (Frontend)</strong>: in a locked variant</p>
+<p>a) do not allow to replace a copy of a container by a reference</p>
+<p>b) do not allow to cut, de-activate or delete a container</p>
+<p>c) do not allow to add a diagnostic class (e.g. in overview / via context menu / paste)</p>
+<p>d) do not allow to delete a diagnostic class (e.g. in overview / via context menu / cut)</p>
+<p>e) do not allow to sort containers (via diagClass menu, or via Move Up/Down).</p>
+<p>Note: allow deleting the variant (e.g. to be able to use the file as a copy base).</p>
+<p><strong>R251.0 (Frontend, CDS-22143)</strong>: in a locked variant</p>
+<p>b) do not allow to add / modify / delete identifying patterns</p>
+<p>c) do not allow to modify the variant properties (name, qualifier, description, …)</p>
+<p>d) In state transitions property page of service/job ensure that check box “Service/Job relevant for &lt;STATEGROUP&gt;” is inactive if the diagnostic instance is contained in a locked variant (note, this also applies when the diagnostic instance/job container currently being edited is not located in a locked variant but it is also referenced from a locked variant)</p>
+<p>e) Set state transitions property of a service/job to inactive if the parent diagnostic instance is contained in a locked variant (see note of d)</p>
+<p>f) do not allow to reference the variant as Common Diagnostics.</p>
+<p><strong>R300.0 (Frontend, CDS-22143 7.1 SP2)</strong>: in Expert View, allow unlock of variant. Effect: reset the property of R010, no other change (especially, keep referenced datatypes write-protected).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="Variant.htm">Right Side of Tree Node for a Variant</a></li>
+<li><a href="../../30%20Features/Variant/Variant.htm">Variants (Feature)</a></li>
+</ul>
+</body>
+</html>

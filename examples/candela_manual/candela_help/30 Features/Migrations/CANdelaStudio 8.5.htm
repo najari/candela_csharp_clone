@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CANdelaStudio 8.5</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="migrations-candelastudio-8.5">Migrations CANdelaStudio 8.5</h1>
+<h2 id="feature-migrations">Feature Migrations</h2>
+<ul>
+<li>BCD Value <a href="../../30%20Features/Data%20Type/Encoding.htm#migrationTo85SP2">Normalization</a> and <a href="../../30%20Features/Data%20Type/Encoding.htm#migrationFrom85SP2">De-Normalization</a></li>
+<li><a href="../../30%20Features/DID/DID%20Operations.htm#migration85">DID Migration 8.5</a></li>
+<li><a href="../../30%20Features/Library/Library.htm">Library Migration 8.5</a></li>
+</ul>
+<h2 id="attribute-category-uds">Attribute Category &quot;UDS&quot;</h2>
+<p><span id="MIG85-R001" class="rqDef">[MIG85-R001]</span> (CDC-41386 8.5 SP2):</p>
+<ul>
+<li>in migration from <code>&gt;= 8.5 SP</code> to <code>&lt; 8.5</code> (built-in down migration),</li>
+<li>if the document has the attribute category &quot;CANdesc&quot;,</li>
+<li>then at each ECU <a href="../../30%20Features/Attributes/Attributes.htm">attribute</a> that has one of the qualifiers below,
+<ul>
+<li>if the attribute has category &quot;UDS&quot;,</li>
+<li>then modify the category value at the attribute to refer to the &quot;CANdesc&quot; category.</li>
+</ul></li>
+</ul>
+<p>Qualifiers:</p>
+<ul>
+<li><code>MaxNumberOfDynDefinedDidReferences</code></li>
+<li><code>Periodic_Rate_Slow_in_ms</code></li>
+<li><code>Periodic_Rate_Medium_in_ms</code></li>
+<li><code>Periodic_Rate_Fast_in_ms</code></li>
+<li><code>DDDID_check_per_source_ID</code></li>
+<li><code>DDDID_configuration_storage</code></li>
+</ul>
+<p><span id="MIG85-R001-v12" class="rqDef">[MIG85-R001-v12]</span> Additional migrations added at the time of CANdelaStudio 12 (CDC-44051):</p>
+<ul>
+<li><code>MaxAttemptsToDelay</code></li>
+<li><code>MaxAttemptsToLock</code></li>
+<li><code>DelayTimeMs</code></li>
+<li><code>DelayTimeOnPowerOnMs</code></li>
+</ul>
+
+<p>Motivation:</p>
+<ul>
+<li>the attributes are also needed for the <a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Export</a>,</li>
+<li>actually these are <strong>UDS</strong> attributes,</li>
+<li>therefore the Vector UDS Template now has category &quot;UDS&quot; for them,</li>
+<li>but the documents must still work with CANdesc based on the 6.5 file format.</li>
+</ul>
+<h2 id="attribute-category-autosar">Attribute Category &quot;Autosar&quot;</h2>
+<p><span id="MIG85-R010" class="rqDef">[MIG85-R010]</span> (CDC-44051 v12):</p>
+<ul>
+<li>in migration from <code>&gt;= 8.5 SP</code> to <code>&lt; 8.5</code> (built-in down migration),</li>
+<li>if the document has the attribute category &quot;Autosar&quot;,</li>
+<li>then at each ECU <a href="../../30%20Features/Attributes/Attributes.htm">attribute</a> that has one of the qualifiers below,
+<ul>
+<li>if the attribute has category &quot;Autosar&quot;,</li>
+<li>then modify the category value at the attribute to refer to the &quot;CANdesc&quot; category.</li>
+</ul></li>
+<li><code>IoHwAbManaged</code></li>
+<li><code>NvmBlockDescriptor</code></li>
+</ul>
+<h2 id="delete-library-attributes-cdc-44364-v13">Delete Library Attributes (CDC-44364 v13)</h2>
+<p><span id="MIG85-R020" class="rqDef">[MIG85-R020]</span> When saving in 8.2 format, CANdelaStudio removes Library attributes.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm">Attributes for AUTOSAR Diagnostic Extract export</a></li>
+<li><a href="Migrations.htm">Migrations (Overview)</a></li>
+<li><a href="../../30%20Features/Persistors/Persistors.htm">Persistors</a></li>
+</ul>
+</body>
+</html>

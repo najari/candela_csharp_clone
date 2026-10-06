@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Model</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="requirements-data-model">Requirements Data Model</h1>
+<h2 id="text-only-requirements-and-requirements-for-diagnostic-objects">Text only Requirements and Requirements for Diagnostic Objects</h2>
+<p>The CANdela requirements data structure supports...</p>
+<ul>
+<li><strong>text only</strong> requirements</li>
+<li>requirements that <strong>represent diagnostic objects</strong></li>
+</ul>
+<p>Text only requirements may be linked with diagnostic objects manually, but are not used in the <a href="Update%20Diagnostic%20Objects.htm">Update Diagnostic Objects</a> operation.</p>
+<p>Requirements that represent diagnostic objects may also be linked with diagnostic objects manually. But additionally, the &quot;update&quot; operations create diagnostic objects for them automatically, and vice versa.</p>
+<h2 id="variants">Variants</h2>
+<ul>
+<li><p><span id="RQ-R010-Variant" class="rqDef">[RQ-R010-Variant]</span> The set of requirements stored in a CANdela document shall be independent of variants.</p></li>
+<li><p>Operations are based on the Current Library or Variant for Requirements <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a>.</p></li>
+</ul>
+<h2 id="element-types">Element Types</h2>
+<p><span id="RQ-R012" class="rqDef" title="Requirements Element Types">[RQ-R012 Requirements Element Types]</span></p>
+<p>The requirements data structure consists of the following element types:</p>
+<div class="figure">
+<img src="Images/Element%20Types.jpg" alt="Element Types with General and Specific Properties" />
+<p class="caption">Element Types with General and Specific Properties</p>
+</div>
+<table style="width:99%;">
+<colgroup>
+<col width="24%" />
+<col width="74%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Element Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Heading</td>
+<td align="left">Text only, defines tree structure; optionally used in update operations to match a diagnostic class</td>
+</tr>
+<tr class="even">
+<td align="left">Data DiagInst Requirement</td>
+<td align="left">Represents a <strong>diagnostic instance</strong> containing data objects, or<br />
+a <strong>diagnostic instance</strong> referencing a <strong>DID</strong> containing data objects, or<br />
+a <strong>DID</strong> containing data objects (CDS-39520 8.5 SP2).</td>
+</tr>
+<tr class="odd">
+<td align="left">FaultMemory DiagInst Requirement</td>
+<td align="left">Represents a Fault Memory diagnostic instance for DTCs</td>
+</tr>
+<tr class="even">
+<td align="left">Routine DiagInst Requirement</td>
+<td align="left">Represents a Routine diagnostic instance for DTCs</td>
+</tr>
+<tr class="odd">
+<td align="left">IOControl DiagInst Requirement</td>
+<td align="left">Represents an IO Control diagnostic instance</td>
+</tr>
+<tr class="even">
+<td align="left">Data Requirement</td>
+<td align="left">Represents a data object</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Requirement</td>
+<td align="left">Represents a DTC in Fault Memory</td>
+</tr>
+<tr class="even">
+<td align="left">VehicleSystemGroup Requirement</td>
+<td align="left">Represents a Vehicle System Group</td>
+</tr>
+<tr class="odd">
+<td align="left">Text Requirement</td>
+<td align="left">Text only, not used in update operations</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tree">Tree</h2>
+<p><span id="RQ-R015" class="rqDef" title="Requirements Tree">[RQ-R015 Requirements Tree]</span></p>
+<p>The requirements tree has the following <strong>“contains” relationships</strong> for the element types described in the previous chapter:</p>
+<div class="figure">
+<img src="Images/Composition%20Tree.jpg" alt="Composition Tree" />
+<p class="caption">Composition Tree</p>
+</div>
+<table style="width:98%;">
+<colgroup>
+<col width="30%" />
+<col width="67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Element type</th>
+<th align="left">May Contain Element Types...</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Heading</td>
+<td align="left">All. The possible nesting depth of headings shall be at most 255.<br />
+It shall be possible that the requirements tree or even one single Heading contains multiple FaultMemory DiagInst Requirements.</td>
+</tr>
+<tr class="even">
+<td align="left">Data DiagInst Requirement</td>
+<td align="left">Text Requirement or Data Requirement</td>
+</tr>
+<tr class="odd">
+<td align="left">FaultMemory DiagInst Requirement</td>
+<td align="left">Text Requirement or DTC Requirement</td>
+</tr>
+<tr class="even">
+<td align="left">Routine DiagInst Requirement</td>
+<td align="left">Text Requirement or Data Requirement</td>
+</tr>
+<tr class="odd">
+<td align="left">IOControl DiagInst Requirement</td>
+<td align="left">Text Requirement or Data Requirement</td>
+</tr>
+<tr class="even">
+<td align="left">Text Requirement</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">Data Requirement</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">DTC Requirement</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">VehicleSystemGroup Requirement</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul>
+<li><p>A heading can occur only on top-level or contained oin another heading, not in a requirement. In other words, headings define the top-level structure, and requirements are filled into the headings (or on top-level directly). The contents of e.g. a diagnostic instance requirement cannot be structured by headings.</p></li>
+<li><p>A heading behaves as a <strong>container</strong> for other headings and data (like a heading in the structure view e.g. of MS Word), not as a <strong>terminal</strong> element with heading text only (like a heading e.g. in the layout view of MS Word or in HTML). It is a “chapter”, not a mere “title”.</p></li>
+</ul>
+<h2 id="general-properties">General Properties</h2>
+<p><span id="RQ-R020" class="rqDef" title="General Properties">[RQ-R020.1 General Properties]</span>: each element (heading/requirement) has the following properties (see also the <a href="#element-types">Element Types diagram above</a>):</p>
+<div class="figure">
+<img src="Images/Requirement%20Class.jpg" alt="Requirement Class" />
+<p class="caption">Requirement Class</p>
+</div>
+<table>
+<colgroup>
+<col width="8%" />
+<col width="16%" />
+<col width="74%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Element type</th>
+<th>Property name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(all)</td>
+<td>ID</td>
+<td><p>Used by CANdelaStudio to identify the element e.g. during import or merge.</p>
+<p>String. No length or character set restriction. Must not be empty.</p>
+<p>Must be unique in a document. For creation, see <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R090' title="ID Creation">[RQ-R090]</a>.</p></td>
+</tr>
+<tr class="even">
+<td>(all)</td>
+<td>Name</td>
+<td><p>String. No character set restriction. Must not be empty. For generating a diagnostic object, the name should fulfill the rules for <a href="../../30%20Features/Common%20Properties/Name.htm">names in CANdela</a>.</p>
+<p>For a DTC requirement, “Name” corresponds with the DTC error text.</p>
+<p>Note: a TAB or line-break does not make sense in a requirement name, but is not excluded by this specification (for now).</p></td>
+</tr>
+<tr class="odd">
+<td>(all)</td>
+<td>Description</td>
+<td><p>String. The description is plain text only.</p>
+<p>No length or character set restriction. May be empty.</p>
+<p>For a DTC requirement, “Description” corresponds with a DTC column with qualifier “Description” (if defined in the CANdela template).</p></td>
+</tr>
+<tr class="even">
+<td>(all)</td>
+<td>ToDo</td>
+<td><p><span id="RQ-R160" class="rqDef" title="Property isTodo">[RQ-R160 Property isTodo]</span> Boolean. Default false.</p>
+<p>The property is used for the association with diagnostic objects objects <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R545' title="Set isToDo">[RQ-R545]</a> only.</p>
+<p>It is loaded/saved, but not exchanged via .csv.</p></td>
+</tr>
+<tr class="odd">
+<td>(all)</td>
+<td>(user-defined)</td>
+<td>Elements can have additional user-defined properties <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a></td>
+</tr>
+</tbody>
+</table>
+<p>Note: the change of a requirement shall not automatically also change any diagnostic object (but the user may explicitly trigger such a change, see below).</p>
+<p>Note: these property names are fix, the user cannot change them.</p>
+<h2 id="type-specific-properties">Properties Specific for Requirement Types</h2>
+<p><span id="RQ-R030" class="rqDef" title="Specific Properties">[RQ-R030.4 Specific Properties]</span> there are different <strong>types of requirements</strong>, with specific properties (in addition to those of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R020' title="General Properties">[RQ-R020]</a>). Requirement types not listed here have only the general properties of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R020' title="General Properties">[RQ-R020]</a> and the user-defined properties of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a> below.</p>
+<div class="figure">
+<img src="Images/Specific%20Properties.jpg" alt="Specific Properties" />
+<p class="caption">Specific Properties</p>
+</div>
+<p><span id="RQ-R030-Optional" class="rqDef" title="Optional Specific Properties">[RQ-R030-Optional Optional Specific Properties]</span></p>
+<ul>
+<li>Most specific properties <strong>must</strong> exist,
+<ul>
+<li>their <strong>values</strong> are optional,</li>
+<li>their name looks like a CANdela <a href="../../30%20Features/Common%20Properties/Qualifier.htm">qualifier</a> (no blanks, only Latin alphabet, e.g. &quot;BitLength&quot;),</li>
+<li>the name is used in the .csv data exchange,</li>
+<li>the CANdelaStudio user interface displays the hard-coded specific properties using a <strong>translated &quot;display name&quot;</strong> (e.g. &quot;Bit length&quot; and German &quot;Bitlänge&quot;).</li>
+</ul></li>
+<li>Some specific properties exist only <strong>optionally</strong>:
+<ul>
+<li>see &quot;property optional&quot; in the following table</li>
+<li>You can <a href="../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm#properties">create optional specific properties</a> when you really need them. </li>
+<li>Not creating them may save you lots of space (property values) when updating requirements from diagnostic objects.</li>
+</ul>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="13%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Requirement Type</th>
+<th align="left">Property Name<br />
+Display Name (English)</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Data DiagInst Requirement<br />
+Routine DiagInst Requirement<br />
+IOControl DiagInst Requirement<br />
+FaultMemory DiagInst Requirement</td>
+<td align="left">DiagClass<br />
+Diagnostic Class</td>
+<td align="left"><span id="RQ-R030-DiagClass" class="rqDef" title="Requirement &quot;DiagClass&quot; Property">[RQ-R030-DiagClass Requirement &quot;DiagClass&quot; Property]</span><br />
+(values optional) The qualifier or name (in that order) of a diagnostic class template in CANdelaStudio.<br />
+<br />
+Used to associate a diagnostic instance with the requirement <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R536-L3' title="">[RQ-R536-L3]</a> during automatic generation of CANdela objects from requirements.<br />
+<br />
+<span id="RQ-R030-DID" class="rqDef">[RQ-R030-DID]</span> The reserved value &quot;<strong>(DID)</strong>&quot; at a <strong>Data DiagInst Requirement</strong> specifies a DID not used by a diagnostic instance (CDS-39520 8.5 SP2).<br />
+<br />
+Used for equality <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180-DiagClassDIDs' title="">[RQ-R180-DiagClassDIDs]</a>,<br />
+linking and creating a diagnostic instance <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R540' title="">[RQ-R540]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">Data DiagInst Requirement<br />
+Routine DiagInst Requirement<br />
+IOControl DiagInst Requirement</td>
+<td align="left">Identifier</td>
+<td align="left"><span id="RQ-R030-Identifier" class="rqDef" title="Requirement &quot;Identifier&quot; Property">[RQ-R030-Identifier Requirement &quot;Identifier&quot; Property]</span> <span id='_index_446728107' title='Identifier: Requirement Identifier' data-term='Identifier' data-text='Requirement Identifier'></span> (CDS-39287 8.5 SP2)<br />
+(property optional, values optional) Unsigned integer.<br />
+<strong>Note</strong>: CANdelaStudio displays, imports and exports the value as a <strong>decimal integer</strong>, not in hex format as typically used for Identifiers (reason: the requirement properties only support a generic &quot;integer&quot; type).<br />
+The value corresponds with the diagnostic instance identifier <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-R100' title="">[DI-R100]</a>, which may have any Variable Value specification <a class='rqRef' href='../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm#PS-R400-Specification' title="Variable Value Component &quot;Specification&quot;">[PS-R400-Specification]</a>.<br />
+<br />
+Used for equality <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180-Identifier' title="">[RQ-R180-Identifier]</a>,<br />
+diagnostic object generation and update <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-UpdateDiagInstIdentifier' title="">[RQ-R560-UpdateDiagInstIdentifier]</a>, <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-UpdateDIDIdentifier' title="">[RQ-R560-UpdateDIDIdentifier]</a><br />
+and for requirement generation <a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R580-DIDIdentifier' title="">[RQ-R580-DIDIdentifier]</a>, <a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R580-cIdentifier' title="">[RQ-R580-cIdentifier]</a>, <a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R586' title="Update Existing Requirements">[RQ-R586]</a>.<br />
+<br />
+As a default, the property does not exist (in order to save space), you can create it in the <a href="../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm#new">&quot;Columns&quot; property page</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">Data DiagInst Requirement<br />
+Routine DiagInst Requirement<br />
+IOControl DiagInst Requirement</td>
+<td align="left">Services</td>
+<td align="left"><span id="RQ-R030-Services" class="rqDef" title="Requirement &quot;Services&quot; Property">[RQ-R030-Services Requirement &quot;Services&quot; Property]</span><br />
+(values optional) Association with services.<br />
+An unordered set of strings, like “Read”, “Write”, that denote service qualifiers.<br />
+<br />
+Used for equality <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180-Services' title="">[RQ-R180-Services]</a>,<br />
+diagnostic object generation <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R544-ServicesAtData' title="">[RQ-R544-ServicesAtData]</a><br />
+and diagnostic object update <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-Services' title="">[RQ-R560-Services]</a>.<br />
+<br />
+Note: the set of strings is stored in a comma-separated string (cf. <a class='rqRef' href='../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm#RQ-R670' title="">[RQ-R670]</a> in the format used for data exchange)</td>
+</tr>
+<tr class="even">
+<td align="left">Data DiagInst Requirement Routine DiagInst Requirement<br />
+IOControl DiagInst Requirement<br />
+FaultMemory DiagInst Requirement<br />
+</td>
+<td align="left">VehicleSystemGroups<br />
+Vehicle System Groups</td>
+<td align="left">(values optional) Association with Vehicle System Groups.<br />
+An unordered set of strings, like “LIN Subsystem”, “Light”, that denote Vehicle System Group names.<br />
+<br />
+Used for automatic generation and for update CANdela objects from requirements,<br />
+at diagnostic instances <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-VehicleSystemGroups' title="">[RQ-R560-VehicleSystemGroups]</a> and DTCs <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-DTCVehicleSystemGroups' title="">[RQ-R560-DTCVehicleSystemGroups]</a>.<br />
+Note: the set of strings is stored in one combined string (cf. <a class='rqRef' href='../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm#RQ-R680' title="">[RQ-R680]</a> in the format used for data exchange).</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Requirement</td>
+<td align="left">Code</td>
+<td align="left">(values optional) Unsigned integer, to be displayed and exported in hex format. (therefore the requirements data structure cannot represent a string formatted like “P012345”).<br />
+</td>
+</tr>
+<tr class="even">
+<td align="left">DTC Requirement</td>
+<td align="left">DiagClass<br />
+Diagnostic Class</td>
+<td align="left"><span id="RQ-R030-DiagClassDTC" class="rqDef" title="Requirement &quot;DiagClass&quot; Property at DTC">[RQ-R030-DiagClassDTC Requirement &quot;DiagClass&quot; Property at DTC]</span> (CDS-40994 8.5 SP2)<br />
+(optional) like DiagClass at FaultMemory DiagInst Requirement (above).<br />
+Useful for DTC Requirements that are not contained in a DiagInst Requirement.</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Requirement</td>
+<td align="left">(DTC properties)</td>
+<td align="left">See user-defined properties in <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a> below.</td>
+</tr>
+<tr class="even">
+<td align="left">Data Requirement</td>
+<td align="left">Services</td>
+<td align="left"><span id="RQ-R030-ServicesAtData" class="rqDef">[RQ-R030-ServicesAtData]</span> (values optional) Association with <strong>services</strong> and <strong>optionally a primitive per service</strong> (request/positive response).<br />
+A service is denoted by the service qualifier, e.g. “Read” or “Write”, optionally with a primitive. The services need not be ordered. The optional primitive is appended separated by a blank, like “Read PR”, “Write RQ”.<br />
+The strings are used during automatic generation of CANdela data objects from data requirements <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R544-ServicesAtData' title="">[RQ-R544-ServicesAtData]</a>.<br />
+The strings are set during automatic generation of requirements from CANdela data objects <a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R580-ServicesAtData' title="">[RQ-R580-ServicesAtData]</a>.<br />
+<br />
+Note: the set of strings is stored in one combined string (cf. <a class='rqRef' href='../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm#RQ-R670' title="">[RQ-R670]</a> in the format used for data exchange).</td>
+</tr>
+<tr class="odd">
+<td align="left">Data Requirement</td>
+<td align="left">BitLength<br />
+Bit length</td>
+<td align="left">(values optional) Unsigned integer.<br />
+If not present, BitLength defaults to 8 bit.<br />
+Corresponds with the bit length of the CANdela datatype.</td>
+</tr>
+<tr class="even">
+<td align="left">Data Requirement</td>
+<td align="left">DisplayFormat<br />
+Display format</td>
+<td align="left">(values optional) Enumeration: one of “dec”, “hex”, “bin”.<br />
+Corresponds with the physical display format of the CANdela datatype.</td>
+</tr>
+<tr class="odd">
+<td align="left">VehicleSystemGroup Requirement</td>
+<td align="left">Semantics</td>
+<td align="left">Corresponds with the optional free-text “Semantics” of a CANdela Vehicle System Group (where GUI suggests predefined values “Function” and “Slave”)</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>Note: these property names are fix, the user cannot change them.</p>
+<h2 id="user-defined-properties">User-Defined Properties</h2>
+<p><span id="RQ-R040" class="rqDef" title="User-Defined Properties">[RQ-R040.1 User-Defined Properties]</span>: each requirement can have <strong>user-defined properties</strong> in addition to the properties specified in <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R020' title="General Properties">[RQ-R020]</a>/<a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030' title="Specific Properties">[RQ-R030]</a>.</p>
+<div class="figure">
+<img src="Images/User-Defined%20Properties.jpg" alt="User-Defined Properties" />
+<p class="caption">User-Defined Properties</p>
+</div>
+<ul>
+<li><p><span id="RQ-R040-Scope" class="rqDef">[RQ-R040-Scope]</span> The properties are not specific to a single requirement, but <strong>all requirements have the same set of properties</strong> (exception for DTCs see the table row &quot;for requirement type&quot;).</p></li>
+<li><span id="RQ-R040-Unique" class="rqDef">[RQ-R040-Unique]</span> A property is identified by its name.
+<ul>
+<li>this means the name must be unique, independent of &quot;for requirement type&quot;</li>
+<li>i.e. you cannot have have both a general property &quot;Condition&quot; and a also property &quot;Condition&quot; for requirement type &quot;DTC&quot;.</li>
+</ul>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">What</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Property name</td>
+<td align="left"><span id="RQ-R040-Length" class="rqDef">[RQ-R040-Length]</span> No length restriction.<br />
+<span id="RQ-R040-Charset" class="rqDef">[RQ-R040-Charset]</span> No character set restriction.<br />
+<span id="RQ-R040-NonEmpty" class="rqDef">[RQ-R040-NonEmpty]</span> Must not be empty.<br />
+<span id="RQ-R040-Level" class="rqDef">[RQ-R040-Level]</span> The property name “Level” is reserved for .csv data exchange.<br />
+<span id="RQ-R040-DTC" class="rqDef">[RQ-R040-DTC]</span> The property name prefix “DTC.” is reserved for .csv data exchange.<br />
+<span id="RQ-R040-Predefined" class="rqDef">[RQ-R040-Predefined]</span> The property name cannot be one of the specific property names shown in <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R020' title="General Properties">[RQ-R020]</a>/<a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030' title="Specific Properties">[RQ-R030]</a>.<br />
+<br />
+Note: a TAB or line-break does not make sense in a property name, but is not excluded by this specification (for now).<br />
+<br />
+Note: other than for the specific properties <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030' title="Specific Properties">[RQ-R030]</a>, CANdelaStudio uses the name of the user-defined properties both in the user interface and in .csv data exchange, and the name may contain any characters.</td>
+</tr>
+<tr class="even">
+<td align="left">Property value</td>
+<td align="left"><span id="RQ-R040-ValueString" class="rqDef">[RQ-R040-ValueString]</span> The value of the property at each requirement is a string.<br />
+<span id="RQ-R040-ValueEmpty" class="rqDef">[RQ-R040-ValueEmpty]</span> The string may be empty.<br />
+<span id="RQ-R040-ValueLength" class="rqDef">[RQ-R040-ValueLength]</span> The value has o length restriction, except as specified by the property type.<br />
+<span id="RQ-R040-ValueCharset" class="rqDef">[RQ-R040-ValueCharset]</span> The value has no character set restriction, except as specified by the property type.</td>
+</tr>
+<tr class="odd">
+<td align="left">Property type</td>
+<td align="left"><span id="RQ-R040-Type" class="rqDef">[RQ-R040-Type]</span> Optional boolean restriction for all values of the given property (not specific to a single requirement, similar to CANdela attributes), to contain an <strong>unsigned integer number</strong> as a string.<br />
+<span id="RQ-R040-TypeDefault" class="rqDef">[RQ-R040-TypeDefault]</span> Default is to allow any string value.</td>
+</tr>
+<tr class="even">
+<td align="left">for requirement type</td>
+<td align="left"><span id="RQ-R040-ForType" class="rqDef">[RQ-R040-ForType]</span> Optionally restricts the property to exist at DTC Requirements.<br />
+<span id="RQ-R040-ForTypeDefault" class="rqDef">[RQ-R040-ForTypeDefault]</span> Default is to exist at all types of requirements.</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p><strong>R042.0</strong>: the set of user-defined properties of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a> can be changed in standard mode:</p>
+<ul>
+<li>add</li>
+<li>change the name or type</li>
+<li>delete a user-defined property.</li>
+</ul>
+<p><strong>R044.0</strong>: changes of the property type discard all existing values that do not fit the new type (after user confirmation).</p>
+<p><span id="RQ-R070" class="rqDef">[RQ-R070]</span> all string values have only one language (not shown in translation view). There are no TextIDs. There are no OIDs.</p>
+<p><a class='rqRef' href='../../20 UserInterface\Compare\Compare View.htm#CMP-R400-Rq' title="">[CMP-R400-Rq]</a> <strong>R080.0</strong> The compare feature does not cover requirements.</p>
+<p><a class='rqRef' href='../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm#DOCUP-R310' title="">[DOCUP-R310]</a> <strong>R085.1</strong>: in document upgrade, the requirements pool of the original document shall be identically in the resulting document (i.e. the requirements pool of the template shall be dropped).</p>
+<p><span id="RQ-R090" class="rqDef" title="ID Creation">[RQ-R090.0 ID Creation]</span>: new requirements shall get a unique ID value. The new ID string shall get a prefix specified in the settings (see below).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Requirements <a href="Requirements.htm">Feature</a></li>
+<li>Requirements <a href="Requirements%20Settings.htm">Settings (Document Level)</a></li>
+<li><a href="Requirements%20and%20Diagnostic%20Objects.htm">Requirements and Diagnostic Objects</a></li>
+<li>Requirements <a href="Equality.htm">Equality</a></li>
+<li>Requirements <a href="Link%20Status.htm">Link Status</a></li>
+<li><a href="Update%20Diagnostic%20Objects.htm">Update Diagnostic Objects</a></li>
+<li><a href="Update%20Requirements.htm">Update Requirements</a></li>
+<li>Requirements <a href="../../30%20Features/Export/Requirements%20Export.htm">Export</a></li>
+<li>Requirements <a href="../../30%20Features/Import/Requirements%20Import.htm">Import</a></li>
+<li>Requirements <a href="../../20%20UserInterface/Requirements/Requirements.htm">User Interface</a></li>
+<li><a href="CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm">CANdelaStudio CSV Requirements Exchange Format</a></li>
+<li>Multi-Language <a class='rqRef' href='../../30%20Features/Multi-Language/Multi-Language.htm#ML-R100' title="Translatables">[ML-R100]</a></li>
+</ul>
+</body>
+</html>

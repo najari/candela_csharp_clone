@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Vehicle System Groups at Data Objects</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="vehicle-system-groups-at-data-objects-cds-4250-5.5"><span id='_index_446728136' title='Data Objects: and Vehicle System Groups' data-term='Data Objects' data-text='and Vehicle System Groups'>Vehicle System Groups at Data Objects</span> (CDS-4250 5.5)</h1>
+<h2 id="introduction">Introduction</h2>
+<p><span id="VSG-R100-DataObject" class="rqDef">[VSG-R100-DataObject]</span> The Optional Subsystems feature can be extended to describe even optional data objects.</p>
+<p>In order to express that an <strong>individual data object</strong> is available only when a specific Vehicle System Group has been detected (= in a specific <a href="Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm">“configuration”</a>), the user must enter the qualifier of that Vehicle System Group into a special data object string attribute.</p>
+<ul>
+<li>If the attribute value is empty, the data object is available in all “configurations”.</li>
+<li>If the data object is “not available” in some configuration, this means that...
+<ul>
+<li>the data object is <strong>transported over the line</strong>,</li>
+<li>but it <strong>behaves like a “reserved” data object</strong> <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R200' title="Reserved">[DO-R200]</a> (= no value and no conversion is known).</li>
+<li>A data object being “not available” does <strong>not</strong> mean that the transported telegram is <strong>shorter</strong>!</li>
+</ul></li>
+</ul>
+<p>Note: marking an individual data object as &quot;not available&quot;...</p>
+<ul>
+<li>does not require that the diagnostic instance is assigned to the Vehicle System Group</li>
+<li>which would switch the entire diagnostic instance.</li>
+</ul>
+
+<h2 id="attribute-systems">Attribute &quot;Systems&quot;</h2>
+<p><span id="VSG-R110-AttributeSystems" class="rqDef">[VSG-R110-AttributeSystems]</span> This requires a <a href="../../30%20Features/Attributes/Special%20Attributes.htm#Systems">special data object attribute</a> in the document:</p>
+<ul>
+<li>attribute type String <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-string' title="">[ATTR-R020-string]</a></li>
+<li>qualifier &quot;Systems&quot;</li>
+<li>category &quot;Editor&quot;</li>
+<li>usage &quot;system&quot; <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R070' title="">[ATTR-R070]</a></li>
+</ul>
+
+<h2 id="relation-with-availability-for-variants">Relation with Availability for Variants</h2>
+<div class="figure">
+<img src="Images/EIP38400%20Vehicle%20System%20Group%20Availability%20for%20Variants.jpg" alt="Vehicle System Group Availability for Variants" />
+<p class="caption">Vehicle System Group Availability for Variants</p>
+</div>
+<h2 id="obd-pid-0x13-pid-0x1d-use-case">OBD PID 0x13 / PID 0x1D use-case</h2>
+<p>OBD Powertrain Diagnostic and Freeze Frame Data (services 0x01 and 0x02) have different structure depending on the fact whether PID 0x13 or 0x1D or none of them is supported. Each of these three variations can be described by an optional subsystem that is associated with the respective diagnostic instances.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Vehicle%20System%20Group.htm">Vehicle System Group (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Vehicle%20System%20Group/Vehicle%20System%20Group.htm">Vehicle System Groups (User Interface)</a></li>
+</ul>
+
+</body>
+</html>

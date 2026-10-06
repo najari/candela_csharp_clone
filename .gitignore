@@ -1,0 +1,12 @@
+/target
+**/bin/
+**/obj/
+*.db
+*.db-wal
+*.db-shm
+
+/.tools/
+/.omo/
+/.playwright-mcp/
+/.codegraph/
+/artifacts/

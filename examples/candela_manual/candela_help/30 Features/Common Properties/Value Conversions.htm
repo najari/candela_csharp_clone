@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Value Conversions</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="value-conversions">Value Conversions</h1>
+<h2 id="motivation">Motivation</h2>
+<p>Various CANdelaStudio objects hold numeric, string or enumeration <strong>values</strong>:</p>
+<ul>
+<li>DTC Columns, see <a href="../../30%20Features/DTC/DTC.htm#dtc-columns">DTC Columns</a>;</li>
+<li>Data type based values, see Encoding <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R100' title="">[DTENC-R100]</a>;</li>
+<li>Attributes, see <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020' title="Attribute Type">[ATTR-R020]</a>;</li>
+<li>User-defined requirement properties, see <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a> &quot;Property type&quot;.</li>
+</ul>
+<p>In several situations, such values must be <strong>converted</strong>, e.g. ...</p>
+<ul>
+<li>when updating a diagnostic object attribute from a requirement property <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-Attribute' title="">[RQ-R560-Attribute]</a></li>
+<li>in document upgrade when the type of an attribute has changed</li>
+<li>when replacing a data type <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Home.htm#MENU-R475' title="">[MENU-R475]</a></li>
+</ul>
+<p>The following provides a central definition for these value conversions.</p>
+<h2 id="types-not-relevant-for-value-conversions">Types not Relevant for Value Conversions</h2>
+<p>Some values in CANdela objects have type information that is not relevant for converting values:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Value</th>
+<th align="left">Type Information</th>
+<th align="left">Not Relevant because...</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Constant value of constant component</td>
+<td align="left">bit length (encoding unsigned, implicit)</td>
+<td align="left">There is no use-case that needs value conversion</td>
+</tr>
+<tr class="even">
+<td align="left">Negative response code</td>
+<td align="left">bit length (encoding unsigned, implicit)</td>
+<td align="left">Dito (bit length assumed to be fix)</td>
+</tr>
+<tr class="odd">
+<td align="left">-</td>
+<td align="left">bit length at data requirement</td>
+<td align="left">used for data object update, not for values</td>
+</tr>
+</tbody>
+</table>
+<h2 id="types-for-value-conversions">Types for Value Conversions</h2>
+<p><span id="CONV-D010" class="rqDef" title="Types of Values">[CONV-D010 Types of Values]</span> The following types of values take part in value conversions of CANdela objects:</p>
+<table style="width:99%;">
+<colgroup>
+<col width="18%" />
+<col width="5%" />
+<col width="8%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="7%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Type</th>
+<th align="center">Attribute</th>
+<th align="center">Data Type based</th>
+<th align="center">DTC Columns</th>
+<th align="center">DTC Code</th>
+<th align="center">Identifier</th>
+<th align="center">Requirements</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">unsigned int (1..31 Bit)</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">unsigned int (8, 16 Bit)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="left">Values for a Variable Value Component</td>
+</tr>
+<tr class="odd">
+<td align="left">unsigned int (16, 24, 32 Bit)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">DTC Code restrictions (FTB, FMI...) are handled like enum (see below).</td>
+</tr>
+<tr class="even">
+<td align="left">unsigned int</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">32 Bit</td>
+</tr>
+<tr class="odd">
+<td align="left">unsigned int (64 Bit)</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">unsigned int field</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">signed int (2..31 Bit)</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">signed int</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">32 Bit</td>
+</tr>
+<tr class="odd">
+<td align="left">signed int (64 Bit)</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">BCD (4, 8, .. 28 Bit)</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">BCD</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">32 Bit</td>
+</tr>
+<tr class="even">
+<td align="left">BCD (64 Bit)</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">BCD field</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">float</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">double</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">enum</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"><span id="enum"/> pairs of (unsigned int <strong>ID</strong>, multi-language string):<br />
+DTC columns <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R010-ID' title="">[DTCC-R010-ID]</a>, attributes <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a>.<br />
+Parts of a DTC may also behave as an enum: FTB <a class='rqRef' href='../../30%20Features/DTC/Failure%20Type%20Byte.htm#DTC-R500' title="">[DTC-R500]</a>, FMI <a class='rqRef' href='../../30%20Features/DTC/Failure%20Mode%20Identifier.htm#DTC-R510' title="">[DTC-R510]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">ASCII character</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Unicode character</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">ASCII string</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">At data type, optionally the number of elements is fix / limited with min / max</td>
+</tr>
+<tr class="even">
+<td align="left">Unicode string</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="left">At data type, optionally the number of elements is fix / limited with min / max</td>
+</tr>
+<tr class="odd">
+<td align="left">text</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"><span id="text"/> multi-language, boolean &quot;is up-to-date&quot; in each language</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conversions">Conversions</h2>
+<h3 id="classification">Classification</h3>
+<p><span id="CONV-D020" class="rqDef" title="Relationship of Types">[CONV-D020 Relationship of Types]</span></p>
+<p>The following <strong>relationships of two types</strong> are relevant in value conversions:</p>
+<table>
+<colgroup>
+<col width="18%" />
+<col width="37%" />
+<col width="43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Relationship of Types</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Equal</strong></td>
+<td align="left">equal types</td>
+<td align="left">unsigned to unsigned of identical length</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>No Loss of Data</strong></td>
+<td align="left">types of equal size</td>
+<td align="left">unsigned to signed, signed to unsigned</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Extension</strong></td>
+<td align="left">from a <strong>smaller to a larger type</strong></td>
+<td align="left">unsigned to unsigned64, implicit conversion without loss</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Extension</strong> with <strong>Loss of Precision</strong></td>
+<td align="left">from a <strong>smaller to a larger type</strong>, but <strong>precision may be lost</strong></td>
+<td align="left">unsigned <code>1234567890</code> to float <code>1234567936.0</code> (due to the float resolution, <code>.0</code> does not exactly match the integer value)</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Restriction</strong></td>
+<td align="left">from a <strong>larger to a smaller type</strong> , a <strong>subset of values</strong> may be converted (needs <code>cast</code> in a programming language)</td>
+<td align="left">unsigned64 to unsigned</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Unrelated</strong></td>
+<td align="left">between unrelated types, a <strong>subset of values</strong> may be converted</td>
+<td align="left">enumerations with some common enum IDs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="value-conversions-1">Value Conversions</h3>
+<p><span id="CONV-R010" class="rqDef" title="Value Conversion">[CONV-R010 Value Conversion]</span></p>
+<p>So far, CANdelaStudio handles value conversions individually for the different kinds of CANdela objects (e.g. attributes vs. data types). There are only few combinations of different types for which CANdelaStudio preserves the values.</p>
+<p>Efforts are ongoing to define and implement a uniform concept for value conversions between different types.</p>
+
+<h3 id="field-value-conversions">Field Value Conversions</h3>
+<p><span id="CONV-R010-FieldValueConversion" class="rqDef">[CONV-R010-FieldValueConversion]</span> For field values (which occur only at data types), ...</p>
+<ul>
+<li>CANdelaStudio assigns values only to <strong>identical types</strong>
+<ul>
+<li>i.e. identical field length, termination type, element type;</li>
+</ul></li>
+<li>CANdelaStudio does not handle any different types as compatible.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attribute</a> - Attribute Type <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020' title="Attribute Type">[ATTR-R020]</a></li>
+<li><a href="../../30%20Features/Data%20Type/Encoding.htm">Data Type Encoding</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">DTC Columns</a> - DTC Column Type <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R010' title="Types">[DTCC-R010]</a></li>
+<li><a href="../../30%20Features/Multi-Language/Multi-Language.htm">Multi-Language</a></li>
+<li><a href="../../30%20Features/Requirements/Data%20Model.htm">Requirements Data Model</a> - Requirement property type <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm">Variable Value Component</a></li>
+</ul>
+
+</body>
+</html>

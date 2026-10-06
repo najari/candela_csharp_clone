@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Multiplexer Component</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="multiplexer-component"><span id='_index_446728096' title='Multiplexer: Component' data-term='Multiplexer' data-text='Component'>Multiplexer Component</span></h1>
+<p>If a part of the telegram depends on a value transferred earlier in the same telegram, the multiplexer component is useful:</p>
+<ul>
+<li>a specific part of the telegram serves as a <strong>selector</strong> (<code>switch</code> in C programming),</li>
+<li>depending on the selector value, a <strong>telegram table</strong> (<code>case</code> in C programming) is choosen.</li>
+</ul>
+<p>The selector denotes a Component within the same Primitive (e.g. request), this Component must be located</p>
+<ul>
+<li><em>before</em> the Mux, or</li>
+<li>at the end of the Protocolservice (only in Positive Response).</li>
+</ul>
+<h2 id="example">Example</h2>
+<p>A positive response shall have three possible structures:</p>
+<pre><code>0x57 0x01  0x23 0xAA
+0x57 0x45  0x67 0xBB 0xCC
+0x57 0x89  0xAB 0xCC 0xDD 0xEE</code></pre>
+<p>A Mux can describe this as follows:</p>
+<ul>
+<li>the second element may serve as <strong>selector</strong></li>
+<li>the third and following elements of each line are described in the Mux, depending on the value of the second element (e.g. selector value <code>0x01</code> gets <code>0x23 0xAA</code>).</li>
+</ul>
+<h2 id="multiplexer-positions-in-a-protocol-service-cds-7621">Multiplexer Positions in a Protocol Service (CDS-7621)</h2>
+<div class="figure">
+<img src="Images/MuxSelectorLegend.jpg" alt="Legend for Mux / Selector Positions" />
+<p class="caption">Legend for Mux / Selector Positions</p>
+</div>
+<h3 id="selector-everywhere-before-multiplexer">Selector (everywhere) before Multiplexer</h3>
+<p><img src="Images/MuxSelectorEverywhereBeforeMux.jpg" /></p>
+<p>(Selector can be located everywhere before the Multiplexer.)</p>
+<h3 id="selector-last-element-in-protocol-service-after-multiplexer">Selector (last element in Protocol Service) after Multiplexer</h3>
+<p><img src="Images/MuxSelectorLastAfterMux.jpg" /></p>
+<p><strong>Allowed only in Positive Response.</strong></p>
+<h3 id="selector-and-multiplexer-located-in-an-iteration">Selector and Multiplexer located in an Iteration</h3>
+<p><img src="Images/MuxSelectorInAnIteration.jpg" /></p>
+<p>(Selector can be located everywhere before the Multiplexer.)</p>
+<p>Within one Primitive, at most one Mux Component is allowed (CDS-8797, cf. CDS-7621)</p>
+<h3 id="selector-in-primitive-and-multiplexer-in-an-iteration">Selector in Primitive and Multiplexer in an Iteration</h3>
+<p><img src="Images/MuxSelectorPrimitiveIteration.jpg" /></p>
+<p>(Selector can be located everywhere <em>before</em> the Iteration.)</p>
+<h2 id="mux-types-cds-10214-in-6.0">Mux Types (CDS-10214 in 6.0)</h2>
+<p>Since CANdelaStudio 5.5, there are</p>
+<ul>
+<li><strong>multiplexers with fixed set of values</strong> (e.g. based on DTC table, Text table) as well as</li>
+<li><strong>“free style” multiplexers</strong>.</li>
+</ul>
+<p>In 6.0, this distinction depends on the selector data type <em>and</em> the Mux case values actually present.</p>
+<h3 id="mux-with-fixed-set-of-values">Mux with Fixed Set of Values</h3>
+<div class="figure">
+<img src="Images/MuxFixedSetofValues.jpg" alt="Mux with Fixed set of Values" />
+<p class="caption">Mux with Fixed set of Values</p>
+</div>
+
+<p><span id="MUX-R200" class="rqDef">[MUX-R200]</span> Mux with Fixed Set of Values</p>
+<p>In the <strong>CANdelaStudio GUI</strong> since 5.5, the combo-box contains an entry with the string “Default” and all selector values available for the selector (e.g. all DTCs).</p>
+<ul>
+<li>If the Mux does not contain a case for the given value, the “Use default” radio button is selected;</li>
+<li>otherwise the other radio button (with static text taken from the selector value) is selected.</li>
+<li>Mux cases are created and deleted via selecting the lower or upper radio button.</li>
+<li><span id="MUX-R220" class="rqDef">[MUX-R220]</span> If <strong>cases</strong> for <strong>all valid selector values</strong> exist, the Default Case is <strong>not relevant</strong>.
+<ul>
+<li>That Default Case still exists because it is mandatory in the CANdela data model (cf. CDS-34129), but it shall not be used.</li>
+<li>CANdelaStudio does not check whether that Default Case is empty.</li>
+<li>Note: with CDS-70564 in v11, consuming tools don't get an empty superfluous Default Case any more.</li>
+<li>Cf. Mux Data Type <a class='rqRef' href='../../30%20Features/Data%20Type/Mux.htm#MDT-R220' title="">[MDT-R220]</a>.</li>
+</ul></li>
+</ul>
+<h3 id="free-style-mux">“Free style” Mux</h3>
+<div class="figure">
+<img src="Images/MuxFreeStyle.jpg" alt="Mux &quot;Free Style&quot;" />
+<p class="caption">Mux &quot;Free Style&quot;</p>
+</div>
+
+<p><span id="MUX-R300" class="rqDef">[MUX-R300]</span> “Free style” Mux</p>
+<p>In the <strong>CANdelaStudio GUI</strong> since 5.5, the combo-box contains an entry with the string “Default” and all selector values for that a Mux case exists.</p>
+<p>Mux cases are created and deleted via the respective buttons to the right. Clicking “New” opens a dialog where the user can specify a range of possible values, e.g. 1..99.</p>
+<h2 id="selector-data-types-and-mux-case-constants-cds-10214-in-6.0">Selector Data Types and Mux Case Constants (CDS-10214 in 6.0)</h2>
+<p>This chapter describes the constellations of <strong>selector data types</strong> and <strong>Mux case constants</strong>.</p>
+<h3 id="overview-selector-data-types">Overview: Selector data types</h3>
+<p>A Multiplexer references a selector component containing a single data object. The value of this data object defines the specific case content of the multiplexer to expect at runtime. The selector data object can <strong>reference one of the following <a href="../../30%20Features/Data%20Type/Data%20Type.htm">data types</a></strong>:</p>
+<ul>
+<li>Identity: raw == physical types: <code>x → x</code></li>
+<li>discrete text table (single values): <code>raw value → Text</code></li>
+<li>non discrete text table (ranges): <code>[a,b] → Text</code></li>
+<li>Linear computation: <code>x → f(x) = m*x+o</code></li>
+<li><p>Piecewise linear (set of linear computations defined for specific intervals):</p>
+<pre><code>[a_1, b_1] → f1(x) = m1*x+o1
+[a_2, b_2] → f2(x) = m2*x+o2 …</code></pre></li>
+<li><p>Characteristic Curve (non-interpolated): <code>raw value → numeric value</code></p>
+<pre><code>x_1 → y_1
+x_2 → y_2
+x_3 → y_3</code></pre></li>
+<li><p>Characteristic Curve (interpolated): linear interpolation between table entries <code>(x_i, y_i)</code>.</p></li>
+</ul>
+<h3 id="range-exclusions-and-dangling-cases">Range Exclusions and Dangling Cases</h3>
+<p><strong>Range exclusions</strong> defined at the selector data type have <strong>no impact</strong> on the Mux cases. The runtime system shall not treat values within a range exclusion with an “exception”, but regularly compute a physical value for such a coded value.</p>
+<p>Mux cases are defined for ranges of the selector value domain. Consider the situation depicted below of a scattered selector value domain of two intervals and a range exclusion in the first interval:</p>
+<ul>
+<li>Case ranges which fall partially or fully in a range exclusion are valid (these Mux cases are not treated as “dangling” and not discarded).</li>
+<li>A case range covering at least part of the selector’s domain is valid (not discarded)</li>
+<li>A case being fully outside the selector’s domain is treated as “<strong>dangling</strong>” and discarded</li>
+</ul>
+<p><img src="Images/RangeExclusionsAndDanglingCases.jpg" /></p>
+<h3 id="mux-ranges-for-selector-data-type-identity">Mux Ranges for Selector Data Type “Identity“</h3>
+<p><img src="Images/MuxRangesIdentity.jpg" /></p>
+<p>The identity data type spans the full range of selector values, only limited by its byte size. A Mux using an identity data type is a <strong>free style</strong> <strong>Mux</strong>, see <a href="#free-style-mux">above</a>.</p>
+<h3 id="mux-ranges-for-selector-data-type-text-table">Mux Ranges for Selector Data Type “Text Table”</h3>
+<p>A text table data type maps either <strong>one coded value</strong> (discrete text table) or a <strong>coded value range</strong> (non-discrete text table) to a text label. If used as a selector, two situations are possible:</p>
+<p><strong>Text table Mux with fixed set of values</strong></p>
+<p>If each Mux range [r<sub>i1</sub>, r <sub>i2</sub>] “completely covers” textual mappings [t<sub>i1</sub>, t <sub>i2</sub>] such that</p>
+<ul>
+<li><p>r<sub>i1</sub>==t <sub>i1</sub> (the Mux range start equals the start of a textual mapping), and</p></li>
+<li><p>r <sub>i2</sub>==t <sub>j2</sub> (the Mux range end equals the end of a textual mapping, the same or a different textual mapping),</p></li>
+</ul>
+<p>the Mux is handled (e.g. visualized in GUI) as Mux with <strong>fixed set of values</strong>, i.e.</p>
+<ul>
+<li><p>the text table ranges;</p></li>
+<li><p>additionally, a default entry for each text table range [t<sub>i1</sub>, t <sub>i2</sub>] which is not covered by any Mux case.</p></li>
+</ul>
+<p><img src="Images/MuxRangesTextTable.jpg" /></p>
+<p><strong>Undefined gaps in the selector domain</strong> of a mux range are accepted. In the example above, value 7 is not part of the selector domain, but included in the mux case [4,9]. In this situation, <strong>the Mux case definition</strong> “[4, 9], SCC2” <strong>is stronger than the Selector datatype definition</strong>: value 7 actually maps to SCC2. In the CANdela data model, it is not possible to map the separate intervals [4,6] and [8,9] (without the value 7) to the same SCC2.</p>
+<p>The Mux is still treated as Mux with fixed set of values, since the mux range boundaries match the boundaries of the selector interval. Even a Mux case range [100, 120] would not make the Mux a free-style Mux (see below), because the case [100, 120] would be dangling and therefore would be discarded.</p>
+<p><strong>Text Table Free Style Mux</strong></p>
+<p>If any Mux range [r<sub>i1</sub>, r <sub>i2</sub>] does not “completely cover” the textual mappings, i.e. r<sub>i1</sub> is not the start of a textual mapping, or r<sub>i2</sub> is not the end of a textual mapping, the Mux is handled as <strong>free style Mux</strong>, as triggered by the case range end “4” in the following example:</p>
+<p><img src="Images/TextTableFreeStyleMux.jpg" /></p>
+<p>Even a Mux using a discrete text table may be handled as free-style Mux, e.g. for the text table</p>
+<pre><code>0 : red
+10: green</code></pre>
+<p>the Mux range [0, 5] makes the Mux a free-style Mux.</p>
+<h3 id="mux-ranges-for-selector-data-type-linear-computation">Mux Ranges for Selector Data Type “Linear Computation”</h3>
+<p>A Mux using a linear computation selector data type is a <strong>free-style Mux</strong>, handled in the same way as a Mux using an identity data type.</p>
+<p>Since the CANdela data model uses coded values to specify a Mux case, the linear conversion to the physical value is not relevant here.</p>
+<h3 id="mux-ranges-for-selector-data-type-piecewise-linear">Mux Ranges for Selector Data Type “Piecewise Linear”</h3>
+<p>A Mux using a piecewise linear selector data type is a <strong>Mux with fixed set of values</strong> or a <strong>free-style Mux</strong>, depending on the coded value ranges and the Mux case ranges (analogous to text table).</p>
+<p>The linear conversion to the physical value is not relevant here.</p>
+<h3 id="mux-ranges-for-selector-data-type-characteristic-curve-non-interpolated">Mux Ranges for Selector Data Type “Characteristic Curve (non-interpolated)”</h3>
+<p>A Mux using a characteristic curve selector data type is a <strong>Mux with fixed set of values</strong> or a <strong>free-style Mux</strong>, depending on the coded value ranges and the Mux case ranges (analogous to text table).</p>
+<h3 id="mux-ranges-for-selector-data-type-characteristic-curve-interpolated">Mux Ranges for Selector Data Type “Characteristic Curve (interpolated)”</h3>
+<p>A Mux using this data type is a <strong>free-style Mux</strong> the same way as for an identity data type.</p>
+<h3 id="mux-ranges-for-selector-data-type-formula">Mux Ranges for Selector Data Type “Formula”</h3>
+<p>A Mux using a formula data type is not handled (cf. CDS-12075).</p>
+<h3 id="mux-ranges-for-selector-data-type-procedure">Mux Ranges for Selector Data Type “Procedure”</h3>
+<p>A Mux using a Procedure data type is not handled (cf. CDS-12075).</p>
+<h3 id="mux-ranges-for-selector-data-type-dtc-record-data-type">Mux Ranges for Selector Data Type “DTC”</h3>
+<p>A DTC Mux is always handled as a fixed set of values.</p>
+<p>Even though a DTC mux is similar to a (discrete) text table selector based mux which can switch to free-style mode through non matching case boundaries, a DTC mux never switches to this mode.</p>
+<p>DTC muxes are the most frequent use case of multiplexers and shall have a minimum of complexity for the user. Thus free-style mode is avoided here.</p>
+<h2 id="consistency-conditions">Consistency Conditions</h2>
+<p><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sdMux' title="">[PC-R050-sdMux]</a> At most one of (<code>sd</code> proxy component, Multiplexer component) can be used in a Primitive.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Components.htm">Components</a></li>
+<li>Different <a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type Conversions</a></li>
+<li><a href="../../30%20Features/Data%20Type/Mux.htm">Multiplexer Data Type</a></li>
+<li><a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a></li>
+</ul>
+</body>
+</html>

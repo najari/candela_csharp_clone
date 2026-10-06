@@ -1,0 +1,940 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CANdela Glossary</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="glossary">Glossary</h1>
+
+<p>For additional terms for Fault Memory, see <a class='rqRef' href='../30 Features\Fault Memory\Fault Memory Terms.htm#FM-D010' title="">[FM-D010]</a>.</p>
+<table style="width:99%;">
+<colgroup>
+<col width="16%" />
+<col width="20%" />
+<col width="61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">English Term</th>
+<th align="left">German Term<br />
+(defaults to English term)</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A2L</td>
+<td align="left"></td>
+<td align="left"><span id="a2l"></span>Structured plain text format for the ASAM MCD-2 MC (&quot;ASAP2&quot;) data model, which describes the internal ECU variables used in measurement and calibration.</td>
+</tr>
+<tr class="even">
+<td align="left">Additional Info</td>
+<td align="left">Zusatzinfo</td>
+<td align="left">Detail info for one text of a ► text table data type.</td>
+</tr>
+<tr class="odd">
+<td align="left">Amber Lamp</td>
+<td align="left">Orange Warnlampe</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R620-Types' title="">[EV-R620-Types]</a> (context: Events)</td>
+</tr>
+<tr class="even">
+<td align="left">Attribute</td>
+<td align="left">Attribut</td>
+<td align="left">User-defined property of a CANdela object (of a variant, data object etc.), based on a ► Default Attribute (defined in the template).</td>
+</tr>
+<tr class="odd">
+<td align="left">Attribute category, Category</td>
+<td align="left">Attributkategorie</td>
+<td align="left">Grouping for ► Default Attributes.</td>
+</tr>
+<tr class="even">
+<td align="left">Attribute value, Value</td>
+<td align="left">Attributwert</td>
+<td align="left">Value of an ► Attribute.<br />
+Special case: the ► Default Value of the ► Default Attribute.</td>
+</tr>
+<tr class="odd">
+<td align="left">Audience</td>
+<td align="left">Zielgruppen</td>
+<td align="left">All ► Target Groups for which a given object is relevant.</td>
+</tr>
+<tr class="even">
+<td align="left">AutomationSequenceMacro</td>
+<td align="left"></td>
+<td align="left">Runtime system of a job <a class='rqRef' href='../30 Features\Job\Job.htm#JOB-R410-AutomationSequenceMacro' title="">[JOB-R410-AutomationSequenceMacro]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">Authorization</td>
+<td align="left">Zugriffsrechte</td>
+<td align="left">For authoring control: specified in the template, controls whether a user in Standard View can inspect / modify / delete etc. a given object.<br />
+<br />
+For runtime security: special target group for certificate-based security handling <a class='rqRef' href='../30 Features\State Dependency\State Group.htm#STG-R050-Authorization' title="">[STG-R050-Authorization]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">AUTOSAR Diagnostic Extract</td>
+<td align="left"></td>
+<td align="left">See the <a href="../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">feature</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">Base Data Object</td>
+<td align="left"></td>
+<td align="left">Term from the data model implementation, typically just called &quot;data object&quot; in this documentation. Subsumes at least ► Data Object, ► Bit fields, ► DID Data Reference, ► DID Reference.</td>
+</tr>
+<tr class="even">
+<td align="left">Base variant</td>
+<td align="left">Basisvariante</td>
+<td align="left">Special ► Variant. See the <a href="../30%20Features/Variant/Base%20Variant.htm">feature description</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Bit field</td>
+<td align="left">Bitfeld</td>
+<td align="left">Container for bit-sized data objects.</td>
+</tr>
+<tr class="even">
+<td align="left">CANalyzer</td>
+<td align="left"></td>
+<td align="left">Vector tool for measurement and calibration of ECUs, see <a href="../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></td>
+</tr>
+<tr class="odd">
+<td align="left">CANape</td>
+<td align="left"></td>
+<td align="left">Vector tool for analysis of ECUs, entire networks and distributed systems, see <a href="../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></td>
+</tr>
+<tr class="even">
+<td align="left">CANdesc</td>
+<td align="left"></td>
+<td align="left">Vector tool for code generation, see <a href="../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></td>
+</tr>
+<tr class="odd">
+<td align="left">CANoe</td>
+<td align="left"></td>
+<td align="left">Vector tool for simulation and testing of networks and electronic control units, see <a href="../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></td>
+</tr>
+<tr class="even">
+<td align="left">CANoe.DiVa</td>
+<td align="left"></td>
+<td align="left">Vector tool for Diagnostic Validation, see <a href="../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></td>
+</tr>
+<tr class="odd">
+<td align="left">CDI</td>
+<td align="left"></td>
+<td align="left">“CANdela Data Import”, XML-Format. See <a href="../30%20Features/Import/Import%20from%20CDI.htm">Import from CDI</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">CEMR</td>
+<td align="left"></td>
+<td align="left">“Control Enable Mask Record”, optional last part of an InputOutput Control request (UDS service 0x2F)</td>
+</tr>
+<tr class="odd">
+<td align="left">Characteristic curve data type</td>
+<td align="left">Kennlinie</td>
+<td align="left">Data type where the physical value is computed by a set of (raw, phys) value pairs from the raw value. </td>
+</tr>
+<tr class="even">
+<td align="left">Combined Component</td>
+<td align="left">Gemeinsam benutzte Komponente</td>
+<td align="left">Part of a ► Diagnostic Class Template, combines ► Proxy components from one or multiple ► Protocol services, is represented by one combined ► Telegram in a ► Diagnostic instance.<br />
+Also called „shared proxy component“.</td>
+</tr>
+<tr class="odd">
+<td align="left">Common Diagnostics</td>
+<td align="left">Grundumfang</td>
+<td align="left">Special ► Variant. Also called ► &quot;Base Variant&quot;.</td>
+</tr>
+<tr class="even">
+<td align="left">Complex Data Type</td>
+<td align="left"></td>
+<td align="left">Kind of ► Data Type that does not specify a ► conversion but contains ► data objects (e.g. a ► Packet Data Type).</td>
+</tr>
+<tr class="odd">
+<td align="left">Condition</td>
+<td align="left">Bedingung</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R700' title="">[EV-R700]</a> (context: Events)</td>
+</tr>
+<tr class="even">
+<td align="left">Condition Group</td>
+<td align="left">Bedingungsgruppe</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R800' title="">[EV-R800]</a> (context: Events)</td>
+</tr>
+<tr class="odd">
+<td align="left">Constant</td>
+<td align="left">Konstante</td>
+<td align="left">Part of a ► Primitive in the template, represents a constant value, typically the service identifier.</td>
+</tr>
+<tr class="even">
+<td align="left">Container</td>
+<td align="left"></td>
+<td align="left"><span id="container"></span>Common term for ► Diagnostic Instance and ► Job Container.</td>
+</tr>
+<tr class="odd">
+<td align="left">Context menu</td>
+<td align="left"></td>
+<td align="left">Menu typically available in an empty area or for one or multiple selected objects, by clicking with the second (right) mouse key, or pressing Shift-F10.</td>
+</tr>
+<tr class="even">
+<td align="left">Conversion</td>
+<td align="left"></td>
+<td align="left">Essential part of a ► Simple Data Type that specifies a conversion between raw and physical values.</td>
+</tr>
+<tr class="odd">
+<td align="left">counter-based</td>
+<td align="left">zählerbasiert</td>
+<td align="left">► Debounce Algorithm, <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R1200' title="">[EV-R1200]</a> (context: Events)</td>
+</tr>
+<tr class="even">
+<td align="left">Counter Iteration Data Type</td>
+<td align="left">Wiederholungsdatentyp mit Zähler</td>
+<td align="left">ODX: DYNAMIC-LENGTH-FIELD</td>
+</tr>
+<tr class="odd">
+<td align="left">CSV</td>
+<td align="left"></td>
+<td align="left"><span id="csv"></span>Comma separated values, a text file format to store data of a table which can be opened by applications like Excel or OpenOffice.org Calc.</td>
+</tr>
+<tr class="even">
+<td align="left">Data object</td>
+<td align="left">Datenobjekt</td>
+<td align="left">Transports data over the line, has a ► Data type.</td>
+</tr>
+<tr class="odd">
+<td align="left">Data type</td>
+<td align="left">Datentyp</td>
+<td align="left">Defines the conversion of a ► Data object between raw and physical value and/or vice versa.</td>
+</tr>
+<tr class="even">
+<td align="left">DCM</td>
+<td align="left"></td>
+<td align="left"><span id="dcm"></span>► Diagnostic Communication Manager</td>
+</tr>
+<tr class="odd">
+<td align="left">DDx</td>
+<td align="left"></td>
+<td align="left">► Diagnostic Data Exchange</td>
+</tr>
+<tr class="even">
+<td align="left">Debounce Algorithm</td>
+<td align="left">Entprell-Algorithmus</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R220' title="">[EV-R220]</a> (context: Events)</td>
+</tr>
+<tr class="odd">
+<td align="left">Default attribute</td>
+<td align="left">Default-Attribut</td>
+<td align="left">In the template, defines that an Attribute exists at a given object type (e.g. at all data objects).<br />
+Actually the „Attribute definition“.</td>
+</tr>
+<tr class="even">
+<td align="left">Default language</td>
+<td align="left">Standardsprache</td>
+<td align="left">Language in which a CANdela document has been opened.</td>
+</tr>
+<tr class="odd">
+<td align="left">Default value</td>
+<td align="left">Defaultwert</td>
+<td align="left">Value specified at a ► Default attribute. If a given object does not have an ► Attribute, then the object effectively has the Default value specified at the Default attribute.</td>
+</tr>
+<tr class="even">
+<td align="left">DEM</td>
+<td align="left"></td>
+<td align="left"><span id="dem"></span>► Diagnostic Event Manager</td>
+</tr>
+<tr class="odd">
+<td align="left">Development version</td>
+<td align="left">Entwicklungsstand</td>
+<td align="left">Special ► Variant (Variation over time), opposed to ► Equipment variant (Variation over features).</td>
+</tr>
+<tr class="even">
+<td align="left">DEXT</td>
+<td align="left"></td>
+<td align="left">See ► AUTOSAR Diagnostic Extract</td>
+</tr>
+<tr class="odd">
+<td align="left">Diagnostic class</td>
+<td align="left">Diagnoseklasse</td>
+<td align="left">Container for communication descriptions in ► Diagnostic Instances and ► Job Containers.<br />
+Typically represents a diagnostic use-case, like „Fault Memory“ or „Variant Coding“.</td>
+</tr>
+<tr class="even">
+<td align="left">Diagnostic class template</td>
+<td align="left">Diagnoseklassenvorlage</td>
+<td align="left">Part of the ► Template, used as a base for ► Diagnostic classes, typically represents a diagnostic „use-case“ like „Fault Memory“ or „Variant Coding“. Core data structure of the CANdela data model that combines a selection of ► Used Protocol services.</td>
+</tr>
+<tr class="odd">
+<td align="left">Diagnostic Data Exchange</td>
+<td align="left"></td>
+<td align="left"><a href="../30%20Features/Export/Diagnostic%20Data%20Exchange.htm">Export format</a> for Chrysler and FIAT.</td>
+</tr>
+<tr class="even">
+<td align="left">Diagnostic Data Modifier</td>
+<td align="left"></td>
+<td align="left">Application that computes the ► AUTOSAR Diagnostic Extract.</td>
+</tr>
+<tr class="odd">
+<td align="left">Diagnostic instance, Instance</td>
+<td align="left">Diagnoseinstanz, Instanz</td>
+<td align="left">Container for ► Services and data, especially ► Data objects, within a ► Diagnostic Class (but may be referenced in multiple ► Variants).</td>
+</tr>
+<tr class="even">
+<td align="left">Diagnostic Communication Manager</td>
+<td align="left"></td>
+<td align="left">AUTOSAR module for UDS and OBDII services, see <a href="Vector%20Diagnostic%20Toolchain.htm#microsar">Vector Diagnostic Toolchain</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Diagnostic Event Manager</td>
+<td align="left"></td>
+<td align="left">AUTOSAR module for Fault Memory, see <a href="Vector%20Diagnostic%20Toolchain.htm#microsar">Vector Diagnostic Toolchain</a></td>
+</tr>
+<tr class="even">
+<td align="left">Diagnostic Tester Library</td>
+<td align="left"></td>
+<td align="left">Internal library used in Vector tools to support diagnostic functionality.</td>
+</tr>
+<tr class="odd">
+<td align="left">DID Definition</td>
+<td align="left"></td>
+<td align="left">A special diagnostic instance <a class='rqRef' href='../30 Features\Diagnostic Instance\Diagnostic Instance.htm#DI-D110' title="Diagnostic Instance as DID Definition">[DI-D110]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DID enabled</td>
+<td align="left"></td>
+<td align="left">See Diagnostic Class Is DID enabled <a class='rqRef' href='../30 Features\Diagnostic Class\Diagnostic Class.htm#DCL-D001' title="">[DCL-D001]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DID Reference</td>
+<td align="left">DID-Referenz</td>
+<td align="left">Kind of ► Data Object, <a href="../30%20Features/DID/DID.htm#did-reference">reference to a DID</a> (identifier and data)</td>
+</tr>
+<tr class="even">
+<td align="left">DID Data Reference</td>
+<td align="left">DID-Daten-Referenz</td>
+<td align="left">Kind of ► Data Object, <a href="../30%20Features/DID/DID.htm#did-data-reference">reference to data of a DID</a> (not including the identifier)</td>
+</tr>
+<tr class="odd">
+<td align="left">DiVa</td>
+<td align="left"></td>
+<td align="left">► CANoe.DiVa</td>
+</tr>
+<tr class="even">
+<td align="left">Document</td>
+<td align="left">Dokument</td>
+<td align="left">Describes one ECU, saved in a CDD file.</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC</td>
+<td align="left"></td>
+<td align="left">Diagnostic Trouble Code</td>
+</tr>
+<tr class="even">
+<td align="left">DTL</td>
+<td align="left"></td>
+<td align="left">► Diagnostic Tester Library</td>
+</tr>
+<tr class="odd">
+<td align="left">ecd</td>
+<td align="left"></td>
+<td align="left">Encoded CANdela file, stores legally protected content</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">Steuergerät</td>
+<td align="left">Electronic Control Unit</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU-SHARED-DATA</td>
+<td align="left"></td>
+<td align="left">Element in ► ODX, containing diagnostic objects used in multiple variants.</td>
+</tr>
+<tr class="even">
+<td align="left">End-marker iteration data type</td>
+<td align="left">Wiederholungsdatentyp mit Ende-Kennzeichnung</td>
+<td align="left">ODX: DYNAMIC-ENDMARKER-FIELD</td>
+</tr>
+<tr class="odd">
+<td align="left">End-of-service iteration data type</td>
+<td align="left">Wiederholungsdatentyp bis Service-Ende</td>
+<td align="left">ODX: END-OF-PDU-FIELD</td>
+</tr>
+<tr class="even">
+<td align="left">Enumeration, Enum</td>
+<td align="left">Aufzählung</td>
+<td align="left">Special ► Default Attribute that contains a list of ► Symbols.</td>
+</tr>
+<tr class="odd">
+<td align="left">Equipment variant</td>
+<td align="left">Ausstattungsvariante</td>
+<td align="left">Special ► Variant (Variation over features), opposed to ► Development version (Variation over time).</td>
+</tr>
+<tr class="even">
+<td align="left">Event</td>
+<td align="left">Event</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R020' title="">[EV-R020]</a> (context: Events)</td>
+</tr>
+<tr class="odd">
+<td align="left">Extended Data Record (EDR)</td>
+<td align="left"></td>
+<td align="left">Part of the UDS service 0x19 0x06, also called “Statistical Data”. See <a href="../30%20Features/Fault%20Memory/Fault%20Memory.htm#ed">Extended Data Record</a></td>
+</tr>
+<tr class="even">
+<td align="left">Extended Data Record Number (ERN)</td>
+<td align="left"></td>
+<td align="left">Identifies an <a href="../30%20Features/Fault%20Memory/Fault%20Memory.htm#ed">Extended Data Record</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Extended Data (ED)</td>
+<td align="left"></td>
+<td align="left">Data objects of an <a href="../30%20Features/Fault%20Memory/Fault%20Memory.htm#ed">Extended Data Record</a></td>
+</tr>
+<tr class="even">
+<td align="left">Failure Mode Identifier</td>
+<td align="left"></td>
+<td align="left">Part of a ► <a href="../30%20Features/DTC/Failure%20Mode%20Identifier.htm">DTC</a>, SAE J1939-73</td>
+</tr>
+<tr class="odd">
+<td align="left">Failure Type Byte</td>
+<td align="left"></td>
+<td align="left">Part of a ► <a href="../30%20Features/DTC/Failure%20Type%20Byte.htm">DTC</a>, ISO 15031-6 / SAE J2012</td>
+</tr>
+<tr class="even">
+<td align="left">Fault Detection Counter</td>
+<td align="left"></td>
+<td align="left">See <a href="../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#fdc">AUTOSAR Diagnostic Extract</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">Fault Memory</td>
+<td align="left"></td>
+<td align="left">See the <a href="../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory Introduction</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">FDC</td>
+<td align="left"></td>
+<td align="left">See ► Fault Detection Counter.</td>
+</tr>
+<tr class="odd">
+<td align="left">FeatureID</td>
+<td align="left"></td>
+<td align="left">See <a href="../10%20Introduction/About%20this%20Documentation.htm#featureID">About this Documentation</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">Fixed count iteration data type</td>
+<td align="left">Wiederholungsdatentyp fester Länge</td>
+<td align="left">ODX: STATIC-FIELD</td>
+</tr>
+<tr class="odd">
+<td align="left">Fixed data component</td>
+<td align="left">Vorgegebene Daten</td>
+<td align="left">Part of a ► Primitive that contains ► Data objects modifiable in the ► Template only, not in a ► Document.</td>
+</tr>
+<tr class="even">
+<td align="left">FMI</td>
+<td align="left"></td>
+<td align="left">See ► Failure Mode Identifier</td>
+</tr>
+<tr class="odd">
+<td align="left">Formula data type</td>
+<td align="left">Formel</td>
+<td align="left">Data type where the computation of the physical value from the raw value is described by a textual formula and actually performed by a library of the Vector diagnostic tool chain. </td>
+</tr>
+<tr class="even">
+<td align="left">FTB</td>
+<td align="left"></td>
+<td align="left">See ► Failure Type Byte</td>
+</tr>
+<tr class="odd">
+<td align="left">Function</td>
+<td align="left">Funktion</td>
+<td align="left">Used in a ► Job, includes a source file and/or a binary file.</td>
+</tr>
+<tr class="even">
+<td align="left">Identity Data Type</td>
+<td align="left">Identität</td>
+<td align="left">Data type where raw = physical value. </td>
+</tr>
+<tr class="odd">
+<td align="left">Ignition</td>
+<td align="left">Zündung</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R520-Types' title="">[EV-R520-Types]</a> (context: Events)</td>
+</tr>
+<tr class="even">
+<td align="left">Indigo</td>
+<td align="left"></td>
+<td align="left">Vector Diagnostic Tester, see <a href="../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Indicator</td>
+<td align="left">Indikator</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R600' title="">[EV-R600]</a></td>
+</tr>
+<tr class="even">
+<td align="left">stored for DTC</td>
+<td align="left">gespeichert je DTC</td>
+<td align="left"><a id="isStoredForDtc"></a>Specifies in a diagnostic instance whether the ECU stores data of a Snapshot or Extended Data Record,</td>
+</tr>
+<tr class="odd">
+<td align="left">Iteration (end)</td>
+<td align="left">Wiederholung (Ende)</td>
+<td align="left">Part of a ► Protocol Service, contents is iterated until the end of the telegram.</td>
+</tr>
+<tr class="even">
+<td align="left">Iteration (marker)</td>
+<td align="left">Wiederholung (Marker)</td>
+<td align="left">Part of a ► Protocol Service, contents is iterated until an iteration contains a given value (marker).</td>
+</tr>
+<tr class="odd">
+<td align="left">Iteration (n)</td>
+<td align="left">Wiederholung (n)</td>
+<td align="left">Part of a ► Protocol Service, contents is iterated the number of iterations defined at another location in the telegram.</td>
+</tr>
+<tr class="even">
+<td align="left">Job</td>
+<td align="left"></td>
+<td align="left">Code to be interpreted by a test system (like a „macro“), not by the ► ECU. Syntax depends on the test system (e.g. Java, CAPL).</td>
+</tr>
+<tr class="odd">
+<td align="left">Job Container</td>
+<td align="left">Jobcontainer</td>
+<td align="left">Container for ► Jobs, handled like a diagnostic instance (e.g. you can reference a job-container in multiple variants)</td>
+</tr>
+<tr class="even">
+<td align="left">Job File</td>
+<td align="left">Jobdatei</td>
+<td align="left">File to be used by a test system (may be embedded in a CANdela document, used in a ► Function)</td>
+</tr>
+<tr class="odd">
+<td align="left">Label</td>
+<td align="left"></td>
+<td align="left"><span id="label"></span>► A2L specific. Another name for “CHARACTERISTIC”.</td>
+</tr>
+<tr class="even">
+<td align="left">Library</td>
+<td align="left">Bibliothek</td>
+<td align="left">Similar to a ► Variant, represents ► ECU-SHARED-DATA imported from ODX, or re-usable objects created in a CANdela document</td>
+</tr>
+<tr class="odd">
+<td align="left">Linear computation data type</td>
+<td align="left"></td>
+<td align="left">Same as ► Linear data type</td>
+</tr>
+<tr class="even">
+<td align="left">Linear data type</td>
+<td align="left">Linear</td>
+<td align="left">Data type where the physical value is computed by a linear formula from the raw value. </td>
+</tr>
+<tr class="odd">
+<td align="left">Magic line</td>
+<td align="left"></td>
+<td align="left">Special line &quot;Please click here to create a new element&quot; shown in lists</td>
+</tr>
+<tr class="even">
+<td align="left">Malfunction</td>
+<td align="left">Funktionsstörung</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R620-Types' title="">[EV-R620-Types]</a> (context: Events)</td>
+</tr>
+<tr class="odd">
+<td align="left">Malfunction Indicator Lamp</td>
+<td align="left"></td>
+<td align="left">Lamp in the vehicle dashboard. May be used as an Event Indicator <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R600' title="">[EV-R600]</a> (context: Events)</td>
+</tr>
+<tr class="even">
+<td align="left">MICROSAR Diag</td>
+<td align="left"></td>
+<td align="left">Vector tool for AUTOSAR compatible code generation, see <a href="../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></td>
+</tr>
+<tr class="odd">
+<td align="left">MIL</td>
+<td align="left"></td>
+<td align="left">► Malfunction Indicator Lamp</td>
+</tr>
+<tr class="even">
+<td align="left">Multiplexer component</td>
+<td align="left">Multiplexer</td>
+<td align="left">Part of ► Primitive within a ► Protocol service, the content of which depends on a value transported at another place in the Primitive. Works like a switch/case statement in a programming language.</td>
+</tr>
+<tr class="odd">
+<td align="left">Multiplexer data type</td>
+<td align="left">Multiplexer-Datentyp</td>
+<td align="left">Data type similar to a ► Packet data type, but which ► Data objects are actually transported on the line depends on a value transported at another place in the ► Primitive. Works like a switch/case statement in a programming language. </td>
+</tr>
+<tr class="even">
+<td align="left">Mux</td>
+<td align="left"></td>
+<td align="left">► Multiplexer</td>
+</tr>
+<tr class="odd">
+<td align="left">nested (data type)</td>
+<td align="left"></td>
+<td align="left">► Complex Data Type that contains another Complex Data Type (e.g. a Packet Data Type contains a data object which references another Packet Data Type)</td>
+</tr>
+<tr class="even">
+<td align="left">obvious</td>
+<td align="left"></td>
+<td align="left">In the context of buttons and menu items: whether it is obvious that an operation is not available, see <a href="../30%20Features/CANdelaStudio%20Editor/Commands%20Menus.htm">Commands/Menus</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">OBD Driving Cycle</td>
+<td align="left">OBD-Fahrzyklus</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R520-Types' title="">[EV-R520-Types]</a> (context: Events)</td>
+</tr>
+<tr class="even">
+<td align="left">ODX</td>
+<td align="left"></td>
+<td align="left"><a href="../30%20Features/ODX/ODX.htm">Open Diagnostic Data Exchange</a>) (ISO 22901-1), XML format for the exchange of diagnostic data.</td>
+</tr>
+<tr class="odd">
+<td align="left">ODXStudio</td>
+<td align="left"></td>
+<td align="left">Vector Diagnostic Authoring tool for ODX, see <a href="../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></td>
+</tr>
+<tr class="even">
+<td align="left">OEM</td>
+<td align="left"></td>
+<td align="left">Abbreviation for &quot;original equipment manufacturer&quot;, denotes automotive companies in contrast to suppliers.</td>
+</tr>
+<tr class="odd">
+<td align="left">Operation Cycle</td>
+<td align="left">Betriebszyklus</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R500' title="">[EV-R500]</a> (context: Events)</td>
+</tr>
+<tr class="even">
+<td align="left">Output window</td>
+<td align="left">Ausgabefenster</td>
+<td align="left">Show status info in the CANdelaStudio GUI.</td>
+</tr>
+<tr class="odd">
+<td align="left">out-dated</td>
+<td align="left">veraltet</td>
+<td align="left">Whether an author in revision history is obsolete (e.g. left the company)</td>
+</tr>
+<tr class="even">
+<td align="left">overridden attribute</td>
+<td align="left">überschriebenes Attribut</td>
+<td align="left">Object that holds the ► overridden value at an individual object, actually the <strong>overriding attribute</strong>.</td>
+</tr>
+<tr class="odd">
+<td align="left">overwritten attribute</td>
+<td align="left">überschriebenes Attribut</td>
+<td align="left">Used interchangeably with ► overridden attribute (for historical reasons)</td>
+</tr>
+<tr class="even">
+<td align="left">overridden value</td>
+<td align="left">überschriebener Wert</td>
+<td align="left"><a href="../30%20Features/Attributes/Attributes.htm#overridden">Attribute value</a> for an ► Attribute at an individual object, actually the <strong>overriding value</strong>.</td>
+</tr>
+<tr class="odd">
+<td align="left">overwritten value</td>
+<td align="left">überschriebener Wert</td>
+<td align="left">Used interchangeably with ► overridden value (for historical reasons)</td>
+</tr>
+<tr class="even">
+<td align="left">Packet data type</td>
+<td align="left">Paket</td>
+<td align="left">Data type that is a container for a sequence of ► Data objects. </td>
+</tr>
+<tr class="odd">
+<td align="left">Piecewise linear data type</td>
+<td align="left">Stückweise linear</td>
+<td align="left">Similar to ► Linear data type, but with multiple linear formulas. </td>
+</tr>
+<tr class="even">
+<td align="left">Power</td>
+<td align="left">Betrieb</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R520-Types' title="">[EV-R520-Types]</a> (context: Events)</td>
+</tr>
+<tr class="odd">
+<td align="left">PREEvision</td>
+<td align="left"></td>
+<td align="left">Vector tool for specifying and managing electronic vehicle systems and their components, such as sensors, actuators and ECUs. Design of network architectures.</td>
+</tr>
+<tr class="even">
+<td align="left">Primitive</td>
+<td align="left"></td>
+<td align="left">► Request or ► Response, data sequence transported over the line.</td>
+</tr>
+<tr class="odd">
+<td align="left">Protect Lamp</td>
+<td align="left">Funktionsschutzlampe</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R620-Types' title="">[EV-R620-Types]</a></td>
+</tr>
+<tr class="even">
+<td align="left">Procedure data type</td>
+<td align="left">Prozedur</td>
+<td align="left">Data type where the physical value is computed from the raw value by a piece of code (procedure, ► Job) typically executed in a runtime library of a test system (like a Java interpreter). </td>
+</tr>
+<tr class="odd">
+<td align="left">Protocol service</td>
+<td align="left">Protokollservice</td>
+<td align="left">Part of the template, represents a „service“ e.g. of the UDS protocol standard.</td>
+</tr>
+<tr class="even">
+<td align="left">Proxy</td>
+<td align="left">Platzhalter</td>
+<td align="left">Part of a ► Protocol service in the ► Template.<br />
+Defines a place within a ► Primitive where data individual for a ► Diagnostic Instance can be specified in a document. May specify length restrictions.</td>
+</tr>
+<tr class="odd">
+<td align="left">Qualifier</td>
+<td align="left"></td>
+<td align="left">Property of a CANdela object with a restricted character set (e.g. no blanks), typically used in generated code.</td>
+</tr>
+<tr class="even">
+<td align="left">Raw Value Data type</td>
+<td align="left"></td>
+<td align="left">See ► Identity Data Type</td>
+</tr>
+<tr class="odd">
+<td align="left">Record data type</td>
+<td align="left"></td>
+<td align="left">Data type only used internally in the CANdela data model to describe DTCs.</td>
+</tr>
+<tr class="even">
+<td align="left">Red Stop Lamp</td>
+<td align="left">Rote Stoplampe</td>
+<td align="left">See [EV-R620-Types) (context: Events)</td>
+</tr>
+<tr class="odd">
+<td align="left">Reference</td>
+<td align="left">Verwendungsstelle</td>
+<td align="left">Reference to another object.<br />
+In the context of ► DIDs: reference <a class='rqRef' href='../30 Features\DID\DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a> (sharing) of a DID in multiple variants, as opposed to the ► Use of a DID.</td>
+</tr>
+<tr class="even">
+<td align="left">relevant</td>
+<td align="left"></td>
+<td align="left">A ► Service may be <a href="../30%20Features/State%20Dependency/State%20Dependency.htm#relevant">relevant</a> for a ► state group.</td>
+</tr>
+<tr class="odd">
+<td align="left">Replace Reference with Copy</td>
+<td align="left">Referenz durch Kopie ersetzen</td>
+<td align="left">Menu item for Diagnostic Instances and DIDs. </td>
+</tr>
+<tr class="even">
+<td align="left">Request</td>
+<td align="left"></td>
+<td align="left">Part of a ► Service</td>
+</tr>
+<tr class="odd">
+<td align="left">Reserved Data Object</td>
+<td align="left">Reserviertes Datenobjekt</td>
+<td align="left">Within a ► Telegram, describes data for which no further info is available.</td>
+</tr>
+<tr class="even">
+<td align="left">Response</td>
+<td align="left"></td>
+<td align="left">Part of a ► Service, may be positive or negative.</td>
+</tr>
+<tr class="odd">
+<td align="left">Revision history</td>
+<td align="left">Änderungshistorie</td>
+<td align="left">Describes modifications to a template / document.</td>
+</tr>
+<tr class="even">
+<td align="left">Revision</td>
+<td align="left">Änderungsnachweis</td>
+<td align="left">Describes a single modification to a template / document in the ► Revision history.</td>
+</tr>
+<tr class="odd">
+<td align="left">Service</td>
+<td align="left"></td>
+<td align="left">Cf. ISO 15765: &quot;information exchange initiated by a client in order to require diagnostic information from a server or/and to modify its behaviour for diagnostic purpose”</td>
+</tr>
+<tr class="even">
+<td align="left">Service primitive</td>
+<td align="left">Service-Primitiv</td>
+<td align="left">Common term for Request and Response.</td>
+</tr>
+<tr class="odd">
+<td align="left">Simple Data Type</td>
+<td align="left"></td>
+<td align="left">Kind of ► Data Type that specifies a value ► conversion (e.g. a ► Text Table).</td>
+</tr>
+<tr class="even">
+<td align="left"><span id='_index_446727842'>SMR-D</span></td>
+<td align="left"></td>
+<td align="left">Tester runtime format (non-Vector).</td>
+</tr>
+<tr class="odd">
+<td align="left">Snapshot Data (SD)</td>
+<td align="left">Snapshot-Daten</td>
+<td align="left">DIDs or any data objects stored for one or multiple Snapshot Records.</td>
+</tr>
+<tr class="even">
+<td align="left">Snapshot Record (SR)</td>
+<td align="left"></td>
+<td align="left">Part of the UDS service 0x19 0x04 and others, also called “Environment Data” or “Freeze Frames”.</td>
+</tr>
+<tr class="odd">
+<td align="left">Snapshot Record Number (SRN)</td>
+<td align="left">Snapshot Record-Nummer</td>
+<td align="left">Identifies a ► Snapshot Record.</td>
+</tr>
+<tr class="even">
+<td align="left">SPN</td>
+<td align="left"></td>
+<td align="left">See ► Suspect Parameter Number</td>
+</tr>
+<tr class="odd">
+<td align="left">SPRMIB</td>
+<td align="left"></td>
+<td align="left"><span id="SPRMIB"></span><a href="../30%20Features/Protocol%20Service/Addressing.htm#SPRMIB">Suppress Positive Response Message Indication Bit</a> (in ► UDS)</td>
+</tr>
+<tr class="even">
+<td align="left">State</td>
+<td align="left">Zustand</td>
+<td align="left">State of an ► ECU that controls which ► Services may be initiated in a ► Request.</td>
+</tr>
+<tr class="odd">
+<td align="left">State group</td>
+<td align="left">Zustandsgruppe</td>
+<td align="left">Container for ► States.</td>
+</tr>
+<tr class="even">
+<td align="left">Stored For DTC</td>
+<td align="left"></td>
+<td align="left">See <a href="#isStoredForDtc">is Stored for DTC</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Special kind of ► Data type, repeats characters, as opposed to iteration data types which iterate named diagnostic objects.</td>
+</tr>
+<tr class="even">
+<td align="left">Suspect Parameter Number</td>
+<td align="left"></td>
+<td align="left">Part of a ► <a href="../30%20Features/DTC/Failure%20Mode%20Identifier.htm">DTC</a>, SAE J1939-73</td>
+</tr>
+<tr class="odd">
+<td align="left">SWC</td>
+<td align="left"></td>
+<td align="left">Software Component (element of ► SYS-EX models), see the <a href="../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">Symbol</td>
+<td align="left"></td>
+<td align="left">Special ► Attribute value, has a name and a numeric value.</td>
+</tr>
+<tr class="odd">
+<td align="left">SYS-EX</td>
+<td align="left"></td>
+<td align="left"><span id="SYS-EX"></span>From AUTOSAR: System Extract of System Description (for one ECU), see the <a href="../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">Target group</td>
+<td align="left">Zielgruppe</td>
+<td align="left">Group of persons. Some CANdela objects (e.g. ► Diagnostic Instance) can be associated with Target groups. Used e.g. as a filter for Target-group-oriented export.</td>
+</tr>
+<tr class="odd">
+<td align="left">Telegram Telegram Table</td>
+<td align="left">Telegramm Telegrammtabelle</td>
+<td align="left">Sequence of ► Data objects, part of a ► Primitive, in CANdelaStudio edited in a list control. List that allows to inspect and edit a ► Telegram</td>
+</tr>
+<tr class="even">
+<td align="left">Template</td>
+<td align="left">Vorlage</td>
+<td align="left">Used as a basis for ► Documents, can be edited in CANdelaStudio expert view only, saved in a CDDT file.</td>
+</tr>
+<tr class="odd">
+<td align="left">Text table data type</td>
+<td align="left">Texttabelle</td>
+<td align="left">Data type where raw value is a number, the physical value is a string. </td>
+</tr>
+<tr class="even">
+<td align="left">time-based</td>
+<td align="left">zeitbasiert</td>
+<td align="left">► Debounce Algorithm, <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R1300' title="">[EV-R1300]</a> (context: Events)</td>
+</tr>
+<tr class="odd">
+<td align="left">TMX</td>
+<td align="left"></td>
+<td align="left">„Translation Memory Exchange“. File format for exchange of translated terms, used in Translation view (available in CANdelaStudio Pro and Admin editions). Also used for the <a href="../30%20Features/Multi-Language/Dictionary.htm">dictionary feature</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">TU</td>
+<td align="left"></td>
+<td align="left">„Translation Unit“. Element in a ► TMX XML file, represents a term with translations.</td>
+</tr>
+<tr class="odd">
+<td align="left">TUV</td>
+<td align="left"></td>
+<td align="left">„Translation Unit Value“. Element in a ► TMX XML file, represents one translation of a term.</td>
+</tr>
+<tr class="even">
+<td align="left">UDS</td>
+<td align="left"></td>
+<td align="left">&quot;Road Vehicles - Unified diagnostic services (UDS) - Part 1: Specification and requirements&quot; (ISO 14229-1)</td>
+</tr>
+<tr class="odd">
+<td align="left">Use</td>
+<td align="left">Verwendungsstelle</td>
+<td align="left">In the context of ► DIDs: use <a class='rqRef' href='../30 Features\DID\DID.htm#DID-D001' title="DID Used">[DID-D001]</a> of a DID in Fault Memory or by a ► DID Reference / ► DID Data Reference, as opposed to a ► Reference.</td>
+</tr>
+<tr class="even">
+<td align="left">Used Protocol service</td>
+<td align="left">Verwendeter Protokollservice</td>
+<td align="left">► Protocol service referenced in a ► Diagnostic Class Template.</td>
+</tr>
+<tr class="odd">
+<td align="left">User Defined Fault Memory</td>
+<td align="left"></td>
+<td align="left">Special ► Fault Memory in ► UDS, see <a href="../30%20Features/Fault%20Memory/Fault%20Memory.htm#user-defined">Fault Memory</a> introduction.</td>
+</tr>
+<tr class="even">
+<td align="left">Value table</td>
+<td align="left"></td>
+<td align="left">Same as ► Characteristic curve data type.</td>
+</tr>
+<tr class="odd">
+<td align="left">Variable value</td>
+<td align="left">Variabler Wert</td>
+<td align="left">Part of a ► Protocol service in the template.<br />
+Defines a place within a ► Primitive where e.g. an Identifier, Subfunction or Address individual for a ► Diagnostic Instance can be specified in a document. Also called „static component“.</td>
+</tr>
+<tr class="even">
+<td align="left">Variant</td>
+<td align="left">Variante</td>
+<td align="left">Describes the communication of an ► ECU, i.e. contains ► Diagnostic Classes, ► Diagnostic Instances, ► Services and ► Data Objects.<br />
+A CANdela document contains the special ► Base variant and „extended“ variants.<br />
+Represents a ► Development version (variation over time), or an ► Equipment variant (variation over features). </td>
+</tr>
+<tr class="odd">
+<td align="left">Variant coding key</td>
+<td align="left">Varianten-Kodierschlüssel</td>
+<td align="left">(Daimler context)</td>
+</tr>
+<tr class="even">
+<td align="left">Vehicle system group</td>
+<td align="left">Fahrzeug-Systemgruppe</td>
+<td align="left">Grouping mechanism for Containers and DTCs.</td>
+</tr>
+<tr class="odd">
+<td align="left">vFlash</td>
+<td align="left"></td>
+<td align="left">Vector Flash tool, see <a href="../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></td>
+</tr>
+<tr class="even">
+<td align="left">VSG</td>
+<td align="left"></td>
+<td align="left">Abbreviation for ► Vehicle system group</td>
+</tr>
+<tr class="odd">
+<td align="left">Warmup</td>
+<td align="left">Warmlauf</td>
+<td align="left">See <a class='rqRef' href='../30 Features\Event\Events Data Model.htm#EV-R520-Types' title="">[EV-R520-Types]</a> (context: Events)</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../10%20Introduction/About%20this%20Documentation.htm">About this Documentation.htm</a></li>
+<li><a href="../30%20Features/Attributes/Special%20Attributes.htm">Special Attributes.htm</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Attribute Value</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="attribute-value">Attribute Value</h1>
+<p>See also the <a href="Attribute%20Definition.htm">Attribute Definition</a> and the <a href="../../30%20Features/Attributes/Attributes.htm">Attributes Feature</a>.</p>
+<div class="figure">
+<img src="Images/DiagnosticInstanceAttributes.jpg" alt="Attribute Values of a Diagnostic Instance" />
+<p class="caption">Attribute Values of a Diagnostic Instance</p>
+</div>
+<h2 id="categories">Categories</h2>
+<p>The &quot;Categories&quot; combobox provides a filter: if you select a category, only attributes assigned to that category are shown in the list below.</p>
+<p>The combobox entry &quot;All&quot; shows all attributes.</p>
+<h2 id="name">Name</h2>
+<p>The &quot;Name&quot; column in the attributes list shows the attribute name.</p>
+<p>A &quot;*&quot; before the name indicates that the value of that attribute has been overwritten (see chapter below)</p>
+<h2 id="type">Type</h2>
+<p>Indicates the type of the attribute <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R020' title="Attribute Type">[ATTR-R020]</a>.</p>
+<h2 id="overwritten-value">Overwritten Value</h2>
+<p>Shows the <a href="../../30%20Features/Attributes/Attributes.htm#overridden">overriding value</a>, i.e. the individual value defined at the given object for the attribute.</p>
+<p>To modify the value, select the cell and press <code>F2</code> or again click into the cell.</p>
+<h2 id="description">Description</h2>
+<p>Shows the description of the attribute (from the attribute definition).</p>
+<h2 id="show-only-overwritten-values">Show only Overwritten Values</h2>
+<p>If you check this checkbox, the list will contain only attributes that have an overwritten value (i.e. a &quot;*&quot; to the left of the name).</p>
+<h2 id="default">Default</h2>
+<p>The <strong>[Default]</strong> button lets you remove the overriding values from the selected attributes, so that their default takes effect again.</p>
+<p>The button is insensitive if none of the selected attributes is overridden.</p>
+<h2 id="format">Format Restrictions</h2>
+<p>R020.1: adapt the attribute property page to enforce the right <a href="../../30%20Features/Attributes/Attributes.htm#format">format</a>, as in the implementation for revision items (CDS-1454).</p>
+<p>R021.0: after the string format has been changed, when the user edits an existing string, do not show the invalid string but show an empty value (both in table and properties dialog).</p>
+<p>R022.1 Do not display string format difference in difference view.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Attribute%20Definition.htm">Attribute Definition</a></li>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes Feature</a></li>
+</ul>
+</body>
+</html>

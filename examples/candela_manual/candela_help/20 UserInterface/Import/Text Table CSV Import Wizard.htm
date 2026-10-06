@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Text Table CSV Import Wizard</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="text-table-csv-import-wizard">Text Table CSV Import Wizard</h1>
+<p>The Wizard provides import of text table entries from a .csv file.</p>
+<h2 id="step-1">Step 1</h2>
+<div class="figure">
+<img src="Images/Text%20Table%20CSV%20Import%20Wizard%20Step%201.jpg" alt="Text Table CSV Import Wizard Step 1" />
+<p class="caption">Text Table CSV Import Wizard Step 1</p>
+</div>
+<h3 id="csv-file">CSV File</h3>
+<p>The wizard lets you select a .csv file using...</p>
+<ul>
+<li>the input control</li>
+<li>or the file dialog available via button &quot;...&quot;.</li>
+</ul>
+<p>Note: the CANdelaStudio installation ships with a <a href="../../30%20Features/Installation/Example%20Files.htm">sample import file</a> &quot;SampleTextTable.csv&quot;.</p>
+<h3 id="separator">Separator</h3>
+<p>The wizard lets you select the column separator used in the .csv file.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Separator</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">,</td>
+<td align="left">Comma</td>
+</tr>
+<tr class="even">
+<td align="right">;</td>
+<td align="left">Semicolon</td>
+</tr>
+<tr class="odd">
+<td align="right">|</td>
+<td align="left">Pipe</td>
+</tr>
+<tr class="even">
+<td align="right">:</td>
+<td align="left">Colon</td>
+</tr>
+<tr class="odd">
+<td align="right">#</td>
+<td align="left">Number sign</td>
+</tr>
+<tr class="even">
+<td align="right">(TAB)</td>
+<td align="left">Tabulator</td>
+</tr>
+</tbody>
+</table>
+<h2 id="step-2">Step 2</h2>
+<div class="figure">
+<img src="Images/Text%20Table%20CSV%20Import%20Wizard%20Step%202.jpg" alt="Text Table CSV Import Wizard Step 2" />
+<p class="caption">Text Table CSV Import Wizard Step 2</p>
+</div>
+<p>In the second step, you define the mapping of...</p>
+<ul>
+<li>columns in the .csv file</li>
+<li>to properties in the CANdela text table
+<ul>
+<li>start value</li>
+<li>(optionally) end value of a range</li>
+<li>text</li>
+<li>additional information</li>
+</ul></li>
+</ul>
+<p>The table lists the information from the .csv file and separator specified in step 1.</p>
+<h3 id="use-first-data-record-as-column-titles">Use First Data Record as Column Titles</h3>
+<p>If checked, the wizard takes the first data record (line) of the .csv file for column titles, and does not create a text table entry from it.</p>
+<h3 id="value-ranges">Value Ranges</h3>
+<ul>
+<li><strong>Generate Start</strong>: the wizard generates consecutive start values;</li>
+<li><strong>Import Start</strong>: the wizard takes the start values from the .csv file column you select in the combo-box;</li>
+<li><strong>... and End</strong>: if you specified &quot;Import Start&quot;, you may optionally also specify the .csv file column for the end value of a text table entry.</li>
+</ul>
+<p>Conventions:</p>
+<ul>
+<li>For a signed data type,
+<ul>
+<li>the .csv file may contain negative values (CDS-70011 v10),</li>
+<li>but only decimal (not hexadecimal) values.</li>
+</ul></li>
+</ul>
+<h3 id="text-values">Text Values</h3>
+<ul>
+<li><strong>Assigned text</strong>: the wizard takes the text of the text table entry from the .csv file column you select in the combo-box;</li>
+<li><strong>Additional information</strong>: dito for the additional information of the text table entry.</li>
+</ul>
+<h2 id="step-3">Step 3</h2>
+<div class="figure">
+<img src="Images/Text%20Table%20CSV%20Import%20Wizard%20Step%203.jpg" alt="Text Table CSV Import Wizard Step 3" />
+<p class="caption">Text Table CSV Import Wizard Step 3</p>
+</div>
+<p>In step 3, the wizard shows a preview of the generated or imported text table entries.</p>
+<h3 id="list">List</h3>
+<ul>
+<li><strong>Import</strong>: a checkbox lets you decide whether to import each individual text table entry or not;</li>
+<li><strong>Exists in target</strong>: shows whether the value of the text table entry is already contained in the target text table;</li>
+<li><strong>Value</strong>: the numeric value (or start of a range)</li>
+<li><strong>End of range</strong>: for a text table with discrete values, this equals the value (start of range).</li>
+<li><strong>Assigned text</strong>: as taken from the import file</li>
+<li><strong>Additional information</strong>: dito.</li>
+</ul>
+<h3 id="select-all-select-none">Select all / Select none</h3>
+<p>Lets you check / un-check all rows.</p>
+<h2 id="step-4">Step 4</h2>
+<div class="figure">
+<img src="Images/Text%20Table%20CSV%20Import%20Wizard%20Step%204.jpg" alt="Text Table CSV Import Wizard Step 4" />
+<p class="caption">Text Table CSV Import Wizard Step 4</p>
+</div>
+<p>Shows a final preview of the data to import.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Data%20Type/Text%20Table.htm">Text Table (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Text%20Table.htm">Data Type Property Page &quot;Text Table&quot;</a></li>
+<li><a href="../../30%20Features/Installation/Example%20Files.htm">Example Import Files</a></li>
+</ul>
+</body>
+</html>

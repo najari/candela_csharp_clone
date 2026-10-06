@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Options Property Page Specification General</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="file-options-specification-general">File | Options | Specification | General</h1>
+<div class="figure">
+<img src="Images/Options%20Property%20Page%20Specification%20General.jpg" alt="Ribbon Tab File | Options, Page &quot;Specification&quot; - &quot;General&quot;" />
+<p class="caption">Ribbon Tab File | Options, Page &quot;Specification&quot; - &quot;General&quot;</p>
+</div>
+<p>For the font used in state diagrams, report uses the font specified in the <a href="Options%20Property%20Page%20Display.htm#font">Page &quot;General&quot;</a>.</p>
+<h2 id="insert-page-break-at-heading-level">Insert page break at heading level</h2>
+<p>Enter the heading level after which page breaks shall be inserted in the specification. The default is 1, i.e. each top-level heading will start on a new page.</p>
+<h2 id="manufacturer-specific-export">Manufacturer specific export</h2>
+<p>Select this option if you would like to use manufacturer specific specification features.</p>
+<p>A manufacturer specific export is available for FIAT.</p>
+<h2 id="automatically-update-fields-in-rtf-document">Automatically update fields in RTF Document</h2>
+<p><span id="OPT-R410" class="rqDef">[OPT-R410]</span> If you check this option, CANdelaStudio automatically runs Microsoft Word after the export, see <a class='rqRef' href='../../30 Features\Report\Report Generator.htm#RP-R410' title="">[RP-R410]</a> for limitations and workaround.</p>
+<h2 id="write-audiences">Write audiences</h2>
+<p><span id="OPT-R420" class="rqDef">[OPT-R420]</span> Check this option if you would like to output the audience (target groups) to which a diagnostic instance or job container belongs, in the chapter of the diagnostic instance or job container.</p>
+<h2 id="write-images-in-binary-format">Write images in binary format</h2>
+<p><span id="OPT-R430" class="rqDef">[OPT-R430]</span> If you check this option, report exports images directly into the RTF file.</p>
+<p>Otherwise, report creates a subdirectory named like the RTF file and writes the images into it.</p>
+
+<h2 id="write-even-objects-not-used-in-document">Write even objects not used in document</h2>
+<p><span id="OPT-R440" class="rqDef">[OPT-R440]</span> Check this option if you would like to output all objects.</p>
+<p>Otherwise, report skips for example unused data types or unused protocol services.</p>
+<h2 id="write-qualifier">Write Qualifier</h2>
+<ul>
+<li><strong>never:</strong> the specification will contain only the names of the CANdela objects, not the qualifiers;</li>
+<li><strong>if different from name:</strong> the specification will contain only qualifiers that differ from how the <a href="../../30%20Features/Common%20Properties/Qualifier.htm#generating-from-names">qualifier would be computed from the name</a>. A qualifier may differ if it has been modified manually, or if it has been generated from the name in a different language.</li>
+<li><strong>always:</strong> the specification will contain all qualifiers</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Report/Report%20Generator.htm">Report Generator</a></li>
+<li><a href="Options.htm">File | Options Dialog</a></li>
+<li><a href="Options%20Property%20Page%20Specification%20Chapters.htm">File | Options | Specification | Chapters</a></li>
+</ul>
+</body>
+</html>

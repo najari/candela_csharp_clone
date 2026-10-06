@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Copy Events and DTCs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-copy-events-and-dtcs">How to Copy Events and DTCs</h1>
+<h2 id="procedure">Procedure</h2>
+<ol style="list-style-type: decimal">
+<li>in the source DTC list, copy the DTCs</li>
+<li>in the target DTC list, paste the DTCs</li>
+<li>do the same for the Events</li>
+</ol>
+<h2 id="background">Background</h2>
+<ul>
+<li>DTCs and Events are distinct objects in the CANdela data model (CDS-42224 v12)</li>
+<li>In general, in a copy/paste operation it is not clear whether the operation should include the respective other object or not.</li>
+<li>Therefore CANdelaStudio...
+<ul>
+<li><strong>copies only DTCs</strong>, no referencing Events;</li>
+<li><strong>with the Event copies the reference to a DTC</strong>,
+<ul>
+<li><strong>if</strong> the DTC already exists,</li>
+<li>based on the numeric code.</li>
+</ul></li>
+<li>For details, see the Event operation <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R060' title="">[EVOP-R060]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC Feature</a></li>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="../../30%20Features/Event/Event%20Operations.htm">Event Operations</a></li>
+</ul>
+</body>
+</html>

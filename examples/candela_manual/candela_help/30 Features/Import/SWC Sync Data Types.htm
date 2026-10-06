@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SWC Sync Data Types</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="swc-sync-data-types">SWC Sync Data Types</h1>
+<h2 id="extraction-of-sys-ex-data-types">Extraction of SYS-EX Data Types</h2>
+<p>A SYS-EX Data Type is a combined object of...</p>
+<ul>
+<li>the <strong>application data type</strong> referenced by...
+<ul>
+<li>a SYS-EX Data Object (see <a href="SWC%20Sync%20Data%20Objects.htm">SWC Sync Data Objects</a>)</li>
+<li>or a SYS-EX Routine argument (see <a href="SWC%20Sync%20Routines.htm">SWC Sync Routines</a>)</li>
+</ul></li>
+<li>and its associated <strong>implementation data type</strong>.</li>
+</ul>
+<p>Conditions:</p>
+<ul>
+<li>SWC Sync assumes the referenced data type is an application data type</li>
+<li>SWC Sync assumes that the parent SWC type providing...
+<ul>
+<li>the SYS-EX Data Object or</li>
+<li>implementing the SYS-EX Routine</li>
+</ul>
+has a DATA-TYPE-MAP referencing the application data type and an implementation data type.</li>
+<li>SWC Sync takes the properties of the SYS-EX Data Type from...
+<ul>
+<li>the COMPU-METHOD of the application data type,</li>
+<li>the DATA-CONSTRAINTS of the application data type, and</li>
+<li>the base type of the implementation data type.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ByteOrder</td>
+<td align="left">ByteOrder of the base type: distinguish between big-endian (Motorola) and little-endian (Intel) byte ordering.</td>
+</tr>
+<tr class="even">
+<td align="left">Length</td>
+<td align="left">Length of the base type in bytes.</td>
+</tr>
+<tr class="odd">
+<td align="left">Encoding</td>
+<td align="left">Encoding of the base type (signed integer, unsigned integer, float, etc.)</td>
+</tr>
+<tr class="even">
+<td align="left">MinimumValue Phys</td>
+<td align="left">Lower limit of the DataConstr of the application data type in the physical domain</td>
+</tr>
+<tr class="odd">
+<td align="left">Minimum Value Phys Interval Type</td>
+<td align="left">Distinction between open, closed, and infinite interval</td>
+</tr>
+<tr class="even">
+<td align="left">MaximumValue Phys</td>
+<td align="left">Upper limit of the DataConstr of the application data type in the physical domain</td>
+</tr>
+<tr class="odd">
+<td align="left">Maximum Value Phys Interval Type</td>
+<td align="left"><em>(as for &quot;Minimum Value Phys Interval Type&quot;)</em></td>
+</tr>
+<tr class="even">
+<td align="left">MinimumValue Raw</td>
+<td align="left">Lower limit of the DataConstr of the application data type in the raw domain</td>
+</tr>
+<tr class="odd">
+<td align="left">Minimum Value Raw Interval Type</td>
+<td align="left"><em>(as for &quot;Minimum Value Phys Interval Type&quot;)</em></td>
+</tr>
+<tr class="even">
+<td align="left">MaximumValue Raw</td>
+<td align="left">Upper limit of the DataConstr of the application data type in the raw domain</td>
+</tr>
+<tr class="odd">
+<td align="left">Maximum Value Raw Interval Type</td>
+<td align="left"><em>(as for &quot;Minimum Value Phys Interval Type&quot;)</em></td>
+</tr>
+<tr class="even">
+<td align="left">CompuMethod</td>
+<td align="left">Computation method of the application data type. Two kinds are supported: <em>linear</em> and <em>enumeration</em></td>
+</tr>
+<tr class="odd">
+<td align="left">Unit</td>
+<td align="left">Unit attached to the application data type</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>A <strong>CompuMethod of kind &quot;linear&quot;</strong> has the following properties:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Scale</td>
+<td align="left">Scale factor of the CompuMethod</td>
+</tr>
+<tr class="even">
+<td align="left">Offset</td>
+<td align="left">Offset of the CompuMethod</td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>CompuMethod of kind &quot;enumeration&quot;</strong> is represented by an <strong>array</strong>. Each <strong>element</strong> exposes the following properties:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Enum</td>
+<td align="left">Textual name of the enumeration value</td>
+</tr>
+<tr class="even">
+<td align="left">Value</td>
+<td align="left">Numerical value that corresponds to the textual name</td>
+</tr>
+</tbody>
+</table>
+<p>In addition to a pure linear and a pure texttable CompuMethod, there may also be a mixture of both.</p>
+<p>SWC Sync identifies the applicable kind of CompuMethod by the &quot;category&quot; attribute, which can have the following values:</p>
+<ul>
+<li><code>LINEAR</code></li>
+<li><code>TEXTTABLE</code></li>
+<li><code>LINEAR_AND_TEXTTABLE</code></li>
+</ul>
+<h2 id="sync-of-data-types">Sync of Data Types</h2>
+<h3 id="creation-and-deletion-of-data-types">Creation and Deletion of Data Types</h3>
+<p><span id="SWC-R1210" class="rqDef">[SWC-R1210]</span>: SWC Sync creates a new CANdela data type...</p>
+<ul>
+<li>from each SYS-EX data type</li>
+<li>that is referenced by a SYS-EX data object</li>
+<li>from which at least one new CANdela data object is created.</li>
+</ul>
+<p><span id="SWC-R1220" class="rqDef">[SWC-R1220]</span>: For a SYS-EX data type...</p>
+<ul>
+<li>with computation method type <strong><code>LINEAR</code></strong>,</li>
+<li>SWC Sync creates a CANdela <a href="../../30%20Features/Data%20Type/Linear.htm">linear data type</a></li>
+<li>and assign the respective properties.</li>
+</ul>
+<p><span id="SWC-R1230" class="rqDef">[SWC-R1230]</span>: for a SYS-EX data type...</p>
+<ul>
+<li>with computation method type <strong><code>TEXTTABLE</code></strong>,</li>
+<li>SWC Sync creates a CANdela <a href="../../30%20Features/Data%20Type/Text%20Table.htm">text table data type</a></li>
+<li>and assign the respective properties.</li>
+</ul>
+<p><span id="SWC-R1240" class="rqDef">[SWC-R1240]</span>: for a SYS-EX data type...</p>
+<ul>
+<li>with computation method type <strong><code>SCALE_LINEAR_AND_TEXTTABLE</code></strong>,</li>
+<li>SWC Sync also creates a CANdela <a href="../../30%20Features/Data%20Type/Linear.htm">linear data type</a>,</li>
+<li>assign the respective properties of the SYS-EX linear part</li>
+<li>and create <a href="../../30%20Features/Data%20Type/Invalid%20Values.htm">invalid values</a> from the SYS-EX text table part, with the &quot;kind of invalidity&quot; set to <code>undefined</code>.</li>
+</ul>
+<p><span id="SWC-R1250" class="rqDef">[SWC-R1250]</span>: SWC Sync <strong>deletes</strong> all CANdela data types that were referenced only by CANdela data objects replaced by the SWC.</p>
+<h3 id="data-type-encoding">Data Type Encoding</h3>
+<p><span id="SWC-R1260" class="rqDef">[SWC-R1260]</span>: If a direct match is possible, SWC Sync sets the encoding <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R100' title="">[DTENC-R100]</a> of the CANdela data type to the AUTOSAR encoding.</p>
+<p><span id="SWC-R1270" class="rqDef">[SWC-R1270]</span>: Otherwise (e.g. for AUTOSAR encoding <code>BOOLEAN</code>) SWC Sync sets the encoding...</p>
+<ul>
+<li>to <code>unsigned</code> by default, and</li>
+<li>to <code>signed</code> in case of a linear conversion whose scaling factor or offset is negative.</li>
+</ul>
+<p><span id="SWC-R1280" class="rqDef">[SWC-R1280]</span>: In any case, SWC Sync stores the original AUTOSAR encoding in the “AUTOSAR Encoding” attribute <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R230' title="">[SWC-R230]</a> of the CANdela data type.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a></li>
+<li><a href="SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a></li>
+<li><a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a></li>
+</ul>
+</body>
+</html>

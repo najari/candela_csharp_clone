@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>CANdelaStudio</title></head><body>
+<object type="text/site properties">
+  <param name="SiteType" value="index"/>
+  <param name="Window Styles" value="0x0"/>
+  <param name="ExWindow Styles" value="0x0"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="64 Bit"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/32%20or%2064%20Bit.htm#_index_446727909"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="64-Bit"/>
+  <param name="Local" value="30%20Features/Data%20Type/Encoding.htm#_index_446727958"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="AGL"/>
+  <param name="Local" value="30%20Features/ODX/ODX.htm#_index_446728077"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="ASAM MCD-2D Basic"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm#_index_446727861"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="ASAP2"/>
+  <param name="Name" value="Export of Label"/>
+  <param name="Local" value="30%20Features/Export/Data%20Overview%20Export.htm#_index_446728032"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Export of Label"/>
+  <param name="Local" value="30%20Features/Export/Data%20Overview%20Export.htm#_index_446728032"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Import from"/>
+  <param name="Local" value="30%20Features/Import/Import%20from%20ASAP2.htm#_index_446728053"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="AUTOSAR"/>
+  <param name="Name" value="How to Configure"/>
+  <param name="Local" value="15%20Procedures/AUTOSAR/How%20to%20Configure%20the%20Diagnostic%20Basic%20Software%20of%20an%20AUTOSAR%204%20ECU.htm#_index_446727846"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="How to Configure"/>
+  <param name="Local" value="15%20Procedures/AUTOSAR/How%20to%20Configure%20the%20Diagnostic%20Basic%20Software%20of%20an%20AUTOSAR%204%20ECU.htm#_index_446727846"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Import data objects + DTCs"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm#_index_446727862"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Workflow"/>
+  <param name="Local" value="30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm#_index_446727901"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Adaptive"/>
+  <param name="Local" value="30%20Features/AUTOSAR/AUTOSAR%20Adaptive.htm#_index_446727902"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Command Line Operation Examples"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#_index_446727907"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="AUTOSAR Diagnostic Extract"/>
+  <param name="Local" value="30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#_index_446728027"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="SWC Sync"/>
+  <param name="Local" value="30%20Features/Import/SWC%20Sync%20Introduction.htm#_index_446728052"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Actions"/>
+  <param name="Local" value="30%20Features/Actions/Actions.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Addressing"/>
+  <param name="Name" value="Schemes"/>
+  <param name="Local" value="30%20Features/Interface/Addressing%20Schemes.htm#_index_446728070"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Schemes"/>
+  <param name="Local" value="30%20Features/Interface/Addressing%20Schemes.htm#_index_446728070"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="physical, functional"/>
+  <param name="Local" value="30%20Features/Service/Service.htm#_index_446728112"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Admin Privileges"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Startup.htm#_index_446727872"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Array"/>
+  <param name="Local" value="30%20Features/Data%20Type/Length.htm#_index_446727953"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Ascii"/>
+  <param name="Local" value="30%20Features/Data%20Type/Encoding.htm#_index_446727956"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Atom"/>
+  <param name="Local" value="30%20Features/Data%20Type/Length.htm#_index_446727951"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Attributes"/>
+  <param name="Local" value="30%20Features/Attributes/Attributes.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Authoring Guideline"/>
+  <param name="Local" value="30%20Features/ODX/ODX.htm#_index_446728076"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Authorization"/>
+  <param name="Name" value="for authoring control"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Authorization.htm#_index_446727920"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="for authoring control"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Authorization.htm#_index_446727920"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="for runtime security"/>
+  <param name="Local" value="30%20Features/State%20Dependency/Authorization.htm#_index_446728120"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="BCD"/>
+  <param name="Local" value="30%20Features/Data%20Type/Encoding.htm#_index_446727959"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Backstage"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#_index_446727858"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Backup"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Backup.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Base Directory"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20General.htm#_index_446727864"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Base Variant"/>
+  <param name="Local" value="30%20Features/Variant/Base%20Variant.htm#_index_446728124"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Bit"/>
+  <param name="Name" value="Bit and Byte Positions"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm#_index_446727921"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Bit and Byte Positions"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm#_index_446727921"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="DTC Status Bits"/>
+  <param name="Local" value="30%20Features/DTC/DTC%20Status%20Bits.htm#_index_446728016"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="ODX Import - Positioning of Bit Objects"/>
+  <param name="Local" value="30%20Features/Import/3_ODX%20Import%20Bit%20Positioning.htm#_index_446728049"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Bit Field"/>
+  <param name="Local" value="30%20Features/Data%20Objects/Bit%20Field.htm#_index_446727943"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Bit Ordering"/>
+  <param name="Local" value="30%20Features/Document/Bit%20Ordering.htm#_index_446728009"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Bit and Byte Positions"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Bitmask"/>
+  <param name="Local" value="30%20Features/Data%20Type/Bitmask.htm#_index_446727965"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Boolean"/>
+  <param name="Local" value="30%20Features/Data%20Type/Data%20Type.htm#_index_446727946"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Bundled Products"/>
+  <param name="Local" value="30%20Features/Installation/Bundled%20Products.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Byte Order"/>
+  <param name="Local" value="30%20Features/Data%20Type/Byte%20Order.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="CAN FD"/>
+  <param name="Local" value="30%20Features/Interface/CAN%20FD.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="CDI"/>
+  <param name="Name" value="Export to"/>
+  <param name="Local" value="30%20Features/Export/CDI%20Export.htm#_index_446728030"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Export to"/>
+  <param name="Local" value="30%20Features/Export/CDI%20Export.htm#_index_446728030"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="for FRFM"/>
+  <param name="Local" value="30%20Features/Export/CDI%20Export.htm#_index_446728031"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Import from"/>
+  <param name="Local" value="30%20Features/Import/Import%20from%20CDI.htm#_index_446728054"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="CEMR"/>
+  <param name="Local" value="30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Use-Cases.htm#_index_446727990"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="CSV"/>
+  <param name="Name" value="How to Convert Number Formats in Excel"/>
+  <param name="Local" value="15%20Procedures/Excel/How%20to%20Convert%20Number%20Formats%20in%20Excel.htm#_index_446727849"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="How to Convert Number Formats in Excel"/>
+  <param name="Local" value="15%20Procedures/Excel/How%20to%20Convert%20Number%20Formats%20in%20Excel.htm#_index_446727849"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="How to Open a CSV File in Excel"/>
+  <param name="Local" value="15%20Procedures/Excel/How%20to%20Open%20a%20CSV%20File%20in%20Excel.htm#_index_446727850"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Label/DID Mapping in DID Creator"/>
+  <param name="Local" value="30%20Features/Import%20Pool/A2L%20DID%20Creator.htm#_index_446728055"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Requirements Exchange Format"/>
+  <param name="Local" value="30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm#_index_446728108"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Calculated"/>
+  <param name="Local" value="30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#_index_446728117"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Characteristic Curve"/>
+  <param name="Local" value="30%20Features/Data%20Type/Characteristic%20Curve.htm#_index_446727974"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Check Identifier Uniqueness"/>
+  <param name="Local" value="30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#_index_446727939"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Combined Component"/>
+  <param name="Local" value="30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#_index_446727992"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Command Line"/>
+  <param name="Name" value="Using The Command Line"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#_index_446727906"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Using The Command Line"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#_index_446727906"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Compare via Command Line"/>
+  <param name="Local" value="30%20Features/Compare/Compare%20via%20Command%20Line.htm#_index_446727936"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Common Diagnostics"/>
+  <param name="Local" value="30%20Features/Variant/Base%20Variant.htm#_index_446728125"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Communication Parameter"/>
+  <param name="Name" value="Editing"/>
+  <param name="Local" value="20%20UserInterface/Interface/Communication%20Parameters.htm#_index_446727894"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Editing"/>
+  <param name="Local" value="20%20UserInterface/Interface/Communication%20Parameters.htm#_index_446727894"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="in ODX Export"/>
+  <param name="Local" value="30%20Features/Export/40_ODXExport_ECU%20Properties.htm#_index_446728025"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Feature"/>
+  <param name="Local" value="30%20Features/Interface/Communication%20Parameter.htm#_index_446728068"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Multi-Identity ECU"/>
+  <param name="Local" value="30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#_index_446728085"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Compact View"/>
+  <param name="Local" value="20%20UserInterface/Variant/Compact%20View.htm#_index_446727900"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Compare"/>
+  <param name="Name" value="Compare View"/>
+  <param name="Local" value="20%20UserInterface/Compare/Compare%20View.htm#_index_446727878"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Compare View"/>
+  <param name="Local" value="20%20UserInterface/Compare/Compare%20View.htm#_index_446727878"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Compare via Command Line"/>
+  <param name="Local" value="30%20Features/Compare/Compare%20via%20Command%20Line.htm#_index_446727937"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Complex Data Types"/>
+  <param name="Local" value="30%20Features/Data%20Type/Complex%20Data%20Types%20Introduction.htm#_index_446727977"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Condition"/>
+  <param name="Local" value="30%20Features/Event/Events%20Data%20Model.htm#_index_446728038"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Condition Group"/>
+  <param name="Local" value="30%20Features/Event/Events%20Data%20Model.htm#_index_446728039"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Configured"/>
+  <param name="Local" value="30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#_index_446728116"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Consistency Check"/>
+  <param name="Local" value="30%20Features/Consistency%20Check/Consistency%20Check.htm#_index_446727938"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Contact"/>
+  <param name="Local" value="10%20Introduction/Contact.htm#_index_446727843"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Conversions"/>
+  <param name="Local" value="30%20Features/Data%20Type/Data%20Type.htm#_index_446727945"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Convert to Template"/>
+  <param name="Local" value="30%20Features/Document%20Template/Convert%20to%20Template.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Corrupted File"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Loading%20a%20Document%20or%20Template.htm#_index_446727913"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Counter Iteration"/>
+  <param name="Local" value="30%20Features/Data%20Type/Counter%20Iteration.htm#_index_446727985"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="DDx"/>
+  <param name="Local" value="30%20Features/Export/Diagnostic%20Data%20Exchange.htm#_index_446728034"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="DEXT Export"/>
+  <param name="Local" value="30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#_index_446728028"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="DID"/>
+  <param name="Local" value="30%20Features/DID/DID.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="DID Data Reference"/>
+  <param name="Local" value="30%20Features/DID/DID.htm#_index_446727997"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="DID Reference"/>
+  <param name="Local" value="30%20Features/DID/DID.htm#_index_446727998"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="DTC"/>
+  <param name="Name" value="List"/>
+  <param name="Local" value="20%20UserInterface/DTC/DTCs.htm#_index_446727889"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="List"/>
+  <param name="Local" value="20%20UserInterface/DTC/DTCs.htm#_index_446727889"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Error Code Table (in Template)"/>
+  <param name="Local" value="20%20UserInterface/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#_index_446727891"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Feature"/>
+  <param name="Local" value="30%20Features/DTC/DTC.htm#_index_446728013"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Export"/>
+  <param name="Local" value="30%20Features/DTC/DTC%20Export.htm#_index_446728014"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Import"/>
+  <param name="Local" value="30%20Features/DTC/DTC%20Import.htm#_index_446728015"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="DTC Status"/>
+  <param name="Local" value="30%20Features/DTC/DTC%20Status%20Bits.htm#_index_446728017"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Group of DTC"/>
+  <param name="Local" value="30%20Features/DTC/Group%20of%20DTC.htm#_index_446728021"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="MDX DTC Columns"/>
+  <param name="Local" value="30%20Features/DTC/MDX%20DTC%20Columns.htm#_index_446728022"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Column Definition"/>
+  <param name="Local" value="30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#_index_446728047"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="DTC Status Bits"/>
+  <param name="Local" value="30%20Features/DTC/DTC%20Status%20Bits.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="DTD"/>
+  <param name="Local" value="30%20Features/Document/CANdela%20File%20Format.htm#_index_446728007"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Data Objects"/>
+  <param name="Name" value="Feature"/>
+  <param name="Local" value="30%20Features/Data%20Objects/Data%20Objects.htm#_index_446727940"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Feature"/>
+  <param name="Local" value="30%20Features/Data%20Objects/Data%20Objects.htm#_index_446727940"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="and Vehicle System Groups"/>
+  <param name="Local" value="30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Groups%20at%20Data%20Objects.htm#_index_446728136"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Data Type"/>
+  <param name="Name" value="List"/>
+  <param name="Local" value="20%20UserInterface/Data%20Type/Data%20Types.htm#_index_446727881"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="List"/>
+  <param name="Local" value="20%20UserInterface/Data%20Type/Data%20Types.htm#_index_446727881"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Properties Dialog"/>
+  <param name="Local" value="20%20UserInterface/Data%20Type/Data%20Type.htm#_index_446727883"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Feature"/>
+  <param name="Local" value="30%20Features/Data%20Type/Data%20Type.htm#_index_446727944"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Operations"/>
+  <param name="Local" value="30%20Features/Data%20Type/Data%20Type%20Operations.htm#_index_446727947"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Replace Similar"/>
+  <param name="Local" value="30%20Features/Data%20Type/Replace%20Similar%20Data%20Types.htm#_index_446727949"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Complex"/>
+  <param name="Local" value="30%20Features/Data%20Type/Complex%20Data%20Types%20Introduction.htm#_index_446727978"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Data Type Length"/>
+  <param name="Local" value="30%20Features/Data%20Type/Length.htm#_index_446727950"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Debounce Algorithm"/>
+  <param name="Local" value="30%20Features/Event/Events%20Data%20Model.htm#_index_446728040"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Decimal Places"/>
+  <param name="Local" value="30%20Features/Data%20Type/Precision.htm#_index_446727963"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Demo"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Editions.htm#_index_446727908"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Description"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Description.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Description Merge Editor"/>
+  <param name="Local" value="20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm#_index_446727887"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Diagnostic Class"/>
+  <param name="Local" value="30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Diagnostic Class Template"/>
+  <param name="Local" value="30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Diagnostic Data Exchange"/>
+  <param name="Local" value="30%20Features/Export/Diagnostic%20Data%20Exchange.htm#_index_446728033"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Diagnostic Instance"/>
+  <param name="Local" value="30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Dialog"/>
+  <param name="Local" value="20%20UserInterface/Import/Select%20from%20Repository.htm#_index_446727893"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Dictionary"/>
+  <param name="Local" value="30%20Features/Multi-Language/Dictionary.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Disclaimer"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Startup.htm#_index_446727870"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Display Format"/>
+  <param name="Local" value="30%20Features/Data%20Type/Display%20Format.htm#_index_446727960"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Docking Windows"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Docking%20Windows.htm#_index_446727851"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Document"/>
+  <param name="Local" value="30%20Features/Document/Document.htm#_index_446728002"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Document Template"/>
+  <param name="Local" value="30%20Features/Document%20Template/Document%20Template.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Document Upgrade"/>
+  <param name="Local" value="30%20Features/Document%20Upgrade/Document%20Upgrade.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Documentation"/>
+  <param name="Local" value="30%20Features/Installation/Documentation.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Drag and Drop"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Drag%20and%20Drop%20of%20Files.htm#_index_446727873"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Dynamically Define Data Identifier"/>
+  <param name="Local" value="30%20Features/DID/Dynamically%20Define%20Data%20Identifier.htm#_index_446727999"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="ECU"/>
+  <param name="Local" value="30%20Features/ECU/ECU.htm#_index_446728024"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="ECU-SHARED-DATA"/>
+  <param name="Local" value="30%20Features/Document/ODX%20ECU-SHARED-DATA.htm#_index_446728010"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Editions"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Editions.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Encoding"/>
+  <param name="Local" value="30%20Features/Data%20Type/Encoding.htm#_index_446727955"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="End-Marker Iteration"/>
+  <param name="Local" value="30%20Features/Data%20Type/End-Marker%20Iteration.htm#_index_446727986"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="End-of-Service Iteration"/>
+  <param name="Local" value="30%20Features/Data%20Type/End-of-Service%20Iteration.htm#_index_446727987"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Error Code Table"/>
+  <param name="Local" value="20%20UserInterface/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#_index_446727892"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Event"/>
+  <param name="Local" value="30%20Features/Event/Events%20Introduction.htm#_index_446728035"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Event Combination"/>
+  <param name="Local" value="30%20Features/Event/Events%20Data%20Model.htm#_index_446728041"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Example Files"/>
+  <param name="Local" value="30%20Features/Installation/Example%20Files.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Expert View"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Expert%20View.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Extended Data Record"/>
+  <param name="Local" value="30%20Features/Fault%20Memory/Fault%20Memory.htm#_index_446728045"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="FMI"/>
+  <param name="Local" value="30%20Features/DTC/Failure%20Mode%20Identifier.htm#_index_446728018"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Failure Mode Identifier"/>
+  <param name="Local" value="30%20Features/DTC/Failure%20Mode%20Identifier.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Failure Type Byte"/>
+  <param name="Local" value="30%20Features/DTC/Failure%20Type%20Byte.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Fault Memory"/>
+  <param name="Local" value="30%20Features/Fault%20Memory/Fault%20Memory.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="FeatureID"/>
+  <param name="Local" value="10%20Introduction/About%20this%20Documentation.htm#_index_446727845"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Field"/>
+  <param name="Local" value="30%20Features/Data%20Type/Length.htm#_index_446727952"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="File Format"/>
+  <param name="Local" value="30%20Features/Document/CANdela%20File%20Format.htm#_index_446728006"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="File Transfer"/>
+  <param name="Local" value="40%20Templates/Vector%20UDS/Protocol%20Services.htm#_index_446728139"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Find"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Search%20Dialog.htm#_index_446727868"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Fixed Count Iteration"/>
+  <param name="Local" value="30%20Features/Data%20Type/Fixed%20Count%20Iteration.htm#_index_446727984"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Fixed Data Component"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Fixed%20Data%20Component.htm#_index_446728094"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Fixed Qualifiers"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Qualifier.htm#_index_446727933"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Float"/>
+  <param name="Local" value="30%20Features/Data%20Type/Encoding.htm#_index_446727957"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Formula"/>
+  <param name="Local" value="30%20Features/Data%20Type/Formula.htm#_index_446727976"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Functional Addressing"/>
+  <param name="Local" value="30%20Features/Service/Service.htm#_index_446728111"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Functional safety"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/ISO%2026262%20Road%20vehicles%20-%20Functional%20safety.htm#_index_446727918"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Gap"/>
+  <param name="Local" value="30%20Features/Data%20Objects/Data%20Objects.htm#_index_446727942"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Glossary"/>
+  <param name="Local" value="10%20Introduction/CANdela%20Glossary.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Graphical Telegram Table"/>
+  <param name="Local" value="20%20UserInterface/Data%20Objects/Graphical%20Telegram%20Table.htm#_index_446727879"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Group of DTC"/>
+  <param name="Local" value="30%20Features/DTC/Group%20of%20DTC.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="High DPI"/>
+  <param name="Local" value="15%20Procedures/CANdelaStudio%20Editor/How%20to%20Use%20CANdelaStudio%20with%20High%20DPI%20Scaling.htm#_index_446727847"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="INI"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Options.htm#_index_446727915"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="ISO 26262"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/ISO%2026262%20Road%20vehicles%20-%20Functional%20safety.htm#_index_446727917"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Icons"/>
+  <param name="Name" value="Icons (Data Object)"/>
+  <param name="Local" value="20%20UserInterface/Data%20Objects/Icons.htm#_index_446727880"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Icons (Data Object)"/>
+  <param name="Local" value="20%20UserInterface/Data%20Objects/Icons.htm#_index_446727880"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Icons (Data Type)"/>
+  <param name="Local" value="20%20UserInterface/Data%20Type/Icons.htm#_index_446727882"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Negative Response Code at Service"/>
+  <param name="Local" value="20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm#_index_446727884"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Buttons in Diagnostic Instance dialog"/>
+  <param name="Local" value="20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm#_index_446727885"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Icons (Service)"/>
+  <param name="Local" value="20%20UserInterface/Service/Icons.htm#_index_446727896"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Icons (in Tree)"/>
+  <param name="Local" value="20%20UserInterface/Tree/Icons.htm#_index_446727899"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Identifier"/>
+  <param name="Name" value="DIDs (Data Identifier)"/>
+  <param name="Local" value="30%20Features/DID/DID.htm#_index_446727995"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="DIDs (Data Identifier)"/>
+  <param name="Local" value="30%20Features/DID/DID.htm#_index_446727995"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Multiple Identifier Request"/>
+  <param name="Local" value="30%20Features/DID/Multiple%20Identifier%20Request.htm#_index_446728000"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Requirement Identifier"/>
+  <param name="Local" value="30%20Features/Requirements/Data%20Model.htm#_index_446728107"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Identifying Feature"/>
+  <param name="Local" value="30%20Features/Variant/Variant%20Identification.htm#_index_446728131"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Identity"/>
+  <param name="Local" value="30%20Features/Data%20Type/Identity.htm#_index_446727968"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Import Pool"/>
+  <param name="Local" value="30%20Features/Import%20Pool/Import%20Pool.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Indicator"/>
+  <param name="Local" value="30%20Features/Event/Events%20Data%20Model.htm#_index_446728037"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Installation"/>
+  <param name="Local" value="30%20Features/Installation/Setup.htm#_index_446728061"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Installation Folder"/>
+  <param name="Local" value="30%20Features/Installation/Installation%20Folder.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Interface"/>
+  <param name="Local" value="30%20Features/Interface/Interface.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Invalid Values"/>
+  <param name="Local" value="30%20Features/Data%20Type/Invalid%20Values.htm#_index_446727967"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Inverse Values"/>
+  <param name="Name" value="Text Table"/>
+  <param name="Local" value="30%20Features/Data%20Type/Text%20Table.htm#_index_446727970"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Text Table"/>
+  <param name="Local" value="30%20Features/Data%20Type/Text%20Table.htm#_index_446727970"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Piecewise Linear"/>
+  <param name="Local" value="30%20Features/Data%20Type/Piecewise%20Linear.htm#_index_446727973"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Iteration"/>
+  <param name="Name" value="Data Types"/>
+  <param name="Local" value="30%20Features/Data%20Type/Iteration%20Data%20Types.htm#_index_446727983"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Data Types"/>
+  <param name="Local" value="30%20Features/Data%20Type/Iteration%20Data%20Types.htm#_index_446727983"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Component"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Iteration%20Component.htm#_index_446728095"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Job"/>
+  <param name="Local" value="30%20Features/Job/Job.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="KWP"/>
+  <param name="Local" value="40%20Templates/Vector%20KWP%20on%20CAN/Introduction.htm#_index_446728137"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Key Tips"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Key%20Tips.htm#_index_446727857"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Keyboard Shortcuts"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Keyboard%20Shortcuts.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="LIN"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/LIN.htm#_index_446728104"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Launcher"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Launcher.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Library"/>
+  <param name="Local" value="30%20Features/Library/Library.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="License Client"/>
+  <param name="Local" value="30%20Features/Installation/Bundled%20Products.htm#_index_446728058"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="License Manager"/>
+  <param name="Local" value="30%20Features/Installation/Bundled%20Products.htm#_index_446728057"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Licensing"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Licensing.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Linear"/>
+  <param name="Local" value="30%20Features/Data%20Type/Linear.htm#_index_446727971"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Loading a Document or Template"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Loading%20a%20Document%20or%20Template.htm#_index_446727912"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Lock Variant"/>
+  <param name="Local" value="30%20Features/Variant/Lock%20Variant.htm#_index_446728126"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Logging"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Logging.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="MDX"/>
+  <param name="Name" value="MDX Export"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm#_index_446727863"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="MDX Export"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm#_index_446727863"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="MDX DTC Columns"/>
+  <param name="Local" value="30%20Features/DTC/MDX%20DTC%20Columns.htm#_index_446728023"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="MSI"/>
+  <param name="Local" value="30%20Features/Installation/CANdelaStudio%20MSI.htm#_index_446728059"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Manufacturer"/>
+  <param name="Local" value="30%20Features/Document/Document.htm#_index_446728003"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Maturity"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Maturity.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Maximum Number of Identifiers"/>
+  <param name="Local" value="20%20UserInterface/ECU/ECU%20Property%20Page%20Maximum%20Number%20of%20Identifiers.htm#_index_446727890"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="May Be Combined"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/May%20Be%20Combined.htm#_index_446728103"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Menu"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Introduction.htm#_index_446727854"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Migrations"/>
+  <param name="Local" value="30%20Features/Migrations/Migrations.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Module Information"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File%20-%20Product%20Information%20-%20Module%20Information.htm#_index_446727860"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Multi-Identity ECU"/>
+  <param name="Local" value="30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#_index_446728084"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Multi-Language"/>
+  <param name="Local" value="30%20Features/Multi-Language/Multi-Language.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Multiple Identifier Request"/>
+  <param name="Local" value="30%20Features/DID/Multiple%20Identifier%20Request.htm#_index_446728001"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Multiple Responses"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Addressing.htm#_index_446728101"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Multiplexer"/>
+  <param name="Name" value="Data Type"/>
+  <param name="Local" value="30%20Features/Data%20Type/Mux.htm#_index_446727980"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Data Type"/>
+  <param name="Local" value="30%20Features/Data%20Type/Mux.htm#_index_446727980"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Self-Referencing Multiplexer"/>
+  <param name="Local" value="30%20Features/Data%20Type/Self-Referencing%20Mux.htm#_index_446727982"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Component"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Multiplexer%20Component.htm#_index_446728096"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Mux"/>
+  <param name="Local" value="30%20Features/Data%20Type/Mux.htm#_index_446727981"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Name"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Name.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Navigation Tree"/>
+  <param name="Local" value="20%20UserInterface/Tree/Navigation%20Tree.htm#_index_446727897"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Negative Response"/>
+  <param name="Name" value="Codes"/>
+  <param name="Local" value="30%20Features/Negative%20Response/Negative%20Response.htm#_index_446728074"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Codes"/>
+  <param name="Local" value="30%20Features/Negative%20Response/Negative%20Response.htm#_index_446728074"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="in Protocol Service"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Negative%20Response.htm#_index_446728093"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="New Document Upgrade"/>
+  <param name="Local" value="20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm#_index_446727886"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Numeration Type"/>
+  <param name="Local" value="30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#_index_446728115"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="OBD on UDS"/>
+  <param name="Local" value="30%20Features/Fault%20Memory/Fault%20Memory.htm#_index_446728043"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="ODX"/>
+  <param name="Name" value="ECU-SHARED-DATA"/>
+  <param name="Local" value="30%20Features/Document/ODX%20ECU-SHARED-DATA.htm#_index_446728011"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="ECU-SHARED-DATA"/>
+  <param name="Local" value="30%20Features/Document/ODX%20ECU-SHARED-DATA.htm#_index_446728011"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Multi-Language"/>
+  <param name="Local" value="30%20Features/Export/Export%20Multi-Language%20ODX%20Files.htm#_index_446728026"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Import"/>
+  <param name="Local" value="30%20Features/Import/ODX%20Import%20Introduction.htm#_index_446728048"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Introduction to ODX"/>
+  <param name="Local" value="30%20Features/ODX/ODX.htm#_index_446728075"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Enable ODX Mode"/>
+  <param name="Local" value="30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#_index_446728081"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="ODX Link"/>
+  <param name="Local" value="30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#_index_446728082"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="ODX RS"/>
+  <param name="Local" value="30%20Features/ODX/ODX.htm#_index_446728078"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="ODXStudio"/>
+  <param name="Local" value="30%20Features/Installation/Bundled%20Products.htm#_index_446728056"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="OID"/>
+  <param name="Local" value="30%20Features/Common%20Properties/OID.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Object Paths"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Object%20Paths.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Onion Rule"/>
+  <param name="Local" value="30%20Features/DID/DID.htm#_index_446727996"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Open Page"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm#_index_446727852"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Operation Cycle"/>
+  <param name="Local" value="30%20Features/Event/Events%20Data%20Model.htm#_index_446728036"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Optional Subsystem"/>
+  <param name="Local" value="30%20Features/Vehicle%20System%20Group/Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm#_index_446728133"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Options"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Options.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Output Window"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#_index_446727853"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="PREEvision"/>
+  <param name="Name" value="UUIDs"/>
+  <param name="Local" value="30%20Features/Common%20Properties/PREEvision%20UUIDs.htm#_index_446727929"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="UUIDs"/>
+  <param name="Local" value="30%20Features/Common%20Properties/PREEvision%20UUIDs.htm#_index_446727929"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Data Exchange"/>
+  <param name="Local" value="30%20Features/PREEvision%20CANdela%20Data%20Interchange/Introduction.htm#_index_446728086"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Import"/>
+  <param name="Local" value="30%20Features/PREEvision%20CANdela%20Data%20Interchange/Import.htm#_index_446728088"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Export"/>
+  <param name="Local" value="30%20Features/PREEvision%20CANdela%20Data%20Interchange/Export.htm#_index_446728089"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="PVCDI"/>
+  <param name="Local" value="30%20Features/PREEvision%20CANdela%20Data%20Interchange/Introduction.htm#_index_446728087"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Packet"/>
+  <param name="Local" value="30%20Features/Data%20Type/Packet.htm#_index_446727979"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Password Protection"/>
+  <param name="Local" value="30%20Features/Document/Password%20Protection.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Patch File"/>
+  <param name="Local" value="15%20Procedures/Event/How%20to%20Specify%20Event%20Qualifiers%20before%20v12.htm#_index_446727848"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Path"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Object%20Paths.htm#_index_446727923"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Periodic Responses"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Addressing.htm#_index_446728102"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Persistors"/>
+  <param name="Local" value="30%20Features/Persistors/Persistors.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Physical Addressing"/>
+  <param name="Local" value="30%20Features/Service/Service.htm#_index_446728110"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Piecewise Linear"/>
+  <param name="Local" value="30%20Features/Data%20Type/Piecewise%20Linear.htm#_index_446727972"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Platforms"/>
+  <param name="Local" value="30%20Features/Installation/Supported%20Platforms.htm#_index_446728064"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Plug-in"/>
+  <param name="Name" value="Introduction"/>
+  <param name="Local" value="30%20Features/Plug-ins/Introduction.htm#_index_446728079"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Introduction"/>
+  <param name="Local" value="30%20Features/Plug-ins/Introduction.htm#_index_446728079"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Enable ODX Mode"/>
+  <param name="Local" value="30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#_index_446728080"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Manage Multi Identity ECU"/>
+  <param name="Local" value="30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#_index_446728083"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Precision"/>
+  <param name="Local" value="30%20Features/Data%20Type/Precision.htm#_index_446727962"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Prerequisites"/>
+  <param name="Local" value="30%20Features/Installation/Prerequisites.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Primitives"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Protocol%20Service.htm#_index_446728091"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Procedure"/>
+  <param name="Local" value="30%20Features/Data%20Type/Procedure.htm#_index_446727975"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Product Information"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File%20-%20Product%20Information.htm#_index_446727859"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Progress Bar"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Status%20Bar.htm#_index_446727866"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Protocol Service"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Protocol%20Service.htm#_index_446728090"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Protocol Standard"/>
+  <param name="Local" value="30%20Features/Document/Document.htm#_index_446728005"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Proxy Component"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Proxy%20Component.htm#_index_446728097"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Qualifier"/>
+  <param name="Name" value="Definition"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Qualifier.htm#_index_446727930"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Definition"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Qualifier.htm#_index_446727930"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Generating from Names"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Qualifier.htm#_index_446727931"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Fixed"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Qualifier.htm#_index_446727934"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Romanization"/>
+  <param name="Local" value="30%20Features/Multi-Language/Romanization.htm#_index_446728073"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Shortcut Qualifier"/>
+  <param name="Local" value="30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm#_index_446728114"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Quick Access Toolbar"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Quick%20Access%20Toolbar.htm#_index_446727856"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="References"/>
+  <param name="Local" value="30%20Features/Common%20Properties/References.htm#_index_446727935"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Regular Expressions"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Regular%20Expressions.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Remote Desktop"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Licensing.htm#_index_446727910"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Replace Similar Data Types"/>
+  <param name="Local" value="30%20Features/Data%20Type/Replace%20Similar%20Data%20Types.htm#_index_446727948"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Report Generator"/>
+  <param name="Local" value="30%20Features/Report/Report%20Generator.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Repository Integration"/>
+  <param name="Local" value="30%20Features/Import/Repository%20Integration.htm#_index_446728050"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Requirements"/>
+  <param name="Local" value="30%20Features/Requirements/Requirements.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Reserved Data Object"/>
+  <param name="Name" value="Feature"/>
+  <param name="Local" value="30%20Features/Data%20Objects/Data%20Objects.htm#_index_446727941"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Feature"/>
+  <param name="Local" value="30%20Features/Data%20Objects/Data%20Objects.htm#_index_446727941"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="in DEXT"/>
+  <param name="Local" value="30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#_index_446728029"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Resolved Path"/>
+  <param name="Local" value="30%20Features/Vehicle%20System%20Group/Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm#_index_446728135"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="ReverseBitfieldBytes"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm#_index_446727922"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Revision History"/>
+  <param name="Local" value="30%20Features/Revision%20History/Revision%20History.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Rework List"/>
+  <param name="Local" value="20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade%20Rework%20List.htm#_index_446727888"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Ribbon"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Introduction.htm#_index_446727855"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Romanization"/>
+  <param name="Local" value="30%20Features/Multi-Language/Romanization.htm#_index_446728072"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="SMR-D"/>
+  <param name="Local" value="10%20Introduction/CANdela%20Glossary.htm#_index_446727842"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="SPN"/>
+  <param name="Local" value="30%20Features/DTC/Failure%20Mode%20Identifier.htm#_index_446728020"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="SPRMIB"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Addressing.htm#_index_446728100"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="SWC Sync"/>
+  <param name="Local" value="30%20Features/Import/SWC%20Sync%20Introduction.htm#_index_446728051"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Safety"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/ISO%2026262%20Road%20vehicles%20-%20Functional%20safety.htm#_index_446727919"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Saving a Document or Template"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Saving%20a%20Document%20or%20Template.htm#_index_446727914"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Schema"/>
+  <param name="Local" value="30%20Features/Document/CANdela%20File%20Format.htm#_index_446728008"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Search"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Search%20Dialog.htm#_index_446727867"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Security"/>
+  <param name="Local" value="30%20Features/State%20Dependency/Security.htm#_index_446728118"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Segment Number"/>
+  <param name="Local" value="30%20Features/Diagnostic%20Instance/Segment%20Number.htm#_index_446727994"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Service"/>
+  <param name="Local" value="30%20Features/Service/Service.htm#_index_446728109"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Service Abstract"/>
+  <param name="Local" value="20%20UserInterface/Service/Services.htm#_index_446727895"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Services Supported for Interfaces"/>
+  <param name="Local" value="30%20Features/Interface/Services%20Supported%20for%20Interfaces.htm#_index_446728067"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Session"/>
+  <param name="Local" value="30%20Features/State%20Dependency/Session.htm#_index_446728119"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Setup"/>
+  <param name="Local" value="30%20Features/Installation/Setup.htm#_index_446728060"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Sharing"/>
+  <param name="Local" value="30%20Features/Diagnostic%20Instance/Sharing%20Diagnostic%20Instances.htm#_index_446727993"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Shortcut"/>
+  <param name="Local" value="30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm#_index_446728113"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Signature"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Protocol%20Service.htm#_index_446728092"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Significant Digits"/>
+  <param name="Local" value="30%20Features/Data%20Type/Precision.htm#_index_446727964"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Singleton"/>
+  <param name="Local" value="30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#_index_446727988"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Snapshot Record"/>
+  <param name="Local" value="30%20Features/Fault%20Memory/Fault%20Memory.htm#_index_446728044"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Specified Path"/>
+  <param name="Local" value="30%20Features/Vehicle%20System%20Group/Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm#_index_446728134"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Splash Screen"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Startup.htm#_index_446727871"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Start Menu"/>
+  <param name="Local" value="30%20Features/Installation/Start%20Menu.htm#_index_446728063"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Start-Up"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Startup.htm#_index_446727869"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="State"/>
+  <param name="Local" value="30%20Features/State%20Dependency/State.htm#_index_446728122"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="State Dependency"/>
+  <param name="Local" value="30%20Features/State%20Dependency/State%20Dependency.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="State Group"/>
+  <param name="Local" value="30%20Features/State%20Dependency/State%20Group.htm#_index_446728121"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Status Bar"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Status%20Bar.htm#_index_446727865"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="String termination"/>
+  <param name="Local" value="30%20Features/Data%20Type/String%20Termination.htm#_index_446727961"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Support"/>
+  <param name="Local" value="10%20Introduction/Contact.htm#_index_446727844"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Support Assistant"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Vector%20Support%20Assistant.htm#_index_446727876"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Supported Platforms"/>
+  <param name="Local" value="30%20Features/Installation/Supported%20Platforms.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Suppress Positive Response Message Indication Bit"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Addressing.htm#_index_446728099"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Suspect Parameter Number"/>
+  <param name="Local" value="30%20Features/DTC/Failure%20Mode%20Identifier.htm#_index_446728019"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Target Groups"/>
+  <param name="Local" value="30%20Features/Target%20Groups/Target%20Groups.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Telegram Table"/>
+  <param name="Local" value="30%20Features/Data%20Objects/Telegram%20Table.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Template"/>
+  <param name="Local" value="30%20Features/Document%20Template/Document%20Template.htm#_index_446728012"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Text Table"/>
+  <param name="Local" value="30%20Features/Data%20Type/Text%20Table.htm#_index_446727969"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="TextID"/>
+  <param name="Local" value="30%20Features/Common%20Properties/TextID.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Toolbar"/>
+  <param name="Local" value="20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm#_index_446727877"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Translation Memory"/>
+  <param name="Local" value="30%20Features/Multi-Language/Translation%20Memory.htm#_index_446728071"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Translation View"/>
+  <param name="Local" value="20%20UserInterface/Multi-Language/Translation%20View.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Tree"/>
+  <param name="Local" value="20%20UserInterface/Tree/Navigation%20Tree.htm#_index_446727898"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="UDS"/>
+  <param name="Name" value="UDS 2013"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/UDS%202013.htm#_index_446728105"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="UDS 2013"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/UDS%202013.htm#_index_446728105"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="UDS 2019"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/UDS%202019.htm#_index_446728106"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Vector UDS Template"/>
+  <param name="Local" value="40%20Templates/Vector%20UDS/Introduction.htm#_index_446728138"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Vector UDS on LIN Template"/>
+  <param name="Local" value="40%20Templates/Vector%20UDS%20on%20LIN/Introduction.htm#_index_446728140"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="URI Scheme"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/candelastudio%20URI%20Scheme.htm#_index_446727904"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="UUIDs"/>
+  <param name="Local" value="30%20Features/Common%20Properties/PREEvision%20UUIDs.htm#_index_446727928"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Uniform Resource Identifier"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/candelastudio%20URI%20Scheme.htm#_index_446727905"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Unit"/>
+  <param name="Name" value="at Data Type"/>
+  <param name="Local" value="30%20Features/Data%20Type/Unit.htm#_index_446727966"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="at Data Type"/>
+  <param name="Local" value="30%20Features/Data%20Type/Unit.htm#_index_446727966"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="at Communication Parameter"/>
+  <param name="Local" value="30%20Features/Interface/Communication%20Parameter.htm#_index_446728069"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Used Protocol Service"/>
+  <param name="Local" value="30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#_index_446727991"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="User Feedback"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/User%20Feedback.htm#_index_446727874"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="User-Defined Fault Memory"/>
+  <param name="Local" value="30%20Features/Fault%20Memory/Fault%20Memory.htm#_index_446728046"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="VCK"/>
+  <param name="Local" value="30%20Features/Variant/Variant%20Coding%20Keys.htm#_index_446728129"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="VW 5 Character Rule"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Qualifier.htm#_index_446727932"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Variable Length"/>
+  <param name="Local" value="30%20Features/Data%20Type/Length.htm#_index_446727954"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Variable Value Component"/>
+  <param name="Local" value="30%20Features/Protocol%20Service/Variable%20Value%20Component.htm#_index_446728098"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Variant"/>
+  <param name="Name" value="Introduction"/>
+  <param name="Local" value="30%20Features/Variant/Variant.htm#_index_446728123"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Introduction"/>
+  <param name="Local" value="30%20Features/Variant/Variant.htm#_index_446728123"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Lock"/>
+  <param name="Local" value="30%20Features/Variant/Lock%20Variant.htm#_index_446728127"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Variant Coding Keys"/>
+  <param name="Local" value="30%20Features/Variant/Variant%20Coding%20Keys.htm#_index_446728128"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Variant Identification"/>
+  <param name="Local" value="30%20Features/Variant/Variant%20Identification.htm#_index_446728130"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Vector Support Assistant"/>
+  <param name="Local" value="20%20UserInterface/CANdelaStudio%20Editor/Vector%20Support%20Assistant.htm#_index_446727875"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Vehicle System Group"/>
+  <param name="Local" value="30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Version"/>
+  <param name="Local" value="30%20Features/Document/Document.htm#_index_446728004"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Version Numbering"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Version%20Numbering.htm#_index_446727916"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Views"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Views.htm"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Virtual Machine"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/Licensing.htm#_index_446727911"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="WWH-OBD"/>
+  <param name="Local" value="30%20Features/Fault%20Memory/Fault%20Memory.htm#_index_446728042"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Windows"/>
+  <param name="Name" value="Start Menu"/>
+  <param name="Local" value="30%20Features/Installation/Start%20Menu.htm#_index_446728062"/>
+</object>
+<ul>
+<li><object type="text/sitemap">
+  <param name="Name" value="Start Menu"/>
+  <param name="Local" value="30%20Features/Installation/Start%20Menu.htm#_index_446728062"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Versions"/>
+  <param name="Local" value="30%20Features/Installation/Supported%20Platforms.htm#_index_446728065"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="Settings"/>
+  <param name="Local" value="30%20Features/Installation/Windows%20Settings.htm#_index_446728066"/>
+</object>
+</li>
+</ul>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="candelastudio:"/>
+  <param name="Local" value="30%20Features/CANdelaStudio%20Editor/candelastudio%20URI%20Scheme.htm#_index_446727903"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="controlEnableMaskRecord"/>
+  <param name="Local" value="30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Use-Cases.htm#_index_446727989"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="for Vehicle System Groups"/>
+  <param name="Local" value="30%20Features/Vehicle%20System%20Group/Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm#_index_446728132"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="npath"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Object%20Paths.htm#_index_446727924"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="qpath"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Object%20Paths.htm#_index_446727925"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="rpath"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Object%20Paths.htm#_index_446727927"/>
+</object>
+</li>
+<li><object type="text/sitemap">
+  <param name="Name" value="xpath"/>
+  <param name="Local" value="30%20Features/Common%20Properties/Object%20Paths.htm#_index_446727926"/>
+</object>
+</li>
+</ul>
+</html>

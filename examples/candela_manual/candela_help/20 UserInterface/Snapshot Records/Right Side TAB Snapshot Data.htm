@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Right Side TAB Snapshot Data</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="right-side-tab-snapshot-data">Right Side: TAB &quot;Snapshot Data&quot;</h1>
+<div class="figure">
+<img src="Images/UDSSnapshotDataPerDTC.png" alt="UDS Snapshot Data per DTC - right side: TAB &quot;Snapshot Data&quot;" />
+<p class="caption">UDS Snapshot Data per DTC - right side: TAB &quot;Snapshot Data&quot;</p>
+</div>
+<p><span id="SRUI-R700" class="rqDef">[SRUI-R700]</span> The TAB shows...</p>
+<ul>
+<li>a top area <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R720' title="">[SRUI-R720]</a> for the Common Snapshot Data <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R230-Common' title="">[SR-R230-Common]</a>
+<ul>
+<li>read-only</li>
+<li>as shown in the Snapshot Records List <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Data%20Common%20for%20All%20DTCs.htm#SRUI-R300' title="">[SRUI-R300]</a></li>
+<li>no actions</li>
+<li>no context menu</li>
+</ul></li>
+<li>for the row selected in the list to the left:
+<ul>
+<li>a page <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R730' title="">[SRUI-R730]</a> using Default Snapshot Data <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R230-Default' title="">[SR-R230-Default]</a>, or</li>
+<li>a page <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R760' title="">[SRUI-R760]</a> for Overridden Snapshot Data <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R230-Overridden' title="">[SR-R230-Overridden]</a>.</li>
+</ul></li>
+</ul>
+<p><span id="SRUI-R720" class="rqDef">[SRUI-R720]</span> The &quot;Common for All DTCs&quot; area shows...</p>
+<ul>
+<li>a static text &quot;UDS Snapshot Data common for all DTCs&quot;</li>
+<li>a filter control</li>
+<li>a DID list <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R770' title="">[SRUI-R770]</a></li>
+<li>no toolbar, no context menu</li>
+</ul>
+<p><span id="SRUI-R730" class="rqDef">[SRUI-R730]</span> The &quot;Default&quot; area shows...</p>
+<div class="figure">
+<img src="Images/UDSSnapshotDataPerDTCDefault.png" alt="UDS Snapshot Data per DTC - Default Snapshot Data" />
+<p class="caption">UDS Snapshot Data per DTC - Default Snapshot Data</p>
+</div>
+<ul>
+<li>a static text &quot;for DTC P001122&quot;
+<ul>
+<li>DTC format like shown in the DTC list left</li>
+</ul></li>
+<li>toolbar buttons</li>
+<li>a filter control</li>
+<li>a DID list <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R770' title="">[SRUI-R770]</a></li>
+</ul>
+<p><span id="SRUI-R760" class="rqDef">[SRUI-R760]</span> The &quot;Individual for DTC&quot; area shows:</p>
+<div class="figure">
+<img src="Images/UDSSnapshotDataPerDTCOverridden.png" alt="UDS Snapshot Data per DTC - Overridden Snapshot Data" />
+<p class="caption">UDS Snapshot Data per DTC - Overridden Snapshot Data</p>
+</div>
+<h2 id="did-list">DID List</h2>
+<p><span id="SRUI-R770" class="rqDef">[SRUI-R770]</span> Each DID list shows the Snapshot Data DIDs <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R240' title="">[SR-R240]</a> in their defined order.</p>
+<p><span id="SRUI-R772" class="rqDef">[SRUI-R772]</span> Each DID list shows a &quot;magic line&quot;: &quot;Add DIDs...&quot;.</p>
+<h3 id="multi-selection">Multi-selection</h3>
+<p><span id="SRUI-R775" class="rqDef">[SRUI-R775]</span> If multiple DTCs are selected,</p>
+<ul>
+<li><span id="SRUI-R775-Same" class="rqDef">[SRUI-R775-Same]</span> if DTC Specific Data <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-D230-DTCSpecific' title="">[SR-D230-DTCSpecific]</a> of <strong>all selected DTCs</strong> contain the same DIDs in the same sequence:
+<ul>
+<li>the DID list shows these DIDs;</li>
+</ul></li>
+<li><span id="SRUI-R775-Diff" class="rqDef">[SRUI-R775-Diff]</span> otherwise,
+<ul>
+<li>the DID list shows the hint &quot;<strong>(Different DIDs)</strong>&quot;,</li>
+<li>it also shows the &quot;magic line&quot; <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R772' title="">[SRUI-R772]</a>.</li>
+</ul></li>
+</ul>
+<h3 id="list-columns">List Columns</h3>
+<p><span id="SRUI-R776" class="rqDef">[SRUI-R776]</span> <strong>Identifier</strong></p>
+<ul>
+<li>shows the DID Identifier <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R025' title="Identifier">[DID-R025]</a></li>
+<li>see <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R025-DefaultDisplay' title="">[DID-R025-DefaultDisplay]</a></li>
+</ul>
+<p><span id="SRUI-R777" class="rqDef">[SRUI-R777]</span> <strong>Name</strong></p>
+<ul>
+<li>shows the DID Name</li>
+</ul>
+<p><span id="SRUI-R778" class="rqDef">[SRUI-R778]</span> <strong>DID Data</strong></p>
+<ul>
+<li>see <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R155-DefaultDisplay' title="">[DID-R155-DefaultDisplay]</a></li>
+</ul>
+<h3 id="local-toolbar">Local Toolbar</h3>
+<ul>
+<li>Reset to Default
+<ul>
+<li>see <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R7815' title="">[SRUI-R7815]</a> below</li>
+</ul></li>
+<li>Add DIDs
+<ul>
+<li>see <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R781' title="">[SRUI-R781]</a> below</li>
+</ul></li>
+<li>Remove selected DIDs
+<ul>
+<li>see <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R785' title="">[SRUI-R785]</a> below</li>
+</ul></li>
+<li>Move selected DID up</li>
+<li>Move selected DID up</li>
+</ul>
+<h3 id="context-menu">Context Menu</h3>
+<ul>
+<li><span id="SRUI-R781" class="rqDef">[SRUI-R781]</span> Add DIDs...
+<ul>
+<li>Shows a dialog to select DIDs</li>
+<li>With the selected DIDs, performs operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R225' title="">[SROP-R225]</a></li>
+</ul></li>
+<li><span id="SRUI-R785" class="rqDef">[SRUI-R785]</span> Remove selected DIDs
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R235' title="">[SROP-R235]</a></li>
+<li>Insensitive if the DID list is empty.
+<ul>
+<li>Sensitive even in multi-selection constellation <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R775-Diff' title="">[SRUI-R775-Diff]</a>,</li>
+<li>deletes all DIDs for each selected DTC.</li>
+</ul></li>
+</ul></li>
+<li><span id="SRUI-R782" class="rqDef">[SRUI-R782]</span> Copy
+<ul>
+<li>Copies the selected DIDs to the CANdelaStudio clipboard</li>
+<li>Insensitive if the DID list is empty, or in multi-selection constellation <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R775-Diff' title="">[SRUI-R775-Diff]</a>.</li>
+</ul></li>
+<li><span id="SRUI-R783" class="rqDef">[SRUI-R783]</span> Paste
+<ul>
+<li>For the DIDs in the CANdelaStudio clipboard, performs operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R225' title="">[SROP-R225]</a></li>
+<li>Insensitive if the clipboard does not contain a DID.
+<ul>
+<li>Sensitive even in multi-selection constellation <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R775-Diff' title="">[SRUI-R775-Diff]</a>,</li>
+<li>adds to each case individually.</li>
+</ul></li>
+</ul></li>
+<li><span id="SRUI-R788" class="rqDef">[SRUI-R788]</span> Move selected DID up
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R200' title="">[SROP-R200]</a></li>
+<li>Insensitive if...
+<ul>
+<li>the DID list is empty, or</li>
+<li>in multi-selection constellation <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R775-Diff' title="">[SRUI-R775-Diff]</a>, or</li>
+<li>the selection contains the last DID, or</li>
+<li>the selection is not continuous (i.e. has not selected DIDs in between)</li>
+</ul></li>
+</ul></li>
+<li><span id="SRUI-R789" class="rqDef">[SRUI-R789]</span> Move selected down
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R210' title="">[SROP-R210]</a></li>
+<li>Insensitive: same as &quot;Move up&quot;, except:
+<ul>
+<li>if the selection contains the first DID.</li>
+</ul></li>
+</ul></li>
+<li><span id="SRUI-R7815" class="rqDef">[SRUI-R7815]</span> Reset to Default
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R250' title="">[SROP-R250]</a></li>
+<li>Insensitive if all selected DTC(s) have Default Snapshot Data <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R230-Default' title="">[SR-R230-Default]</a></li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../20%20UserInterface/Fault%20Memory/AUTOSAR%20Fault%20Memory%20GUI.htm">GUI AUTOSAR Fault Memory</a> (overview)</li>
+<li><a href="GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm">Snapshot Record Data Model</a></li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Operations.htm">Snapshot Record Operations</a></li>
+</ul>
+</body>
+</html>

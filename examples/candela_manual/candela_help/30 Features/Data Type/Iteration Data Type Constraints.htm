@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Iteration Data Type Constraints</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="iteration-data-type-constraints">Iteration Data Type Constraints</h1>
+<h2 id="data-objects-contained">Data Objects Contained</h2>
+<p>The <strong>data object collection</strong> in an iteration data type...</p>
+<ul>
+<li>must <strong>not</strong> remain <strong>empty</strong>;</li>
+<li>when the data type is referenced from a diagnostic instance: must respect the <strong>size restrictions</strong> of the proxy component;</li>
+<li>when contained in one of...
+<ul>
+<li><strong>counter iteration</strong></li>
+<li><strong>end-marker iteration</strong></li>
+<li><strong>end-of-service iteration</strong>,</li>
+</ul>
+must not contain (directly or indirectly) a data object that references any of these three datatypes (CDS-15487 6.5).</li>
+</ul>
+<h2 id="referencing-data-object">Referencing Data Object</h2>
+<p>A data object that references an iteration data type must...</p>
+<ul>
+<li>must <strong>not</strong> have a <strong>default or const value</strong></li>
+<li><strong>not</strong> be inside a <strong>bit field</strong>
+<ul>
+<li>same as for Mux CDS-10216 R006 1.)</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Data%20Type/Iteration%20Data%20Types.htm">Iteration Data Types</a></li>
+<li><a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a></li>
+</ul>
+</body>
+</html>

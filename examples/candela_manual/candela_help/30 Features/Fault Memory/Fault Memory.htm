@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Fault Memory</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="fault-memory">Fault Memory</h1>
+<h2 id="overview">Overview</h2>
+<div class="figure">
+<img src="../../30%20Features/Images/Fault%20Memory%20System%20Context.jpg" alt="Fault Memory in System Context" />
+<p class="caption">Fault Memory in System Context</p>
+</div>
+<p>The following are important parts of a Fault Memory implementation:</p>
+<table>
+<colgroup>
+<col width="23%" />
+<col width="76%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Monitor</strong></td>
+<td align="left">watches for failure of a hardware component, communication, algorithm</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Event</strong></td>
+<td align="left">reported if the monitor detects a failure, see the <a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Event Status</strong></td>
+<td align="left">tracked by the ECU, see <a href="../../30%20Features/DTC/DTC%20Status%20Bits.htm">DTC Status Bits</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Snapshot Data</strong></td>
+<td align="left">data from the <strong>time of the failure</strong> (<a href="#sd">below</a>),<br />
+also called &quot;<strong>environment data</strong>&quot;, &quot;<strong>freeze frames</strong>&quot;,<br />
+e.g. the engine speed at the time of failure occurrence</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Diagnostic Protocol</strong></td>
+<td align="left">used to report a failure from the ECU to a test system;<br />
+e.g. UDS</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>DTC</strong></td>
+<td align="left">represents the event in the diagnostic protocol, see <a href="../../30%20Features/DTC/DTC.htm">Diagnostic Trouble Code (DTC)</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Statistical Data</strong></td>
+<td align="left">data from the <strong>time of the request</strong> (<a href="#ed">below</a>),<br />
+also called &quot;<strong>Extended Data</strong>&quot;,<br />
+e.g. the number of DTC occurrences</td>
+</tr>
+</tbody>
+</table>
+<h2 id="uds">UDS</h2>
+<ul>
+<li>Unified Diagnostic Services (UDS; ISO 14229)</li>
+<li>defines services for Fault Memory: DTCs, Snapshot Data, Extended Data (see below)</li>
+</ul>
+<h2 id="wwh-obd"><span id='_index_446728042'>WWH-OBD</span></h2>
+<ul>
+<li>World Wide Harmonized On-Board-Diagnostic (ISO 27145)</li>
+<li>Adds some UDS services.</li>
+<li>Reserves Snapshot Record 0x00 (Freeze Frame)</li>
+</ul>
+
+<h2 id="obd-on-uds"><span id='_index_446728043'>OBD on UDS</span></h2>
+<ul>
+<li>SAE J1979-2</li>
+<li>Classic OBD-II to be replaced by UDS services</li>
+<li>New subfunctions for Fault Memory access</li>
+<li>Reserves Snapshot Record 0x00 and 0xF0 (Freeze Frame)</li>
+<li>Schedule (potential, as of 2019-09):
+<ul>
+<li>2023: CARB allows OBDonUDS for new vehicles?</li>
+<li>2026: CARB requires OBDonUDS for new vehicles?</li>
+</ul></li>
+<li>Used in AUTOSAR Adaptive</li>
+</ul>
+<p><span id="FM-D050" class="rqDef">[FM-D050]</span> CANdelaStudio v13 (of 2020-02) is <strong>prepared for OBD on UDS</strong>:</p>
+<ul>
+<li>OBD on UDS has not yet been published!
+<ul>
+<li>Therefore, <strong>AUTOSAR</strong> does <strong>not yet</strong> support the new Snapshot Record Number <strong>0xF0</strong>.</li>
+</ul></li>
+<li>As of 2020-02, CANdelaStudio v13 can <strong>represent</strong> OBD on UDS Snapshot Records,</li>
+<li>but it does not support creating such Snapshot Records.</li>
+<li>Further support to come when OBD on UDS has been published and details have been clarified.</li>
+</ul>
+
+<h2 id="dtcs">DTCs</h2>
+<ul>
+<li>an ECU reacts to an <strong>event</strong> and stores information about it</li>
+<li>on request by a test system, the ECU sends a list of DTCs.</li>
+</ul>
+<p>See also <a href="Fault%20Memory%20in%20UDS.htm#read-dtcs">Read DTCs (UDS)</a>, and <a href="Fault%20Memory%20in%20CANdela.htm">Fault Memory in CANdela</a>.</p>
+<h2 id="sd">Snapshot Data (Environment Data, <span id='_index_446728044'>Snapshot Record</span>)</h2>
+<div class="figure">
+<img src="Images/Snapshot%20Data%20Occurrences.jpg" alt="Snapshot Data Occurrences" />
+<p class="caption">Snapshot Data Occurrences</p>
+</div>
+<ul>
+<li>Each time an error (event) occurs, the ECU may store environment data.</li>
+<li>A test system requests the <strong>environment data</strong> for a given DTC.</li>
+<li>Each DTC <em>may</em> have a specific structure of environment data, but multiple DTCs may as well use the same structure.</li>
+</ul>
+<p>When using the same DTC for different error symptoms, typically the environment data describes which symptom occurred.</p>
+<p>See also <a href="Fault%20Memory%20in%20UDS.htm#sr-uds">Snapshot Record in UDS</a>, <a href="Fault%20Memory%20in%20CANdela.htm">Fault Memory in CANdela</a> and the <a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a>.</p>
+<h2 id="ed">Extended Data (DTC Statistics, <span id='_index_446728045'>Extended Data Record</span>)</h2>
+<ul>
+<li>a test system may request <strong>statistical data</strong> for a given DTC</li>
+<li>the ECU responds with the status of the DTC and a list of statistical data collected for the DTC</li>
+<li>the information is from the point in time of the request (not of an event in the past).</li>
+</ul>
+<p>See also <a href="Fault%20Memory%20in%20UDS.htm#ed">Extended Data Record in UDS</a>, <a href="Fault%20Memory%20in%20CANdela.htm">Fault Memory in CANdela</a> and the <a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a>.</p>
+<h2 id="user-defined"><span id='_index_446728046'>User-Defined Fault Memory</span></h2>
+<p>An ECU implementation may support multiple Fault Memories:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Fault Memory</th>
+<th align="left">Typical Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Primary</strong></td>
+<td align="left">OEM, after-market</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>User-defined</strong> (0..n)</td>
+<td align="left">OEM, supplier, development</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Mirror</strong></td>
+<td align="left">Preserve data if primary gets erased.</td>
+</tr>
+</tbody>
+</table>
+<p>See also <a href="Fault%20Memory%20in%20UDS.htm#user-defined">User-Defined Fault Memory in UDS</a>, and <a href="User-Defined%20Fault%20Memory%20in%20CANdela.htm">User-Defined Fault Memory in CANdela</a>.</p>
+<h2 id="obdii-fault-memory">OBDII Fault Memory</h2>
+<p><span id="FM-D100" class="rqDef">[FM-D100]</span> <strong>OBDII Fault Memory</strong></p>
+<ul>
+<li>a diagnostic instance with Class Type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R200' title="">[DCLT-R200]</a> FaultMemory</li>
+<li>containing a Combined Proxy Component with semantics &quot;OBD-DTC&quot; <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-obddtc' title="">[PC-R050-obddtc]</a>.</li>
+</ul>
+<h2 id="clear-diagnostic-information">Clear Diagnostic Information</h2>
+<ul>
+<li>resets data stored in the ECU Fault Memory: DTCs, Snapshot Data, Extended Data.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Fault%20Memory%20in%20UDS.htm">Fault Memory in UDS</a></li>
+<li><a href="Fault%20Memory%20in%20CANdela.htm">Fault Memory in CANdela</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a></li>
+<li><a href="19%2006%20Wizard%20Data%20Model.htm">19 06 Wizard</a> (Extended Data per DTC)</li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC (Feature)</a></li>
+<li><a href="../../30%20Features/DTC/Failure%20Type%20Byte.htm">Failure Type Byte</a></li>
+<li><a href="../../30%20Features/DTC/Failure%20Mode%20Identifier.htm">Failure Mode Identifier</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a> (setup in template)</li>
+<li><a href="../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm">User-Defined Fault-Memory in CANdela</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Class</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-class">Diagnostic Class</h1>
+<h2 id="diagnostic-instances">Diagnostic Instances</h2>
+<p>See the <a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instances.htm">Diagnostic Instances List</a>.</p>
+<h2 id="properties">Properties</h2>
+<p>You can edit the description and attribute values of the diagnostic class in the properties dialog of the diagnostic class, available in the context menu in the tree (right mouse on the diagnostic class tree node).</p>
+<h2 id="operations">Operations</h2>
+<h3 id="new-diagnostic-instances-from-repository">New Diagnostic Instances from Repository</h3>
+<p><span id="DCLUI-R410" class="rqDef" title="Select from Repository">[DCLUI-R410 Select from Repository]</span> The context menu item opens the <a href="../../20%20UserInterface/Import/Select%20from%20Repository.htm">Select from Repository</a> dialog to import DIDs from a repository.</p>
+<h3 id="new-job-container">New Job Container</h3>
+<p><span id="DCLUI-R420" class="rqDef">[DCLUI-R420]</span> Creates a new Job Container, see <a href="../../30%20Features/Job/Job.htm">Jobs</a>.</p>
+<h3 id="new-security-level">New Security Level</h3>
+<p><span id="DCLUI-R430" class="rqDef">[DCLUI-R430]</span> In a diagnostic class with class type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R200' title="">[DCLT-R200]</a> &quot;Security&quot;, starts the <a href="../../30%20Features/State%20Dependency/Session%20Security%20Wizard.htm">Security Wizard</a> to create a new security diagnostic instance.</p>
+<h3 id="new-session">New Session</h3>
+<p><span id="DCLUI-R440" class="rqDef">[DCLUI-R440]</span> In a diagnostic class with class type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R200' title="">[DCLT-R200]</a> &quot;Session&quot;, starts the <a href="../../30%20Features/State%20Dependency/Session%20Security%20Wizard.htm">Session Wizard</a> to create a new session diagnostic instance.</p>
+<h3 id="activate-all">Activate All</h3>
+<p><span id="DCLUI-R450" class="rqDef">[DCLUI-R450]</span> Sets all diagnostic instances and job containers contained in the diagnostic class to &quot;activated&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-R150' title="">[DI-R150]</a>.</p>
+<h3 id="deactivate-all">Deactivate All</h3>
+<p><span id="DCLUI-R455" class="rqDef">[DCLUI-R455]</span> Sets all diagnostic instances and job containers contained in the diagnostic class to &quot;de-activated&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-R150' title="">[DI-R150]</a>.</p>
+<h3 id="cut">Cut</h3>
+<p><span id="DCLUI-R460" class="rqDef">[DCLUI-R460]</span> Copies the diagnostic class to the clipboard internal to CANdelaStudio, marks it for deletion when inserted at another location.</p>
+<p>The diagnostic class remains visible, but the icon gets grayed out.</p>
+<h3 id="copy">Copy</h3>
+<p><span id="DCLUI-R465" class="rqDef">[DCLUI-R465]</span> Copies the diagnostic class to the clipboard internal to CANdelaStudio.</p>
+<h3 id="paste">Paste</h3>
+<p><span id="DCLUI-R470" class="rqDef">[DCLUI-R470]</span> Pastes an object from the clipboard internal to CANdelaStudio.</p>
+<h3 id="delete">Delete</h3>
+<p><span id="DCLUI-R475" class="rqDef">[DCLUI-R475]</span> Deletes the diagnostic class.</p>
+<h3 id="paste-as-reference">Paste as Reference</h3>
+<p><span id="DCLUI-R480" class="rqDef">[DCLUI-R480]</span> Pastes an object as a reference, from the clipboard internal to CANdelaStudio.</p>
+<h3 id="sort-cds-1500-cds-3174-4.0-sp2">Sort (CDS-1500, CDS-3174 4.0 SP2)</h3>
+<p><span id="DCLUI-R490" class="rqDef">[DCLUI-R490]</span> Sorts the contained diagnostic instances and job containers <strong>persistently</strong> in the document.</p>
+<p>Note: this is different from the <strong>temporary</strong> sorting in the list, by clicking a list header.</p>
+<h4 id="by-name">by Name</h4>
+<p><span id="DCLUI-R492" class="rqDef">[DCLUI-R492]</span> Sorts (see above) by the object <a href="../../30%20Features/Common%20Properties/Name.htm">name</a>.</p>
+<h4 id="by-qualifier">by Qualifier</h4>
+<p><span id="DCLUI-R494" class="rqDef">[DCLUI-R494]</span> Sorts (see above) by the object <a href="../../30%20Features/Common%20Properties/Qualifier.htm">qualifier</a>.</p>
+<h4 id="by-identifier">by Identifier</h4>
+<p><span id="DCLUI-R496" class="rqDef">[DCLUI-R496]</span> Sorts (see above)...</p>
+<ul>
+<li>diagnostic instances first, sorted by the Identifier <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-R100' title="">[DI-R100]</a>;</li>
+<li>job containers second, sorted by name (CDS-17004 7.1).</li>
+</ul>
+<h4 id="by-maturity">by Maturity</h4>
+<p><span id="DCLUI-R498" class="rqDef">[DCLUI-R498]</span> This menu item is available if object Maturity <a class='rqRef' href='../../30 Features\Common Properties\Maturity.htm#MAT-D100' title="">[MAT-D100]</a> has been configured for the document.</p>
+<p>It sorts (see above) by the maturity value:</p>
+<ul>
+<li>for a numeric attribute, numerically ascending</li>
+<li>for an enumeration attribute <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a>, by ascending symbol string</li>
+</ul>
+<h3 id="export-open-diagnostic-data-exchange">Export Open Diagnostic Data Exchange</h3>
+<p><span id="DCLUI-R500" class="rqDef">[DCLUI-R500]</span> Exports the selected object to ODX <a class='rqRef' href='../../30 Features\Export\1_ODXExport_Introduction.htm#ODXE-R120' title="">[ODXE-R120]</a>.</p>
+<h3 id="qualifier-overview">Qualifier Overview</h3>
+<p><span id="DCLUI-R510" class="rqDef">[DCLUI-R510]</span> Opens <a href="../../20%20UserInterface/Common%20Properties/Qualifier%20Overview.htm">Qualifier Overview</a> on the selected object.</p>
+<h3 id="attribute-overview">Attribute Overview</h3>
+<p><span id="DCLUI-R520" class="rqDef">[DCLUI-R520]</span> Opens <a href="../../20%20UserInterface/Attributes/Attribute%20Overview.htm">Attribute Overview</a> on the selected object.</p>
+<h3 id="target-group-overview">Target Group Overview</h3>
+<p><span id="DCLUI-R530" class="rqDef">[DCLUI-R530]</span> Opens <a href="../../20%20UserInterface/Target%20Groups/Target%20Group%20Overview.htm">Target Group Overview</a> on the selected object.</p>
+<h3 id="select-as-left-side-for-compare">Select as Left Side for Compare</h3>
+<p><span id="DCLUI-R540" class="rqDef">[DCLUI-R540]</span> Remembers the object as first object for a comparison in <a href="../../20%20UserInterface/Compare/Compare%20View.htm">Compare View</a>.</p>
+<h3 id="compare-to...">Compare to...</h3>
+<p><span id="DCLUI-R545" class="rqDef">[DCLUI-R545]</span></p>
+<ul>
+<li>If an object has been selected previously (see previous chapter),</li>
+<li>uses the now selected object as second object for comparison and</li>
+<li>opens <a href="../../20%20UserInterface/Compare/Compare%20View.htm">Compare View</a></li>
+</ul>
+<h3 id="properties-of-data-type-for-identifier">Properties of Data Type for Identifier</h3>
+<p><span id="DCLUI-R550" class="rqDef">[DCLUI-R550]</span> Opens the property dialog for the text table <a class='rqRef' href='../../30 Features\Diagnostic Class Template\Used Protocol Service.htm#DCLT-R400' title="">[DCLT-R400]</a> configured in the diagnostic class template.</p>
+<h3 id="properties-1">Properties</h3>
+<p><span id="DCLUI-R560" class="rqDef">[DCLUI-R560]</span> Opens the <a href="../../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">property dialog</a> for the diagnostic class.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm">Diagnostic Class (Feature)</a></li>
+<li><a href="../../30%20Features/Import/Repository%20Integration.htm">Repository Integration</a></li>
+<li><a href="../../20%20UserInterface/Import/Select%20from%20Repository.htm">Select from Repository</a></li>
+</ul>
+</body>
+</html>

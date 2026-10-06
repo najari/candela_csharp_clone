@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CANdelaStudio 13</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="migrations-candelastudio-13">Migrations CANdelaStudio 13</h1>
+<h2 id="autosar-fault-memory-cds-71541-v13">AUTOSAR Fault Memory (CDS-71541 v13)</h2>
+
+<h2 id="snapshot-records-migration-autosar">Snapshot Records Migration (AUTOSAR)</h2>
+<h3 id="controlling-migration">Controlling Migration</h3>
+<ul>
+<li><span id="MIG13-R130" class="rqDef">[MIG13-R130]</span> If an older file contains Protocol Services and Fault Memory Template Settings for Snapshot Records structured <strong>conforming with AUTOSAR</strong>,
+<ul>
+<li>then CANdelaStudio <strong>as a default</strong> migrates them to use the specific Proxy Components <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R100' title="Proxy Semantics">[PC-R100]</a> added in v13.</li>
+<li>This holds for an older file with <strong>8.2 Fault Memory</strong> as well as with the <strong>generic modelling</strong>.</li>
+</ul></li>
+<li><span id="MIG13-R130-Code" class="rqDef">[MIG13-R130-Code]</span> Hard-coded: CANdelaStudio 13 does <strong>not</strong> migrate to the AUTOSAR Fault Memory for the manufacturer <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R110' title="">[DOC-R110]</a> Daimler (CDS-72218 v13).</li>
+<li><span id="MIG13-R130-No" class="rqDef">[MIG13-R130-No]</span> You can suppress the default or hard-coded behavior (see previous items) by adding an attribute in the older file:</li>
+<li><span id="MIGR13-D130" class="rqDef">[MIGR13-D130]</span> <strong>Snapshot Data Migration Attribute</strong> (CDS-72049)
+<ul>
+<li>ECU Attribute</li>
+<li>Qualifier MigrateSnapshotDataToAUTOSARFaultMemory13`</li>
+<li>Type &quot;Unsigned&quot;</li>
+<li>Value 0: do not migrate Snapshot Data</li>
+<li>All other values: do migrate (note: only if data structure fits AUTOSAR)</li>
+</ul></li>
+<li>Further properties are recommended but not checked for migration:
+<ul>
+<li>Name &quot;Migrate Snapshot Data to AUTOSAR Fault Memory 13&quot;</li>
+<li>Category &quot;Editor&quot;</li>
+<li>Display Format: &quot;dec&quot;</li>
+<li>Default value: 0
+<ul>
+<li>Motivation: the typical purpose of the attribute is to block migration.</li>
+</ul></li>
+<li>Usage: &quot;user&quot;</li>
+<li>Authorization: &quot;view&quot; and &quot;modify&quot;, &quot;export to specification&quot; allowed</li>
+<li>Visible in separate table column: false</li>
+</ul></li>
+</ul>
+<h3 id="fault-memory-unused-common-snapshot-data">8.2 Fault Memory: Unused Common Snapshot Data</h3>
+<p><span id="MIG13-R120" class="rqDef">[MIG13-R120]</span> For 8.2 Fault Memory with...</p>
+<ul>
+<li>Snapshot Data individual <strong>per DTC</strong> and <strong>per Snapshot Record</strong>,</li>
+<li>and <strong>no DTCs defined</strong>, i.e. the DIDs in Common Snapshot Data are not effective anywhere,</li>
+<li>migration does not represent the DIDs in v13 (it would put them into the DTC Specific Data).</li>
+</ul>
+
+<h3 id="migration-details">Migration Details</h3>
+<p><span id="SR-R600" class="rqDef">[SR-R600]</span> When loading a file...</p>
+<ul>
+<li>containing the <strong>8.2 Fault Memory</strong>
+<ul>
+<li>Snapshot Records defined on ECU level,</li>
+</ul></li>
+<li>CANdelaStudio first migrates the file to the <strong>generic Fault Memory</strong>
+<ul>
+<li>using Mux in ProtocolService.</li>
+</ul></li>
+<li>CommonSnapshotData goes into Default
+<ul>
+<li>if 8.2 DTC Specific is empty, that DTC goes Default</li>
+<li>if 8.2 DTC Specific is not empty, that DTC gets the CommonSnapshotData as prefix, then DTC Specific DIDs</li>
+</ul></li>
+<li>In a second step, that generic Fault Memory may qualify for the migration to AUTOSAR Fault Memory of v13.</li>
+</ul>
+<p><span id="SR-R620" class="rqDef">[SR-R620]</span> Migration of 8.2 AUTOSAR compatible to v13</p>
+<p><strong>Preconditions</strong></p>
+<ul>
+<li>8.2 Template Settings
+<ul>
+<li>has Snapshot Records</li>
+<li>identical for all Snapshot Records</li>
+<li>may be individual per DTC</li>
+<li>allow only DIDs</li>
+</ul></li>
+<li>for Snapshot Records <code>!= 0</code>, only one set of CommonSnapshotData</li>
+<li>Snapshot Record 0 defined or not</li>
+</ul>
+<p><strong>Result</strong></p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">8.2</th>
+<th align="left">v13</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Snapshot Records (= ECU level)</td>
+<td align="left">inserted in each variant that has a 19 04 Fault Memory</td>
+</tr>
+<tr class="even">
+<td align="left">diagnostic instance referencing</td>
+<td align="left">do not change!</td>
+</tr>
+<tr class="odd">
+<td align="left">Data of SR 0</td>
+<td align="left">WWH-OBD part <strong>TBD</strong> how to transport via generic???</td>
+</tr>
+<tr class="even">
+<td align="left">Data of SR <code>!=</code> 0</td>
+<td align="left">UDS part</td>
+</tr>
+<tr class="odd">
+<td align="left">8.2 CommonSnapshotData</td>
+<td align="left">AFM Common</td>
+</tr>
+<tr class="even">
+<td align="left">8.2 DTC Specific</td>
+<td align="left">AFM DTC Specific</td>
+</tr>
+<tr class="odd">
+<td align="left">the most often occurring 8.2 DTC Specific DID set</td>
+<td align="left"><strong>TBD</strong> Optimization: put into AFM Default</td>
+</tr>
+<tr class="even">
+<td align="left">8.2 unordered DID references</td>
+<td align="left">AFM ordered list of DID references</td>
+</tr>
+</tbody>
+</table>
+<h2 id="snapshot-records-migration-generic">Snapshot Records Migration (Generic)</h2>
+<ul>
+<li><span id="MIG13-R200" class="rqDef">[MIG13-R200]</span> If an older file contains Protocol Services and Fault Memory Template Settings for Snapshot Records <strong>not conforming with AUTOSAR</strong>,
+<ul>
+<li>then CANdelaStudio migrates them to the generic Multiplexer based data structure.</li>
+</ul></li>
+</ul>
+<p>Examples:</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/8.2%20Fault%20Memory%20not%20AUTOSAR.jpg" alt="8.2 Fault Memory not AUTOSAR" />
+<p class="caption">8.2 Fault Memory not AUTOSAR</p>
+</div>
+<ul>
+<li>Snapshot Data individual per Snapshot Record</li>
+<li>allowing regular data objects, not only DIDs, in Snapshot Data</li>
+</ul>
+<p><strong>Result</strong></p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Generic</th>
+<th align="left">v13 AUTOSAR Fault Memory</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Snapshot Records (if in data type)</td>
+<td align="left">inserted in each variant that has a 19 04 Fault Memory (TBD multiple ProtocolServices?)</td>
+</tr>
+<tr class="even">
+<td align="left">diagnostic instance referencing</td>
+<td align="left">do not change!</td>
+</tr>
+<tr class="odd">
+<td align="left">Mux Default</td>
+<td align="left">Common</td>
+</tr>
+<tr class="even">
+<td align="left">n/a</td>
+<td align="left">Mux Default</td>
+</tr>
+<tr class="odd">
+<td align="left">Mux DTC Specific</td>
+<td align="left">Mux DTC Specific</td>
+</tr>
+<tr class="even">
+<td align="left">8.2 unordered DID references</td>
+<td align="left">ordered list of DID references</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="extended-data-records-migration">Extended Data Records Migration</h2>
+<ul>
+<li><span id="MIG13-R140" class="rqDef">[MIG13-R140]</span> If an older file contains Protocol Services for Extended Data Records structured conforming with AUTOSAR, CANdelaStudio migrates them to use the specific Proxy Components <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R100' title="Proxy Semantics">[PC-R100]</a> added in v13.</li>
+<li><span id="MIG13-R140-Code" class="rqDef">[MIG13-R140-Code]</span> The implementation may exclude files based on their &quot;manufacturer&quot; <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R110' title="">[DOC-R110]</a>
+<ul>
+<li>as of v13: none.</li>
+</ul></li>
+<li><span id="MIG13-R140-No" class="rqDef">[MIG13-R140-No]</span> You can suppress this migration by adding an attribute in the file:</li>
+<li><span id="MIGR13-D140" class="rqDef">[MIGR13-D140]</span> <strong>Extended Data Migration Attribute</strong> (CDS-72049)
+<ul>
+<li>ECU Attribute</li>
+<li>Qualifier MigrateExtendedDataToAUTOSARFaultMemory13`</li>
+<li>The further details are as for Snapshot Records <a class='rqRef' href='../../30%20Features/Migrations/CANdelaStudio%2013.htm#MIG13-R130' title="">[MIG13-R130]</a> above.</li>
+</ul></li>
+</ul>
+<h2 id="supports-autosar-migration-cds-71296">&quot;Supports AUTOSAR&quot; Migration (CDS-71296)</h2>
+<p><span id="MIG13-R300" class="rqDef">[MIG13-R300]</span> If in an older file, ...</p>
+<ul>
+<li>the attribute AUTOSAR Type <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_AUTOSAR_Type' title="">[ASR-D001_AUTOSAR_Type]</a> <strong>exists</strong> and is != none,</li>
+<li>then migration ensures the AUTOSAR attributes as of v13 exist
+<ul>
+<li>Plan for the future: attributes of the respective version.</li>
+</ul></li>
+</ul>
+
+<p><span id="MIG13-R310" class="rqDef">[MIG13-R310]</span> If in an older file, ...</p>
+<ul>
+<li>the attribute AUTOSAR Type <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_AUTOSAR_Type' title="">[ASR-D001_AUTOSAR_Type]</a> <strong>does not exist</strong></li>
+<li>but the diagnostic instance attribute &quot;ASR SWC ServiceDependency Ref&quot; <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_SWC_DIServiceDependency_Ref' title="">[ASR-D001_ASR_SWC_DIServiceDependency_Ref]</a> exists
+<ul>
+<li>(i.e. it indicates that the checkbox was checked in the old version)</li>
+</ul></li>
+<li>then migration creates all attributes <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001' title="">[ASR-D001]</a> needed for AUTOSAR support, especially the new ones:
+<ul>
+<li>AUTOSAR Type <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_AUTOSAR_Type' title="">[ASR-D001_AUTOSAR_Type]</a> and</li>
+<li>AUTOSAR Version <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_AUTOSAR_Version' title="">[ASR-D001_AUTOSAR_Version]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="preevision-uuids-cds-44285-v13">PREEvision UUIDs (CDS-44285 v13)</h2>
+<p><span id="MIG13-R110" class="rqDef">[MIG13-R110]</span> CANdelaStudio...</p>
+<ul>
+<li>does not save UUIDs <a class='rqRef' href='../../30%20Features/Common%20Properties/PREEvision%20UUIDs.htm#PUID-R010' title="">[PUID-R010]</a> to documents older than v13;
+<ul>
+<li>initializes them when loading documents older than v13.</li>
+</ul></li>
+<li>does not save the &quot;Supports PVCDI&quot; property to documents older than v13.
+<ul>
+<li>initializes it to false when loading documents older than v13.</li>
+</ul></li>
+</ul>
+<h2 id="identifying-feature-using-complex-data-type">Identifying Feature using Complex Data Type</h2>
+<p><span id="MIG13-R410" class="rqDef">[MIG13-R410]</span> An Identifying Feature that uses a data object in a Packet of Iteration Data Type...</p>
+<ul>
+<li>can be <strong>opened</strong> in a CANdelaStudio version older than v13 SP1, but...</li>
+<li>the Identifying Feature will not be &quot;usable&quot;,
+<ul>
+<li>the older CANdelaStudio version will mark it in red color.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="Migrations.htm">Migrations (Overview)</a></li>
+<li><a href="../../30%20Features/Persistors/Persistors.htm">Persistors</a></li>
+</ul>
+</body>
+</html>

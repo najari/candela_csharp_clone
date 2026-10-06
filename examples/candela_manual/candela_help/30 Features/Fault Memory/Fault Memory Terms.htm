@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Fault Memory Terms</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="fault-memory-terms">Fault Memory Terms</h1>
+<p><span id="FM-D010" class="rqDef">[FM-D010]</span></p>
+<ul>
+<li><strong>Aging</strong>: a DTC will be automatically removed from fault memory if the monitor function was executed and no failure was detected for a configured number of Operation Cycles.</li>
+<li><strong>Combined DTC</strong>: a DTC referenced by multiple Events</li>
+<li><strong>Event Combination</strong>: having a Combined DTC</li>
+<li><strong>Event Memory</strong>, e.g. Primary memory, holds Event Memory Entries</li>
+<li><strong>Event Memory Entry</strong>: single container for one Event and its data
+<ul>
+<li>Freeze Frames (Snapshot Records)</li>
+<li>Extended Data</li>
+</ul></li>
+<li><strong>Event Qualification</strong> (getting <strong>qualified</strong>):
+<ul>
+<li>when a <strong>passed</strong> or <strong>failed</strong> result is set</li>
+<li>within DEM, from another BSW module or SW-C</li>
+</ul></li>
+<li><strong>Failure Counter</strong> = the &quot;Trip Counter&quot; of UDS
+<ul>
+<li>counts the number of Operation Cycles (driving cycles) where a malfunction occurred</li>
+<li>when it reaches a treshold, the confirmed bit changes from 0 to 1</li>
+</ul></li>
+<li><strong>Fault Detection Counter (FDC)</strong>: an sint8 value as used in ISO</li>
+<li><strong>Freeze Frame</strong>: a record of data (DIDs/PIDs), same as Snapshot Records</li>
+<li><strong>Healing</strong>:
+<ul>
+<li>switching off an Indicator</li>
+<li>handling passed results</li>
+<li>triggered by period of time / count of operation cycles</li>
+</ul></li>
+<li><strong>Monitor</strong>: routine checking proper functionality of a component, also &quot;diagnostic function&quot;</li>
+<li><strong>Operation Cycle</strong>:
+<ul>
+<li>base of Event Qualification and DEM scheduling</li>
+<li>e.g. ignition on/off, driving cycle</li>
+</ul></li>
+<li><strong>OBD ECUs</strong>: a vehicle can have 3 types of ECUs:
+<ul>
+<li>Master ECU (1 per vehicle)</li>
+<li>Primary ECU (several)</li>
+<li>Secondary/Dependent ECU (several)</li>
+</ul></li>
+<li><strong>Primary ECU</strong>: in its Event memory, stores its own errors and those of related Secondary ECUs</li>
+<li><strong>UDS DTC Status Byte</strong>
+<ul>
+<li>see <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm#FMUDS-D050' title="">[FMUDS-D050]</a>.</li>
+</ul></li>
+</ul>
+<p>Cf. <code>AUTOSAR_SWS_DiagnosticEventManager</code> ch. 2.1.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../10%20Introduction/CANdela%20Glossary.htm">CANdela Glossary</a></li>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+</ul>
+</body>
+</html>

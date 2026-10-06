@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Revision History Dialog</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="revision-history-dialog">Revision History Dialog</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The Revision History dialog lets you</p>
+<ul>
+<li>edit the authors list</li>
+<li>edit the revision list</li>
+<li>update the modification date of the last revision to the current date</li>
+</ul>
+<p>You can also edit the last revision for the document or variant from the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Latest%20Revision.htm">Latest revision window</a> below the working area.</p>
+<h2 id="overview">Overview</h2>
+<p><span id="REVUI-R010" class="rqDef">[REVUI-R010]</span> The dialogs shows two lists (see the following chapters):</p>
+<ul>
+<li>Authors</li>
+<li>History</li>
+</ul>
+<h2 id="authors-document">Authors (Document)</h2>
+<div class="figure">
+<img src="Images/Revision%20History%20Property%20Page%20Authors.jpg" alt="Revision History Dialog - Authors Page" />
+<p class="caption">Revision History Dialog - Authors Page</p>
+</div>
+<p><span id="REVUI-R100" class="rqDef">[REVUI-R100]</span> The Authors page shows a list of all authors of the document.</p>
+<p>The &quot;Shortcut&quot; column also <a href="Revision%20History%20Dialog%20Property%20Page%20Author.htm#responsible">visualizes</a> <img src="Images/Hat.jpg" /> whether the author is responsible for this ECU.</p>
+<h2 id="history">History</h2>
+<div class="figure">
+<img src="Images/Revision%20History%20Property%20Page%20History.jpg" alt="Revision History Dialog - History Page" />
+<p class="caption">Revision History Dialog - History Page</p>
+</div>
+<p>See also the <a href="Revision%20History%20Dialog%20Property%20Page%20Revision.htm">revision property dialog</a>.</p>
+<p><span id="REVUI-R150" class="rqDef">[REVUI-R150]</span> The History page shows a list of all revision entries.</p>
+<p>A modification description longer than 500 characters is shown in the list with &quot;...&quot; added (CDS-41249 8.5 SP2).</p>
+<h3 id="status">Status</h3>
+<p>The revision history dialog maps the following <strong>numeric status values</strong> to <strong>hard-coded strings</strong>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Numeric Value</th>
+<th>English String</th>
+<th align="left">German String</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td>draft</td>
+<td align="left">in Bearbeitung</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td>completed</td>
+<td align="left">fertig gestellt</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td>tested</td>
+<td align="left">geprüft</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td>release</td>
+<td align="left">freigegeben</td>
+</tr>
+</tbody>
+</table>
+<p>If a revision entry has a numeric value not listed here, the dialog shows the numeric value directly (CDS-26520).</p>
+<h3 id="properties">Properties</h3>
+<p>Opens the <a href="Revision%20History%20Dialog%20Property%20Page%20Revision.htm">revision property dialog</a>.</p>
+<h3 id="delete-all-standard-view">Delete All (Standard View)</h3>
+<p><span id="REVUI-R200-DeleteAll" class="rqDef">[REVUI-R200-DeleteAll]</span> In Standard View, button &quot;Delete All&quot;...</p>
+<ul>
+<li>allows you to delete all revision entries together <a class='rqRef' href='../../30 Features\Revision History\Revision History.htm#REV-R200-DeleteAll' title="">[REV-R200-DeleteAll]</a>, ...</li>
+<li>but not to delete individual entries
+<ul>
+<li>Motivation: don't fake history.</li>
+</ul></li>
+</ul>
+<h3 id="delete-expert-view">Delete (Expert View)</h3>
+<p><span id="REVUI-R200-Delete" class="rqDef">[REVUI-R200-Delete]</span> In Expert View, button &quot;Delete&quot;...</p>
+<ul>
+<li>allows you even to delete individual entries <a class='rqRef' href='../../30 Features\Revision History\Revision History.htm#REV-R200-Delete' title="">[REV-R200-Delete]</a>
+<ul>
+<li>Motivation: you're an expert.</li>
+</ul></li>
+</ul>
+<h3 id="new...">New...</h3>
+<p>If...</p>
+<ul>
+<li>there are no authors in the authors list,</li>
+<li>or if all authors are marked as &quot;obsolete&quot;,</li>
+</ul>
+<p>... you must first...</p>
+<ul>
+<li>create a new author,</li>
+<li>or at least identify one author as not obsolete.</li>
+</ul>
+<p>Otherwise, you cannot add a new revision to the Revision History.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="Revision%20History%20Dialog%20Property%20Page%20Revision.htm">Revision History Dialog Property Page &quot;Edit Revision&quot;</a></li>
+<li><a href="Revision%20History%20Dialog%20Property%20Page%20Author.htm">Revision History Dialog Property Page &quot;Edit Author&quot;</a></li>
+<li><a href="../../30%20Features/Revision%20History/Revision%20History.htm">Revision History Feature</a></li>
+</ul>
+</body>
+</html>

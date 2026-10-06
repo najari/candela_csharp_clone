@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/gui/">
+    <Project Path="gui/DiagAuthor.Desktop/DiagAuthor.Desktop.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Link Target Group to State</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="link-target-group-to-state-cds-68998-9.1">Link Target Group to State (CDS-68998 9.1)</h1>
+<h2 id="context">Context</h2>
+<p>The <a href="Authorization.htm">Authorization</a> feature provides a special State Group &quot;Authorization&quot;. Based on the user's role at runtime, execution of a service may be blocked by the ECU. In CANdela, the user role is described as a state.</p>
+<h2 id="use-case">Use-case</h2>
+<p>Export to ODX only those services that may be executed in a given user-role (i.e. state of State Group &quot;Authorization&quot;).</p>
+<p>The export <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R120' title="">[MENU-R120]</a>...</p>
+<ul>
+<li>can be filtered by <strong>relevance for audience</strong> (target groups),</li>
+<li>but not by <strong>state transitions</strong>.</li>
+</ul>
+<p>Therefore it may be desirable to &quot;link&quot;...</p>
+<ul>
+<li>the &quot;Authorization&quot; <strong>state transitions</strong> at a service (cf. the <a href="../../20%20UserInterface/Service/Service%20Property%20Page%20State%20Transitions.htm">State Transitions dialog</a>)</li>
+<li>to the <strong>relevance for audience</strong> (cf. the <a href="../../20%20UserInterface/Service/Service%20Property%20Page%20Target%20Groups.htm">Target Groups dialog</a>),</li>
+</ul>
+<p>so that a service...</p>
+<ul>
+<li>&quot;blocked&quot; for a <strong>user-role (i.e. state)</strong></li>
+<li>is &quot;not relevant&quot; for the corresponding <strong>target group</strong>.</li>
+</ul>
+<h2 id="setup-of-the-link-cdc-43751-9.1">Setup of the Link (CDC-43751 9.1)</h2>
+<p><span id="ST-R500" class="rqDef">[ST-R500]</span> the values of a <strong>target group</strong> and a <strong>state</strong> are &quot;linked&quot; iff.</p>
+<ul>
+<li><span id="ST-R500-Qual" class="rqDef">[ST-R500-Qual]</span> target group and state have the same qualifier, and</li>
+<li><span id="ST-R500-Attr" class="rqDef">[ST-R500-Attr]</span> the Attribute &quot;SyncWithTargetGroup&quot; (unsigned or enum) exists at the state, and the effective (default or overridden) value is <code>!= 0</code>.</li>
+<li><span id="ST-R500-Authorization" class="rqDef">[ST-R500-Authorization]</span> the state is in the first StateGroup with semantics &quot;Authorization&quot; <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Group.htm#STG-R050-Authorization' title="">[STG-R050-Authorization]</a> (CDC-43785 9.1)</li>
+</ul>
+<p>Recommendations for attribute creation:</p>
+<ul>
+<li>enum <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a></li>
+<li>0 = no, 1 = yes</li>
+<li>default 0 <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R040' title="">[ATTR-R040]</a></li>
+<li>sort by ID</li>
+<li>name &quot;Synchronize with Target Group&quot;</li>
+<li>category &quot;Editor&quot; <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R100' title="">[ATTR-R100]</a></li>
+<li>modifiable = false <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R080' title="Authorization">[ATTR-R080]</a></li>
+</ul>
+<h2 id="modifying-linked-properties">Modifying Linked Properties</h2>
+<p><span id="ST-R510" class="rqDef">[ST-R510]</span> For a service in any diagnostic instance...</p>
+<ul>
+<li>where the values of a target group and a state are &quot;linked&quot; (<a class='rqRef' href='../../30%20Features/State%20Dependency/Link%20Target%20Group%20to%20State.htm#ST-R500' title="">[ST-R500]</a> above),</li>
+<li><span id="ST-R510-Locked" class="rqDef">[ST-R510-Locked]</span> in a non-locked variant,</li>
+<li><span id="ST-R510-Auth" class="rqDef">[ST-R510-Auth]</span> with both...
+<ul>
+<li>primary <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R040' title="Primary properties modifiable">[DIA-R040]</a> and</li>
+<li>secondary <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R050' title="Secondary properties modifiable">[DIA-R050]</a> properties modifiable (CDS-70161 v11),</li>
+</ul></li>
+<li><span id="ST-R510-TargetGroup" class="rqDef">[ST-R510-TargetGroup]</span> ... setting relevance of a target group...
+<ul>
+<li>to &quot;no&quot; sets the state transition to &quot;(no)&quot; <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R020-no' title="">[STTR-R020-no]</a></li>
+<li>to &quot;yes&quot; sets the state transition to &quot;(yes)&quot; <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R020-yes' title="">[STTR-R020-yes]</a></li>
+<li><span id="ST-R510-StateAuth" class="rqDef">[ST-R510-StateAuth]</span> if State Authorization <a class='rqRef' href='../../30%20Features/State%20Dependency/State.htm#ST-R050' title="Modifiable">[ST-R050]</a> is &quot;modifiable&quot;=yes.</li>
+</ul></li>
+<li><span id="ST-R510-State" class="rqDef">[ST-R510-State]</span> ... setting the state transition...
+<ul>
+<li>to &quot;(no)&quot; sets the target group relevance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-R200' title="">[DI-R200]</a> to &quot;no&quot;</li>
+<li>to &quot;(yes)&quot; or to a target state sets the target group relevance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-R200' title="">[DI-R200]</a> to &quot;yes&quot;.</li>
+<li><span id="ST-R510-NotRelevant" class="rqDef">[ST-R510-NotRelevant]</span> If the diagnostic instance is not relevant for the target group, then setting the state transition is not possible (CDC-43786 9.1)</li>
+</ul></li>
+</ul>
+<p><strong>Caution</strong>: when you <strong>set a target group to &quot;yes&quot;</strong>, ...</p>
+<ul>
+<li>CANdelaStudio automatically sets the state transition to &quot;(yes)&quot;,</li>
+<li>but <strong>you may need to set the transition to a specific state manually</strong>
+<ul>
+<li>e.g. for ECU Reset in Daimler Star 3: transition to state &quot;anybody&quot;.</li>
+</ul></li>
+</ul>
+<p><strong>Note</strong>: CANdelaStudio property dialogs save modified values on pressing the OK button. Therefore the automatic changes will be visible only after re-entering the dialog.</p>
+<h2 id="consistency-check">Consistency Check</h2>
+<p><span id="ST-R600" class="rqDef" title="Link Target Group to State">[ST-R600 Link Target Group to State]</span></p>
+<ul>
+<li>If the SyncWithTargetGroup attribute <a class='rqRef' href='../../30%20Features/State%20Dependency/Link%20Target%20Group%20to%20State.htm#ST-R500-Attr' title="">[ST-R500-Attr]</a> at States exists</li>
+<li>and has an effective (default or overridden) value != 0</li>
+<li>and
+<ul>
+<li>a State SQ in the first StateGroup with semantics &quot;Authorization&quot; <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Group.htm#STG-R050-Authorization' title="">[STG-R050-Authorization]</a> and</li>
+<li>a Target Group TQ with the same qualifier Q exist</li>
+</ul></li>
+<li>then for each service S,
+<ul>
+<li>for any such State SQ and Target Group TQ,</li>
+<li>if S is relevant for TQ, but the state transition at S in state SQ is &quot;no&quot;,</li>
+<li>or S is not relevant for TQ, but the state transition at S in state SQ is != &quot;no&quot;,</li>
+<li>then the check reports a warning and prevents from export, like &quot;Target Group and State not synchronized: &quot;<code>&lt;Q&gt;</code>&quot; in service &quot;<code>&lt;S&gt;</code>&quot;, diagnostic instance &quot;<code>&lt;DI&gt;</code>&quot;.</li>
+</ul></li>
+<li><p><span id="ST-R610" class="rqDef">[ST-R610]</span> if there is more than one State Group with semantics &quot;Authorization&quot; <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Group.htm#STG-R050-Authorization' title="">[STG-R050-Authorization]</a>, constraints check emits a status message (CDC-43785 9.1)</p>
+<pre><code>  Multiple State Groups have semantics &quot;Authorization&quot;. Target Group/State linking will use the first one only.</code></pre></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/Service/Service%20Property%20Page%20State%20Transitions.htm">Service Property Page &quot;State Transitions&quot;</a></li>
+<li><a href="../../20%20UserInterface/State%20Dependency/States.htm">State Dependency (User Interface)</a></li>
+</ul>
+<p>Feature:</p>
+<ul>
+<li>Attribute at State <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050' title="">[ATTR-R050]</a></li>
+<li><a href="Authorization.htm">Authorization</a> (certificate-based)</li>
+<li><a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a></li>
+<li>Default Attribute Value <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R040' title="">[ATTR-R040]</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance (Feature)</a></li>
+<li>Overridden Attribute Value <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R140' title="">[ATTR-R140]</a></li>
+<li><a href="Security.htm">Security</a></li>
+<li><a href="Session%20Security%20Wizard.htm">Session Security Wizard</a></li>
+<li><a href="Session.htm">Session</a></li>
+<li><a href="State%20Dependency.htm">State Dependency (Feature)</a></li>
+</ul>
+</body>
+</html>

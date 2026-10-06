@@ -1,0 +1,528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Basic User Interface Rules</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="basic-user-interface-rules">Basic User Interface Rules</h1>
+<p>Contents:</p>
+<ul>
+<li><a href="#nav">Navigation to a Right Side</a></li>
+<li><a href="#prompt">Prompt for Modifying Operations</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a>
+<ul>
+<li><a href="#copying">Copying</a></li>
+<li><a href="#sorting">List Sorting</a></li>
+<li><a href="#columns">List Columns</a></li>
+<li><a href="#listsel">List Selection</a></li>
+<li><a href="#navcells">Navigating between List Cells</a></li>
+<li><a href="#multisel">Selecting Multiple Objects in a List</a></li>
+<li><a href="#oldedit">List Property Editing (old style before v12)</a></li>
+<li><a href="#newedit">List Property Editing (new style since v12)</a></li>
+<li><a href="#filter">List Filter Handling</a></li>
+<li><a href="#insert">List Insertion Position (General Case)</a></li>
+<li><a href="#numbers">Identifying Number and List Insertion Position</a></li>
+<li><a href="#display">List Display after Modifying Operations</a></li>
+<li><a href="#rightclick">Right Click in List</a></li>
+</ul></li>
+<li><a href="#controls">Controls for Optional Properties and Mass Operations</a>
+<ul>
+<li><a href="#optional">Context: Optional Properties</a></li>
+<li><a href="#multisel">Multi-Selection in Property Sheet</a></li>
+<li><a href="#boolean">Boolean</a></li>
+<li><a href="#optboolean">Optional Boolean</a></li>
+<li><a href="#integer">Integer</a></li>
+<li><a href="#optinteger">Optional Integer</a></li>
+</ul></li>
+<li>Dialogs <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-D1000' title="Dialogs">[UI-D1000]</a>
+<ul>
+<li><a href="#behavior">Modal Dialog Behavior</a></li>
+<li><a href="#layout">Dialog Layout</a></li>
+<li><a href="#keyboard">Modal Dialog Keyboard Usage</a></li>
+<li><a href="#scrolling">Mouse Scrolling</a></li>
+</ul></li>
+</ul>
+
+<h2 id="nav">Navigation to a Right Side</h2>
+<p><span id="UI-R100" class="rqDef">[UI-R100]</span> When the user <strong>enters a tree node</strong> with a list to the right,</p>
+<ul>
+<li><span id="UI-R100-Focus" class="rqDef">[UI-R100-Focus]</span> the list shall have focus,</li>
+<li><span id="UI-R100-Selection" class="rqDef">[UI-R100-Selection]</span> the first list element (if one exists) shall be selected,</li>
+<li><span id="UI-R100-Sort" class="rqDef">[UI-R100-Sort]</span> the list shall be sorted ascending by the identifying property (e.g. the Identifier of a DID).</li>
+<li><span id="UI-R100-Filter" class="rqDef">[UI-R100-Filter]</span> the filter shall be reset. <strong>Preserve the filter</strong> within the CANdelaStudio session!</li>
+</ul>
+<p>When the user navigates to a specific element (e.g. via a menu item &quot;Go to...&quot; or via path):</p>
+<ul>
+<li><span id="UI-R100-NavSelection" class="rqDef">[UI-R100-NavSelection]</span> that element shall be selected,</li>
+<li><span id="UI-R100-NavFilter" class="rqDef">[UI-R100-NavFilter]</span> if the element is excluded by the filter, CANdelaStudio shall reset the filter so that the element becomes visible.</li>
+</ul>
+<h2 id="prompt">Prompt for Modifying Operations</h2>
+<p><span id="UI-R320" class="rqDef">[UI-R320]</span></p>
+<ul>
+<li>if...
+<ul>
+<li>the user starts a modifying operation for which CANdelaStudio usually prompts for confirmation (e.g. deletion of an object).</li>
+<li>but the operation is not allowed in the given data constellation,</li>
+</ul></li>
+<li>then...
+<ul>
+<li>CANdelaStudio shall <strong>inform the user at once</strong>,</li>
+<li>i.e. it shall <strong>not</strong> prompt for confirmation and only after &quot;yes&quot;, inform the user that the operation is not possible.</li>
+</ul></li>
+</ul>
+<h2 id="lists">Lists of Objects</h2>
+<p><span id="LIST-D100" class="rqDef" title="Lists of Objects">[LIST-D100 Lists of Objects]</span></p>
+<h3 id="copying">Copying</h3>
+<ul>
+<li><span id="LIST-R100" class="rqDef">[LIST-R100]</span> <strong>Copy data from a list</strong> to the Windows clipboard (e.g. for use in a spreadsheet):
+<ul>
+<li>select the list rows,</li>
+<li>then press Ctrl-C.</li>
+</ul></li>
+<li>This copies &quot;what you see&quot; in the list to the clipboard (CDS-6703, CDS-11314, 6.0).</li>
+</ul>
+<h3 id="sorting">List Sorting</h3>
+<ul>
+<li><span id="LIST-R200" class="rqDef">[LIST-R200]</span> <strong>sort by one column</strong>:
+<ul>
+<li>left click on the table header of the column</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-R250' title="">[LIST-R250]</a> The table indicates the sort order.</li>
+</ul></li>
+<li><span id="LIST-R210" class="rqDef">[LIST-R210]</span> <strong>sort by multiple columns</strong>:
+<ul>
+<li>left click on the table header of the first column,</li>
+<li>then hold the <code>Ctrl</code> key and left click on the table header of one or more other columns</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-R250' title="">[LIST-R250]</a> The table indicates the sort order.</li>
+</ul></li>
+<li><span id="LIST-R220" class="rqDef">[LIST-R220]</span> <strong>reverse</strong> the sort order:
+<ul>
+<li>left click the table header again</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-R250' title="">[LIST-R250]</a> The table indicates the sort order.</li>
+</ul></li>
+<li><span id="LIST-R230" class="rqDef">[LIST-R230]</span> On first dialog entry within a CANdelaStudio session,
+<ul>
+<li>as a default, a list is sorted ascending by the contents of the first column.</li>
+<li>There may be exceptions for lists with specific columns.</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-R250' title="">[LIST-R250]</a> The table indicates the sort order.</li>
+</ul></li>
+<li><span id="LIST-R240" class="rqDef">[LIST-R240]</span> On a subsequent dialog entry within a CANdelaStudio session,
+<ul>
+<li>a list is sorted as left in the former dialog entry.</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-R250' title="">[LIST-R250]</a> The table indicates the sort order.</li>
+</ul></li>
+<li><span id="LIST-R250" class="rqDef">[LIST-R250]</span> For each column used for sorting, the table header shows a symbol that indicates the sort order
+<ul>
+<li>up arrow: sort ascending</li>
+<li>down arrow: sort descending</li>
+</ul></li>
+</ul>
+<h3 id="columns">List Columns</h3>
+<ul>
+<li><span id="LIST-R700" class="rqDef">[LIST-R700]</span> The width of a column can be adapted by moving its right border in the table header.</li>
+<li><span id="LIST-R710" class="rqDef">[LIST-R710]</span> On first entry of a dialog in a CANdelaStudio session, column are so wide that the contents of all rows is visible.
+<ul>
+<li>There may be exceptions for specific lists.</li>
+</ul></li>
+<li><span id="LIST-R720" class="rqDef">[LIST-R720]</span> On subsequent entry of a dialog in a CANdelaStudio session, column are as left before.</li>
+</ul>
+<h3 id="listsel">List Selection</h3>
+<ul>
+<li><span id="LIST-R600" class="rqDef">[LIST-R600]</span> On entry of a dialog, a non-empty list has a selection. <span id="LIST-R600-Default" class="rqDef">[LIST-R600-Default]</span> Default: the first list element.</li>
+</ul>
+<h3 id="navcells">Navigating between List Cells</h3>
+<p><span id="UI-R300" class="rqDef">[UI-R300]</span> If an edit control is active in a list cell (&quot;edit mode&quot;), then...</p>
+<ul>
+<li><span id="UI-R300-TAB" class="rqDef">[UI-R300-TAB]</span> <strong>TAB</strong> (on the non-last modifiable cell)...
+<ul>
+<li>quits edit mode in that cell,</li>
+<li><span id="LIST-R300" class="rqDef">[LIST-R300]</span> navigates to the <strong>next modifiable cell</strong> and</li>
+<li>enters edit mode there</li>
+</ul></li>
+<li><span id="UI-R300-ShTAB" class="rqDef">[UI-R300-ShTAB]</span> <strong>Shift TAB</strong> (on the non-first modifiable cell)...
+<ul>
+<li>quits edit mode in that cell,</li>
+<li><span id="LIST-R310" class="rqDef">[LIST-R310]</span> navigates to the <strong>previous modifiable cell</strong> and</li>
+<li>enters edit mode there</li>
+</ul></li>
+<li><span id="UI-R300-TABLast" class="rqDef">[UI-R300-TABLast]</span> <strong>TAB on the last modifiable cell</strong> of the list...
+<ul>
+<li>creates a new element and</li>
+<li>enters edit mode in its first modifiable cell.</li>
+</ul></li>
+</ul>
+<h3 id="multisel">Selecting Multiple Objects in a List</h3>
+<p><span id="LIST-R110" class="rqDef">[LIST-R110]</span></p>
+<ul>
+<li><span id="LIST-R110-Range" class="rqDef">[LIST-R110-Range]</span> <strong>Select a range of multiple objects</strong> at once:
+<ul>
+<li>left click the first object row,
+<ul>
+<li>hold the <code>Shift</code> key and left click the last object row.</li>
+</ul></li>
+</ul></li>
+<li><span id="LIST-R110-Values" class="rqDef">[LIST-R110-Values]</span> <strong>Select multiple values (not a range)</strong> at once:
+<ul>
+<li>left click the first row,
+<ul>
+<li>hold the <code>Ctrl</code> key and left click any further desired rows.</li>
+</ul></li>
+</ul></li>
+<li><span id="LIST-R110-Ranges" class="rqDef">[LIST-R110-Ranges]</span> <strong>Select multiple ranges</strong> at once:
+<ul>
+<li>left click the first row,
+<ul>
+<li>hold the <code>Shift</code> key and left click the last row of the range,</li>
+</ul></li>
+<li>hold the <code>Ctrl</code> key and left click the first row of the additional range,
+<ul>
+<li>hold the <code>Shift</code> and <code>Ctrl</code> keys and left click the last row of the additional range</li>
+</ul></li>
+<li>repeat for further ranges.</li>
+</ul></li>
+</ul>
+<h3 id="oldedit">List Property Editing (old style before v12)</h3>
+<p>Example: the <a href="../../20%20UserInterface/Data%20Objects/Data%20Objects.htm">Telegram Table</a>.</p>
+<ul>
+<li><span id="LIST-R400" class="rqDef">[LIST-R400]</span> You can <strong>Edit properties</strong> of a diagnostic object in a <strong>Property dialog</strong>:
+<ul>
+<li><span id="LIST-R400-Menu" class="rqDef">[LIST-R400-Menu]</span> use the <strong>&quot;Properties&quot; menu item</strong> in the context menu (right mouse).</li>
+<li><span id="LIST-R400-DblClick" class="rqDef">[LIST-R400-DblClick]</span> Most often, a <strong>double-click</strong> will work, too (a double click means &quot;Open&quot; which for some objects just navigates in the tree).</li>
+</ul></li>
+<li><span id="LIST-R410" class="rqDef">[LIST-R410]</span> <strong>Edit</strong> directly <strong>in the list</strong>:
+<ul>
+<li>press <strong>key &quot;F2&quot;</strong></li>
+<li>(or left click twice, slowly)</li>
+<li>(= <span id="UI-R360-EditMode" class="rqDef">[UI-R360-EditMode]</span>)</li>
+</ul></li>
+<li><span id="LIST-R420" class="rqDef">[LIST-R420]</span> <strong>Edit multiple objects</strong> at once:
+<ul>
+<li>Note: not all lists in CANdelaStudio support this feature.</li>
+<li>Select the objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-R110' title="">[LIST-R110]</a>;</li>
+<li>be sure to left click the last object row <strong>in the column you want to set</strong>,</li>
+<li>press <code>F2</code>. CANdelaStudio shows...
+<ul>
+<li>an edit control (for text properties), or</li>
+<li>a selection list (for an enumeration property);</li>
+</ul></li>
+<li>enter or select the value to assign,</li>
+<li>press <code>ENTER</code>.
+<ul>
+<li>CANdelaStudio assigns the value in all selected rows.</li>
+</ul></li>
+<li>(= <span id="LIST-R430" class="rqDef">[LIST-R430]</span>, <span id="LIST-R440" class="rqDef">[LIST-R440]</span>)</li>
+</ul></li>
+</ul>
+<h3 id="newedit">List Property Editing (new style since v12)</h3>
+<p>Example: the Events list <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R005' title="">[EVUI-R005]</a>.</p>
+<ul>
+<li><span id="LIST-R1400" class="rqDef">[LIST-R1400]</span> You can <strong>Edit properties</strong> of a selected diagnostic object in a <strong>Property sheet</strong> to the right.</li>
+<li><span id="LIST-R1420" class="rqDef">[LIST-R1420]</span> <strong>Edit multiple objects</strong> at once:
+<ul>
+<li>select the objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-R110' title="">[LIST-R110]</a>;</li>
+<li>modify properties in the property sheet.</li>
+</ul></li>
+</ul>
+<h3 id="filter">List Filter Handling</h3>
+<p><span id="LIST-R500" class="rqDef">[LIST-R500]</span> If you enter text in a &quot;filter&quot; edit control for a list of objects, the list shows only &quot;matching&quot; lines: - The match is <strong>case insensitive</strong> * e.g. filter text <code>A</code> matches a line containing <code>a</code>. - If the filter text contains <strong>blank separated words</strong>, a line matches if it contains <strong>at least one</strong> of the words. * e.g. filter text <code>A B</code> matches a line containing <code>A</code> and a line containing <code>B</code>. - If the filter text contains sub-text <strong>enclosed by double quotes</strong>, a line matches if it <strong>literally</strong> contains that sub-text. * e.g. filter text <code>&quot;A B&quot;</code> does not match a line containing <code>A</code>, but one containing <code>A B</code>.</p>
+<p>Note: not all lists in CANdelaStudio support this feature.</p>
+
+<h3 id="insert">List Insertion Position (General Case)</h3>
+<ul>
+<li><span id="UI-R330-MagicLine" class="rqDef">[UI-R330-MagicLine]</span> an element inserted via the magic line shall be placed in the data model <strong>at the end</strong> of the list (not in the middle, in order to allow creating multiple elements conveniently)</li>
+<li><span id="UI-R330-Insert" class="rqDef">[UI-R330-Insert]</span> otherwise an element inserted shall be placed in the data model <strong>before the currently selected element</strong> in the list (i.e. the rest of the list including the selection is shown &quot;pushed down&quot;)</li>
+</ul>
+<h3 id="numbers">Identifying Number and List Insertion Position</h3>
+<p><span id="UI-R335" class="rqDef">[UI-R335]</span> If the objects shown in the list have a <strong>number</strong> as an <strong>identifying property</strong>,</p>
+<ul>
+<li>and the list is typically sorted by that number,</li>
+<li>e.g. DTC code, DID identifier, Snapshot Record Number</li>
+<li>CANdelaStudio sets the number and hence the visible insertion position as follows.</li>
+</ul>
+<p><span id="UI-R335-Add" class="rqDef">[UI-R335-Add]</span>: CANdelaStudio creates the <strong>new object based on a &quot;reference&quot; object R</strong> (for DIDs: CDS-68394 9.1):</p>
+<ul>
+<li>if there is no Reference object, CANdelaStudio takes
+<ul>
+<li>the first valid number,</li>
+</ul></li>
+<li>otherwise,
+<ul>
+<li>for the number, it uses the minimum unused valid number starting at <code>&lt;number of R&gt; + 1</code> (increasing values),</li>
+<li>if none exists, it uses the maximum unused valid number starting at <code>&lt;number of R&gt; - 1</code> (decreasing values),</li>
+<li>if none exists, it fails.</li>
+</ul></li>
+</ul>
+<p><span id="UI-R335-Reference" class="rqDef">[UI-R335-Reference]</span> <strong>Reference Object R</strong></p>
+<ul>
+<li>if the list is empty, there is no Reference Object;</li>
+<li>if the visible list is empty (due to a filter), take R <code>:=</code> the object with maximum identifier;</li>
+<li>if you press a toolbar button or use a context menu:
+<ul>
+<li>if the first visible object is selected, take it for R</li>
+<li>otherwise (i.e. a second or later object is selected), take for R the object shown above the first selected object.</li>
+</ul></li>
+<li>if you press the magic line below the list:
+<ul>
+<li>take the last visible object for R.</li>
+</ul></li>
+</ul>
+
+<h3 id="display">List Display after Modifying Operations</h3>
+<p><span id="UI-R340" class="rqDef">[UI-R340]</span> After a modifying operation, ...</p>
+<ul>
+<li><span id="UI-R340-Focus" class="rqDef">[UI-R340-Focus]</span> the list shall have focus,</li>
+<li><span id="UI-R340-Sort" class="rqDef">[UI-R340-Sort]</span> the sort-order of the list shall be preserved,</li>
+<li><span id="UI-R340-Filter" class="rqDef">[UI-R340-Filter]</span> the filter shall be preserved,</li>
+<li><span id="UI-R340-SortIns" class="rqDef">[UI-R340-SortIns]</span> inserted elements shall be shown in the position according with the list sort order</li>
+<li><span id="UI-R340-SelIns" class="rqDef">[UI-R340-SelIns]</span> inserted elements (New, Paste, magic line...) shall be selected</li>
+<li><span id="UI-R340-SelMod" class="rqDef">[UI-R340-SelMod]</span> after a modification of elements,
+<ul>
+<li>they shall still be selected</li>
+</ul></li>
+<li><span id="UI-R340-SelDel" class="rqDef">[UI-R340-SelDel]</span> after deleting elements, ...
+<ul>
+<li>if any of the previously selected elements still exist (i.e. could not be deleted), they shall still be selected;</li>
+<li>otherwise the element at the first previously selected position (if it exists), or</li>
+<li>the last element shall be selected.</li>
+</ul></li>
+</ul>
+<h3 id="rightclick">Right Click in List</h3>
+<p><span id="UI-R350" class="rqDef">[UI-R350]</span></p>
+<ul>
+<li><span id="UI-R350-Element" class="rqDef">[UI-R350-Element]</span> a right click on an element shall...
+<ul>
+<li>... pull focus to the element</li>
+<li>... show the context menu for that element (not the previously focussed one)</li>
+<li>firing a menu item in the context menu shall trigger the operation on that element (not the previously focussed one).</li>
+</ul></li>
+<li><span id="UI-R350-Empty" class="rqDef">[UI-R350-Empty]</span> a right click on the empty list area shall...
+<ul>
+<li>remove focus from the previously focussed list element</li>
+<li>... show a special context menu that has no items for a concrete selected element.</li>
+</ul></li>
+</ul>
+<h2 id="controls">Controls for Optional Properties and Mass Operations</h2>
+<h3 id="optional">Context: Optional Properties</h3>
+<p>Some data model properties are <strong>optional</strong>.</p>
+<p>Example: in the context of Events, you may specify that a counter...</p>
+<ul>
+<li>is volatile, or</li>
+<li>is nonvolatile, or</li>
+<li>you don't care, or don't want to decide yet.</li>
+</ul>
+<p><span id="UI-D400" class="rqDef">[UI-D400]</span> CANdelaStudio shows the third state as &quot;<strong>undefined</strong>&quot;.</p>
+<ul>
+<li>Motivation: this is consistent with the special value &quot;undefined&quot; in enumerations, which has the same semantics.</li>
+<li>Source code may typically represent it by a &quot;<strong>null</strong>&quot; value.</li>
+<li>The following are synonym:
+<ul>
+<li><strong>not having a value</strong></li>
+<li><strong>having value &quot;undefined&quot;</strong></li>
+<li><strong>having value &quot;null&quot;</strong></li>
+<li><strong>being empty</strong>.</li>
+</ul></li>
+</ul>
+<p>The user interface <strong>presents the &quot;undefined&quot; state</strong> in a special way.</p>
+<h3 id="multisel">Multi-Selection in Property Sheet</h3>
+<p><span id="UI-D410" class="rqDef">[UI-D410]</span> When you...</p>
+<ul>
+<li><strong>select multiple objects</strong> in a list, and</li>
+<li>the objects have <strong>different values</strong> for a given property,</li>
+<li>the property sheet that represents all selected objects <strong>shows and handles these different values</strong> in a special way, as described in the following.</li>
+</ul>
+<h3 id="boolean">Boolean</h3>
+<div class="figure">
+<img src="Images/Controls%20for%20Boolean%20Properties%20and%20Mass%20Operations.jpg" alt="Controls for Boolean Properties and Mass Operations" />
+<p class="caption">Controls for Boolean Properties and Mass Operations</p>
+</div>
+<p><span id="UI-R400" class="rqDef">[UI-R400]</span> The user interface represents a <strong>Boolean</strong> property by a checkbox.</p>
+<ul>
+<li><span id="UI-R400-single" class="rqDef">[UI-R400-single]</span> with a <strong>single selection</strong>, the checkbox toggles between checked and un-checked for each click</li>
+<li><span id="UI-R400-multi" class="rqDef">[UI-R400-multi]</span> dito with a <strong>multi-selection</strong>:
+<ul>
+<li>in the case the selected objects have different values for the Boolean, the user interface shows the checkbox as &quot;<strong>indifferent</strong>&quot; (&quot;tri-state&quot;, grayed);</li>
+<li>additionally, a text label gives a hint that there are &quot;different values&quot;</li>
+<li>on click, the indifferent checkbox gets checked (= sets the property to true at all selected objects)</li>
+<li>a further click un-checks the checkbox</li>
+<li>a further click again checks the checkbox - in the user interface, there is <strong>no way back</strong> to the initial state where the objects had different values.</li>
+</ul></li>
+</ul>
+<h3 id="optboolean">Optional Boolean</h3>
+<p>An <strong>optional Boolean property</strong> has the values <strong>true</strong>, <strong>false</strong> and <strong>undefined</strong> (as of <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-D400' title="">[UI-D400]</a>).</p>
+<div class="figure">
+<img src="Images/Controls%20for%20Optional%20Boolean%20Properties%20and%20Mass%20Operations.jpg" alt="Controls for Optional Boolean Properties and Mass Operations" />
+<p class="caption">Controls for Optional Boolean Properties and Mass Operations</p>
+</div>
+<p><span id="UI-R410" class="rqDef">[UI-R410]</span> The user interface represents an <strong>optional Boolean</strong> property by 3 radio buttons.</p>
+<ul>
+<li>Motivation: using radio buttons makes the &quot;undefined&quot; state explicit, and avoids confusion with the &quot;indifferent&quot; state of a multi-selection.</li>
+<li><span id="UI-R410-multi" class="rqDef">[UI-R410-multi]</span> for a <strong>multi-selection</strong> of an optional Boolean,
+<ul>
+<li>in case the selected objects have <strong>different values</strong> (true/false/undefined) for the optional Boolean, the user interface shows no radio button selected,</li>
+<li>additionally, a text label gives a hint that there are &quot;different values&quot;</li>
+<li>any click on one of the radio buttons sets the property to the respective value at all selected objects.</li>
+<li>in the user interface, there is <strong>no way back</strong> to the initial state where the objects had different values.</li>
+</ul></li>
+</ul>
+<h3 id="integer">Integer</h3>
+<div class="figure">
+<img src="Images/Controls%20for%20Integer%20Properties%20and%20Mass%20Operations.jpg" alt="Controls for Integer Properties and Mass Operations" />
+<p class="caption">Controls for Integer Properties and Mass Operations</p>
+</div>
+<p><span id="UI-R450" class="rqDef">[UI-R450]</span> The user interface represents an <strong>Integer</strong> property by an edit field.</p>
+<ul>
+<li>the edit field restricts input to the allowed <strong>character set</strong>,
+<ul>
+<li>e.g. digits only for an unsigned integer</li>
+</ul></li>
+<li>depending on the context and possible values, the edit field may additionally have...
+<ul>
+<li>buttons to increment/decrement the value, or</li>
+<li>a selection list for predefined values</li>
+</ul></li>
+<li><span id="UI-R450-single" class="rqDef">[UI-R450-single]</span> with a <strong>single selection</strong>, the edit field always contains a numeric value
+<ul>
+<li>there is no &quot;empty&quot; state of the edit field</li>
+<li>initially, CANdelaStudio sets the value to some default.</li>
+</ul></li>
+<li><span id="UI-R450-multi" class="rqDef">[UI-R450-multi]</span> with a <strong>multi-selection</strong>:
+<ul>
+<li>in case the selected objects have <strong>different values</strong> for the integer, the user interface shows the input control empty and sensitive</li>
+<li>additionally, a text label gives a hint that there are &quot;different values&quot;</li>
+<li>if you enter a value, CANdelaStudio assigns that value to the property at all selected objects</li>
+<li>in the user interface, there is <strong>no way back</strong> to the initial state where the objects had different values.</li>
+</ul></li>
+</ul>
+<h3 id="optinteger">Optional Integer</h3>
+<p>An <strong>optional Integer property</strong> has numeric values and <strong>undefined</strong> (as of <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-D400' title="">[UI-D400]</a>).</p>
+<div class="figure">
+<img src="Images/Controls%20for%20Optional%20Integer%20Properties%20and%20Mass%20Operations.jpg" alt="Controls for Optional Integer Properties and Mass Operations" />
+<p class="caption">Controls for Optional Integer Properties and Mass Operations</p>
+</div>
+<p><span id="UI-R460" class="rqDef">[UI-R460]</span> The user interface represents an <strong>optional Integer</strong> property by...</p>
+<ul>
+<li>an <strong>edit field</strong> for the integer value, and</li>
+<li><p>a <strong>button</strong> to <strong>reset</strong> the value to &quot;undefined&quot;.</p></li>
+<li><span id="UI-R460-single" class="rqDef">[UI-R460-single]</span> with a <strong>single selection</strong>, the controls represent...
+<ul>
+<li>either &quot;undefined&quot;: the edit field shows a placeholder &quot;(undefined)&quot; and is sensitive, the button is insensitive
+<ul>
+<li>entering an integer value assigns that value to the integer property</li>
+</ul></li>
+<li>or an integer value: edit field is sensitive and contains a value, the button is sensitive
+<ul>
+<li>initially, CANdelaStudio sets the value to some default</li>
+<li>pressing the button sets the value to <strong>undefined</strong></li>
+</ul></li>
+</ul></li>
+<li><span id="UI-R460-multi" class="rqDef">[UI-R460-multi]</span> with a <strong>multi-selection</strong> of an optional integer:
+<ul>
+<li>in case the selected objects all have <strong>undefined</strong>,
+<ul>
+<li>the user interface shows the edit field sensitive, the button is insensitive</li>
+<li>if you enter a value, CANdelaStudio assigns that value to all selected objects</li>
+</ul></li>
+<li>in case the selected objects have <strong>different integer values</strong>, or some have <strong>undefined</strong>, while others actually have an integer value,
+<ul>
+<li>the user interface shows the edit field empty and sensitive, the button is sensitive</li>
+<li>additionally, a text label gives a hint that there are &quot;different values&quot;</li>
+<li>if you enter a value, CANdelaStudio assigns that value to the property at all selected objects</li>
+<li>if you press the button, CANdelaStudio sets the value to <strong>undefined</strong> at all selected objects</li>
+<li>in the user interface, there is <strong>no way back</strong> to the initial state where the objects had different values.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2 id="modal">Dialogs</h2>
+<p><span id="UI-D1000" class="rqDef" title="Dialogs">[UI-D1000 Dialogs]</span></p>
+<h2 id="behavior">Modal Dialog Behavior</h2>
+<ul>
+<li><span id="UI-R1100" class="rqDef">[UI-R1100]</span> A modal dialog is not shown in the <strong>Windows task list</strong>
+<ul>
+<li>(= which is shown by <code>Alt-TAB</code>, and at the bottom of the screen)</li>
+</ul></li>
+<li><span id="UI-R1110" class="rqDef">[UI-R1110]</span> When a modal dialog is open, a click into the CANdelaStudio application window does not bring the application window to the foreground.</li>
+<li><span id="UI-R1120" class="rqDef">[UI-R1120]</span> A dialog is <strong>resizable</strong> at the corners and at the edges (cf. CDS-39825 U004)
+<ul>
+<li><span id="UI-R1120-Flow" class="rqDef">[UI-R1120-Flow]</span> resizing moves controls in a reasonable way:
+<ul>
+<li>which elements are fixed</li>
+<li>minimum size of variable-size elements</li>
+<li>relation of multiple variable-size elements</li>
+</ul></li>
+<li><span id="UI-R1120-Gripper" class="rqDef">[UI-R1120-Gripper]</span> The bottom right corner has a visual indication that the dialog is resizable.</li>
+<li><span id="UI-R1120-Min" class="rqDef">[UI-R1120-Min]</span> At the minimum dialog size, it is still possible to use and leave the dialog.</li>
+</ul></li>
+<li><span id="UI-R1130" class="rqDef">[UI-R1130]</span> On entry, the first control at top-left has focus
+<ul>
+<li>i.e. typing enters data into that control</li>
+</ul></li>
+</ul>
+<h2 id="layout">Dialog Layout</h2>
+
+<ul>
+<li><span id="UI-R1200" class="rqDef">[UI-R1200]</span> The visual order corresponds with some logical order (workflow, importance, …).</li>
+<li><span id="UI-R1210" class="rqDef">[UI-R1210]</span> Controls are aligned meaningfully:
+<ul>
+<li>Related controls are aligned where reasonable.</li>
+<li>Similar things look similar.</li>
+</ul></li>
+<li><span id="UI-R1240" class="rqDef">[UI-R1240]</span> Distances
+<ul>
+<li><span id="UI-R1240-Controls" class="rqDef">[UI-R1240-Controls]</span> Distances between controls are identical</li>
+<li><span id="UI-R1240-Related" class="rqDef">[UI-R1240-Related]</span> Except: related things are positioned closer to each other than others</li>
+<li>cf. the Gestalt principles</li>
+<li><ul>
+<li><span id="UI-R1240-Border" class="rqDef">[UI-R1240-Border]</span> Distances between controls and the border are identical.</li>
+</ul></li>
+</ul></li>
+<li><span id="UI-R1220" class="rqDef">[UI-R1220]</span> Buttons are in the order OK / Cancel / Yes / No / Apply / Help.</li>
+<li><span id="UI-R1230" class="rqDef">[UI-R1230]</span> The text of buttons that open a further dialog ends with &quot;...&quot;.</li>
+</ul>
+<h2 id="keyboard">Dialog Keyboard Usage</h2>
+<ul>
+<li><span id="UI-R1300" class="rqDef">[UI-R1300]</span> Pressing <code>ESC</code> closes the dialog without modification (same as button Cancel).</li>
+<li><span id="UI-R1310" class="rqDef">[UI-R1310]</span> Pressing <code>OK</code> closes the dialog and applies the changes.</li>
+<li><span id="UI-R1320" class="rqDef">[UI-R1320]</span> Pressing <code>F1</code> opens a related help page.</li>
+<li><span id="UI-R1330" class="rqDef">[UI-R1330]</span> When an edit control in the dialog has focus,
+<ul>
+<li>after pressing <code>Alt-TAB</code> twice
+<ul>
+<li>(switching to another application and back to CANdelaStudio),</li>
+</ul></li>
+<li>the edit control still has focus
+<ul>
+<li>(i.e. typing inserts characters).</li>
+</ul></li>
+</ul></li>
+<li><span id="UI-R1340" class="rqDef">[UI-R1340]</span> When an edit control in the dialog has focus,
+<ul>
+<li>pressing <code>ENTER</code> applies default action
+<ul>
+<li>(one of the global buttons OK / Cancel...).</li>
+</ul></li>
+</ul></li>
+<li><span id="UI-R1350" class="rqDef">[UI-R1350]</span> The TAB key navigates throught the controls in left-to-right, top-down order.</li>
+</ul>
+<h2 id="scrolling">Mouse Scrolling</h2>
+<ul>
+<li><span id="UI-R1410" class="rqDef">[UI-R1410]</span> When you move the mouse pointer over a combo-box (without giving it focus) and scroll the mouse wheel, the selection does not change.</li>
+<li><span id="UI-R1420" class="rqDef">[UI-R1420]</span> When you move the mouse pointer over a group of radio buttons (without giving them focus) and scroll the mouse wheel, the selection does not change.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Keyboard%20Shortcuts.htm">Keyboard Shortcuts</a></li>
+<li><a href="../../20%20UserInterface/Tree/Navigation%20Tree.htm">Navigation Tree</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Commands%20Menus.htm">Commands Menus</a> (rules for ribbon / menu items)</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Getting Started</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="getting-started">Getting started</h1>
+<ul>
+<li><p>One CANdela document describes one ECU.</p></li>
+<li><p>Create a <strong>new document</strong>: use menu File|New and specify the CANdela template to be used (typically provided by the vehicle manufacturer).</p></li>
+<li><p>the CANdelaStudio installation contains templates and sample documents to start with, see <a href="../30%20Features/Installation/Example%20Files.htm">Example Files</a>.</p></li>
+<li><p>CANdelaStudio displays a CANdela document in a <strong>tree view</strong>, like the chapter of contents of a book.</p></li>
+<li><p><strong>DTCs</strong>: navigate to &quot;Diagnostic Trouble Codes&quot;, element &quot;Overview...&quot;. In the DTC list in the right side, right click on a DTC and click &quot;Go To...&quot; to inspect or edit the DTC in a specific variant.</p></li>
+<li><p><strong>DIDs</strong>: in the tree, navigate to the &quot;Base Variant&quot; (or &quot;Common Diagnostics&quot;), in there navigate to &quot;DIDs&quot;.</p></li>
+<li><p><strong>Communication parameters:</strong> navigate to the first node &quot;ECU information&quot; / &quot;Supported interfaces&quot;</p></li>
+<li><p>To enable CANdelaStudio to open documents created with an even newer version than your installation: install the <a href="../30%20Features/Persistors/Persistors.htm">&quot;Converters&quot; add-on</a> from the Vector homepage: http://vector.com/persistors .</p></li>
+<li><p>To save a document for some other tool of Vector which supports opening only documents of older CANdelaStudio versions: menu File | SaveAs, then select the older version in the &quot;Version&quot; list at the bottom of the dialog.</p></li>
+</ul>
+<h2 id="tips-for-editing">Tips for editing</h2>
+<ul>
+<li><p><strong>Edit properties</strong> of a diagnostic object in a <strong>Property dialog</strong>: use the &quot;Properties&quot; menu item in the context menu (right mouse). Most often, a double-click will work, too (a double click means &quot;Open&quot; which sometimes just navigates in the tree).</p></li>
+<li><p><strong>Edit</strong> an object directly <strong>in a list</strong>: press <strong>key &quot;F2&quot;</strong> (or left click twice, slowly).</p></li>
+<li><p><strong>Edit multiple objects</strong> at once: select the objects in a list in the desired column, press <strong>key &quot;F2&quot;</strong>, specify the new value, press <code>ENTER</code>. Note: not all lists in CANdelaStudio support this feature.</p></li>
+<li><p><strong>Copy data from a list</strong> e.g. to a spreadsheet: select the list rows, then press Ctrl-C. This copies &quot;what you see&quot; to the clipboard.</p></li>
+<li><p>Remember an object and <strong>quickly navigate</strong> to it again later: use the &quot;Back&quot; and &quot;Forth&quot; buttons of ribbon or copy its &quot;object path&quot; (&quot;npath://...&quot;) from the navigation area to the Windows clipboard and paste it back later.</p></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>See also the &quot;Procedures&quot; folder of this documentation.</p>
+<ul>
+<li><a href="../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm">Basic User Interface Rules</a></li>
+<li><a href="../30%20Features/Installation/Example%20Files.htm">Example Files</a></li>
+<li><a href="../30%20Features/CANdelaStudio%20Editor/Keyboard%20Shortcuts.htm">Keyboard Shortcuts</a></li>
+<li><a href="../20%20UserInterface/Tree/Navigation%20Tree.htm">Navigation Tree</a></li>
+<li><a href="../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Introduction.htm">Ribbon Introduction</a></li>
+<li><a href="../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Navigation%20Area.htm">Ribbon Navigation Area</a></li>
+</ul>
+</body>
+</html>

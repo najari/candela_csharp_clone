@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>TAB Extended Data Records</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="tab-extended-data-records">TAB Extended Data Records</h1>
+<p>See also the overview of the <a href="GUI%20Extended%20Data.htm">GUI Extended Data</a> (v13 AUTOSAR Fault Memory).</p>
+<p><span id="EDUI-R100" class="rqDef">[EDUI-R100]</span> The Extended Data Records TAB shows...</p>
+<ul>
+<li>the list of Extended Data Records <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20Records.htm#EDUI-R200' title="">[EDUI-R200]</a></li>
+<li>for the selected Extended Data Record, the Extended Data <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20Records.htm#EDUI-R300' title="">[EDUI-R300]</a>
+<ul>
+<li>i.e. a list of data objects</li>
+<li>In an AUTOSAR implementation, these are typically objects managed by the Diagnostic Event Manager (DEM) internally, like the &quot;DTC Occurrence Counter&quot;.</li>
+</ul></li>
+<li>the properties of the selected Extended Data Record <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/Properties%20of%20Extended%20Data%20Record.htm#EDUI-R2000' title="">[EDUI-R2000]</a></li>
+</ul>
+<div class="figure">
+<img src="Images/ExtendedDataRecords.png" alt="Extended Data Records" />
+<p class="caption">Extended Data Records</p>
+</div>
+<h2 id="list-of-extended-data-records">List of Extended Data Records</h2>
+<p><span id="EDUI-R200" class="rqDef">[EDUI-R200]</span> The list of Extended Data Records shows all Extended Data Records defined in the diagnostic instance <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R030' title="">[EDR-R030]</a>.</p>
+<ul>
+<li><span id="EDUI-R210" class="rqDef">[EDUI-R210]</span> By default, the list is sorted by ascending Extended Data Record Number.
+<ul>
+<li>cf. <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R035' title="">[EDR-R035]</a> The Extended Data Records have no persistent <strong>sort order</strong>.</li>
+</ul></li>
+<li><span id="EDUI-R212" class="rqDef">[EDUI-R212]</span> The list can be sorted by clicking a header.
+<ul>
+<li>CANdelaStudio remembers the sort order within the session.</li>
+</ul></li>
+<li><span id="EDUI-R214" class="rqDef">[EDUI-R214]</span> The list contains a line &quot;Click here to create a new Extended Data Record&quot;.</li>
+<li><span id="EDUI-R216" class="rqDef">[EDUI-R216]</span> The list supports multi-selection.</li>
+<li><span id="EDUI-R218" class="rqDef">[EDUI-R218]</span> The list can be filtered by a text control at top right, which applies to all texts shown.</li>
+</ul>
+<h3 id="list-columns">List columns</h3>
+<p><span id="EDUI-R220" class="rqDef">[EDUI-R220]</span></p>
+<ul>
+<li><span id="EDUI-R230" class="rqDef">[EDUI-R230]</span> <strong>Number</strong>
+<ul>
+<li>shows the Extended Data Record Number <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R120' title="">[EDR-R120]</a></li>
+<li>hexadecimal</li>
+<li>with leading zero, filled to 2 hex digits</li>
+<li>e.g. &quot;0x01&quot;</li>
+</ul></li>
+<li><span id="EDUI-R240" class="rqDef">[EDUI-R240]</span> <strong>Name</strong>
+<ul>
+<li>shows the name <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R110' title="">[EDR-R110]</a> of the Extended Data Record</li>
+</ul></li>
+<li><span id="EDUI-R250" class="rqDef">[EDUI-R250]</span> <strong>Storage Trigger</strong> <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R150' title="">[EDR-R150]</a>
+<ul>
+<li>same as <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R250' title="">[SRUI-R250]</a> for Snapshot Records</li>
+<li>See <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/Properties%20of%20Extended%20Data%20Record.htm#EDUI-R2150' title="">[EDUI-R2150]</a> for display in the Property Sheet.</li>
+</ul></li>
+<li><span id="EDUI-R260" class="rqDef">[EDUI-R260]</span> <strong>Updated</strong> <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R160' title="">[EDR-R160]</a>: &quot;yes&quot;/&quot;no&quot;
+<ul>
+<li>same as <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R260' title="">[SRUI-R260]</a> for Snapshot Records</li>
+<li>See <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/Properties%20of%20Extended%20Data%20Record.htm#EDUI-R2150' title="">[EDUI-R2150]</a> for display in the Property Sheet.</li>
+</ul></li>
+</ul>
+<h3 id="actions">Actions</h3>
+<ul>
+<li><span id="EDUI-R270" class="rqDef">[EDUI-R270]</span> When creating a new Extended Data Record (using the magic line <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20Records.htm#EDUI-R214' title="">[EDUI-R214]</a>):
+<ul>
+<li>If all valid Extended Data Record Numbers <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R120-Range' title="">[EDR-R120-Range]</a> exist, CANdelaStudio shows a hint and skips creating a new one.</li>
+<li>Otherwise, CANdelaStudio as a default sets the Extended Data Record Number to...
+<ul>
+<li>0x01, if the list is empty</li>
+<li>the value of the last list entry <code>+ 1</code>, if the list is sorted by Extended Data Record Number</li>
+<li>the maximum used Extended Data Record Number <code>+ 1</code>, otherwise. If this gives a number not in the valid range, CANdelaStudio searches for an unused number starting from 0x00.</li>
+</ul></li>
+<li>Note: Extended Data Record Numbers are unique <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R120-Unique' title="">[EDR-R120-Unique]</a>.</li>
+<li>See operation <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Operations.htm#EDOP-R100' title="">[EDOP-R100]</a>.</li>
+</ul></li>
+<li><span id="EDUI-R275" class="rqDef">[EDUI-R275]</span> When deleting Extended Data Records:
+<ul>
+<li>See operation <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Operations.htm#EDOP-R110' title="">[EDOP-R110]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="extended-data-for-all-dtcs">Extended Data for All DTCs</h2>
+<div class="figure">
+<img src="Images/ExtendedDataRecords.png" alt="TAB &quot;Extended Data Records&quot; with &quot;Extended Data for All DTCs&quot; at the bottom" />
+<p class="caption">TAB &quot;Extended Data Records&quot; with &quot;Extended Data for All DTCs&quot; at the bottom</p>
+</div>
+<p><span id="EDUI-R300" class="rqDef">[EDUI-R300]</span> The &quot;Extended Data for All DTCs&quot; area shows</p>
+<ul>
+<li>a filter control</li>
+<li>a list of Extended Data <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R200' title="">[EDR-R200]</a></li>
+<li><span id="EDUI-R310" class="rqDef">[EDUI-R310]</span> The list is a regular <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">Telegram Table</a>.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Fault%20Memory/AUTOSAR%20Fault%20Memory%20GUI.htm">AUTOSAR Fault Memory GUI</a> (overview)</li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm">Extended Data Record Data Model</a></li>
+<li><a href="../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Operations.htm">Extended Data Record Operations</a></li>
+<li><a href="GUI%20Extended%20Data.htm">GUI Extended Data</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li><a href="TAB%20Extended%20Data%20per%20DTC.htm">TAB Extended Data per DTC</a></li>
+</ul>
+</body>
+</html>

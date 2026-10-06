@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Linear</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="linear"><span id='_index_446727971'>Linear</span></h1>
+<p>Linear formula optionally with a unit, and restricted by <a href="Start%20Range%20End%20Range.htm">Start and/or End Range</a> (= lower/upper limit).</p>
+<p>Examples</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Conversion</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0x78 x revolutions</td>
+<td align="right">1000rpm</td>
+</tr>
+<tr class="even">
+<td align="left">0x02 x throttle value angle</td>
+<td align="right">27,3°</td>
+</tr>
+</tbody>
+</table>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Linear.htm">dialog</a>.</p>
+<h2 id="factor-divisor-offset">Factor, Divisor, Offset</h2>
+<p><span id="LIN-R100" class="rqDef">[LIN-R100]</span> A linear data type converts a raw value using a formula of the form</p>
+<p>phys = (factor/divisor)*raw + offset</p>
+<p>Factor and divisor effect in a fixed quantization.</p>
+<h3 id="divisor">Divisor</h3>
+<p><span id="LIN-R110" class="rqDef">[LIN-R110]</span> While from the view of mathematics, the <code>factor</code> would suffice, the additional <strong>divisor</strong> (default: 1.0) helps to specify the <strong>resolution</strong> of the raw value.</p>
+<p>Example:</p>
+<ul>
+<li>data object on the line:
+<ul>
+<li>represents a <strong>current</strong></li>
+<li>in a <strong>resolution of 1/1000 V</strong>.</li>
+</ul></li>
+<li>With just a factor, the linear formula would be
+<ul>
+<li><code>phys = 0.001*raw + 0 [V]</code>.</li>
+</ul></li>
+<li>To make the resolution more obvious, you may specify
+<ul>
+<li><code>phys = 1/1000*raw + 0 [V]</code>.</li>
+</ul></li>
+<li>Effect: raw value 1000 =&gt; physical value 1V</li>
+<li>Formula:
+<ul>
+<li>factor = 1</li>
+<li>divisor = 1000</li>
+<li>offset = 0</li>
+<li>unit = &quot;V&quot;</li>
+</ul></li>
+</ul>
+<h2 id="lower-and-upper-limit">Lower and Upper Limit</h2>
+<p><span id="LIN-R120" class="rqDef">[LIN-R120]</span> Optionally, the domain of the formula can be restricted by a lower limit and an upper limit (on the raw value), see <a href="Start%20Range%20End%20Range.htm">Start and/or End Range</a>.</p>
+<h2 id="inverse-value">Inverse Value</h2>
+<p><span id="LIN-R1300" class="rqDef">[LIN-R1300]</span> An <strong>inverse value</strong> can be defined if the factor is 0.</p>
+<p>Note: as of 2016, Vector test systems (e.g. CANalyzer 9.0) support the inverse value for text tables only.</p>
+<h2 id="physical-value">Physical Value</h2>
+<p><span id="LIN-R140" class="rqDef">[LIN-R140]</span> Often the data type also specifies a physical unit.</p>
+<p>Values are shown in decimal or float notation, with a specified number of decimal places.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm#conversions">Conversions</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+</ul>
+</body>
+</html>

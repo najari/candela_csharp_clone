@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Shortcut Qualifier and Shortcut Name</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="shortcut-qualifier-and-shortcut-name"><span id='_index_446728113'>Shortcut</span> Qualifier and Shortcut Name<span id='_index_446728114' title='Qualifier: Shortcut Qualifier' data-term='Qualifier' data-text='Shortcut Qualifier'></span></h1>
+<h2 id="overview">Overview</h2>
+<p>A service and a job have the two &quot;shortcuts&quot; properties...</p>
+<ul>
+<li><span id="SHC-R100" class="rqDef" title="Shortcut qualifier">[SHC-R100 Shortcut qualifier]</span></li>
+<li><span id="SHC-R110" class="rqDef" title="Shortcut name">[SHC-R110 Shortcut name]</span>.</li>
+</ul>
+<p>The shortcut qualifier is <strong>unique in variant scope</strong> <a class='rqRef' href='../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm#SHC-R410' title="Shortcut Qualifier Uniqueness">[SHC-R410]</a> and therefore typically used...</p>
+<ul>
+<li>in ODX which describes a service on variant level (no diagnostic instance)</li>
+<li>in CAPL to address a service</li>
+<li>in general, in a test system in a service centric view.</li>
+</ul>
+<h2 id="initial-value-in-candelastudio">Initial Value in CANdelaStudio</h2>
+<p><span id="SHC-R300" class="rqDef">[SHC-R300]</span> CANdelaStudio initializes the shortcut qualifier as a combination of...</p>
+<ol style="list-style-type: decimal">
+<li>the diagnostic instance (or job container) qualifier,</li>
+<li>an underscore as separator,</li>
+<li>the service (or job) qualifier.</li>
+</ol>
+<p><span id="SHC-R310" class="rqDef">[SHC-R310]</span> For the name, CANdelaStudio uses the respective names and a blank as separator.</p>
+<h2 id="consistency">Consistency Conditions</h2>
+<p><span id="SHC-R410" class="rqDef" title="Shortcut Qualifier Uniqueness">[SHC-R410 Shortcut Qualifier Uniqueness]</span> A <strong>shortcut qualifier</strong>...</p>
+<ul>
+<li>must be unique within the variant.</li>
+</ul>
+<p><span id="SHC-R420" class="rqDef" title="Shortcut Qualifier Characters">[SHC-R420 Shortcut Qualifier Characters]</span> A <strong>shortcut qualifier</strong>...</p>
+<ul>
+<li>may contain only the characters 'a' to 'z', 'A' to 'Z', '0' to '9' and underscore '_'.</li>
+<li>The first character must not be a digit (like for a qualifier).</li>
+</ul>
+<p><span id="SHC-R430" class="rqDef" title="Shortcut Name Characters">[SHC-R430 Shortcut Name Characters]</span> A <strong>shortcut name</strong>...</p>
+<ul>
+<li>may contain all characters of the Unicode set, which are also valid for XML (like for a name).</li>
+</ul>
+<p>See the <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm#shortcuts">consistency check</a>.</p>
+<h2 id="shortcut-name-and-qualifier-coupling">Coupled Shortcut Names and Qualifiers</h2>
+<p><span id="SHC-R500" class="rqDef">[SHC-R500]</span> Shortcut name and qualifier are <strong>implicitly coupled</strong> if...</p>
+<ul>
+<li>the shortcut qualifier equals the shortcut qualifier that would be generated from the shortcut name,</li>
+<li>and the <strong>qualifier</strong> of the parent diagnostic instance (resp. job and parent job container) is not <a href="../../30%20Features/Common%20Properties/Qualifier.htm#fixed-qualifier">fixed</a></li>
+</ul>
+<p>When you <strong>modify</strong> a coupled shortcut name, CANdelaStudio modifies the coupled shortcut qualifier accordingly.</p>
+<p>This coupling is equivalent to implicitly <a href="../../30%20Features/Common%20Properties/Qualifier.htm#generating-from-names">coupled CANdela names and qualifiers</a>.</p>
+<h2 id="validation-and-migration-to-8.5">Validation and Migration to 8.5</h2>
+<p>Since version 8.5 (CDC-36987/CDC-39185), CANdelaStudio checks the shortcut qualifier on loading:</p>
+<p><span id="SHC-R600" class="rqDef">[SHC-R600]</span>: on loading a file with format <strong><code>&lt;</code> 8.5</strong>, ...</p>
+<ul>
+<li>for each the service/job shortcut qualifier that is not consistent (<a class='rqRef' href='../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm#SHC-R410' title="Shortcut Qualifier Uniqueness">[SHC-R410]</a> and <a class='rqRef' href='../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm#SHC-R420' title="Shortcut Qualifier Characters">[SHC-R420]</a>),</li>
+<li>CANdelaStudio...
+<ul>
+<li>writes a warning,</li>
+<li>if not in read-only mode: recomputes the service shortcut qualifier.</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Note: in read-only mode (when loaded in a test system), the shortcut qualifier shall remain unchanged, in order to avoid breaking paths in a script.</p>
+</blockquote>
+<p><span id="SHC-R610" class="rqDef">[SHC-R610]</span>: on loading a file with format <strong><code>&gt;=</code> 8.5</strong>, ...</p>
+<ul>
+<li>for each service/job shortcut qualifier that is not consistent (<a class='rqRef' href='../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm#SHC-R410' title="Shortcut Qualifier Uniqueness">[SHC-R410]</a> and <a class='rqRef' href='../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm#SHC-R420' title="Shortcut Qualifier Characters">[SHC-R420]</a>),</li>
+<li>CANdelaStudio...
+<ul>
+<li>writes an error,</li>
+<li>does not load (like for qualifiers).</li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Common%20Properties/Qualifier.htm#fixed-qualifier">Fixed Qualifiers</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Qualifier.htm#generating-from-names">Generating Qualifiers from Names</a></li>
+<li><a href="../../20%20UserInterface/Service/Service%20Property%20Page%20Shortcuts.htm">Service Property Page &quot;Shortcuts&quot;</a></li>
+<li><a href="../../20%20UserInterface/Service/Services.htm">Services (List)</a></li>
+<li><a href="../../20%20UserInterface/Service/Shortcut%20Qualifier%20Overview.htm">Shortcut Qualifier Overview</a></li>
+</ul>
+</body>
+</html>

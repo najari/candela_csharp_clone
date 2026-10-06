@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>End-of-Service Iteration</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="end-of-service-iteration"><span id='_index_446727987'>End-of-Service Iteration</span></h1>
+<p>For an overview, see the <a href="Complex%20Data%20Types%20Introduction.htm">Complex Data Types Introduction</a>.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Describes iterated transport of data objects in a telegram until the end of the service. In addition, you can also specify the minimum and maximum number of iterations.</p>
+<h2 id="use-cases">Use-cases</h2>
+<ul>
+<li>UDS 0x19 0x04: describe list of DTC and Snapshot Data</li>
+<li>UDS 0x19 0x0C: with upper limit 1, describe the optional DTC</li>
+</ul>
+
+<h2 id="details">Details</h2>
+<p><span id="EOS-R100" class="rqDef">[EOS-R100]</span> End-of-Service Iteration Data Type:</p>
+<ul>
+<li><span id="EOS-R110" class="rqDef">[EOS-R110]</span> needs selector: no</li>
+<li><span id="EOS-R120" class="rqDef">[EOS-R120]</span> minimum number, 0 by default</li>
+<li><span id="EOS-R130" class="rqDef">[EOS-R130]</span> optional maximum number of iterations</li>
+<li><span id="EOS-D100" class="rqDef">[EOS-D100]</span> Code that “synthesizes” a PDU must treat the min/max numbers as hard constraints.</li>
+<li><span id="EOS-D110" class="rqDef">[EOS-D110]</span> Code that “interpretes” a PDU must handle violations of the min/max numbers as warnings (not errors, i.e. do not stop interpretation).</li>
+<li>Note that “synthesizes” applies both
+<ul>
+<li>e.g. to a test system (for the request) as well as</li>
+<li>e.g. to an ECU implementation (for the pos response),</li>
+<li>and vice versa for “interpretes”. </li>
+</ul></li>
+<li>For DEXT Export, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R225' title="">[DEXT-R225]</a>.</li>
+<li><span id="EOS-R140" class="rqDef">[EOS-R140]</span> must not be used at a <strong>position before the end of the PDU (primitive)</strong>
+<ul>
+<li>even if it has deterministic length – it is “end of service”!</li>
+</ul></li>
+<li>More constraints: see <a href="Iteration%20Data%20Type%20Constraints.htm">Iteration Data Type Constraints</a>.</li>
+</ul>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20End-of-Service%20Iteration.htm">dialog</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+<li><a href="Fixed%20Count%20Iteration.htm">Fixed Count Iteration</a></li>
+<li><a href="Counter%20Iteration.htm">Counter Iteration</a></li>
+<li><a href="End-Marker%20Iteration.htm">End-Marker Iteration</a></li>
+<li><a href="Iteration%20Data%20Type%20Constraints.htm">Iteration Data Type Constraints</a></li>
+</ul>
+</body>
+</html>

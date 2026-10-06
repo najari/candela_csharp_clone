@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Snapshot Data</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="snapshot-data">Snapshot Data</h1>
+<p>The following describes the user interface for snapshot data defined <strong>within the service structure</strong> in a diagnostic instance (based on a <strong>Multiplexer</strong> in the Protocol Service).</p>
+<p>For the user interface of the <strong>specific AUTOSAR data model</strong> available since CANdelaStudio 13, see the <a href="AUTOSAR%20Fault%20Memory%20GUI.htm">AUTOSAR Fault Memory GUI</a>.</p>
+<h2 id="overview">Overview</h2>
+<div class="figure">
+<img src="Images/Snapshot%20Data%20Service.jpg" alt="A Service with Snapshot Data (&quot;ww&quot;)" />
+<p class="caption">A Service with Snapshot Data (&quot;ww&quot;)</p>
+</div>
+<p>Occurrences of a Multiplexer component in the Protocol Service are <strong>displayed and modified in the diagnostic instance</strong> (&quot;ww&quot; in the screenshot above):</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Snapshot%20Data.jpg" alt="Snapshot Data in a Diagnostic Instance" />
+<p class="caption">Snapshot Data in a Diagnostic Instance</p>
+</div>
+<p>The name of the page in the diagnostic instance (e.g. &quot;Snapshot data&quot;) is defined in the template and may vary.</p>
+<p>The &quot;(ww)&quot; identifies the Protocol Service Components that represent the snapshot data. The &quot;w&quot; character has no meaning in itself and may change; CANdelaStudio just uses it to distinguish it from other Protocol Service components.</p>
+<h2 id="dtc">DTC</h2>
+<p>Shows all DTCs from the DTC list, and a special first entry shown as &quot;(Default)&quot;.</p>
+<p>Snapshot data specified for &quot;(Default)&quot; automatically applies to all DTCs for which you do not specify &quot;individual&quot; snapshot data.</p>
+<p>DTCs that have individual snapshot data are shown with a &quot;*&quot; in front.</p>
+<h2 id="edit-ranges">Edit Ranges</h2>
+<p>The entries in the list at bottom left are single DTCs by default for which you specify snapshot data in the list at bottom right.</p>
+<p>Beginning with the DTC selected in the list - not &quot;(Default)&quot; - you can specify a range of DTCs that shall have the same snapshot data. A popup dialog lets you select the end of the range. <strong>Possible values</strong> are all DTCs following the selected one up to the first following DTC that has individual snapshot data.</p>
+<p>To get rid of a range definition and enable snapshot data for each individual DTC from the range, just specify the start to be the end range, too.</p>
+<h2 id="use-default">Use Default</h2>
+<p>Specifies that snapshot data for the selected DTC is taken from the &quot;(Default)&quot; entry.</p>
+<p>If the &quot;(Default)&quot; entry is selected in the left list, &quot;Use Default&quot; is the only possible setting.</p>
+<p>When &quot;Snapshot Data Specific for DTC...&quot; is set, and you click &quot;Use Default&quot;, CANdelaStudio confirms because all data objects defined in the telegram table will be deleted, and the DTC will fall back to the data defined for &quot;(Default)&quot;.</p>
+<h2 id="snapshot-data-specific-for-dtc...">Snapshot Data Specific for DTC...</h2>
+<p>Specifies that snapshot data for the selected DTC is described in the <a href="../../20%20UserInterface/Data%20Objects/Data%20Objects.htm">telegram table</a> at the bottom.</p>
+<h2 id="copy-into-selected-environment-data">Copy into Selected Environment Data</h2>
+<p>(context menu of telegram table)</p>
+<p>Lets you copy data objects from one DTC (or range of DTCs) to other DTCs. Lets you select the DTCs to copy data into.</p>
+<h2 id="create-all-missing-specific-snapshot-data">Create All Missing Specific Snapshot Data</h2>
+<p>(context menu of telegram table)</p>
+<p>Sets all DTCs from &quot;Use Default&quot; to &quot;Snapshot Data Specific for DTC...&quot;.</p>
+<h2 id="delete-all-specific-snapshot-data-use-default">Delete All Specific Snapshot Data (Use Default)</h2>
+<p>(context menu of telegram table)</p>
+<p>Sets all DTCs from &quot;Snapshot Data Specific for DTC...&quot; to &quot;Use Default&quot;, <strong>deletes all data objects</strong> in the individual telegram tables.</p>
+<p>This is the reverse of the previous operation.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a></li>
+<li><a href="../../20%20UserInterface/DTC/DTCs.htm">DTCs</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a> Introduction</li>
+<li><a href="../../30%20Features/DTC/Group%20of%20DTC.htm">Group of DTC (Feature)</a></li>
+<li><a href="../../15%20Procedures/Fault%20Memory/How%20to%20Describe%20DTC%20Specific%20Snapshot%20Data.htm">How to Describe DTC Specific Snapshot Data</a></li>
+<li><a href="../../15%20Procedures/Fault%20Memory/How%20to%20Describe%20Data%20for%20Different%20Snapshot%20Records.htm">How to Describe Data for Different Snapshot Records</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+</ul>
+</body>
+</html>

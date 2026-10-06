@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Identifying Patterns</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="identifying-patterns">Identifying Patterns</h1>
+<p>The chapter &quot;Identifying Patterns&quot; in an extended variant contains two tables. It is based on the data of the dialog <a href="Identifying%20Features.htm">Identifying Features</a> defined in the base variant.</p>
+<p>See also the <a href="../../30%20Features/Variant/Variant%20Identification.htm">Variant Identification Feature</a>.</p>
+<div class="figure">
+<img src="Images/Identifying%20Patterns.jpg" alt="Dialog &quot;Identifying Patterns&quot;" />
+<p class="caption">Dialog &quot;Identifying Patterns&quot;</p>
+</div>
+<h2 id="upper-table">Upper Table</h2>
+<p>The upper table has only one column named “Identifying Pattern”, which cannot be edited directly.</p>
+<p>The table shows Identifying Patterns. To identify the variant, it suffices that any of the patterns matches (disjunction, logical &quot;OR&quot;).</p>
+<p>The column shows a summary of the details defined in the bottom table:</p>
+<ul>
+<li><p>for a new pattern, the column show e.g. text “*, *, *“ (the number of asterisks is the number of identifying features defined).</p></li>
+<li><p>for a pattern with identifying details, the column shows the values of all details, separated by a comma “,”.</p></li>
+</ul>
+<h2 id="new">New</h2>
+<p>Clicking button &quot;New&quot; or the magic line creates a new identifying pattern, whose details are to be described in the bottom table.</p>
+<h2 id="new-range">New Range</h2>
+<p>Allows convenient creation of multiple identifying patterns.</p>
+<h2 id="delete">Delete</h2>
+<p>Removes the selected identifying patterns.</p>
+<h2 id="bottom-table">Bottom Table</h2>
+<p>The table shows values to expect in an ECU response for the selected Identifying Pattern in the upper table. To identify the variant, all checked values must match (conjunction, logical &quot;AND&quot;).</p>
+<p>You cannot create new identifying details directly in this bottom table, i.e. the table has no magic line. When you create a new identifying pattern in the upper table, all identifying features will be shown in the table as &quot;details&quot; with deactivated checkboxes.</p>
+<h2 id="diagnostic-instancejob-container-data-object-status-path">Diagnostic instance/Job container, Data object, Status, Path</h2>
+<p>These columns correspond with the columns of the <a href="Identifying%20Features.htm">Identifying Features</a> list. None of these columns can be edited.</p>
+<h2 id="value">Value</h2>
+<p>Contains the expected value of the data object which identifies the variant of the identifying pattern. This column can be edited (select the cell, then single click or press <code>F2</code>).</p>
+<h2 id="data-type">Data Type</h2>
+<p>Shows the data type used by the data object.</p>
+<h2 id="checkbox">Checkbox</h2>
+<p>A checkbox to the left of each row determines whether the corresponding feature shall be used to identify the variant. The value of a detail can only be edited if the checkbox is activated. Clicking into column “Value” automatically activates the checkbox.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Variant/Identifying%20Features.htm">Identifying Features</a> (User Interface - base variant)</li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../30%20Features/Variant/Variant%20Identification.htm">Variant Identification</a> (Feature)</li>
+</ul>
+</body>
+</html>

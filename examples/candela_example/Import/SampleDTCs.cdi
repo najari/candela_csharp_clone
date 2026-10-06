@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CANDELAIMPORT dtdfilevers="1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ><IMPORTDOC><DTCCOLLECTION><SERVICEMAPPING diaginstance="Emission_Related_Trouble_Codes" variant="COMMON_DIAGNOSTICS" />
+<RECORDTEMPLATEMAPPING><ITEMMAPPING id="_1" >Set Condition</ITEMMAPPING>
+<ITEMMAPPING id="_2" >Reset Condition</ITEMMAPPING>
+<ITEMMAPPING id="_3" >Testing point of time</ITEMMAPPING>
+</RECORDTEMPLATEMAPPING>
+<DTCS><DTC number="1" ><ERRORTEXT>Voltage too low</ERRORTEXT>
+<RECORD><RECORDITEM itemmappingref="_1" >Voltage &lt; 10V, t &gt; 1s</RECORDITEM>
+<RECORDITEM itemmappingref="_2" >U_BAT (of EZS) for t &gt; 15s; Self healing after 100 trips without occurence.</RECORDITEM>
+<RECORDITEM itemmappingref="_3" >once on startup</RECORDITEM>
+</RECORD>
+</DTC>
+<DTC number="2" ><ERRORTEXT>Voltage too high</ERRORTEXT>
+<RECORD><RECORDITEM itemmappingref="_1" >Voltage &gt; 14V, t &gt; 1s</RECORDITEM>
+<RECORDITEM itemmappingref="_2" >U_BAT (of EZS) for t &gt; 15s; Self healing after 100 trips without occurence.</RECORDITEM>
+<RECORDITEM itemmappingref="_3" >once on startup</RECORDITEM>
+</RECORD>
+</DTC>
+<DTC number="3" ><ERRORTEXT>Failure in door contact front left</ERRORTEXT>
+<RECORD><RECORDITEM itemmappingref="_1" >t &gt; 2s</RECORDITEM>
+<RECORDITEM itemmappingref="_2" >ECU Reset (new wake up phase); Self healing after 100 trips without occurence.</RECORDITEM>
+<RECORDITEM itemmappingref="_3" >always</RECORDITEM>
+</RECORD>
+</DTC>
+<DTC number="4" ><ERRORTEXT>Failure in door contact front right</ERRORTEXT>
+<RECORD><RECORDITEM itemmappingref="_1" >t &gt; 2s</RECORDITEM>
+<RECORDITEM itemmappingref="_2" >ECU Reset (new wake up phase); Self healing after 100 trips without occurence.</RECORDITEM>
+<RECORDITEM itemmappingref="_3" >always</RECORDITEM>
+</RECORD>
+</DTC>
+<DTC number="5" ><ERRORTEXT>Failure in door contact rear left</ERRORTEXT>
+<RECORD><RECORDITEM itemmappingref="_1" >t &gt; 2s</RECORDITEM>
+<RECORDITEM itemmappingref="_2" >ECU Reset (new wake up phase); Self healing after 100 trips without occurence.</RECORDITEM>
+<RECORDITEM itemmappingref="_3" >always</RECORDITEM>
+</RECORD>
+</DTC>
+<DTC number="6" ><ERRORTEXT>Failure in door contact rear right</ERRORTEXT>
+<RECORD><RECORDITEM itemmappingref="_1" >t &gt; 2s</RECORDITEM>
+<RECORDITEM itemmappingref="_2" >ECU Reset (new wake up phase); Self healing after 100 trips without occurence.</RECORDITEM>
+<RECORDITEM itemmappingref="_3" >always</RECORDITEM>
+</RECORD>
+</DTC>
+</DTCS>
+</DTCCOLLECTION>
+</IMPORTDOC>
+</CANDELAIMPORT>

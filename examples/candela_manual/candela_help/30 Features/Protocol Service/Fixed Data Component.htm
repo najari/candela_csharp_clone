@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Fixed Data Component</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="fixed-data-component"><span id='_index_446728094'>Fixed Data Component</span></h1>
+
+<p>Fixed Data is the position where data objects fixed in the template (= fix in all diagnostic instances) can be placed.</p>
+<p>Fixed data may occur at any position after the protocol service <a href="Protocol%20Service.htm#signature">signature</a> with the following exception:</p>
+<p><span id="FD-R200" class="rqDef">[FD-R200]</span> If the component contains a data object with variable length, no further components may follow (cf. CDS-4167).</p>
+<p><span id="FD-R210" class="rqDef">[FD-R210]</span> In a fixed data component, ...</p>
+<ul>
+<li>if enabled by Authorization setting <a class='rqRef' href='../../30%20Features/Document/Authorization.htm#DLA-R060' title="">[DLA-R060]</a>,</li>
+<li>then CANdelaStudio allows variable length data objects of deterministic length <a class='rqRef' href='../../30%20Features/Data%20Type/Length.htm#DTL-D120' title="Deterministic Variable Length">[DTL-D120]</a> at all places (CDS-70854 v13).</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Components.htm">Components</a></li>
+<li><a href="Protocol%20Service.htm">Protocol Service</a></li>
+</ul>
+</body>
+</html>

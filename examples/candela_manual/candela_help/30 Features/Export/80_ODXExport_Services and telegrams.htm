@@ -1,0 +1,809 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>80_ODXExport_Services and telegrams</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="services-and-telegrams">Services and telegrams</h1>
+<h2 id="candela-service">CANdela Service</h2>
+<p><span id="ODXE-R1080-Service" class="rqDef">[ODXE-R1080-Service]</span></p>
+<p>A CANdela Service is exported to the ODX element DIAG-SERVICE whereas value inheritance and sharing conditions are always fulfilled. Figure <a href="#figure-export-of-odx-diag-service">ODX DIAG-SERVICE</a> shows the cardinality of the object relationships which are ensured by the export, i.e. each DIAG-SERVICE has its own REQUEST, POS-RESPONSE and NEG-RESPONSE. The reference to FUNCT-CLASS and the attribute SEMANTIC are set like it is described in chapter ‎7.1 and ‎7.2.</p>
+<p><span id="figure-export-of-odx-diag-service"></span></p>
+<div class="figure">
+<img src="Images/image23.png" alt="Export of ODX DIAG-SERVICE" />
+<p class="caption">Export of ODX DIAG-SERVICE</p>
+</div>
+<p>Services which are only functional adressable can be skipped using the ODXExportOption &quot;SkipPureFunctionalService&quot;.</p>
+<h3 id="deactivated-services">Deactivated Services</h3>
+<p>With CANdela 8.2 SP2 it is possible to deactive Services in a Diagnostic instance.</p>
+<div class="figure">
+<img src="Images/image24.png" alt="Deactivated Service at Diagnostic Instance" />
+<p class="caption">Deactivated Service at Diagnostic Instance</p>
+</div>
+<p>For the ODXExport, those services are skipped. Deactivated Services are not exported to ODX.</p>
+<h3 id="diag-serviceshort-namelong-name">DIAG-SERVICE.SHORT-NAME/LONG-NAME</h3>
+<p>With CANdela5.5 the new Service-Property 'ServiceShortCutQualifer/ServiceShortCutName' is used as SHORT-NAME/LONG-NAME.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>DIAG-SERVICE</strong></th>
+<th align="left"><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">SHORTNAME</td>
+<td align="left">ServiceShortCutQualifier</td>
+</tr>
+<tr class="even">
+<td align="left">LONGNAME</td>
+<td align="left">ServiceShortCutName</td>
+</tr>
+</tbody>
+</table>
+<p>Table 11: Short- and Longname of Diag-Service</p>
+<p>During migration of documents from 5.0 to 5.5 the Value is calculated by concatenating Service and DiagInstance-Qualifier/Name as done before. In case the Odx-attribute 'DIAG-SERVICE.SHORT-NAME' (see <a href="1_ODXExport_Introduction.htm#with-template">With Template</a>) is set, the value will be used as ServiceShortCutName. The TextId of the ShortCutName is used as TID in ODX.</p>
+<h3 id="candela-service-semantic">SEMANTIC</h3>
+<p>With 6.0 Release, each CANdela-Service has the property &quot;Semantic&quot;. Here the user is able to specify the SEMANTIC of the ODX DIAG-SERVICE directly.</p>
+<h3 id="diagnostic-class">DIAGNOSTIC-CLASS</h3>
+<p><span id="ODXE-R1080-DiagClass" class="rqDef">[ODXE-R1080-DiagClass]</span></p>
+<p>Apart from automatically setting the DIAGNOSTIC-CLASS based on the usage (e.g. variant identification), it is also possible to adjust the setting via a CANdela Service Attribute &quot;Diagnostic_Class&quot;. The value of the attribute is used as DIAGNOST-CLASS in ODX. Possible Attribute Values are:</p>
+<ul>
+<li>STARTCOMM</li>
+<li>STOPCOMM</li>
+<li>VARIANTIDENTIFICATION</li>
+<li>DYN-DEF-MESSAGE</li>
+<li>READ-DYN-DEFINED-MESSAGE</li>
+<li>CLEAR-DYN-DEF-MESSAGE</li>
+<li>UNSPECIFIED</li>
+</ul>
+<h3 id="suppresspositivereponsemsgindication">SuppressPositiveReponseMsgIndication</h3>
+<p>With CANdela 6.5 SP1 the data model was enhanced to support specifying the value of the SuppressPositiveResponseMessageIndication-Bit (SPRMIB).</p>
+<div class="figure">
+<img src="Images/image25.png" alt="Setting of SPRMIB in CANdela" />
+<p class="caption">Setting of SPRMIB in CANdela</p>
+</div>
+<p>The ECU will send a POS-RESPONSE if SPRMIB = 0.</p>
+<p>The test system will set the SPRMIB in REQUEST as following:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela-Setting</strong></th>
+<th align="left"><strong>Value of SPRMIB</strong></th>
+<th align="left"><strong>ECU sends POS-RESPONSE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">always</td>
+<td align="left">1</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">userdefined</td>
+<td align="left">0 or 1</td>
+<td align="left">TRUE OR FALSE</td>
+</tr>
+<tr class="odd">
+<td align="left">never</td>
+<td align="left">0</td>
+<td align="left">TRUE</td>
+</tr>
+</tbody>
+</table>
+<p>The created ODX DIAG-SERVICEs depends on the setting of the ODX-Export option &quot;ExportPosResponseSupressable&quot;</p>
+<h4 id="setting-exportposresponsesuppressable-false">Setting &quot;ExportPosResponseSuppressable = FALSE&quot;</h4>
+<p>Number and type of services that have to be exported:</p>
+<p><strong>DS</strong> = normal DIAG-SERVICE</p>
+<p><strong>DSNR</strong> = DIAG-SERVICE without POS-RESPONSE</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>phys \ func</strong></td>
+<td><strong>Always</strong></td>
+<td><strong>userdefined</strong></td>
+<td><strong>never</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Always</strong></td>
+<td>DS</td>
+<td>DS <strong>\</strong> DSNR</td>
+<td>DS <strong>\</strong> DS+DSNR</td>
+</tr>
+<tr class="odd">
+<td><strong>Userdefined</strong></td>
+<td>DSNR <strong>\</strong> DS</td>
+<td>DS+DSNR</td>
+<td>DSNR <strong>\</strong> DS+DSNR</td>
+</tr>
+<tr class="even">
+<td><strong>never</strong></td>
+<td>DS+DSNR <strong>\</strong> DS</td>
+<td>DS+DSNR <strong>\</strong> DSNR</td>
+<td>DSNR</td>
+</tr>
+</tbody>
+</table>
+<p>Table 12: Generation of DIAG-SERVICEs without PRS-Flag</p>
+<p>The TABLE below lists the ADDRESSING specified for the created DIAG-SERVICEs</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Phys</strong></td>
+<td></td>
+<td align="left"><strong>Func</strong></td>
+<td></td>
+<td align="left"><strong>DS</strong></td>
+<td align="left"><strong>DSNR</strong></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>setting</strong></td>
+<td><strong>SPRMIB</strong></td>
+<td align="left"><strong>setting</strong></td>
+<td><strong>SPRMIB</strong></td>
+<td align="left"> </td>
+<td align="left"> </td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td>1</td>
+<td align="left">always</td>
+<td>1</td>
+<td align="left">X</td>
+<td align="left">FUNC-OR-PHYS</td>
+</tr>
+<tr class="even">
+<td align="left">always</td>
+<td>1</td>
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">FUNC</td>
+<td align="left">FUNC-OR-PHYS</td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td>1</td>
+<td align="left">never</td>
+<td>0</td>
+<td align="left">FUNC</td>
+<td align="left">PHYS</td>
+</tr>
+<tr class="even">
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">always</td>
+<td>1</td>
+<td align="left">PHYS</td>
+<td align="left">FUNC-OR-PHYS</td>
+</tr>
+<tr class="odd">
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">FUNC-OR-PHYS</td>
+<td align="left">FUNC-OR-PHYS</td>
+</tr>
+<tr class="even">
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">never</td>
+<td>0</td>
+<td align="left">FUNC-OR-PHYS</td>
+<td align="left">PHYS</td>
+</tr>
+<tr class="odd">
+<td align="left">never</td>
+<td>0</td>
+<td align="left">always</td>
+<td>1</td>
+<td align="left">PHYS</td>
+<td align="left">FUNC</td>
+</tr>
+<tr class="even">
+<td align="left">never</td>
+<td>0</td>
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">FUNC-OR-PHYS</td>
+<td align="left">FUNC</td>
+</tr>
+<tr class="odd">
+<td align="left">never</td>
+<td>0</td>
+<td align="left">never</td>
+<td>0</td>
+<td align="left">FUNC-OR-PHYS</td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left"> </td>
+<td></td>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td>1</td>
+<td align="left">X</td>
+<td>X</td>
+<td align="left">X</td>
+<td align="left">PHYS</td>
+</tr>
+<tr class="even">
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">X</td>
+<td>X</td>
+<td align="left">PHYS</td>
+<td align="left">PHYS</td>
+</tr>
+<tr class="odd">
+<td align="left">never</td>
+<td>0</td>
+<td align="left">X</td>
+<td>X</td>
+<td align="left">PHYS</td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left"> </td>
+<td></td>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">X</td>
+<td>X</td>
+<td align="left">always</td>
+<td>1</td>
+<td align="left">X</td>
+<td align="left">FUNC</td>
+</tr>
+<tr class="even">
+<td align="left">X</td>
+<td>X</td>
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">FUNC</td>
+<td align="left">FUNC</td>
+</tr>
+<tr class="odd">
+<td align="left">X</td>
+<td>X</td>
+<td align="left">never</td>
+<td>0</td>
+<td align="left">FUNC</td>
+<td align="left">X</td>
+</tr>
+</tbody>
+</table>
+<p>Table 13: Addressing of DIAG-SERVICEs for SPRMIB-Setting</p>
+<h4 id="setting-exportposresponsesuppressable-true">Setting &quot;ExportPosResponseSuppressable = TRUE&quot;</h4>
+<p>In case the ODX-Export Option &quot;Export POS-RESPONSE-SUPPRESSABLE&quot; is activated, the POS-RESPONSE-SUPPRESSABLE-Element is generated. Note this element is only available in ODX2.2.0</p>
+<div class="figure">
+<img src="Images/image26.png" alt="POS-RESPONSE-SUPPRESSABLE in ODX2.2.0" />
+<p class="caption">POS-RESPONSE-SUPPRESSABLE in ODX2.2.0</p>
+</div>
+<p>As the CANdela data model allows to specify the value of the SPRMIB-Bit and ODX not in those cases where the setting between functional and physical DIAG-SERVICEs differ, two DIAG-SERVICEs have to be created.</p>
+<p>The number of services that have to be exported is listed below:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><strong><em>phys \ func</em></strong></td>
+<td align="left"><strong>always</strong></td>
+<td align="left"><strong>Userdefined</strong></td>
+<td align="left"><strong>never</strong></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>always</strong></td>
+<td align="left">1</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>userdefined</strong></td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>never</strong></td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">1</td>
+</tr>
+</tbody>
+</table>
+<p>Table 14: Creation of DIAG-SERVICEs with PRS-Flag</p>
+<p>The following TABLE lists in which cases a POS-RESPONSE-SUPPRESSABLE-Element is generated (PRS-FLAG).</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Phys</strong></td>
+<td></td>
+<td align="left"><strong>Func</strong></td>
+<td></td>
+<td><strong>1. DIAG-SERVICE</strong></td>
+<td></td>
+<td align="left"><strong>2. DIAG-SERVICE</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Setting</strong></td>
+<td><strong>SPRMIB</strong></td>
+<td align="left"><strong>Setting</strong></td>
+<td><strong>SPRMIB</strong></td>
+<td><strong>Addressing</strong></td>
+<td><strong>PRS-Flag</strong></td>
+<td align="left"><strong>Addressing</strong></td>
+<td><strong>PRS-Flag</strong></td>
+</tr>
+<tr class="odd">
+<td align="left">always</td>
+<td>1</td>
+<td align="left">always</td>
+<td>1</td>
+<td>FUNC-OR-PHYS</td>
+<td>-</td>
+<td align="left">X  </td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td>FUNC-OR-PHYS</td>
+<td>PRS</td>
+<td align="left">X  </td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">never</td>
+<td>0</td>
+<td align="left">never</td>
+<td>0</td>
+<td>FUNC-OR-PHYS</td>
+<td>-</td>
+<td align="left">X  </td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left"> </td>
+<td></td>
+<td align="left"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">always</td>
+<td>1</td>
+<td>PHYS</td>
+<td>PRS</td>
+<td align="left">FUNC</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">never</td>
+<td>0</td>
+<td>PHYS</td>
+<td>PRS</td>
+<td align="left">FUNC</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td align="left"> </td>
+<td></td>
+<td align="left"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">always</td>
+<td>1</td>
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td>PHYS</td>
+<td>-</td>
+<td align="left">FUNC</td>
+<td>PRS</td>
+</tr>
+<tr class="odd">
+<td align="left">never</td>
+<td>0</td>
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td>PHYS</td>
+<td>-</td>
+<td align="left">FUNC</td>
+<td>PRS</td>
+</tr>
+<tr class="even">
+<td align="left"> </td>
+<td></td>
+<td align="left"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">never</td>
+<td>0</td>
+<td align="left">always</td>
+<td>1</td>
+<td>PHYS</td>
+<td>-</td>
+<td align="left">FUNC</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td align="left">always</td>
+<td>1</td>
+<td align="left">never</td>
+<td>0</td>
+<td>PHYS</td>
+<td>-</td>
+<td align="left">FUNC</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td align="left"> </td>
+<td></td>
+<td align="left"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">always</td>
+<td>1</td>
+<td align="left">X</td>
+<td>X</td>
+<td>PHYS</td>
+<td>-</td>
+<td align="left">X  </td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td align="left">X</td>
+<td>X</td>
+<td>PHYS</td>
+<td>PRS</td>
+<td align="left">X  </td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">never</td>
+<td>0</td>
+<td align="left">X</td>
+<td>X</td>
+<td>PHYS</td>
+<td>-</td>
+<td align="left">X  </td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left"> </td>
+<td></td>
+<td align="left"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">X</td>
+<td>X</td>
+<td align="left">always</td>
+<td>1</td>
+<td>FUNC</td>
+<td>-</td>
+<td align="left">X  </td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">X</td>
+<td>X</td>
+<td align="left">userdefined</td>
+<td>0 || 1</td>
+<td>FUNC</td>
+<td>PRS</td>
+<td align="left">X  </td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">X</td>
+<td>X</td>
+<td align="left">never</td>
+<td>0</td>
+<td>FUNC</td>
+<td>-</td>
+<td align="left">X  </td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Table 15: Usage of PRS-Flag for DIAG-SERVICEs</p>
+<h3 id="is-mandatory">IS-MANDATORY</h3>
+<p>This feature is available since CANdelaStudio 4.0 SP3</p>
+<p>IS-MANDATORY is exported for DIAG-SERVICES exported to the BASE-VARIANT depending on the following properties:</p>
+<ul>
+<li>DiagInstance.IsRequired</li>
+<li>DiagInstance.IsActivationModifiable</li>
+<li>DiagServiceTemplate.IsRequired</li>
+<li>DiagService.IsRequired</li>
+</ul>
+<p>'DIAG-SERVICE.IS-MANDATORY=true' is exported when the following conditions apply:</p>
+<p>(DiagInstance.IsRequired==true) &amp;&amp; (DiagInstance.IsActivationModifiable==true)<br />
+&amp;&amp; (DiagServiceTemplate.IsRequired==true || Service.IsRequired==true)</p>
+<p>Since CANdela5.5 IS-MANDATORY is only exported in case the primary and secondary properties of the DiagInstance are not modifiable. Otherwise the Service could potentially be overwritten in an ECU-VARIANT.</p>
+<h3 id="comparam-ref">COMPARAM-REF</h3>
+<p>With CANdelaStudio 6.0 SP1 it is possible to modify communication parameters at Service -- level. This will be exported as COMPARAM-REF at the corresponding DIAG-SERVICE.</p>
+<h3 id="protocol-snref">PROTOCOL-SNREF</h3>
+<p>With CANdela 7.5 it is possible to define that certain services are available only via specific interfaces. This is expressed in ODX via PROTOCOL-SNREFs at DIAG-COMM. In case a DIAG-SERVICE is only available on a specific interface, the ODX-Export generates a PROTOCOL-SNREF to the PROTOCOL-LAYER generated for this interface.</p>
+<h3 id="naming-of-primitives">Naming of Primitives</h3>
+<p>Usually, the DIAG-SERIVCE SHORT-NAME/LONG-NAME + prefix is used for calculating the SHORT-NAME/LONG-NAME.</p>
+<h3 id="request">Request</h3>
+<p>The default assembling of REQUEST.SHORTNAME and REQUEST.LONGNAME is as follows:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Default prefix for SHORTNAME prefix_RQ_SN</td>
+<td align="left">&quot;RQ_&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">Default prefix for LONGNAME prefix_RQ_LN</td>
+<td align="left">&quot;RQ &quot;</td>
+</tr>
+</tbody>
+</table>
+<p>Table 16: Default prefix for Short- and Longname of Request</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">REQUEST.SHORTNAME := prefix_RQ_SN + DIAG-SERVICE.SHORTNAME</td>
+</tr>
+<tr class="even">
+<td align="left">REQUEST.LONGNAME := prefix_RQ_LN + DIAG-SERVICE.LONGNAME</td>
+</tr>
+</tbody>
+</table>
+<p>Table 17: Short- and Longname of Request</p>
+<h4 id="export-of-services-without-request">Export of Services without Request</h4>
+<p>Since CANdela 7.1 the ODXExport supports also services without Request. In older versions those Services were skipped by the ODXExport.</p>
+<h3 id="posresponse">PosResponse</h3>
+<p>The default assembling of POS-RESPONSE.SHORTNAME and POS-RESPONSE.LONGNAME is as follows:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Default prefix for SHORTNAME prefix_PR_SN</td>
+<td align="left">&quot;PR_&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">Default prefix for LONGNAME prefix_PR_LN</td>
+<td align="left">&quot;PR &quot;</td>
+</tr>
+</tbody>
+</table>
+<p>Table 18: Default prefix for Short- and Longname of Pos-Response</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">POS-RESPONSE.SHORTNAME := prefix_PR_SN + DIAG-SERVICE.SHORTNAME</td>
+</tr>
+<tr class="even">
+<td align="left">POS-RESPONSE.LONGNAME := prefix_PR_LN + DIAG-SERVICE.LONGNAME</td>
+</tr>
+</tbody>
+</table>
+<p>Table 19: Short- and Longname of Pos-Response</p>
+<h3 id="negresponse">NegResponse</h3>
+<p>The default assembling of NEG-RESPONSE.SHORTNAME and POS-RESPONSE.LONGNAME is as follows:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Default prefix for SHORTNAME prefix_NR_SN</td>
+<td align="left">&quot;NR_&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">Default prefix for LONGNAME prefix_NR_LN</td>
+<td align="left">&quot;NR &quot;</td>
+</tr>
+</tbody>
+</table>
+<p>Table 20: Default prefix for Short- and Longname of Neg-Response</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">NEG-RESPONSE.SHORTNAME := prefix_NR_SN + DIAG-SERVICE.SHORTNAME</td>
+</tr>
+<tr class="even">
+<td align="left">NEG-RESPONSE.LONGNAME := prefix_NR_LN + DIAG-SERVICE.LONGNAME</td>
+</tr>
+</tbody>
+</table>
+<p>Table 21: Short- and Longname of Neg-Response</p>
+<h4 id="negative-response-codes">Negative Response Codes</h4>
+<p>Negative response codes are exported as DATA-OBJECT-PROP with COMPU-METHOD of category TEXT-TABLE. The text table covers the negative response codes of the service and of the corresponding session if available.</p>
+<p>A CANdela NRC data object that does not contain NRCs is exported as RESERVED PARAM to ODX. Reason: In ODX it is not possible to export an empty text table.</p>
+<h4 id="handling-of-gm-extended-nrc-0xe3-ins-service-0xae">Handling of GM extended NRC 0xE3 ins Service 0xAE</h4>
+<p>For the NRC 0xE3, the NRC is followed by two more bytes. In CANdela this is expressed by a ContentComp with MandatoryAtRuntime-flag set to false. In ODX this is represented using a MUX, where the DEFAULT-CASE has no STRUCUTRE-REF and the CASE for 0xE3 points to the STRUCTURE generated from the ContentComp.</p>
+<h3 id="export-of-candelaserviceinformation">Export of CANdelaServiceInformation</h3>
+<p><span id="ODXE-R1080-ExportService" class="rqDef">[ODXE-R1080-ExportService]</span></p>
+<p>To improve import/export roundtrip the Names and Qualifiers of the CANdela-Service and DiagnosticInstance are exported optionally to SDGs at the DIAG-SERVICE since CANdela Studio 5.0SP1. The Structure is given below.</p>
+<p>Since CANdela 5.0 SP2 the analogue information is also exported for CANdela-Jobs.</p>
+<h3 id="additional-service-for-maybecombined">Additional service for &quot;Maybecombined&quot;</h3>
+<p><span id="ODXE-R1080-Combined" class="rqDef">[ODXE-R1080-Combined]</span></p>
+<p>In case the Option &quot;CreateAdditionalServiceForCombinedDIDs&quot; is set, the ODX-Export creates an additional DIAG-SERVICE per Diagnostic-Class which contains an Iteration in Request and Response where the Identifier and corresponding data is repeated.</p>
+<h2 id="telegram-components">Telegram components</h2>
+<p>In CANdela the grammar of a Service is described by a ProtocolService. A ProtocolService consists of max. three primitives and a primitive consists of components. Apart from the primitive components &quot;Proxy&quot;, &quot;Fixed data&quot; and components within an Iteration such components are exported to ODX as PARAMs.</p>
+<p>Note: CODED-CONST and RESERVED PARAMs have no DOP-REF in ODX. A CODED-CONST PARAM has a data type description for the coded value given by DIAG-CODED-TYPE.</p>
+<h3 id="service-id">Service-ID</h3>
+<p>Usually a const component with specification &quot;Service ID&quot; is exported as PARAM of type CODED-CONST with SEMANTIC SERVICE-ID. Only the second const component with specification &quot;Service ID&quot; of a NegResponse is exported with SEMANTIC SERVICEIDRQ.</p>
+<h3 id="subfunction">Subfunction</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela component specification</strong></th>
+<th align="left"><strong>PARAM.SEMANTIC</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Subfunction</td>
+<td align="left">SUBFUNCTION</td>
+</tr>
+<tr class="even">
+<td align="left">Local-ID</td>
+<td align="left">LOCAL-ID</td>
+</tr>
+<tr class="odd">
+<td align="left">Status</td>
+<td align="left">Status</td>
+</tr>
+<tr class="even">
+<td align="left">Identifier</td>
+<td align="left">ID</td>
+</tr>
+<tr class="odd">
+<td align="left">Data</td>
+<td align="left">DATA</td>
+</tr>
+</tbody>
+</table>
+<p>Table 22: Param Semantic</p>
+<h4 id="usage-of-matching-request-param">Usage of MATCHING-REQUEST-PARAM</h4>
+<p><span id="ODXE-R1080-Matching" class="rqDef">[ODXE-R1080-Matching]</span></p>
+<div class="figure">
+<img src="Images/image27.png" alt="MATCHING-REQUEST-PARAM" />
+<p class="caption">MATCHING-REQUEST-PARAM</p>
+</div>
+<p>In case the Option &quot;Create MATCHING-REQUEST-PARAM&quot; is activated, in the POS-RESPONSE an additional MATCHING-REQUEST-PARAM is created at the same byte-position where the PARAM specifying the Subfunction / Local-ID is located.</p>
+<h3 id="selector-marker-and-end-iterator">Selector-, Marker- and End-Iterator</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela component</strong></th>
+<th align="left"><strong>ODX COMPLEX-DOP for PARAM</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Iteration (Selector)</td>
+<td align="left">DYNAMIC-LENGTH-FIELD</td>
+</tr>
+<tr class="even">
+<td align="left">Iteration (Marker)</td>
+<td align="left">DYNAMIC-ENDMARKER-FIELD</td>
+</tr>
+<tr class="odd">
+<td align="left">Iteration (End)</td>
+<td align="left">END-OF-PDU-FIELD</td>
+</tr>
+</tbody>
+</table>
+<p>Table 23: Mapping of Complex-Dops</p>
+<p>Since CANdela Studio 4.0 SP4 a PARAM of type VALUE and a complex DOP of type DYNAMIC-LENGTH-FIELD, DYNAMIC-END-MARKER-FIELD or END-OF-PDU-FIELD are only generated if the comps contained in the CANdela IterComp are not empty. Empty IterComps are skipped from the export.</p>
+<h4 id="mapping-of-iterator-selector-to-dynamic-length-field">Mapping of Iterator (Selector) to DYNAMIC-LENGTH-FIELD</h4>
+<div class="figure">
+<img src="Images/image28.png" alt="Mapping of Iterator to DYNAMIC-LENGTH-FIELD" />
+<p class="caption">Mapping of Iterator to DYNAMIC-LENGTH-FIELD</p>
+</div>
+<p>The repeated content in CANdela ('Data') is mapped to a STRUCTURE in ODX. The Iterator Selector points to a Proxy ('Selector') that determines the number of iterations. When this is exported to ODX, the DYNAMIC-LENGTH-FIELD is positioned at the position of the Selector in CANdela. The actual start of the repeated content is described using DYNAMIC-LENGTH-FIELD.OFFSET.</p>
+<h4 id="mapping-of-iterator-marker-to-dynamic-endmarker-field">Mapping of Iterator (Marker) to DYNAMIC-ENDMARKER-FIELD</h4>
+<div class="figure">
+<img src="Images/image63.png" alt="Mapping of Iterator to DYNAMIC-ENDMARKER-FIELD" />
+<p class="caption">Mapping of Iterator to DYNAMIC-ENDMARKER-FIELD</p>
+</div>
+<p>The Iterator (Marker) is mapped to a DYNAMIC-ENDMARKER-FIELD. The Value when the iteration has to stop is given by DYNAMIC-ENDMARKER-FIELD.TERMINATION-VALUE. The reference to the Data-Selector given in CANdela is not represented in ODX.</p>
+<h4 id="mapping-of-iterator-end-to-end-of-pdu-field">Mapping of Iterator (End) to END-OF-PDU-FIELD</h4>
+<div class="figure">
+<img src="Images/image30.png" alt="Mapping of Iterator to END-OF-PDU-FIELD" />
+<p class="caption">Mapping of Iterator to END-OF-PDU-FIELD</p>
+</div>
+<p>The Iterator(End) is mapped to END-OF-PDU-FIELD. The repeated content is mapped to an ODX-STRUCTURE. No further mapping is required.</p>
+<h3 id="data">Data</h3>
+<p>Export of data objects and bit fields is explained in the chapter <a href="100_ODXExport_Data%20objects%20and%20bitfields.htm">Data objects and bitfields</a>.</p>
+<h3 id="simpleproxycomp-with-destinyany">SimpleProxyComp with destiny='any'</h3>
+<p>In CANdelaStudio 4.0 SP3 and earlier SimpleProxyComps with destiny='any' were exported as RESERVED.</p>
+<p>Since CANdelaStudio 4.0 SP4 Simple ProxcyComps with destiny='any' are exported as VALUE referencing a DOP with COMPU-METHOD of type 'IDENTIY'. DIAG-CODED-TYPE, PHYSICAL-TYPE are defined according to the following table:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><p><strong>CANdela</strong></p>
+<strong>Length</strong></th>
+<th><p><strong>ODX </strong></p>
+<strong>DIAG-CODED-TYPE</strong></th>
+<th><p><strong>ODX </strong></p>
+<strong>PHYSICAL-TYPE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fix</td>
+<td>STANDARD-LENGTH-TYPE<br />
+BASE-DATA-TYPE = A_UINT32</td>
+<td>BASE-DATA-TYPE=A_UIN T32<br />
+DISPLAY-RADIX=HEX</td>
+</tr>
+<tr class="even">
+<td>variable</td>
+<td>MIN-MAX-LENGTH-TYPE<br />
+BASE-DATA-TYPE=A_BYT EFIELD TERMINATION=END-OF-PD U</td>
+<td>BASE-DATA-TYPE=A_BYT EFIELD</td>
+</tr>
+</tbody>
+</table>
+<p>Table 24: DIAG-CODED-TYPE and PHYSICAL-TYPE of VALUEs</p>
+<p>SimpleProxyComps with destiny='any' that are referenced as selector by a NumeratorIterComp are not exported as VALUE since they are handled in the DYNAMIC-LENGTH-FILED resulting from the NumeratorIter.</p>
+<p>A DOP of the required bit length is generated if not available.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+<li><a href="../../30%20Features/Export/100_ODXExport_Data%20objects%20and%20bitfields.htm">Data objects and bitfields</a></li>
+</ul>
+</body>
+</html>

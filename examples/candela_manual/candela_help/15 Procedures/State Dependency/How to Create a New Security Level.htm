@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Create a New Security Level</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-create-a-new-security-level">How to Create a New Security Level</h1>
+<ul>
+<li>select the variant in which the new security level should be inserted.</li>
+<li>navigate to &quot;Supported Diagnostic Classes&quot; - &quot;Security Access&quot;</li>
+<li>click the button &quot;New Level...&quot; (at the bottom), or use the context menu item &quot;New Security Level...&quot;.</li>
+<li>follow the instructions of the wizard</li>
+</ul>
+<p>Note: in the diagnostic class &quot;Security Access&quot;, you can open the wizard by clicking the button &quot;New Level&quot; at the bottom of the right side (note: the diagnostic class name &quot;Security Access&quot; is configured in the template).</p>
+<p>The wizard creates...</p>
+<ul>
+<li>two diagnostic instances,</li>
+<li>a new state in state group &quot;Session&quot; and</li>
+<li>best-practice state transitions for services</li>
+</ul>
+<p>Note: &quot;New diagnostic instance&quot; in the context menu creates only one, not two diagnostic instances, no state and no specific state transitions. This is not recommended.</p>
+<h2 id="specify-the-security-access-data-record">Specify the Security Access Data Record</h2>
+<p>If <a href="How%20to%20Setup%20the%20Template%20to%20Specify%20the%20Security%20Access%20Data%20Record.htm">supported in the template</a>, you can specify the data in the third wizard page:</p>
+<ul>
+<li>a data type for the security access data record</li>
+<li>its additional properties &quot;Failure delay time&quot;, &quot;Failures to delay&quot; and &quot;Delays to lock&quot;</li>
+</ul>
+<p>If the template has not been setup accordingly, then the corresponding selection list and entry fields are locked in the wizard.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/State%20Dependency/Security.htm">Security</a></li>
+<li><a href="../../30%20Features/State%20Dependency/Session%20Security%20Wizard.htm#security">Session Security Wizard: Security Levels</a></li>
+<li><a href="../../20%20UserInterface/State%20Dependency/States.htm">State Dependency (User Interface)</a></li>
+<li><a href="../../30%20Features/State%20Dependency/State%20Dependency.htm">State Dependency (Feature)</a></li>
+</ul>
+</body>
+</html>

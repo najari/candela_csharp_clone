@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DTC Columns</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dtc-columns"><span id='_index_446728047' title='DTC: Column Definition' data-term='DTC' data-text='Column Definition'>DTC Columns</span></h1>
+<h2 id="dtc-columns-1">DTC Columns</h2>
+<p><span id="DTCC-R001" class="rqDef">[DTCC-R001]</span> Each CANdela Error Code Table <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R001' title="">[ECT-R001]</a> (DTC Table) has a list of <strong>DTC Columns</strong>.</p>
+<ul>
+<li>The &quot;<strong>columns</strong>&quot; in the DTC Table are <strong>defined</strong> in Expert View in the CANdela template (described here);</li>
+<li>The <strong>values</strong> for a DTC column at an individual DTC are <strong>shown and edited</strong> in the <a href="../../20%20UserInterface/DTC/DTCs.htm">DTC list in Fault Memory</a>.</li>
+</ul>
+<h2 id="dtc-columns-vs.-attributes">DTC Columns vs. Attributes</h2>
+<p>Besides these core properties, a DTC can have <a href="../../30%20Features/Attributes/Attributes.htm">attributes</a>, also defined in Expert view in the CANdela template. A DTC attribute can be configured to be shown in the DTC list, too.</p>
+<p>Recommendation: use...</p>
+<ul>
+<li>a DTC column to describe a <em>diagnostic aspect</em> of a DTC, like the &quot;set condition&quot;</li>
+<li>a DTC attribute to describe an <em>authoring aspect</em> of a DTC, like its &quot;maturity&quot;.</li>
+</ul>
+<p>In practice, it may be difficult to distinguish the aspects. The following <strong>hints</strong> may help:</p>
+<ul>
+<li>tools in the Vector toolchain (e.g. CANoe.DiVa) consume DTC columns, not DTC attributes</li>
+<li>the DTC list shows DTC columns before the DTC attributes</li>
+<li>attributes support more types <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020' title="Attribute Type">[ATTR-R020]</a> than DTC Columns (see below)</li>
+</ul>
+<h2 id="list-of-dtc-columns">List of DTC Columns</h2>
+<p>The order of columns is respected for display, but not significant otherwise.</p>
+<h2 id="type">Types of DTC Columns</h2>
+<p><span id="DTCC-R010" class="rqDef" title="Types">[DTCC-R010 Types]</span> CANdelaStudio supports three different column types in the DTC table:</p>
+<ul>
+<li><span id="DTCC-R010-Enum" class="rqDef">[DTCC-R010-Enum]</span> <strong>Enumeration</strong> (CDS-3912 4.0)
+<ul>
+<li>Columns of this type make it possible to select a value from a fixed set of &quot;symbols&quot;.</li>
+<li>The set of <strong>Symbols</strong> is specified in the template and cannot be changed in documents.</li>
+<li><span id="DTCC-R010-ID" class="rqDef">[DTCC-R010-ID]</span> is a unique numeric value for the symbol</li>
+<li><span id="DTCC-R010-Symbol" class="rqDef">[DTCC-R010-Symbol]</span> is a multi-language string for the symbol</li>
+<li>See <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R090' title="Symbols">[DTCC-R090]</a> below.</li>
+<li>Note: for type Translatable, there is a similar feature: selection list <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R095' title="Selection List">[DTCC-R095]</a></li>
+</ul></li>
+<li><span id="DTCC-R010-Unsigned" class="rqDef">[DTCC-R010-Unsigned]</span> <strong>Unsigned</strong>.
+<ul>
+<li>Columns of this type allow entry of an unsigned integer value.</li>
+</ul></li>
+<li><span id="DTCC-R010-Translatable" class="rqDef">[DTCC-R010-Translatable]</span> <strong>Translatable</strong>.
+<ul>
+<li>Columns of this type allow entry of a text that can be translated in the translation view.</li>
+<li>Additionally, the template can contain an optional selection list <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R095' title="Selection List">[DTCC-R095]</a>.</li>
+<li>See <a class='rqRef' href='../../20 UserInterface\DTC\DTC Property Page General.htm#DTCUI-R095' title="">[DTCUI-R095]</a> how to leave the value empty when the Column is optional <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R060-Optional' title="">[DTCC-R060-Optional]</a> and has a selection list.</li>
+</ul></li>
+</ul>
+<h2 id="properties">Properties of a DTC Column</h2>
+<h3 id="general">General</h3>
+<p><span id="DTCC-R020" class="rqDef">[DTCC-R020]</span> A DTC Column has</p>
+<ul>
+<li><span id="DTCC-R020-Name" class="rqDef">[DTCC-R020-Name]</span> <a href="../../30%20Features/Common%20Properties/Name.htm">Name</a>, multi-language</li>
+<li><span id="DTCC-R020-Qualifier" class="rqDef">[DTCC-R020-Qualifier]</span> <a href="../../30%20Features/Common%20Properties/Qualifier.htm">Qualifier</a>
+<ul>
+<li>identifies the DTC column, e.g. &quot;SetCondition&quot;.</li>
+<li>before 3.0, this was described using a hard-coded enumeration.</li>
+</ul></li>
+<li><span id="DTCC-R020-Description" class="rqDef">[DTCC-R020-Description]</span> <a href="../../30%20Features/Common%20Properties/Description.htm">Description</a>, multi-language</li>
+</ul>
+<h3 id="value-may-be-duplicate">Value May Be Duplicate</h3>
+<p><span id="DTCC-R050" class="rqDef" title="MayBeDuplicate">[DTCC-R050 MayBeDuplicate]</span></p>
+<ul>
+<li>If true, a value may occur at multiple DTCs in the DTC list.</li>
+<li>If false, values must be <strong>unique</strong> in the DTC list.</li>
+<li>This applies even to empty translatable columns (i.e. at most one may be empty).</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Column Type</th>
+<th align="left">May Be Duplicate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Enumeration</td>
+<td align="left">(always true)</td>
+</tr>
+<tr class="even">
+<td align="left">Unsigned</td>
+<td align="left">defined in template</td>
+</tr>
+<tr class="odd">
+<td align="left">Translatable</td>
+<td align="left">defined in template</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="convention">Convention</h3>
+<p><span id="DTCC-R060" class="rqDef" title="Convention">[DTCC-R060 Convention]</span> defines a restriction for values of the column at a DTC:</p>
+<ul>
+<li><span id="DTCC-R060-Required" class="rqDef">[DTCC-R060-Required]</span></li>
+<li><span id="DTCC-R060-Optional" class="rqDef">[DTCC-R060-Optional]</span></li>
+</ul>
+<p>The property makes sense for Column Type &quot;<strong>Translatable</strong>&quot; only:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Translatable Convention</th>
+<th align="left">Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Required</td>
+<td align="left">String value must not be empty</td>
+</tr>
+<tr class="even">
+<td>Optional</td>
+<td align="left">String value may be empty</td>
+</tr>
+</tbody>
+</table>
+<p>See <a class='rqRef' href='../../20 UserInterface\DTC\DTC Property Page General.htm#DTCUI-R095' title="">[DTCUI-R095]</a> how to leave the value empty when the Column has a Translatable list.</p>
+
+<h3 id="display-format">Display Format</h3>
+<p><span id="DTCC-R070" class="rqDef" title="Display Format">[DTCC-R070 Display Format]</span> The possible values for the display format of a DTC column depends on the column type:</p>
+<table style="width:89%;">
+<colgroup>
+<col width="23%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Column Type</th>
+<th align="left">Display Format</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Enumeration</td>
+<td align="left">Sort by ID<br />
+Sort by Symbol</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R010-ID' title="">[DTCC-R010-ID]</a><br />
+see <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R010-Symbol' title="">[DTCC-R010-Symbol]</a></td>
+</tr>
+<tr class="even">
+<td align="left">Unsigned</td>
+<td align="left">hex<br />
+dec<br />
+oct<br />
+bin</td>
+<td align="left">hexadecimal, e.g. &quot;0xA0&quot;<br />
+decimal, e.g. &quot;160&quot;<br />
+octal, e.g. &quot;o240&quot;<br />
+binary, e.g. &quot;%10100000&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left">Translatable</td>
+<td align="left">Text</td>
+<td align="left">(fix, not shown in Error Code Table)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="default-value">Default Value</h3>
+<p><span id="DTCC-R080" class="rqDef" title="Default Value">[DTCC-R080 Default Value]</span> (CDS-4271 4.0)</p>
+<ul>
+<li><span id="DTCC-R080-Required" class="rqDef">[DTCC-R080-Required]</span> a DTC Column has the required property &quot;default value&quot;.</li>
+<li><span id="DTCC-R080-New" class="rqDef">[DTCC-R080-New]</span> CANdelaStudio assigns the default value to new DTCs, for required and for optional DTC columns (<a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R060' title="Convention">[DTCC-R060]</a>, exception see below).</li>
+<li><span id="DTCC-R080-Translatable" class="rqDef">[DTCC-R080-Translatable]</span> For a translatable DTC column, the default value may be an <strong>empty string</strong>.</li>
+</ul>
+<p>Exceptions for a translatable DTC column with <strong>empty default value</strong>:</p>
+<ul>
+<li>for convention &quot;<strong>required</strong>&quot; <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R060-Required' title="">[DTCC-R060-Required]</a>, CANdelaStudio...
+<ul>
+<li><span id="DTCC-R080-TrRqGeneral" class="rqDef">[DTCC-R080-TrRqGeneral]</span> in general sets the column value to &quot;_&quot;, ...</li>
+<li><span id="DTCC-R080-TrRqDai" class="rqDef">[DTCC-R080-TrRqDai]</span> for Daimler documents sets the column value to &quot;tbd&quot;...</li>
+<li>in interactive DTC creation (CDS-3581 3.0)</li>
+<li>in DTC update from requirements (CDC-43842 9.1; before 9.1: &quot;t.b.d.&quot; CDC-34442 8.2).</li>
+</ul></li>
+<li>for convention &quot;<strong>optional</strong>&quot; <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R060-Optional' title="">[DTCC-R060-Optional]</a>, CANdelaStudio...
+<ul>
+<li><span id="DTCC-R080-TrOptDai" class="rqDef">[DTCC-R080-TrOptDai]</span> for Daimler documents leaves the column value empty in interactive DTC creation.</li>
+</ul></li>
+</ul>
+
+<h3 id="enumeration-symbols">Enumeration Symbols</h3>
+<p><span id="DTCC-R090" class="rqDef" title="Symbols">[DTCC-R090 Symbols]</span> (for Column Type <strong>enum</strong> only)</p>
+<ul>
+<li>define the set of available values in the DTC column</li>
+</ul>
+<h3 id="selection-list-for-translatable">Selection List for Translatable</h3>
+<p><span id="DTCC-R095" class="rqDef" title="Selection List">[DTCC-R095 Selection List]</span> (for Column Type <strong>translatable</strong> only) (CDS-4502 5.0)</p>
+<ul>
+<li>the list defines predefined, suggested values for the DTC property</li>
+<li>a user may select one of the values, or enter a different free text for the DTC property</li>
+<li>in order to specify a value not contained in the selection list, see <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R090' title="">[DTCUI-R090]</a>.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/DTC/DTCs.htm">DTC List</a></li>
+<li><a href="../../20%20UserInterface/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a></li>
+</ul>
+<p>Vector UDS Template:</p>
+<ul>
+<li><a href="../../40%20Templates/Vector%20UDS/DTC%20Columns.htm">DTC Columns</a></li>
+<li><a href="../../40%20Templates/Vector%20UDS/OBDII%20DTC%20Columns.htm">OBDII DTC Columns</a></li>
+</ul>
+</body>
+</html>

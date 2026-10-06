@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Fault Memory in CANdela</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="fault-memory-in-candela">Fault Memory in CANdela</h1>
+<p>See also the <a href="Fault%20Memory.htm">Fault Memory</a> introduction, and <a href="Fault%20Memory%20in%20UDS.htm">Fault Memory in UDS</a>.</p>
+<h2 id="types-of-fault-memory-in-candela">Types of Fault Memory in CANdela</h2>
+<p>CANdelaStudio supports <strong>two types</strong> of fault memory (in the template: <a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Tables</a>):</p>
+<ul>
+<li><strong>Primary</strong> (&quot;normal&quot;) fault memory
+<ul>
+<li>with DTC lengths of possibly 16, 24, and 32 bits;</li>
+<li>this includes <a href="../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm">User-Defined Fault-Memory in CANdela</a></li>
+</ul></li>
+<li><strong>OBDII</strong> fault memory
+<ul>
+<li>with a DTC length of 16 bits.</li>
+</ul></li>
+</ul>
+<p>Each type of fault memory...</p>
+<ul>
+<li>typically occurs once per variant</li>
+<li>defines the DTC length</li>
+<li>defines the <a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">DTC Columns</a></li>
+</ul>
+<h2 id="snapshot-extended-data-variations-in-candela">Snapshot / Extended Data Variations in CANdela</h2>
+<p><span id="FM-D200" class="rqDef">[FM-D200]</span> CANdelaStudio provides <strong>two ways</strong> to model <strong>Snapshot Data</strong> and <strong>Extended Data</strong>:</p>
+<h3 id="generic">Generic</h3>
+<p><span id="FM-D200-Generic" class="rqDef">[FM-D200-Generic]</span> <strong>generic</strong>, <strong>within the service structure</strong> (the &quot;old&quot; way):</p>
+<ul>
+<li>data is defined in the diagnostic instance only,</li>
+<li>typically using a multiplexer;</li>
+<li>the service is shown like &quot;19 04 zz <strong>yy</strong>&quot;;</li>
+<li>user interface: see the <a href="../../20%20UserInterface/Fault%20Memory/Snapshot%20Data.htm">snapshot data list</a>;</li>
+<li>See the chapter <a href="Snapshot%20Records%20Generic.htm">Snapshot Records (Generic)</a>.</li>
+</ul>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Snapshot%20Data.jpg" alt="Generic Snapshot Data: Multiplexer in Fault Memory" />
+<p class="caption">Generic Snapshot Data: Multiplexer in Fault Memory</p>
+</div>
+<h3 id="autosar">AUTOSAR</h3>
+<p><span id="FM-D200-AUTOSAR" class="rqDef">[FM-D200-AUTOSAR]</span> as <strong>separate data structure</strong>, conforming with AUTOSAR, see the <a href="AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a>):</p>
+<ul>
+<li>the service is shown like &quot;19 04 zz <strong>sr</strong>&quot;.</li>
+</ul>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/AUTOSAR%20Fault%20Memory%20Snapshot%20Records.jpg" alt="Specialized Data Structure for AUTOSAR - opened by button with &quot;Camera&quot; icon" />
+<p class="caption">Specialized Data Structure for AUTOSAR - opened by button with &quot;Camera&quot; icon</p>
+</div>
+<h2 id="special-dtc-representations-in-candela">Special DTC Representations in CANdela</h2>
+<p>CANdelaStudio supports...</p>
+<ul>
+<li><a href="../../30%20Features/DTC/Failure%20Type%20Byte.htm">Failure Type Bytes</a> or</li>
+<li><a href="../../30%20Features/DTC/Failure%20Mode%20Identifier.htm">Failure Mode Identifiers</a></li>
+</ul>
+<p>... for a DTC of 24 bits or greater.</p>
+<h2 id="responses-with-an-optional-dtc-0x19-0x0a-..-0x0f">Responses with an Optional DTC: 0x19 0x0A .. 0x0F</h2>
+<p><span id="FM-D570" class="rqDef">[FM-D570]</span> The UDS Services &quot;($19) ReadDtcInformation - Report*DTC&quot;, like &quot;($19) ReadDtcInformation - Read supported DTC&quot;, all have an optional DTC in the Positive Response.</p>
+<p>To describe the optional DTC, you can describe them as follows (note: <code>uu</code>, <code>ww</code>, <code>tt</code> are placeholders, the concrete letter may vary):</p>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Component</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>0x59</code></td>
+<td align="left">ServiceID</td>
+</tr>
+<tr class="even">
+<td align="left">e.g. <code>0x0A</code></td>
+<td align="left">Subfunction</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>uu</code></td>
+<td align="left">DTCAvailabilityMask</td>
+</tr>
+<tr class="even">
+<td align="left"><code>*[...]</code></td>
+<td align="left">EndOfServiceIteration, number of iterations 0..1 to specify the contents being optional</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>ww</code></td>
+<td align="left">DTC</td>
+</tr>
+<tr class="even">
+<td align="left"><code>tt</code></td>
+<td align="left">StatusOfDTC</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dtc-status-byte">DTC Status Byte</h2>
+<p>See <a href="../../30%20Features/DTC/DTC%20Status%20Bits.htm">DTC Status Bits</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Fault%20Memory.htm">Fault Memory</a> introduction</li>
+<li><a href="Fault%20Memory%20in%20UDS.htm">Fault Memory in UDS</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a></li>
+<li><a href="19%2006%20Wizard%20Data%20Model.htm">19 06 Wizard</a> (Extended Data per DTC)</li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC (Feature)</a></li>
+<li><a href="../../30%20Features/DTC/DTC%20Status%20Bits.htm">DTC Status Bits</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a> (setup in template)</li>
+<li><a href="../../30%20Features/DTC/Failure%20Type%20Byte.htm">Failure Type Byte</a></li>
+<li><a href="../../30%20Features/DTC/Failure%20Mode%20Identifier.htm">Failure Mode Identifier</a></li>
+<li><a href="Snapshot%20Records%20Generic.htm">Snapshot Records Generic</a></li>
+<li><a href="../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm">Extended Data Records Data Model</a> (AUTOSAR)</li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm">Snapshot Record Data Model</a> (AUTOSAR)</li>
+<li><a href="../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm">User-Defined Fault-Memory in CANdela</a></li>
+</ul>
+</body>
+</html>

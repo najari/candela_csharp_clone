@@ -1,0 +1,609 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Session Security Wizard</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="session-security-wizard">Session Security Wizard</h1>
+<p>See also the <a href="State%20Dependency.htm">State Dependency (Feature)</a>.</p>
+<h2 id="introduction">Introduction</h2>
+<p><strong>Security and Session diagnostic instances</strong> in a CANdela document are related with the <strong>States</strong> in a State Group.</p>
+<p>A wizard helps to <strong>consistently create</strong> both the diagnostic instance(s) and states with state transitions (CDS-4648 and CDS-4649 5.0; CDS-33216 8.2 SP2).</p>
+<h3 id="definitions">Definitions</h3>
+<p><em>Default (=)</em> = value is typically “Default”, but not changed (“=”) by the wizard</p>
+<p>executable = one of the services checked in the list “Executable Protocol services”</p>
+<p><strong>&lt;new_session&gt;</strong> = the new service / state created</p>
+<p><strong>&lt;default&gt;</strong> = the “default” session state (the first state in the state group)</p>
+<p><strong>&lt;locked&gt;</strong> = the “locked” state selected in the dialog.</p>
+<p><strong>&lt;target_state&gt;</strong> of a service = the state into which the service transits from &lt;default&gt; in the document. E.g. typically state “Default” for service “Default Session/Start”.</p>
+<p><strong>&lt;session service&gt;</strong> = service with SID 0x10</p>
+<p><strong>&lt;UDS ECU Reset service&gt;</strong> = service with SID 0x11 in document with ProtocolStandard “UDS”.</p>
+<p><strong>0x11 0x0[123]</strong> = regular expression denoting three services 0x11 0x01, 0x11 0x02, 0x11 0x03.</p>
+
+<h2 id="sessions">Creating Sessions</h2>
+<h3 id="use-case">Use-case</h3>
+<p>The “Session wizard” simplifies creation of new sessions, i.e. diagnostic instances of class type “Session” including all necessary states and state transitions, timing parameters etc.</p>
+<p>The only use case is the creation of sessions. The dialog shall be available in any of the view of CANdelaStudio (i.e. in Standard and Expert view, both for documents and templates) except Translation view.</p>
+<h3 id="dialog">Dialog</h3>
+<p><strong>R001.1:</strong> Create a wizard dialog with three property pages (see requirements below) and buttons</p>
+<ul>
+<li>[Next] – proceeds to the next property page; disabled if the last page is active</li>
+<li>[Previous] – proceeds to the previous property page; disabled if the first page is active</li>
+<li>[Finish] – closes the dialog and creates the session; enabled if the last page is active</li>
+<li>[Cancel] – closes the dialog without modifying anything; always enabled</li>
+</ul>
+<p>at the bottom of the dialog.</p>
+<p><strong>R002.0:</strong> The wizard dialog must provide a short help text at the top of the dialog. Pages must be activated by clicking on the buttons only, i.e. in a “step-by-step” manner.</p>
+<p><strong>R003.4:</strong> The <strong>first property page</strong> must provide the following controls:</p>
+<ul>
+<li>Name of the new session diagnostic instance and state (edit box)</li>
+<li>Qualifier (edit box, qualifier must be generated automatically from the name but editing must be possible)</li>
+<li>Identifier (“Session Type”, numerical edit box)</li>
+<li>Timing parameters (table of data objects, only visible if the session diagnostic class template contains a simple proxy component in the positive response; data objects are taken from the first diagnostic instance in the variant)</li>
+</ul>
+<p><strong>R004.0:</strong> The following conditions must be checked on clicking buttons [Next] or [Previous] of the property sheet:</p>
+<ol style="list-style-type: decimal">
+<li>Uniqueness of name, qualifier and identifier</li>
+<li>Uniqueness of timing parameters (there may be more than one parameter)</li>
+</ol>
+<p>If one of the checks fails, an appropriate error message must appear. The property page must not be switched then.</p>
+<p><strong>R005.5:</strong> The <strong>second property page</strong> must provide the following controls:</p>
+<ul>
+<li><p>Protocol services to be executed in this session (“Executable Protocol services”): table with</p>
+<ul>
+<li>check box</li>
+<li>hexadecimal service ID in parentheses</li>
+<li>name</li>
+</ul></li>
+<li><p>… of all <strong>protocol services</strong> except</p>
+<ul>
+<li><strong>&lt;session services&gt;</strong> and</li>
+<li><strong>&lt;UDS ECU Reset services&gt;</strong></li>
+</ul></li>
+<li>Example: <code>[X] (0x3E) Tester Present</code></li>
+<li>Buttons [Select all] and [Clear all] below the table</li>
+<li>Check box “Reset security level after session change” (default: on)</li>
+<li><p>combo box “Locked state” containing all states of state groups with semantics “security”. Disabled, if check box “Reset security level…” is unchecked, enabled otherwise.</p></li>
+</ul>
+<p><strong>R006.2:</strong> the <strong>third property page</strong> must provide a summary of all modifications done by the user:</p>
+<ul>
+<li>Name, qualifier and identifier (variable value) of the diagnostic instance</li>
+<li>Name of the timing parameters</li>
+<li><p>Name and state group name of the state created, with text “New state”, like:</p>
+<pre><code>New state &#39;safetySystemDiagnosticSession&#39;:
+  Located in state group &#39;Session&#39;</code></pre></li>
+<li><p>Note: no info about transitions, “Reset security level…”, “Locked state…”, “Protocol services which may be executed…” - these are better viewed in the overview.</p></li>
+</ul>
+<p>The summary must be provided in an edit box which is read-only.</p>
+
+<p>Add menu item “Create new session” to menu “Insert” and the context menu for diagnostic classes.</p>
+<p>Both icon and menu item must be activated only if the document contains at least one diag class template with spec “session”.</p>
+<h3 id="data-model-after-adding-session">Data Model After Adding Session</h3>
+<p>On <strong>finishing</strong>, the dialog must...</p>
+<p>... <strong>R010.0:</strong> create a new diagnostic instance (with service =: &lt;new_session&gt;) with the name, qualifier, identifier and timing parameters entered (cf. R003).</p>
+<p>... <strong>R020.0:</strong> create a new state (=: &lt;new_session&gt;) in state group with spec “session” using the name and qualifier of the new diagnostic instance.</p>
+<p>Guiding principle: the dialog shall not affect existing services or states, just new ones.</p>
+<h4 id="session">Session</h4>
+<p><strong>R100.0:</strong> for the service &lt;new session&gt;, go from all existing session states to the &lt;new_session&gt; state</p>
+<p><strong>R120.1:</strong> from the state &lt;new_session&gt;,</p>
+<ol style="list-style-type: lower-alpha">
+<li>for the existing <strong>&lt;session service&gt;</strong>s, go to the &lt;target_state&gt;</li>
+<li>for the service &lt;new_session&gt;, go to the state &lt;new session&gt;</li>
+<li>for each <strong>&lt;UDS ECU Reset service&gt;</strong> 0x11 0x0[123], go back to &lt;default&gt;</li>
+<li>for every executable service (cf. R005), set “may be executed” to “yes”.</li>
+<li>for all other services, set “may be executed” to “no”</li>
+</ol>
+<h4 id="session-1">Session</h4>
+<table style="width:99%;">
+<colgroup>
+<col width="26%" />
+<col width="7%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Service/Job</th>
+<th align="left">Prefix</th>
+<th align="left">Default</th>
+<th align="left">Programming</th>
+<th align="left">Extended</th>
+<th align="left">&lt;new session&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sessions/*/Start</td>
+<td align="left">10 LL</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">-- Default Session</td>
+<td align="left">10 01</td>
+<td align="left"><em>Default (=)</em></td>
+<td align="left"><em>Default (=)</em></td>
+<td align="left"><em>Default (=)</em></td>
+<td align="left">yes / no<br />
+8.2 SP2 Default</td>
+</tr>
+<tr class="odd">
+<td align="left">-- Programming Session</td>
+<td align="left">10 02</td>
+<td align="left"><em>Programming (=)</em></td>
+<td align="left"><em>Programming (=)</em></td>
+<td align="left"><em>Programming (=)</em></td>
+<td align="left">yes / no<br />
+8.2 SP2 Programming</td>
+</tr>
+<tr class="even">
+<td align="left">-- Extended Diagnostic Session</td>
+<td align="left">10 03</td>
+<td align="left"><em>Extended (=)</em></td>
+<td align="left"><em>(no) (=)</em></td>
+<td align="left"><em>Extended (=)</em></td>
+<td align="left">yes / no<br />
+8.2 SP2 Extended</td>
+</tr>
+<tr class="odd">
+<td align="left">-- &lt;new session&gt;</td>
+<td align="left">10 04</td>
+<td align="left">(yes)<br />
+8.2 SP2 &lt;new session&gt;</td>
+<td align="left">(yes)<br />
+8.2 SP2 &lt;new session&gt;</td>
+<td align="left">(yes)<br />
+8.2 SP2 &lt;new session&gt;</td>
+<td align="left">yes / no<br />
+8.2 SP2 &lt;new session&gt;</td>
+</tr>
+<tr class="even">
+<td align="left">Security Access/*/Request</td>
+<td align="left">27 LL</td>
+<td align="left"><em>(no) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left">yes / no</td>
+</tr>
+<tr class="odd">
+<td align="left">Security Access/*/Send</td>
+<td align="left">27 LL yy</td>
+<td align="left"><em>(no) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left">yes / no</td>
+</tr>
+<tr class="even">
+<td align="left">… all other services…</td>
+<td align="left"></td>
+<td align="left"><em>(no) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left">yes / no</td>
+</tr>
+<tr class="odd">
+<td align="left">Ecu Reset/*/Reset 0x11 0x0[123]</td>
+<td align="left">11 LL</td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>Default (=)</em></td>
+<td align="left"><em>Default (=)</em></td>
+<td align="left">yes / no<br />
+8.2 SP2 Default</td>
+</tr>
+</tbody>
+</table>
+<h4 id="security">Security</h4>
+<p><strong>R200.1:</strong> if “Reset security level after session change” is checked (cf. R005), then for the service &lt;new session&gt;, go from all <strong>security states</strong> except &lt;locked&gt; back to &lt;locked&gt;.</p>
+<p><strong>Note</strong>: before 8.2 SP2, CANdelaStudio also changed security state transitions for other executable services (= “Locked” in the table below). Don’t do this anymore (see “8.2 SP2 <em>(=)</em>” in the table below).</p>
+
+<p><strong>Note</strong>: a version number like “8.2 SP2” in a cell indicates a change implemented in that CANdelaStudio version.</p>
+<table style="width:99%;">
+<colgroup>
+<col width="20%" />
+<col width="5%" />
+<col width="10%" />
+<col width="21%" />
+<col width="21%" />
+<col width="19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Service/Job</th>
+<th align="left">Prefix</th>
+<th align="left">Locked</th>
+<th align="left">Unlocked L1<br />
+<img src="Images/ResetSecurityLevelOff.png" /></th>
+<th align="left">Unlocked L1<br />
+<img src="Images/ResetSecurityLevelOn.png" /><br />
+Service is not executable</th>
+<th align="left">Unlocked L1<br />
+<img src="Images/ResetSecurityLevelOn.png" /><br />
+Service is executable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sessions/*/Start</td>
+<td align="left">10 LL</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">-- Default Session</td>
+<td align="left">10 01</td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>Locked (=)</em></td>
+<td align="left"><em>Locked (=)</em></td>
+<td align="left">Locked<br />
+8.2 SP2 <em>Locked (=)</em></td>
+</tr>
+<tr class="odd">
+<td align="left">-- Programming Session</td>
+<td align="left">10 02</td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>Locked (=)</em></td>
+<td align="left"><em>Locked (=)</em></td>
+<td align="left">Locked<br />
+8.2 SP2 <em>Locked (=)</em></td>
+</tr>
+<tr class="even">
+<td align="left">-- Extended Diagnostic Session</td>
+<td align="left">10 03</td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>Locked (=)</em></td>
+<td align="left"><em>Locked (=)</em></td>
+<td align="left">Locked<br />
+8.2 SP2 <em>Locked (=)</em></td>
+</tr>
+<tr class="odd">
+<td align="left">-- &lt;new session&gt;</td>
+<td align="left">10 04</td>
+<td align="left">(yes)</td>
+<td align="left">(yes)</td>
+<td align="left">Locked</td>
+<td align="left">Locked<br />
+</td>
+</tr>
+<tr class="even">
+<td align="left">Security Access/*/Request</td>
+<td align="left">27 LL</td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left">Locked<br />
+8.2 SP2 <em>(yes) (=)</em></td>
+</tr>
+<tr class="odd">
+<td align="left">Security Access/*/Send</td>
+<td align="left">27 LL yy</td>
+<td align="left"><em>Unlocked L1 (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left">Locked<br />
+8.2 SP2 <em>(yes) (=)</em></td>
+</tr>
+<tr class="even">
+<td align="left">… all other services…</td>
+<td align="left"></td>
+<td align="left"><em>(no) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left">Locked<br />
+8.2 SP2 <em>(yes) (=)</em></td>
+</tr>
+<tr class="odd">
+<td align="left">Ecu Reset/*/Reset 0x11 0x0[123]</td>
+<td align="left">11 LL</td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>Locked (=)</em></td>
+<td align="left"><em>Locked (=)</em></td>
+<td align="left">Locked<br />
+8.2 SP2 <em>Locked (=)</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="security">Creating Security Levels</h2>
+<h3 id="use-case-1">Use-case</h3>
+<p>Create new instances of diagnostic class “Security Access” to describe the “Security Level” of an ECU, including data objects, states and state transitions.</p>
+<p>A “Security Level” of an ECU is represented as follows in CANdelaStudio:</p>
+<ul>
+<li>diagnostic instance in diagnostic class “Security Access” for Request seed
+<ul>
+<li>data object which transport the seed in the response</li>
+<li>state transitions for the new service</li>
+</ul></li>
+<li>diagnostic instance in diagnostic class “Security Access” for Send key
+<ul>
+<li>Let the “level” (variable value) of the first diagnostic instance be x; the second diagnostic instance must have a “level” x + 1.</li>
+<li>data object which transport the key (request)</li>
+<li>state transitions for the new service</li>
+</ul></li>
+<li>some attributes of diagnostic instance “Seed”, relevant for code generation, like “Failure delay time”</li>
+<li>a state in the state group with spec “security”</li>
+<li>state transitions of the new state for existing services</li>
+</ul>
+<h3 id="dialog-1">Dialog</h3>
+<p><strong>R001.0:</strong> Implement wizard dialog which creates <strong>two new diagnostic instances</strong> “Request seed” and “Send key” (KWP/UDS service 0x27 “SecurityAccess”).</p>
+<p>Note: the wizard is available without regard to the protocol standard of the document (the precise condition whether 0x27 may be added may change by and by, so it is left to the user).</p>
+<p><strong>R010.1:</strong> Extend the user interface by</p>
+<ol style="list-style-type: decimal">
+<li>adding icon “Security Level Wizard” to the “Object” toolbar;</li>
+<li>adding command “Create new security level” to the “Insert” menu and the context menu of diag classes and instances of spec “security”;</li>
+<li>adding button [New Level] to the bottom of the entry masks of the classes and instances mentioned above This button replaces button [New Instance]</li>
+<li>renaming button [Delete Instance] to [Delete Level] (only for the instances mentioned above)</li>
+</ol>
+<p><strong>R011.1:</strong> Both, icon and command must either…</p>
+<p>a) only be active if the template contains a diagnostic class template of class type “Security Access”, or</p>
+<p>b) if they are active always, the user must be informed about the reason that the functionality is not available.</p>
+<p><strong>R012.0:</strong> Provide command and icon in standard and expert view but not in translation view.</p>
+<p><strong>R013.1:</strong> Check range of identifier for the new diagnostic instances before opening the dialog:</p>
+<p>if identifier for seed or identifier for key (= identifier for seed + 1) is &gt; MAX, then show error message (like “No more levels left”) and do not open the wizard dialog.</p>
+<p>MAX is the maximum value possible for the identifier (0xff for 1-byte identifier, 0xffff for 2-byte identifier etc.).</p>
+<p><strong>R020.0:</strong> Create wizard dialog with four property pages and buttons [Previous], [Next] and [Finish].</p>
+<p><strong>R021.2:</strong> The <strong>first two property pages</strong> collect data for the diagnostic instances “Seed” and “Key”, respectively. They must provide the following controls:</p>
+<ul>
+<li>Name (edit box)</li>
+<li>Qualifier (edit box) =&gt; qualifier must be created automatically from the name entered.</li>
+<li>Identifier (“Access Type”, numerical edit box)</li>
+<li>Data type for <em>Seed</em>/<em>Key</em> (combo box). Provided data types must only be of type “Raw value”.</li>
+</ul>
+<p>Check name, qualifier and identifier for uniqueness. Check whether identifier is &lt;= MAX. Issue appropriate error messages on clicking [Next] or [Previous] if necessary (Wizard must not proceed to the next page if an error occurs in the current page).</p>
+<p><strong>R022.2:</strong> The controls of the <strong>second property page</strong> must be filled with some default entries, depending on the entries made in the first property page, i.e.:</p>
+<ul>
+<li>Name of key must be created from name of seed e.g. by adding “Key” (qualifier will be created automatically from name like above)</li>
+<li>Identifier of key must be the identifier of seed + 1 (for range check, see R013.0)</li>
+<li>Data type must have the same length and type as data type of seed</li>
+<li><strong>Combo box “Locked state”</strong> provides a list of states associated with state group of spec “security”. It works like the combo box of the same name of the Session wizard. The user must select the state which indicates that the ECU is locked. It shall default to the first state.</li>
+</ul>
+<p><strong>R023.1:</strong> The <strong>third property page</strong> must provide controls for the following data:</p>
+<ul>
+<li>Data type of data object “Security Access Data Record” (combo box). The data object must be created in the request of diagnostic instance “Seed”. If the protocol service “SecurityAccess” does not contain a simple proxy component with qualifier “securityAccessDataRecord” (check qualifier case insensitively!) in its request, then the combo box must be disabled and empty.</li>
+<li>Attribute value “Failure delay time” (qualifier “FailureDelayTime”, default value: 10sec, type: Unsigned)</li>
+<li>Attribute value “Failures to delay” (qualifier “FailuresToDelay”, default value: 3, type: Unsigned)</li>
+<li>Attribute value “Delays to lock” (qualifier “DelaysToLock”, default value: 6, type: Unsigned)</li>
+</ul>
+<p>All attribute values must be entered in a numerical edit box. If the default attributes (of diagnostic instance, category “CANdesc”) do not exist in the document, the edit boxes must be disabled, and a message must be shown.</p>
+<p><strong>R024.1:</strong> The <strong>fourth property page</strong> must provide a <strong>summary</strong> of all modifications:</p>
+<ul>
+<li>Name, qualifier and identifier of the diagnostic instances</li>
+<li>Name of data objects and data types for seed and key</li>
+<li>Attribute values of R023</li>
+<li>Name of Data type of R023</li>
+<li>Name and state group name of the state created</li>
+<li>Note: no info about transitions – these are better viewed in the overview.</li>
+</ul>
+<p>The summary must be provided in an edit box which is read-only.</p>
+<p><strong>R026.1:</strong> If the selected variant is the base variant, the new instances must be distributed to all extended variants (same behavior like for all other new instances added to the base variant).</p>
+<h3 id="data-model-after-creating-security-level">Data Model After Creating Security Level</h3>
+<p>On <strong>finishing</strong>, the wizard must...</p>
+<p>... <strong>R030.0:</strong> create the new diagnostic instances with services (=: &lt;new level&gt; Request Seed, &lt;new level&gt; SendKey) and data objects and add them to the selected variant</p>
+<p>... <strong>R040.0:</strong> create a new state “Level X” (=: &lt;new_level&gt;) in state group with spec “security”, where X is the decimal value of the “Type” (variable value) of the diagnostic instance for Request Seed.</p>
+<p>... set the attribute values of diagnostic instance <em>Seed</em>.</p>
+<p>Guiding principle: the dialog shall not affect existing services or states, just new ones.</p>
+<h4 id="session-2">Session</h4>
+<p><strong>R100.0:</strong> for the services &lt;new level&gt; Request Seed and &lt;new level&gt; SendKey: set “may be executed” to…</p>
+<ol style="list-style-type: lower-alpha">
+<li>“no” in &lt;default&gt;</li>
+<li>“yes” for all other session states</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Service/Job</th>
+<th align="left">Prefix</th>
+<th align="left">Default</th>
+<th align="left">Programming</th>
+<th align="left">Extended</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sessions/*/Start</td>
+<td align="left">10 LL</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Default Session</td>
+<td align="left">10 01</td>
+<td align="left"><em>Default (=)</em></td>
+<td align="left"><em>Default (=)</em></td>
+<td align="left"><em>Default (=)</em></td>
+</tr>
+<tr class="odd">
+<td align="left">Programming Session</td>
+<td align="left">10 02</td>
+<td align="left"><em>Programming (=)</em></td>
+<td align="left"><em>Programming (=)</em></td>
+<td align="left"><em>Programming (=)</em></td>
+</tr>
+<tr class="even">
+<td align="left">Extended Diagnostic Session</td>
+<td align="left">10 03</td>
+<td align="left"><em>Extended (=)</em></td>
+<td align="left"><em>(no) (=)</em></td>
+<td align="left"><em>Extended (=)</em></td>
+</tr>
+<tr class="odd">
+<td align="left">Security Access/*/Request</td>
+<td align="left">27 LL</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">-- Seed Level #1</td>
+<td align="left">27 01</td>
+<td align="left"><em>(no) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+</tr>
+<tr class="odd">
+<td align="left">-- &lt;new level&gt; RequestSeed</td>
+<td align="left">27 03</td>
+<td align="left">(no)</td>
+<td align="left">(yes)</td>
+<td align="left">(yes)</td>
+</tr>
+<tr class="even">
+<td align="left">Security Access/*/Send</td>
+<td align="left">27 LL yy</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">-- Key Level #1</td>
+<td align="left">27 02 yy</td>
+<td align="left"><em>(no) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+</tr>
+<tr class="even">
+<td align="left">-- &lt;new level&gt; SendKey</td>
+<td align="left">27 04 yy</td>
+<td align="left">(no)</td>
+<td align="left">(yes)</td>
+<td align="left">(yes)</td>
+</tr>
+<tr class="odd">
+<td align="left">… all other services…</td>
+<td align="left"></td>
+<td align="left"><em>(no) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+</tr>
+<tr class="even">
+<td align="left">Ecu Reset/*/Reset 0x11 0x0[0123]</td>
+<td align="left">11 LL</td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>Default (=)</em></td>
+<td align="left"><em>Default (=)</em></td>
+</tr>
+</tbody>
+</table>
+<h4 id="security-1">Security</h4>
+<p><strong>R200.0:</strong> for the service &lt;new level&gt; Request Seed: set “may be executed” to “yes” for all states</p>
+<p><strong>R210.0:</strong> for the service &lt;new level&gt; SendKey:</p>
+<ol style="list-style-type: lower-alpha">
+<li>set “may be executed” to “no” in state &lt;new_level&gt;</li>
+<li>go to &lt;new_level&gt; in all other states.</li>
+</ol>
+<p><strong>R220.0:</strong> for each <strong>other SendKey</strong> service: if it goes from &lt;locked&gt; to a state X, then also go from the new state &lt;new_level&gt; to that state X.</p>
+<p><strong>R230.0:</strong> if ProtocolStandard = “UDS”: for each <strong>session service</strong> and each <strong>&lt;UDS ECU Reset service&gt;</strong> 0x11 0x0[123]: go back from <strong>&lt;new_level&gt;</strong> to &lt;locked&gt;</p>
+<p><strong>R240.0:</strong> for each other service: in &lt;new_level&gt;, set to “yes”</p>
+<p><strong>Note</strong>: a version number like “8.2 SP2” in a cell indicates a change implemented in that CANdelaStudio version.</p>
+<table style="width:98%;">
+<colgroup>
+<col width="33%" />
+<col width="9%" />
+<col width="18%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Service/Job</th>
+<th align="left">Prefix</th>
+<th align="left">Locked</th>
+<th align="left">Unlocked L1</th>
+<th align="left">&lt;new_level &gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sessions/*/Start</td>
+<td align="left">10 LL</td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>Locked (=)</em></td>
+<td align="left">Locked</td>
+</tr>
+<tr class="even">
+<td align="left">Security Access/*/Request</td>
+<td align="left">27 LL</td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left">(yes)</td>
+</tr>
+<tr class="odd">
+<td align="left">-- Seed Level #1</td>
+<td align="left">27 01</td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left">(yes)</td>
+</tr>
+<tr class="even">
+<td align="left">-- &lt;new level&gt; RequestSeed</td>
+<td align="left">27 03</td>
+<td align="left">(yes)</td>
+<td align="left">(yes)</td>
+<td align="left">(yes)</td>
+</tr>
+<tr class="odd">
+<td align="left">Security Access/*/Send</td>
+<td align="left">27 LL yy</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">-- Key Level #1</td>
+<td align="left">27 02 yy</td>
+<td align="left"><em>Unlocked L1 (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>(yes) (=)</em><br />
+8.2 SP2 Unlocked L1</td>
+</tr>
+<tr class="odd">
+<td align="left">-- &lt;new level&gt; SendKey</td>
+<td align="left">27 04 yy</td>
+<td align="left">&lt;new_level&gt;</td>
+<td align="left">&lt;new_level&gt;</td>
+<td align="left">(no)</td>
+</tr>
+<tr class="even">
+<td align="left">… all other services…</td>
+<td align="left"></td>
+<td align="left"><em>(no) (=)</em></td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left">(yes)</td>
+</tr>
+<tr class="odd">
+<td align="left">Ecu Reset/*/Reset 0x11 0x0[0123]</td>
+<td align="left">11 LL</td>
+<td align="left"><em>(yes) (=)</em></td>
+<td align="left"><em>Locked (=)</em></td>
+<td align="left">Locked</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Authorization.htm">Authorization</a> (certificate-based)</li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance (Feature)</a></li>
+<li><a href="Security.htm">Security</a></li>
+<li><a href="Session.htm">Session</a></li>
+<li><a href="../../20%20UserInterface/State%20Dependency/States.htm">State Dependency (User Interface)</a></li>
+<li><a href="State%20Dependency.htm">State Dependency (Feature)</a></li>
+<li><a href="../../15%20Procedures/State%20Dependency/How%20to%20Setup%20the%20Template%20to%20Specify%20the%20Security%20Access%20Data%20Record.htm">How to Setup the Template to Specify the Security Access Data Record</a></li>
+</ul>
+</body>
+</html>

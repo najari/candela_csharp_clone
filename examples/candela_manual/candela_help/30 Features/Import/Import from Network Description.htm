@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Import from Network Description</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="import-from-network-description-cds-13054-8.0-sp2">Import from Network Description (CDS-13054 8.0 SP2)</h1>
+<p>Import of DTCs and Data from a network description.</p>
+<p>This import is <strong>different</strong> from <a href="../../30%20Features/Import/SWC%20Sync%20Introduction.htm">SWC Sync</a>...</p>
+<ul>
+<li>which reads info from <strong>software components (SWCs) with ports</strong></li>
+<li>and updates diagnostic objects <strong>based on matching requirement IDs</strong>.</li>
+</ul>
+<h2 id="use-case">Use-Case</h2>
+<p>In a <strong>CANdb</strong> (.dbc), <strong>FIBEX</strong> or AUTOSAR (.arxml) file, you may have defined a <strong>network description</strong> with <strong>messages</strong> and <strong>signals</strong>.</p>
+<p>You may want some of the signals…</p>
+<ul>
+<li>to be accessible via a diagnostic <strong>data object</strong> by a test system,</li>
+<li>and to <strong>set a diagnostic trouble code (DTC)</strong> when the signal is not available (e.g. for a communication error).</li>
+</ul>
+<h2 id="import-of-dtcs-and-data">Import of DTCs and Data</h2>
+<p><span id="IND-R100" class="rqDef">[IND-R100]</span> The import offers creation of…</p>
+<ul>
+<li>a DTC for each signal,</li>
+<li>a data object or packet data type for...
+<ul>
+<li>each signal and</li>
+<li>each message.</li>
+</ul></li>
+</ul>
+<h3 id="from-autosar">... from AUTOSAR</h3>
+<p>The AUTOSAR .arxml file must contain a network description.</p>
+<p><strong>Background</strong>: an AUTOSAR .arxml file may contain different parts:</p>
+<ul>
+<li>the description of software components (SWCs)</li>
+<li>a network description
+<ul>
+<li>same structure as a FIBEX file</li>
+<li>may contain multiple ECUs.</li>
+</ul></li>
+</ul>
+<p>The import of DTCs and data from a network description does <strong>not</strong> consider software components in the .arxml file!</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm">Ribbon Tab Data Exchange</a></li>
+<li>SWC Sync <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20Introduction.htm#SWC-R100' title="">[SWC-R100]</a></li>
+</ul>
+</body>
+</html>

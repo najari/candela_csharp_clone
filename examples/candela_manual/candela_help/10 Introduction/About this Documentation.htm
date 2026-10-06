@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>About this Documentation</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="about-this-documentation">About this Documentation</h1>
+<h2 id="building-blocks">Building Blocks</h2>
+
+<h3 id="structure">Structure</h3>
+<p>There is roughly one documentation <strong>folder</strong> for each CANdelaStudio <strong>feature</strong> (attributes, data types, DIDs, ...).</p>
+<p>The documentation is split into the <strong>main areas</strong>...</p>
+<div class="figure">
+<img src="Images/Main%20Areas.jpg" alt="Main Documentation Areas" />
+<p class="caption">Main Documentation Areas</p>
+</div>
+<ul>
+<li><strong>Introduction</strong>: introduction to the Vector diagnostic toolchain, CANdelaStudio, example files...</li>
+<li><strong>Procedures</strong>: high level descriptions how to achieve typical user tasks</li>
+<li><strong>User Interface</strong>: what you see on the screen</li>
+<li><strong>Features</strong>: the concepts and data model</li>
+<li><strong>Templates</strong>: CANdela template files shipped with CANdelaStudio</li>
+</ul>
+<p>Typically, a <strong>feature folder</strong> contains...</p>
+<ul>
+<li>an <strong>introduction chapter</strong> with use-cases and an overview of the feature,</li>
+<li>more detailed chapters as a <strong>feature specification</strong> (for reference).</li>
+<li><p>The introduction chapter is the <strong>first chapter</strong> in the folder and has the <strong>same name</strong> as the feature:</p>
+<div class="figure">
+<img src="Images/Documentation%20Folder.jpg" alt="&quot;DID&quot; Documentation Folder with the &quot;DID&quot; introduction chapter" />
+<p class="caption">&quot;DID&quot; Documentation Folder with the &quot;DID&quot; introduction chapter</p>
+</div></li>
+</ul>
+<h3 id="conventions">Conventions</h3>
+<ul>
+<li>This documentation contains <strong>feature specifications</strong> that answer detailed questions about a feature.</li>
+<li>&quot;CDC-xxxxx&quot; and &quot;CDS-xxxxx&quot; refer to an entry in the CANdelaStudio change request database.</li>
+<li><strong>&quot;Definition D001.0&quot;</strong> is the definition of a <strong>term</strong> used in a feature specification.</li>
+<li><strong>&quot;R001.0&quot;</strong> is a <strong>requirement</strong> from a feature specification.</li>
+<li>For consistency, each piece of information shall be found at <strong>one place only</strong>.</li>
+<li>The documentation contains many <strong>hyperlinks</strong>,</li>
+<li>... uses <strong>bullet lists</strong> where possible,</li>
+<li>... uses <strong>FeatureIDs</strong> for a unique identification of a feature (see below).</li>
+</ul>
+<h3 id="language">Language</h3>
+<p><strong>This documentation is available in English only.</strong></p>
+<p>Background: for CANdelaStudio 8.5, many feature details have been added to the documentation (CDS-39439). To make this possible, the German text has been dropped. So for German speaking users: read English, get more information!</p>
+<h3 id="featureID"><span id='_index_446727845'>FeatureID</span>s</h3>
+<p>This documentation describes CANdelaStudio features on <strong>specification level</strong>, with each feature identified by a <strong>FeatureID</strong>.</p>
+<p><strong>Example FeatureID</strong>:</p>
+<blockquote>
+<p><code>[DEXT-R050-SelVariant AUTOSAR Version]</code></p>
+</blockquote>
+<p><strong>Structure of a FeatureID</strong>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Part of FeatureID</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>DEXT</code></td>
+<td align="left">Abbreviation for a <strong>high-level feature</strong> of CANdelaStudio (like DEXT export)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>R050</code></td>
+<td align="left"><strong>Unique numbering</strong> within the high-level feature (arbitrary).</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>SelVariant</code></td>
+<td align="left"><strong>Part</strong> (subtopic) of the feature (optional)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>AUTOSAR Version</code></td>
+<td align="left"><strong>Explanatory short text</strong> (few words, optional), shown in tooltip on hyperlinks to the FeatureID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Purpose</strong>:</p>
+<ul>
+<li>FeatureIDs help to keep the documentation <strong>redundancy free</strong>.
+<ul>
+<li>A FeatureID defines a feature at <strong>one place</strong> in the documentation.</li>
+</ul></li>
+<li>Related features <strong>refer</strong> to the FeatureID via a <strong>hyperlink</strong> shown like <code>[DEXT-R050-SelVariant]</code>.
+<ul>
+<li>A <strong>tooltip</strong> on the hyperlink shows the <strong>explanatory short text</strong> from the FeatureID.</li>
+</ul></li>
+</ul>
+<p><strong>Searching</strong>:</p>
+<ul>
+<li>See procedure <a href="../15%20Procedures/Help/How%20to%20Search%20for%20a%20FeatureID.htm">How to Search for a FeatureID</a>.</li>
+</ul>
+<h3 id="title-capitalization">Title Capitalization</h3>
+<p>In this documentation, headings and captions shall be written with the usual English title capitalization.</p>
+<p><strong>Capitalize</strong>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Part of Speech</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">noun</td>
+<td align="left">man</td>
+</tr>
+<tr class="even">
+<td align="left">adjective</td>
+<td align="left">small</td>
+</tr>
+<tr class="odd">
+<td align="left">verb</td>
+<td align="left">run</td>
+</tr>
+<tr class="even">
+<td align="left">adverb</td>
+<td align="left">slowly</td>
+</tr>
+<tr class="odd">
+<td align="left">pronoun</td>
+<td align="left">he</td>
+</tr>
+<tr class="even">
+<td align="left">subordinating conjunction</td>
+<td align="left">if, as, because, that</td>
+</tr>
+<tr class="odd">
+<td align="left">(first and last word)</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Do not capitalize</strong>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Part of Speech</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">article</td>
+<td align="left">a, an, the</td>
+</tr>
+<tr class="even">
+<td align="left">coordinating conjunction</td>
+<td align="left">and, but, or, for, nor</td>
+</tr>
+<tr class="odd">
+<td align="left">preposition</td>
+<td align="left">on, at, to, from, by, of</td>
+</tr>
+</tbody>
+</table>
+<h3 id="special-terms-capitalization">Special Terms Capitalization</h3>
+<p>“<strong>Special terms</strong>”:</p>
+<ul>
+<li>where a special meaning beyond the normal English word/phrase is required</li>
+<li>“highlighted” with an initial capital</li>
+<li>for multiple words, each one with initial capital.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<blockquote>
+<p>“The UDS service 19 is about reading DTCs, CANdela describes it in a Diagnostic Instance, based on Protocol Service 19. You can edit the CANdela Service in the property dialog.”</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Term</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">service 19</td>
+<td align="left">service - the usual meaning in diagnostics</td>
+</tr>
+<tr class="even">
+<td align="right">Protocol Service</td>
+<td align="left">the special object in a CANdela template</td>
+</tr>
+<tr class="odd">
+<td align="right">Diagnostic Instance</td>
+<td align="left">the special object in CANdela</td>
+</tr>
+<tr class="even">
+<td align="right">Service</td>
+<td align="left">the special object in a CANdela Diagnostic Instance</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="chapters-in-userinterface">Chapters in &quot;UserInterface&quot;</h2>
+<ul>
+<li>one sub-folder per topic</li>
+<li>all chapters for a topic (object list, property dialog etc.) are in the folder of the topic</li>
+<li>the <strong>&quot;CANdelaStudio Editor&quot; folder</strong> contains general user interface features (ribbons etc.)</li>
+<li><strong>dialogs for Ribbon Tab File</strong> are in the &quot;Document&quot; folder</li>
+<li>example topics: &quot;Attribute&quot;, &quot;Data Type&quot;</li>
+</ul>
+<p>Document structure with some typical documents:</p>
+<pre><code>Attributes/
+  Attributes List
+  Attribute Overview
+  Attribute Property Page &quot;Unsigned&quot;
+  Attribute Property Page &quot;Enum&quot;
+
+CANdelaStudio Editor
+  Menu File
+  Menu Edit
+  Navigation Tree
+  Options Property Page &quot;General&quot;
+  Options Property Page &quot;Edit&quot;
+  Output Window
+  Revision History
+  Startpage
+  Toolbar
+
+Common Properties/
+  Property Page &quot;General&quot;
+
+Data Type/
+  Data Type List
+  Data Type Property Page &quot;Raw Value&quot;
+  Data Type Property Page &quot;Text Table&quot;
+  
+Diagnostic Instance/
+  Diagnostic Instance List
+  Diagnostic Instance Right Side
+  Diagnostic Instance Property Page &quot;Specification&quot;
+  
+Document/
+  Property Page &quot;Document Information&quot;
+  Property Page &quot;DTC Authorization&quot;
+  Property Page &quot;Save As&quot;</code></pre>
+
+<h2 id="related-topics">Related Topics</h2>
+<p>There are several help-related topics in the &quot;Procedures&quot; chapter, e.g.:</p>
+<ul>
+<li><a href="../15%20Procedures/Help/How%20to%20Locate%20the%20Current%20Page%20in%20the%20Table%20of%20Contents.htm">How to Locate the Current Page in the Table of Contents</a></li>
+<li><a href="../15%20Procedures/Help/How%20to%20Quickly%20Navigate%20to%20a%20Page%20often%20Used%20-%20Favorites.htm">How to Quickly Navigate to a Page often Used - Favorites</a></li>
+<li><a href="../15%20Procedures/Help/How%20to%20Read%20Help%20and%20Inspect%20CANdelaStudio%20in%20Parallel.htm">How to Read Help and Inspect CANdelaStudio in Parallel</a></li>
+<li><a href="../15%20Procedures/Help/How%20to%20Search%20for%20a%20FeatureID.htm">How to Search for a FeatureID</a></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Encoding</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="encoding"><span id='_index_446727955'>Encoding</span></h1>
+<p>See the <a href="Data%20Type.htm">Data Type Feature</a>.</p>
+<p><span id="DTENC-R100" class="rqDef">[DTENC-R100]</span> The <strong>Encoding</strong> of a Data Type specifies the type...</p>
+<ul>
+<li>of the <strong>value</strong> (for an <strong>atomic</strong> data type)</li>
+<li>of a <strong>single element</strong> (for a <strong>field</strong> data type: unsigned or character)</li>
+</ul>
+<p>The encoding describes how a given coded or physical value is interpreted.</p>
+<p>For the dependency of <strong>Encoding</strong> and <strong>Length</strong>, see <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type%20Property%20Dependencies.htm#DTDEP-R100' title="">[DTDEP-R100]</a>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Encoding</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Unsigned</td>
+<td align="left">unsigned number</td>
+</tr>
+<tr class="even">
+<td align="left">Signed</td>
+<td align="left">two’s complement (e.g. for length 8 bits, all bits set = 0xFF represents -1)</td>
+</tr>
+<tr class="odd">
+<td align="left">BCD (= packed BCD)</td>
+<td align="left">4 bits represent 1 digit, see below <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R050' title="BCD">[DTENC-R050]</a></td>
+</tr>
+<tr class="even">
+<td align="left">Unsigned (64 Bit)</td>
+<td align="left">unsigned number with 64 bit length (see below <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R200' title="">[DTENC-R200]</a>)</td>
+</tr>
+<tr class="odd">
+<td align="left">Signed (64 Bit)</td>
+<td align="left">signed number with 64 bit length</td>
+</tr>
+<tr class="even">
+<td align="left">BCD (64 Bit)</td>
+<td align="left">BCD number with 64 bit length (i.e. 16 digits)</td>
+</tr>
+<tr class="odd">
+<td align="left">Float</td>
+<td align="left">IEEE 754 single precision, 1 + 23 + 8 bits, sign + mantissa + exponent; see below <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R150' title="">[DTENC-R150]</a></td>
+</tr>
+<tr class="even">
+<td align="left">Double</td>
+<td align="left">IEEE 754 double precision, 1 + 52 + 11 bits, sign + mantissa + exponent</td>
+</tr>
+<tr class="odd">
+<td align="left">Ascii</td>
+<td align="left">1 byte character, see below <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R110' title="">[DTENC-R110]</a></td>
+</tr>
+<tr class="even">
+<td align="left">Unicode</td>
+<td align="left">2 byte character</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ascii"><span id='_index_446727956'>Ascii</span></h2>
+<p><span id="DTENC-R110" class="rqDef">[DTENC-R110]</span> The character set allowed for Values of encoding ASCII (atomic or field) is as follows (cf. CDS-2214):</p>
+<ul>
+<li>the CANdela loader checks <code>&gt; 0xff</code> </li>
+<li>up to v2.0: Ascii ValueTypes were confined to characters <code>&lt; 0x80</code></li>
+</ul>
+<h2 id="float"><span id='_index_446727957'>Float</span></h2>
+<p><span id="DTENC-R150" class="rqDef">[DTENC-R150]</span> CANdelaStudio does not show float values in exponential notation.</p>
+<h2 id="bit"><span id='_index_446727958' title='Integer Data Type Encoding' data-text='Integer Data Type Encoding'>64-Bit</span></h2>
+<p><span id="DTENC-R200" class="rqDef">[DTENC-R200]</span> CANdelaStudio supports 64-Bit integers (CDS-26911 8.2 SP2).</p>
+<p><span id="DTENC-R210" class="rqDef">[DTENC-R210]</span> The feature must be <strong>enabled</strong> in File | Properties Property Page <a href="../../20%20UserInterface/Document/Property%20Page%20Data%20Type%20Authorization.htm">Data Type Authorization</a>.</p>
+<p><a class='rqRef' href='../../30%20Features/Data%20Type/Bitmask.htm#DT-R510' title="">[DT-R510]</a> Bitmask is not supported for 64-Bit integers.</p>
+
+<h2 id="bcd"><span id='_index_446727959'>BCD</span></h2>
+<p><span id="DTENC-R050" class="rqDef" title="BCD">[DTENC-R050 BCD]</span> CANdelaStudio supports BCD values (Binary Coded Decimal).</p>
+<p>There are different variations of &quot;BCD&quot; encodings, CANdelaStudio supports <strong>Packed BCD</strong>: each decimal digit is coded in the upper or lower 4 bits (&quot;nibble&quot;) of a byte.</p>
+<p>Examples:</p>
+<ul>
+<li>the lowest invalid day in month <code>32</code> as 1 byte BCD is binary <code>%00110001</code> = <code>0x32</code> (this number written as <em>not binary</em> decimal is <code>50</code> which sometimes leads to confusion);</li>
+<li>the date 31st of December 2016 <code>20161231</code> as 4 byte BCD is <code>0x20161231</code>.</li>
+</ul>
+<p>See <a class='rqRef' href='../../20 UserInterface\Common Properties\Value.htm#VALUI-R050' title="BCD Editing Formats">[VALUI-R050]</a> for editing of BCD Values.</p>
+<h3 id="handling-of-bcd-values-8.5-sp2">Handling of BCD Values (8.5 SP2)</h3>
+
+<table border="1" style="border-collapse: collapse;">
+<thead>
+<tr class="header">
+<th align="left" colspan="2">
+Edit control in CANdelaStudio
+</th>
+<th align="left" colspan="2">
+Data Model
+</th>
+<th align="left" colspan="2">
+ODX Import/Export
+</th>
+<th align="left">
+Vector Tools
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">
+Hex<br/>(string)
+</td>
+<td align="left">
+BCD<br/>(string)
+</td>
+<td align="left">
+RAM<br/>(uint)
+</td>
+<td align="left">
+CDD<br/>(XML string)
+</td>
+<td align="left">
+ODX<br/>(XML string)
+</td>
+<td align="left">
+BCD value<br/>meant
+</td>
+<td align="left">
+BCD value<br/>meant
+</td>
+</tr>
+<tr class="even">
+<td align="left" class="green">
+&quot;0x20&quot;
+</td>
+<td align="left" class="green">
+&quot;20&quot;
+</td>
+<td align="left">
+32 = 0x20
+</td>
+<td align="left">
+&quot;32&quot;
+</td>
+<td align="left" class="green">
+&quot;20&quot;
+</td>
+<td align="left" class="green">
+20
+</td>
+<td align="left" class="green">
+20
+</td>
+</tr>
+<tr class="odd">
+<td align="left" class="green">
+&quot;0x63&quot;
+</td>
+<td align="left" class="green">
+&quot;63&quot;
+</td>
+<td align="left">
+99 = 0x63
+</td>
+<td align="left">
+&quot;99&quot;
+</td>
+<td align="left" class="green">
+&quot;63&quot;
+</td>
+<td align="left" class="green">
+63
+</td>
+<td align="left" class="green">
+63
+</td>
+</tr>
+<tr class="even">
+<td align="left" class="green">
+&quot;0x99&quot;
+</td>
+<td align="left" class="green">
+&quot;99&quot;
+</td>
+<td align="left">
+153 = 0x99
+</td>
+<td align="left">
+&quot;153&quot;
+</td>
+<td align="left" class="green">
+&quot;99&quot;
+</td>
+<td align="left" class="green">
+99
+</td>
+<td align="left" class="green">
+99
+</td>
+</tr>
+<tr class="odd">
+<td align="left">
+&quot;0xA0&quot;
+</td>
+<td align="left" colspan="6">
+(&quot;A0&quot; cannot be entered, is is invalid 1 Byte BCD)
+</td>
+</tr>
+<tr class="even">
+<td align="left">
+&quot;0x00A0&quot;
+</td>
+<td align="left" colspan="6">
+(&quot;00A0&quot; cannot be entered, is is invalid 2 Byte BCD)
+</td>
+</tr>
+<tr class="odd">
+<td align="left" class="green">
+&quot;0x2063&quot;
+</td>
+<td align="left" class="green">
+&quot;2063&quot;
+</td>
+<td align="left">
+8291 = 0x2063
+</td>
+<td align="left">
+&quot;8291&quot;
+</td>
+<td align="left" class="green">
+&quot;2063&quot;
+</td>
+<td align="left" class="green">
+2063
+</td>
+<td align="left" class="green">
+2063
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="handling-bcd">BCD Value Normalization (CDS-38786 8.5 SP2)</h2>
+<p>Unfortunately, the meaning of BCD values in CANdelaStudio before 8.5 SP2 has not been clear.</p>
+<p>As a result, ...</p>
+<ul>
+<li><strong>BCD editing</strong> in CANdelaStudio before 8.5 SP2 has been confusing,</li>
+<li>the BCD values have been <strong>interpreted differently</strong> in CANdelaStudio ODX import/export vs. other Vector tools (see below).</li>
+</ul>
+<h3 id="handling-of-bcd-values-before-candelastudio-8.5-sp2">Handling of BCD Values before CANdelaStudio 8.5 SP2</h3>
+<p>See the user interface for <a href="../../20%20UserInterface/Common%20Properties/Value.htm#editing-bcd-before-85sp2">Editing of BCD Values Before 8.5 SP2</a>.</p>
+<p>(colors indicate the different interpretations)</p>
+<ul>
+<li>
+Given a BCD value <span class="green">0x20</span> = decimal <span style="color:red;background-color:yellow">32</span> stored in a CANdela document and used in Vector tools like CANoe, ...
+</li>
+<li>
+... CANdelaStudio 8.2 and 8.5 before SP2 show in lists: <span style="color:red;background-color:yellow">32</span>.
+</li>
+<li>
+... CANdelaStudio 8.2 and 8.5 before SP2 show for editing: <span class="green">(hex) 0x20</span> = <span style="color:red;background-color:yellow">(BCD) 32</span> = (decimal) 32<br/>(you can switch between hex/BCD/dec display format in the <a href="../../20%20UserInterface/Common%20Properties/Value.htm">edit control</a>).
+</li>
+<li>
+... Vector tools interprete this value as BCD <span class="green">20</span>.
+</li>
+<li>
+... CANdelaStudio ODX import/export interprete this value as BCD <span style="color:red;background-color:yellow">32</span>.
+</li>
+</ul>
+<table border="1" style="border-collapse: collapse;">
+<thead>
+<tr class="header">
+<th align="left" colspan="3">
+Edit control in CANdelaStudio
+</th>
+<th align="left" colspan="3">
+Data Model
+</th>
+<th align="left" colspan="2">
+ODX Import/Export
+</th>
+<th align="left">
+Vector Tools
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">
+Hex<br/>(string)
+</td>
+<td align="left">
+Dec<br/>(string)
+</td>
+<td align="left">
+BCD<br/>(string)
+</td>
+<td align="left">
+RAM<br/>(uint)
+</td>
+<td align="left">
+CDD<br/>(XML string)
+</td>
+<td align="left">
+RAM <strong>8.5 SP2</strong><br/>(uint)
+</td>
+<td align="left">
+ODX<br/>(XML string)
+</td>
+<td align="left">
+BCD value<br/>meant
+</td>
+<td align="left">
+BCD value<br/>meant
+</td>
+</tr>
+<tr class="even">
+<td align="left" class="green">
+&quot;0x20&quot;
+</td>
+<td align="left" class="yellow">
+&quot;32&quot;
+</td>
+<td align="left" class="yellow">
+&quot;<strong>32</strong>&quot;
+</td>
+<td align="left">
+32 = 0x20
+</td>
+<td align="left">
+&quot;32&quot;
+</td>
+<td align="left">
+50 = 0x<strong>32</strong>
+</td>
+<td align="left">
+&quot;32&quot;
+</td>
+<td align="left" class="yellow">
+32
+</td>
+<td align="left" class="green">
+20
+</td>
+</tr>
+<tr class="odd">
+<td align="left" class="green">
+&quot;0x32&quot;
+</td>
+<td align="left" class="yellow">
+&quot;50&quot;
+</td>
+<td align="left" class="yellow">
+&quot;<strong>50</strong>&quot;
+</td>
+<td align="left">
+50 = 0x32
+</td>
+<td align="left">
+&quot;50&quot;
+</td>
+<td align="left">
+80 = 0x<strong>50</strong>
+</td>
+<td align="left">
+&quot;50&quot;
+</td>
+<td align="left" class="yellow">
+50
+</td>
+<td align="left" class="green">
+32
+</td>
+</tr>
+<tr class="even">
+<td align="left" class="green">
+&quot;0x63&quot;
+</td>
+<td align="left" class="yellow">
+&quot;99&quot;
+</td>
+<td align="left" class="yellow">
+&quot;<strong>99</strong>&quot;
+</td>
+<td align="left">
+99 = 0x63
+</td>
+<td align="left">
+&quot;99&quot;
+</td>
+<td align="left">
+153 = 0x<strong>99</strong>
+</td>
+<td align="left">
+&quot;99&quot;
+</td>
+<td align="left" class="yellow">
+99
+</td>
+<td align="left" class="green">
+63
+</td>
+</tr>
+<tr class="odd">
+<td align="left" class="green">
+&quot;0x99&quot;
+</td>
+<td align="left" colspan="4">
+(&quot;153&quot; cannot be entered, it is invalid 1 Byte BCD)
+</td>
+<td align="left" class="green">
+153 = 0x99<br/>warning, unchanged
+</td>
+<td align="left" colspan="2">
+invalid
+</td>
+<td align="left" class="green">
+99
+</td>
+</tr>
+<tr class="even">
+<td align="left" class="red">
+&quot;0xA0&quot;
+</td>
+<td align="left" colspan="4">
+(&quot;160&quot; cannot be entered, is is invalid 1 Byte BCD)
+</td>
+<td align="left" class="red">
+160 = 0xA0<br/>warning, unchanged
+</td>
+<td align="left" colspan="2">
+invalid
+</td>
+<td align="left" class="red">
+invalid
+</td>
+</tr>
+<tr class="odd">
+<td align="left" class="red">
+&quot;0x00A0&quot;
+</td>
+<td align="left" class="yellow">
+&quot;160&quot;
+</td>
+<td align="left" class="yellow">
+&quot;<strong>160</strong>&quot;
+</td>
+<td align="left">
+160 = 0x00A0
+</td>
+<td align="left">
+&quot;160&quot;
+</td>
+<td align="left">
+352 = 0x<strong>0160</strong>
+</td>
+<td align="left">
+&quot;160&quot;
+</td>
+<td align="left" class="yellow">
+0160
+</td>
+<td align="left" class="red">
+invalid
+</td>
+</tr>
+<tr class="even">
+<td align="left" class="green">
+&quot;0x2063&quot;
+</td>
+<td align="left" class="yellow">
+&quot;8291&quot;
+</td>
+<td align="left" class="yellow">
+&quot;<strong>8291</strong>&quot;
+</td>
+<td align="left">
+8291 = 0x2063
+</td>
+<td align="left">
+&quot;8291&quot;
+</td>
+<td align="left">
+33425 = 0x<strong>8291</strong>
+</td>
+<td align="left">
+&quot;8291&quot;
+</td>
+<td align="left" class="yellow">
+8291
+</td>
+<td align="left" class="green">
+2063
+</td>
+</tr>
+<tr class="odd">
+<td align="left" class="green">
+&quot;0x9999&quot;
+</td>
+<td align="left" colspan="4">
+(&quot;39321&quot; cannot be entered, it is invalid 2 Byte BCD)
+</td>
+<td align="left" class="green">
+39321 = 0x9999<br/>warning, unchanged
+</td>
+<td align="left" colspan="2">
+invalid
+</td>
+<td align="left" class="green">
+9999
+</td>
+</tr>
+<tr class="even">
+<td align="left" class="red">
+&quot;0xA000&quot;
+</td>
+<td align="left" colspan="4">
+(&quot;40960&quot; cannot be entered, is is invalid 2 Byte BCD)
+</td>
+<td align="left" class="red">
+40960 = 0xA000<br/>warning, unchanged
+</td>
+<td align="left" colspan="2">
+invalid
+</td>
+<td align="left" class="red">
+invalid
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="migrationTo85SP2">Normalization: Up Migration from before 8.5 SP2</h3>
+<p>Assumption: the user entered a BCD value in CANdelaStudio <code>&lt; 8.5 SP2</code> using the default editing format &quot;BCD&quot; as if he entered hex digits, i.e. input string <code>32</code> meant <code>0x32</code>.</p>
+<p><span id="DTENC-R055" class="rqDef" title="BCD Migration 8.5 SP2">[DTENC-R055 BCD Migration 8.5 SP2]</span> When loading a file with CDD version <code>&lt; 8.5 SP2</code>, for each value V of a data type with encoding BCD, bit length N...</p>
+<ul>
+<li><span id="DTENC-R055-nn" class="rqDef">[DTENC-R055-nn]</span> ... if <code>V &lt;= max</code> (<code>max</code> = maximum decimal value with <code>N/4</code> digits),<br />
+and &quot;nn&quot; is the decimal notation of V, CANdelaStudio shall...<br />
+convert V to the hexadecimal value &quot;0xnn&quot;, e.g.<br />
+convert 1 byte <code>0x20</code> with N = 8, max = 99, nn = &quot;32&quot; to <code>0x32</code>;<br />
+convert 2 bytes <code>0x2063</code> with N = 16, max = 9999, nn = &quot;8291&quot; to <code>0x8291</code>.</li>
+<li><p><span id="DTENC-R055-nnn" class="rqDef">[DTENC-R055-nnn]</span> ... otherwise, i.e. <code>V &gt; max</code>,<br />
+leave the value unchanged, e.g.<br />
+leave 1 byte <code>0xA0</code> with N = 8, max = 99, nn = &quot;160&quot; unchanged as <code>0xA0</code>,<br />
+leave 1 bytes <code>0xA000</code> with N = 16, max = 9999, nn = &quot;40960&quot; unchanged as <code>0xA000</code>,<br />
+with a warning in log (V shown as hex with &quot;0x&quot; prefix):</p>
+<pre><code>  BCD value 0xA0 at &quot;npath:/Base Variant/Dynamic Data/Supply Voltage ECU/Data/Supply Voltage ECU&quot; is invalid - please correct it. See DTENC-R055 in CANdelaStudio online help.</code></pre></li>
+<li><span id="DTENC-R055-multi" class="rqDef">[DTENC-R055-multi]</span> This also applies to BCD data types with quantity &quot;atom&quot; and length more than 1 byte.</li>
+<li><p><span id="DTENC-R055-field" class="rqDef">[DTENC-R055-field]</span> This also applies to BCD data types with quantity &quot;field&quot;.</p></li>
+</ul>
+<h3 id="migrationFrom85SP2">De-Normalization: Down Migration to before 8.5 SP2</h3>
+<p><span id="DTENC-R057" class="rqDef" title="BCD Migration from 8.5 SP2">[DTENC-R057 BCD Migration from 8.5 SP2]</span> when saving to a file with CDD version <code>&lt; 8.5 SP2</code>, for each value V of a data type with encoding BCD, ...</p>
+<ul>
+<li><span id="DTENC-R057-nn" class="rqDef">[DTENC-R057-nn]</span> if each hex digit <code>n &lt; 0xA</code>, CANdelaStudio shall...<br />
+convert &quot;0xnn&quot; to the decimal value &quot;nn&quot; (= the inverse of <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R055-nn' title="">[DTENC-R055-nn]</a> above), e.g.<br />
+convert 1 byte <code>0x32</code> to <code>0x20 = dec 32</code>,<br />
+convert 2 byte <code>0x8291</code> to <code>0x2063 = dec 8291</code>.</li>
+<li><p><span id="DTENC-R057-xx" class="rqDef">[DTENC-R057-xx]</span> otherwise, i.e. any hex digit <code>X &gt;= 0xA</code>,<br />
+leave the value unchanged, e.g.<br />
+leave 1 byte <code>0xA0</code> unchanged as <code>0xA0</code>,<br />
+with a debug info in log (V shown as hex with &quot;0x&quot; prefix):</p>
+<pre><code>  BCD value 0xA0 at &quot;npath:/Base Variant/Dynamic Data/Supply Voltage ECU/Data/Supply Voltage ECU&quot; is invalid - please correct it. See DTENC-R057 in CANdelaStudio online help.</code></pre></li>
+<li><span id="DTENC-R057-multi" class="rqDef">[DTENC-R057-multi]</span> this also applies to BCD data types with quantity &quot;atom&quot; and length more than 1 byte.</li>
+<li><p><span id="DTENC-R057-field" class="rqDef">[DTENC-R057-field]</span> this also applies to BCD data types with quantity &quot;field&quot;.</p></li>
+</ul>
+<h3 id="incompatibilities">Incompatibilities</h3>
+<ol style="list-style-type: decimal">
+<li><p>If a file has been migrated to 8.5 SP2, <strong>do not open it again in CANdelaStudio 8.5 Release</strong>: this does not trigger any migration, therefore CANdelaStudio 8.5 Release...</p>
+<ul>
+<li>interpretes the data migrated to 8.5 SP2 (e.g. <code>BCD 32 = 0x32</code>)...</li>
+<li>in the pre 8.5 SP2 way (e.g. as <code>0x32 = dec 50 = BCD 50</code>).</li>
+</ul></li>
+<li><p>The migration assumes BCD values in a pre 8.5 SP2 file have been specified using the &quot;BCD&quot; editing format (the default in the user interface).</p>
+<p>Values specified using the <strong>&quot;hex&quot; editing format</strong> (maybe as a workaround to get the correct values in Vector tools) will have an undesired value after migration to 8.5 SP2 and <strong>must be corrected manually</strong>.</p>
+<ul>
+<li>E.g. <code>0x20</code> edited before 8.5 SP2 to specify <code>BCD 20</code>...</li>
+<li>results in <code>0x32 = BCD 32</code> after migration to 8.5 SP2.</li>
+</ul></li>
+</ol>
+<h3 id="consistency-check">Consistency Check</h3>
+<p><span id="DTENC-R058" class="rqDef" title="BCD Consistency Check">[DTENC-R058 BCD Consistency Check]</span> (CDS-39560 8.5 SP2)</p>
+<ul>
+<li>for a data type with encoding BCD (either atomic or field),</li>
+<li>if a data object or an identifying pattern references the data type,</li>
+<li>and a byte has a value with a nibble <code>&gt; 9</code>,</li>
+<li>CANdelaStudio shall report a warning (with a link to the object; do not prevent from export).</li>
+</ul>
+<p>Note: nibble = the number given by the upper / the lower 4 bits of a byte.</p>
+<p>E.g. show the warning iff. <code>byte &gt;= 0xA0 or (byte &amp; 0x0F) &gt;= 0x0A</code>.</p>
+<p>See <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a>.</p>
+
+
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+<li><a href="Data%20Type%20Property%20Dependencies.htm">Data Type Property Dependencies</a></li>
+</ul>
+</body>
+</html>

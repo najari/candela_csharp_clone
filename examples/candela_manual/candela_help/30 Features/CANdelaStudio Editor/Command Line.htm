@@ -1,0 +1,554 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Command Line</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="using-the-command-line"><span id='_index_446727906' title='Command Line' data-term='Command Line'>Using The Command Line</span></h1>
+<h2 id="introduction">Introduction</h2>
+<p>The CANdelaStudio command line offers a series of options which you can use e.g. to import and export CANdela documents in <strong>batch mode</strong>, without starting the CANdelaStudio user interface.</p>
+<p>You can specify these options in a batch file, or directly in a Windows command window.</p>
+<p>See the <a href="#examples">examples chapter</a> below.</p>
+<p>The <a href="candelastudio%20URI%20Scheme.htm">candelastudio URI Scheme</a> provides a similar mechanism.</p>
+<h2 id="licensing">Batch Mode and Licensing</h2>
+<p><span id="CLI-R040" class="rqDef">[CLI-R040]</span> Running CANdelaStudio in batch mode via the command line needs the same <a href="Licensing.htm">license</a> as running the CANdelaStudio user interface. See <a href="Licensing.htm#start-without-license">run without a license</a>.</p>
+<h2 id="command-line-parameters">Command Line Parameters</h2>
+<p><span id="CLI-R050" class="rqDef">[CLI-R050]</span> <strong>upper and lower case is significant</strong>, like</p>
+<ul>
+<li><code>/l en-US&quot;</code> (ok) vs.</li>
+<li><code>/l en-us&quot;</code> (<strong>not ok</strong>).</li>
+</ul>
+<p><span id="CLI-R100" class="rqDef">[CLI-R100]</span> CANdelaStudio supports the following command line parameters:</p>
+<table style="width:99%;">
+<colgroup>
+<col width="10%" />
+<col width="28%" />
+<col width="59%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Option</th>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(single argument)</td>
+<td align="left">&lt;Path to a CANdela document (CDD)&gt;</td>
+<td align="left"><span id="CLI-R100-argument" class="rqDef">[CLI-R100-argument]</span> CANdela document to open.<br />
+The path argument may contain a trailing <strong>object path</strong>, separated by &quot;#&quot; (like the query part of a URL).<br />
+Any object path <a href="../../30%20Features/Common%20Properties/Object%20Paths.htm#syntax">syntax</a> is allowed.<br />
+See <a href="#object-path-example">examples</a> below.</td>
+</tr>
+<tr class="even">
+<td align="left">/a</td>
+<td align="left">&lt;Qualifier1&gt;; &lt;Qualifier2&gt;; ...</td>
+<td align="left"><span id="CLI-R100-audience" class="rqDef">[CLI-R100-audience]</span> List of target group qualifiers separated by semicolons.<br />
+Restricts the export to the specified target groups (audience).</td>
+</tr>
+<tr class="odd">
+<td align="left">/c</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-interactive" class="rqDef">[CLI-R100-interactive]</span> Starts the import of the specified file in interactive mode (1).<br />
+The standard value is 0.</td>
+</tr>
+<tr class="even">
+<td align="left">/check</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-check" class="rqDef">[CLI-R100-check]</span> Runs an ODX consistency check of the Tools submenu.<br />
+Relevant additional parameters:<br />
+/e <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-odx' title="">[CLI-R100-odx]</a> denotes the version (odx201, odx210, odx220),<br />
+/g <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-logfile' title="">[CLI-R100-logfile]</a> the logfile for check results.<br />
+See an <a href="#odx-check-example">example</a> below.</td>
+</tr>
+<tr class="odd">
+<td align="left">/d</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-DTCs" class="rqDef">[CLI-R100-DTCs]</span> Specifies whether CANdelaStudio shall import DTCs (1) or not (0) from the file specified by /i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a>.<br />
+The standard value is 0.</td>
+</tr>
+<tr class="even">
+<td align="left">/deact</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-deact" class="rqDef">[CLI-R100-deact]</span> (only evaluated if command line option /fullEcu <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-fullEcu' title="">[CLI-R100-fullEcu]</a> is set to 1, and with <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-pvcdiImport' title="">[CLI-R100-pvcdiImport]</a>)<br />
+This option deactivates the existing services during ODX import into the CANdela document.<br />
+After import, the CANdela document applied in a Vector tester offers the same diagnostic services as the ODX file.<br />
+For batch import, if parameter /deact is given, it overrides the INI file setting.<br />
+If parameter /deact is not given, the INI file setting takes effect.<br />
+In interactive import, the INI file setting takes effect (ignoring /deact).</td>
+</tr>
+<tr class="odd">
+<td align="left">/e</td>
+<td align="left">&quot;import&quot; or &lt;type of export&gt;<br />
+(see the following lines)</td>
+<td align="left"><span id="CLI-R100-DataExchange" class="rqDef">[CLI-R100-DataExchange]</span> Specifies a data exchange (an import or export).</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong>import</strong></td>
+<td align="left"><span id="CLI-R100-import" class="rqDef">[CLI-R100-import]</span> Specifies an import into a CANdela document.<br />
+<br />
+Additional parameters for <strong>imports</strong> (see an <a href="#import-example">example</a> below):<br />
+/r <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-referenceFile' title="">[CLI-R100-referenceFile]</a> existing CANdela document to import into;<br />
+/i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a> file to import<br />
+/o <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a> resulting output CANdela document<br />
+/fullEcu <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-fullEcu' title="">[CLI-R100-fullEcu]</a> import a full ECU or data types and DTCs only<br />
+/deact <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-deact' title="">[CLI-R100-deact]</a> only with /fullEcu: deactivate the existing services<br />
+<br />
+The file to import may have Excel file type <code>*.xlsx</code> (CDS-39472 8.5).</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong>swcsync</strong></td>
+<td align="left"><span id="CLI-R100-swcsync" class="rqDef">[CLI-R100-swcsync]</span> Runs SWC Sync <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20Introduction.htm#SWC-R100' title="">[SWC-R100]</a>.<br />
+Additional parameters (see an <a href="#autosar">example</a> below):<br />
+/r <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-referenceFile' title="">[CLI-R100-referenceFile]</a> existing CANdela document to sync into;<br />
+/i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a> files to import, multiple files semicolon-separated;<br />
+/o <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a> resulting output CANdela document<br />
+/v <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-variants' title="">[CLI-R100-variants]</a> optional single value for the variant qualifier, default: the selected variant in the requirement settings <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a>).<br />
+/lib <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-lib' title="">[CLI-R100-lib]</a> like /v but for a library <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a>).<br />
+The command line parameter does not change the selected variant in the requirement settings of the document.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong>importRequirementsAndUpdate</strong></td>
+<td align="left"><span id="CLI-R100-importRequirementsAndUpdate" class="rqDef">[CLI-R100-importRequirementsAndUpdate]</span> Imports requirements from a .csv file <a class='rqRef' href='../../30%20Features/Import/Requirements%20Import.htm#RQ-R800' title="">[RQ-R800]</a> and updates diagnostic objects. <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQOP-R500' title="">[RQOP-R500]</a>.<br />
+Additional parameters (see an <a href="#autosar">example</a> below):<br />
+/r <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-referenceFile' title="">[CLI-R100-referenceFile]</a> existing CANdela document to import into;<br />
+/i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a> .csv file to import;<br />
+/o <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a> resulting output CANdela document<br />
+/v <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-variants' title="">[CLI-R100-variants]</a> optional single value for the variant qualifier, default: the selected variant in the requirement settings <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a>).<br />
+/lib <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-lib' title="">[CLI-R100-lib]</a> like /v but for a library <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a>).<br />
+The command line parameter does not change the selected variant in the requirement settings of the document.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong>&lt;type of export&gt;</strong><br />
+(see the following lines)</td>
+<td align="left">Additional parameters for <strong>exports</strong> (see an <a href="#export-example">example</a> below):<br />
+/i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a> existing CANdela document to export;<br />
+/o <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a> resulting output file</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">dext</td>
+<td align="left"><span id="CLI-R100-dext" class="rqDef">[CLI-R100-dext]</span> Export into the AUTOSAR Diagnostic Extract <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R010' title="">[DEXT-R010]</a>. Additional parameters (see an <a href="#autosar">example</a> below):<br />
+/i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a> .cdd file to export;<br />
+/o <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a> resulting output .arxml file;<br />
+/v <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-variants' title="">[CLI-R100-variants]</a> optional single value for the variant qualifier, default: the base variant.<br />
+</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">DTC</td>
+<td align="left"><span id="CLI-R100-DTC" class="rqDef">[CLI-R100-DTC]</span> Export of DTCs of a selected variant to Excel (format .xlsx).<br />
+Additional parameters (see an <a href="#dtc">example</a> below):<br />
+/i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a> .cdd file to export from;<br />
+/o <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a> resulting output .xlsx file;<br />
+/v <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-variants' title="">[CLI-R100-variants]</a> required value for a single variant qualifier, export uses the first singleton diagnostic instance with spec FaultMemory.<br />
+/u <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-documentLanguage' title="">[CLI-R100-documentLanguage]</a> export language.<br />
+If parameter &quot;/u&quot; is not given, export uses the first completely translated language.<br />
+Language-independent export is not available via command line (cf. GUI option &quot;xlsx (language-independent)&quot;, CDS-28395).<br />
+</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">diogenes</td>
+<td align="left"><span id="CLI-R100-diogenes" class="rqDef">[CLI-R100-diogenes]</span> Export into the <a href="../../30%20Features/Export/Diogenes%20Export.htm">customer specific format</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">docprops</td>
+<td align="left"><span id="CLI-R100-docprops" class="rqDef">[CLI-R100-docprops]</span> Creates an XML file containing administrative information of the CANdela file: revision history, template, protocol standard.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">mdx</td>
+<td align="left"><span id="CLI-R100-mdx" class="rqDef">[CLI-R100-mdx]</span> Export into the customer specific format.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><del>odx114, odx115</del></td>
+<td align="left">CANdelaStudio since 9.0 no longer supports the export to ODX 1.1.4 or 1.1.5 (CDS-42708).</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">odx201, odx210, odx220</td>
+<td align="left"><span id="CLI-R100-odx" class="rqDef">[CLI-R100-odx]</span> Export to ODX.<br />
+To specify the ODX output format (.odx or .pdx), use the additional parameter /x <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-odxFileFormat' title="">[CLI-R100-odxFileFormat]</a>, like<br />
+<code>/e odx201 /x pdx</code><br />
+</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">pvcdiExport</td>
+<td align="left"><span id="CLI-R100-pvcdiExport" class="rqDef">[CLI-R100-pvcdiExport]</span> Export a CANdela Document into a PVCDI file, see introduction <a class='rqRef' href='../../30%20Features/PREEvision%20CANdela%20Data%20Interchange/Introduction.htm#PVCDI-D010' title="">[PVCDI-D010]</a> and <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R1020' title="">[MENU-R1020]</a>. /i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a> .cdd file to be exported; /o <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a> resulting output .pvcdi file; /v <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-variants' title="">[CLI-R100-variants]</a> optional single value for the variant qualifier, default: the base variant. /lib <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-lib' title="">[CLI-R100-lib]</a> like /v but for a library, no default.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">pvcdiImport</td>
+<td align="left"><span id="CLI-R100-pvcdiImport" class="rqDef">[CLI-R100-pvcdiImport]</span> Imports a PVCDI file into a existing CANdela document, see introduction <a class='rqRef' href='../../30%20Features/PREEvision%20CANdela%20Data%20Interchange/Introduction.htm#PVCDI-D010' title="">[PVCDI-D010]</a> and <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R1010' title="">[MENU-R1010]</a>. /r <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-referenceFile' title="">[CLI-R100-referenceFile]</a> existing CANdela document to import into; /i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a> .pvcdi file to import /o <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a> resulting output CANdela document /v <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-variants' title="">[CLI-R100-variants]</a> optional single value for the variant qualifier, default: the base variant. /lib <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-lib' title="">[CLI-R100-lib]</a> like /v but for a library, no default. /deact <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-deact' title="">[CLI-R100-deact]</a> if set to 1, deactivates diagnostic instances not touched by the import<br />
+and services in touched diagnostic instances not contained in the imported file (default 0).</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">rtf</td>
+<td align="left"><span id="CLI-R100-rtf" class="rqDef">[CLI-R100-rtf]</span> Export into the Rich Text Format (Microsoft).</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">services</td>
+<td align="left"><span id="CLI-R100-services" class="rqDef">[CLI-R100-services]</span> Export of services into a .csv file.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">textdiff</td>
+<td align="left"><span id="CLI-R100-textdiff" class="rqDef">[CLI-R100-textdiff]</span> Export of the comparison result to text.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">vsg</td>
+<td align="left"><span id="CLI-R100-vsg" class="rqDef">[CLI-R100-vsg]</span> Export of Vehicle System Groups into an XML file.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">xhtmldiff</td>
+<td align="left"><span id="CLI-R100-xhtmldiff" class="rqDef">[CLI-R100-xhtmldiff]</span> Export of the comparison result to XHTML.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">xmldiff</td>
+<td align="left"><span id="CLI-R100-xmldiff" class="rqDef">[CLI-R100-xmldiff]</span> Export of the comparison result to XML.</td>
+</tr>
+<tr class="odd">
+<td align="left">/ecuPrfx</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-ecuPrfx" class="rqDef">[CLI-R100-ecuPrfx]</span> Specifies whether CANdelaStudio should use the ECU qualifier as a prefix for all qualifiers on import or export of an ODX file.</td>
+</tr>
+<tr class="even">
+<td align="left">/expert</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-expert" class="rqDef">[CLI-R100-expert]</span> For Admin edition: if you specify a CDD on the command line, &quot;/expert 1&quot; opens it in expert mode. (since 8.0 SP2)</td>
+</tr>
+<tr class="odd">
+<td align="left">/f</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-datatypes" class="rqDef">[CLI-R100-datatypes]</span> Specifies whether CANdelaStudio shall import data types (1) or not (0) from the file specified by option /i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a>.<br />
+The standard value is 0.</td>
+</tr>
+<tr class="even">
+<td align="left">/fullEcu</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-fullEcu" class="rqDef">[CLI-R100-fullEcu]</span> Specifies whether CANdelaStudio shall import...<br />
+all ECU data contained in an ODX file (1), or<br />
+data types and DTCs only (0).</td>
+</tr>
+<tr class="odd">
+<td align="left">/g</td>
+<td align="left">&lt;File name&gt;</td>
+<td align="left"><span id="CLI-R100-logfile" class="rqDef">[CLI-R100-logfile]</span> File name of the log file (optional)</td>
+</tr>
+<tr class="even">
+<td align="left">/h</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-overwriteDTCs" class="rqDef">[CLI-R100-overwriteDTCs]</span> Specifies whether CANdelaStudio shall overwrite DTCs (1) or not (0) during import of the file specified by option /i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a>.<br />
+The standard value is 0.</td>
+</tr>
+<tr class="odd">
+<td align="left">/i</td>
+<td align="left">&lt;File name&gt;</td>
+<td align="left"><span id="CLI-R100-importFile" class="rqDef">[CLI-R100-importFile]</span> (required)<br />
+For exports: file name of the CANdela document (CDD) to export.<br />
+For imports: file name of the file to import.<br />
+For compare: file name of the &quot;left&quot; file for comparison <a class='rqRef' href='../../30%20Features/Compare/Compare%20via%20Command%20Line.htm#CMP-R135-CompareCommandLine' title="">[CMP-R135-CompareCommandLine]</a>.<br />
+For plugin: file name of the CANdela document <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-plugin' title="">[CLI-R100-plugin]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">/ini</td>
+<td align="left">&lt;File name&gt;</td>
+<td align="left"><span id="CLI-R100-ini" class="rqDef">[CLI-R100-ini]</span> File name of INI file to use.<br />
+If the file is read-only, it is used but not modified (CDS-19468 7.0 SP1).</td>
+</tr>
+<tr class="odd">
+<td align="left">/j</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-overwriteDataTypes" class="rqDef">[CLI-R100-overwriteDataTypes]</span> Specifies whether CANdelaStudio shall overwrite existing data types (1) or not (0) during import of the file specified by option /i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a>.<br />
+The standard value is 0.</td>
+</tr>
+<tr class="even">
+<td align="left">/k</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-finallyWait" class="rqDef">[CLI-R100-finallyWait]</span> Finally <strong>keep</strong> going (don't wait for ENTER, 1) or don't keep going (wait for ENTER, 0) (since 8.0 SP2).<br />
+The standard value is 1.</td>
+</tr>
+<tr class="odd">
+<td align="left">/l</td>
+<td align="left">de-DE, en-US, ja</td>
+<td align="left"><span id="CLI-R100-language" class="rqDef">[CLI-R100-language]</span> Language in which the <strong>CANdelaStudio user interface</strong> should be started.<br />
+For selecting the language of the document, see /u <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-documentLanguage' title="">[CLI-R100-documentLanguage]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">/lib</td>
+<td align="left">&lt;Qualifier&gt;</td>
+<td align="left"><span id="CLI-R100-lib" class="rqDef">[CLI-R100-lib]</span> A library qualifier (CDS-70801 v11).<br />
+Defines the library as a target for requirements synchronization <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a>, see <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-swcsync' title="">[CLI-R100-swcsync]</a> and <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importRequirementsAndUpdate' title="">[CLI-R100-importRequirementsAndUpdate]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">/m</td>
+<td align="left">view, viewx, standard, pro, admin</td>
+<td align="left"><span id="CLI-R100-edition" class="rqDef">[CLI-R100-edition]</span> CANdelaStudio <a href="../../30%20Features/CANdelaStudio%20Editor/Editions.htm">edition</a> to run.<br />
+Your CANdelaStudio license defines the maximum edition to run.<br />
+/m does not accept a higher edition.<br />
+„admin“ is the highest edition, down to „viewx“.<br />
+E.g. <code>CANdelaStudio /m standard</code> or <code>CANdelaStudio /m viewX</code><br />
+<strong>Note</strong>: this command line switch will be ignored, if pool licensing or KEYMAN Dongle licensing is used. The same choice is provided by the CANdelaStudio Launcher &quot;Set license&quot; <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R810' title="">[CDSL-R810]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">/n</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-execActions" class="rqDef">[CLI-R100-execActions]</span> Execute actions after an export (1), or skip them (0).<br />
+The standard value is 0.</td>
+</tr>
+<tr class="odd">
+<td align="left">/newEcu</td>
+<td align="left">&lt;ECU name&gt;</td>
+<td align="left"><span id="CLI-R100-newEcu" class="rqDef">[CLI-R100-newEcu]</span> Creates a new CANdela document (CDD) with the given ECU name from a template.<br />
+CANdelaStudio automatically derives the ECU qualifier from the name.<br />
+/r <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-referenceFile' title="">[CLI-R100-referenceFile]</a> defines the template the new document shall be instantiated from,<br />
+/o <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a> defines the path and file name of the new document.</td>
+</tr>
+<tr class="even">
+<td align="left">/newVariant</td>
+<td align="left">&lt;Variant name&gt;</td>
+<td align="left"><span id="CLI-R100-newVariant" class="rqDef">[CLI-R100-newVariant]</span> Creates a new variant given name (CDS-69032 v13). The input must be a document, not a template. See <a href="#newVariant">examples below</a>.<br />
+CANdelaStudio automatically derives the ECU qualifier from the name.<br />
+/v <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-variants' title="">[CLI-R100-variants]</a> defines the reference variant to use as base (name or qualifier). If omitted, defaults to Base Variant.<br />
+/o <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a> defines the path and file name of the new document (not a template).<br />
+<br />
+If the name of the variant is already in use in the document, it gets disambiguated,<br />
+as well as the qualifier derived from the specified name of the new variant.<br />
+Possible in Standard View. The operation references all diagnostic instances.</td>
+</tr>
+<tr class="odd">
+<td align="left">/o</td>
+<td align="left">&lt;File name&gt;</td>
+<td align="left"><span id="CLI-R100-output" class="rqDef">[CLI-R100-output]</span> File name of the output document for import and export (required)</td>
+</tr>
+<tr class="even">
+<td align="left">/p</td>
+<td align="left">&lt;Qualifier1&gt;; &lt;Qualifier2&gt;; ...</td>
+<td align="left"><span id="CLI-R100-vsgFilter" class="rqDef">[CLI-R100-vsgFilter]</span> List of <strong>vehicle system group qualifiers</strong> separated by semicolons.<br />
+Only relevant for the <a href="../../30%20Features/Report/Report%20Generator.htm">specification report</a>.<br />
+Limits the export of diagnostic instances, job containers and DTCs to those associated with one of the specified <a href="../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm">vehicle system groups</a> (<a class='rqRef' href='../../30%20Features/Report/Report%20Generator.htm#RP-R100-VSG' title="">[RP-R100-VSG]</a>, CDS-4316 4.0 SP2).</td>
+</tr>
+<tr class="odd">
+<td align="left">/pool</td>
+<td align="left">&lt;Import file&gt;</td>
+<td align="left"><span id="CLI-R100-poolFiles" class="rqDef">[CLI-R100-poolFiles]</span> One or multiple import files to be imported without user interaction into the import pool.<br />
+This is not for a batch operation - CANdelaStudio will be left open to inspect to import pool.<br />
+Separate multiple files by semicolon, like <code>PathToImport1.cdi;PathToImport.cdi</code>.<br />
+See an <a href="#pool-example">example</a> below.</td>
+</tr>
+<tr class="even">
+<td align="left">/plugin</td>
+<td align="left">&lt;plug-in name&gt;</td>
+<td align="left"><span id="CLI-R100-plugin" class="rqDef">[CLI-R100-plugin]</span> Runs a plug-in. The plug-in parameter denotes the <strong>plug-in name</strong> as shown in the tools menu and reported at start-up in the logfile (available via context menu in output window).<br />
+The parameter is used with the input and output CANdela document parameters...<br />
+/i <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a> (<strong>note</strong>: /i, not the single argument <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-argument' title="">[CLI-R100-argument]</a>!) and<br />
+/o <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a><br />
+to load the source document and optionally save the modified document after plug-in execution.<br />
+If you do not specify the parameter for an output file, CANdelaStudio does not save the document, even if it has been modified.<br />
+See an <a href="#plugin-example">example</a> below.</td>
+</tr>
+<tr class="odd">
+<td align="left">/q</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-quiet" class="rqDef">[CLI-R100-quiet]</span> When run in <strong>batch mode</strong>, CANdelaStudio shall be...<br />
+<strong>quiet</strong> (not open a separate console window, 1) or<br />
+verbose (open a separate console window for all messages, 0).<br />
+In interactive mode, value 1 suppresses message boxes at start-up: beta warning, hint about View edition, <a href="../../20%20UserInterface/CANdelaStudio%20Editor/User%20Feedback.htm">User Feedback dialog</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">/r</td>
+<td align="left">&lt;File name&gt;</td>
+<td align="left"><span id="CLI-R100-referenceFile" class="rqDef">[CLI-R100-referenceFile]</span><br />
+For import: file name of the CANdela document into which to import (reference document).<br />
+For compare: file name of the &quot;right&quot; file for comparison. <a class='rqRef' href='../../30%20Features/Compare/Compare%20via%20Command%20Line.htm#CMP-R135-CompareCommandLine' title="">[CMP-R135-CompareCommandLine]</a><br />
+For creating a document from a template: the template file name.</td>
+</tr>
+<tr class="odd">
+<td align="left">/t</td>
+<td align="left">de-DE, en-US, ja</td>
+<td align="left"><span id="CLI-R100-tmxLanguage" class="rqDef">[CLI-R100-tmxLanguage]</span> (only for the specification report) Desired language code for the TMX template.<br />
+If the parameter is not specified, or the TMX template does not contain the desired language code, then report uses the language code of the CANdela document.<br />
+If the TMX template does not contain that language code, report uses the TMX template for the language code &quot;en-US&quot;.</td>
+</tr>
+<tr class="even">
+<td align="left">/translation</td>
+<td align="left">0, 1</td>
+<td align="left"><span id="CLI-R100-translation" class="rqDef">[CLI-R100-translation]</span> For Pro edition: if you specify a CDD or CDDT on the command line, &quot;/translation 1&quot; opens it in translation view. (since 9.1, CDS-69393)</td>
+</tr>
+<tr class="odd">
+<td align="left">/u</td>
+<td align="left">de-DE, en-US, ja</td>
+<td align="left"><span id="CLI-R100-documentLanguage" class="rqDef">[CLI-R100-documentLanguage]</span> Desired <strong>document language</strong>, e.g. to open a document in CANdelaStudio in the<br />
+desired languare (open via commandline) for batch exports (export via commandline).<br />
+If the parameter is not specified, exports use the first completely translated language of the input CANdela document.<br />
+If the parameter is specified, but the language cannot be used (for example because it is not completely translated in the document), the export aborts with an error message.<br />
+For selecting the language of the user interface, see /l <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-language' title="">[CLI-R100-language]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">/v</td>
+<td align="left">&lt;Qualifier1&gt;; &lt;Qualifier2&gt;; ...</td>
+<td align="left"><span id="CLI-R100-variants" class="rqDef">[CLI-R100-variants]</span> List of variant qualifiers separated by semicolons.<br />
+Limits the operation to the specified variants.</td>
+</tr>
+<tr class="odd">
+<td align="left">/x</td>
+<td align="left">odx, pdx</td>
+<td align="left"><span id="CLI-R100-odxFileFormat" class="rqDef">[CLI-R100-odxFileFormat]</span> Desired file format for ODX export (use in conjunction with /e <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-odx' title="">[CLI-R100-odx]</a> and the parameters odx201, odx210 and odx220).<br />
+The standard value is pdx.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="examples">Examples</h2>
+<h3 id="path-to-candelastudio">Path to CANdelaStudio</h3>
+<p>Typically, you need to specify the <strong>complete path to the CANdelaStudio executable</strong>. Depending on your version of Windows and of CANdelaStudio, this path will look like</p>
+<pre><code>&quot;C:\Program Files\Vector CANdelaStudio 9.1\Bin\CANdelaStudio.exe&quot;</code></pre>
+<p>A <strong>complete command</strong> will look like</p>
+<pre><code>&quot;C:\Program Files\Vector CANdelaStudio 9.1\Bin\CANdelaStudio.exe&quot; /e odx201 /i KWP-ExampleEcu.cdd /o MyODX.odx</code></pre>
+<p>The following examples use the variable <code>CDS</code> for the path to CANdelaStudio. In a <code>.bat</code> file or command window, you can set it like this:</p>
+<pre><code>SET CDS=&quot;C:\Program Files\Vector CANdelaStudio 9.1\Bin\CANdelaStudio.exe&quot;</code></pre>
+<p>The command must be written on one line.</p>
+<h3 id="export-example">Export a Variant to ODX</h3>
+<p>Export variant &quot;Variant 1 (by reference)&quot; of the document &quot;KWP-ExampleEcu.cdd&quot; into the ODX file &quot;MyODX.odx&quot;:</p>
+<pre><code>%CDS% /e odx201 /i KWP-ExampleEcu.cdd /o MyODX.odx /v Variant_1_by_reference /x odx</code></pre>
+<h3 id="dtc">Export DTCs</h3>
+<p>Export DTCs of variant &quot;A Sample&quot; (qualifier &quot;A_Sample&quot;)&quot; of the document &quot;UDS-ExampleEcu.cdd&quot; into the Excel file &quot;MyDTCs.xlsx&quot;:</p>
+<pre><code>%CDS% /e DTC /i UDS-ExampleEcu.cdd /o MyDTCs.xlsx /v A_Sample</code></pre>
+<h3 id="import-example">Import Data Types from CDI</h3>
+<p>Import a set of data types stored in a CDI file into a CANdela document:</p>
+<pre><code>%CDS% /e import /r KWP-ExampleEcu-4.0.cdd /i MyCdi.cdi /o KWP-ExampleEcu-4.0.cdd /u en-US /f 1 /g import.log</code></pre>
+<h3 id="odx-import-using-batch-file">ODX Import Using Batch File</h3>
+<ol style="list-style-type: decimal">
+<li>Save the following text in a file named like <code>RunCANdelaStudio.bat</code>
+<ul>
+<li>Put the <code>SET CMD… %DEACT%</code> into one line without hyphenation!</li>
+<li>Adapt the path to <code>CANdelaStudio.exe</code></li>
+<li>It assumes you have a folder <code>D:\Temp</code> on your computer.</li>
+</ul></li>
+<li>Run the batch file by double-click in Windows Explorer.</li>
+</ol>
+<p><code>RunCANdelaStudio.bat</code>:</p>
+<pre><code>@echo off
+SET CDS=&quot;C:\Program Files\Vector CANdelaStudio 9.1\Bin\CANdelaStudio.exe&quot;
+SET REFFILE=&quot;D:\Temp\EmptyTarget.cdd&quot;
+SET PDXFILE=&quot;D:\Temp\Example.pdx&quot;
+SET LOGFILE=&quot;D:\Temp\Import.log&quot;
+SET OUTFILE=&quot;D:\Temp\Import.cdd&quot;
+SET DEACT=1
+SET CMD=%CDS% /e import /fullEcu 1 /r %REFFILE% /i %PDXFILE% /g %LOGFILE% /o %OUTFILE% /deact %DEACT%
+echo %CMD% &gt; D:\Temp\RunCANdelaStudio.log
+%CMD%</code></pre>
+<h3 id="plugin-example">Run Plug-In</h3>
+<pre><code>%CDS% /i input.cdd /o output.cdd /plugin &quot;Enable ODX mode&quot; /g logfile.txt</code></pre>
+<h3 id="odx-check-example">Run ODX Check</h3>
+<p>Run the consistency check for ODX 2.2.0:</p>
+<pre><code>%CDS% /i input.cdd /check 1 /e odx220 /g logfile.txt</code></pre>
+<h3 id="pool-example">Import into Pool</h3>
+<pre><code>%CDS% /pool PathToImportFile.cdi PathToCDD.cdd</code></pre>
+<h3 id="newVariant">Create Variant</h3>
+<p>using <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-newVariant' title="">[CLI-R100-newVariant]</a></p>
+<pre><code>%CDS% /i input.cdd /o output.cdd /v ReferencedVariantNameOrQualifier /newVariant NewVariant /g logfile.txt
+// overwrite the input file:
+%CDS% /i input.cdd /o input.cdd  /v ReferencedVariantNameOrQualifier /newVariant NewVariant /g logfile.txt
+// overwrite the input file:
+%CDS% /i input.cdd               /v ReferencedVariantNameOrQualifier /newVariant NewVariant /g logfile.txt</code></pre>
+<h3 id="object-path-example">Use an Object Path</h3>
+<p>Open a document and navigate to a <code>qpath</code>:</p>
+<pre><code>%CDS% D:\ABS_ESP-Example.cdd#qpath:/C_Sample</code></pre>
+<p>Open a document and navigate to an rpath:</p>
+<pre><code>%CDS% C:/UDS-ExampleEcu.cdd#rpath://Door/CommonDiagnostics/ProcessorType_Read/RDBI_RQ</code></pre>
+<p>Open a document and navigate to an ODX path (e.g. copied from an ODXStudio checker report):</p>
+<pre><code>%CDS% &quot;D:\ABS_ESP-Example.cdd#ODX/DIAG-LAYER-CONTAINER[SHORT-NAME=&#39;ABS_ESP&#39;]/ECU-VARIANTS/ECU-VARIANT[SHORT-NAME=&#39;C_Sample&#39;]&quot;</code></pre>
+
+<h3 id="autosar"><span id='_index_446727907' title='AUTOSAR: Command Line Operation Examples' data-term='AUTOSAR' data-text='Command Line Operation Examples'>AUTOSAR Command Line Operation Examples</span></h3>
+<p>Create a new CDD from a specified template <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-newEcu' title="">[CLI-R100-newEcu]</a>:</p>
+<pre><code>SET CDS=&quot;C:\Program Files\Vector CANdelaStudio 9.1\Bin\CANdelaStudio.exe&quot;
+SET CDD=&quot;D:\Temp\Vector_UDS.cdd&quot;
+SET LOGFILE=&quot;D:\Temp\Import.log&quot;
+%CDS% /newEcu TestECU /r &quot;C:\Users\Public\Documents\Vector\CANdelaStudio\9.1\Examples\Vector_UDS_2.2.0.cddt&quot; /o %CDD%</code></pre>
+<p>Import requirements from a CSV file and update diagnostic objects <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importRequirementsAndUpdate' title="">[CLI-R100-importRequirementsAndUpdate]</a>:</p>
+<pre><code>SET RQCSV=&quot;C:\Users\Public\Documents\Vector\CANdelaStudio\9.1\Examples\Import\SampleRequirements.csv&quot;
+%CDS% /e importRequirementsAndUpdate /r %CDD% /i %RQCSV% /o &quot;D:\Temp\WithRq.cdd&quot; /g %LOGFILE%</code></pre>
+<p>Run SWC Sync <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-swcsync' title="">[CLI-R100-swcsync]</a>:</p>
+<pre><code>SET SWC=&quot;C:\Users\Public\Documents\Vector\CANdelaStudio\9.1\Examples\Import\Demo_SystemDescr_MyECU.arxml&quot;
+%CDS% /e swcsync /r %CDD% /i %SWC% /o &quot;D:\Temp\WithSWCSync.cdd&quot; /g %LOGFILE%</code></pre>
+<p>Export PDX from CDD <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-odx' title="">[CLI-R100-odx]</a>:</p>
+<pre><code>%CDS% /e odx220 /x pdx /i %CDD% /o &quot;D:\Temp\Test.pdx&quot;</code></pre>
+<p>Export DEXT from CDD <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-dext' title="">[CLI-R100-dext]</a>:</p>
+<pre><code>%CDS% /e dext /i %CDD% /o &quot;D:\Temp\Test.arxml&quot;</code></pre>
+<h2 id="return-codes">Return Codes</h2>
+<p><span id="CLI-R200" class="rqDef">[CLI-R200]</span> CANdelaStudio.exe returns...</p>
+<ul>
+<li>0 on success;</li>
+<li>non-0 on failure.</li>
+</ul>
+<p>If you need information about the status, inspect the logfile.</p>
+<p>Besides that, CANdelaStudio returns only few detailed status codes:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">-2</td>
+<td align="left">unknown</td>
+</tr>
+<tr class="even">
+<td align="right">-1</td>
+<td align="left">application error</td>
+</tr>
+<tr class="odd">
+<td align="right">0</td>
+<td align="left">success</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">import failure (completely)</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">import failure (some data)</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Procedure <a href="../../15%20Procedures/Compare/How%20to%20Compare%20Documents%20From%20Command%20Line.htm">How to Compare Documents From Command Line</a></li>
+<li><a href="candelastudio%20URI%20Scheme.htm">candelastudio URI Scheme</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Launcher.htm">CANdelaStudio Launcher</a></li>
+<li><a href="../../30%20Features/Compare/Compare%20via%20Command%20Line.htm">Compare via Command Line</a></li>
+<li><a href="../../30%20Features/Document/Document.htm">Document</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Editions.htm">Editions</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Object%20Paths.htm">Object Paths</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">Views</a></li>
+</ul>
+</body>
+</html>

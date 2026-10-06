@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Logging</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="logging">Logging</h1>
+<p>During execution, CANdelaStudio logs messages...</p>
+<ul>
+<li>that can be written to a text file (&quot;logfile&quot;), and</li>
+<li>that can be shown in the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm">Output Window</a>.</li>
+</ul>
+<p>like...</p>
+<pre><code>Info 12:36:14.84 CANdelaStudio Executing command &#39;notepad.exe CANdelaStudio.log&#39;.</code></pre>
+<p>Typical messages are...</p>
+<ul>
+<li>error messages and warnings e.g. from the consistency check</li>
+<li>info about long-running operations</li>
+<li>the result of a search with &quot;Find All&quot; <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Search Dialog.htm#SRCH-R200' title="">[SRCH-R200]</a></li>
+<li>detailed internal status info.</li>
+</ul>
+<p>To configure this feature, use the property page <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Logfile.htm">Logfile</a> and the Output Window toolbar <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Output Window.htm#OW-R500' title="">[OW-R500]</a>.</p>
+<h2 id="level">Message Type</h2>
+<p><span id="LOG-R100" class="rqDef">[LOG-R100]</span> Each logging message has a <strong>type</strong> (or &quot;level&quot;, &quot;severity&quot;):</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Message Type</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Error</td>
+<td align="left">Data constellation that prevents from exporting</td>
+</tr>
+<tr class="even">
+<td align="left">Warning</td>
+<td align="left">Invalid data constellation that should be repaired.</td>
+</tr>
+<tr class="odd">
+<td align="left">Info</td>
+<td align="left">The name of the variant currently processed in an export.</td>
+</tr>
+<tr class="even">
+<td align="left">Status</td>
+<td align="left">Internal state information helpful for debugging.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="timestamp">Timestamp</h2>
+<p><span id="LOG-R110" class="rqDef">[LOG-R110]</span> Time when the message was created (hour, minute, second, millisecond), like <code>12:36:14.842</code>.</p>
+<p>CANdelaStudio records this property independent of option <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Logfile.htm#OPT-R640' title="">[OPT-R640]</a>.</p>
+<h2 id="origin">Origin</h2>
+<p><span id="LOG-R120" class="rqDef">[LOG-R120]</span> Origin - a functional part of CANdelaStudio:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Origin</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CANdelaStudio</td>
+<td align="left">Functionality in general, user interface</td>
+</tr>
+<tr class="even">
+<td align="left">ImExport</td>
+<td align="left">Import, export, plug-ins</td>
+</tr>
+<tr class="odd">
+<td align="left">Search</td>
+<td align="left">Search result (from the Find dialog <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Search Dialog.htm#SRCH-R200' title="">[SRCH-R200]</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="link">Link</h2>
+<p><span id="LOG-R130" class="rqDef">[LOG-R130]</span> A message optionally references an object in a CANdela document.</p>
+<ul>
+<li><span id="LOG-R130-Remove" class="rqDef">[LOG-R130-Remove]</span> When you close a document, CANdelaStudio removes all links into this document from the messages.</li>
+</ul>
+<h2 id="logfile">Logfile</h2>
+<p>CANdelaStudio optionally clears the logfile at start-up, see option <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Logfile.htm#OPT-R630' title="">[OPT-R630]</a>.</p>
+<p>The logfile includes the time stamps <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Logging.htm#LOG-R110' title="">[LOG-R110]</a> only if enabled by option <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Logfile.htm#OPT-R640' title="">[OPT-R640]</a>.</p>
+<h3 id="path">Path</h3>
+<p><span id="LOG-R200" class="rqDef">[LOG-R200]</span> The path of the logfile is...</p>
+<ul>
+<li>defined in the options dialog <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Logfile.htm#OPT-R620' title="">[OPT-R620]</a>;</li>
+<li>by default (e.g. for 8.5) <code>C:\Users\USERNAME\AppData\Local\Vector\CANdelaStudio\8.5\CANdelaStudio.log</code></li>
+<li>stored in <a href="Options.htm">CANdelaStudio.ini</a></li>
+</ul>
+<h3 id="example-contents">Example Contents</h3>
+<pre><code>----------------------------------------------------------------
+Start of logging 2016-04-18 11:41:31 encoding=&#39;utf-8&#39;
+----------------------------------------------------------------
+[11:41:31.496] D: Start of logging:
+[11:41:31.496] I: Running C:\Program Files (x86)\Vector CANdelaStudio 8.2\Bin\CANdelaStudio.exe v8.2.3100.0</code></pre>
+<h3 id="level-indication">Level Indication</h3>
+<p>CANdelaStudio writes the message type <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Logging.htm#LOG-R100' title="">[LOG-R100]</a> abbreviated to one character:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Message Type</th>
+<th>Abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Error</td>
+<td>E</td>
+</tr>
+<tr class="even">
+<td align="left">Warning</td>
+<td>W</td>
+</tr>
+<tr class="odd">
+<td align="left">Info</td>
+<td>I</td>
+</tr>
+<tr class="even">
+<td align="left">Status</td>
+<td>D</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Dialog in Ribbon Tab <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Logfile.htm">File | Options | Logfile</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm">Output Window</a></li>
+</ul>
+</body>
+</html>

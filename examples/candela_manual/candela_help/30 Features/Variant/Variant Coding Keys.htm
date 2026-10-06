@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Variant Coding Keys</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="variant-coding-keys-vck"><span id='_index_446728128'>Variant Coding Keys</span> (<span id='_index_446728129'>VCK</span>)</h1>
+<p>Variant coding keys are supported for specific manufacturers only. They are also called &quot;Supplement keys&quot;.</p>
+<p>They must be enabled on <a href="../../30%20Features/Document/Document.htm#vck">document level</a>.</p>
+
+<p>With the advent of ODX, the ODX-E component of ODX supports the VCK use-case.</p>
+<p>A data object in the diagnostic class Variant Coding controls a certain feature of the ECU. Typically, a text table provides a list of possible values for one such data object. Only data objects with text tables are considered in the VCK context.</p>
+<p>The set of all such data objects define the possible &quot;variant codings&quot; (configurations) of the ECU. One configuration is defined by taking one value from each text table.</p>
+<p>A VCK is an arbitrary typically short string (&quot;key&quot;, &quot;fragment&quot;) that represents such a text table value.</p>
+<p>For documents with VCK mode != &quot;none&quot;, CANdelaStudio does not automatically (re-) computes VCKs (CDS-19410 7.0 SP1) in...</p>
+<ul>
+<li>entry mask of diagnostic instance</li>
+<li>attribute property page.</li>
+</ul>
+<p>CANdelaStudio still provides recomputation in the entry mask &quot;Variant Coding Keys&quot;.</p>
+<h2 id="export">Export</h2>
+<p>You can <a href="../../30%20Features/Export/Variant%20Coding%20Keys%20Export.htm">export the variant coding keys</a> into a file.</p>
+<p>The &quot;Variant Coding Keys&quot; file format is based on XML (Extensible Markup Language). You can view it in an XML-enabled browser, for example. The <code>VCK</code> file format is described in the <a href="../../30%20Features/Installation/Documentation.htm">CANdelaStudio documentation folder</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Variant/Variant%20Coding%20Keys.htm">Variant Coding Keys (User Interface)</a></li>
+<li><a href="../../30%20Features/Export/Variant%20Coding%20Keys%20Export.htm">Variant Coding Keys Export</a></li>
+<li><a href="../../30%20Features/Attributes/Special%20Attributes.htm#Segment_Number">Special Attribute &quot;Segment_Number&quot;</a></li>
+</ul>
+
+</body>
+</html>

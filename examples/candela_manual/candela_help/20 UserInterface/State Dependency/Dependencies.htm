@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Dependencies</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="state-dependencies-user-interface">State Dependencies (User Interface)</h1>
+<p>See also the <a href="../../30%20Features/State%20Dependency/State%20Dependency.htm">State Dependency Feature</a>.</p>
+<p>The dialog offers three <strong>Views</strong>.</p>
+<p><span id="STUI-R150" class="rqDef">[STUI-R150]</span> You can select the view using the following buttons:</p>
+<ul>
+<li><img src="../../20%20UserInterface/Images/State%20Dependency%20State%20Diagram.gif" /> <span id="STUI-R150-Diagram" class="rqDef">[STUI-R150-Diagram]</span> Shows a graph of the currently selected state group and variant.
+<ul>
+<li><span id="STUI-R150-DiagramTwice" class="rqDef">[STUI-R150-DiagramTwice]</span> Pressing the button if the graph is already shown has no effect (CDS-69683 9.1).</li>
+</ul></li>
+<li><img src="../../20%20UserInterface/Images/State%20Dependency%20Overview.gif" /> <span id="STUI-R150-Overview" class="rqDef">[STUI-R150-Overview]</span> Shows a tabular overview of all state transitions.</li>
+<li><img src="../../20%20UserInterface/Images/State%20Dependency%20Editing.gif" /> <span id="STUI-R150-Editing" class="rqDef">[STUI-R150-Editing]</span> Shows a table in which you can edit the state transitions.</li>
+</ul>
+<h2 id="state-diagram">State Diagram (Graphical View)</h2>
+<div class="figure">
+<img src="Images/Dependencies%20State%20Diagram.jpg" alt="Graphical View of State Transitions at Services" />
+<p class="caption">Graphical View of State Transitions at Services</p>
+</div>
+<p>CANdelaStudio offers a <strong>graphical overview</strong> of all states and state transitions of the services in a CANdela document. This function needs installation of GraphViz (see next chapter).</p>
+<p>Only services which are relevant for the state group are shown. Services contained in deactivated instances are not listed.</p>
+<p>The starting state is surrounded in bold.</p>
+<h3 id="required-tool-graphviz">Required Tool: GraphViz</h3>
+<p><span id="STUI-R180" class="rqDef">[STUI-R180]</span> CANdelaStudio uses the tool &quot;GraphViz&quot; from AT&amp;T for the graphical view (in the user interface and in report).</p>
+<ul>
+<li>The CANdelaStudio installation does not include GraphViz <a class='rqRef' href='../../30 Features\Installation\Bundled Products.htm#IBP-D090' title="">[IBP-D090]</a></li>
+<li>The &quot;GraphViz&quot; package is available from https://www.graphviz.org.</li>
+<li>CANdelaStudio locates GraphViz...
+<ul>
+<li>using the Windows <code>PATH</code> variable <a class='rqRef' href='../../30 Features\Installation\Windows Settings.htm#IWS-D200' title="">[IWS-D200]</a>, or</li>
+<li>the setting from Ribbon Tab File | Options <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Display.htm#OPT-R250' title="">[OPT-R250]</a>.</li>
+<li><span id="STUI-R180-64" class="rqDef">[STUI-R180-64]</span> Heuristics: under 64-Bit Windows, search also in <code>C:/Program Files (x86)C:/Program Files (x86)</code> (CDS-20544 7.0 SP2)</li>
+</ul></li>
+</ul>
+<h3 id="zoom">Zoom</h3>
+<p>Under <strong>Zoom</strong> you can select the magnification of the graph. Possible values lie between 10% (very small) and 250% (very large). However, you can also input your own values. The default setting is 100%.</p>
+<h3 id="font">Font</h3>
+<p>Under <strong>Font</strong> you can select a different font for displaying the graph. This would be advisable, for example, if you want to make the labeling in the specification in the same font as the text.</p>
+<h3 id="variant">Variant</h3>
+<p><span id="STUI-R200" class="rqDef">[STUI-R200]</span> Under <strong>Variant</strong> you can select the variant whose state transitions should be displayed.</p>
+<p><span id="STUI-R200-LIB" class="rqDef" title="No selection of library in state dependencies">[STUI-R200-LIB No selection of library in state dependencies]</span> Libraries are not shown (individual state transitions can be viewed in the service property dialog within the library).</p>
+<h3 id="state-group">State Group</h3>
+<p>Under <strong>State Group</strong> you can select the state group whose states and state transitions you wish to display.</p>
+<h3 id="show-service-names">Show Service Names</h3>
+<p>(context menu) toggles to show...</p>
+<ul>
+<li>the names of the diagnostic class, diagnostic instance and the service, e.g. &quot;Session: Default Session: Start&quot;</li>
+<li>the signature (service prefixes), e.g. &quot;10 01&quot;</li>
+</ul>
+<h3 id="colored-transitions">Colored Transitions</h3>
+<p>(context menu) fills in the edges of the graph with color.</p>
+<p>This makes the graph easier to read, especially when there are many state transitions.</p>
+<p>The transition of each state change which is performed using the same service is colored with the same color (differing from all other transition colors). E.g. all transitions of the service $10 01 are colored blue. No other transition is colored blue.</p>
+<h3 id="tooltip">Tooltip</h3>
+<p>The view provides a tooltip for nodes: which services may be executed within this state (compressed view like in RTF export).</p>
+<p>Example:</p>
+<pre><code>12 34 DiagClass/Instance/Read
+15 xx DiagClass/*/Write</code></pre>
+<h2 id="overview">Overview (Tabular)</h2>
+<div class="figure">
+<img src="Images/Dependencies%20Overview.jpg" alt="State Dependencies Overview (Tabular)" />
+<p class="caption">State Dependencies Overview (Tabular)</p>
+</div>
+<p>The overview shows all services in rows, grouped by diagnostic classes. The diagnostic class is shown in a path like notation, e.g. &quot;Sessions/*/Start&quot;:</p>
+<ul>
+<li>&quot;Session&quot;: the diagnostic class</li>
+<li>&quot;*&quot;: any diagnostic instance</li>
+<li>&quot;Start&quot;: the service</li>
+</ul>
+<p>The diagnostic instance names are shown below the line of the diagnostic class:</p>
+<ul>
+<li>&quot;Default Session&quot;</li>
+<li>&quot;Programming Session&quot;</li>
+<li>&quot;Extended Diagnostic Session&quot;</li>
+</ul>
+<p>The right-most columns show the states of the state groups.</p>
+<p>After having opened the view, the maximally compressed view is shown. This means: if all services of one Used ProtocolService are of the same behavior, then only that one is shown as a representative. It can be opened and closed.</p>
+<p>If the behavior of a service differs, and the node is closed, then the representative behaviour is marked as &quot;(mixed)&quot;.</p>
+<p>The table can be sorted by clicking on the column-headers</p>
+<h3 id="cell-values">Cell Values</h3>
+<p>Each cell defines...</p>
+<ul>
+<li>if the ECU is in the given state (column),</li>
+<li>for the given service (row)</li>
+<li><p>whether the service...</p>
+<ul>
+<li>is blocked (&quot;no&quot;), or</li>
+<li>may be executed without a transition (&quot;yes&quot;), or</li>
+<li>may be executed, and if successfully executed, the ECU shall transit to another state.</li>
+</ul></li>
+</ul>
+
+<h3 id="show-service-addressing">Show Service Addressing</h3>
+<p>Toggles display of addressing information as a suffix in the first column &quot;Service/Job&quot;. This info is also shown in the diagnostic instance view at the <a href="../../20%20UserInterface/Service/Icons.htm">service icons</a>.</p>
+<h3 id="extend-all-nodes">Extend All Nodes</h3>
+<p>Shows all services in all diagnostic instances.</p>
+<h3 id="collapse-all-nodes">Collapse All Nodes</h3>
+<p>Shows only the lines for diagnostic classes.</p>
+<h3 id="collapse-state-columns-to-the-left">Collapse State Columns to the Left</h3>
+<p>If the document contains a large number of states, the table in the tabular view may become very wide. For the states at the right end of the table, their context from the most left columns may not be visible any more.</p>
+<p>Using the context menu (right mouse) entry &quot;Collapse State Columns to the Left&quot;, you can collapse all states columns to the left of the selected column.</p>
+<h3 id="extend-all-columns">Extend all Columns</h3>
+<p>Expands all state columns (if collapsed as described in the previous chapter).</p>
+<h2 id="editing">Editing (Tabular)</h2>
+<div class="figure">
+<img src="Images/Dependencies%20Editing.jpg" alt="State Dependencies Editing (Tabular)" />
+<p class="caption">State Dependencies Editing (Tabular)</p>
+</div>
+<p>The table overview shows all services in rows, in a path like notation, e.g. &quot;Sessions/Default Session/Start&quot;:</p>
+<ul>
+<li>&quot;Session&quot;: the diagnostic class</li>
+<li>&quot;Default Session&quot;: the diagnostic instance</li>
+<li>&quot;Start&quot;: the service</li>
+</ul>
+<p>The right-most columns show the states of the state groups.</p>
+<p>For details on columns and context menu actions, see the <a href="#overview">Overview chapter above</a>.</p>
+<p>Using two-stage-sorting, you can get complex information, e.g. questions like “Which services of a specific Diagnostic Class are not executable within a certain state?”.</p>
+<h3 id="edit">Edit</h3>
+<p>To modify a state transition, select the respective cell, then click again or press <code>F2</code>.</p>
+<p>You can select multiple lines in a column to modify the transition for a given state (column) for multiple services (rows).</p>
+<h3 id="write-protection">Write-Protection</h3>
+<p>For <strong>write-protection</strong> of columns, see <a href="../../30%20Features/State%20Dependency/State%20Transitions.htm">Editing of State Transitions</a>.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../20%20UserInterface/Service/Service%20Property%20Page%20State%20Transitions.htm">Service Property Page State Transitions</a></li>
+<li><a href="States.htm">States Tree Chapter</a></li>
+<li><a href="../../30%20Features/State%20Dependency/State%20Dependency.htm">State Dependency Feature</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Counter Iteration</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="counter-iteration"><span id='_index_446727985'>Counter Iteration</span></h1>
+<p>For an overview, see the <a href="Complex%20Data%20Types%20Introduction.htm">Complex Data Types Introduction</a>.</p>
+<p>A counter iteration data type  describes iterated transmission of data objects in a telegram until a specified number of iterations is reached.</p>
+<p>The number of iterations is transmitted in a <strong>selector</strong> data object. The selector (or counter) data object is not part of the counter iteration data type. When you let a data object <em>reference</em> the Counter Iteration Data Type, you must also <a href="../../20%20UserInterface/Data%20Objects/Counter%20Iteration.htm">specify the selector data object</a>.</p>
+<ul>
+<li>needs selector: yes</li>
+<li>the data object used as <strong>selector</strong> for the <strong>Counter Iteration</strong>...
+<ul>
+<li>must exist in the <strong>same telegram table</strong> where the Counter Iteration is used, and</li>
+<li>must be located before the Counter Iteration (same as for Mux CDS-10216 R006 7)</li>
+</ul></li>
+<li>must not be used at a <strong>position before the end of the PDU</strong></li>
+<li>More constraints: see <a href="Iteration%20Data%20Type%20Constraints.htm">Iteration Data Type Constraints</a>.</li>
+</ul>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Counter%20Iteration.htm">dialog</a>.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="Complex%20Data%20Types%20Introduction.htm">Complex Data Types Introduction</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+<li><a href="Fixed%20Count%20Iteration.htm">Fixed Count Iteration</a></li>
+<li><a href="End-Marker%20Iteration.htm">End-Marker Iteration</a></li>
+<li><a href="End-of-Service%20Iteration.htm">End-of-Service Iteration</a></li>
+<li><a href="Iteration%20Data%20Type%20Constraints.htm">Iteration Data Type Constraints</a></li>
+</ul>
+</body>
+</html>

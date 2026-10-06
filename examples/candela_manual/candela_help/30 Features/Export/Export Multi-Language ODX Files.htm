@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Export Multi-Language ODX Files</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="export-multi-language-odx-files-cds-8019-6.0"><span id='_index_446728026' title='ODX: Multi-Language' data-term='ODX' data-text='Multi-Language'>Export Multi-Language ODX Files</span> (CDS-8019 6.0)</h1>
+<p><span id="ODXE-R1160" class="rqDef">[ODXE-R1160]</span> ODX Export optionally creates a <strong>TMX file</strong>. In conjunction with the exported ODX file, you can use the exported TMX file to translate the ODX file into other languages (<strong>multi-language ODX</strong>).</p>
+<h2 id="prerequisites-in-the-document">Prerequisites in the Document</h2>
+<ul>
+<li>multiple languages</li>
+<li>TextIDs
+<ul>
+<li>to identify a multi-language text in an ID based system e.g. a database.</li>
+</ul></li>
+</ul>
+<h2 id="result-of-an-export">Result of an Export</h2>
+<ul>
+<li>the <strong>ODX file</strong> with TextIDs set from the CANdela objects</li>
+<li>an additional <strong>TMX file</strong> containing translations from multi-language texts of the CANdela document
+<ul>
+<li>mapped to the ODX file via the TextIDs.</li>
+<li>You can create the translations in Translation View.</li>
+</ul></li>
+</ul>
+<h2 id="usage-in-tester">Usage in Tester</h2>
+<p>A Tester typically processes the information as follows:</p>
+<ul>
+<li>if the ODX text has a TextID specified,</li>
+<li>search for a translation in the TMX file with the same TextID.</li>
+<li>If found, display the Translation for the language selected in the Tester.</li>
+</ul>
+<h2 id="tmx">TMX</h2>
+<p><strong>TMX</strong> is a data file format for exchanging translations of texts from one language into otherlanguages (“Translation Memory Exchange”).</p>
+<p>Example TMX fragment:</p>
+<pre><code>&lt;tu tuid=&#39;1&#39;&gt;
+&lt;prop type=&#39;x-CANdela-text-id&#39;&gt;New_ECU_1_12&lt;/prop&gt;
+&lt;tuv xml:lang=&#39;de-DE&#39;&gt;&lt;seg&gt;Länge&lt;/seg&gt;&lt;/tuv&gt;
+&lt;tuv xml:lang=&#39;en-US&#39;&gt;&lt;seg&gt;Length&lt;/seg&gt;&lt;/tuv&gt;
+&lt;/tu&gt;.</code></pre>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Procedure <a href="../../15%20Procedures/Export/How%20to%20Export%20Multi-Language%20ODX%20Files.htm">How to Export Multi-Language ODX Files</a></li>
+<li>Tools|Options|ODX Export|TMX file <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page ODX Export.htm#OPT-R350' title="">[OPT-R350]</a></li>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+<li><a href="../../30%20Features/Multi-Language/Dictionary.htm">Dictionary</a></li>
+<li><a href="../../20%20UserInterface/Multi-Language/Translation%20View.htm">Translation View</a></li>
+<li><a href="../../30%20Features/Multi-Language/Multi-Language.htm">Multi-Language Feature</a></li>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX Export Introduction</a></li>
+<li><a href="../../30%20Features/Common%20Properties/TextID.htm">TextIDs</a></li>
+</ul>
+</body>
+</html>

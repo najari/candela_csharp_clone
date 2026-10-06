@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Attribute Authorization</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="attribute-authorization">Attribute Authorization</h1>
+<h2 id="attribute-category">Attribute Category</h2>
+<ul>
+<li><strong>Visible</strong>: specifies whether the attribute category is displayed e.g. in a drop-down list that filters attributes in a property sheet. The setting does <em>not</em> have an effect on the visibility attributes - these have their own authorization. </li>
+</ul>
+<h2 id="attribute">Attribute</h2>
+<ul>
+<li><p><span id="ATTRA-R010" class="rqDef" title="Visible in Standard view">[ATTRA-R010 Visible in Standard view]</span>: specifies whether the attribute is visible in Standard View.</p></li>
+<li><p><span id="ATTRA-R020" class="rqDef" title="Properties modifiable">[ATTRA-R020 Properties modifiable]</span>: specifies whether the overriding values of the attribute may be modified in the Standard View.</p></li>
+<li><span id="ATTRA-R030" class="rqDef" title="Export to specification">[ATTRA-R030 Export to specification]</span> (CDS-7777 5.5):
+<ul>
+<li>specifies whether the attribute is output in the <a href="../../30%20Features/Report/Report%20Generator.htm">specification report</a> <strong>in the attributes chapter</strong>. Note: output of the entire chapter is controlled by an option <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Specification Chapters.htm#OPT-R540' title="Report Attributes">[OPT-R540]</a>.</li>
+<li>The setting does <strong>not</strong> apply to report output in the list of objects <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R090' title="VisibleInTableColumn">[ATTR-R090]</a> (e.g. in the DTC list).</li>
+<li>The setting does <strong>not</strong> apply to data oriented exports (e.g. ODX export).</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Common%20Properties/Authorization.htm">Authorization Feature</a></li>
+</ul>
+</body>
+</html>

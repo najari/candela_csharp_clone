@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Model Overview</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-model-overview">Data Model Overview</h1>
+<h2 id="important-objects">Important Objects</h2>
+<table style="border:none;">
+<tr>
+<td style="vertical-align: top; border: none; padding-right: 5em;">
+<p>ECU</p>
+<ul>
+<li>Variants (equipment /development over time)
+<ul>
+<li>DIDs</li>
+<li>Diagnostic Classes („Diagnostic Use-Case“)
+<ul>
+<li>Diagnostic Instances
+<ul>
+<li>Services</li>
+<li>Data Objects (reference a Data Type)</li>
+<li>Fault Memory: DTCs, Snapshot Data, Extended Data, Events</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>Data Types</p></li>
+<li>Template
+<ul>
+<li>Protocol Services</li>
+<li>Diagnostic Class Templates</li>
+</ul></li>
+</ul>
+Services, Data Objects and DTCs are shown in the right side of the tree navigation.
+</td>
+<td style="border:none;">
+<img src="../20%20UserInterface/Images/Navigation%20Tree%20Important%20Objects.jpg" alt="Important Objects in a CANdela Document" />
+</td>
+</tr>
+</table>
+<h2 id="template-and-document">Template and Document</h2>
+<p>CANdelaStudio supports a <strong>template concept</strong> like Microsoft Word: a <strong>document</strong> is based on a <strong>template</strong> which implements diagnostic protocol and manufacturer specific information.</p>
+<p>See <a href="../30%20Features/Document%20Template/Document%20Template.htm">Document Template</a>.</p>
+<h2 id="variants">Variants</h2>
+<div class="figure">
+<img src="Images/image2.png" alt="Variants in CANdelaStudio" />
+<p class="caption">Variants in CANdelaStudio</p>
+</div>
+<p>CANdela data supports multiple variants in a single document, each may describe either a <strong>feature variation</strong>, or <strong>development progress</strong> over time.</p>
+<p>See the <a href="../30%20Features/Variant/Variant.htm">Variant</a> feature.</p>
+<h2 id="protocol-services">Protocol Services</h2>
+<p>Diagnostics is about <strong>services</strong>: sending a <strong>request</strong> and receiving a positive or negative <strong>response</strong>.</p>
+<p>Different <strong>diagnostic protocols</strong> define different <strong>services</strong> with specific byte sequences.</p>
+<p><strong>UDS</strong> (Unified Diagnostic Services; ISO 14229) is widely spread and a recommended basis for new diagnostic projects.</p>
+<div class="figure">
+<img src="Images/image3.png" alt="Protocol Services in CANdelaStudio" />
+<p class="caption">Protocol Services in CANdelaStudio</p>
+</div>
+<p>In the CANdela data model, the specifics of the diagnostic protocol are described in a <strong>Protocol Service</strong> in the document template.</p>
+<p>A document describing a concrete ECU does not allow to modify the basic protocol information, it only allows to describe <strong>services</strong>, filling in the variable parts defined in the Protocol Service.</p>
+<p>See the <a href="../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a> feature.</p>
+<p>See also <a href="../30%20Features/Protocol%20Service/UDS%202013.htm">UDS 2013</a> for differences in ProtocolServices between UDS versions of 2005 and 2013.</p>
+<h2 id="diagnostic-classes">Diagnostic Classes</h2>
+<p>A tester would typically list all services (CANdela: protocol services) that may be sent to the ECU in a flat list. <strong>UDS</strong> provides some structure: it groups services by “functional units”:</p>
+<ul>
+<li>Diagnostic and Communication Management</li>
+<li>Data Transmission</li>
+<li>Stored Data Transmission</li>
+<li>InputOutput Control</li>
+<li>Remove Activation of Routine</li>
+<li>Upload Download</li>
+</ul>
+<p>For practical use, an even more detailed structure makes sense:</p>
+<div class="figure">
+<img src="Images/image5.png" alt="Diagnostic Class Templates in CANdelaStudio Tree" />
+<p class="caption">Diagnostic Class Templates in CANdelaStudio Tree</p>
+</div>
+<p>A CANdela <strong>diagnostic class template</strong> typically represents a <strong>diagnostic use-case</strong>, like Fault Memory, Live Data, Stored Data, ECU Reset etc.</p>
+<p>It combines a <strong>subset of protocol services</strong> (from UDS or any other protocol) with the <strong>data</strong> for the “proxy components” (entry points for payload data) from these ProtocolServices.</p>
+<p>The diagnostic class template is predefined in the document template.</p>
+<p>Its counterpart in a document is the <strong>diagnostic class</strong> within a variant.</p>
+<p>See the <a href="../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Class Template</a> feature with the <a href="../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Use-Cases.htm">Diagnostic Use-Cases</a>.</p>
+<h2 id="diagnostic-instances">Diagnostic Instances</h2>
+<div class="figure">
+<img src="../20%20UserInterface/Images/Diagnostic%20Instances.png" alt="CANdelaStudio Tree and Diagnostic Instance in Right Side" />
+<p class="caption">CANdelaStudio Tree and Diagnostic Instance in Right Side</p>
+</div>
+<p>A <strong>diagnostic instance</strong> combines</p>
+<ul>
+<li><strong>services</strong> (to be executed, e.g. “Start” on top in the screenshot) with...</li>
+<li><strong>data</strong> (to be transported, e.g. list with “P2”, “P2Ex” at the bottom in the screenshot)</li>
+</ul>
+<p>You can reuse a diagnostic instance in multiple variants.</p>
+<p>A diagnostic instance may be included in a variant <strong>only once</strong> (ECU Reset) or <strong>more than once</strong> (Reading data by Identifier: 0x22 0xF120 vs. 0x22 0xF121).</p>
+<p>See the <a href="../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance</a> feature.</p>
+<h2 id="services">Services</h2>
+<p>In CANdela, most aspects of e.g. a UDS service are predefined in the template in a <strong>protocol service</strong>, like “(0x10) DiagnosticSessionControl” (see screenshot above).</p>
+<p>The <strong>service</strong> in the diagnostic instance (e.g. “Start”) has only few properties which can be modified in a property dialog.</p>
+<p>The slots for <strong>data</strong> are filled in separate lists (e.g. “zz”, “rc” in the screenshot above), as described in the following chapter.</p>
+<p>See the <a href="../30%20Features/Service/Service.htm">Service</a> feature.</p>
+<h2 id="data">Data</h2>
+<p>The <a href="../30%20Features/Data%20Objects/Telegram%20Table.htm">data lists</a> in a diagnostic instance (see screenshot above) are the central place to describe the diagnostic behaviour of an ECU. They are called „<strong>telegram table</strong>“ in CANdelaStudio.</p>
+<p>In the user interface, they are identified by a two-character abbreviation (like “zz”). The abbreviation has no meaning in itself; it only indicates the place of the data in the request or response (there are a few special abbreviations, like “rc” for response code, “fd” for data fixed in the template already).</p>
+<p>The telegram table can contain different kinds of data:</p>
+<ul>
+<li>a <strong>Data object</strong> (named piece of data with a data type, i.e. conversion),</li>
+<li>a <strong>bit field</strong> (may contain bit-size objects) and</li>
+<li><strong>reserved data objects</strong> (unnamed objects without conversion) bit length.</li>
+</ul>
+<p>Byte and bit positions of data always results from the <strong>relative position</strong> within the list; there are no explicit properties to set a position.</p>
+<p>Only byte-sized data objects starting at byte positions can be positioned directly in the list. Other data must be put into a bit-field.</p>
+<p>See the <a href="../30%20Features/Data%20Objects/Telegram%20Table.htm">Telegram Table</a> and <a href="../30%20Features/Data%20Objects/Data%20Objects.htm">Data Object</a> features.</p>
+<h2 id="dtcs">DTCs</h2>
+<p>A DTC (Diagnostic Trouble Code) represents an event or malfunction detected by the ECU. The ECU typically stores snapshot data and statistical data for a DTC.</p>
+<p>See the <a href="../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory Introduction</a> and the user interface <a href="../20%20UserInterface/DTC/DTCs.htm">DTC List</a>.</p>
+<h2 id="data-types">Data Types</h2>
+<div class="figure">
+<img src="Images/image10.png" alt="Data Type Property Dialog" />
+<p class="caption">Data Type Property Dialog</p>
+</div>
+<p>A data object references a <a href="../30%20Features/Data%20Type/Data%20Type.htm">data type</a>.</p>
+<p><strong>Constant and default value</strong> are specified at the data object, not at the data type.</p>
+<p>A <strong>simple datatype</strong> describes the length and <strong>conversion</strong> of a <strong>raw value</strong> (transferred via the CAN/LIN/MOST… bus) to a <strong>physical value</strong>, or vice versa.</p>
+<p>Example</p>
+<div class="line-block">    Byte 0x20 on bus =&gt; Conversion &quot;Temperature (1Byte)&quot; =&gt; t = 16°C.</div>
+<p>A <strong>complex datatype</strong> contains data objects (each of which references either a complex or simple data type):</p>
+<ul>
+<li>packet data type</li>
+<li>multiplexer</li>
+<li>iteration.</li>
+</ul>
+<p>See the <a href="../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a> feature.</p>
+<h2 id="jobs">Jobs</h2>
+<p>A job is a program (macro, sequence) to be executed by a tester (not in the ECU).</p>
+<p>See the <a href="../30%20Features/Job/Job.htm">Jobs</a> feature.</p>
+<h2 id="requirements">Requirements</h2>
+<div class="figure">
+<img src="../20%20UserInterface/Images/Requirements.jpg" alt="CANdelaStudio Requirements View" />
+<p class="caption">CANdelaStudio Requirements View</p>
+</div>
+<p>You can use CANdelaStudio to <a href="../30%20Features/Requirements/Requirements.htm">describe requirements</a> for an ECU.</p>
+<h2 id="odx">ODX</h2>
+<p>The <strong>Open Diagnostic eXchange format</strong> (ODX) is an XML-based ISO standard (ISO 22901-1:2008) for describing ECU data relevant for diagnostics.</p>
+<p>See the <a href="../30%20Features/ODX/ODX.htm">Introduction to ODX</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../20%20UserInterface/Tree/Navigation%20Tree.htm">Navigation Tree</a></li>
+<li><a href="../30%20Features/Document%20Template/Document%20Template.htm">Document Template</a></li>
+<li><a href="../30%20Features/Variant/Variant.htm">Variant</a></li>
+<li><a href="../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="../30%20Features/Protocol%20Service/UDS%202013.htm">UDS 2013</a></li>
+<li><a href="../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Class Template</a></li>
+<li><a href="../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Use-Cases.htm">Diagnostic Use-Cases</a></li>
+<li><a href="../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance</a></li>
+<li><a href="../30%20Features/Service/Service.htm">Service</a></li>
+<li><a href="../30%20Features/Data%20Objects/Telegram%20Table.htm">Telegram Table</a></li>
+<li><a href="../30%20Features/Data%20Objects/Data%20Objects.htm">Data Object</a></li>
+<li><a href="../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory Introduction</a></li>
+<li><a href="../20%20UserInterface/DTC/DTCs.htm">DTC List</a></li>
+<li><a href="../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a></li>
+<li><a href="../30%20Features/Job/Job.htm">Job</a></li>
+<li><a href="../30%20Features/Requirements/Requirements.htm">Describe Requirements</a></li>
+<li><a href="../30%20Features/ODX/ODX.htm">Introduction to ODX</a></li>
+</ul>
+</body>
+</html>

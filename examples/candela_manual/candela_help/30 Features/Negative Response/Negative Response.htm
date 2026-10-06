@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Negative Response</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="negative-response"><span id='_index_446728074' title='Negative Response: Codes' data-term='Negative Response' data-text='Codes'>Negative Response</span></h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Available%20Negative%20Response%20Codes.jpg" alt="Page &quot;Available Negative Response Codes&quot;" />
+<p class="caption">Page &quot;Available Negative Response Codes&quot;</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<h3 id="uds">UDS</h3>
+<ul>
+<li>UDS defines <strong>Negative Responses</strong>,</li>
+<li>which contain a <strong>Negative Response Code</strong> (<strong>NRC</strong>).</li>
+<li>Each NRC represents a specific <strong>error situation</strong>, like &quot;Service not supported&quot;.</li>
+<li>UDS describes detailed conditions that trigger the different NRCs (message flow diagrams).</li>
+</ul>
+<h3 id="candela">CANdela</h3>
+<ul>
+<li>In CANdelaStudio, you may effectively assign a fixed set of NRCs to <strong>each service</strong>
+<ul>
+<li>e.g. to service 22 F1 90: NRC 0x13, 0x22, 0x31, 0x33</li>
+</ul></li>
+<li>Additionally, you may assign one NRC for each <strong>State Group</strong>
+<ul>
+<li>e.g. NRC 0x33 if security access has been denied.</li>
+</ul></li>
+<li>For details, see the chapters below.</li>
+<li>These NRCs assignments only <strong>roughly</strong> describe the detailed NRC conditions in <strong>UDS</strong>.
+<ul>
+<li>The same typically holds for other protocols.</li>
+</ul></li>
+<li>All these NRCs are taken from a set of &quot;<strong>Available Negative Response Codes</strong>&quot; defined centrally on <strong>document</strong> level.</li>
+</ul>
+<h3 id="vector-toolchain">Vector Toolchain</h3>
+<ul>
+<li>A <strong>tester</strong> must simply display the interpreted value of the response code.
+<ul>
+<li>Using the description in CANdelaStudio, you cannot make a tester show a warning or error message if it receives an NRC <strong>not valid</strong> for a given service.</li>
+</ul></li>
+<li><strong>CANoe.DiVa</strong>
+<ul>
+<li>ignores any NRC definition in the CANdela document at a service.</li>
+<li>For test generation, it purely uses the UDS protocol standard (ISO-14229).</li>
+</ul></li>
+<li>The same holds for <strong>code generators</strong>.</li>
+</ul>
+<h3 id="recommended-use-of-nrcs">Recommended Use of NRCs</h3>
+<ul>
+<li>Unless needed for specific tools, or for documentation purposes,</li>
+<li><strong>don't describe NRCs at individual services</strong>.</li>
+<li>Describe the <strong>Available Negative Response Codes</strong> (on document level).</li>
+<li>As a template author, you <strong>may</strong> additionally define default NRCs on Protocol Service level
+<ul>
+<li>e.g. default NRCs for all service instances of Protocol Service 0x22, or of Protocol Service 0x19 0x04.</li>
+</ul></li>
+</ul>
+
+<h2 id="locations-of-nrcs-in-the-candela-data-model">5 Locations of NRCs in the CANdela Data Model</h2>
+<p>The CANdela data model supports Negative Response Codes in 5 places (for details, follow the hyperlinks to chapters below):</p>
+<ol style="list-style-type: decimal">
+<li><p><a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R010-Pool' title="">[NRC-R010-Pool]</a> The <strong>Available Negative Response Codes</strong> on <strong>document level</strong> (CDS-2048, 3.0)</p></li>
+<li><p><a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R020' title="">[NRC-R020]</a> <strong>Negative Response Codes for Unsupported Services</strong> (response codes independent from any service, e.g. „General Reject“, &quot;Subfunction not supported&quot;)</p></li>
+<li><p><a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R030' title="">[NRC-R030]</a> <strong>Default</strong> response codes for a <strong>service</strong> at the Protocol service</p></li>
+<li><p><a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R040' title="">[NRC-R040]</a> Response Codes at the <strong>service</strong> in a diagnostic instance</p></li>
+<li><p><a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R050' title="State Group NRC">[NRC-R050]</a> Response Code at a <strong>state group</strong> (CDS-2390, 3.0)</p></li>
+</ol>
+<p><span id="NRC-R110" class="rqDef">[NRC-R110]</span> The numeric codes must be <strong>unique</strong> within every location.</p>
+<h2 id="nrc-pool">NRC Pool</h2>
+<p><span id="NRC-R010-Pool" class="rqDef">[NRC-R010-Pool]</span> The <strong>NRC pool</strong> contains a set of negative response codes with all NRCs of the document, i.e. it is the <strong>superset of the NRCs of all other locations</strong>.</p>
+<ul>
+<li>Adding an NRC to the pool has no effect on the other locations.</li>
+<li>Modifying an NRC (i.e. the text) in the pool must be reflected in all other locations (with user confirmation).</li>
+<li>Deleting an NRC from the pool must be reflected in all other locations (with user confirmation)</li>
+</ul>
+
+<h3 id="consistency-conditions">Consistency Conditions</h3>
+<p><span id="NRC-R100" class="rqDef">[NRC-R100]</span> (CDC-43755 9.1) in a template, ...</p>
+<ul>
+<li>if the bit length of NRCs <code>!= 8</code>,</li>
+<li>then CANdelaStudio writes a warning like &quot;Negative Response Codes have bit length != 8&quot;.</li>
+</ul>
+<p>Note: in a document, there is no way to make the warning disappear, therefore CANdelaStudio does not show it - it shall be noticed by the template author.</p>
+
+<h2 id="unsupportedServiceNegResponse">Negative Response Codes for Unsupported Services</h2>
+<p><span id="NRC-R020" class="rqDef">[NRC-R020]</span> The <strong>UnsupportedServiceNegResponse</strong> is a Primitive <a class='rqRef' href='../../30%20Features/Protocol%20Service/Protocol%20Service.htm#PS-R100' title="">[PS-R100]</a>...</p>
+<ul>
+<li>stored at the document,</li>
+<li>displayed in the CANdelaStudio tree under “Negative Responses”)</li>
+</ul>
+<p>The ECU sends this primitive if it cannot associate a test system request with a supported service or supported service subfunction.</p>
+
+<h2 id="default-nrcs">Default NRCs</h2>
+<p><span id="NRC-R030" class="rqDef">[NRC-R030]</span> <strong>Default response codes</strong> for a service at the <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm#primitives">Protocol service</a> are used only when you create a service. They define the initial set of NRCs at the service.</p>
+<p>CANdelaStudio shows them in the Protocol Service dialog <a class='rqRef' href='../../20 UserInterface\Protocol Service\Protocol Service Primitives Dialog.htm#PSPUI-R110' title="">[PSPUI-R110]</a> at the Compontent that represents the Negative Response.</p>
+<p>The properties of default NRCs must be identical to those of the respective pool NRCs.</p>
+<h2 id="service-nrcs">Negative Response Codes at a Service</h2>
+<p>See also the NRC list in the user interface <a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm#DIUI-R410' title="">[DIUI-R410]</a>.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Negative%20Response%20Codes%20at%20a%20Service.jpg" alt="Negative Response Codes at a Service" />
+<p class="caption">Negative Response Codes at a Service</p>
+</div>
+<p><span id="NRC-R040" class="rqDef">[NRC-R040]</span> An NRC <strong>at the service</strong> references an NRC in the list of Available Negative Response Codes (NRC pool) on document level.</p>
+<ul>
+<li>You may add any NRCs from the pool (but no other ones).</li>
+<li>You may add an NRC even if it is already used in the Negative Response Codes for Unsupported Services (described in the chapter above).
+<ul>
+<li>This &quot;overwrites&quot; the NRC at the service.</li>
+</ul></li>
+<li>At the service, you can change the description of the NRC.</li>
+<li>&quot;Deleting&quot; an NRC locally has no impact on the pool.</li>
+</ul>
+<p><strong>CANoe.DiVa</strong> ignores any NRC order or definition in the CANdela document at a service. The test generation is purely based on the UDS protocol standard (ISO-14229).</p>
+<p>If the service is <strong>blocked</strong> <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R020-no' title="">[STTR-R020-no]</a> in some state of a state group, the NRC associated with that state group <a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R050' title="State Group NRC">[NRC-R050]</a> is part of the NRC list of the service (automatically).</p>
+<h2 id="stategroup-nrc">Negative Response Code at a StateGroup</h2>
+<p><span id="NRC-R050" class="rqDef" title="State Group NRC">[NRC-R050 State Group NRC]</span> A <strong>state group</strong> has an NRC associated.</p>
+<p>The ECU shall send this NRC if it receives a service request, but the current state of the state group blocks <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R020-no' title="">[STTR-R020-no]</a> execution of the service.</p>
+<p>The following sub-chapters list <strong>limitations</strong> for using this NRC defined at a state group.</p>
+
+<h3 id="nrc-at-session-and-security-access">NRC at Session and Security Access</h3>
+<p>For state group <strong>Session</strong>, ...</p>
+<ul>
+<li>the Vector tools CANdesc and CANoe.DiVa do <strong>not</strong> use this NRC, but implement the more detailed behavior specified by UDS.</li>
+<li>AUTOSAR modules don't use it, either.</li>
+</ul>
+<p>According with UDS, the ECU may send different NRCs:</p>
+<ul>
+<li>0x12 Subfunction not supported</li>
+<li>0x7E Subfunction not supported in active session</li>
+<li>0x7F Service not supported in active session</li>
+</ul>
+<p>Therefore a single NRC from the state group is not appropriate for Session. The same holds for state group <strong>Security Access</strong>.</p>
+<p>In CANdelaStudio, just specify one of the possible NRCs at these state groups.</p>
+<h3 id="nrc-at-other-state-groups">NRC at Other State Groups</h3>
+<p>For state groups other than Session and Security Access, ...</p>
+<ul>
+<li>CANdesc and CANoe.DiVa use the NRC at the state group when the ECU rejects a service request due to a state of that state group.</li>
+<li>AUTOSAR modules don't use it.</li>
+</ul>
+<h3 id="effect-on-services">Effect on Services</h3>
+<p><span id="NRC-R060" class="rqDef">[NRC-R060]</span> When you...</p>
+<ul>
+<li><strong>create a diagnostic instance</strong> with some service, and</li>
+<li>the <strong>default state transitions</strong> for the service specify that the service cannot be executed in some state (shown as &quot;No&quot; in the list),</li>
+<li>then CANdelaStudio <strong>automatically adds the NRC</strong> from the state group in the NRC list of the service.</li>
+<li>In the list, CANdelaStudio shows the NRC with a <strong>special icon</strong> <a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm#DIUI-R420-Icon' title="">[DIUI-R420-Icon]</a> to indicate that it originates from the state group.</li>
+</ul>
+<p><span id="NRC-R070" class="rqDef">[NRC-R070]</span> You can <strong>delete this NRC</strong> (CDS-12776 6.5).</p>
+<ul>
+<li>If you <strong>add it again</strong>, CANdelaStudio will automatically show it with the special icon.</li>
+<li><span id="NRC-R070-NotAdded" class="rqDef">[NRC-R070-NotAdded]</span> When you <strong>later</strong> specify that the service cannot be executed in some state of the state group,
+<ul>
+<li>the NRC of the state group will in principle apply to the service.</li>
+<li>But CANdelaStudio does <strong>not automatically add the NRC</strong> in this situation (you may just have deleted it!),</li>
+<li>nor does it prompt to add the NRC - <strong>you can always add the NRC manually</strong>, as necessary.</li>
+</ul></li>
+<li><span id="NRC-R070-Migration65" class="rqDef">[NRC-R070-Migration65]</span> CANdelaStudio <strong>does automatically add the NRC</strong> from the state group when you load a document of a version <strong>before 6.5</strong> into version 6.5 or later (CDS-12776 R022, 6.5).</li>
+</ul>
+
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Negative%20Response/Available%20Negative%20Response%20Codes.htm">Available Negative Response Codes</a> (list)</li>
+<li><a href="../../30%20Features/Protocol%20Service/Negative%20Response.htm">Negative Response (in Protocol Service)</a></li>
+<li><a href="../../20%20UserInterface/Negative%20Response/Negative%20Response%20Codes%20for%20Unsupported%20Services.htm">Negative Response Codes for Unsupported Services</a></li>
+<li>Negative Response Code for a State Group <a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R050' title="State Group NRC">[NRC-R050]</a></li>
+</ul>
+</body>
+</html>

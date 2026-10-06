@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Launcher</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="launcher">Launcher</h1>
+<h2 id="introduction">Introduction</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Launcher.jpg" alt="CANdelaStudio Launcher" />
+<p class="caption">CANdelaStudio Launcher</p>
+</div>
+<p>You can use the CANdelaStudio Launcher to...</p>
+<ul>
+<li><strong>open</strong> a <strong>document</strong> or <strong>template</strong>,
+<ul>
+<li>with selecting the <strong>CANdelaStudio version</strong>, <strong>document language</strong> and <strong>View</strong>,</li>
+</ul></li>
+<li><strong>create</strong> a <strong>document</strong> from a template,</li>
+<li>or just <strong>start</strong> a <strong>specific version</strong> of CANdelaStudio without a document or template.</li>
+</ul>
+
+<h2 id="start">Start</h2>
+<p><span id="CDSL-R080" class="rqDef">[CDSL-R080]</span></p>
+<ul>
+<li><span id="CDSL-R080-Start" class="rqDef">[CDSL-R080-Start]</span> You can start the CANdelaStudio Launcher via the Windows start menu <a class='rqRef' href='../../30%20Features/Installation/Start%20Menu.htm#ISTM-R050' title="">[ISTM-R050]</a>.
+<ul>
+<li>In this case, no file is selected in the Filename control <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R400' title="">[CDSL-R400]</a>.</li>
+<li>The latest CANdelaStudio is selected in the Version control <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R100' title="">[CDSL-R100]</a>.</li>
+</ul></li>
+<li><span id="CDSL-R080-File" class="rqDef">[CDSL-R080-File]</span> You can start the CANdelaStudio Launcher in Windows Explorer via the context menu of a CANdela file.
+<ul>
+<li>In this case, the CANdela file is selected in the Filename control <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R400' title="">[CDSL-R400]</a>.</li>
+<li>The CANdelaStudio version with which the file was saved is selected in the Version control <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R100' title="">[CDSL-R100]</a>.</li>
+<li>To provide the Launcher in the context menu, start it once with Admin privileges.</li>
+</ul></li>
+</ul>
+
+<h2 id="version">Version</h2>
+<p><span id="CDSL-R100" class="rqDef">[CDSL-R100]</span> The version list shows all installed versions of CANdelaStudio.</p>
+<ul>
+<li>Default value: see Launcher Start <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R080' title="">[CDSL-R080]</a>.</li>
+<li>When you specify a file in the Filename control <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R400' title="">[CDSL-R400]</a>,
+<ul>
+<li>the dialog selects the version with which the file was saved (it that version is installed on the system).</li>
+</ul></li>
+<li><span id="CDSL-R120" class="rqDef">[CDSL-R120]</span> You may select any of the installed CANdelaStudio versions.
+<ul>
+<li>On &quot;New Document&quot; or &quot;Open&quot; <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R500' title="">[CDSL-R500]</a>, the dialog will start the selected CANdelaStudio version.</li>
+</ul></li>
+</ul>
+<h2 id="document-language">Document Language</h2>
+<p><span id="CDSL-R200" class="rqDef">[CDSL-R200]</span> When you selected a document, ...</p>
+<ul>
+<li>the list shows the languages contained in the document</li>
+<li>as in File | Open <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Open Page.htm#OPEN-R420' title="">[OPEN-R420]</a></li>
+<li><span id="CDSL-R210" class="rqDef">[CDSL-R210]</span> You may select any of the completely translated languages.
+<ul>
+<li>On &quot;New Document&quot; or &quot;Open&quot; <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R500' title="">[CDSL-R500]</a>, the dialog will open the file in the selected language.</li>
+</ul></li>
+</ul>
+<h2 id="open-in">Open in</h2>
+<p><span id="CDSL-R300" class="rqDef">[CDSL-R300]</span> The list shows all CANdelaStudio <a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">Views</a>.</p>
+<ul>
+<li><span id="CDSL-R310" class="rqDef">[CDSL-R310]</span> You may select a View.
+<ul>
+<li>On &quot;New Document&quot; or &quot;Open&quot; <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R500' title="">[CDSL-R500]</a>, the dialog will open the file in the selected View.</li>
+</ul></li>
+<li>Some Views may be <strong>not available for selection</strong>, depending on...
+<ul>
+<li>the Edition of CANdelaStudio
+<ul>
+<li>(which you may restrict by the &quot;Set license&quot; list <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R810' title="">[CDSL-R810]</a>)</li>
+</ul></li>
+<li>and whether you selected a document or template.</li>
+</ul></li>
+<li>If a View is not available, the Launcher...
+<ul>
+<li>either disables the View,</li>
+<li>or shows a hint on Open.</li>
+</ul></li>
+<li>The same choice of Views is provided in File | Open <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Open Page.htm#OPEN-R410' title="">[OPEN-R410]</a>.</li>
+</ul>
+<h2 id="filename">Filename</h2>
+<p><span id="CDSL-R400" class="rqDef">[CDSL-R400]</span> Lets you select the <strong>document</strong> or <strong>template</strong> to open.</p>
+<ul>
+<li><span id="CDSL-R410" class="rqDef">[CDSL-R410]</span> The edit control accepts only <strong>file name extensions supported</strong> by CANdelaStudio.</li>
+<li><span id="CDSL-R420" class="rqDef">[CDSL-R420]</span> You can specify a file by <strong>drag and drop</strong> onto the button &quot;...&quot;.</li>
+<li>Initial value: see Launcher Start <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R080' title="">[CDSL-R080]</a>.</li>
+<li>Filename as in File | Open <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Open Page.htm#OPEN-R130' title="">[OPEN-R130]</a></li>
+</ul>
+
+<h2 id="new-document-open">New Document / Open</h2>
+<p><span id="CDSL-R500" class="rqDef">[CDSL-R500]</span> The standard button shown at bottom left depends on your selection. If...</p>
+<ul>
+<li>&quot;<strong>Standard View</strong>&quot; is selected in &quot;Open in&quot; <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R300' title="">[CDSL-R300]</a>, and</li>
+<li>a <strong>template</strong> is shown in the Filename control <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R400' title="">[CDSL-R400]</a>,</li>
+<li>then the <strong>standard button</strong> is &quot;<strong>New Document</strong>&quot;,</li>
+<li>otherwise it is &quot;<strong>Open</strong>&quot;.</li>
+</ul>
+<h3 id="button-open">Button &quot;Open&quot;</h3>
+<p><span id="CDSL-R510" class="rqDef">[CDSL-R510]</span> Opens the document or template, see operation <a class='rqRef' href='../../30%20Features/Document/Document%20Operations.htm#DOC-R610' title="Open">[DOC-R610]</a>;</p>
+<ul>
+<li>uses the settings specified in the controls above,</li>
+<li>and closes the Launcher.</li>
+</ul>
+<h3 id="button-new-document">Button &quot;New Document&quot;</h3>
+<p><span id="CDSL-R520" class="rqDef">[CDSL-R520]</span> Creates a document from the template you selected, see operation <a class='rqRef' href='../../30%20Features/Document/Document%20Operations.htm#DOC-R600' title="New">[DOC-R600]</a>;</p>
+<ul>
+<li>uses the settings specified in the controls above,</li>
+<li>and closes the Launcher.</li>
+</ul>
+<h2 id="buttons-and">Buttons <code>&gt;</code> and <code>&lt;</code></h2>
+<p><span id="CDSL-R600" class="rqDef">[CDSL-R600]</span> Buttons <code>&gt;</code> and <code>&lt;</code> at top right expand or collapse the Details View to the right.</p>
+<h2 id="details-view">Details View</h2>
+<h3 id="tab-document-info">TAB Document Info</h3>
+<p><span id="CDSL-R700" class="rqDef">[CDSL-R700]</span> This TAB page shows information about the document selected in the Filename control <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R400' title="">[CDSL-R400]</a> (if any).</p>
+<ul>
+<li><span id="CDSL-R710" class="rqDef">[CDSL-R710]</span> <strong>Type</strong>: <code>.cdd</code> for a document, <code>.cddt</code> for a template.</li>
+<li><span id="CDSL-R720" class="rqDef">[CDSL-R720]</span> <strong>Version</strong>: the format of the file,</li>
+<li><span id="CDSL-R730" class="rqDef">[CDSL-R730]</span> <strong>Diagnostics based on</strong>: shows the document information &quot;Diagnostics Based on&quot;, see <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R110' title="">[DOC-R110]</a>.</li>
+<li><span id="CDSL-R740" class="rqDef">[CDSL-R740]</span> <strong>Document Languages</strong>: the document information shown in the list <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R200' title="">[CDSL-R200]</a>, in the raw form from the CANdela file.</li>
+<li><span id="CDSL-R750" class="rqDef">[CDSL-R750]</span> <strong>Up-to-date Languages</strong>: dito.</li>
+</ul>
+<h3 id="tab-settings">TAB Settings</h3>
+<p><span id="CDSL-R800" class="rqDef">[CDSL-R800]</span> This TAB page controls how to start CANdelaStudio:</p>
+<ul>
+<li><span id="CDSL-R810" class="rqDef">[CDSL-R810]</span> <strong>Set license</strong>:
+<ul>
+<li>allows to select an <strong>Edition more restricted</strong> than the one installed.</li>
+<li>You can select the CANdelaStudio version to run in the list <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R100' title="">[CDSL-R100]</a>,
+<ul>
+<li>the available license may vary between these versions.</li>
+</ul></li>
+<li>The &quot;Set license&quot; list does not reflect the selected CANdelaStudio version,
+<ul>
+<li>it leaves the check to the CANdelaStudio version you start.</li>
+</ul></li>
+<li>The same choice is provided on the command line <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-edition' title="">[CLI-R100-edition]</a>.</li>
+</ul></li>
+<li><span id="CDSL-R820" class="rqDef">[CDSL-R820]</span> <strong>Program Language</strong>: selects the language of the CANdelaStudio <strong>user interface</strong>.
+<ul>
+<li>This has the same effect as selecting the appropriate entry in the Windows Start Menu, see <a class='rqRef' href='../../30%20Features/Installation/Start%20Menu.htm#ISTM-R010' title="">[ISTM-R010]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Document/Document%20Operations.htm">Document Operations</a></li>
+<li><a href="Editions.htm">Editions</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Expert%20View.htm">Expert View</a></li>
+<li>Ribbon Tab File | New <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File.htm#MENU-R010' title="">[MENU-R010]</a></li>
+<li>Ribbon Tab File | Open <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File.htm#MENU-R020' title="">[MENU-R020]</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Loading%20a%20Document%20or%20Template.htm">Loading a Document or Template</a></li>
+<li><a href="../../30%20Features/Multi-Language/Multi-Language.htm">Multi-Language Feature</a></li>
+<li><a href="../../20%20UserInterface/Multi-Language/Translation%20View.htm">Translation View</a></li>
+</ul>
+</body>
+</html>

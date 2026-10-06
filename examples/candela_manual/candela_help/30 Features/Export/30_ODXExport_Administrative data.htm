@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>30_ODXExport_Administrative data</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="administrative-data">Administrative data</h1>
+<p>The revision history of a CANdela document is exported to ADMIN-DATA which is contained in DIAG-LAYER-CONTAINER. Authors of a CANdela document are exported to COMPANY-DATA.TEAM-MEMBER which is contained in DIAG-LAYER-CONTAINER.</p>
+<h2 id="company-data">Company-Data</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela Author</strong></th>
+<th align="left"><strong>ODX TEAM-MEMBER</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Author</td>
+<td align="left">TEAM-MEMBER of COMPANY-DATA</td>
+</tr>
+<tr class="even">
+<td align="left">Shortcut</td>
+<td align="left">SHORTNAME of TEAM-MEMBER</td>
+</tr>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">LONGNAME of TEAM-MEMBER</td>
+</tr>
+<tr class="even">
+<td align="left">Company</td>
+<td align="left">LONGNAME of COMPANY-DATA</td>
+</tr>
+<tr class="odd">
+<td align="left">Division</td>
+<td align="left">DEPARTMENT of TEAM-MEMBER</td>
+</tr>
+</tbody>
+</table>
+<p>Table 3: ODX Company-Data</p>
+<h2 id="admin-data">Admin-Data</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela Revision history</strong></th>
+<th align="left"><strong>ODX DOC-REVISION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Version</td>
+<td align="left">REVISION-LABEL</td>
+</tr>
+<tr class="even">
+<td align="left">Author</td>
+<td align="left">TEAM-MEMBER-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">Date</td>
+<td align="left">DATE</td>
+</tr>
+<tr class="even">
+<td align="left">Status</td>
+<td align="left">STATE</td>
+</tr>
+<tr class="odd">
+<td align="left">Modification</td>
+<td align="left">MODIFICATION CHANGE</td>
+</tr>
+<tr class="even">
+<td align="left">Reason</td>
+<td align="left">MODIFICATION REASON</td>
+</tr>
+<tr class="odd">
+<td align="left">Tool</td>
+<td align="left">TOOL</td>
+</tr>
+</tbody>
+</table>
+<p>Table 4: ODX Admin-Data</p>
+<p><strong>Note</strong>: There are lots of ADMIN-DATA elements within ODX. Only the one which is a child element of DIAG-LAYER-CONTAINER is filled by the CANdelaStudio OdxExport.</p>
+<h2 id="candelatemplateinformation">CANdelaTemplateInformation</h2>
+<p><span id="ODXE-R1030-Template" class="rqDef">[ODXE-R1030-Template]</span></p>
+<p>With CANdelaStudio 5.0 SP2 the following information about the CANdela Template is optionally exported as ProcessingInstruction at the ODX-Element (see <a href="1_ODXExport_Introduction.htm#options">Options</a>).</p>
+<pre><code>&lt;?CANdelaTemplateManufacturer 1?&gt;
+&lt;?CANdelaTemplateName ExampleTemplate?&gt;
+&lt;?CANdelaTemplateVersion 2.2.0?&gt;
+&lt;?CANdelaProtocolStandard UDS?&gt;</code></pre>
+<p>With 5.5 the following additional information is also exported:</p>
+<pre><code>&lt;?SpecificationOwner ?&gt;
+&lt;?CddFileName ?&gt;</code></pre>
+<h2 id="export-of-logmessages-to-file">Export of LogMessages to File</h2>
+<p><span id="ODXE-R1030-Log" class="rqDef">[ODXE-R1030-Log]</span></p>
+<p>With CANdela-Studio 5.5 it is possible to export the generated warnings during OdxExport to the Odx-File. The generated warnings are added to the Comment at the ODX-root-Element.</p>
+<h2 id="sdgs">SDGs</h2>
+<p>SDGs are used to document manufacturer specific information within the ODX-data for which no specific data model element is defined by the standard. A similar mechanism exists in CANdela documents as well. Here Attributes are used to document process specific information.</p>
+<p>Now, a generic mechanism is present to export CANdela Attributes as SDGs in ODX. CANdela Attributes of the category &quot;SDG&quot; are exported as SDGs in ODX with the following structure:</p>
+<pre><code>&lt;SDG&gt;
+&lt;SD SI=&quot;Attribute Name&quot;&gt;Attribute Value&lt;/SD&gt;
+&lt;SD SI=&quot;Attribute Name2&quot;&gt;Attribute Value2&lt;/SD&gt;
+&lt;/SDG&gt;</code></pre>
+<p>Depending on the location of the attribute, it is exported at specific locations in the ODX data.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Attribute Location</strong></th>
+<th align="left"><strong>SDG Location</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">BASE-VARIANT</td>
+</tr>
+<tr class="even">
+<td align="left">Variant</td>
+<td align="left">BASE/ECU-VARIANT</td>
+</tr>
+<tr class="odd">
+<td align="left">Service</td>
+<td align="left">DIAG-SERVICE</td>
+</tr>
+<tr class="even">
+<td align="left">Job</td>
+<td align="left">SINGLE-ECU-JOB</td>
+</tr>
+<tr class="odd">
+<td align="left">Diagnostic Instance</td>
+<td align="left">TABLE-ROW (if present)</td>
+</tr>
+<tr class="even">
+<td align="left">DataObject</td>
+<td align="left">PARAM</td>
+</tr>
+<tr class="odd">
+<td align="left">DataType</td>
+<td align="left">DOP</td>
+</tr>
+</tbody>
+</table>
+<p>Table 5: SDG Location</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+<li><a href="../../30%20Features/Revision%20History/Revision%20History.htm">Revision History</a></li>
+</ul>
+</body>
+</html>

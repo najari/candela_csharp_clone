@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Protocol Service Property Page Addressing</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="protocol-service-property-page-addressing">Protocol Service Property Page &quot;Addressing&quot;</h1>
+<p>Contents:</p>
+<ul>
+<li><a href="#top">Top Part: Settings for All Services</a></li>
+<li><a href="#bottom">Bottom Part: Default Settings for New Services</a></li>
+</ul>
+<div class="figure">
+<img src="Images/Protocol%20Service%20Property%20Page%20Addressing.jpg" alt="Protocol Service Property Page Addressing" />
+<p class="caption">Protocol Service Property Page Addressing</p>
+</div>
+<h2 id="top">Top Part: Settings for All Services</h2>
+<h3 id="support-multiple-responses">Support multiple responses</h3>
+<div class="figure">
+<img src="Images/Support%20Multiple%20Responses.jpg" alt="Support Multiple Responses" />
+<p class="caption">Support Multiple Responses</p>
+</div>
+<p><span id="PSUI-R720" class="rqDef">[PSUI-R720]</span> The checkbox controls the flag <a class='rqRef' href='../../30 Features\Protocol Service\Addressing.htm#PS-R720' title="">[PS-R720]</a> in the data model.</p>
+<p>Not shown for UDS (CDS-39671 v11).</p>
+<h3 id="support-periodic-responses">Support periodic responses</h3>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Addressing%20All%20Services.jpg" alt="Protocol Service Property Page &quot;Addressing&quot; (Top Part with Settings for All Services)" />
+<p class="caption">Protocol Service Property Page &quot;Addressing&quot; (Top Part with Settings for All Services)</p>
+</div>
+<p><span id="PSUI-R730" class="rqDef">[PSUI-R730]</span> The checkbox controls the flag <a class='rqRef' href='../../30 Features\Protocol Service\Addressing.htm#PS-R730' title="">[PS-R730]</a> in the data model.</p>
+<h3 id="support-the-suppress-positive-response-message-indication-bit-sprmib">Support the &quot;Suppress Positive Response Message Indication Bit (SPRMIB)&quot;</h3>
+<p><span id="PSUI-R710" class="rqDef">[PSUI-R710]</span> The read-only checkbox shows whether the services support the SPRMIB <a class='rqRef' href='../../30 Features\Protocol Service\Addressing.htm#PS-R710' title="">[PS-R710]</a>.</p>
+<ul>
+<li><span id="PSUI-R710-nonUDS" class="rqDef">[PSUI-R710-nonUDS]</span> For non-UDS, the checkbox is not shown.</li>
+<li><span id="PSUI-R710-NoPR" class="rqDef">[PSUI-R710-NoPR]</span> If no positive response exists,
+<ul>
+<li>the checkbox is un-checked and insensitive.</li>
+</ul></li>
+<li><span id="PSUI-R710-PR" class="rqDef">[PSUI-R710-PR]</span> if a positive response exists,
+<ul>
+<li>the checkbox is insensitive and shows the value from the subfunction component in the request</li>
+<li>because the SPRMIB is actually transported on the line as part of the subfunction byte.</li>
+</ul></li>
+</ul>
+<h2 id="bottom">Bottom Part: Default Settings for New Services</h2>
+<h3 id="dialog-variations">Dialog Variations</h3>
+<p>There are <strong>variations</strong> of the bottom dialog part:</p>
+<ul>
+<li><a href="#noSPRMIB">Dialog Variation with SPRMIB not Supported</a></li>
+<li><a href="#withSPRMIB">Dialog Variation with SPRMIB Supported</a></li>
+</ul>
+<p>CANdelaStudio shows one of the dialog variations, depending on...</p>
+<ul>
+<li>the <strong>Protocol Standard</strong> of the template</li>
+<li>for Protocol Standard UDS: whether the Protocol Service supports the <a href="../../30%20Features/Protocol%20Service/Addressing.htm#SPRMIB">Suppress Positive Response Message Indication Bit (SPRMIB)</a> (shown by a checkbox in the top part of the page)</li>
+</ul>
+<h3 id="dialog-behavior">Dialog Behavior</h3>
+<ul>
+<li><span id="PSUI-R705" class="rqDef">[PSUI-R705]</span> CANdelaStudio applies changes...
+<ul>
+<li><strong>at once</strong> for <strong>all existing services</strong>, when you leave the underlying Protocol Service dialog with OK,</li>
+<li>as a <strong>default</strong> for <strong>new services</strong> created in the future.</li>
+</ul></li>
+<li><strong>Physical</strong> and <strong>functional</strong> requests are controlled by separate settings.</li>
+<li>For details about the settings, see the <a href="../../30%20Features/Protocol%20Service/Addressing.htm">Protocol Service Addressing Feature</a>.</li>
+<li>For <strong>UDS</strong>, the dialog does not show data model properties that are fixed in UDS,
+<ul>
+<li>e.g. &quot;ECU sends a response&quot;.</li>
+<li>See the property descriptions in <a class='rqRef' href='../../30 Features\Protocol Service\Addressing.htm#PS-R760' title="">[PS-R760]</a>ff. (CDS-39671 v11)</li>
+</ul></li>
+<li>The <strong>sensivity</strong> of the controls is based on the <a href="../../30%20Features/Protocol%20Service/Addressing.htm#combinations">Valid Combinations of Addressing Properties of a Protocol Service</a> in the description of the addressing feature.</li>
+<li><strong>Dialog defaults</strong>: see the description of the addressing feature <a class='rqRef' href='../../30 Features\Protocol Service\Addressing.htm#PS-R740' title="">[PS-R740]</a>ff.</li>
+</ul>
+<h3 id="noSPRMIB">Dialog Variation with SPRMIB <em>not</em> Supported</h3>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Addressing%20no%20SPRMIB.jpg" alt="Protocol Service Property Page &quot;Addressing&quot; for Protocol Service with SPRMIB not set" />
+<p class="caption">Protocol Service Property Page &quot;Addressing&quot; for Protocol Service with SPRMIB not set</p>
+</div>
+<p>If SPRMIB is <strong>not supported</strong>, ...</p>
+<ul>
+<li><span id="PSUI-R740-NoSPRMIB" class="rqDef">[PSUI-R740-NoSPRMIB]</span> there are not controls to specify &quot;Test system sends physical request...&quot; <a class='rqRef' href='../../30 Features\Protocol Service\Addressing.htm#PS-R740' title="">[PS-R740]</a>,</li>
+<li><span id="PSUI-R750-NoSPRMIB" class="rqDef">[PSUI-R750-NoSPRMIB]</span> the checkbox &quot;ECU sends a response&quot; <a class='rqRef' href='../../30 Features\Protocol Service\Addressing.htm#PS-R760' title="">[PS-R760]</a> is shown.
+<ul>
+<li><span id="PSUI-R750-NoPR" class="rqDef">[PSUI-R750-NoPR]</span> If the Protocol Services does not have a positive response, “ECU sends a response...” is un-checked and insensitive.</li>
+</ul></li>
+</ul>
+<h3 id="withSPRMIB">Dialog Variation with SPRMIB Supported</h3>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Addressing%20with%20SPRMIB.jpg" alt="Protocol Service Property Page &quot;Addressing&quot; for Protocol Service with SPRMIB set" />
+<p class="caption">Protocol Service Property Page &quot;Addressing&quot; for Protocol Service with SPRMIB set</p>
+</div>
+<p>If SPRMIB is <strong>supported</strong>,...</p>
+<ul>
+<li><span id="PSUI-R740-SPRMIB" class="rqDef">[PSUI-R740-SPRMIB]</span> the property &quot;Test system sends...&quot; <a class='rqRef' href='../../30 Features\Protocol Service\Addressing.htm#PS-R740' title="">[PS-R740]</a> can be specified,</li>
+<li><span id="PSUI-R750-SPRMIB" class="rqDef">[PSUI-R750-SPRMIB]</span> &quot;ECU sends a response&quot; <a class='rqRef' href='../../30 Features\Protocol Service\Addressing.htm#PS-R760' title="">[PS-R760]</a> is fixed by UDS and represented by a text.</li>
+<li>If “Test system sends...” is not checked, ...
+<ul>
+<li><span id="PSUI-R750-NotSends" class="rqDef">[PSUI-R750-NotSends]</span> “ECU sends a response...” is un-checked and insensitive</li>
+<li><span id="PSUI-R760-NotSends" class="rqDef">[PSUI-R760-NotSends]</span> the radio buttons &quot;The test system shall set the SPRMIB...&quot; have &quot;user-defined&quot; selected and are insensitive.</li>
+</ul></li>
+<li>In constellations <a class='rqRef' href='../../30 Features\Protocol Service\Addressing.htm#PS-R770' title="">[PS-R770]</a> where the property &quot;Test system shall set the SPRMIB...&quot; is fixed,
+<ul>
+<li>the radio buttons &quot;The test system shall set the SPRMIB...&quot; are insensitive.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Protocol%20Service/Addressing.htm">Addressing (Feature)</a></li>
+<li><a href="Protocol%20Service%20Property%20Dialog.htm">Protocol Service Property Dialog</a></li>
+<li><a href="../../20%20UserInterface/Service/Service%20Property%20Page%20Addressing.htm">Service Property Page &quot;Addressing&quot;</a></li>
+<li>Vector UDS Template: <a href="../../40%20Templates/Vector%20UDS/Functional%20Addressing.htm">Functional Addressing</a></li>
+</ul>
+</body>
+</html>

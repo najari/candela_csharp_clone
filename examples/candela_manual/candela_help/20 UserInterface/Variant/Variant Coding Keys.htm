@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Variant Coding Keys</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="variant-coding-keys-vck">Variant Coding Keys (VCK)</h1>
+<p>Variant coding keys are supported for specific manufacturers only, see the <a href="../../30%20Features/Variant/Variant%20Coding%20Keys.htm">Variant Coding Keys Feature</a>.</p>
+<h2 id="list-of-vcks">List of VCKs</h2>
+<p>If the support for VCKs is enabled in a document, CANdelaStudio shows a special tree node for the Variant Coding Keys. It provides an overview of all variant coding keys of a variant, and allows to recalculate the codes.</p>
+<p>The table has the following columns:</p>
+<ul>
+<li>The &quot;Diagnostic instance&quot; column indicates the diagnostic instance that codes the variant.</li>
+<li>The data objects that accept the variant code are output in the &quot;Data object&quot; column.</li>
+<li>The &quot;Byte&quot; and &quot;Bit&quot; columns indicate the position of the data objects in the telegrams of the diagnostic instances.</li>
+<li>The start and end values of the table entries are output in the &quot;Start&quot; and &quot;End&quot; columns in the text table.</li>
+<li>The &quot;Assigned text&quot; column contains the text in the text table.</li>
+<li>The last column (manufacturer-dependent) outputs the assigned code.</li>
+</ul>
+<p>For documents with VCK mode != &quot;none&quot;, CANdelaStudio does not force to enter VCKs (CDS-19410 7.0 SP1):</p>
+<ul>
+<li>in entry mask &quot;Variant Coding Keys&quot;, CANdelaStudio allows to enter empty text;</li>
+<li><p>if you enter non-empty text, CANdelaStudio triggers a consistency check (to assure a valid key is entered).</p></li>
+<li><p>R010.0: ensure user can edit segment number even if VCK mode is &quot;non</p></li>
+</ul>
+<h2 id="recompute-variant-coding-keys">Recompute Variant Coding Keys</h2>
+<p>If you edit the telegram of a diagnostic instance in the &quot;variant coding&quot; class, there may be gaps in the variant coding keys. To correct them, click the button &quot;Recompute Variant Coding Keys&quot;. CANdelaStudio recalculates all VCKs and updates the table.</p>
+<p><strong>Note:</strong> when a variant coding key is being calculated, only the contents of activated diagnostic instances is considered.</p>
+<h2 id="export">Export</h2>
+<p>You can <a href="../../30%20Features/Variant/Variant%20Coding%20Keys.htm#export">export the variant coding keys</a> into a &quot;Variant Coding Keys&quot; file.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../30%20Features/Variant/Variant%20Coding%20Keys.htm">Variant Coding Keys (Feature)</a></li>
+</ul>
+</body>
+</html>

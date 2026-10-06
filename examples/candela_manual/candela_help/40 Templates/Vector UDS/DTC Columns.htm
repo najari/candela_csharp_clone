@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DTC Columns</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="vector-uds-template---dtc-columns">Vector UDS Template - DTC Columns</h1>
+<p>See also <a href="OBDII%20DTC%20Columns.htm">Vector UDS Template - OBDII DTC Columns</a>.</p>
+<p>Note: CANoe.DiVa parses <strong>all</strong> columns for signal names.</p>
+<h2 id="errortext-shortname">Errortext shortname</h2>
+<p><span id="VUDS-R400-Errortext" class="rqDef">[VUDS-R400-Errortext]</span></p>
+<ul>
+<li>type Translatable <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R010-Translatable' title="">[DTCC-R010-Translatable]</a></li>
+<li>optional</li>
+<li>used for DEM</li>
+<li>Specifies DemDTCClass.ShortName and DemEventClass.ShortName for MICROSAR ECU-C.</li>
+<li>Blanks will be replaced by underscore.</li>
+</ul>
+<h2 id="set-condition">Set Condition</h2>
+<p><span id="VUDS-R400-SetCondition" class="rqDef">[VUDS-R400-SetCondition]</span></p>
+<ul>
+<li>type Translatable <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R010-Translatable' title="">[DTCC-R010-Translatable]</a></li>
+<li>optional</li>
+<li>used as info for implementation</li>
+<li>How to implement the monitor (pre-failed / failed condition).</li>
+<li>Info for After Sales tester which cause might have set the DTC.</li>
+</ul>
+<h2 id="reset-condition-self-healing">Reset Condition &amp; Self Healing</h2>
+<p><span id="VUDS-R400-ResetCondition" class="rqDef">[VUDS-R400-ResetCondition]</span></p>
+<ul>
+<li>type Translatable <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R010-Translatable' title="">[DTCC-R010-Translatable]</a></li>
+<li>optional</li>
+<li>used as info for implementation</li>
+<li>How to implement the monitor (pre-passed / passed condition).</li>
+<li>Info for After Sales tester which cause might have reset the DTC.</li>
+</ul>
+<h2 id="dtc-priority">DTC Priority</h2>
+<p><span id="VUDS-R410-Priority" class="rqDef">[VUDS-R410-Priority]</span></p>
+<ul>
+<li>Unsigned Decimal</li>
+<li>mandatory</li>
+<li>Default: 0</li>
+<li>Specifies DemEventClass.DemEventPriority (Dem104)</li>
+<li>Used in DEM - the value influences the event displacement in case the respective memory is completely filled at the time of event confirmation:
+<ul>
+<li>A lower number represents higher priority.</li>
+<li>So when the Fault Memory is full, the data for DTCs with a higher numeric priority value will be removed first.</li>
+</ul></li>
+</ul>
+<h2 id="aging-supported-cds-69938-v10">Aging supported (CDS-69938 v10)</h2>
+<p><span id="VUDS-R420-AgingSupported" class="rqDef">[VUDS-R420-AgingSupported]</span></p>
+<ul>
+<li>type Enum <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R010-Enum' title="">[DTCC-R010-Enum]</a></li>
+<li>optional (CDS-71479 v12)</li>
+<li>For &quot;Aging&quot;, see <a class='rqRef' href='../../30 Features\Fault Memory\Fault Memory Terms.htm#FM-D010' title="">[FM-D010]</a>.</li>
+<li>Name before v10: &quot;Self Healing (Aging)&quot;.</li>
+<li>Used in DEM - if this parameter says &quot;supported&quot;, the aging mechanism is enabled for this DTC:
+<ul>
+<li>Aging means that the DTC will be automatically removed from fault memory if the monitor function was executed and no failure was detected for a configurable number of operation cycles.</li>
+</ul></li>
+<li>The default aging behaviour is MICROSAR value <code>DEM_AGING_TYPE_1</code>.</li>
+</ul>
+<h2 id="aging-cycle-cds-69938-v10">Aging Cycle (CDS-69938 v10)</h2>
+<p><span id="VUDS-R420-AgingCycle" class="rqDef">[VUDS-R420-AgingCycle]</span></p>
+<ul>
+<li>specifies the Operation Cycle used as a base for Aging</li>
+<li>type Translatable <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R010-Translatable' title="">[DTCC-R010-Translatable]</a></li>
+<li>optional (CDS-71479 v12)
+<ul>
+<li>see <a class='rqRef' href='../../20 UserInterface\DTC\DTC Property Page General.htm#DTCUI-R095' title="">[DTCUI-R095]</a> how to leave it empty.</li>
+</ul></li>
+<li>For &quot;Aging&quot;, see <a class='rqRef' href='../../30 Features\Fault Memory\Fault Memory Terms.htm#FM-D010' title="">[FM-D010]</a>.</li>
+<li>Name before v10: &quot;Healing Cycle&quot;.</li>
+<li>Used in DEM - the operation cycle name that triggers the aging of this DTC.</li>
+</ul>
+<h2 id="aging-cycle-counter-threshold-cds-69938-v10">Aging Cycle Counter Threshold (CDS-69938 v10)</h2>
+<p><span id="VUDS-R420-AgingCycleCounterThreshold" class="rqDef">[VUDS-R420-AgingCycleCounterThreshold]</span></p>
+<ul>
+<li>For &quot;Aging&quot;, see <a class='rqRef' href='../../30 Features\Fault Memory\Fault Memory Terms.htm#FM-D010' title="">[FM-D010]</a>.</li>
+<li>Name before v10: &quot;Healing Cycles&quot;.</li>
+<li>Used in DEM - the number of aging cycles needed to <strong>unlearn/delete</strong> this DTC.
+<ul>
+<li>&quot;aging cycles&quot; = the number of cycles for the Operation Cycle configured in DTC Column &quot;Aging Cycle&quot;</li>
+<li>This parameter does only take effect if “Aging supported“ is set to “supported”.</li>
+</ul></li>
+</ul>
+<h2 id="dtc-severity">DTC Severity</h2>
+<p><span id="VUDS-R410-Severity" class="rqDef">[VUDS-R410-Severity]</span></p>
+<ul>
+<li>Unsigned Decimal</li>
+<li>type Enum</li>
+<li>Default: no Severity</li>
+<li>Defines the recommended action to take when the DTC gets detected</li>
+<li>Reports the recommended action to be taken by the system (e.g. vehicle) operator.</li>
+<li>This parameter is reported by UDS service $19 09 and can serve as a filter for UDS service $19 08.</li>
+<li>A missing configuration value (or parameter) is interpreted as noSeverity.</li>
+<li>Specifies DemDTCClass.DemDTCSeverity; no further influence on the function of the DEM.</li>
+</ul>
+<h2 id="monitor-initialization-function">Monitor Initialization Function</h2>
+<p><span id="VUDS-R420-MonitorInitFn" class="rqDef">[VUDS-R420-MonitorInitFn]</span></p>
+<ul>
+<li>type Translatable <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R010-Translatable' title="">[DTCC-R010-Translatable]</a> with selection &quot;required&quot; / &quot;not required&quot;</li>
+<li>optional (CDS-71479 v12)
+<ul>
+<li>see <a class='rqRef' href='../../20 UserInterface\DTC\DTC Property Page General.htm#DTCUI-R095' title="">[DTCUI-R095]</a> how to leave it empty.</li>
+</ul></li>
+<li>Used in DEM - describes whether a monitor initialization function is required for events of the DTC.</li>
+<li>For value “required”, an initialization function <code>InitMonitorForEvent</code> is created (<code>DemEventParameter</code>/<code>DemCallbackInitMForE</code>).</li>
+<li>The DEM will call this function each time the event is cleared, or the operation (monitoring) cycle restarts.</li>
+</ul>
+<h2 id="functional-unit">Functional Unit</h2>
+<p><span id="VUDS-R430" class="rqDef">[VUDS-R430]</span></p>
+<ul>
+<li>type Unsigned <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R010-Unsigned' title="">[DTCC-R010-Unsigned]</a></li>
+<li>required</li>
+<li>default value 0x00, as in MICROSAR (CDS-72009 v13)
+<ul>
+<li>Please use 0x33 for WWH-OBD.</li>
+</ul></li>
+<li>For use with <strong>UDS 19 08 and 19 09 only</strong>:
+<ul>
+<li>This parameter is necessary for reporting severity information.</li>
+<li>It will be returned in the UDS services 19 08 and 19 09.</li>
+<li>If these services are not used, this parameter serves no use at all.</li>
+</ul></li>
+<li>Used in DEM and potentially in tester.</li>
+<li>Identifies the corresponding basic vehicle / system function which monitors this DTC.</li>
+<li>Specifies <code>DemDTCClass.DemDTCFunctionalUnit</code>; no further influence on the function of the DEM.</li>
+</ul>
+<h2 id="repair-instruction">Repair Instruction</h2>
+<p><span id="VUDS-R440" class="rqDef">[VUDS-R440]</span></p>
+<ul>
+<li>type Translatable <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R010-Translatable' title="">[DTCC-R010-Translatable]</a></li>
+<li>optional</li>
+<li>To be displayed in tester, free text repair instructions.</li>
+</ul>
+<h2 id="hint-omitting-autosar-dtc-columns">Hint: Omitting AUTOSAR DTC Columns</h2>
+<p><span id="VUDS-D400" class="rqDef">[VUDS-D400]</span> If some ECU project requires to skip the AUTOSAR properties (CDS-71479 v12), you can...</p>
+<ul>
+<li>leave them empty, for translatable Columns, see <a class='rqRef' href='../../20 UserInterface\DTC\DTC Property Page General.htm#DTCUI-R095' title="">[DTCUI-R095]</a>, or</li>
+<li>leave the default, for other Columns.</li>
+<li>Relevant Columns in the current template:
+<ul>
+<li>Aging Supported</li>
+<li>Aging Cycle</li>
+<li>Monitor Initialization Function</li>
+<li>DTC Severity</li>
+</ul></li>
+<li>Relevant Columns in previous template versions:
+<ul>
+<li>Count-In step size</li>
+<li>Count-out step size</li>
+<li>Use Jump-Up (Prefailed)</li>
+<li>Use Jump-Down (Prepassed)</li>
+</ul></li>
+</ul>
+<h2 id="former-dtc-columns-now-in-events-cds-71419-v12">Former DTC Columns now in Events (CDS-71419 v12)</h2>
+<p><span id="VUDS-D410" class="rqDef">[VUDS-D410]</span> The following former DTC Columns have been removed with v12 since they can be described using Events:</p>
+<table>
+<colgroup>
+<col width="31%" />
+<col width="31%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Former DTC Column</th>
+<th align="left">Event / Event Master Data</th>
+<th align="left">Property</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Count-In step size</td>
+<td align="left">Counter-Based Debounce Algorithm</td>
+<td align="left">Increment Step Size <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R1210' title="">[EV-R1210]</a></td>
+</tr>
+<tr class="even">
+<td align="left">Count-out step size</td>
+<td align="left">Counter-Based Debounce Algorithm</td>
+<td align="left">Decrement Step Size <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R1220' title="">[EV-R1220]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Debounce Failed Timeout Value</td>
+<td align="left">Time-Based Debounce Algorithm</td>
+<td align="left">Failed Threshold <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R1320' title="">[EV-R1320]</a></td>
+</tr>
+<tr class="even">
+<td align="left">DTC Debounce Passed Timeout Value</td>
+<td align="left">Time-Based Debounce Algorithm</td>
+<td align="left">Passed Threshold <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R1330' title="">[EV-R1330]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Failed Threshold</td>
+<td align="left">Counter-Based Debounce Algorithm</td>
+<td align="left">Failed Threshold <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R1230' title="">[EV-R1230]</a></td>
+</tr>
+<tr class="even">
+<td align="left">DTC Passed Threshold</td>
+<td align="left">Counter-Based Debounce Algorithm</td>
+<td align="left">Passed Threshold <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R1240' title="">[EV-R1240]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Storage Threshold</td>
+<td align="left">Counter-Based Debounce Algorithm</td>
+<td align="left">FDC Storage Threshold <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R1250' title="">[EV-R1250]</a></td>
+</tr>
+<tr class="even">
+<td align="left">Enable Conditions</td>
+<td align="left">Event</td>
+<td align="left">Enable Conditions <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R200' title="">[EV-R200]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Number of Trips - Active</td>
+<td align="left">Event</td>
+<td align="left">Failure Cycle Counter Threshold <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R130' title="">[EV-R130]</a></td>
+</tr>
+<tr class="even">
+<td align="left">Operation Cycle</td>
+<td align="left">Event</td>
+<td align="left">Operation Cycle <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R120' title="">[EV-R120]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Pre-Debounce Algorithm</td>
+<td align="left">Event</td>
+<td align="left">Debounce Algorithm <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R220' title="">[EV-R220]</a></td>
+</tr>
+<tr class="even">
+<td align="left">Set WarningIndicatorBit at fault</td>
+<td align="left">Indicator Connection</td>
+<td align="left">Indicator <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R305' title="">[EV-R305]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Use Jump-Up (Prefailed)</td>
+<td align="left">Counter-Based Debounce Algorithm</td>
+<td align="left">Jump Up Allowed <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R1260' title="">[EV-R1260]</a></td>
+</tr>
+<tr class="even">
+<td align="left">Use Jump-Down (Prepassed)</td>
+<td align="left">Counter-Based Debounce Algorithm</td>
+<td align="left">Jump Down Allowed <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R1270' title="">[EV-R1270]</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="former-dtc-columns-cds-72041-v13">Former DTC Columns (CDS-72041 v13)</h2>
+<p><span id="VUDS-D420" class="rqDef">[VUDS-D420]</span> The following former DTC Columns have been removed:</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Former DTC Column</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Corrective Action</td>
+<td align="left">Enumeration 1 from n is not sufficient, replaced by new &quot;Repair Instruction&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">Special Instruction</td>
+<td align="left">Replaced by new &quot;Repair Instruction&quot;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">DTC Columns</a></li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC (Feature)</a></li>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="Introduction.htm">Vector UDS Template - Introduction</a></li>
+<li><a href="OBDII%20DTC%20Columns.htm">Vector UDS Template - OBDII DTC Columns</a></li>
+</ul>
+</body>
+</html>

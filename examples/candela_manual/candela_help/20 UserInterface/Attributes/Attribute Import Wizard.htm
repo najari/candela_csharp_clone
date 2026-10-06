@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Attribute Import Wizard</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="attribute-import-wizard">Attribute Import Wizard</h1>
+<p><span id="AIUI-R010" class="rqDef">[AIUI-R010]</span> The Attribute Import Wizard lets you specify settings to import <a class='rqRef' href='../../30 Features\Import\Attribute Import.htm#ATTI-R100' title="">[ATTI-R100]</a> attribute values from a CSV file.</p>
+<h2 id="step-1-file-and-separator">Step 1: File and Separator</h2>
+<div class="figure">
+<img src="Images/Attribute%20Import%20Wizard%20Step%201.jpg" alt="Attribute Import Wizard Step 1" />
+<p class="caption">Attribute Import Wizard Step 1</p>
+</div>
+<p>The &quot;Step 1&quot; wizard page lets you specify</p>
+<p><span id="AIUI-R100" class="rqDef">[AIUI-R100]</span> ... a file path from which import will read the CSV file.</p>
+<ul>
+<li>you can enter the path directly in the edit control,</li>
+<li>or specify a path using the Windows file dialog.</li>
+<li>Default: empty.</li>
+</ul>
+<p><span id="AIUI-R110" class="rqDef">[AIUI-R110]</span> ... the separator for the CSV file entries.</p>
+<ul>
+<li>For details, see the Import format description <a class='rqRef' href='../../30 Features\Export\Attribute Export.htm#ATTE-R300' title="">[ATTE-R300]</a>.</li>
+<li>Default: semicolon &quot;<code>;</code>&quot;.</li>
+<li>Supported separators are as for the export <a class='rqRef' href='../../20%20UserInterface/Attributes/Attribute%20Export%20Wizard.htm#AEUI-R110' title="">[AEUI-R110]</a>.</li>
+</ul>
+<h2 id="step-2-which-data">Step 2: Which Data</h2>
+<div class="figure">
+<img src="Images/Attribute%20Import%20Wizard%20Step%202.jpg" alt="Attribute Import Wizard Step 2" />
+<p class="caption">Attribute Import Wizard Step 2</p>
+</div>
+<p>The &quot;Step 2&quot; wizard page lets you specify</p>
+<p><span id="AIUI-R200" class="rqDef">[AIUI-R200]</span> ... the categories <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R100' title="">[ATTR-R100]</a> to import:</p>
+<ul>
+<li>Either import all attribute values from the CSV file without respect for the category,</li>
+<li>or from the combobox, select one attribute category of the document to restrict import to attributes having this category.</li>
+<li>Default: all categories.</li>
+<li><span id="AIUI-R200-Cat" class="rqDef">[AIUI-R200-Cat]</span> The &quot;Category&quot; combobox lets you select from the categories available in the <strong>document</strong>.
+<ul>
+<li>The combobox is not restricted by categories present in the <strong>CSV file</strong>.</li>
+<li>Background: the import <strong>does not create</strong> new attributes <a class='rqRef' href='../../30 Features\Import\Attribute Import.htm#ATTI-D100' title="">[ATTI-D100]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a> (Feature)</li>
+<li><a href="../../30%20Features/Import/Attribute%20Import.htm">Attribute Import</a></li>
+<li><a href="Attribute%20Export%20Wizard.htm">Attribute Export Wizard</a></li>
+</ul>
+</body>
+</html>

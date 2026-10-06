@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Proxy Component</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="proxy-component"><span id='_index_446728097'>Proxy Component</span></h1>
+<h2 id="overview">Overview</h2>
+<p>A Proxy Component represents a <strong>set of data objects</strong>. Typically, the diagnostic specification (like UDS) uses lists of data elements for the transmission of the actual data content. <strong>Proxy Component</strong> indicates the position in the Primitive (request, ...) where data objects may be placed in a diagnostic instance (telegram table).</p>
+<h2 id="combined-proxy-component">Combined Proxy Component</h2>
+<p>Several Proxy Components may be combined (shared) in a Diagnostic Class Template, e.g.</p>
+<ul>
+<li>a Proxy Component from the positive response of &quot;reading&quot; Protocol Service may be shared with</li>
+<li>a Proxy Component from the &quot;writing&quot; Protocol Service Request.</li>
+</ul>
+<p>The sharing is expressed by using one <strong>Combined Proxy Component</strong> in the Diagnostic Class Template associated with the respective Proxy Components in the Protocol Services.</p>
+<h2 id="semantics-property">Semantics Property</h2>
+<p><span id="PC-R100" class="rqDef" title="Proxy Semantics">[PC-R100 Proxy Semantics]</span> The <code>Semantics</code> property controls the kind of user interface for the data objects.</p>
+<table style="width:98%;">
+<colgroup>
+<col width="10%" />
+<col width="87%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Semantics</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">any</td>
+<td align="left">Represents a kind of &quot;variable&quot; telegram part where the value can neither be given as a constant during data entry in CANdelaStudio, nor can be described by a data object.<br />
+<strong>Note:</strong> after a Proxy Component with semantics <code>any</code> and variable bit length, no further Components may be present!</td>
+</tr>
+<tr class="even">
+<td align="left">data</td>
+<td align="left">Represents telegram table with data objects in the diagnostic instances</td>
+</tr>
+<tr class="odd">
+<td align="left">dtc<br />
+obdDtc</td>
+<td align="left"><span id="PC-R050-dtc" class="rqDef">[PC-R050-dtc]</span> Represents Diagnostic trouble codes (DTCs), 3 bytes length.<br />
+<span id="PC-R050-obddtc" class="rqDef">[PC-R050-obddtc]</span> Represents OBDII Diagnostic trouble codes (DTCs), 2 bytes length.<br />
+<span id="PC-R050-dtcErrorCodeTable" class="rqDef">[PC-R050-dtcErrorCodeTable]</span> Both Require an <a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a> of the same byte size as the proxy component.</td>
+</tr>
+<tr class="even">
+<td align="left">envData</td>
+<td align="left">Represents a telegram table with environment data (Snapshot Data) in the diagnostic instances (the &quot;generic way&quot; with Multiplexer).</td>
+</tr>
+<tr class="odd">
+<td align="left">sr</td>
+<td align="left"><span id="PC-R050-sr" class="rqDef">[PC-R050-sr]</span> Represents a Snapshot Record Number (1 byte) (v13 AUTOSAR Fault Memory, CDS-71541);<br />
+in a diagnostic instance complemented by a list of Snapshot Records <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R030' title="">[SR-R030]</a>, a text table like data structure.<br />
+<span id="PC-R050-srUse" class="rqDef">[PC-R050-srUse]</span> If a Primitive contains an <code>sr</code> proxy component, it may not contain an <code>sd</code> component.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><span id="PC-R050-srUnique" class="rqDef">[PC-R050-srUnique]</span> A Primitive may contain at most one <code>sr</code> proxy component.</td>
+</tr>
+<tr class="odd">
+<td align="left">sd</td>
+<td align="left"><span id="PC-R050-sd" class="rqDef">[PC-R050-sd]</span> Represents Snapshot Data (v13 AUTOSAR Fault Memory, CDS-71541);<br />
+in a diagnostic instance complemented by Snapshot Record Data <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200' title="">[SR-R200]</a>, a Multiplexer like data structure (with DTC as selector, additionally distinguishes UDS / WWH-OBD etc.).</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><span id="PC-D050-sdsrUse" class="rqDef">[PC-D050-sdsrUse]</span> If a Primitive contains an <code>sd</code> proxy component, it must also contain an <code>sr</code> proxy component.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><span id="PC-D050-sdUse" class="rqDef">[PC-D050-sdUse]</span> If a Primitive contains an <code>sd</code> proxy component, it should also contain a <code>dtc</code> or <code>obdDtc</code> component.<br />
+The <code>dtc</code>/<code>obdDtc</code> component provides the Selector for the Cases in the Snapshot Data <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200' title="">[SR-R200]</a>.<br />
+<span id="PC-R050-sdNoDtc" class="rqDef">[PC-R050-sdNoDtc]</span> ... but the Primitive <strong>may</strong> not contain a <code>dtc</code>/<code>obdDtc</code> component, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D240-RuntimeNoDTC' title="">[SR-D240-RuntimeNoDTC]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><span id="PC-R050-sdUnique" class="rqDef">[PC-R050-sdUnique]</span> A Primitive may contain at most one <code>sd</code> proxy component.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><span id="PC-R050-sdMux" class="rqDef">[PC-R050-sdMux]</span> A Primitive must not contain both an <code>sd</code> proxy component and a Multiplexer component.</td>
+</tr>
+<tr class="even">
+<td align="left">edr</td>
+<td align="left"><span id="PC-R050-edr" class="rqDef">[PC-R050-edr]</span> Represents Extended Data Records (v13 AUTOSAR Fault Memory, CDS-71541)</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><span id="PC-R050-edrUnique" class="rqDef">[PC-R050-edrUnique]</span> A Primitive may contain at most one <code>edr</code> proxy component.</td>
+</tr>
+<tr class="even">
+<td align="left">ed</td>
+<td align="left"><span id="PC-R050-ed" class="rqDef">[PC-R050-ed]</span> Represents Extended Data (v13 AUTOSAR Fault Memory, CDS-71541)</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><span id="PC-D050-ededrUse" class="rqDef">[PC-D050-ededrUse]</span> If a Primitive contains an <code>ed</code> proxy component, it must also contain an <code>edr</code> proxy component.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><span id="PC-R050-edUnique" class="rqDef">[PC-R050-edUnique]</span> A Primitive may contain at most one <code>ed</code> proxy component.</td>
+</tr>
+<tr class="odd">
+<td align="left">resCode</td>
+<td align="left">Represents negative response codes (NRCs)</td>
+</tr>
+<tr class="even">
+<td align="left">groupOfDtc</td>
+<td align="left">Represents Group of DTC information, see the <a href="Group%20of%20DTC%20Proxy%20Component.htm">Group of DTC Proxy Component</a></td>
+</tr>
+<tr class="odd">
+<td align="left">dtcStatus</td>
+<td align="left">Represents the DTC Status, see the <a href="DTC%20Status%20Proxy%20Component.htm">DTC Status Proxy Component</a></td>
+</tr>
+</tbody>
+</table>
+<p>Within one Primitive, some values of Semantics may occur at most once (it is not possible to have e.g. two Proxy Component with Semantics &quot;dtc&quot; within one request).</p>
+<h2 id="semantics-any">Semantics &quot;Any&quot;</h2>
+<p>A Proxy Component with Semantics &quot;any&quot; does not have a Combined Proxy Component, i.e. it has no representation in the Diagnostic Class Template and Diagnostic Instances.</p>
+<p>Proxy Components with semantics &quot;any&quot; that have <strong>variable length</strong> are only allowed as <strong>last Component</strong> in top-level of any Primitive (request,...). If this conditions fails, this is a non-fatal error.</p>
+<h2 id="simple-proxy-component">Simple Proxy Component</h2>
+<p>A Simple Proxy Component is the position where a Combined Proxy Component is to be attached in a Diagnostic Class Template, which allows placing a possibly shared telegram table (a list of data objects, which describes values dynamically appearing in a test system) within a diagnostic instance.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Components.htm">Components</a></li>
+<li><a href="DTC%20Status%20Proxy%20Component.htm">DTC Status Proxy Component</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a></li>
+<li><a href="Group%20of%20DTC%20Proxy%20Component.htm">Group of DTC Proxy Component</a></li>
+<li><a href="Mandatory%20and%20Mandatory%20at%20Runtime.htm">Mandatory and Mandatory at Runtime</a></li>
+<li><a href="May%20Be%20Combined.htm">May Be Combined</a></li>
+<li><a href="Protocol%20Service.htm">Protocol Service</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Configure Fault Memory Using CANdelaStudio</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-configure-fault-memory-using-candelastudio">How to Configure Fault Memory Using CANdelaStudio</h1>
+
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#faultmemory">Fault memory configuration</a></li>
+<li><a href="#relatedTopics">Related Topics</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>This document describes the configuration of diagnostics in <strong>MICROSAR Dcm/Dem</strong> using CANdela documents (.cdd files).</p>
+<p>It is valid for documents based on a template for Manufacturer &quot;Vector&quot;, version 2.2.0 or newer.</p>
+<p>Check the &quot;<strong>Manufacturer</strong>&quot; (&quot;<strong>OEM</strong>&quot;) in CANdelaStudio via Ribbon File | Properties: navigate to &quot;Document Info&quot; to determine if your CANdela document has been specified for OEM Vector:</p>
+<div class="figure">
+<img src="Images/Manufacturer.png" alt="&quot;Diagnostics based on&quot; - OEM setting in CANdelaStudio" />
+<p class="caption">&quot;Diagnostics based on&quot; - OEM setting in CANdelaStudio</p>
+</div>
+<p><strong>Note</strong>: CANdela documents based on OEM templates for a <strong>different diagnostic specification</strong> may be <strong>modelled differently</strong>. Nevertheless, there may be identical parts, and this document can give further information how to configure OEM specific CANdela documents.</p>
+<h2 id="faultmemory">Fault memory configuration</h2>
+<p>This chapter describes the DTC and Event configuration for the Dem.</p>
+<p>Fault memory service configuration is provided in <strong>diagnostic class &quot;Fault Memory&quot;</strong> on each variant.</p>
+<p>The UDS Service <strong>0x14</strong> and <strong>0x19</strong> with various sub-functions are used to access the fault memory.</p>
+<p>Most ECUs will use only a subset of all possible UDS services.</p>
+<p>Use the checkboxes in front of each Protocol Service to activate or deactivate a given sub-function for the service 0x19.</p>
+<p>Service 0x14 (ClearDTC) is mandatory.</p>
+<div class="figure">
+<img src="Images/FaultMemory.jpg" alt="Fault Memory" />
+<p class="caption">Fault Memory</p>
+</div>
+<h3 id="documents-that-support-events-since-v12">Documents that &quot;Support Events&quot; (since v12)</h3>
+<p>In <strong>CANdelaStudio 12</strong>, Events have become distinct objects, described besides DTCs. See the checkbox &quot;Support Events&quot; <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R600' title="">[DOCUI-R600]</a> whether the feature has been enabled in your document.</p>
+<p>In this configuration, you can describe the distinct Events directly in the <a href="../../20%20UserInterface/Event/Events.htm">Fault Memory page &quot;Events&quot;</a>.</p>
+<h3 id="dtcs-and-events-the-old-way-before-v12">DTCs and Events (the Old Way before v12)</h3>
+<p>In CANdela documents...</p>
+<ul>
+<li><strong>before v12</strong>, or</li>
+<li>with checkbox &quot;Support Events&quot; <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R600' title="">[DOCUI-R600]</a> <strong>not checked</strong>,</li>
+</ul>
+<p><strong>DTCs</strong> and <strong>Events</strong> have a <strong>common source</strong> and are treated to have a <strong>1:1 relation</strong>.</p>
+<p>In that configuration, CANdelaStudio shows Event properties...</p>
+<ul>
+<li>in the diagnostic class &quot;Fault Memory&quot;,</li>
+<li>TAB &quot;DTC Table (ww)&quot;,</li>
+<li>in the list of DTCs:</li>
+</ul>
+<div class="figure">
+<img src="Images/DTCTable.jpg" alt="DTC Table" />
+<p class="caption">DTC Table</p>
+</div>
+<h4 id="event-properties-at-dtcs">Event Properties at DTCs</h4>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CANdelaStudio DTC Parameter</th>
+<th>Valid Values</th>
+<th>MICROSAR ECUC Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DTC</td>
+<td>[0x00 - 0xFFFF] (as first two bytes of DTC value)</td>
+<td>DemUdsDTC (Byte#1 and Byte#2)</td>
+</tr>
+<tr class="even">
+<td>Failure Type</td>
+<td>[0x00 - 0xFF]</td>
+<td>DemUdsDTC (Byte#3)</td>
+</tr>
+<tr class="odd">
+<td>Errortext shortname</td>
+<td>Text string; blanks are replaced by underscore</td>
+<td>DemDTCClass.ShortName and DemEventClass.ShortName</td>
+</tr>
+<tr class="even">
+<td>DTC Priority</td>
+<td>[1 - 255]</td>
+<td>DemEventClass.DemEventPriority</td>
+</tr>
+<tr class="odd">
+<td>DTC Severity</td>
+<td><ul>
+<li>noSeverity</li>
+<li>maintenanceOnly</li>
+<li>checkAtNextHalt</li>
+<li>checkimmediately</li>
+</ul></td>
+<td>DemDTCClass.DemDTCSeverity</td>
+</tr>
+<tr class="even">
+<td>Functional Unit</td>
+<td><p>[0 - 255]</p>
+<p>Required only if UDS 0x19 08 and 0x19 09 is used. Value can be configured but is not used for other UDS services.</p></td>
+<td>DemDTCClass.DemDTCFunctionalUnit</td>
+</tr>
+<tr class="odd">
+<td>Number of Trips - Active</td>
+<td>[0 - 255]</td>
+<td>DemEventClass/ DemEventFailureCycleCounterThreshold</td>
+</tr>
+<tr class="even">
+<td>Monitor Initialization Function</td>
+<td><ul>
+<li>required</li>
+<li>not required</li>
+</ul></td>
+<td>DemEventParameter/ DemCallbackInitMForE is added if set to &quot;required&quot;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="status-mask">Status Mask</h4>
+<p>The global supported DTC status mask DemGeneral/DemDtcStatusAvailabilityMask is derived from the definition of the DTCStatusAvailabilityMask from the positive response 59 02.</p>
+<div class="figure">
+<img src="Images/StatusMask.jpg" alt="Supported DTCStatusAvailabilityMask of 0x39, derived from positive response definition of 59 02" />
+<p class="caption">Supported DTCStatusAvailabilityMask of 0x39, derived from positive response definition of 59 02</p>
+</div>
+<h4 id="dtc-indicators">DTC Indicators</h4>
+<table>
+<caption>DTC Indicator configuration</caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CANdelaStudio DTC Parameter</th>
+<th>Valid Values</th>
+<th>MICROSAR ECUC Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Set WarningIndicatorBit at fault</td>
+<td><ul>
+<li>supported</li>
+<li>not supported</li>
+</ul></td>
+<td>If set to &quot;supported&quot;, the container DemIndicatorAttribute is created.</td>
+</tr>
+</tbody>
+</table>
+<p>A DemIndicator &quot;WarningIndicator&quot; is created by default.</p>
+<h4 id="conditions">Conditions</h4>
+<table>
+<caption>Mapping of general UDS DTC parameters</caption>
+<colgroup>
+<col width="31%" />
+<col width="31%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CANdelaStudio DTC Parameter</th>
+<th>Valid Values</th>
+<th>MICROSAR ECUC Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Enable Conditions</td>
+<td>Comma separated list of enable conditions. Each element in the comma separated list defines a short-name.</td>
+<td><p>One container DemEnableCondition per occurrence of each enable condition string in the entire DTC table.</p>
+<p>One DemEnableConditionGroup per permutation having the same enable condtions (one or more) assigned to a DTCs.</p>
+<p>DemEnableConditionGroupRef set to the corresponding DemEnableConditionGroup.</p></td>
+</tr>
+</tbody>
+</table>
+<h4 id="operation-cycles">Operation Cycles</h4>
+<p>Operation cycles control certain life time properties of event and DTCs. An Event is only processed if the assigned operation cycle is qualified.</p>
+<p>If properties such as aging are linked to operation cycles, the Dem triggers certain changes upon cycle state changes.</p>
+<p>Operation cycles are created when a configured DTC references the operation cycle in a CANdelaStudio DTC Parameter:</p>
+<ul>
+<li>Aging Cycle</li>
+<li>Operation Cycle</li>
+</ul>
+<p>Predefined list of operation cycles:</p>
+<ul>
+<li><code>DEM_IGNITION</code></li>
+<li><code>DEM_POWER</code></li>
+<li><code>DEM_WARMUP</code></li>
+<li><code>DEM_OBD_DCY</code></li>
+</ul>
+<p>You may define further operation cycles by setting the operation cycle column to the name of the operation cycle. Use the &quot;Other value&quot; from the context menu:</p>
+<div class="figure">
+<img src="Images/CustomOperationCycleName.jpg" alt="Set custom operation cycle name" />
+<p class="caption">Set custom operation cycle name</p>
+</div>
+<h4 id="dtc-aging">DTC Aging</h4>
+<p>Aging is defined as resetting the confirmed bit from the UDS DTC status byte.</p>
+<table>
+<caption>DTC aging configuration</caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CANdelaStudio DTC Parameter</th>
+<th>Valid Values</th>
+<th>MICROSAR ECUC Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Aging Cycle</td>
+<td><ul>
+<li><code>DEM_IGNITION</code></li>
+<li><code>DEM_POWER</code></li>
+<li><code>DEM_WARMUP</code></li>
+<li><code>DEM_OBD_DCY</code></li>
+</ul>
+... or user defined operation cycle name</td>
+<td>DemAgingCycleRef</td>
+</tr>
+<tr class="even">
+<td>Aging supported</td>
+<td><ul>
+<li>supported</li>
+<li>not supported</li>
+</ul></td>
+<td>DemAgingAllowed</td>
+</tr>
+<tr class="odd">
+<td>Aging cycle counter threshold</td>
+<td>0..255</td>
+<td>DemAgingCycleCounterT hreshold</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dtc-healing">DTC Healing</h4>
+<p>Healing is defined as resetting the warning indicator (WIR), Bit7 of the UDS DTC Status byte. Healing requires that</p>
+<table>
+<caption>DTC healing configuration</caption>
+<colgroup>
+<col width="29%" />
+<col width="29%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CANdelaStudio DTC Parameter</th>
+<th>Valid Values</th>
+<th>MICROSAR ECUC Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Set WarningIndicatorBit at fault</td>
+<td><ul>
+<li>supported</li>
+<li>not supported</li>
+</ul></td>
+<td>If set to &quot;supported&quot; the container DemIndicatorAttribute is created.</td>
+</tr>
+<tr class="even">
+<td><p>Operation Cycle</p>
+<p>(derived into various configuratio ns)</p></td>
+<td><ul>
+<li><code>DEM_IGNITION</code></li>
+<li><code>DEM_POWER</code></li>
+<li><code>DEM_WARMUP</code></li>
+<li><code>DEM_OBD_DCY</code></li>
+</ul>
+... or user defined operation cycle name</td>
+<td>DemIndicatorAttribute. DemIndicatorFailureCycleRef</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><p>DemIndicatorAttribute. DemIndicatorFailureCycleRef</p>
+<p>Always set to „PowerCycle&quot;</p></td>
+</tr>
+</tbody>
+</table>
+<h4 id="event-debouncing">Event Debouncing</h4>
+<p>Debouncing allows reported faults to be accepted as &quot;qualified failed&quot; only in case of repeated failure. A single failure report is not accepted as failure. The MICROSAR Dem provides two debouncing algorithms that are configured in CANdelaStudio.</p>
+<h4 id="counter-based-event-debouncing">Counter based event debouncing</h4>
+<table>
+<caption>Configuration of counter based event debouncing</caption>
+<thead>
+<tr class="header">
+<th align="left">CANdelaStudio Column</th>
+<th align="left">Required value</th>
+<th align="left">MICROSAR ECUC parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Pre-Debounce Algorithm</td>
+<td align="left">Set to &quot;Counter based&quot;</td>
+<td align="left">DemDebounceAlgorithmClass/DemDebounceCounterBased</td>
+</tr>
+<tr class="even">
+<td align="left">Count-In step size</td>
+<td align="left">[1..32767]</td>
+<td align="left">DemDebounceCounterIncrementStepSize</td>
+</tr>
+<tr class="odd">
+<td align="left">Count-out step size</td>
+<td align="left">[1..32768]</td>
+<td align="left">DemDebounceCounterDecrementStepSize</td>
+</tr>
+<tr class="even">
+<td align="left">Use Jump-Up (Prefailed)</td>
+<td align="left">yes</td>
+<td align="left">DemDebounceCounterJumpUp</td>
+</tr>
+<tr class="odd">
+<td align="left">Use Jump-Down (Prepassed)</td>
+<td align="left">yes</td>
+<td align="left">DemDebounceCounterJumpDown</td>
+</tr>
+<tr class="even">
+<td align="left">DTC Passed Threshold</td>
+<td align="left">[-32768..-1]</td>
+<td align="left">DemDebounceCounterPassedThreshold</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Failed Threshold</td>
+<td align="left">[1..32767]</td>
+<td align="left">DemDebounceCounterFailedThreshold</td>
+</tr>
+<tr class="even">
+<td align="left">DTC Storage Threshold</td>
+<td align="left">[1..32767]</td>
+<td align="left">DemEventDebounceCounterStorageThreshold</td>
+</tr>
+</tbody>
+</table>
+<p>Note that for DEXT based diagnostic configuration, all the elements for counter based debouncing are mandatory as the DEXT schema requires them. If one attribute is empty, no counter based debouncing information will be exported to DEXT.</p>
+<h4 id="time-based-event-debouncing">Time based event debouncing</h4>
+<table>
+<caption>Configuration of timer based event debouncing</caption>
+<thead>
+<tr class="header">
+<th align="left">CANdelaStudio DTC Parameter</th>
+<th align="left">Valid Values</th>
+<th align="left">MICROSAR ECUC Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Pre-Debounce Algorithm</td>
+<td align="left">Set to &quot;Time based&quot;</td>
+<td align="left">DemDebounceAlgorithmClass/DemDebounceTimeBased</td>
+</tr>
+<tr class="even">
+<td align="left">DTC Debounce Failed Timeout Value</td>
+<td align="left">[0 - 3.600.000] ms</td>
+<td align="left">DemDebounceTimeBase/DemDebounceTimeFailedThreshold</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Debounce Passed Timeout Value</td>
+<td align="left">[0 - 3.600.000] ms</td>
+<td align="left">DemDebounceTimeBase/DemDebounceTimePassedThreshold</td>
+</tr>
+<tr class="even">
+<td align="left">DTC Storage Threshold</td>
+<td align="left">[0 - 3.600.000] ms</td>
+<td align="left">DemDebounceTimeStorageThreshold</td>
+</tr>
+</tbody>
+</table>
+<h3 id="snapshot-record-numeration-type">Snapshot Record Numeration Type</h3>
+<p>The type of snapshot record numeration and data capture time is configured globally in DemTypeOfFreezeFrameRecordNumeration.</p>
+<p>If <strong>AUTOSAR Fault Memory</strong> has been enabled <a class='rqRef' href='../../30 Features\Fault Memory\Fault Memory in CANdela.htm#FM-D200-AUTOSAR' title="">[FM-D200-AUTOSAR]</a> (since v13), there is a distinct property: Snapshot Numeration Type <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#DI-R310' title="">[DI-R310]</a>. You can configure the property in the property dialog of the Fault Memory Diagnostic Instance.</p>
+<p>In the <strong>generic</strong> data model, in order to specify a different value using an attribute <a class='rqRef' href='../../30 Features\Fault Memory\Fault Memory in CANdela.htm#FM-D200-Generic' title="">[FM-D200-Generic]</a>, see <a class='rqRef' href='../../30 Features\Fault Memory\Snapshot Records Generic.htm#SR-R023' title="">[SR-R023]</a>.</p>
+<h3 id="bsw-events">BSW Events</h3>
+<p>MICROSAR BSW modules can report &quot;BSW events&quot; to the Dem module. DTCs for BSW event are created and added in the CANdelaStudio DTC list, as any other DTC.</p>
+<p>DaVinci Configurator creates an DemEventParameter and DemDTCClass per CANdelaStudio DTC. Use the &quot;Production Error Handling&quot; Wizard to let the BSW event reference any of the existing DemEventParameter.</p>
+<div class="figure">
+<img src="Images/BSWEvents.jpg" alt="BSW Events in daVinci Configurator" />
+<p class="caption">BSW Events in daVinci Configurator</p>
+</div>
+<h2 id="relatedTopics">Related Topics</h2>
+<ul>
+<li><a href="How%20to%20Configure%20the%20Diagnostic%20Basic%20Software%20of%20an%20AUTOSAR%204%20ECU.htm">How to Configure the Diagnostic Basic Software of an AUTOSAR 4 ECU</a></li>
+</ul>
+</body>
+</html>

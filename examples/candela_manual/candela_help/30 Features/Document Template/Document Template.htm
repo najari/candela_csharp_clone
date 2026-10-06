@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Document Template</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="document-template">Document <span id='_index_446728012'>Template</span></h1>
+<h2 id="introduction">Introduction</h2>
+<p>A document template...</p>
+<ul>
+<li>has the <code>.cddt</code> file name extension</li>
+<li>is the basis for a CANdela document (<code>.cdd</code>)
+<ul>
+<li>like a Word template (<code>.dotx</code>) is the basis for a Word document (<code>.docx</code>)</li>
+</ul></li>
+<li>has a different data structure than a CANdela document
+<ul>
+<li>you cannot just rename a <code>*.cdd</code> to <code>*.cddt</code>, CANdelaStudio rejects such a file on loading (CDS-4286 4.0)</li>
+</ul></li>
+<li>itself has no further template
+<ul>
+<li>a document template is the starting point</li>
+</ul></li>
+<li>describes specifics of the diagnostics for a vehicle manufacturer or even a certain model range.</li>
+</ul>
+<p>See CANdela <a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">Views</a> for an overview of File Types, Types of Data and Languages.</p>
+<h2 id="service-structure">Service Structure</h2>
+<p>A template captures the diagnostic specification of an OEM:</p>
+<ul>
+<li>it defines the set of diagnostic Services and their structure.</li>
+<li>in detail, the &quot;structure&quot; is described using CANdela <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">ProtocolServices</a>
+<ul>
+<li>these contain different types of variables, called <a href="../../30%20Features/Protocol%20Service/Proxy%20Component.htm">proxy components</a></li>
+<li>like Const Value, Variable Value, telegram table of data objects, DTC table, Iterators, Multiplexer, etc.).</li>
+</ul></li>
+<li>Each service in a CANdela document is based on a ProtocolService:
+<ul>
+<li>it always fullfills the given structure of its ProtocolService,</li>
+<li>e.g. if the ProtocolService says that there is a constant value at byte position zero, the Service has this constant value at this byte position.</li>
+<li>e.g. if the ProtocolService has a <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram table</a> of data objects beginning from byte position four in the Service, data objects can be specified beginning at byte position four.</li>
+</ul></li>
+<li>Hence, the structure of ProtocolServices defines the restrictions to services.</li>
+</ul>
+<h2 id="data-in-document-template">Data in Document Template</h2>
+<p>The following table shows the main content of a document template, and in which CANdelaStudio edition / view it can be modified:</p>
+<table>
+<colgroup>
+<col width="6%" />
+<col width="6%" />
+<col width="5%" />
+<col width="5%" />
+<col width="75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">StdDoc</th>
+<th align="right">AdmDoc</th>
+<th align="right">ExpDoc</th>
+<th align="right">ExpTmpl</th>
+<th align="left">Data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">x</td>
+<td align="left"><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">protocol services</a> (e.g. from UDS)</td>
+</tr>
+<tr class="even">
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="left"><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">diagnostic class templates</a> (use of Protocol Services for diagnostic use-cases like Sessions, Stored Data, Fault Memory)</td>
+</tr>
+<tr class="odd">
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="left"><a href="../../30%20Features/Variant/Base%20Variant.htm">base variant (common diagnostic)</a></td>
+</tr>
+<tr class="even">
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="left"><a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">DTC columns</a> (columns of the DTC table)</td>
+</tr>
+<tr class="odd">
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="left"><a href="../../30%20Features/Attributes/Attributes.htm">default attributes</a></td>
+</tr>
+<tr class="even">
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">x</td>
+<td align="left"><a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">columns of the DTC table</a></td>
+</tr>
+<tr class="odd">
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="left"><a href="../../30%20Features/Target%20Groups/Target%20Groups.htm">target groups</a></td>
+</tr>
+<tr class="even">
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="left"><a href="../../30%20Features/Interface/Interface.htm">interfaces</a> and their communication parameters</td>
+</tr>
+<tr class="odd">
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="left"><a href="../../30%20Features/Target%20Groups/Target%20Groups.htm">target groups</a></td>
+</tr>
+<tr class="even">
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="left"><a href="../../30%20Features/Common%20Properties/Authorization.htm">authorization</a></td>
+</tr>
+<tr class="odd">
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="left"><a href="../../30%20Features/Document/Document.htm#diagnostics-based-on">&quot;Diagnostics Based on&quot;</a></td>
+</tr>
+<tr class="even">
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td align="right">x</td>
+<td align="left"><a href="../../30%20Features/Negative%20Response/Negative%20Response.htm#unsupportedServiceNegResponse">Negative Response Codes for Unsupported Services</a></td>
+</tr>
+<tr class="odd">
+<td align="right">-</td>
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="right">x</td>
+<td align="left">Languages</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legend</strong>: the data can be modified in...</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Abbrev. Edition</th>
+<th align="left">View</th>
+<th>File Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">StdDoc Standard</td>
+<td align="left">Standard</td>
+<td>Document</td>
+</tr>
+<tr class="even">
+<td align="left">AdmDoc Admin</td>
+<td align="left">Standard</td>
+<td>Document</td>
+</tr>
+<tr class="odd">
+<td align="left">ExpDoc Admin</td>
+<td align="left">Expert</td>
+<td>Document</td>
+</tr>
+<tr class="even">
+<td align="left">ExpTmpl Admin</td>
+<td align="left">Expert</td>
+<td>Template</td>
+</tr>
+</tbody>
+</table>
+<h2 id="operations-related-with-document-templates-and-documents">Operations Related with Document Templates and Documents</h2>
+<ul>
+<li>On a Template:
+<ul>
+<li>Create document <a class='rqRef' href='../../30%20Features/Document/Document%20Operations.htm#DOC-R600' title="New">[DOC-R600]</a></li>
+</ul></li>
+<li>On a Document:
+<ul>
+<li>Upgrade <a class='rqRef' href='../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm#DOCUP-R001' title="">[DOCUP-R001]</a></li>
+<li>Convert to template <a class='rqRef' href='../../30%20Features/Document%20Template/Convert%20to%20Template.htm#DOC-R700' title="Convert to Template">[DOC-R700]</a></li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Document/Document.htm">Document</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Editions.htm">Editions</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Expert%20View.htm">Expert View</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">Views</a></li>
+</ul>
+</body>
+</html>

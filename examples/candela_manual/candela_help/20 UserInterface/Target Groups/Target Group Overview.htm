@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Target Group Overview</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="target-group-overview">Target Group Overview</h1>
+<div class="figure">
+<img src="Images/Target%20Group%20Overview.jpg" alt="Target Group Overview Dialog" />
+<p class="caption">Target Group Overview Dialog</p>
+</div>
+<p><span id="TGOV-R010" class="rqDef">[TGOV-R010]</span> The Target Group Overview dialog (menu &quot;View&quot;) shows an overview of all <a href="../../30%20Features/Target%20Groups/Target%20Groups.htm">target groups</a> of the object on which the dialog was opened, including all contained objects.</p>
+<p>You can modify individual qualifiers, or recompute the qualifiers from the respective object names.</p>
+<p>Modifying operations respect of the <a href="../../30%20Features/Common%20Properties/Authorization.htm">Authorization</a> of the objects - in Standard View, you cannot modify the qualifier of an object if the object is &quot;not modifiable&quot;.</p>
+<h2 id="context">Context</h2>
+<p>When opened on &quot;ECU Information&quot; (the root of the document tree), the dialog shows all qualifiers of the document (&quot;Whole document&quot;).</p>
+<p>Otherwise, you can switch between</p>
+<ul>
+<li>&quot;Whole document&quot; and</li>
+<li>the &quot;Current subtree&quot;, i.e. all qualifiers of the object on which you opened the dialog and its contained objects.</li>
+</ul>
+<h2 id="list">List</h2>
+<h3 id="diagnostic-instance-job-container">Diagnostic Instance / Job Container</h3>
+<p>Shows the name of the object.</p>
+<h3 id="service-job">Service / Job</h3>
+<p>Shows the name of the object.</p>
+<h3 id="names-of-target-groups...">(Names of Target Groups...)</h3>
+<p>The list has one column for each target group defined in the document.</p>
+<p>The value &quot;yes&quot; in a cell indicates that the target group is set for the object given by the row.</p>
+<p>You can modify the value by selecting the cell, then clicking again (slowly) or pressing <code>F2</code> (first switch to editing mode: under &quot;View&quot;, see below).</p>
+<p>To edit multiple values at the same time, select multiple lines, then press F2 and modify the value, then press ENTER.</p>
+<h3 id="path">Path</h3>
+<p>Shows the path to the object.</p>
+<h3 id="read-only-cds-40739-8.5-sp2">Read-Only (CDS-40739 8.5 SP2)</h3>
+<p><span id="TGOV-R050" class="rqDef" title="Read-only">[TGOV-R050 Read-only]</span> A row in target group overview shall be read-only if...</p>
+<ul>
+<li><p><span id="TGOV-R050-Container" class="rqDef">[TGOV-R050-Container]</span> it represents a diagnostic instance or job container, and that object has authorization &quot;Secondary properties modifiable&quot; = false <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Authorization.htm#DIA-R050-TargetGroups' title="">[DIA-R050-TargetGroups]</a>.</p></li>
+<li><p><span id="TGOV-R050-ServiceJob" class="rqDef">[TGOV-R050-ServiceJob]</span> it represents a service or job, and the parent diagnostic instance or job container has authorization &quot;Secondary properties modifiable&quot; = false <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Authorization.htm#DIA-R050-TargetGroups' title="">[DIA-R050-TargetGroups]</a>.</p></li>
+</ul>
+<h3 id="context-menu-copy-path">Context menu &quot;Copy Path&quot;</h3>
+<p>Lets you copy the path shown in column &quot;Path&quot; to the clipboard.</p>
+<h2 id="view">View</h2>
+<p>Lets you select the view mode:</p>
+<ul>
+<li>Overview (no editing)</li>
+<li>Edit Diagnostic Instances and Job Containers (column &quot;Service / Job&quot; now shown)</li>
+<li>Edit Services and Jobs</li>
+</ul>
+<h2 id="button-set">Button &quot;Set&quot;</h2>
+<p>Shows a dialog where you can set or reset each target group by checking a checkbox.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Target%20Groups/Target%20Groups.htm">Target Group Feature</a></li>
+<li><a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance%20Property%20Page%20Target%20Groups.htm">Diagnostic Instance Property Page &quot;Target Groups&quot;</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+</ul>
+</body>
+</html>

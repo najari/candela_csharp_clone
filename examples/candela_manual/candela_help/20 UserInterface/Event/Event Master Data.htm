@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Event Master Data</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="event-master-data-cds-42224-v12">Event Master Data (CDS-42224 v12)</h1>
+<p>See also the <a href="Events.htm">Events List</a>, the <a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a> and the detailed <a href="../../30%20Features/Event/Events%20Data%20Model.htm">Events Data Model</a>.</p>
+<p>The <strong>Events Master Data</strong> page is located in the right side of a <strong>Fault Memory</strong> diagnostic instance, opened via button <img src="../../20%20UserInterface/Images/Events%20Button.jpg" /> at the bottom.</p>
+<p>It shows the Event Master Data <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-D040' title="">[EV-D040]</a>, i.e. master lists used for Event properties.</p>
+<div class="figure">
+<img src="Images/Event%20Master%20Data.jpg" alt="Event Master Data" />
+<p class="caption">Event Master Data</p>
+</div>
+
+<h2 id="conditions-for-modifying-operations">Conditions for Modifying Operations</h2>
+<p>See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R010' title="">[EVUI-R010]</a>.</p>
+<h2 id="operation-cycle">Operation Cycle</h2>
+<p><span id="EVMUI-R500" class="rqDef">[EVMUI-R500]</span> Defines the list of Operation Cycles <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R500' title="">[EV-R500]</a> in the diagnostic instance.</p>
+
+<p>See operations <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R510' title="New">[EVOP-R510]</a>ff.</p>
+<h2 id="indicator">Indicator</h2>
+<p><span id="EVMUI-R600" class="rqDef">[EVMUI-R600]</span> Defines the list of Indicators <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R600' title="">[EV-R600]</a> in the diagnostic instance.</p>
+<p><span id="EVMUI-R630" class="rqDef" title="Delete">[EVMUI-R630 Delete]</span> When an Indicator is referenced by an Indicator Connection <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R140' title="">[EV-R140]</a>, CANdelaStudio shows a prompt indicating that the Indicator is referenced.</p>
+<p>See operations <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R610' title="New">[EVOP-R610]</a>ff.</p>
+<h2 id="counter-based-debounce-algorithm">Counter-Based Debounce Algorithm</h2>
+<p><span id="EVMUI-R1200" class="rqDef">[EVMUI-R1200]</span> Defines the list of Counter-Based Debounce Algorithms <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R1200' title="">[EV-R1200]</a> in the diagnostic instance.</p>
+<p><span id="EVMUI-R1230" class="rqDef" title="Delete">[EVMUI-R1230 Delete]</span> When a Counter-Based Debounce Algorithm is referenced by an Event <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R220' title="">[EV-R220]</a>, CANdelaStudio shows a prompt indicating that the Debounce Algorithm is referenced.</p>
+<p>See operations <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R1210' title="New">[EVOP-R1210]</a> and <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R1120' title="Modify">[EVOP-R1120]</a>ff.</p>
+<h2 id="time-based-debounce-algorithm">Time-Based Debounce Algorithm</h2>
+<p><span id="EVMUI-R1300" class="rqDef">[EVMUI-R1300]</span> Defines the list of Time-Based Debounce Algorithms <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R1300' title="">[EV-R1300]</a> in the diagnostic instance.</p>
+<p><span id="EVMUI-R1330-Delete" class="rqDef">[EVMUI-R1330-Delete]</span> When a Time-Based Debounce Algorithm is referenced by an Event <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R220' title="">[EV-R220]</a>, CANdelaStudio shows a prompt indicating that the Debounce Algorithm is referenced.</p>
+<p>See operations <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R1310' title="New">[EVOP-R1310]</a> and <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R1120' title="Modify">[EVOP-R1120]</a>ff.</p>
+<h2 id="condition">Condition</h2>
+<p><span id="EVMUI-R700" class="rqDef">[EVMUI-R700]</span> Defines the list of Conditions <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R700' title="">[EV-R700]</a> in the diagnostic instance.</p>
+<p><span id="EVMUI-R730" class="rqDef" title="Delete">[EVMUI-R730 Delete]</span> When a Condition is referenced by an Event as Enable Condition <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R200' title="">[EV-R200]</a> or Storage Condition <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R210' title="">[EV-R210]</a>, or by a Condition Group <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R830' title="">[EV-R830]</a>, CANdelaStudio shows a prompt indicating that the Condition is referenced.</p>
+<p>See operations <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R710' title="New">[EVOP-R710]</a>ff.</p>
+<h2 id="condition-group">Condition Group</h2>
+<p><span id="EVMUI-R800" class="rqDef">[EVMUI-R800]</span> Defines the list of Condition Groups <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R800' title="">[EV-R800]</a> in the diagnostic instance.</p>
+<p>A Condition Group references the Conditions defined in the Condition list <a class='rqRef' href='../../20%20UserInterface/Event/Event%20Master%20Data.htm#EVMUI-R700' title="">[EVMUI-R700]</a> described above.</p>
+<p><span id="EVMUI-R830" class="rqDef" title="Delete">[EVMUI-R830 Delete]</span> When a Condition Group is referenced by an Event as Enable Condition <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R200' title="">[EV-R200]</a> or Storage Condition <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R210' title="">[EV-R210]</a>, CANdelaStudio shows a prompt indicating that the Condition Group is referenced.</p>
+<p>See operations <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R810' title="New">[EVOP-R810]</a>ff.</p>
+
+<h3 id="related-topics">Related Topics</h3>
+<ul>
+<li><a href="Events.htm">Event List</a></li>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> (Export)</li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="../../30%20Features/Event/Events%20Data%20Model.htm">Events Data Model</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+</ul>
+</body>
+</html>

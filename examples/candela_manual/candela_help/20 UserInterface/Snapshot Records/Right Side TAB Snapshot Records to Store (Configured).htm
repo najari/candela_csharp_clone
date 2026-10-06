@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Right Side TAB Snapshot Records to Store (Configured)</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="right-side-tab-snapshot-records-to-store-configured">Right Side: TAB &quot;Snapshot Records to Store&quot; (Configured)</h1>
+<p>CANdelaStudio shows this TAB if the Snapshot Record Numeration Type <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#DI-R310' title="">[DI-R310]</a> is &quot;configured&quot;.</p>
+<p><span id="SRUI-R810" class="rqDef">[SRUI-R810]</span> The TAB shows...</p>
+<ul>
+<li>a list of Snapshot Records</li>
+<li>for each Snapshot Record, whether it is stored for the DTC(s) selected in the list of DTCs <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/List%20UDS%20Snapshot%20Data%20per%20DTC.htm#SRUI-R600' title="">[SRUI-R600]</a></li>
+</ul>
+<div class="figure">
+<img src="Images/UDSSnapshotDataPerDTCConfigured-storedfor.png" alt="UDS Snapshot Data per DTC - right side: Snapshot Records to Store (Numeration Type &quot;Configured&quot;)" />
+<p class="caption">UDS Snapshot Data per DTC - right side: Snapshot Records to Store (Numeration Type &quot;Configured&quot;)</p>
+</div>
+<h3 id="list-columns">List Columns</h3>
+<p><span id="SRUI-R812" class="rqDef">[SRUI-R812]</span> <strong>Number</strong></p>
+<ul>
+<li>shows the Snapshot Record Number <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R120' title="">[SR-R120]</a></li>
+<li>see <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R120-DefaultDisplay' title="">[SR-R120-DefaultDisplay]</a></li>
+</ul>
+<p><span id="SRUI-R814" class="rqDef">[SRUI-R814]</span> <strong>Name</strong></p>
+<ul>
+<li>shows the Snapshot Record Name</li>
+</ul>
+<p><span id="SRUI-R816" class="rqDef">[SRUI-R816]</span> <strong>to Store</strong></p>
+<ul>
+<li>a checkbox</li>
+<li>checked iff. &quot;Snapshot Record Stored for DTC&quot; <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R300' title="">[SR-R300]</a> is true</li>
+<li>If multiple DTCs are selected:
+<ul>
+<li>see the Basic User Interface Rules <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-R400' title="">[UI-R400]</a>.</li>
+</ul></li>
+<li><span id="SRUI-R816-Check" class="rqDef">[SRUI-R816-Check]</span> <strong>Checking &quot;Stored&quot;</strong>:
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R260' title="">[SROP-R260]</a></li>
+</ul></li>
+<li><span id="SRUI-R816-Uncheck" class="rqDef">[SRUI-R816-Uncheck]</span> <strong>Un-checking &quot;Stored&quot;</strong>:
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R265' title="">[SROP-R265]</a></li>
+</ul></li>
+</ul>
+<h3 id="buttons-store-all-store-none">Buttons &quot;Store all&quot; / &quot;Store none&quot;</h3>
+<ul>
+<li><span id="SRUI-R840" class="rqDef">[SRUI-R840]</span> If a filter has been applied,
+<ul>
+<li>the buttons apply to the reduced list only,</li>
+<li>therefore the button text changes to &quot;Store all filtered&quot; / &quot;Store none filtered&quot;.</li>
+</ul></li>
+</ul>
+
+<h3 id="actions">Actions</h3>
+<ul>
+<li><span id="SRUI-R820" class="rqDef">[SRUI-R820]</span> <strong>Check &quot;to Store&quot;</strong>
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R260' title="">[SROP-R260]</a></li>
+<li>Applies to all selected DTCs.</li>
+</ul></li>
+<li><span id="SRUI-R825" class="rqDef">[SRUI-R825]</span> <strong>Un-check &quot;to Store&quot;</strong>
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R265' title="">[SROP-R265]</a></li>
+<li>Applies to all selected DTCs.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../20%20UserInterface/Fault%20Memory/AUTOSAR%20Fault%20Memory%20GUI.htm">GUI AUTOSAR Fault Memory</a> (overview)</li>
+<li><a href="GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a></li>
+<li><a href="TAB%20UDS%20Snapshot%20Data%20per%20DTC.htm">TAB UDS Snapshot Data per DTC</a></li>
+<li><a href="TAB%20OBD%20on%20UDS%20Snapshot%20Data%20per%20DTC.htm">TAB OBD on UDS Snapshot Data per DTC</a></li>
+<li><a href="Right%20Side%20TAB%20Snapshot%20Records%20to%20Store%20(Calculated).htm">Right Side: TAB &quot;Snapshot Records to Store&quot; (Calculated)</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm">Snapshot Record Data Model</a></li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Operations.htm">Snapshot Record Operations</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DTC Operations</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dtc-operations">DTC Operations</h1>
+<p>This chapter describes operations for DTCs in DTC Pool and in diagnostic instances.</p>
+<p><span id="DTCOP-R010" class="rqDef" title="Create DTC">[DTCOP-R010 Create DTC]</span>: creates a new DTC.</p>
+<ul>
+<li>It shall exist in the DTC List only (not referenced in other DTC lists).</li>
+<li>It shall have required=&quot;No&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a>.</li>
+</ul>
+<blockquote>
+<p>Not allowed outside the DTC Pool if...</p>
+</blockquote>
+<ul>
+<li><span id="DTCOP-R010-PoolOnly" class="rqDef">[DTCOP-R010-PoolOnly]</span> document authorization &quot;Creation of DTCs&quot; is „in Chapter &quot;Available DTCs&quot; only“ <a class='rqRef' href='../../30%20Features/Document/Authorization.htm#DLA-R100-PoolOnly' title="">[DLA-R100-PoolOnly]</a></li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p><span id="DTCOP-R012" class="rqDef" title="Modify DTC Code">[DTCOP-R012 Modify DTC Code]</span>: modify the DTC Code of the DTC.</p>
+<blockquote>
+<p>Not allowed in Standard View if...</p>
+</blockquote>
+<ul>
+<li>the DTC is &quot;Required&quot; or &quot;Required as Reference&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-reqCodeText' title="">[DTCA-R020-reqCodeText]</a> (even in DTC Pool), or</li>
+<li>the DTC is referenced <a class='rqRef' href='../../30%20Features/DTC/Available%20DTCs.htm#DTCP-R002' title="DTC Referencing">[DTCP-R002]</a> (even in DTC Pool), or</li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p><span id="DTCOP-R013" class="rqDef" title="Modify Error Text">[DTCOP-R013 Modify Error Text]</span>: modify the Error Text of the DTC.</p>
+<ul>
+<li>in the DTC Pool, if the DTC is &quot;Required&quot;, modify the Error Text at copies of the DTC in all variants;</li>
+</ul>
+<blockquote>
+<p>Not allowed in Standard View if...</p>
+</blockquote>
+<ul>
+<li>the DTC is &quot;Required&quot; or &quot;Required as Reference&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-reqCodeText' title="">[DTCA-R020-reqCodeText]</a></li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p><span id="DTCOP-R014-notReq" class="rqDef" title="Set &quot;Required&quot; to &quot;No&quot;">[DTCOP-R014-notReq Set &quot;Required&quot; to &quot;No&quot;]</span>: <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a></p>
+<ul>
+<li>also set &quot;Required&quot; to &quot;No&quot; in copies of the DTC with the same code in variants.</li>
+</ul>
+<blockquote>
+<p>Not allowed...</p>
+</blockquote>
+<ul>
+<li>outside the DTC Pool, or</li>
+<li>in Standard View</li>
+</ul>
+<p><span id="DTCOP-R014-req" class="rqDef" title="Set &quot;Required&quot; to &quot;Yes&quot;">[DTCOP-R014-req Set &quot;Required&quot; to &quot;Yes&quot;]</span>: <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a></p>
+<ul>
+<li>in all variants, process DTC copies that have the numeric code of the DTC:
+<ul>
+<li>not in a DTC List for User-Defined Fault Memory only <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D105' title="">[UDFM-D105]</a></li>
+<li>ensure the DTC exists <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-req' title="Required &quot;Yes&quot;">[DTCA-R020-req]</a></li>
+<li>set &quot;Required&quot; to &quot;Yes&quot;</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Not allowed...</p>
+</blockquote>
+<ul>
+<li>outside the DTC Pool, or</li>
+<li>in Standard View</li>
+</ul>
+<p><span id="DTCOP-R014-reqAsRef" class="rqDef" title="Set &quot;Required&quot; to &quot;Required as reference&quot;">[DTCOP-R014-reqAsRef Set &quot;Required&quot; to &quot;Required as reference&quot;]</span>: <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a></p>
+<ul>
+<li>ensure the DTC is referenced <a class='rqRef' href='../../30%20Features/DTC/Available%20DTCs.htm#DTCP-R002' title="DTC Referencing">[DTCP-R002]</a> in all variants <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-reqAsRef' title="&quot;Required as reference&quot;">[DTCA-R020-reqAsRef]</a>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/DTC/Available%20DTCs.htm#DTCP-R002-UDFM' title="">[DTCP-R002-UDFM]</a> but not in a DTC List for User-Defined Fault Memory only <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D105' title="">[UDFM-D105]</a></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Not allowed...</p>
+</blockquote>
+<ul>
+<li>outside the DTC Pool, or</li>
+<li>in Standard View</li>
+</ul>
+<p><span id="DTCOP-R016" class="rqDef" title="Modify other DTC Property">[DTCOP-R016 Modify other DTC Property]</span></p>
+<blockquote>
+<p>Not allowed if...</p>
+</blockquote>
+<ul>
+<li>in Standard View if &quot;Properties Modifiable&quot; is false <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R030-mayBeModified' title="">[DTCA-R030-mayBeModified]</a></li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p><span id="DTCP-R018" class="rqDef" title="Delete DTC in DTC Pool">[DTCP-R018 Delete DTC in DTC Pool]</span></p>
+<ul>
+<li>Delete the DTC from the DTC List.</li>
+<li>For all references <a class='rqRef' href='../../30%20Features/DTC/Available%20DTCs.htm#DTCP-R002' title="DTC Referencing">[DTCP-R002]</a> to the DTC in the document,</li>
+<li>if &quot;Creation of DTCs&quot; is allowed in chapter &quot;Available DTCs&quot; only <a class='rqRef' href='../../30%20Features/Document/Authorization.htm#DLA-R100-PoolOnly' title="">[DLA-R100-PoolOnly]</a>,</li>
+<li>then CANdelaStudio shall...
+<ul>
+<li><span id="DTCP-R018-Delete" class="rqDef">[DTCP-R018-Delete]</span> delete them (not replace by copy)</li>
+<li><span id="DTCP-R018-Hint" class="rqDef">[DTCP-R018-Hint]</span> emit a hint (info level) in logging</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R240' title="">[EVOP-R240]</a> Remove the association of Events with the DTC</li>
+</ul></li>
+<li>else CANdelaStudio shall (after GUI confirmation)...
+<ul>
+<li><span id="DTCP-R018-Copy" class="rqDef">[DTCP-R018-Copy]</span> replace all references to the DTC by a copy.</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R235' title="">[EVOP-R235]</a> Lets Events reference the DTC copy.</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Not allowed if...</p>
+</blockquote>
+<ul>
+<li><span id="DTCP-R018-RO" class="rqDef">[DTCP-R018-RO]</span> in Standard View, DTC &quot;Properties Modifiable&quot; is false <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R030-mayBeModified' title="">[DTCA-R030-mayBeModified]</a></li>
+</ul>
+<p><span id="DTCOP-R018" class="rqDef" title="Delete DTC Outside DTC Pool">[DTCOP-R018 Delete DTC Outside DTC Pool]</span></p>
+<ul>
+<li>delete the DTC from the DTC List.</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R240' title="">[EVOP-R240]</a> Remove the association of Events with the DTC</li>
+</ul>
+<blockquote>
+<p>Not allowed if...</p>
+</blockquote>
+<ul>
+<li>a DTC with the same code in the DTC Pool has &quot;Required in all Variants&quot;=&quot;yes&quot; or &quot;as reference&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a>, or</li>
+<li>in Standard View, &quot;Properties Modifiable&quot; is false <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R030-mayBeModified' title="">[DTCA-R030-mayBeModified]</a></li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p><span id="DTCOP-R020" class="rqDef" title="Copy from Available DTCs">[DTCOP-R020 Copy from Available DTCs]</span> (DTC Pool)</p>
+<ul>
+<li>inserts DTCs as a copy of DTCs in DTC Pool</li>
+</ul>
+<blockquote>
+<p>Not allowed if...</p>
+</blockquote>
+<ul>
+<li>in DTC Pool (obvious)</li>
+<li>a DTC with the same code in the DTC Pool has &quot;Required in all Variants&quot;=&quot;as reference&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a>.</li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p><span id="DTCOP-R030" class="rqDef" title="Reference from Available DTCs">[DTCOP-R030 Reference from Available DTCs]</span> (DTC Pool)</p>
+<ul>
+<li>inserts DTCs as a reference to DTCs in DTC Pool</li>
+</ul>
+<blockquote>
+<p>Not allowed if...</p>
+</blockquote>
+<ul>
+<li>in DTC Pool (obvious), or</li>
+<li>in User Defined Fault Memory (obvious) <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-UDFM' title="">[DTCA-R020-UDFM]</a></li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p><span id="DTCOP-R035" class="rqDef" title="Copy Value into Selected DTCs">[DTCOP-R035 Copy Value into Selected DTCs]</span> (CDS-6149 5.0 SP1)</p>
+<p>Copies the value of a <a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">user defined DTC column</a> (not e.g. code or error text) from one DTC to a list of other DTCs.</p>
+<blockquote>
+<p>Not allowed if...</p>
+</blockquote>
+<ul>
+<li>the DTC column does not allow duplicates <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R050' title="MayBeDuplicate">[DTCC-R050]</a>, or</li>
+<li>in Standard View if &quot;Properties Modifiable&quot; of a target DTC is false <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R030-mayBeModified' title="">[DTCA-R030-mayBeModified]</a></li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p>For the user interface see <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R035' title="">[DTCUI-R035]</a>.</p>
+<p><span id="DTCOP-R040" class="rqDef">[DTCOP-R040]</span> <strong>Paste</strong></p>
+<ul>
+<li>Pastes DTCs from the clipboard (if it contains DTCs).</li>
+<li>They shall have required=&quot;No&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a>.</li>
+</ul>
+<blockquote>
+<p>Not allowed if...</p>
+</blockquote>
+<ul>
+<li>the document level authorization is „in Chapter &quot;Available DTCs&quot; only“ <a class='rqRef' href='../../30%20Features/Document/Authorization.htm#DLA-R100-PoolOnly' title="">[DLA-R100-PoolOnly]</a>, or</li>
+<li>outside DTC Pool, if DTCs in the DTC Pool with the same codes have &quot;Required in all Variants&quot;=&quot;as Reference&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a>.</li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p><strong>Note</strong>:</p>
+<ul>
+<li>copying a DTC does not copy its <strong>snapshot data</strong>
+<ul>
+<li>CANdela does not consider them being &quot;part&quot; of the DTC</li>
+</ul></li>
+<li>copying a DTC does not copy <strong>Events</strong> that reference the DTC
+<ul>
+<li>... but copying an Event may copy the reference to a DTC,</li>
+<li>see the Event operation <a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R060' title="">[EVOP-R060]</a></li>
+<li>... and Procedure <a href="../../15%20Procedures/Event/How%20to%20Copy%20Events%20and%20DTCs.htm">How to Copy Events and DTCs</a>.</li>
+</ul></li>
+</ul>
+<p><span id="DTCOP-R045" class="rqDef" title="Paste Contents">[DTCOP-R045 Paste Contents]</span></p>
+<ul>
+<li>Pastes DTCs from the clipboard (if it contains DTCs),</li>
+<li>They shall have required=&quot;No&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a>.</li>
+<li>assigns a new DTC code for a code to paste that already exists in the list;
+<ul>
+<li>must not use codes of DTCs in the DTC Pool that have &quot;Required in all Variants&quot;=&quot;as Reference&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Not allowed if</p>
+</blockquote>
+<ul>
+<li>the document level authorization is „in Chapter &quot;Available DTCs&quot; only“ <a class='rqRef' href='../../30%20Features/Document/Authorization.htm#DLA-R100-PoolOnly' title="">[DLA-R100-PoolOnly]</a></li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p><span id="DTCOP-R048" class="rqDef" title="Paste as Reference">[DTCOP-R048 Paste as Reference]</span></p>
+<ul>
+<li>Pastes DTCs from the clipboard (if it contains DTCs copied from the DTC Pool)</li>
+</ul>
+<blockquote>
+<p>Not allowed if...</p>
+</blockquote>
+<ul>
+<li>in DTC Pool (obvious), or</li>
+<li>in User Defined Fault Memory <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-UDFM' title="">[DTCA-R020-UDFM]</a></li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p><span id="DTCOP-R050" class="rqDef" title="Replace Reference with Copy">[DTCOP-R050 Replace Reference with Copy]</span></p>
+<ul>
+<li>removes the reference into DTC Pool, replaces it by a copy with the same properties</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R235' title="">[EVOP-R235]</a> for Events that referenced the DTC referenced from the DTC Pool: associates them with the copy</li>
+<li>Note: used e.g. in...
+<ul>
+<li>Lock Variant <a class='rqRef' href='../../30%20Features/Variant/Lock%20Variant.htm#VAR-R015-d2' title="">[VAR-R015-d2]</a></li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Not allowed if...</p>
+</blockquote>
+<ul>
+<li>in DTC Pool (obvious), or</li>
+<li>in User Defined Fault Memory (obvious) <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-UDFM' title="">[DTCA-R020-UDFM]</a></li>
+<li>for a DTC that is not a reference into DTC Pool (obvious), or</li>
+<li>if the DTC referenced in the DTC Pool has required=&quot;as reference&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-reqAsRef' title="&quot;Required as reference&quot;">[DTCA-R020-reqAsRef]</a>.</li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<p><span id="DTCOP-R060" class="rqDef" title="Replace Copy with Reference">[DTCOP-R060 Replace Copy with Reference]</span></p>
+<ul>
+<li>removes the DTC, replaces it by a DTC reference into DTC Pool to a DTC with the same code.</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R235' title="">[EVOP-R235]</a> for Events that referenced the DTC: associates them with the DTC reference into DTC Pool</li>
+</ul>
+<blockquote>
+<p>Not allowed if...</p>
+</blockquote>
+<ul>
+<li>in DTC Pool, or</li>
+<li>for a DTC that already is a reference into DTC Pool (obvious), or</li>
+<li>in User Defined Fault Memory <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-UDFM' title="">[DTCA-R020-UDFM]</a></li>
+<li>the Conditions for Modifying Operations within a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> do not permit</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Procedure <a href="../../15%20Procedures/DTC/How%20to%20Edit%20DTCs%20Efficiently.htm">How to Edit DTCs Efficiently</a></li>
+<li><a href="Available%20DTCs.htm">Available DTCs (DTC Pool)</a></li>
+<li><a href="../../30%20Features/Document/Authorization.htm">Document-Level Authorization</a></li>
+<li><a href="DTC.htm">DTC (Feature)</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">DTC Columns (Feature)</a></li>
+</ul>
+</body>
+</html>

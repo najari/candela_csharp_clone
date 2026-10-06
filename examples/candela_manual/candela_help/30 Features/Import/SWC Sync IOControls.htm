@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SWC Sync IOControls</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="swc-sync-io-controls">SWC Sync IO Controls</h1>
+<h2 id="sync-of-io-controls">Sync of IO Controls</h2>
+<p>Note: SWC Sync supports...</p>
+<ul>
+<li>only IO Controls with a <strong>scalar type</strong> like <code>uint8</code>,</li>
+<li><strong>no composite types</strong> such as records.</li>
+</ul>
+<h3 id="update-of-control-state-records">Update of Control State Records</h3>
+<p><span id="SWC-R1010" class="rqDef">[SWC-R1010]</span>: SWC Sync...</p>
+<ul>
+<li>for each SYS-EX IO control data object</li>
+<li>whose port interface requirement ID equals the “Instance Type” attribute <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R200' title="">[SWC-R200]</a> of (one or more) CANdela IO control diagnostic instances,</li>
+<li>update the control state records of the diagnostic instances:
+<ul>
+<li>it replaces all data objects of a control state record of any IO control service subfunction</li>
+<li>by a new data object corresponding to the SYS-EX IO control data object.</li>
+<li>... following the same rules as in synching stored and present value data records (see <a href="SWC%20Sync%20Data%20Objects.htm">SWC Sync Data Objects</a>)</li>
+</ul></li>
+</ul>
+<p><span id="SWC-R1030" class="rqDef">[SWC-R1030]</span>: If...</p>
+<ul>
+<li>no such CANdela IO Control diagnostic instance exists,</li>
+<li>or a routine record or subfunction is missing,</li>
+</ul>
+<p>...SWC Sync...</p>
+<ul>
+<li>write a warning to the log,</li>
+<li>with a hint that such an IO Control diagnostic instance must be created with the appropriate “Instance Type” attribute <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R200' title="">[SWC-R200]</a> value</li>
+<li>either manually or automatically (e.g. after a re-import of updated requirements from PREEvision, DOORS…).</li>
+</ul>
+<p><span id="SWC-R1040" class="rqDef">[SWC-R1040]</span>: SWC Sync does <strong>not modify</strong>...</p>
+<ul>
+<li>any IO Control diagnostic instance which does not have an “Instance Type” attribute <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R200' title="">[SWC-R200]</a> value corresponding to a IO Control data object extracted from the processed SYS-EX (it completely ignores such IO Control diagnostic instances).</li>
+</ul>
+<h3 id="update-of-swc-service-dependency-references">Update of SWC Service Dependency References</h3>
+<p><span id="SWC-R1050" class="rqDef">[SWC-R1050]</span>: SWC Sync...</p>
+<ul>
+<li>for each CANdela IO control instance</li>
+<li>whose “Instance Type” attribute <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R200' title="">[SWC-R200]</a> equals the port interface requirement ID of the SYS-EX IO control data object</li>
+<li>update the “ASR SWC DataElement Ref” attribute <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R220' title="">[SWC-R220]</a></li>
+<li>but only if there is no other CANdela IO Control diagnostic instance with the same “Instance Type” in any of the variants that diagnostic instance belongs to.</li>
+</ul>
+<p><span id="SWC-R1060" class="rqDef">[SWC-R1060]</span>: SWC Sync overwrites the “ASR SWC DataElement Ref” attribute <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R210' title="">[SWC-R210]</a> from the instance ref of the IO control data object.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance</a></li>
+<li><a href="SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a></li>
+<li><a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a></li>
+</ul>
+</body>
+</html>

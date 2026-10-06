@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>State Groups</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="state-groups-user-interface">State Groups (User Interface)</h1>
+<p>See also the <a href="../../30%20Features/State%20Dependency/State%20Dependency.htm">State Dependency Feature</a>.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/State%20Groups.jpg" alt="State Groups and States" />
+<p class="caption">State Groups and States</p>
+</div>
+<p>This page shows all <strong>state groups</strong> and their <strong>states</strong>.</p>
+<p>In order to create a <strong>new session</strong> or a <strong>new security level</strong>, ...</p>
+<ul>
+<li>click the respective entry in the upper list,</li>
+<li>then click &quot;Please click here to create a new element&quot; in the lower list.</li>
+</ul>
+<h2 id="state-groups">State Groups</h2>
+<p>Each state group represents one mechanism to block execution of services, see the introduction to the <a href="../../30%20Features/State%20Dependency/State%20Dependency.htm">State Dependency Feature</a>:</p>
+<ul>
+<li>Session</li>
+<li>Security Access</li>
+<li>Authorization (certificate based)</li>
+<li>... your own ...</li>
+</ul>
+<h3 id="name">Name</h3>
+<p>See the <a href="../../30%20Features/Common%20Properties/Name.htm">name</a> feature.</p>
+<h3 id="semantic">Semantic</h3>
+<p>Allows to assign a predefined semantics <a class='rqRef' href='../../30 Features\State Dependency\State Group.htm#STG-R050' title="">[STG-R050]</a>:</p>
+<ul>
+<li>session</li>
+<li>security</li>
+<li>authorization</li>
+</ul>
+<p>For other state groups, use <code>none</code>.</p>
+<h3 id="negative-response-code">Negative Response Code</h3>
+<p>A NRC to be used as default in services that are relevant for the state group, to indicate that the request has been denied due to the state group. See <a class='rqRef' href='../../30 Features\Negative Response\Negative Response.htm#NRC-R050' title="State Group NRC">[NRC-R050]</a>.</p>
+<h2 id="states">States</h2>
+<h3 id="state-position-in-the-list">State Position in the List</h3>
+<p>The first state in the list is used as the initial state.</p>
+<p>You can move one or multiple states up or down using the buttons in ribbon tab Home | Move.</p>
+<h3 id="name-1">Name</h3>
+<p>See the <a href="../../30%20Features/Common%20Properties/Name.htm">name</a> feature.</p>
+<h3 id="create-new-state">Create New State</h3>
+<p>For the <strong>first state</strong> of a State Group (CDS-12262 6.0), CANdelaStudio sets...</p>
+<ul>
+<li>all existing services as executable</li>
+<li>no service performs a state transition</li>
+</ul>
+<p>For a <strong>subsequent state</strong> of a State Group, CANdelaStudio prompts (CDS-11638 6.0):</p>
+<blockquote>
+<p>Are the existing services executable in the new state <code>&lt;state&gt;</code> of state group <code>&lt;state group&gt;</code>?</p>
+<p>Please specify the initial setting now.</p>
+<p>You can edit the state transitions for individual services in the 'Dependencies' dialog later.</p>
+</blockquote>
+<p>The dialog provides a checkbox like</p>
+<blockquote>
+<p>Add NRC &quot;0x22&quot; to all services</p>
+</blockquote>
+<p>with the NRC defined at the state group.</p>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="Dependencies.htm">State Dependencies Page</a></li>
+<li><a href="Defaults.htm">Defaults Page</a></li>
+</ul>
+<p>Feature:</p>
+<ul>
+<li><a href="../../30%20Features/State%20Dependency/Authorization.htm">Authorization</a> (certificate-based)</li>
+<li><a href="../../30%20Features/State%20Dependency/Link%20Target%20Group%20to%20State.htm">Link Target Group to State</a></li>
+<li><a href="../../30%20Features/State%20Dependency/Security.htm">Security</a></li>
+<li><a href="../../30%20Features/State%20Dependency/Session%20Security%20Wizard.htm">Session Security Wizard</a></li>
+<li><a href="../../30%20Features/State%20Dependency/Session.htm">Session</a></li>
+<li><a href="../../30%20Features/State%20Dependency/State%20Dependency.htm">State Dependency Feature</a></li>
+<li><a href="../../30%20Features/State%20Dependency/State%20Group.htm">State Group</a></li>
+<li><a href="../../30%20Features/State%20Dependency/State%20Transitions.htm">State Transitions (Feature)</a></li>
+<li><a href="../../30%20Features/State%20Dependency/State.htm">State</a></li>
+</ul>
+</body>
+</html>

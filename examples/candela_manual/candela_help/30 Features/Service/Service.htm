@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Service</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="service"><span id='_index_446728109'>Service</span></h1>
+<h2 id="introduction">Introduction</h2>
+<p>A service is the basic mechanism in diagnostic communication with an ECU.</p>
+<p>In a CANdela document, a service is always based on the structure defined in the document template in a <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a>. You cannot specify a service containing an arbitry Service ID or byte sequence.</p>
+<p>CANdela services are one part of a <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">diagnostic instance</a>, the other part being the <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram tables with data objects</a>.</p>
+<h2 id="addressing">Addressing</h2>
+<p>The following properties get their <strong>constant value</strong> or at least the <strong>defaults</strong> from the Protocol Service, see there for details.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">FeatureID</th>
+<th align="left">Property</th>
+<th>from P.S.</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span id="SVC-R710" class="rqDef">[SVC-R710]</span></td>
+<td align="left">Suppress Positive Response Message Indication Bit (SPRMIB)</td>
+<td>value</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R710' title="">[PS-R710]</a></td>
+</tr>
+<tr class="even">
+<td align="left"><span id="SVC-R720" class="rqDef">[SVC-R720]</span></td>
+<td align="left">Supports multiple responses</td>
+<td>value</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R720' title="">[PS-R720]</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="SVC-R730" class="rqDef">[SVC-R730]</span></td>
+<td align="left">Supports periodic responses</td>
+<td>value</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R730' title="">[PS-R730]</a></td>
+</tr>
+<tr class="even">
+<td align="left"><span id="SVC-R740" class="rqDef">[SVC-R740]</span></td>
+<td align="left">Test system sends physical request</td>
+<td>default</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R740' title="">[PS-R740]</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="SVC-R745" class="rqDef">[SVC-R745]</span></td>
+<td align="left">Test system sends functional request</td>
+<td>default</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R745' title="">[PS-R745]</a></td>
+</tr>
+<tr class="even">
+<td align="left"><span id="SVC-R750" class="rqDef">[SVC-R750]</span></td>
+<td align="left">The test system shall set the SPRMIB in the physical request</td>
+<td>default</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R750' title="">[PS-R750]</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="SVC-R755" class="rqDef">[SVC-R755]</span></td>
+<td align="left">The test system shall set the SPRMIB in the functional request</td>
+<td>default</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R755' title="">[PS-R755]</a></td>
+</tr>
+<tr class="even">
+<td align="left"><span id="SVC-R760" class="rqDef">[SVC-R760]</span></td>
+<td align="left">ECU sends a response (on a physical request)</td>
+<td>default</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R760' title="">[PS-R760]</a>, always <code>true</code> for UDS (CDS-39671 v11)</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="SVC-R765" class="rqDef">[SVC-R765]</span></td>
+<td align="left">ECU sends a response (on a functional request)</td>
+<td>default</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R765' title="">[PS-R765]</a>, always <code>true</code> for UDS (CDS-39671 v11)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="addressing"><span id='_index_446728110'>Physical Addressing</span> and <span id='_index_446728111'>Functional Addressing</span><span id='_index_446728112' title='Addressing: physical, functional' data-term='Addressing' data-text='physical, functional'></span></h2>
+<p>You can control for each individual <strong>service</strong> whether it supports</p>
+<ul>
+<li><strong>physical</strong> and/or</li>
+<li><strong>functional addressing</strong>.</li>
+</ul>
+<p><strong>Defaults</strong> are taken from the <a href="../../30%20Features/Protocol%20Service/Addressing.htm">Protocol Service Addressing</a>.</p>
+<p>The <strong>CAN-IDs</strong> are specified as <a href="../../30%20Features/Interface/Communication%20Parameter.htm">Communication Parameters</a> on document level.</p>
+<p>See the Service property dialog <a href="../../20%20UserInterface/Service/Service%20Property%20Page%20Addressing.htm">Addressing</a>.</p>
+<h2 id="semantics-cds-10449-6.0">Semantics (CDS-10449 6.0)</h2>
+<p><span id="SVC-R200" class="rqDef">[SVC-R200]</span> Semantics is a non-translatable string property. It may be empty. Is is used for export to ODX.</p>
+<p>Before 6.0, it could be represented as a service attribute with Qualifier &quot;Semantic&quot;, Category &quot;ODX&quot;.</p>
+<p>The default for the property is taken from the semantics at the Used Protocol Service <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#DCLT-R320' title="Used Protocol Service Semantics">[DCLT-R320]</a>.</p>
+<h2 id="activated-cds-30340-8.2-sp2">Activated (CDS-30340 8.2 SP2)</h2>
+<p><span id="SVC-R300" class="rqDef" title="Service Activated">[SVC-R300 Service Activated]</span></p>
+<ul>
+<li>CANdelaStudio supports an &quot;activated&quot; flag at a service.</li>
+<li>Default: true (e.g. when creating a diagnostic instance).</li>
+<li>It is valid to have a de-activated diagnostic instance that contains an activated service. Motivation: if user temporarily de-activates a diagnostic instance and activates it again, the activation of services shall be as before (it would be bad to have all services de-activated, too).</li>
+<li>It is valid to have no activated service in a diagnostic instance.</li>
+<li>data that belongs to de-activated services only is implicitly also &quot;de-activated&quot;. </li>
+<li>It is invalid to have a service de-activated if the &quot;Used ProtocolService&quot; has convention &quot;required&quot;, see <a class='rqRef' href='../../30%20Features/Service/Service.htm#SVC-R350' title="">[SVC-R350]</a>.</li>
+<li>It is valid to have a service de-activated if the diagnostic instance is required. Motivation: it is valid to delete a service if the diagnostic instance is required.</li>
+</ul>
+<p><span id="SVC-R320" class="rqDef">[SVC-R320]</span> Authorization for modifying the &quot;activated&quot; flag shall be as for create/delete of the service.</p>
+<p><span id="SVC-R325" class="rqDef">[SVC-R325]</span> Any functionality that uses the service shall handle the flag like it handles activation at a diagnostic instance.</p>
+<p><span id="SVC-R328" class="rqDef">[SVC-R328]</span></p>
+<ul>
+<li>compare shall compare the flag.</li>
+<li>update shall transport the flag value &quot;true&quot;.</li>
+<li>if the &quot;Used ProtocolService&quot; has convention != &quot;required&quot;,
+<ul>
+<li>update shall transport the flag value &quot;false&quot;,</li>
+<li>otherwise debug message like &quot;Can't remove service 'xxx' in target document -&gt; it is required&quot;</li>
+</ul></li>
+</ul>
+<p><span id="SVC-R340" class="rqDef" title="Migration">[SVC-R340 Migration]</span></p>
+<ul>
+<li>when loading a file from pre 8.2, CANdelaStudio shall set the flag to true.</li>
+<li>when saving a file to pre 8.2, CANdelaStudio shall drop a service that has the flag = false.
+<ul>
+<li>when all existing services of a diagnostic instance are de-activated, CANdelaStudio shall skip the diagnostic instance.</li>
+<li>when a telegram table is used by de-activated services only, CANdelaStudio shall drop it, too.</li>
+</ul></li>
+</ul>
+<p><span id="SVC-R350" class="rqDef">[SVC-R350]</span>: if a service is de-activated, but its &quot;Used ProtocolService&quot; has convention &quot;required&quot;, then constraints check shall report an error and prevent from exports, like</p>
+<pre><code>Service &quot;Read&quot; in diagnostic instance &quot;A/D Values&quot; must not be de-activated,
+since in the template, its Used ProtocolService has convention &quot;required&quot;.</code></pre>
+
+<p><span id="SVC-R360" class="rqDef">[SVC-R360]</span> If a service is de-activated, but it is referenced by a variant identification feature, the feature shall be reported as invalid.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Interface/Communication%20Parameter.htm">Communication Parameter</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Addressing.htm">Protocol Service Addressing</a></li>
+<li><a href="../../30%20Features/State%20Dependency/Security.htm">Security</a></li>
+<li><a href="Service%20Authorization.htm">Service Authorization</a></li>
+<li><a href="../../20%20UserInterface/Service/Properties.htm">Service Property Dialog</a></li>
+<li>Service property dialog <a href="../../20%20UserInterface/Service/Service%20Property%20Page%20Addressing.htm">Addressing</a></li>
+<li><a href="../../20%20UserInterface/Service/Services.htm">Services (User Interface)</a></li>
+<li><a href="../../30%20Features/State%20Dependency/Session.htm">Session</a></li>
+<li><a href="Shortcut%20Qualifier%20and%20Shortcut%20Name.htm">Shortcut Qualifier and Shortcut Name</a></li>
+<li>State Transitions <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R020' title="">[STTR-R020]</a></li>
+</ul>
+</body>
+</html>

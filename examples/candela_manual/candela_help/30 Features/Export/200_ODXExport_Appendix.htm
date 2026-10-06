@@ -1,0 +1,2720 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>200_ODXExport_Appendix</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="appendix">Appendix</h1>
+<h2 id="odx-export-changelog">Odx-Export ChangeLog</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Feature</strong></th>
+<th></th>
+<th align="left"><strong>See chapter</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>CANdelaStudio 4.0 </strong></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Support for Odx2.0.1</td>
+<td align="left"><a href="1_ODXExport_Introduction.htm">Introduction</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Export of PROTOCOL-LAYER and COMPARAM-SPEC</td>
+<td align="left"><a href="1_ODXExport_Introduction.htm#options">Options</a>, <a href="40_ODXExport_ECU%20Properties.htm#communication-parameters-and-protocollayer">Communication Parameters and ProtocolLayer</a>, <a href="50_ODXExport_CANdela%20base%20variant%20and%20variants.htm#value-inheritance-between-base-variants-and-protocols">Value inheritance between Base-Variants and Protocols</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Generation of SHORT-NAME/LONG-NAME and DESC for DIAG-LAYERs</td>
+<td align="left"><a href="50_ODXExport_CANdela%20base%20variant%20and%20variants.htm#candela-base-variant-and-variants-common-properties">Common properties</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Empty Text-tables, Characteristic-curves and Formula - DataTypes are exported as 'IDENTITY'-DOP</td>
+<td align="left"><a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#text-table">Text table</a>, <a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#characteristic-curve">Characteristic curve</a>, <a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#formula">Formula</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Export of Packet-DataTypes as STRUCTURE</td>
+<td align="left"><a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#packet">Packet</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>CANdela Studio 4.0 SP3</strong></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Optional export of Descriptions/Formatted Descritpions</td>
+<td align="left"><a href="1_ODXExport_Introduction.htm#options">Options</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>DIAG-SERVICE.IS-MANDATORY</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#is-mandatory">IS-MANDATORY</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Export of SDGs at DTC-DOP</td>
+<td align="left"><a href="1_ODXExport_Introduction.htm#options">Options</a>, <a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#dtc-table">DTC table</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>CANdelaStudio 4.0 SP4</strong></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Empty Iterators are skipped</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>SimpleProxyComp with destiny='any' is exported as IDENTITY-DOP</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#simpleproxycomp-with-destinyany">SimpleProxyComp with destiny='any'</a></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>CANdelaStudio 5.0</strong></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Export of TABLEs</td>
+<td align="left"><a href="70_ODXExport_Mapping%20of%20CANdela%20diagnostic%20instances%20to%20ODX.htm">Mapping of CANdela diagnostic instances to ODX</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Export of MUX</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#generic-muxes">Generic Muxes</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>CANdelaStudio 5.0 SP1</strong></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>CANdelaDiagServiceInfo</td>
+<td align="left"><a href="1_ODXExport_Introduction.htm#options">Options</a>, <a href="80_ODXExport_Services%20and%20telegrams.htm#export-of-candelaserviceinformation">Export of CANdelaServiceInformation</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>ECU-SHARED-DATA</td>
+<td align="left"><a href="1_ODXExport_Introduction.htm#options">Options</a>, <a href="120_ODXExport_ECU-SHARED-DATA.htm#ecu-shared-data">ECU-SHARED-DATA</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>VEHICLE-INFO-SPEC</td>
+<td align="left"><a href="1_ODXExport_Introduction.htm#options">Options</a>, <a href="130_ODXExport_VEHICLE-INFO-SPEC.htm">VEHICLE-INFO-SPEC</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>CANdelaStudio 5.0 SP2</strong></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Export of CANdelaTemplateInformation</td>
+<td align="left"><a href="1_ODXExport_Introduction.htm#options">Options</a>, <a href="30_ODXExport_Administrative%20data.htm#candelatemplateinformation">CANdelaTemplateInformation</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Export of a single TABLE per diagnostic class</td>
+<td align="left"><a href="70_ODXExport_Mapping%20of%20CANdela%20diagnostic%20instances%20to%20ODX.htm#export-of-a-single-table-per-diagnostic-class">Export of a single TABLE per diagnostic class</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Export of CANdelaJobContainerInformation</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#export-of-candelaserviceinformation">Export of CANdelaServiceInformation</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>DIAG-CODED-TYPE of Fields with fix length</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#diag-coded-type-of-fields">DIAG-CODED-TYPE of Fields</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Export of STATIC-FIELD</td>
+<td align="left"><a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#flat-export-of-packet-content">Flat export of Packet content</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Unique ECU-Variant-SHORT-NAMEs</td>
+<td align="left"><a href="50_ODXExport_CANdela%20base%20variant%20and%20variants.htm#unique-ecu-variant-short-names">Unique ECU-Variant-SHORT-NAMEs</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Pdx-Export</td>
+<td align="left"><a href="150_ODXExport_PDX-Export.htm#pdx-export">PDX-Export</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>TABLE.SEMANTIC calculated from STATIC-COMP-Semantic</td>
+<td align="left"><a href="70_ODXExport_Mapping%20of%20CANdela%20diagnostic%20instances%20to%20ODX.htm#generation-of-identification">Generation of Identification</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>CODE-FILEs are exported</td>
+<td align="left"><a href="90_ODXExport_Jobs.htm#export-of-jobs">Export of Jobs</a>, <a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#procedural">Procedural</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>ID-Generation</td>
+<td align="left"><a href="20_ODXExport_Common%20properties.htm#id">ID</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>CANdela-TemplateInformation</td>
+<td align="left"><a href="30_ODXExport_Administrative%20data.htm#candelatemplateinformation">CANdelaTemplateInformation</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>DIAG-SERVICE.SHORT-NAME/LONG-NAME</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#diag-serviceshort-namelong-name">DIAG-SERVICE.SHORT-NAME/LONG-NAME</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>DIAG-SERVICE.IS-MANDATORY</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#is-mandatory">IS-MANDATORY</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Export of JAVA-Jobs</td>
+<td align="left"><a href="90_ODXExport_Jobs.htm#export-of-jobs">Export of Jobs</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>SINGLE-ECU-JOB.SHORT-NAME/LONG-NAME</td>
+<td align="left"><a href="90_ODXExport_Jobs.htm#deactivated-jobs">Deactivated Jobs</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>DiagInstance.Description as TABLE-ROW.DESC</td>
+<td align="left"><a href="70_ODXExport_Mapping%20of%20CANdela%20diagnostic%20instances%20to%20ODX.htm#generation-of-identification">Generation of Identification</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Export of more than one file per DIAG-LAYER</td>
+<td align="left"><a href="50_ODXExport_CANdela%20base%20variant%20and%20variants.htm#exported-odx-files">Exported ODX-Files</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Export of OIDs</td>
+<td align="left"><a href="20_ODXExport_Common%20properties.htm#hierarchical-ids">Hierarchical IDs</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Export of LogMessages to the ODX-File</td>
+<td align="left"><a href="30_ODXExport_Administrative%20data.htm#export-of-logmessages-to-file">Export of LogMessages to File</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Duplicate Reserved PARAM for DataTypes with BitMask</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#dataobjects-referencing-datatypes-with-bitmasks">DataObjects referencing DataTypes with BitMasks</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>VariantIdentification for Dynamic TABLEs</td>
+<td align="left"><a href="70_ODXExport_Mapping%20of%20CANdela%20diagnostic%20instances%20to%20ODX.htm#variantidentification-for-diag-services-using-dynamic-tables">VariantIdentification for DIAG-SERVICEs using dynamic TABLEs</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Check of PHYSICAL-TYPEs for SYSTEM-PARAMs</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#system-param">SYSTEM-PARAM</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>DIAG-CODED-TYPE for RESEREDs</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#reserved-dataobjects-in-intel-bitfields">Reserved-DataObjects in Intel-BitFields</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Handling of empty CASEs</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#generic-muxes">Generic Muxes</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Invertability of PiecewiseLinear-DataType</td>
+<td align="left"><a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#piecewise-linear">Piecewise Linear</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>COMPARAMs for FIAT-KWP in Odx201</td>
+<td align="left"><a href="40_ODXExport_ECU%20Properties.htm#optimization-of-comparam-refs">Optimization of COMPARAM-REFs</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Support for EndOfService-Iterator in TABLEs</td>
+<td align="left"><a href="70_ODXExport_Mapping%20of%20CANdela%20diagnostic%20instances%20to%20ODX.htm#preconditions">Preconditions</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>TID from ShortCutName</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#diag-serviceshort-namelong-name">DIAG-SERVICE.SHORT-NAME/LONG-NAME</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>BitPosition0</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#dataobjects-with-variable-length">Dataobjects with variable length</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td><strong>ODX2.1.0 Specific modifications</strong></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Export of CANdela-StateModel to ODX2.1.0 STATE-MODEL</td>
+<td align="left"><a href="180_ODXExport_ODX2.1.0%20Specific%20elements.htm#odx-210-state-model">ODX 2.1.0 STATE-Model</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Export of NRC-CONST</td>
+<td align="left"><a href="180_ODXExport_ODX2.1.0%20Specific%20elements.htm#export-of-nrc-const">Export of NRC-CONST</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>State-TransitionRefs for SINGLE-ECU-JOB</td>
+<td align="left"><a href="180_ODXExport_ODX2.1.0%20Specific%20elements.htm#states-at-jobs">States at Jobs</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>PhysicalType A_INT32/A_UINT32 for LinearDataTypes</td>
+<td align="left"><a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#L64bit-atomic-data-types">64Bit Atomic data types</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Uncovered coded values</td>
+<td align="left"><a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#L64bit-atomic-data-types">64Bit Atomic data types</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Semantics at VService/VJob</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#candela-service-semantic">SEMANTIC at Service</a>, <a href="90_ODXExport_Jobs.htm#single-ecu-jobshort-namelong-name-semantic">SEMANTIC at Job</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>DefaultValues for GroupOfDtc</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#supports-single-errors">&quot;Supports single errors&quot;</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Ranges for Mux-Cases</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#generic-muxes">Generic Muxes</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>CompuInverse-Values</td>
+<td align="left"><a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#linear">Linear</a>, <a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#piecewise-linear">Piecewise Linear</a>, <a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#text-table">Text table</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Inheritance in case of VariantIdentification</td>
+<td align="left"><a href="50_ODXExport_CANdela%20base%20variant%20and%20variants.htm#value-inheritance-and-variantidentification">Value inheritance and VariantIdentification</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Default values for StatusOfDtc</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#statusofdtc">StatusOfDtc</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Multilanguage ODX</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/Export%20Multi-Language%20ODX%20Files.htm#ODXE-R1160' title="">[ODXE-R1160]</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>ODX2.2.0</td>
+<td align="left"><a href="190_ODXExport_ODX2.2.0%20Specific%20elements.htm">ODX2.2.0 Specific elements</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>COMPARAM-REFs at DIAG-SERVICE</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#comparam-ref">COMPARAM-REF</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Improved handling of PDX-Export</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Naming of TABLEs</td>
+<td align="left"><a href="70_ODXExport_Mapping%20of%20CANdela%20diagnostic%20instances%20to%20ODX.htm#generation-from-attribute-values">Generation from Attribute-values</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>ADDITIONAL-AUDIENCE(ODX2.2.0)</td>
+<td align="left"><a href="190_ODXExport_ODX2.2.0%20Specific%20elements.htm#exclusion-of-subcomponents-for-variants">Exclusion of SUBCOMPONENTS for Variants</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Configure type of TABLE usage in Template</td>
+<td align="left"><a href="70_ODXExport_Mapping%20of%20CANdela%20diagnostic%20instances%20to%20ODX.htm#mapping-types">Mapping types</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Export of ECU-SUB-COMPONENTS (ODX2.2.0)</td>
+<td align="left"><a href="190_ODXExport_ODX2.2.0%20Specific%20elements.htm#sub-components">SUB-COMPONENTS</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Export only necessary COMPARAM-REFs</td>
+<td align="left"><a href="40_ODXExport_ECU%20Properties.htm#communication-parameters-and-protocollayer">Communication Parameters and ProtocolLayer</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Export of Synchronization Attribute</td>
+<td align="left"><a href="190_ODXExport_ODX2.2.0%20Specific%20elements.htm#synchronization-attribute">Synchronization attribute</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Support for DTC-Pool</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#statusofdtc">StatusOfDtc</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Allow definition of MUX in Telegram Table</td>
+<td align="left"><a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#mux">MUX</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Allow definition of FIELDs in Telegram Table</td>
+<td align="left"><a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#field-data-types">FIELD data types</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Abort of ODX-Export in case the cdd is incorrect / Treat warnings as errors</td>
+<td align="left"><a href="1_ODXExport_Introduction.htm#options">Options</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Documentation of Warnings and Errors</td>
+<td align="left"><a href="1_ODXExport_Introduction.htm#creating-odx-documents-with-candelastudio">Creating ODX documents with CANdelaStudio</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Change extension of ODX-D parts to &quot;odx-d&quot;</td>
+<td align="left"><a href="50_ODXExport_CANdela%20base%20variant%20and%20variants.htm#file-extension-odx-d">File name extension odx-d</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Evaluate CANdelaService-property &quot;TestsystemSetsSprmib&quot;</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#diagnostic-class">DIAGNOSTIC-CLASS</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Usage of MATCHING-REQUEST-PARAM</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#usage-of-matching-request-param">Usage of MATCHING-REQUEST-PARAM</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Allow exclusion of Vehicle System Group for some variants</td>
+<td align="left"><a href="190_ODXExport_ODX2.2.0%20Specific%20elements.htm#exclusion-of-subcomponents-for-variants">Exclusion of SUBCOMPONENTS for Variants</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Deactivate Jobs</td>
+<td align="left"><a href="90_ODXExport_Jobs.htm#deactivated-jobs">Deactivated Jobs</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Possibility to make an ODX Export of selected DiagClasses or/and -Instances</td>
+<td align="left"><a href="1_ODXExport_Introduction.htm#export-of-selected-diagnostic-classes-instances-and-jobcontainers">Export of selected Diagnostic classes, Instances and JobContainers</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>States at Jobs</td>
+<td align="left"><a href="180_ODXExport_ODX2.1.0%20Specific%20elements.htm#states-at-jobs">States at Jobs</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Export data objects associated with Vehicle System Group</td>
+<td align="left"><a href="190_ODXExport_ODX2.2.0%20Specific%20elements.htm#dataobjects-associated-with-vehiclesystem-groups">DataObjects associated with VehicleSystem Groups</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Support for Services without Request</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#export-of-services-without-request">Export of Services without Request</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Support for K-Line Comparams</td>
+<td align="left"><a href="200_ODXExport_Appendix.htm#default-mapping-kwp-k-line">Mapping Tables for COMPARAM-REFs</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Increase maximum name length to 255</td>
+<td align="left"><a href="20_ODXExport_Common%20properties.htm#odx-long-name">ODX LONG-NAME</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Handling of ZeroTerminated Fix-Length ASCII-Fields</td>
+<td align="left"><a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#fix-length-fields">Fix length fields</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>ODX220 Do not export DiagInstanceQualifier as Prefix for PARAMs in TABLE-ROWs</td>
+<td align="left"><a href="70_ODXExport_Mapping%20of%20CANdela%20diagnostic%20instances%20to%20ODX.htm#generation-of-identification">Generation of Identification</a></td>
+</tr>
+<tr class="odd">
+<td align="left">CANdela 7.1</td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Generation of ENABLED-AUDIENCE-REF</td>
+<td align="left"><a href="190_ODXExport_ODX2.2.0%20Specific%20elements.htm#additional-audiences">ADDITIONAL-AUDIENCES</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>&quot;WrapBitfieldInStructure&quot; attribute</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/100_ODXExport_Data%20objects%20and%20bitfields.htm#ODXE-R1100-PhysBitfield' title="">[ODXE-R1100-PhysBitfield]</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Support for K-Line in ODX201</td>
+<td align="left"><a href="200_ODXExport_Appendix.htm#default-mapping-kwp-k-line">Default mapping KWP K-Line</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Support of MayBeComined via an additional DIAG-SERVICE for the TABLE</td>
+<td align="left"><a href="80_ODXExport_Services%20and%20telegrams.htm#additional-service-for-maybecombined">Additional service for &quot;Maybecombined&quot;</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Mapping of &quot;unsupported&quot; COMPARAMs</td>
+<td align="left"><a href="40_ODXExport_ECU%20Properties.htm#mapping-of-unsupported-comparams">Mapping of &quot;Unsupported&quot; comparams</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Support for UNITs at COMPARAMs</td>
+<td align="left"><a href="40_ODXExport_ECU%20Properties.htm#mapping-of-unsupported-comparams">Mapping of &quot;Unsupported&quot; comparams</a></td>
+</tr>
+<tr class="even">
+<td align="left">CANdela 7.5</td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Support for TABLE-ROW-REFs to ECU-SHARED-DATA</td>
+<td align="left"><a href="120_ODXExport_ECU-SHARED-DATA.htm#table-rows-from-ecu-shared-data">TABLE-ROWs from ECU-SHARED-DATA</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>Separate service for &quot;supports single errors&quot;</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#supports-single-errors">&quot;Supports single errors&quot;</a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Support multiple data objects with dynamic length within a single telegram table</td>
+<td align="left"><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm#dataobjects-with-variable-length">Dataobjects with variable length</a></td>
+</tr>
+<tr class="even">
+<td align="left">CANdela 8.0</td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td>Job Output parameters in Identification features</td>
+<td align="left"><a href="50_ODXExport_CANdela%20base%20variant%20and%20variants.htm#variant-identification">Variant identification</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td>ODX-Version for ECU-SHARED-DATA</td>
+<td align="left"><a href="120_ODXExport_ECU-SHARED-DATA.htm#support-for-different-versions">Support for different versions</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="list-of-supported-odx-elements">List of supported ODX elements</h2>
+<table style="width:98%;">
+<colgroup>
+<col width="31%" />
+<col width="31%" />
+<col width="34%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Elements</strong></td>
+<td align="left"><strong>Children</strong></td>
+<td align="left"><strong>Attributes</strong></td>
+</tr>
+<tr class="even">
+<td align="left">ADDRESS</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">ADMIN-DATA</td>
+<td align="left">DOC-REVISIONS<br />
+LANGUAGE</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">ALL-VALUE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">AUDIENCE</td>
+<td align="left"></td>
+<td align="left">IS-AFTERMARKET<br />
+IS-AFTERSALES<br />
+IS-DEVELOPMENT<br />
+IS-MANUFACTURING<br />
+IS-SUPPLIER</td>
+</tr>
+<tr class="even">
+<td align="left">BASE-VARIANT</td>
+<td align="left">ADMIN-DATA<br />
+COMPANY-DATAS<br />
+COMPARAM-REFS<br />
+DESC<br />
+DIAG-COMMS<br />
+DIAG-DATA-DICTIONARY-SPEC<br />
+FUNCT-CLASSS<br />
+GLOBAL-NEG-RESPONSES<br />
+IMPORT-REFS<br />
+LONG-NAME<br />
+NEG-RESPONSES<br />
+PARENT-REFS<br />
+POS-RESPONSES<br />
+REQUESTS<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="odd">
+<td align="left">BASE-VARIANT-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">BASE-VARIANTS</td>
+<td align="left">BASE-VARIANT</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">BASIC-STRUCTURE-REF</td>
+<td align="left"></td>
+<td align="left">ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">BIT-LENGTH</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">BIT-MASK</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">BIT-POSITION</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">BYTE-LENGTH</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">BYTE-POSITION</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">BYTE-SIZE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">CASE</td>
+<td align="left">LONG-NAME<br />
+LOWER-LIMIT<br />
+SHORT-NAME<br />
+STRUCTURE-REF<br />
+UPPER-LIMIT</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">CASES</td>
+<td align="left">CASE</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">CATEGORY</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">CHANGE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">CITY</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">CODE-FILE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">CODED-VALUE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">COMPANY-DATA</td>
+<td align="left">DESC<br />
+LONG-NAME<br />
+SHORT-NAME<br />
+TEAM-MEMBERS</td>
+<td align="left">ID</td>
+</tr>
+<tr class="even">
+<td align="left">COMPANY-DATAS</td>
+<td align="left">COMPANY-DATA</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">COMPARAM</td>
+<td align="left">DATA-OBJECT-PROP-REF<br />
+DESC<br />
+LONG-NAME<br />
+PHYSICAL-DEFAULT-VALUE<br />
+SHORT-NAME</td>
+<td align="left">CPTYPE<br />
+DISPLAY-LEVEL<br />
+ID<br />
+PARAM-CLASS</td>
+</tr>
+<tr class="even">
+<td align="left">COMPARAM-REF</td>
+<td align="left">DESC<br />
+PROTOCOL-SNREF<br />
+VALUE</td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">COMPARAM-REFS</td>
+<td align="left">COMPARAM-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">COMPARAM-SPEC</td>
+<td align="left">ADMIN-DATA<br />
+COMPANY-DATAS<br />
+COMPARAMS<br />
+DATA-OBJECT-PROPS<br />
+DESC<br />
+LONG-NAME<br />
+SHORT-NAME<br />
+UNIT-SPEC</td>
+<td align="left">ID</td>
+</tr>
+<tr class="odd">
+<td align="left">COMPARAM-SPEC-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">COMPARAMS</td>
+<td align="left">COMPARAM</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">COMPU-CONST</td>
+<td align="left">V<br />
+VT</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">COMPU-DEFAULT-VALUE</td>
+<td align="left">VT</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">COMPU-DENOMINATOR</td>
+<td align="left">V</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">COMPU-INTERNAL-TO-PHYS</td>
+<td align="left">COMPU-DEFAULT-VALUE<br />
+COMPU-SCALES<br />
+PROG-CODE</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">COMPU-INVERSE-VALUE</td>
+<td align="left">V</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">COMPU-METHOD</td>
+<td align="left">CATEGORY<br />
+COMPU-INTERNAL-TO-PHYS</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">COMPU-NUMERATOR</td>
+<td align="left">V</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">COMPU-RATIONAL-COEFFS</td>
+<td align="left">COMPU-DENOMINATOR<br />
+COMPU-NUMERATOR</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">COMPU-SCALE</td>
+<td align="left">COMPU-CONST<br />
+COMPU-INVERSE-VALUE<br />
+COMPU-RATIONAL-COEFFS<br />
+DESC<br />
+LOWER-LIMIT<br />
+SHORT-LABEL<br />
+UPPER-LIMIT</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">COMPU-SCALES</td>
+<td align="left">COMPU-SCALE</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">CURRENT-EXP</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DATA-OBJECT-PROP</td>
+<td align="left">COMPU-METHOD<br />
+DESC<br />
+DIAG-CODED-TYPE<br />
+INTERNAL-CONSTR<br />
+LONG-NAME<br />
+PHYSICAL-TYPE<br />
+SHORT-NAME<br />
+UNIT-REF</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="odd">
+<td align="left">DATA-OBJECT-PROP-REF</td>
+<td align="left">TERMINATION-VALUE</td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">DATA-OBJECT-PROPS</td>
+<td align="left">DATA-OBJECT-PROP</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DATE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DEFAULT-CASE</td>
+<td align="left">LONG-NAME<br />
+SHORT-NAME<br />
+STRUCTURE-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DEPARTMENT</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DESC</td>
+<td align="left">p</td>
+<td align="left">TI</td>
+</tr>
+<tr class="odd">
+<td align="left">DETERMINE-NUMBER-OF-ITEMS</td>
+<td align="left">BYTE-POSITION<br />
+DATA-OBJECT-PROP-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DIAG-CODED-TYPE</td>
+<td align="left">BIT-LENGTH<br />
+BIT-MASK<br />
+LENGTH-KEY-REF<br />
+MAX-LENGTH<br />
+MIN-LENGTH</td>
+<td align="left">BASE-DATA-TYPE<br />
+BASE-TYPE-ENCODING<br />
+IS-HIGHLOW-BYTE-ORDER<br />
+TERMINATION<br />
+xsi:type</td>
+</tr>
+<tr class="odd">
+<td align="left">DIAG-COMM-REF</td>
+<td align="left"></td>
+<td align="left">ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">DIAG-COMM-SNREF</td>
+<td align="left"></td>
+<td align="left">SHORT-NAME</td>
+</tr>
+<tr class="odd">
+<td align="left">DIAG-COMMS</td>
+<td align="left">DIAG-COMM-REF<br />
+DIAG-SERVICE<br />
+SINGLE-ECU-JOB</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DIAG-DATA-DICTIONARY-SPEC</td>
+<td align="left">DATA-OBJECT-PROPS<br />
+DTC-DOPS<br />
+DYNAMIC-ENDMARKER-FIELDS<br />
+DYNAMIC-LENGTH-FIELDS<br />
+END-OF-PDU-FIELDS<br />
+ENV-DATA-DESCS<br />
+MUXS<br />
+STATIC-FIELDS<br />
+STRUCTURES<br />
+TABLES<br />
+UNIT-SPEC</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DIAG-LAYER-CONTAINER</td>
+<td align="left">ADMIN-DATA<br />
+BASE-VARIANTS<br />
+COMPANY-DATAS<br />
+DESC<br />
+ECU-SHARED-DATAS<br />
+ECU-VARIANTS<br />
+FUNCTIONAL-GROUPS<br />
+LONG-NAME<br />
+PROTOCOLS<br />
+SHORT-NAME</td>
+<td align="left">ID</td>
+</tr>
+<tr class="even">
+<td align="left">DIAG-SERVICE</td>
+<td align="left">AUDIENCE<br />
+DESC<br />
+FUNCT-CLASS-REFS<br />
+LONG-NAME<br />
+NEG-RESPONSE-REFS<br />
+POS-RESPONSE-REFS<br />
+RELATED-DIAG-COMM-REFS<br />
+REQUEST-REF<br />
+SDGS<br />
+SHORT-NAME</td>
+<td align="left">ADDRESSING<br />
+DIAGNOSTIC-CLASS<br />
+ID<br />
+IS-CYCLIC<br />
+IS-EXECUTABLE<br />
+IS-FINAL<br />
+IS-MANDATORY<br />
+IS-MULTIPLE<br />
+OID<br />
+SEMANTIC</td>
+</tr>
+<tr class="odd">
+<td align="left">DISPLAY-NAME</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DISPLAY-TROUBLE-CODE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DOC-REVISION</td>
+<td align="left">DATE<br />
+MODIFICATIONS<br />
+REVISION-LABEL<br />
+STATE<br />
+TEAM-MEMBER-REF<br />
+TOOL</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DOC-REVISIONS</td>
+<td align="left">DOC-REVISION</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DOP-BASE-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">DOP-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">DOP-SNREF</td>
+<td align="left"></td>
+<td align="left">SHORT-NAME</td>
+</tr>
+<tr class="even">
+<td align="left">DTC</td>
+<td align="left">DISPLAY-TROUBLE-CODE<br />
+LEVEL<br />
+SDGS<br />
+SHORT-NAME<br />
+TEXT<br />
+TROUBLE-CODE</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC-DOP</td>
+<td align="left">COMPU-METHOD<br />
+DESC<br />
+DIAG-CODED-TYPE<br />
+DTCS<br />
+LONG-NAME<br />
+PHYSICAL-TYPE<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="even">
+<td align="left">DTC-DOPS</td>
+<td align="left">DTC-DOP</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">DTC-VALUE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC-VALUES</td>
+<td align="left">DTC-VALUE</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DTCS</td>
+<td align="left">DTC<br />
+DTC-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DYNAMIC-ENDMARKER-FIELD</td>
+<td align="left">BASIC-STRUCTURE-REF<br />
+DATA-OBJECT-PROP-REF<br />
+LONG-NAME<br />
+SHORT-NAME</td>
+<td align="left">ID</td>
+</tr>
+<tr class="even">
+<td align="left">DYNAMIC-ENDMARKER-FIELDS</td>
+<td align="left">DYNAMIC-ENDMARKER-FIELD</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DYNAMIC-LENGTH-FIELD</td>
+<td align="left">BASIC-STRUCTURE-REF<br />
+DESC<br />
+DETERMINE-NUMBER-OF-ITEMS<br />
+LONG-NAME<br />
+OFFSET<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+IS-VISIBLE</td>
+</tr>
+<tr class="even">
+<td align="left">DYNAMIC-LENGTH-FIELDS</td>
+<td align="left">DYNAMIC-LENGTH-FIELD</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">ECU-SHARED-DATA</td>
+<td align="left">ADMIN-DATA<br />
+COMPANY-DATAS<br />
+DESC<br />
+DIAG-DATA-DICTIONARY-SPEC<br />
+LONG-NAME<br />
+SHORT-NAME</td>
+<td align="left">ID</td>
+</tr>
+<tr class="even">
+<td align="left">ECU-SHARED-DATAS</td>
+<td align="left">ECU-SHARED-DATA</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">ECU-VARIANT</td>
+<td align="left">ADMIN-DATA<br />
+DESC<br />
+DIAG-COMMS<br />
+DIAG-DATA-DICTIONARY-SPEC<br />
+ECU-VARIANT-PATTERNS<br />
+IMPORT-REFS<br />
+LONG-NAME<br />
+NEG-RESPONSES<br />
+PARENT-REFS<br />
+POS-RESPONSES<br />
+REQUESTS<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="even">
+<td align="left">ECU-VARIANT-PATTERN</td>
+<td align="left">MATCHING-PARAMETERS</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">ECU-VARIANT-PATTERNS</td>
+<td align="left">ECU-VARIANT-PATTERN</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">ECU-VARIANTS</td>
+<td align="left">ECU-VARIANT</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">EMAIL</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">ENCRYPTION</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">END-OF-PDU-FIELD</td>
+<td align="left">BASIC-STRUCTURE-REF<br />
+DESC<br />
+LONG-NAME<br />
+MAX-NUMBER-OF-ITEMS<br />
+MIN-NUMBER-OF-ITEMS<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="even">
+<td align="left">END-OF-PDU-FIELDS</td>
+<td align="left">END-OF-PDU-FIELD</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">ENTRYPOINT</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">ENV-DATA</td>
+<td align="left">ALL-VALUE<br />
+DTC-VALUES<br />
+LONG-NAME<br />
+PARAMS<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="odd">
+<td align="left">ENV-DATA-DESC</td>
+<td align="left">DESC<br />
+ENV-DATAS<br />
+LONG-NAME<br />
+PARAM-SNREF<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="even">
+<td align="left">ENV-DATA-DESCS</td>
+<td align="left">ENV-DATA-DESC</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">ENV-DATAS</td>
+<td align="left">ENV-DATA</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">EXPECTED-VALUE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">FACTOR-SI-TO-UNIT</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">FAX</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">FIXED-NUMBER-OF-ITEMS</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">FUNCT-CLASS</td>
+<td align="left">DESC<br />
+LONG-NAME<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="odd">
+<td align="left">FUNCT-CLASS-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">FUNCT-CLASS-REFS</td>
+<td align="left">FUNCT-CLASS-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">FUNCT-CLASSS</td>
+<td align="left">FUNCT-CLASS</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">FUNCTIONAL-GROUP</td>
+<td align="left">ADMIN-DATA<br />
+COMPARAM-REFS<br />
+DESC<br />
+DIAG-COMMS<br />
+DIAG-DATA-DICTIONARY-SPEC<br />
+FUNCT-CLASSS<br />
+GLOBAL-NEG-RESPONSES<br />
+IMPORT-REFS<br />
+LONG-NAME<br />
+NEG-RESPONSES<br />
+PARENT-REFS<br />
+POS-RESPONSES<br />
+REQUESTS<br />
+SHORT-NAME</td>
+<td align="left">ID</td>
+</tr>
+<tr class="odd">
+<td align="left">FUNCTIONAL-GROUP-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">FUNCTIONAL-GROUPS</td>
+<td align="left">FUNCTIONAL-GROUP</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">GLOBAL-NEG-RESPONSE</td>
+<td align="left">DESC<br />
+LONG-NAME<br />
+PARAMS<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="even">
+<td align="left">GLOBAL-NEG-RESPONSES</td>
+<td align="left">GLOBAL-NEG-RESPONSE</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">IMPORT-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">IMPORT-REFS</td>
+<td align="left">IMPORT-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">INFO-COMPONENT</td>
+<td align="left">SHORT-NAME</td>
+<td align="left">ID<br />
+xsi:type</td>
+</tr>
+<tr class="even">
+<td align="left">INFO-COMPONENT-REF</td>
+<td align="left"></td>
+<td align="left">ID-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">INFO-COMPONENT-REFS</td>
+<td align="left">INFO-COMPONENT-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">INFO-COMPONENTS</td>
+<td align="left">INFO-COMPONENT</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">INPUT-PARAM</td>
+<td align="left">DESC<br />
+DOP-BASE-REF<br />
+LONG-NAME<br />
+PHYSICAL-DEFAULT-VALUE<br />
+SHORT-NAME</td>
+<td align="left">OID<br />
+SEMANTIC</td>
+</tr>
+<tr class="even">
+<td align="left">INPUT-PARAMS</td>
+<td align="left">INPUT-PARAM</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">INTERNAL-CONSTR</td>
+<td align="left">LOWER-LIMIT<br />
+SCALE-CONSTRS<br />
+UPPER-LIMIT</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">ITEM-BYTE-SIZE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">KEY</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">KEY-DOP-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">LANGUAGE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">LENGTH-EXP</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">LENGTH-KEY-REF</td>
+<td align="left"></td>
+<td align="left">ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">LEVEL</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">LOGICAL-LINK</td>
+<td align="left">BASE-VARIANT-REF<br />
+FUNCTIONAL-GROUP-REF<br />
+LONG-NAME<br />
+PHYSICAL-VEHICLE-LINK-REF<br />
+PROTOCOL-REF<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+xsi:type</td>
+</tr>
+<tr class="even">
+<td align="left">LOGICAL-LINKS</td>
+<td align="left">LOGICAL-LINK</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">LONG-NAME</td>
+<td align="left"></td>
+<td align="left">TI</td>
+</tr>
+<tr class="even">
+<td align="left">LOWER-LIMIT</td>
+<td align="left"></td>
+<td align="left">INTERVAL-TYPE</td>
+</tr>
+<tr class="odd">
+<td align="left">LUMINOUS-INTENSITY-EXP</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">MASS-EXP</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">MATCHING-PARAMETER</td>
+<td align="left">DIAG-COMM-SNREF<br />
+EXPECTED-VALUE<br />
+OUT-PARAM-IF-SNREF</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">MATCHING-PARAMETERS</td>
+<td align="left">MATCHING-PARAMETER</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">MAX-LENGTH</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">MAX-NUMBER-OF-ITEMS</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">MIN-LENGTH</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">MIN-NUMBER-OF-ITEMS</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">MODIFICATION</td>
+<td align="left">CHANGE<br />
+REASON</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">MODIFICATIONS</td>
+<td align="left">MODIFICATION</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">MOLAR-AMOUNT-EXP</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">MUX</td>
+<td align="left">BYTE-POSITION<br />
+CASES<br />
+DEFAULT-CASE<br />
+DESC<br />
+LONG-NAME<br />
+SHORT-NAME<br />
+SWITCH-KEY</td>
+<td align="left">ID<br />
+IS-VISIBLE<br />
+OID</td>
+</tr>
+<tr class="odd">
+<td align="left">MUXS</td>
+<td align="left">MUX</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">NEG-RESPONSE</td>
+<td align="left">LONG-NAME<br />
+PARAMS<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="odd">
+<td align="left">NEG-RESPONSE-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">NEG-RESPONSE-REFS</td>
+<td align="left">NEG-RESPONSE-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">NEG-RESPONSES</td>
+<td align="left">NEG-RESPONSE</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">NOT-INHERITED-DIAG-COMM</td>
+<td align="left">DIAG-COMM-SNREF</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">NOT-INHERITED-DIAG-COMMS</td>
+<td align="left">NOT-INHERITED-DIAG-COMM</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">ODX</td>
+<td align="left">COMPARAM-SPEC<br />
+DIAG-LAYER-CONTAINER<br />
+VEHICLE-INFO-SPEC</td>
+<td align="left">MODEL-VERSION<br />
+xmlns:xsi<br />
+xsi:noNamespaceSchemaLocation</td>
+</tr>
+<tr class="odd">
+<td align="left">OFFSET</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">OFFSET-SI-TO-UNIT</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">OUT-PARAM-IF-SNREF</td>
+<td align="left"></td>
+<td align="left">SHORT-NAME</td>
+</tr>
+<tr class="even">
+<td align="left">OUTPUT-PARAM</td>
+<td align="left">DESC<br />
+DOP-BASE-REF<br />
+LONG-NAME<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID<br />
+SEMANTIC</td>
+</tr>
+<tr class="odd">
+<td align="left">OUTPUT-PARAMS</td>
+<td align="left">OUTPUT-PARAM</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">PARAM</td>
+<td align="left">BIT-LENGTH<br />
+BIT-POSITION<br />
+BYTE-LENGTH<br />
+BYTE-POSITION<br />
+CODED-VALUE<br />
+DESC<br />
+DIAG-CODED-TYPE<br />
+DOP-REF<br />
+DOP-SNREF<br />
+LONG-NAME<br />
+PHYS-CONSTANT-VALUE<br />
+PHYSICAL-DEFAULT-VALUE<br />
+REQUEST-BYTE-POS<br />
+SHORT-NAME<br />
+TABLE-KEY-REF<br />
+TABLE-REF<br />
+TABLE-ROW-REF</td>
+<td align="left">ID<br />
+OID<br />
+SEMANTIC<br />
+SYSPARAM<br />
+xsi:type</td>
+</tr>
+<tr class="odd">
+<td align="left">PARAM-SNREF</td>
+<td align="left"></td>
+<td align="left">SHORT-NAME</td>
+</tr>
+<tr class="even">
+<td align="left">PARAMS</td>
+<td align="left">PARAM</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">PARENT-REF</td>
+<td align="left">NOT-INHERITED-DIAG-COMMS</td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF<br />
+xsi:type</td>
+</tr>
+<tr class="even">
+<td align="left">PARENT-REFS</td>
+<td align="left">PARENT-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">PHONE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">PHYS-CONSTANT-VALUE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">PHYSICAL-DEFAULT-VALUE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">PHYSICAL-DIMENSION</td>
+<td align="left">CURRENT-EXP<br />
+DESC<br />
+LENGTH-EXP<br />
+LONG-NAME<br />
+LUMINOUS-INTENSITY-EXP<br />
+MASS-EXP<br />
+MOLAR-AMOUNT-EXP<br />
+SHORT-NAME<br />
+TEMPERATURE-EXP<br />
+TIME-EXP</td>
+<td align="left">ID</td>
+</tr>
+<tr class="odd">
+<td align="left">PHYSICAL-DIMENSION-REF</td>
+<td align="left"></td>
+<td align="left">ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">PHYSICAL-DIMENSIONS</td>
+<td align="left">PHYSICAL-DIMENSION</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">PHYSICAL-TYPE</td>
+<td align="left">PRECISION</td>
+<td align="left">BASE-DATA-TYPE<br />
+DISPLAY-RADIX</td>
+</tr>
+<tr class="even">
+<td align="left">PHYSICAL-VEHICLE-LINK</td>
+<td align="left">DESC<br />
+LONG-NAME<br />
+SHORT-NAME<br />
+VEHICLE-CONNECTOR-PIN-REFS</td>
+<td align="left">ID<br />
+TYPE</td>
+</tr>
+<tr class="odd">
+<td align="left">PHYSICAL-VEHICLE-LINK-REF</td>
+<td align="left"></td>
+<td align="left">ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">PHYSICAL-VEHICLE-LINKS</td>
+<td align="left">PHYSICAL-VEHICLE-LINK</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">PIN_NUMBER</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">POS-RESPONSE</td>
+<td align="left">DESC<br />
+LONG-NAME<br />
+PARAMS<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="odd">
+<td align="left">POS-RESPONSE-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">POS-RESPONSE-REFS</td>
+<td align="left">POS-RESPONSE-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">POS-RESPONSES</td>
+<td align="left">POS-RESPONSE</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">PRECISION</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">PROG-CODE</td>
+<td align="left">CODE-FILE<br />
+ENCRYPTION<br />
+ENTRYPOINT<br />
+REVISION<br />
+SYNTAX</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">PROG-CODES</td>
+<td align="left">PROG-CODE</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">PROTOCOL</td>
+<td align="left">ADMIN-DATA<br />
+COMPARAM-REFS<br />
+COMPARAM-SPEC-REF<br />
+DESC<br />
+DIAG-COMMS<br />
+DIAG-DATA-DICTIONARY-SPEC<br />
+FUNCT-CLASSS<br />
+GLOBAL-NEG-RESPONSES<br />
+IMPORT-REFS<br />
+LONG-NAME<br />
+NEG-RESPONSES<br />
+POS-RESPONSES<br />
+REQUESTS<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID<br />
+TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">PROTOCOL-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">PROTOCOL-SNREF</td>
+<td align="left"></td>
+<td align="left">SHORT-NAME</td>
+</tr>
+<tr class="even">
+<td align="left">PROTOCOLS</td>
+<td align="left">PROTOCOL</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">REASON</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">RELATED-DIAG-COMM-REF</td>
+<td align="left">RELATION-TYPE</td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">RELATED-DIAG-COMM-REFS</td>
+<td align="left">RELATED-DIAG-COMM-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">RELATION-TYPE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">REQUEST</td>
+<td align="left">DESC<br />
+LONG-NAME<br />
+PARAMS<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="even">
+<td align="left">REQUEST-BYTE-POS</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">REQUEST-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">REQUESTS</td>
+<td align="left">REQUEST</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">REVISION</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">REVISION-LABEL</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">ROLE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">ROLES</td>
+<td align="left">ROLE</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">SCALE-CONSTR</td>
+<td align="left">LOWER-LIMIT<br />
+SHORT-LABEL<br />
+UPPER-LIMIT</td>
+<td align="left">VALIDITY</td>
+</tr>
+<tr class="even">
+<td align="left">SCALE-CONSTRS</td>
+<td align="left">SCALE-CONSTR</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">SD</td>
+<td align="left"></td>
+<td align="left">SI<br />
+TI</td>
+</tr>
+<tr class="even">
+<td align="left">SDG</td>
+<td align="left">SD<br />
+SDG<br />
+SDG-CAPTION</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">SDG-CAPTION</td>
+<td align="left">DESC<br />
+LONG-NAME<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="even">
+<td align="left">SDGS</td>
+<td align="left">SDG</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">SHORT-LABEL</td>
+<td align="left"></td>
+<td align="left">TI</td>
+</tr>
+<tr class="even">
+<td align="left">SHORT-NAME</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">SINGLE-ECU-JOB</td>
+<td align="left">AUDIENCE<br />
+DESC<br />
+FUNCT-CLASS-REFS<br />
+INPUT-PARAMS<br />
+LONG-NAME<br />
+OUTPUT-PARAMS<br />
+PROG-CODES<br />
+RELATED-DIAG-COMM-REFS<br />
+SDGS<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+IS-EXECUTABLE<br />
+OID<br />
+SEMANTIC</td>
+</tr>
+<tr class="even">
+<td align="left">STATE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">STATIC-FIELD</td>
+<td align="left">BASIC-STRUCTURE-REF<br />
+FIXED-NUMBER-OF-ITEMS<br />
+ITEM-BYTE-SIZE<br />
+LONG-NAME<br />
+SHORT-NAME</td>
+<td align="left">ID</td>
+</tr>
+<tr class="even">
+<td align="left">STATIC-FIELDS</td>
+<td align="left">STATIC-FIELD</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">STRUCTURE</td>
+<td align="left">BYTE-SIZE<br />
+DESC<br />
+LONG-NAME<br />
+PARAMS<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+IS-VISIBLE<br />
+OID</td>
+</tr>
+<tr class="even">
+<td align="left">STRUCTURE-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">STRUCTURES</td>
+<td align="left">STRUCTURE</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">SWITCH-KEY</td>
+<td align="left">BIT-POSITION<br />
+BYTE-POSITION<br />
+DATA-OBJECT-PROP-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">SYNTAX</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">TABLE</td>
+<td align="left">KEY-DOP-REF<br />
+LONG-NAME<br />
+SHORT-NAME<br />
+TABLE-ROW<br />
+TABLE-ROW-REF</td>
+<td align="left">ID<br />
+OID<br />
+SEMANTIC</td>
+</tr>
+<tr class="odd">
+<td align="left">TABLE-KEY-REF</td>
+<td align="left"></td>
+<td align="left">ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">TABLE-REF</td>
+<td align="left"></td>
+<td align="left">ID-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">TABLE-ROW</td>
+<td align="left">DESC<br />
+KEY<br />
+LONG-NAME<br />
+SHORT-NAME<br />
+STRUCTURE-REF</td>
+<td align="left">ID<br />
+OID</td>
+</tr>
+<tr class="even">
+<td align="left">TABLE-ROW-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">TABLES</td>
+<td align="left">TABLE</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">TEAM-MEMBER</td>
+<td align="left">ADDRESS<br />
+CITY<br />
+DEPARTMENT<br />
+DESC<br />
+EMAIL<br />
+FAX<br />
+LONG-NAME<br />
+PHONE<br />
+ROLES<br />
+SHORT-NAME<br />
+ZIP</td>
+<td align="left">ID</td>
+</tr>
+<tr class="odd">
+<td align="left">TEAM-MEMBER-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="even">
+<td align="left">TEAM-MEMBERS</td>
+<td align="left">TEAM-MEMBER</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">TEMPERATURE-EXP</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">TERMINATION-VALUE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">TEXT</td>
+<td align="left"></td>
+<td align="left">TI</td>
+</tr>
+<tr class="even">
+<td align="left">TIME-EXP</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">TOOL</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">TROUBLE-CODE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">UNIT</td>
+<td align="left">DESC<br />
+DISPLAY-NAME<br />
+FACTOR-SI-TO-UNIT<br />
+LONG-NAME<br />
+OFFSET-SI-TO-UNIT<br />
+PHYSICAL-DIMENSION-REF<br />
+SHORT-NAME</td>
+<td align="left">ID</td>
+</tr>
+<tr class="even">
+<td align="left">UNIT-REF</td>
+<td align="left"></td>
+<td align="left">DOCREF<br />
+DOCTYPE<br />
+ID-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">UNIT-SPEC</td>
+<td align="left">PHYSICAL-DIMENSIONS<br />
+UNITS</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">UNITS</td>
+<td align="left">UNIT</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">UPPER-LIMIT</td>
+<td align="left"></td>
+<td align="left">INTERVAL-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">V</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">VALUE</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">VEHICLE-CONNECTOR</td>
+<td align="left">LONG-NAME<br />
+SHORT-NAME<br />
+VEHICLE-CONNECTOR-PINS</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">VEHICLE-CONNECTOR-PIN</td>
+<td align="left">PIN_NUMBER<br />
+SHORT-NAME</td>
+<td align="left">ID<br />
+TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">VEHICLE-CONNECTOR-PIN-REF</td>
+<td align="left"></td>
+<td align="left">ID-REF</td>
+</tr>
+<tr class="odd">
+<td align="left">VEHICLE-CONNECTOR-PIN-REFS</td>
+<td align="left">VEHICLE-CONNECTOR-PIN-REF</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">VEHICLE-CONNECTOR-PINS</td>
+<td align="left">VEHICLE-CONNECTOR-PIN</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">VEHICLE-CONNECTORS</td>
+<td align="left">VEHICLE-CONNECTOR</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">VEHICLE-INFO-SPEC</td>
+<td align="left">INFO-COMPONENTS<br />
+LONG-NAME<br />
+SHORT-NAME<br />
+VEHICLE-INFORMATIONS</td>
+<td align="left">ID</td>
+</tr>
+<tr class="odd">
+<td align="left">VEHICLE-INFORMATION</td>
+<td align="left">INFO-COMPONENT-REFS<br />
+LOGICAL-LINKS<br />
+LONG-NAME<br />
+PHYSICAL-VEHICLE-LINKS<br />
+SHORT-NAME<br />
+VEHICLE-CONNECTORS</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">VEHICLE-INFORMATIONS</td>
+<td align="left">VEHICLE-INFORMATION</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">VT</td>
+<td align="left"></td>
+<td align="left">TI</td>
+</tr>
+<tr class="even">
+<td align="left">ZIP</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">b</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">br</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">i</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">li</td>
+<td align="left">b<br />
+i</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">ol</td>
+<td align="left">li</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">p</td>
+<td align="left">b<br />
+br<br />
+i<br />
+ol<br />
+sup<br />
+ul</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">sup</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Table 42: List of supported ODX elements</p>
+<h2 id="additional-information">Additional information</h2>
+<h3 id="mapping-tables-for-comparam-refs">Mapping Tables for COMPARAM-REFs</h3>
+<p>The following section lists the mapping of CANdela-Ecu-Interface-Attributes to ODX-COMPARAMs. The mapping is dependant on the PROTOCOL-STANDARD.</p>
+<h4 id="default-candela-mapping-uds-odx201">Default CANdela-Mapping UDS ODX2.0.1</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela-Interface-Attribute-Qualifier</strong></th>
+<th align="left"><strong>COMPARAM-SHORT-NAME</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Baudrate, baudrate</td>
+<td align="left">Baudrate</td>
+</tr>
+<tr class="even">
+<td align="left">AddrScheme, addrSchema</td>
+<td align="left">AddressingScheme</td>
+</tr>
+<tr class="odd">
+<td align="left">idPhysReq, ReqCanId, ReqCanIdPhys</td>
+<td align="left">PhysicalRequestCANID</td>
+</tr>
+<tr class="even">
+<td align="left">idPhysRes, ResCanId</td>
+<td align="left">PhysicalResponseCANID</td>
+</tr>
+<tr class="odd">
+<td align="left">ReqCanIdFunc</td>
+<td align="left">FunctionalRequestCANID</td>
+</tr>
+<tr class="even">
+<td align="left">StMin( &lt; 127)</td>
+<td align="left">Stmin</td>
+</tr>
+<tr class="odd">
+<td align="left">StMin ( 241 &lt; StMin &lt;= 249)</td>
+<td align="left">StminExtended</td>
+</tr>
+<tr class="even">
+<td align="left">Blocksize</td>
+<td align="left">Blocksize</td>
+</tr>
+<tr class="odd">
+<td align="left">TimeoutBs, timeoutBs</td>
+<td align="left">Bs</td>
+</tr>
+<tr class="even">
+<td align="left">TimeBr, timeBr</td>
+<td align="left">Br</td>
+</tr>
+<tr class="odd">
+<td align="left">TimeCs, timeCs</td>
+<td align="left">Cs</td>
+</tr>
+<tr class="even">
+<td align="left">TimeoutCr, timeoutCr</td>
+<td align="left">Cr</td>
+</tr>
+<tr class="odd">
+<td align="left">P2Timeout, P2Client</td>
+<td align="left">P2max</td>
+</tr>
+<tr class="even">
+<td align="left">P2ExTimeout, P2ExClient</td>
+<td align="left">P2Star</td>
+</tr>
+<tr class="odd">
+<td align="left">P3Time, S3Client</td>
+<td align="left">P3min</td>
+</tr>
+<tr class="even">
+<td align="left">BaseAddress+TesterAddress ( extended Addressing)</td>
+<td align="left">PhysicalRequestCANID</td>
+</tr>
+</tbody>
+</table>
+<p>Table 43: CANdela COMPARAM mapping UDS</p>
+<h4 id="default-candela-mapping-kwp-odx201">Default CANdela-Mapping KWP ODX2.0.1</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela-Interface-Attribute-Qualifier</strong></th>
+<th align="left"><strong>COMPARAM-SHORT-NAME</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Baudrate, baudrate</td>
+<td align="left">Baudrate</td>
+</tr>
+<tr class="even">
+<td align="left">AddrScheme, addrSchema</td>
+<td align="left">AddressingScheme</td>
+</tr>
+<tr class="odd">
+<td align="left">idPhysReq, ReqCanId, ReqCanIdPhys</td>
+<td align="left">PhysicalRequestCANID</td>
+</tr>
+<tr class="even">
+<td align="left">idPhysRes, ResCanId</td>
+<td align="left">PhysicalResponseCANID</td>
+</tr>
+<tr class="odd">
+<td align="left">ReqCanIdFunc</td>
+<td align="left">FunctionalRequestCANID</td>
+</tr>
+<tr class="even">
+<td align="left">StMin, STMIN ( &lt; 127)</td>
+<td align="left">Stmin</td>
+</tr>
+<tr class="odd">
+<td align="left">StMin, STMIN ( 241 &lt; StMin &lt;= 249)</td>
+<td align="left">StminExtended</td>
+</tr>
+<tr class="even">
+<td align="left">Blocksize</td>
+<td align="left">Blocksize</td>
+</tr>
+<tr class="odd">
+<td align="left">TimeoutBs, timeoutBs</td>
+<td align="left">Bs</td>
+</tr>
+<tr class="even">
+<td align="left">TimeBr, timeBr</td>
+<td align="left">Br</td>
+</tr>
+<tr class="odd">
+<td align="left">TimeCs, timeCs</td>
+<td align="left">Cs</td>
+</tr>
+<tr class="even">
+<td align="left">TimeoutCr, timeoutCr</td>
+<td align="left">Cr</td>
+</tr>
+<tr class="odd">
+<td align="left">P2Timeout, P2Client</td>
+<td align="left">P2max</td>
+</tr>
+<tr class="even">
+<td align="left">P2ExTimeout, P2ExClient</td>
+<td align="left">P2Star</td>
+</tr>
+<tr class="odd">
+<td align="left">P3Time</td>
+<td align="left">P3min</td>
+</tr>
+<tr class="even">
+<td align="left">S3Client</td>
+<td align="left">S3</td>
+</tr>
+</tbody>
+</table>
+<p>Table 44: CANdela COMPARAM mapping KWP</p>
+<h4 id="default-mapping-uds-to-iso-odx-comparam-specs">Default mapping UDS to ISO-ODX COMPARAM-SPECs</h4>
+<table style="width:97%;">
+<colgroup>
+<col width="44%" />
+<col width="53%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela Qualifier</strong></th>
+<th align="left"><strong>ODX comparam</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BaseAddress,<br />
+TesterTgtAllNode,<br />
+BroadcastAddress,<br />
+CanIdType,<br />
+CP_IDENTIFIER_LENGTH,<br />
+AddrScheme,<br />
+CP_ADDRESSMODE,<br />
+CanIdTypeFunc,<br />
+AddrSchemeFunc</td>
+<td align="left">ISO_15765_2.CP_UniqueRespIdTable</td>
+</tr>
+<tr class="even">
+<td align="left">baudrate,Baudrate</td>
+<td align="left">ISO_11898_2_DWCAN.CP_Baudrate</td>
+</tr>
+<tr class="odd">
+<td align="left">idPhysReq,ReqCanId,ReqCanIdPhys</td>
+<td align="left">ISO_15765_2.CP_CanPhysReqId</td>
+</tr>
+<tr class="even">
+<td align="left">idPhysRes,ResCanId</td>
+<td align="left">ISO_15765_2.CP_CanRespUSDTId</td>
+</tr>
+<tr class="odd">
+<td align="left">ReqCanIdFunc</td>
+<td align="left">ISO_15765_2.CP_CanFuncReqId</td>
+</tr>
+<tr class="even">
+<td align="left">UudtResCanId</td>
+<td align="left">ISO_15765_2.CP_CanRespUUDTId</td>
+</tr>
+<tr class="odd">
+<td align="left">StMin,CP_STMIN_SUG</td>
+<td align="left">ISO_15765_2.CP_StMin</td>
+</tr>
+<tr class="even">
+<td align="left">Blocksize,BlockSize</td>
+<td align="left">ISO_15765_2.CP_BlockSize</td>
+</tr>
+<tr class="odd">
+<td align="left">TimeoutBs,timeoutBs</td>
+<td align="left">ISO_15765_2.CP_Bs</td>
+</tr>
+<tr class="even">
+<td align="left">TimeBr,timeBr</td>
+<td align="left">ISO_15765_2.CP_Br</td>
+</tr>
+<tr class="odd">
+<td align="left">TimeCs,timeCs</td>
+<td align="left">ISO_15765_2.CP_Cs</td>
+</tr>
+<tr class="even">
+<td align="left">TimeoutCr,timeoutCr</td>
+<td align="left">ISO_15765_2.CP_Cr</td>
+</tr>
+<tr class="odd">
+<td align="left">P2Timeout,P2Client</td>
+<td align="left">ISO_15765_3.CP_P2Max</td>
+</tr>
+<tr class="even">
+<td align="left">P2ExTimeout,P2ExClient</td>
+<td align="left">ISO_15765_3.CP_P2Star</td>
+</tr>
+<tr class="odd">
+<td align="left">P3Time,S3Client</td>
+<td align="left">ISO_15765_3.CP_TesterPresentTime</td>
+</tr>
+<tr class="even">
+<td align="left">CANFrameFillerByte</td>
+<td align="left">ISO_15765_2.CP_CanFillerByte</td>
+</tr>
+<tr class="odd">
+<td align="left">TimeoutAs,timeoutAs</td>
+<td align="left">ISO_15765_2.CP_As</td>
+</tr>
+<tr class="even">
+<td align="left">TimeoutAr,timeoutAr</td>
+<td align="left">ISO_15765_2.CP_Ar</td>
+</tr>
+<tr class="odd">
+<td align="left">P3ClientPhys</td>
+<td align="left">ISO_15765_3.CP_P3Phys</td>
+</tr>
+<tr class="even">
+<td align="left">P3ClientFunc</td>
+<td align="left">ISO_15765_3.CP_P3Func</td>
+</tr>
+<tr class="odd">
+<td align="left">FillerByteHandling</td>
+<td align="left">ISO_15765_2.CP_CanFillerByteHandling</td>
+</tr>
+<tr class="even">
+<td align="left">EcuAddress</td>
+<td align="left">ISO_15765_2.CP_CanPhysReqExtAddr</td>
+</tr>
+<tr class="odd">
+<td align="left">DefaultTesterAddress</td>
+<td align="left">ISO_15765_2.CP_CanRespUSDTExtAddr</td>
+</tr>
+</tbody>
+</table>
+<h4 id="default-mapping-kwp-to-iso-odx-comparam-specs">Default mapping KWP to ISO-ODX COMPARAM-SPECs</h4>
+<table style="width:97%;">
+<colgroup>
+<col width="44%" />
+<col width="53%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela Qualifier</strong></th>
+<th align="left"><strong>ODX comparam</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CanIdType,<br />
+CP_IDENTIFIER_LENGTH,<br />
+AddrScheme,<br />
+CP_ADDRESSMODE,<br />
+CanIdTypeFunc,<br />
+AddrSchemeFunc,<br />
+BaseAddress,<br />
+TesterTgtAllNode,<br />
+BroadcastAddress</td>
+<td align="left">ISO_15765_2.CP_UniqueRespIdTable</td>
+</tr>
+<tr class="even">
+<td align="left">baudrate,Baudrate</td>
+<td align="left">ISO_11898_2_DWCAN.CP_Baudrate</td>
+</tr>
+<tr class="odd">
+<td align="left">idPhysReq,ReqCanId,ReqCanIdPhys</td>
+<td align="left">ISO_15765_2.CP_CanPhysReqId</td>
+</tr>
+<tr class="even">
+<td align="left">idPhysRes,ResCanId</td>
+<td align="left">ISO_15765_2.CP_CanRespUSDTId</td>
+</tr>
+<tr class="odd">
+<td align="left">ReqCanIdFunc</td>
+<td align="left">ISO_15765_2.CP_CanFuncReqId</td>
+</tr>
+<tr class="even">
+<td align="left">UudtResCanId</td>
+<td align="left">ISO_15765_2.CP_CanRespUUDTId</td>
+</tr>
+<tr class="odd">
+<td align="left">StMin,CP_STMIN_SUG</td>
+<td align="left">ISO_15765_2.CP_StMin</td>
+</tr>
+<tr class="even">
+<td align="left">Blocksize,BlockSize</td>
+<td align="left">ISO_15765_2.CP_BlockSize</td>
+</tr>
+<tr class="odd">
+<td align="left">TimeoutAs,timeoutAs</td>
+<td align="left">ISO_15765_2.CP_As</td>
+</tr>
+<tr class="even">
+<td align="left">TimeoutAr,timeoutAr</td>
+<td align="left">ISO_15765_2.CP_Ar</td>
+</tr>
+<tr class="odd">
+<td align="left">TimeoutBs,timeoutBs</td>
+<td align="left">ISO_15765_2.CP_Bs</td>
+</tr>
+<tr class="even">
+<td align="left">TimeBr,timeBr</td>
+<td align="left">ISO_15765_2.CP_Br</td>
+</tr>
+<tr class="odd">
+<td align="left">TimeCs,timeCs</td>
+<td align="left">ISO_15765_2.CP_Cs</td>
+</tr>
+<tr class="even">
+<td align="left">TimeoutCr,timeoutCr</td>
+<td align="left">ISO_15765_2.CP_Cr</td>
+</tr>
+<tr class="odd">
+<td align="left">P2Timeout,P2Client</td>
+<td align="left">ISO_14230_3.CP_P2Max</td>
+</tr>
+<tr class="even">
+<td align="left">P2ExTimeout,P2ExClient</td>
+<td align="left">ISO_14230_3.CP_P2Star</td>
+</tr>
+<tr class="odd">
+<td align="left">P3Time</td>
+<td align="left">ISO_14230_3.CP_P3Min</td>
+</tr>
+<tr class="even">
+<td align="left">CANFrameFillerByte</td>
+<td align="left">ISO_15765_2.CP_CanFillerByte</td>
+</tr>
+<tr class="odd">
+<td align="left">FillerByteHandling</td>
+<td align="left">ISO_15765_2.CP_CanFillerByteHandling</td>
+</tr>
+<tr class="even">
+<td align="left">EcuAddress</td>
+<td align="left">ISO_15765_2.CP_CanPhysReqExtAddr</td>
+</tr>
+<tr class="odd">
+<td align="left">DefaultTesterAddress</td>
+<td align="left">ISO_15765_2.CP_CanRespUSDTExtAddr</td>
+</tr>
+<tr class="even">
+<td align="left">S3Client</td>
+<td align="left">ISO_14230_3.CP_TesterPresentTime</td>
+</tr>
+</tbody>
+</table>
+<h4 id="default-mapping-kwp-k-line">Default mapping KWP K-Line</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela-Interface-Attribute-Qualifier</strong></th>
+<th align="left"><strong>COMPARAM-SHORT-NAME</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CP_Baudrate</td>
+<td align="left">ISO_14230_1_UART.CP_Baudrate</td>
+</tr>
+<tr class="even">
+<td align="left">CP_PhysReqTargetAddr</td>
+<td align="left">ISO_14230_2.CP_PhysReqTargetAddr</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_TesterSourceAddress</td>
+<td align="left">ISO_14230_2.CP_TesterSourceAddress</td>
+</tr>
+<tr class="even">
+<td align="left">CP_FuncReqTargetAddr</td>
+<td align="left">ISO_14230_2.CP_FuncReqTargetAddr</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_5BaudAddressPhys</td>
+<td align="left">ISO_14230_2.CP_5BaudAddressPhys</td>
+</tr>
+<tr class="even">
+<td align="left">CP_HeaderFormatKW</td>
+<td align="left">ISO_14230_2.CP_HeaderFormatKW</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_InitializationSettings</td>
+<td align="left">ISO_14230_2.CP_InitializationSettings</td>
+</tr>
+<tr class="even">
+<td align="left">CP_TIdle</td>
+<td align="left">ISO_14230_2.CP_TIdle</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_W1Max</td>
+<td align="left">ISO_14230_2.CP_W1Max</td>
+</tr>
+<tr class="even">
+<td align="left">CP_W2Max</td>
+<td align="left">ISO_14230_2.CP_W2Max</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_W3Max</td>
+<td align="left">ISO_14230_2.CP_W3Max</td>
+</tr>
+<tr class="even">
+<td align="left">CP_W4Min</td>
+<td align="left">ISO_14230_2.CP_W4Min</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_W4Max</td>
+<td align="left">ISO_14230_2.CP_W4Max</td>
+</tr>
+<tr class="even">
+<td align="left">CP_P2Max</td>
+<td align="left">ISO_14230_3.CP_P2Max</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_P2Max_Ecu</td>
+<td align="left">ISO_14230_3.CP_P2Max_Ecu</td>
+</tr>
+<tr class="even">
+<td align="left">CP_P2Star</td>
+<td align="left">ISO_14230_3.CP_P2Star</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_P3Max_Ecu</td>
+<td align="left">ISO_14230_3.CP_P3Max_Ecu</td>
+</tr>
+<tr class="even">
+<td align="left">CP_P3Min</td>
+<td align="left">ISO_14230_3.CP_P3Min</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_P4Min</td>
+<td align="left">ISO_14230_2.CP_P4Min</td>
+</tr>
+<tr class="even">
+<td align="left">CP_TesterPresentTime</td>
+<td align="left">ISO_14230_3.CP_TesterPresentTime</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_TesterPresentTime_Ecu</td>
+<td align="left">ISO_14230_3.CP_TesterPresentTime_Ecu</td>
+</tr>
+<tr class="even">
+<td align="left">CP_TIniL</td>
+<td align="left">ISO_14230_2.CP_TInil</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_TWup</td>
+<td align="left">ISO_14230_2.CP_TWup</td>
+</tr>
+</tbody>
+</table>
+<h3 id="byte-position-and-bit-position-of-included-params">BYTE-POSITION and BIT-POSITION of included PARAMs</h3>
+<h4 id="extraction-of-intel-bit-fields">Extraction of Intel Bit fields</h4>
+<p>Example PDU:</p>
+<p>10110001 (Bytepos = 0)</p>
+<p>11101010 (Bytepos = 1)</p>
+<p>10011100 (Bytepos =2)</p>
+<h5 id="extraction-of-intel-bit-fields-in-candela">In CANdela</h5>
+<p><strong>Description in CANdela:</strong></p>
+<p>Bitfield Length 3, Byteorder INTEL</p>
+<p><img src="Images/image73.png" /></p>
+<p><strong>Extraction in CANdela:</strong></p>
+<p><img src="Images/image74.png" /></p>
+<h5 id="extraction-of-intel-bit-fields-in-odx-201">In ODX 2.0.1</h5>
+<p><strong>Corresponding Description in ODX:</strong></p>
+<p><img src="Images/image75.png" /></p>
+<p><strong>Extraction in ODX:</strong></p>
+<p><img src="Images/image76.png" /></p>
+<h4 id="extraction-of-motorola-bit-fields">Extraction of Motorola Bit fields</h4>
+<p>Example PDU</p>
+<p>10110001 (Bytepos = 0)</p>
+<p>11101010 (Bytepos = 1)</p>
+<p>10011100 (Bytepos = 2)</p>
+<h5 id="extraction-of-motorola-bit-fields-in-candela">In CANdela</h5>
+<p>Bitfield length 3, Byteorder Motorola</p>
+<p><img src="Images/image77.png" /></p>
+<p><strong>Extraction in CANdela model:</strong></p>
+<p><img src="Images/image78.png" /></p>
+<h5 id="extraction-of-motorola-bit-fields-in-odx-201">In ODX 2.0.1</h5>
+<p><strong>Corresponding description in ODX</strong></p>
+<p><img src="Images/image79.png" /></p>
+<p><strong>Extraction in ODX:</strong></p>
+<p><img src="Images/image80.png" /></p>
+<h4 id="conclusion-for-odx-201-export">Conclusion for ODX 2.0.1 Export</h4>
+<ol style="list-style-type: decimal">
+<li><p>A data type used in Intel and Motorola bitfields must be duplicated to ODX.</p></li>
+<li><p>ODX Byte-/Bitpositions in ODX for Intel bitfields are calculated from the CANdelaBitposition as follows:</p>
+<p><img src="Images/image67.png" /></p>
+<p><img src="Images/image68.png" /></p></li>
+<li><p>ODX Byte-/Bitpositions in ODX for Motorola bitfields are calculated from the CANdelaBitposition as follows:</p>
+<p><img src="Images/image69.png" /></p>
+<p><img src="Images/image70.png" /></p>
+<p><img src="Images/image71.png" /></p></li>
+</ol>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>190_ODXExport_ODX2.2.0 Specific elements</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="odx220-specific-elements">ODX 2.2.0 Specific elements</h1>
+<p>With CANdela Studio 6.0 the export of ODX2.2.0 is supported. Up to 6.0 Release the generated ODX-files do not differ very much from the generated ODX 2.1.0.</p>
+<h2 id="standard-length-type-for-reserveds">STANDARD-LENGTH-TYPE for RESERVEDs</h2>
+<p>In ODX 2.2.0 RESERVED-PARAMs do not support STANDARD-LENGTH-TYPEs anymore. Hence no coded value can be specified anymore.</p>
+<h2 id="sub-components">SUB-COMPONENTS</h2>
+<p>The ODX-Export generates SUB-COMPONENTs from the CANdela-VehicleSystemGroup. In the CANdela-VehicleSystemGroup, the user can select the DiagnosticInstances which are available in this VSG.</p>
+<p>In case a DiagnosticClass is exported as TABLE, a TABLE-ROW-CONNECTOR will be created. Otherwise the ODX-Export will create a SUB-COMPONENT-PARAM-CONNECTOR.</p>
+<div class="figure">
+<img src="Images/image56.png" alt="VehicleSystemGroup" />
+<p class="caption">VehicleSystemGroup</p>
+</div>
+<div class="figure">
+<img src="Images/image57.png" alt="ODX model for SUB-COMPONENT" />
+<p class="caption">ODX model for SUB-COMPONENT</p>
+</div>
+<h3 id="exclusion-of-subcomponents-for-variants">Exclusion of SUBCOMPONENTS for Variants</h3>
+<p>With CANdelaStudio 7.0 SP1 it is possible to specify that a VehicleSystemGroup is not present in a certain variant. In this case the ODX-Export will not generate a SUB-COMPONENT for this variant.</p>
+<h3 id="dataobjects-associated-with-vehiclesystem-groups">DataObjects associated with VehicleSystem Groups</h3>
+<p>In case the ECU supports assigning specific DataObjects to VehicleSystem Groups the ODX-Export generates a PARAM-SNREF at the SUB-COMPONENT-PARAM-CONNECTOR for each DataObject associated with the VSG in the specific service.</p>
+<h2 id="additional-audiences">ADDITIONAL-AUDIENCES</h2>
+<p>For ODX 2.2.0 only the target groups &quot;Development&quot;, &quot;Supplier&quot;, &quot;Production&quot;, &quot;Aftersales&quot; and &quot;Aftermarket&quot; will be mapped to the ODX-audience. All other target groups will be mapped to &quot;ADDITIONAL-AUDIENCE&quot;.</p>
+<p>The ODX-Export will generate an &quot;ENABLED-AUDIENCE-REF&quot; for all activated audiences not contained in the list above.</p>
+<h2 id="synchronization-attribute">Synchronization attribute</h2>
+<p>With CANdelaStudio 6.5 it is possible to define a synchronization attribute qualifier at the ECU. For each PARAM the synchronization attribute qualifier can be defined. The ODX-Export will generate a SDG at the PARAM to mark the PARAM with the synchronization attribute qualifier.</p>
+<div class="figure">
+<img src="Images/image58.png" alt="Synchronization attribute" />
+<p class="caption">Synchronization attribute</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+</ul>
+</body>
+</html>

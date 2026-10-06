@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Name</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="name">Name</h1>
+<p>Most diagnostic objects in CANdela have a name, a <a href="Qualifier.htm">qualifier</a> and a <a href="Description.htm">description</a>.</p>
+<p>Note: this is different from the <a href="../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm">shortcut name</a> of a service.</p>
+<p><span id="NAME-R010" class="rqDef">[NAME-R010]</span> Names are multi-language.</p>
+<h2 id="use-of-the-name">Use of the Name</h2>
+<p>The name is typically used to to display an object in the user interface or in a report.</p>
+<p>CANdelaStudio uses the name to <a href="Qualifier.htm#generating-from-names">generate the qualifier</a>.</p>
+<h2 id="name-restrictions">Name Restrictions</h2>
+<h3 id="character-set">Character set</h3>
+<p><span id="NAME-R020" class="rqDef">[NAME-R020]</span> A name may contain any characters of the Unicode character set.</p>
+<p><span id="NAME-R030" class="rqDef">[NAME-R030]</span> A name must not consist of blanks only.</p>
+<p><span id="NAME-R040" class="rqDef">[NAME-R040]</span> A name may contain leading and trailings blanks.</p>
+<ul>
+<li>CANdelaStudio does not forbid them (unfortunately; from the beginning).</li>
+</ul>
+
+<h3 id="length">Length</h3>
+<p><span id="NAME-R100" class="rqDef">[NAME-R100]</span> A name must not be empty.</p>
+<p><span id="NAME-R110" class="rqDef">[NAME-R110]</span> The length of a name is limited to <strong>255 characters</strong> (CDS-21028 7.1).</p>
+<ul>
+<li>It was limited to 128 characters before 7.1.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Multi-Language <a class='rqRef' href='../../30%20Features/Multi-Language/Multi-Language.htm#ML-R100' title="Translatables">[ML-R100]</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">Object Property Page &quot;General&quot;</a>.</li>
+<li><a href="Qualifier.htm">Qualifier</a></li>
+</ul>
+
+</body>
+</html>

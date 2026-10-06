@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Lock Variant</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="lock-variant"><span id='_index_446728126'>Lock Variant</span><span id='_index_446728127' title='Variant: Lock' data-term='Variant' data-text='Lock'></span></h1>
+<h2 id="introduction">Introduction</h2>
+<p>Objective: protect released variants from changes.</p>
+<h2 id="use-cases">Use-cases</h2>
+<p>UC001: the diagnostic description containing an already released variant is used for a further variant to describe a new car model.</p>
+<p>Scenario: there is a sequence of development variants, lock the last one, continue development after it, maybe again with locking another one.</p>
+<p>UC002: old (maybe even released) variants must be corrected.</p>
+<h2 id="data-model">Data Model</h2>
+<p><span id="VAR-R010" class="rqDef" title="isLocked">[VAR-R010.2 isLocked]</span>: a variant shall have a Boolean property “isLocked”</p>
+<ul>
+<li>applies to base and extended variants</li>
+<li>Semantics: prevents from modifications of data in the variant in Standard View.</li>
+<li>default: false</li>
+</ul>
+
+<h2 id="operations">Operations</h2>
+<h3 id="lock">Lock Variant</h3>
+<p><span id="VAR-R015" class="rqDef">[VAR-R015]</span> The operation Lock Variant...</p>
+<ul>
+<li><span id="VAR-R015-a" class="rqDef">[VAR-R015-a]</span> sets the <strong>&quot;locked&quot; property</strong> of <a class='rqRef' href='../../30%20Features/Variant/Lock%20Variant.htm#VAR-R010' title="isLocked">[VAR-R010]</a> to true
+<ul>
+<li>does not modify referencing of diagnostic instances and job containers;</li>
+<li>does not modify “modify primary” <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R040' title="Primary properties modifiable">[DIA-R040]</a> and “modify secondary” authorization in the diagnostic instances and job containers of the locked variant.</li>
+</ul></li>
+<li><span id="VAR-R015-c" class="rqDef">[VAR-R015-c]</span> <strong>Data Types</strong>: in each data type referenced from within the variant,
+<ul>
+<li>if the datatype has “modify” authorization true (= is “writable”), the operation...</li>
+<li><span id="VAR-R015-c1" class="rqDef">[VAR-R015-c1]</span> sets “modify” authorization to false</li>
+<li><span id="VAR-R015-c2" class="rqDef">[VAR-R015-c2]</span> adds a hint to the datatype description (in the editing language): <code>The data type '&lt;name&gt;' was set to read-only when variant '&lt;name&gt;' has been locked.</code>.</li>
+<li>Note: this definition appends the text…
+<ul>
+<li>at a datatype that is writable: only for the first variant getting locked;</li>
+<li>at a datatype that is already not writable: not even for the first variant getting locked.</li>
+</ul></li>
+<li><span id="VAR-R015-cDID" class="rqDef">[VAR-R015-cDID]</span> this also applies to data types referenced from DIDs in the variant (CDS-40782).</li>
+</ul></li>
+<li><span id="VAR-R015-d" class="rqDef">[VAR-R015-d]</span> <strong>DTCs</strong>: for each DTC, ...
+<ul>
+<li><span id="VAR-R015-d1" class="rqDef">[VAR-R015-d1]</span> if it is “required as reference” <em>or</em> DTC referencing from DTC Pool <a class='rqRef' href='../../30%20Features/Document/Authorization.htm#DLA-R100-PoolOnly' title="">[DLA-R100-PoolOnly]</a> is enforced, sets the DTC to not modifiable + write info in output window</li>
+<li><span id="VAR-R015-d2" class="rqDef">[VAR-R015-d2]</span> if the DTC is not “required as reference”, clones it.</li>
+</ul></li>
+<li><span id="VAR-R015-DIDs" class="rqDef">[VAR-R015-DIDs]</span> <strong>DIDs</strong>: for each DID referenced from within the variant (8.5 CDS-37944), ...
+<ul>
+<li>i.e. for DID Data Reference and DID Reference</li>
+<li>if the DID has “modify” authorization true (= is “writable”),
+<ul>
+<li>sets “modify” authorization to false,</li>
+<li>adds a hint to the DID description (only in the editing language), like <code>DID '&lt;name&gt;' was set to read-only when variant '&lt;name&gt;' has been locked.</code></li>
+</ul></li>
+<li>Note: this definition appends the text…
+<ul>
+<li>at a DID that is writable: only for the first variant getting locked;</li>
+<li>at a DID that is already not writable: not even for the first variant getting locked.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="unlock">Unlock Variant</h3>
+<p><span id="VAR-R016" class="rqDef" title="Unlock Variant">[VAR-R016 Unlock Variant]</span> The operation Unlock Variant...</p>
+<ul>
+<li>set the property of <a class='rqRef' href='../../30%20Features/Variant/Lock%20Variant.htm#VAR-R010' title="isLocked">[VAR-R010]</a> to false.</li>
+<li><span id="VAR-R016-Reset" class="rqDef">[VAR-R016-Reset]</span> <strong>Data Types</strong> (CDS-69019 9.1): for each data type that...
+<ul>
+<li>was set write-protected by &quot;Lock variant&quot;,
+<ul>
+<li>detection: the data type description matches the regex pattern <code>&quot;The data type.*has been locked.&quot;</code> (in any language);</li>
+</ul></li>
+<li>and the variant being unlocked is the only locked variant that uses it,</li>
+<li>CANdelaStudio removes the info (in all languages) <code>&quot;The data type.*has been locked.&quot;</code>
+<ul>
+<li>it does not modify the &quot;up-to-date&quot; info of the description (in any of the languages)</li>
+</ul></li>
+<li>... and sets the data type &quot;modifiable&quot;.</li>
+<li>Note: on lock variant, CANdelaStudio adds the info text only if the data type is modifiable <a class='rqRef' href='../../30%20Features/Variant/Lock%20Variant.htm#VAR-R015-c' title="">[VAR-R015-c]</a>, so the &quot;unlock&quot; does not erroneously un-protect a formerly protected data type.</li>
+</ul></li>
+</ul>
+<h3 id="compare">Compare</h3>
+<p><span id="VAR-R020" class="rqDef">[VAR-R020]</span>:</p>
+<ul>
+<li><p>In normal document comparison: Calculate difference but do not update the locked property. If a variant is locked in the target document skip the variant on update (do not update).</p></li>
+<li><p>In document upgrade mode: When transferring a variant (base or extended) to the new instantiated template, keep the locked property at the variant and assure the correct state of its contents according to <a class='rqRef' href='../../30%20Features/Variant/Lock%20Variant.htm#VAR-R015' title="">[VAR-R015]</a> above.</p></li>
+<li><p>When updating a non locked variant ensure that diagnostic instances which are also referenced by a locked variant are not updated.</p></li>
+</ul>
+<h3 id="migration">Migration</h3>
+<p><span id="VAR-R030" class="rqDef" title="Migration">[VAR-R030 Migration]</span>:</p>
+<p>b) migration 7.0 =&gt; 7.1: default false.</p>
+<p>c) migration 7.1 =&gt; 7.0: drop the property (maybe write to file anyway to read it in 7.1).</p>
+<h3 id="requirements-not-covered">Requirements not covered</h3>
+<p>U001: Disable any editing in the variant (it is still possible to add a diagnostic instance, modify a diagnostic class etc.).</p>
+<p>U002: there is no referencing of a complete variant in CANdela. But yes, it will still be possible to reference containers of a locked variant.</p>
+<p>U003: no editing with confirmation of diagInstances or datatypes. The feature just uses the existing authorization mechanism.</p>
+<p>U004: editing of a locked variant is possible in expert mode (where authorization is not respected), no password.</p>
+<p>U005: no icon for datatypes.</p>
+<p>U006: the locking does not apply to data in the import pool.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Multi-Language <a class='rqRef' href='../../30%20Features/Multi-Language/Multi-Language.htm#ML-R100' title="Translatables">[ML-R100]</a></li>
+<li><a href="Variant.htm">Variant</a></li>
+</ul>
+</body>
+</html>

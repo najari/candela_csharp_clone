@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Options</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="options-ini-files">Options (<span id='_index_446727915'>INI</span> Files)</h1>
+<p>See also the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20General.htm">Options Dialog</a>.</p>
+<h2 id="candelastudio.ini">CANdelaStudio.ini</h2>
+<p>The INI file (“profile”) contains settings for data exchange, windows sizes, column widths, output window and logging etc. See details below, and in...</p>
+<ul>
+<li><a href="Licensing.htm#pool">Pool Licensing</a></li>
+<li><a href="Licensing.htm#licenseParams">Licensing INI File Parameters</a></li>
+</ul>
+<h2 id="actions.ini">Actions.ini</h2>
+<p>Stores data for <a href="../../30%20Features/Actions/Actions.htm">actions</a> (not described here).</p>
+<h2 id="path-to-ini-files">Path to INI Files</h2>
+<p>CANdelaStudio writes the INI file to the first writable of the following folders (in this order, examples for CANdelaStudio <strong>8.5</strong>):</p>
+<ol style="list-style-type: decimal">
+<li>Path optionally given on the command line <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-ini' title="">[CLI-R100-ini]</a></li>
+<li><strong>Global Location</strong>
+<ul>
+<li>= the default</li>
+<li>e.g. <code>C:\ProgramData\Vector\CANdelaStudio\8.5\CANdelaStudio.ini</code>.</li>
+</ul></li>
+<li><strong>Bin Folder</strong>
+<ul>
+<li>= Installation folder of CANdelaStudio.exe</li>
+<li>e.g. <code>C:\Program Files (x86)\Vector CANdelaStudio 8.5\Bin\CANdelaStudio.exe</code></li>
+<li>retrieved from registry entry e.g. <code>HKEY_LOCAL_MACHINE\SOFTWARE\VECTOR\CANdelaStudio\8.5\Path</code></li>
+<li>INI files are saved in the bin folder if the global location is write-protected</li>
+<li>Note: the Windows <code>Program Files...</code> folder is write-protected, but you may have installed CANdelaStudio into a different folder.</li>
+</ul></li>
+<li><strong>Temp Folder</strong>
+<ul>
+<li>= folder specified in <code>%TEMP%</code> Windows environment variable</li>
+<li>e.g. <code>C:\Temp</code></li>
+<li>INI files are saved in the temp folder if the global location and the bin folder are write-protected</li>
+</ul></li>
+</ol>
+<h2 id="registry-key-for-ini-path">Registry Key for INI Path</h2>
+<p>CANdelaStudio stores the used INI folder path in the <strong>registry key</strong></p>
+<pre><code>HKEY\_LOCAL\_MACHINE\SOFTWARE\Vector\CANdelaStudio\&lt;version&gt;\IniPath</code></pre>
+<h2 id="installing">On Installing</h2>
+<p>The CANdelaStudio installation...</p>
+<ul>
+<li>creates the folder (see above)</li>
+<li>creates the registry key (see above)</li>
+<li>does not install any INI file (initially, CANdelaStudio uses hard-coded defaults) (since 4.0 SP2, CDS-4710)</li>
+<li>takes over INI files <strong>from a previous version</strong> (7.5 SP3, CDS-14171):
+<ul>
+<li>during the first installation of a main release</li>
+<li>not for an SP installed onto the same main release</li>
+<li>if CANdelaStudio.ini and Action.ini of an older or the current CANdelaStudio version exist, CANdelaStudio copies the files to a location which is read by the current version.</li>
+</ul></li>
+<li>if CANdelaStudio.ini file <code>[Output]FileName</code>
+<ul>
+<li>specifies a logfile path containing the version number of an older CANdelaStudio version,</li>
+<li>then CANdelaStudio modifies it to a path with the current version (CDS-41281 9.0)</li>
+<li><p>Example:</p>
+<pre><code>  [Output]
+  FileName=C:\Users\USERNAME\AppData\Local\Vector\CANdelaStudio\8.1\CANdelaStudio.log</code></pre>
+<p>becomes</p>
+<pre><code>  [Output]
+  FileName=C:\Users\USERNAME\AppData\Local\Vector\CANdelaStudio\8.5\CANdelaStudio.log</code></pre></li>
+</ul></li>
+</ul>
+<h2 id="on-uninstalling">On Uninstalling</h2>
+<p>If CANdelaStudio gets deinstalled, the INI files remain.</p>
+<h2 id="use-in-candelastudio">Use in CANdelaStudio</h2>
+<p>During execution, CANdelaStudio reads/writes the INI files.</p>
+<p>The point of time for writing is not determined – in case of a crash, modified settings may have been already written or not.</p>
+<h2 id="issue-in-8.2-sp3-and-8.5-candelastudio.ini-not-saved-cds-40497">Issue in 8.2 SP3 and 8.5: CANdelaStudio.ini not Saved (CDS-40497)</h2>
+<ul>
+<li>Issue: CANdelaStudio did <strong>not create</strong> a CANdelaStudio.ini after the first installation
+<ul>
+<li>i.e. if the file did not exist during start of CANdelaStudio</li>
+</ul></li>
+<li>Workaround: manually create an empty INI file
+<ul>
+<li>e.g. for 8.2 SP3: <code>C:\ProgramData\Vector\CANdelaStudio\8.2\CANdelaStudio.ini</code></li>
+<li>likewise for 8.5</li>
+</ul></li>
+<li>Versions affected: 8.2 SP3 and 8.5 (before SP2)</li>
+</ul>
+<h2 id="ini-options-list">INI Options List</h2>
+<p>This chapter lists options not represented in the user interface in Ribbon Tab File | Options.</p>
+<p>Each sub-chapter lists one part of the CANdelaStudio.ini file.</p>
+<p>How to apply: to set option “EnableODXExportOptions“ in the chapter „Studio“ to 0, the entry in the INI file must read</p>
+<pre><code>[Studio]
+EnableODXExportOptions=0</code></pre>
+<h3 id="general">General</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Actions</td>
+<td align="left">Path to Actions.ini</td>
+</tr>
+<tr class="even">
+<td align="left">LicIgnoreDongle</td>
+<td align="left">Disable check of dongle license, default false (check enabled)</td>
+</tr>
+<tr class="odd">
+<td align="left">LicIgnoreHardware</td>
+<td align="left">Disable check of hardware license, default false (check enabled)</td>
+</tr>
+<tr class="even">
+<td align="left">LicIgnoreFlexnet</td>
+<td align="left">Disable check of FLEXnet license, default false (check enabled)</td>
+</tr>
+<tr class="odd">
+<td align="left">LicenseType</td>
+<td align="left">Default: &quot;Per Seat&quot;, other values: &quot;Pool&quot; etc., see <a href="Licensing.htm#pool">Pool Licensing</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">PoolLicenseEdition</td>
+<td align="left">For LicenseType &quot;Pool&quot;: edition to be used, see <a href="Licensing.htm#pool">Pool Licensing</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><span id="INI-R580" class="rqDef">[INI-R580]</span> Button configuration for accessing Company Specific Info <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R580' title="">[MENU-R580]</a> (CDS-70603 v11):</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CustomizedButtonFileName</td>
+<td align="left">URL to open via Windows mechanisms, like <code>https://vector.com</code></td>
+</tr>
+<tr class="even">
+<td align="left">CustomizedButtonLabel</td>
+<td align="left">The text to show on the button, like &quot;Vector&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left">CustomizedButtonTooltipDescription</td>
+<td align="left">A tooltip for the button.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="options-studio">Studio</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">EnableODXExportOptions</td>
+<td align="left">0 = disable editing of ODX Export options in File|Options</td>
+</tr>
+<tr class="even">
+<td align="left">EnablePVCDI</td>
+<td align="left"><span id="INI-R330" class="rqDef">[INI-R330]</span> 1 = enable PVCDI Import/Export in CANdelaStudio 13 (CDS-71835)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recent">RecentFileList</h3>
+<p><span id="INI-R340" class="rqDef">[INI-R340]</span> Stores entries of the recent file list <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File.htm#MENU-R340' title="">[MENU-R340]</a>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">RFLFile1</td>
+<td align="left">complete path to the most recently opened file</td>
+</tr>
+<tr class="even">
+<td align="left">RFLFile2</td>
+<td align="left">... accordingly, up to the number configured in <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File.htm#MENU-R340-Number' title="">[MENU-R340-Number]</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ODXImport">ODXImport</h3>
+<p>See <a href="../../30%20Features/Import/2_Import%20Settings.htm#Options">ODX Import Options</a>.</p>
+<h3 id="ODX20Export">ODX20Export</h3>
+<p>For editing the ODX Export options, use the dialog <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20ODX%20Export.htm">File | Options | ODX Export</a>.</p>
+<p>See the options list in the <a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX Export Introduction</a>.</p>
+<p>A <a href="../../30%20Features/Attributes/Special%20Attributes.htm#OdxExportOption">Special Attribute</a> with the qualifier equal to the name of an INI option overrides the setting of the corresponding INI entry.</p>
+<h3 id="autosar">DEXT</h3>
+<p>For the following options to take effect, the version of both...</p>
+<ul>
+<li>CANdelaStudio and</li>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> (DEXT) export</li>
+</ul>
+<p>... are relevant!</p>
+<table style="width:98%;">
+<colgroup>
+<col width="19%" />
+<col width="16%" />
+<col width="12%" />
+<col width="49%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Option</th>
+<th align="left">Since CANdelaStudio</th>
+<th align="left">Since DEXT</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">MicrosarImport</td>
+<td align="left">v13</td>
+<td align="left">R23</td>
+<td align="left"><span id="INI-R356" class="rqDef">[INI-R356]</span><br />
+Parameter for DEM. Default value is 1.</td>
+</tr>
+<tr class="even">
+<td align="left">ShaperPatchFile</td>
+<td align="left">8.5 SP3</td>
+<td align="left">R18</td>
+<td align="left"><span id="INI-R352" class="rqDef">[INI-R352]</span><br />
+Absolute path to a customer specific configuration file for the export.<br />
+Vector may provide a patch file on demand, in order to adapt the export behavior without export changes.<br />
+See also <a href="../../15%20Procedures/Event/How%20to%20Specify%20Event%20Qualifiers%20before%20v12.htm">How to Specify Event Qualifiers before v12</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<p>See also <a href="../../30%20Features/AUTOSAR/AUTOSAR%20Adaptive.htm">AUTOSAR Adaptive</a>.</p>
+<h3 id="docUpgrade">DocUpgrade</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Feature ID</th>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">-</td>
+<td align="left">DocUpLastXXX</td>
+<td align="left">Several values that save dialog settings, not for manual modification.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="replacesimilardatatypes">ReplaceSimilarDataTypes</h3>
+<p><span id="INI-R500" class="rqDef">[INI-R500]</span> The <a href="../../30%20Features/Data%20Type/Replace%20Similar%20Data%20Types.htm">&quot;Replace Similar Data Types&quot; feature</a> is controlled by the following options.</p>
+<p><span id="INI-R500-Conversions" class="rqDef">[INI-R500-Conversions]</span> Options for each conversion supported <a class='rqRef' href='../../30%20Features/Data%20Type/Replace%20Similar%20Data%20Types.htm#RDT-R010' title="">[RDT-R010]</a>:</p>
+<table style="width:100%;">
+<colgroup>
+<col width="16%" />
+<col width="27%" />
+<col width="55%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature ID</th>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span id="INI-R500-Cfg" class="rqDef">[INI-R500-Cfg]</span></td>
+<td align="left">MergeDataTypesAllowConfigurationInStandardView</td>
+<td align="left">1 = allow to configure crucial properties <a class='rqRef' href='../../30%20Features/Data%20Type/Replace%20Similar%20Data%20Types.htm#RDT-R020' title="">[RDT-R020]</a> in Standard View (the default)<br />
+0 = prevent from changing the default setting of crucial properties</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="INI-R500-Default" class="rqDef">[INI-R500-Default]</span></td>
+<td align="left">IdentityFilterOptions<br />
+LinearCompFilterOptions<br />
+TextTableFilterOptions<br />
+</td>
+<td align="left">Default for: which of the properties of similar data types shall be ignored for group computation.<br />
+<br />
+<strong>Example</strong>:<br />
+<code>[ReplaceSimilarDataTypes]</code><br />
+<code>IdentityFilterOptions=0,1;1,1;2,1;3,1;4,1;5,1;6,0;</code><br />
+<br />
+<strong>Format</strong>:<br />
+5 or 6 pairs of numbers, for the properties in the order shown in the dialog:<br />
+- Description<br />
+- Encoding<br />
+- Attributes<br />
+- Byte Order<br />
+- Display Format<br />
+- (optional) TextID<br />
+Note: the pair for the TextID property is optional, depending on the document setting <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R320' title="">[DOCUI-R320]</a>.<br />
+<br />
+Each pair consists of:<br />
+- first number: property index, 0-based;<br />
+- second number: whether the property shall be ignored,<br />
+ 0 = the property is crucial, differences prevent from putting data types into a group,<br />
+ 1 = ignore the property, differences do not matter.<br />
+CANdelaStudio logs a warning if it does not detect the format.<br />
+<br />
+If <code>MergeDataTypesAllowConfigurationInStandardView=0</code>, these values define the fixed setting.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="plugins">Plugins</h3>
+<table>
+<colgroup>
+<col width="18%" />
+<col width="20%" />
+<col width="61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature ID</th>
+<th align="left">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span id="INI-R220" class="rqDef">[INI-R220]</span></td>
+<td align="left">(plug-in name)</td>
+<td align="left">When loading a repository integration plug-in <a class='rqRef' href='../../30%20Features/Import/Repository%20Integration.htm#RPS-R220' title="Plug-in Configuration">[RPS-R220]</a>,<br />
+CANdelaStudio reads the INI parameter in section <code>Plugins</code>,<br />
+with the parameter name as given by the plug-in API function <code>GetRepositoryName()</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="registry">Registry</h2>
+<p>The following options are defined in the Windows registry, from which CANdelaStudio reads them.</p>
+<p>Tip: before you set a registry key, <strong>close CANdelaStudio</strong>.</p>
+
+<h3 id="candelastudio">CANdelaStudio</h3>
+<p><strong>Path in registry:</strong></p>
+<ul>
+<li><code>HKEY_CURRENT_USER/Software/Vector/CANdelaStudio</code></li>
+<li><code>&lt;version&gt;</code> is the CANdelaStudio version
+<ul>
+<li>it has a trailing &quot;.0&quot; even for version 10 and later.</li>
+</ul></li>
+<li>Example in v10 for key <code>xx</code>:
+<ul>
+<li><code>HKEY_CURRENT_USER/Software/Vector/CANdelaStudio/xx</code></li>
+</ul></li>
+</ul>
+<p><strong>Keys:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Feature ID</th>
+<th align="left">Key</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span id="INI-R400" class="rqDef">[INI-R400]</span></td>
+<td align="left">PersistorIdMethod</td>
+<td align="left">0 = using memory addresses (fast), 1 = using counter</td>
+</tr>
+</tbody>
+</table>
+<h3 id="studio">Studio</h3>
+<p><strong>Path in registry:</strong></p>
+<ul>
+<li><code>HKEY_CURRENT_USER/Software/Vector/CANdelaStudio/&lt;version&gt;/&lt;language&gt;/Studio</code></li>
+<li><code>&lt;language&gt;</code> is one of &quot;en-US&quot;, &quot;de-DE&quot;, &quot;ja&quot;</li>
+<li><code>&lt;version&gt;</code> is the CANdelaStudio version
+<ul>
+<li>it has a trailing &quot;.0&quot; even for version 10 and later.</li>
+</ul></li>
+<li>Example in the English v10 for key <code>OpenCDDTInExpertMode</code>:
+<ul>
+<li><code>HKEY_CURRENT_USER/Software/Vector/CANdelaStudio/10.0/en-US/Studio/OpenCDDTInExpertMode</code></li>
+</ul></li>
+</ul>
+<p><strong>Keys:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Feature ID</th>
+<th align="left">Key</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span id="INI-R300" class="rqDef">[INI-R300]</span></td>
+<td align="left">OpenCDDTInExpertMode</td>
+<td align="left">Drag and Drop behaviour for templates, see <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Drag and Drop of Files.htm#DDF-R110' title="">[DDF-R110]</a>. Default value: 0 (CDS-4695 5.0)</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="INI-R310" class="rqDef">[INI-R310]</span></td>
+<td align="left">WriteMigratorLogFile</td>
+<td align="left">0: no migration files like <code>Load_migration_5.0.140_to_6.0.120_Neues Steuergerät 1.50.log</code> will be written (CDS-12769 6.5)</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/AUTOSAR/AUTOSAR%20Adaptive.htm">AUTOSAR Adaptive</a></li>
+<li>Dialog in Ribbon Tab <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options.htm">File | Options</a></li>
+<li><a href="../../30%20Features/Installation/Installation%20Folder.htm">Installation Folder</a></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Link Status</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="link-status">Link Status</h1>
+<p>CANdelaStudio visualizes the relationship of requirements and diagnostic objects: whether properties are equal, whether the one contains child elements missing in the other etc.</p>
+<ul>
+<li><span id="RQOP-R100-Linking" class="rqDef">[RQOP-R100-Linking]</span>: the linking information in the CANdelaStudio requirements list shall be based upon the selected library or variant <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a>.</li>
+</ul>
+<h2 id="link-status-assumptions">General assumptions</h2>
+<p>The link status displayed in CANdelaStudio is based on the following assumptions:</p>
+<ul>
+<li>each typed requirement is intended to be linked, otherwise it is “not ok” (“dangling”)</li>
+<li>a not-linked diagnostic object is “ok” (does not lead to “conflict”)</li>
+<li>a diagnostic object that was linked but the requirement does no more exist is “not ok” (“dangling”)</li>
+<li>headings (which are not typed) and diagnostic classes (which are not linked) reflect the link status of their content</li>
+<li>if a <strong>diagnostic instance uses a DID</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001' title="DID Used">[DID-D001]</a> via a DID Data Reference, the <strong>data objects within the DID</strong> shall be considered <strong>children</strong> of the diagnostic instance</li>
+</ul>
+<h2 id="requirement-link-status-definition">Requirement Link Status Definition</h2>
+<ul>
+<li>Rq := requirement;</li>
+<li>DO := diagnostic object;</li>
+<li>PropertyNotEqual := Rq is referenced by DO and properties are not equal</li>
+<li>PropertyEqual := Rq is referenced by DO and properties are equal</li>
+<li>ChildConflict := any child has status “conflict”;</li>
+<li>ChildNotPresent := Rq is referenced by DO which has any child that references Rq2 which is not a child of Rq;</li>
+<li>ForeignChild := any child is referenced by DO and the parent of DO does not reference Rq.</li>
+<li><span id="RQ-R200-DIDDiagInstConflict" class="rqDef">[RQ-R200-DIDDiagInstConflict]</span> DIDDiagInstConflict := at a Data DiagInst Requirement, the special DiagClass value of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DID' title="">[RQ-R030-DID]</a> does not correspond with the DID use <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180-DiagClassDIDs' title="">[RQ-R180-DiagClassDIDs]</a></li>
+<li><p>(definition of “equal” see <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180' title="Equality">[RQ-R180]</a>)</p>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="10%" />
+<col width="77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Type</th>
+<th align="left">Status</th>
+<th align="left">Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Heading</td>
+<td align="left">none conflict dangling equal</td>
+<td align="left">no “typed” descendant (= only heading and text requirement) AND not linked, else<br />
+ChildConflict OR ChildNotPresent OR ForeignChild, else<br />
+any child has status “dangling”, else<br />
+</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstRq</td>
+<td align="left">conflict</td>
+<td align="left">PropertyNotEqual OR<br />
+ChildConflict OR ChildNotPresent OR ForeignChild OR DIDDiagInstConflict, else</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">dangling</td>
+<td align="left">any child has status “dangling”, OR<br />
+Rq is not referenced by a DO, else</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">equal</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DataRq</td>
+<td align="left">conflict</td>
+<td align="left">PropertyNotEqual, else</td>
+</tr>
+<tr class="even">
+<td align="left">DTCRq</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">VSGRq</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">dangling</td>
+<td align="left">Rq is not referenced by a DO, else</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">equal</td>
+<td align="left">(i.e. referenced, props equal)</td>
+</tr>
+<tr class="even">
+<td align="left">TextRq</td>
+<td align="left">none</td>
+<td align="left">Rq is not referenced by DO, else</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">equal</td>
+<td align="left">(referenced)</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h2 id="diagnostic-object-link-status-definition">Diagnostic Object Link Status Definition</h2>
+<ul>
+<li>PropertyNotEqual := DO references an existing Rq and properties are not equal</li>
+<li>PropertyEqual := DO references an existing Rq and properties are equal</li>
+<li>ChildConflict := any child has status “conflict”;</li>
+<li>ForeignChild := any child references an existing Rq and the parent of Rq can be linked (e.g. not a heading) and is not referenced by DO.</li>
+<li>DIDDiagInstConflict as in previous chapter</li>
+<li><p>(definition of “equal” see <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180' title="Equality">[RQ-R180]</a>)</p>
+<table>
+<colgroup>
+<col width="14%" />
+<col width="10%" />
+<col width="74%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Type</th>
+<th align="left">Status</th>
+<th align="left">Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">DiagClass</td>
+<td align="left">none</td>
+<td align="left">no descendant relevant for requirements, else</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">conflict</td>
+<td align="left">any child has status “conflict”, else</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">dangling</td>
+<td align="left">any child has status “dangling”, else</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">equal</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInst</td>
+<td align="left">none</td>
+<td align="left">DO does not have a reference to an Rq</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">AND (all children have status “none” OR all children have status “equal”)</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">conflict</td>
+<td align="left">PropertyNotEqual OR<br />
+DIDDiagInstConflict (i.e. linked Rq has the special qualifier, OR not linked but uses a DID linked with a Rq that has the special qualifier), OR<br />
+ChildConflict(*) OR<br />
+ForeignChild, else</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">dangling</td>
+<td align="left">any child has status “dangling”, OR<br />
+DO references non-existing Rq, else</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">equal</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DID<br />
+(CDS-39520 8.5 SP2)</td>
+<td align="left">none</td>
+<td align="left">DO does not have a reference to an Rq<br />
+AND (all children have status “none” OR all children have status “equal”)</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">conflict</td>
+<td align="left">PropertyNotEqual OR<br />
+DIDDiagInstConflict (i.e. linked Rq does not have the special qualifier, OR used by a DiagInst linked with a Rq that has the special qualifier), OR<br />
+ChildConflict(*) OR<br />
+ForeignChild, else</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">dangling</td>
+<td align="left">any child has status “dangling”, OR<br />
+DO references non-existing Rq, else</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">equal</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DataObject,<br />
+DTC,</td>
+<td align="left">none</td>
+<td align="left">DO does not have a reference to an Rq</td>
+</tr>
+<tr class="odd">
+<td align="left">VSG</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">conflict</td>
+<td align="left">PropertyNotEqual else</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">dangling</td>
+<td align="left">DO does have a reference, but to a non-existing Rq, else</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">equal</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>(*) If DO does not have a reference, and all children have status „none“ or „equal“, then ChildConflict occurs, since DO would have to reference the other parent.</p>
+<h2 id="examples-for-requirement-link-status">Examples for Requirement Link Status</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Type</th>
+<th align="left">Condition</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Heading</td>
+<td align="left">No typed descendants</td>
+<td align="left"><img src="Images/LinkStatusHeadingNoTypedDescendants.png" /></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Child conflict</td>
+<td align="left"><img src="Images/LinkStatusHeadingChildConflict.png" /></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Child dangling</td>
+<td align="left"><img src="Images/LinkStatusHeadingChildDangling.png" /></td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstRq</td>
+<td align="left">Child conflict</td>
+<td align="left"><img src="Images/LinkStatusDiagInstRqChildConflict.png" /></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Link mismatch at child</td>
+<td align="left"><img src="Images/LinkStatusDiagInstRqLinkMismatchAtChild.png" /></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Properties not equal</td>
+<td align="left"><img src="Images/LinkStatusDiagInstRqPropertiesNotEqual.png" /></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Dangling</td>
+<td align="left"><img src="Images/LinkStatusDiagInstRqDangling.png" /></td>
+</tr>
+<tr class="even">
+<td align="left">DataRq</td>
+<td align="left">Linked, properties not equal</td>
+<td align="left"><img src="Images/LinkStatusDataRqLinkedPropertiesNotEqual.png" /></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Not linked</td>
+<td align="left"><img src="Images/LinkStatusDataRqNotLinked.png" /></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Equal</td>
+<td align="left"><img src="Images/LinkStatusDataRqEqual.png" /></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Equal (even if linked with parent link mismatch)</td>
+<td align="left"><img src="Images/LinkStatusDataRqEqualEvenIf.png" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="link-status-tooltip">Link Status Tooltip</h2>
+<p>The following table illustrates the link status type icon and the tooltip for existing differences.</p>
+<h3 id="property-not-equal">Property not equal</h3>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>LinkStatusDiff</th>
+<th>Tooltip (GUI)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PropertyValueDiff</td>
+<td><code>&lt;Property name&gt;</code>: <code>&lt;ValueR&gt;</code> / <code>&lt;ValueDO&gt;</code></td>
+</tr>
+<tr class="even">
+<td>ServicesDiff (at DiagInstRequirement/DataRequirement)</td>
+<td>Services <code>&lt;name1&gt;</code>, … do not exist in diagnostic instance</td>
+</tr>
+<tr class="odd">
+<td>TypeDiff (i.e. not compatible)</td>
+<td>Type incompatible: requirement / diagnostic object</td>
+</tr>
+<tr class="even">
+<td><span id="RQ-R220-DIDDiagInstConflict" class="rqDef">[RQ-R220-DIDDiagInstConflict]</span> DIDDiagInstConflict</td>
+<td>DiagClass &quot;(DID)&quot; reserved for DID without diagnostic instance</td>
+</tr>
+<tr class="odd">
+<td>VehicleSystemGroupsDiff</td>
+<td>Vehicle System Group <code>&lt;name of VSG&gt;</code> specified at requirement is not associated with linked diagnostic object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="property-equal">Property Equal</h3>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>LinkStatusDiff</th>
+<th>Tooltip (GUI)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ChildDiff type “dangling”</td>
+<td><p>Unlinked (unresolved) requirement <code>&lt;child name&gt;</code> or in its contents</p>
+<p>Reference to non-existing requirement ID at <code>&lt;child name&gt;</code> or its contents</p></td>
+</tr>
+<tr class="even">
+<td>ChildDiff type “conflict”</td>
+<td>Differences in <code>&lt;child name&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>ChildNotPresentDiff (only at requirements)</td>
+<td><p>Linked diagnostic object contains <code>&lt;child diagnostic object name&gt;</code></p>
+<pre><code>This parent Rq &lt;---------&gt; Parent diagnostic object
+                           |
+  Rq (other child &lt;------&gt; +- Child diagnostic object
+      no parent rq)
+
+
+This parent Rq &lt;---------&gt; Parent diagnostic object
+                             |
+ Other parent Rq (not linked)|
+ |                           |
+ + Rq (other child) &lt;-----&gt;  +- Child diagnostic object</code></pre></td>
+</tr>
+<tr class="even">
+<td>ChildNotPresentDiff (only at requirements)</td>
+<td><p>Linked diagnostic object contains <code>&lt;child diagnostic object name&gt;</code> which should be in <code>&lt;Other parent D.O.&gt;</code></p>
+<pre><code>This parent Rq &lt;---------&gt;  Parent diagnostic object
+                            |
+Other parent Rq &lt;---------- | -&gt; Other parent D.O.
+|                           |
++ Rq (other child) &lt;-----&gt;  +- Child diagnostic object</code></pre></td>
+</tr>
+<tr class="odd">
+<td>ForeignChildDiff (at requirement)</td>
+<td><p>Diagnostic object <code>&lt;name of diagnostic object C linked with rq. child&gt;</code> is not in <code>&lt;name of linked diagnostic object P&gt;</code></p>
+<pre><code>This parent Rq &lt;---------&gt;  Parent diagnostic object P
+|
+|                           Other parent diagnostic object
+|                           |
++ Rq child &lt;-------------&gt;  +- Child diagnostic object C</code></pre></td>
+</tr>
+<tr class="even">
+<td>ForeignChildDiff (at requirement)</td>
+<td><p>Diagnostic object <code>&lt;name of diagnostic object C linked with rq. child&gt;</code> is not in <code>&lt;name of parent Rq&gt;</code></p>
+<pre><code>This parent Rq
+|                           Parent diagnostic object
+|                           |
++ Rq child &lt;-------------&gt;  +- Child diagnostic object C</code></pre></td>
+</tr>
+<tr class="odd">
+<td>ForeignChildDiff (at diagnostic object)</td>
+<td><p><code>&lt;child name C&gt;</code> should be in diagnostic object linked with <code>&lt;name of other parent Rq P&gt;</code></p>
+<pre><code>Parent Rq &lt;--------------&gt;  This parent diagnostic object
+                            |
+Other linkable parent       |
+Rq P (not linked)           |
+|                           |
++ Rq (other child) &lt;-----&gt;  +- Child diagnostic object C</code></pre></td>
+</tr>
+<tr class="even">
+<td>ForeignChildDiff (at diagnostic object)</td>
+<td><p><code>&lt;child name C&gt;</code> should be in <code>&lt;name of diagnostic object P linked with parent of linked requirement&gt;</code></p>
+<pre><code>Parent Rq &lt;--------------&gt;  This parent diagnostic object
+                            |
+Other parent Rq &lt;---------- | -&gt; Other parent D.Object P
+|                           |
++ Rq (other child) &lt;-----&gt;  +- Child diagnostic object C</code></pre></td>
+</tr>
+<tr class="odd">
+<td>danglingDiff (without further info)</td>
+<td>Requirement is not linked with (resolved by) a diagnostic object. Diagnostic object refers to non-existing requirement ID</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Requirements <a href="Requirements.htm">Feature</a></li>
+<li>Requirements <a href="Data%20Model.htm">Data Model</a></li>
+<li><a href="Update%20Diagnostic%20Objects.htm">Update Diagnostic Objects</a></li>
+</ul>
+
+</body>
+</html>

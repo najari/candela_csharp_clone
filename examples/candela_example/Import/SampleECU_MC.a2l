@@ -1,0 +1,658 @@
+/* @@@@ File written by CANAPE_VERSION 12 0 40 @@@@ */
+
+ASAP2_VERSION 1 51
+/begin PROJECT XCPsim ""
+
+  /begin MODULE CPP ""
+
+    /begin MOD_COMMON ""
+      BYTE_ORDER MSB_LAST
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 1
+      ALIGNMENT_LONG 1
+      ALIGNMENT_FLOAT32_IEEE 1
+      ALIGNMENT_FLOAT64_IEEE 1
+    /end MOD_COMMON
+
+    /begin COMPU_VTAB HighLow "High/Low for bits" TAB_VERB 2
+      0 "Low"
+      1 "High"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB OnOff "On/off for a bit" TAB_VERB 2
+      0 "Low"
+      1 "High"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB TestStatus "" TAB_VERB 4
+      0 "Off"
+      1 "Silent"
+      2 "Pending"
+      3 "Running"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_METHOD bit12Counter ""
+      RAT_FUNC "%6.2f" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD WheelSpeed ""
+      RAT_FUNC "%6.2f" "ms"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD bytePWMFilter ""
+      RAT_FUNC "%6.2f" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Current "Convert Voltage into Current"
+      FORM "%7.3" ""
+      /begin FORMULA
+        "X*X*2"
+      /end FORMULA
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Curve1 ""
+      RAT_FUNC "%6.2f" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Curve2 ""
+      RAT_FUNC "%6.2f" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Curve_16Byte ""
+      RAT_FUNC "%6.2f" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Curve_8Byte ""
+      RAT_FUNC "%6.2f" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DelayTime ""
+      RAT_FUNC "%6.2" "ms"
+      COEFFS 0 0.25 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DelayTimeLong ""
+      RAT_FUNC "%6.2f" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DigitalFilter ""
+      RAT_FUNC "%3.1" "Volt"
+      COEFFS 0 1000 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DropCRO ""
+      RAT_FUNC "%6.2" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DropDTO ""
+      RAT_FUNC "%6.2" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Factor100 ""
+      RAT_FUNC "%3.1" ""
+      COEFFS 0 100 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD FlushAlways ""
+      RAT_FUNC "%6.2" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD HighLow "High/Low for bits"
+      TAB_VERB "%7.3" ""
+      COMPU_TAB_REF HighLow
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD KF8_Conversion ""
+      RAT_FUNC "%3.1" "1/min"
+      COEFFS 0 10 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD map1Conversion ""
+      RAT_FUNC "%3.1" "cm"
+      COEFFS 0 0.1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD map1Counter ""
+      RAT_FUNC "%6.2f" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD map1Input_Conversion ""
+      RAT_FUNC "%3.1" "m"
+      COEFFS 0 10 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD noise ""
+      RAT_FUNC "%6.2f" "dB"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD OnOff "Digital on/off"
+      TAB_VERB "%7.3" ""
+      COMPU_TAB_REF OnOff
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD perlin_noise ""
+      RAT_FUNC "%6.2f" "SRV"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Pressure "Convert Voltage into Pressure"
+      RAT_FUNC "%7.3" "mBar"
+      COEFFS 0 8.09998623 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD PWMLevel ""
+      RAT_FUNC "%6.2" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD ShiftByte ""
+      RAT_FUNC "%6.2f" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Temperature ""
+      RAT_FUNC "%6.2f" "°C"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD TestStatus ""
+      TAB_VERB "%3.1" ""
+      COMPU_TAB_REF TestStatus
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD TimerDrift ""
+      RAT_FUNC "%3.1" "ppm"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Triangle ""
+      RAT_FUNC "%6.2f" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin MEASUREMENT Bit12Counter "Demo signal (12 bit, incrementing)"
+      UWORD bit12Counter 0 0 0 4095
+      ECU_ADDRESS 0x21A4F0
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT WheelSpeed_FL "Demo wheel speed front left"
+      UBYTE WheelSpeed 0 0 0 255
+      ECU_ADDRESS 0x21A1BF
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT WheelSpeed_FR "Demo wheel speed front right"
+      UBYTE WheelSpeed 0 0 0 255
+      ECU_ADDRESS 0x21A1BF
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT WheelSpeed_RL "Demo wheel speed rear left"
+      UBYTE WheelSpeed 0 0 0 255
+      ECU_ADDRESS 0x21A1BF
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT	
+
+    /begin MEASUREMENT WheelSpeed_RR "Demo wheel speed rear right"
+      UBYTE WheelSpeed 0 0 0 255
+      ECU_ADDRESS 0x21A1BF
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+	
+    /begin CHARACTERISTIC CALRAM_START ""
+      VALUE 0x21C000 __UWORD_S 0 NO_COMPU_METHOD 0 65535
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 65535
+      FORMAT "%.15"
+    /end CHARACTERISTIC
+
+    /begin AXIS_PTS Curve1 "Curve used as axis"
+      0x21C444 NO_INPUT_QUANTITY SSV__UBYTE_S 0 Curve1 8 0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      DEPOSIT ABSOLUTE
+      FORMAT "%.3"
+    /end AXIS_PTS
+
+    /begin AXIS_PTS Curve2 "Curve used as axis"
+      0x21C4DC NO_INPUT_QUANTITY CurveX8ub 0 Curve2 8 0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      DEPOSIT ABSOLUTE
+      FORMAT "%.3"
+    /end AXIS_PTS
+
+    /begin CHARACTERISTIC Curve_16Byte "16 BYTE curve"
+      VAL_BLK 0x21C3A0 __UBYTE_Z 0 Curve_16Byte  0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      MATRIX_DIM 16 1 1
+      FORMAT "%.3"
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC Curve_8Byte "8 BYTE CurveV8ub"
+      VAL_BLK 0x21C4EC CurveV8ub 0 Curve_8Byte  0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      MATRIX_DIM 8 1 1
+      FORMAT "%.3"
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC DemoFilter "Digital Filter v=(vin*a0+v*b0)/c0"
+      VALUE 0x21C054 __UWORD_S 0 DigitalFilter 0 1
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 1
+      FORMAT "%.3"
+    /end CHARACTERISTIC
+
+    /begin MEASUREMENT DigitalFilterInput "Digital Filter Inputvalue"
+      UWORD DigitalFilter 0 0 0 1
+      READ_WRITE
+      ECU_ADDRESS 0x21A020
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin CHARACTERISTIC DropCRO "CRO dropout probabilty"
+      VALUE 0x1F7DEC __SLONG_S 0 DropCRO 0 100
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 100
+      FORMAT "%.0"
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC DropDTO "DTO dropout probability"
+      VALUE 0x1F7DF0 __SLONG_S 0 DropDTO 0 100
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 100
+      FORMAT "%.0"
+    /end CHARACTERISTIC
+
+    /begin MEASUREMENT EngineState "Single bit demo signal (bit from a byte shifting)"
+      UBYTE OnOff 0 0 0 1
+      READ_WRITE
+      BIT_MASK 0x80
+      ECU_ADDRESS 0x23A1BF
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin CHARACTERISTIC FlushAlways "Use individual UDP/TCP packets"
+      VALUE 0x109410 __SLONG_S 0 FlushAlways 0 1
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 1
+      FORMAT "%.0"
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC Map1Counter ""
+      VALUE 0x21C06E __UBYTE_S 0 map1Counter 0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      FORMAT "%.3"
+    /end CHARACTERISTIC
+
+    /begin MEASUREMENT Map1InputX ""
+      UBYTE map1Input_Conversion 0 0 0 25.5
+      ECU_ADDRESS 0x21A4F8
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT Map1InputY ""
+      UBYTE map1Input_Conversion 0 0 0 25.5
+      ECU_ADDRESS 0x21A08F
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT Map1Output ""
+      UBYTE map1Conversion 0 0 0 2550
+      ECU_ADDRESS 0x21A1AB
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT Noise "Random numbers"
+      FLOAT32_IEEE noise 0 0 0 255
+      ECU_ADDRESS 0x21A024
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT PWM "Pulse width signal from PWM_level and Triangle"
+      UBYTE HighLow 0 0 0 255
+      ECU_ADDRESS 0x21A08D
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.0"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT PWMLevel ""
+      SBYTE PWMLevel 0 0 0 127
+      ECU_ADDRESS 0x21C003
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT Perlin_noise "Random numbers"
+      FLOAT32_IEEE perlin_noise 0 0 0 255
+      ECU_ADDRESS 0x21A1B0
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT ShiftByte ""
+      UBYTE ShiftByte 0 0 0 255
+      ECU_ADDRESS 0x21A35E
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT ThresholdExceed "Single bit demo signal (bit from a byte shifting)"
+      UBYTE HighLow 0 0 0 1
+      READ_WRITE
+      BIT_MASK 0x1
+      ECU_ADDRESS 0x21A35E
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT StartDelay "Testsignal: 4 Bit on a byte boundary"
+      UWORD DelayTime 0 0 0 15
+      BIT_MASK 0x3C0
+      ECU_ADDRESS 0x21A4F0
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%6.2"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT StopDelay "Testsignal: 5 Bit"
+      UWORD DelayTimeLong 0 0 0 31
+      BIT_MASK 0x1F
+      ECU_ADDRESS 0x21A4F0
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT SyncCounter_float ""
+      FLOAT32_IEEE NO_COMPU_METHOD 0 0 -3.4e+038 3.4e+038
+      ECU_ADDRESS 0x21A4FC
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT SyncCounter_long ""
+      SLONG NO_COMPU_METHOD 0 0 -2147483648 2147483647
+      ECU_ADDRESS 0x219010
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT SyncStructArray[000].mem_float ""
+      FLOAT32_IEEE NO_COMPU_METHOD 0 0 -3.4e+038 3.4e+038
+      ECU_ADDRESS 0x21A098
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT TemperatureIn "FLOAT demo signal"
+      FLOAT32_IEEE Temperature 0 0 -1e+012 1e+012
+      ECU_ADDRESS 0x21A1B4
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT TemperatureOut "FLOAT demo signal (sine wave)"
+      FLOAT32_IEEE Temperature 0 0 -1e+012 1e+012
+      ECU_ADDRESS 0x21A198
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT TemperaturePre "Double demo signal"
+      FLOAT64_IEEE Temperature 0 0 -100 100
+      ECU_ADDRESS 0x21A190
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.12"
+    /end MEASUREMENT
+
+    /begin COMPU_METHOD Temperature.DIFF_UNIT "@@@@RuleName created by CANape"
+      RAT_FUNC "%6.2f" "°C"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin MEASUREMENT TestStatus "2 bit demo signal with symbolic conversion formula"
+      UBYTE TestStatus 0 0 0 3
+      READ_WRITE
+      BIT_MASK 0xC0
+      ECU_ADDRESS 0x21A1BF
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.0"
+    /end MEASUREMENT
+
+    /begin CHARACTERISTIC TimerDrift "Timer drift for ECU time stamps"
+      VALUE 0x20D88C __SLONG_S 0 TimerDrift -10000 10000
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -10000 10000
+      FORMAT "%.0"
+    /end CHARACTERISTIC
+
+    /begin MEASUREMENT Triangle "Triangle test signal used for PWM output PWM"
+      SBYTE Triangle 0 0 -50 50
+      ECU_ADDRESS 0x21A1BD
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin MEASUREMENT PWMFilter "Filter constant for PWM filter"
+      UBYTE bytePWMFilter 0 0 0 100
+      READ_WRITE
+      ECU_ADDRESS 0x21C03E
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.3"
+    /end MEASUREMENT
+
+    /begin GROUP Axis "Shared Axis for Calibration Maps"
+      ROOT
+      /begin REF_CHARACTERISTIC
+        Curve1 Curve2 
+      /end REF_CHARACTERISTIC
+    /end GROUP
+
+    /begin GROUP Bitslices "Multibit Values"
+      /begin REF_MEASUREMENT
+        TestStatus 
+      /end REF_MEASUREMENT
+    /end GROUP
+
+    /begin GROUP Curves "Calibration Curves"
+      ROOT
+      /begin REF_CHARACTERISTIC
+        Curve_16Byte Curve_8Byte 
+      /end REF_CHARACTERISTIC
+    /end GROUP
+
+    /begin GROUP Example_Double "Kommentar"
+      ROOT
+    /end GROUP
+
+    /begin GROUP Example_Filter "Digital Filter v=(vin*a0+v*b0)/c0"
+      ROOT
+      /begin REF_CHARACTERISTIC
+        DemoFilter 
+      /end REF_CHARACTERISTIC
+      /begin REF_MEASUREMENT
+        DigitalFilterInput 
+      /end REF_MEASUREMENT
+    /end GROUP
+
+    /begin GROUP Example_PWM "Generator for a PWM Signal"
+      ROOT
+      /begin SUB_GROUP
+        PWM_Parameters 
+        PWM_Signals 
+      /end SUB_GROUP
+    /end GROUP
+
+    /begin GROUP Maps "Calibration Maps"
+      ROOT
+      /begin SUB_GROUP
+        WorkingPoint 
+      /end SUB_GROUP
+    /end GROUP
+
+    /begin GROUP Measure "Measurement Values"
+      ROOT
+      /begin SUB_GROUP
+        Bits 
+        Bitslices 
+      /end SUB_GROUP
+    /end GROUP
+
+    /begin GROUP Parameters "Calibration Parameters"
+      ROOT
+    /end GROUP
+
+    /begin GROUP PWM_Parameters "Parametes for PWM Example"
+      /begin REF_MEASUREMENT
+        PWM_Level 
+      /end REF_MEASUREMENT
+    /end GROUP
+
+    /begin GROUP PWM_Signals "Measurement Signals from PWM"
+      /begin REF_MEASUREMENT
+        PWM Triangle 
+      /end REF_MEASUREMENT
+    /end GROUP
+
+    /begin GROUP WorkingPoint "Example for working point"
+    /end GROUP
+
+
+    /begin RECORD_LAYOUT CurveV8ub 
+      FNC_VALUES 1 UBYTE ROW_DIR DIRECT
+      FIX_NO_AXIS_PTS_X 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT CurveX8ub 
+      AXIS_PTS_X 1 UBYTE INDEX_INCR DIRECT
+      FIX_NO_AXIS_PTS_X 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UBYTE_Z 
+      FNC_VALUES 1 UBYTE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UWORD_Z 
+      FNC_VALUES 1 UWORD ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __ULONG_Z 
+      FNC_VALUES 1 ULONG ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SBYTE_Z 
+      FNC_VALUES 1 SBYTE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SWORD_Z 
+      FNC_VALUES 1 SWORD ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SLONG_Z 
+      FNC_VALUES 1 SLONG ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT32_IEEE_Z 
+      FNC_VALUES 1 FLOAT32_IEEE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT64_IEEE_Z 
+      FNC_VALUES 1 FLOAT64_IEEE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UBYTE_S 
+      FNC_VALUES 1 UBYTE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UWORD_S 
+      FNC_VALUES 1 UWORD COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __ULONG_S 
+      FNC_VALUES 1 ULONG COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SBYTE_S 
+      FNC_VALUES 1 SBYTE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SWORD_S 
+      FNC_VALUES 1 SWORD COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SLONG_S 
+      FNC_VALUES 1 SLONG COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT32_IEEE_S 
+      FNC_VALUES 1 FLOAT32_IEEE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT64_IEEE_S 
+      FNC_VALUES 1 FLOAT64_IEEE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__UBYTE_S 
+      AXIS_PTS_X 1 UBYTE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__UWORD_S 
+      AXIS_PTS_X 1 UWORD INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__ULONG_S 
+      AXIS_PTS_X 1 ULONG INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__SBYTE_S 
+      AXIS_PTS_X 1 SBYTE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__SWORD_S 
+      AXIS_PTS_X 1 SWORD INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__SLONG_S 
+      AXIS_PTS_X 1 SLONG INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__FLOAT32_IEEE_S 
+      AXIS_PTS_X 1 FLOAT32_IEEE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__FLOAT64_IEEE_S 
+      AXIS_PTS_X 1 FLOAT64_IEEE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+  /end MODULE
+/end PROJECT

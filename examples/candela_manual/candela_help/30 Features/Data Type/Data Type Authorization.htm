@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Type Authorization</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-type-authorization">Data Type Authorization</h1>
+<h2 id="document-level-authorization">Document Level Authorization</h2>
+<p>Specified in File | Properties Property Page <a href="../../20%20UserInterface/Document/Property%20Page%20Data%20Type%20Authorization.htm">Data Type Authorization</a>.</p>
+<h3 id="motivation">Motivation</h3>
+<p>A tool that consumes the CANdela document probably does not support all aspects of CANdela data types. To prevent the diagnostic process that uses such tools from breaking, you can forbid the individual features described in the following.</p>
+<h3 id="creation-of-data-types">Creation of Data Types</h3>
+<p><span id="DTAUTH-R110" class="rqDef">[DTAUTH-R110]</span> Controls whether specific kinds of <a href="../../30%20Features/Data%20Type/Data%20Type.htm">data types</a> can be created in the document.</p>
+<h3 id="allowed-type-of-data-type-nesting">Allowed Type of Data Type Nesting</h3>
+<p><span id="DTAUTH-R120" class="rqDef">[DTAUTH-R120]</span></p>
+<ul>
+<li><span id="DTAUTH-R120-Any" class="rqDef">[DTAUTH-R120-Any]</span> <strong>Any</strong>: no restriction</li>
+<li><span id="DTAUTH-R120-Packets" class="rqDef">[DTAUTH-R120-Packets]</span> <strong>Only packets in packets or in DIDs</strong>:
+<ul>
+<li>allows to nest packet data types,</li>
+<li>does not allow to nest other <a href="../../30%20Features/Data%20Type/Complex%20Data%20Types%20Introduction.htm">kinds of complex data types</a> besides packet data types.</li>
+<li>In this regard, <a href="../../30%20Features/DID/DID.htm">DIDs</a> are handled like packet data types.</li>
+</ul></li>
+<li><span id="DTAUTH-R120-None" class="rqDef">[DTAUTH-R120-None]</span> <strong>No nesting</strong>: a data type in a DID or any complex data type is not allowed to contain a data object that references another DID or complex data type.</li>
+</ul>
+<h3 id="allow-64-bit-integer">Allow 64 Bit Integer</h3>
+<p><span id="DTAUTH-R150" class="rqDef">[DTAUTH-R150]</span> The use of 64 Bit Integers <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R200' title="">[DTENC-R200]</a> must be enabled explicitly (since test systems probably do not support such integers).</p>
+<h2 id="combined-proxy-component-level-authorization">Combined Proxy Component Level Authorization</h2>
+<p>Specified in the <a href="../../20%20UserInterface/Diagnostic%20Class%20Template/Combined%20Component%20Property%20Page%20Extended.htm">property page &quot;Extended&quot;</a> of a Combined Proxy Component <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#CPC-R060' title="">[CPC-R060]</a>.</p>
+<h3 id="creation-of-data-types-1">Creation of Data Types</h3>
+<p><span id="DTAUTH-R210" class="rqDef">[DTAUTH-R210]</span> The option restricts the use of Data Types in the telegram tables of individual Combined Proxy Components.</p>
+<ul>
+<li>The option refines the document level authorization setting <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type%20Authorization.htm#DTAUTH-R110' title="">[DTAUTH-R110]</a> above:</li>
+<li>the stricter one of the authorization options applies.</li>
+</ul>
+<h2 id="invididual-data-type-authorization">Invididual Data Type Authorization</h2>
+<p>Specified in the Data Type property page.</p>
+<ul>
+<li><span id="DTAUTH-R310" class="rqDef">[DTAUTH-R310]</span> <strong>Modifiable</strong>: specifies whether properties of the data type can be modified, e.g. name and length.</li>
+<li><span id="DTAUTH-R320" class="rqDef">[DTAUTH-R320]</span> <strong>Deletable</strong>: specifies whether you can delete the data type.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Common%20Properties/Authorization.htm">Authorization Feature</a></li>
+<li>Combined Proxy Component <a href="../../20%20UserInterface/Diagnostic%20Class%20Template/Combined%20Component%20Property%20Page%20Extended.htm">Property page &quot;Extended&quot;</a></li>
+<li><a href="Data%20Type.htm">Data Type Feature</a></li>
+<li>File | Properties Property Page <a href="../../20%20UserInterface/Document/Property%20Page%20Data%20Type%20Authorization.htm">Data Type Authorization</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Equality</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="requirement-and-diagnostic-object-equality">Requirement and Diagnostic Object Equality</h1>
+<p><span id="RQ-R180" class="rqDef" title="Equality">[RQ-R180.0 Equality]</span> A <strong>requirement</strong> and a <strong>linked diagnostic object</strong> that are “compatible” <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R105' title="Compatible Types">[RQ-R105]</a> are considered “equal” under the conditions described in the following tables.</p>
+<p>Details:</p>
+<ul>
+<li><span id="RQ-R180-Case" class="rqDef">[RQ-R180-Case]</span> all string comparisons are <strong>case-sensitive</strong></li>
+<li><p><span id="RQ-R180-MultiLang" class="rqDef">[RQ-R180-MultiLang]</span> equality to the <strong>name</strong> (or <strong>description</strong>) of a CANdela object is true if at least one of the up-to-date names (or descriptions) in any language matches.</p>
+<p>Motivation: equality shall be independent of the language in which the user opens the CANdela document.</p>
+<p>Drawback: if the name matches only in a language not shown, the user has no idea why they are equal. Additional info about equality details would be helpful (cf. compare view for diagnostic objects).</p></li>
+</ul>
+<h2 id="equality-of-property-values">Equality of Property Values</h2>
+<h3 id="rule-for-empty-values">Rule for Empty Values</h3>
+<p>The objective of the &quot;equality&quot; definition is to show whether a requirement is <strong>fulfilled</strong> by a diagnostic object.</p>
+<p><span id="RQ-R180-RuleEmptyValues" class="rqDef">[RQ-R180-RuleEmptyValues]</span> Therefore, the definition of &quot;equality&quot; is <strong>not symmetric</strong>: an <strong>empty requirement property</strong>...</p>
+<ul>
+<li><strong>means</strong>: &quot;there is no restriction to the property at the diagnostic object&quot;</li>
+<li><strong>does not mean</strong>: &quot;the property at the diagnostic object must be empty&quot;.</li>
+</ul>
+<p>In programming terms: the empty requirement property is interpreted as <code>null</code>, not as the empty string.</p>
+<h3 id="constellations-for-mandatory-properties">Constellations for Mandatory Properties</h3>
+<p>The following constellations may occur:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Diagnostic Object Property</th>
+<th align="center">Requirements Property</th>
+<th align="left">Equal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">a</td>
+<td align="center">(empty)</td>
+<td align="left">yes (*)</td>
+</tr>
+<tr class="even">
+<td align="center">a</td>
+<td align="center">a</td>
+<td align="left">yes</td>
+</tr>
+<tr class="odd">
+<td align="center">a</td>
+<td align="center">b</td>
+<td align="left">no</td>
+</tr>
+</tbody>
+</table>
+<p>(*) CANdelaStudio before 8.5 SP3 (CDS-41840) treated this constellation as &quot;not equal&quot;, e.g.</p>
+<ul>
+<li>a DTC column filled by default with &quot;t.b.d.&quot; and</li>
+<li>an empty DTC Requirements property.</li>
+</ul>
+<p><span id="RQ-R180-PropertyEquality" class="rqDef">[RQ-R180-PropertyEquality]</span> <strong>Summary:</strong> a mandatory diagnostic object property and a requirement property are <strong>equal</strong> if...</p>
+<ul>
+<li>the requirements property is empty,</li>
+<li>or equals the diagnostic object property.</li>
+</ul>
+<h3 id="constellations-for-optional-properties">Constellations for Optional Properties</h3>
+<p>If the diagnostic object property itself is <strong>optional</strong> (e.g. a DTC column may exist or not), the following additional constellations occur:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Diagnostic Object Property</th>
+<th align="center">Requirements Property</th>
+<th align="left">Equal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">(does not exist)</td>
+<td align="center">(empty)</td>
+<td align="left">yes</td>
+</tr>
+<tr class="even">
+<td align="center">(does not exist)</td>
+<td align="center">a</td>
+<td align="left">yes (*)</td>
+</tr>
+</tbody>
+</table>
+<p>(*) Note: the last constellation is handled as &quot;equal&quot; since...</p>
+<ul>
+<li>the requirement &quot;a&quot; is indeed not fulfilled,</li>
+<li>but the template takes precedence:
+<ul>
+<li>it does not contain the DTC column,</li>
+<li>therefore the update of diagnostic objects cannot make the values equal,</li>
+<li>therefore the requirement is treated as &quot;equal&quot;.</li>
+</ul></li>
+</ul>
+<p><span id="RQ-R180-OptionalPropertyEquality" class="rqDef">[RQ-R180-OptionalPropertyEquality]</span> <strong>Summary:</strong> an optional diagnostic object and a requirement property are <strong>equal</strong> if...</p>
+<ul>
+<li>the diagnostic object property (e.g. DTC column, attribute) does not exist,</li>
+<li>or the requirements property is empty,</li>
+<li>or equals the diagnostic object property.</li>
+</ul>
+<h2 id="general-properties">General Properties</h2>
+<p><span id="RQ-R180-General" class="rqDef" title="Equality of General Properties">[RQ-R180-General Equality of General Properties]</span> cf. <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R020' title="General Properties">[RQ-R020]</a></p>
+<table style="width:98%;">
+<colgroup>
+<col width="17%" />
+<col width="12%" />
+<col width="68%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Element type</th>
+<th align="left">Property name</th>
+<th align="left">Condition for equality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(all)</td>
+<td align="left">ID</td>
+<td align="left">not relevant (equality is based on linked requirements, linking is based on ID)</td>
+</tr>
+<tr class="even">
+<td align="left">(all)</td>
+<td align="left">Name</td>
+<td align="left">both are equal</td>
+</tr>
+<tr class="odd">
+<td align="left">non-DTC Requirement</td>
+<td align="left">Description</td>
+<td align="left">The requirement description is empty,<br />
+or both are equal (based on plain text representation of a rich-text description).<br />
+Note: this follows the <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180-PropertyEquality' title="">[RQ-R180-PropertyEquality]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DTC Requirement</td>
+<td align="left">Description</td>
+<td align="left">The requirement description is empty,<br />
+or a DTC column with qualifier or name “Description” (in current language) does not exist,<br />
+or the property value equals the DTC column value.<br />
+Note: this follows the <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180-OptionalPropertyEquality' title="">[RQ-R180-OptionalPropertyEquality]</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="type-specific-properties">Type Specific Properties</h2>
+<p><span id="RQ-R180-TypeSpecific" class="rqDef" title="Equality of Type Specific Properties">[RQ-R180-TypeSpecific Equality of Type Specific Properties]</span> cf. <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030' title="Specific Properties">[RQ-R030]</a></p>
+<table style="width:99%;">
+<colgroup>
+<col width="21%" />
+<col width="14%" />
+<col width="62%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Requirement type</th>
+<th align="left">Property name</th>
+<th align="left">Condition for Equality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Data DiagInst Requirement Routine DiagInst Requirement<br />
+IOControl DiagInst Requirement<br />
+FaultMemory DiagInst Requirement</td>
+<td align="left">DiagClass</td>
+<td align="left">DiagClass is empty, or<br />
+equals the qualifier or name (in the current language) of the diagnostic class template of the diagInstance.<br />
+<br />
+<span id="RQ-R180-DiagClassDIDs" class="rqDef">[RQ-R180-DiagClassDIDs]</span><br />
+The reserved qualifier of <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DID' title="">[RQ-R030-DID]</a> is considered equal iff. the requirement is linked with a DID not used by a &quot;DID Definition&quot; diagnostic instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D110' title="Diagnostic Instance as DID Definition">[DI-D110]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">Data DiagInst Requirement Routine DiagInst Requirement<br />
+IOControl DiagInst Requirement</td>
+<td align="left">Identifier<br />
+<a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Identifier' title="Requirement &quot;Identifier&quot; Property">[RQ-R030-Identifier]</a></td>
+<td align="left"><span id="RQ-R180-Identifier" class="rqDef">[RQ-R180-Identifier]</span><br />
+Identifier is empty, or<br />
+the hexadecimal value equals the identifier <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-R100' title="">[DI-R100]</a> of the corresponding diagnostic instance.</td>
+</tr>
+<tr class="odd">
+<td align="left">Data DiagInst Requirement Routine DiagInst Requirement<br />
+IOControl DiagInst Requirement</td>
+<td align="left">Services</td>
+<td align="left"><span id="RQ-R180-Services" class="rqDef">[RQ-R180-Services]</span><br />
+Services is empty, or<br />
+the set of service qualifiers is a subset<br />
+of the service qualifiers or names (in the current language)<br />
+in the corresponding diagnostic instance.<br />
+<br />
+Note: for services that Update of Diagnostic Data would delete <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-DelService' title="">[RQ-R560-DelService]</a> in the diagnostic instance, the equality information may be misleading (stating the service would be <strong>added</strong> instead of <strong>deleted</strong>. </td>
+</tr>
+<tr class="even">
+<td align="left">Data DiagInst Requirement Routine DiagInst Requirement<br />
+IOControl DiagInst Requirement<br />
+FaultMemory DiagInst Requirement<br />
+DTC Requirement</td>
+<td align="left">VehicleSystemGroups</td>
+<td align="left">VehicleSystemGroups is empty, or<br />
+the set of VSG names is a subset of the qualifiers or names (in the current language) of the VSGs in the document</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Requirement</td>
+<td align="left">Code</td>
+<td align="left">Code is empty, or<br />
+equals the DTC numeric value in the document</td>
+</tr>
+<tr class="even">
+<td align="left">DTC Requirement</td>
+<td align="left">DiagClass<br />
+<a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DiagClassDTC' title="Requirement &quot;DiagClass&quot; Property at DTC">[RQ-R030-DiagClassDTC]</a></td>
+<td align="left">as for DiagClass of Data DiagInst Requirement above.</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Requirement</td>
+<td align="left">(DTC properties)</td>
+<td align="left">See user-defined properties <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180-UserDefined' title="Equality of User-Defined Properties">[RQ-R180-UserDefined]</a> below.</td>
+</tr>
+<tr class="even">
+<td align="left">Data Requirement</td>
+<td align="left">Services</td>
+<td align="left">Services is empty; or<br />
+for each part (service with optional primitive):<br />
+the service qualifier is a service qualifier in the corresponding diagnostic instance; and<br />
+primitive is not given, or the associated data object is in the denoted primitive.</td>
+</tr>
+<tr class="odd">
+<td align="left">Data Requirement</td>
+<td align="left">BitLength</td>
+<td align="left">BitLength is empty, or<br />
+equals the bit length of the CANdela data type.</td>
+</tr>
+<tr class="even">
+<td align="left">Data Requirement</td>
+<td align="left">DisplayFormat</td>
+<td align="left">DisplayFormat is empty, or<br />
+equals the display format of the CANdela data type.</td>
+</tr>
+<tr class="odd">
+<td align="left">VehicleSystemGroup Requirement</td>
+<td align="left">Semantics</td>
+<td align="left">Semantics is empty, or<br />
+equals the semantics of the CANdela VSG</td>
+</tr>
+</tbody>
+</table>
+<h2 id="user-defined-properties">User-Defined Properties</h2>
+<p><span id="RQ-R180-UserDefined" class="rqDef" title="Equality of User-Defined Properties">[RQ-R180-UserDefined Equality of User-Defined Properties]</span> cf. <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a></p>
+<table style="width:98%;">
+<colgroup>
+<col width="28%" />
+<col width="69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>“for requirements type”</th>
+<th align="left">Condition for equality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DTC</td>
+<td align="left"><span id="RQ-R180-UserDefinedDTC" class="rqDef">[RQ-R180-UserDefinedDTC]</span><br />
+The associated DTC column does not exist <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100-DTCProp' title="Association with DTC Column">[RQ-R100-DTCProp]</a>, or the property value is empty;<br />
+or the property value equals the value of the DTC column.<br />
+Note: this follows the <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180-OptionalPropertyEquality' title="">[RQ-R180-OptionalPropertyEquality]</a>.</td>
+</tr>
+<tr class="even">
+<td>all</td>
+<td align="left"><span id="RQ-R180-UserDefinedAll" class="rqDef">[RQ-R180-UserDefinedAll]</span><br />
+The associated attribute does not exist <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100-Prop' title="Association with Attribute">[RQ-R100-Prop]</a>,<br />
+or the property value is empty;<br />
+or the property value equals the value of the attribute.<br />
+Note: this follows the <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180-OptionalPropertyEquality' title="">[RQ-R180-OptionalPropertyEquality]</a>.<br />
+(CDC-36449 8.5 SP2)</td>
+</tr>
+</tbody>
+</table>
+<p>Note:</p>
+<ul>
+<li>DTC columns and attributes are template properties,</li>
+<li>you cannot create them in Standard View,</li>
+<li>therefore CANdelaStudio does not allow to create them from requirements (not even in Expert View, to save the implementation effort).</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Requirements <a href="Requirements.htm">Feature</a></li>
+<li>Requirements <a href="Data%20Model.htm">Data Model</a></li>
+<li>Requirements <a href="Link%20Status.htm">Link Status</a></li>
+</ul>
+</body>
+</html>

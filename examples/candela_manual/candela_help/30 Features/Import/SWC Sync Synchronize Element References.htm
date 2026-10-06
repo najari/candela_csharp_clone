@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SWC Sync Synchronize Element References</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="swc-sync-synchronize-element-references">SWC Sync Synchronize Element References</h1>
+<p><span id="SWC-R1500" class="rqDef">[SWC-R1500]</span> The checkbox &quot;Synchronize Element References&quot; <a class='rqRef' href='../../20 UserInterface\Import\SWC Sync Dialog.htm#SWCUI-R350' title="">[SWCUI-R350]</a> in the SWC Sync Dialog controls whether SWC Sync sets the attributes listed in <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001' title="">[ASR-D001]</a>.</p>
+<p>This controls whether daVinci Configurator uses Element References to automatically map the diagnostic objects to the objects in the SYS-EX, which is the default.</p>
+<p>In exceptional cases, it makes sense to suppress the automatic mapping. Example:</p>
+<ul>
+<li>the OEM defines elements in PREEvision as mere <strong>placeholders</strong></li>
+<li>the supplier creates <strong>detailed diagnostic objects</strong></li>
+<li>in this case, daVinci should not map the diagnostic objects to the placeholders.</li>
+</ul>
+<h2 id="synchronize-element-references-off">Synchronize Element References off</h2>
+<p><span id="SWC-R1500-Off" class="rqDef">[SWC-R1500-Off]</span></p>
+<div class="figure">
+<img src="Images/SWC%20Sync%20Synchronize%20Element%20References%20off.jpg" alt="&quot;Synchronize Element References...&quot; off" />
+<p class="caption">&quot;Synchronize Element References...&quot; off</p>
+</div>
+<ul>
+<li>SWC Sync does not set attribute values</li>
+<li>no automatic mapping from diagnostic objects to SYS-EX objects in daVinci</li>
+</ul>
+<h2 id="synchronize-element-references-on">Synchronize Element References on</h2>
+<p><span id="SWC-R1500-On" class="rqDef">[SWC-R1500-On]</span></p>
+<div class="figure">
+<img src="Images/SWC%20Sync%20Synchronize%20Element%20References%20on.jpg" alt="&quot;Synchronize Element References...&quot; on" />
+<p class="caption">&quot;Synchronize Element References...&quot; on</p>
+</div>
+<ul>
+<li>SWC Sync sets attribute values</li>
+<li>... which daVinci uses for automatic mapping from diagnostic objects to SYS-EX objects</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance</a></li>
+<li><a href="SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a></li>
+<li><a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a></li>
+</ul>
+</body>
+</html>

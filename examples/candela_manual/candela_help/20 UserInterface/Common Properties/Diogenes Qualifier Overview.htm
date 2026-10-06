@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diogenes Qualifier Overview</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diogenes-qualifier-overview-cds-2920-5.0-sp1">Diogenes Qualifier Overview (CDS-2920 5.0 SP1)</h1>
+<p>The <strong>Diogenes Qualifier Overview</strong> dialog (menu View, after “Qualifier overview”) is only available for documents and templates of the manufacturer Daimler. It offers an overview of all Diogenes Qualifiers in the document.</p>
+<p>The dialog offers you the option of copying selected lines of the table to the Windows clipboard and paste them in other programs (e.g. Microsoft Excel).</p>
+<h2 id="variant-selection">Variant Selection</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Common%20Properties/Images/Diogenes%20Qualifier%20Overview%20Variant%20Selection.jpg" alt="Diogenes Qualifier Overview Variant Selection.jpg" />
+<p class="caption">Diogenes Qualifier Overview Variant Selection.jpg</p>
+</div>
+<p>R002.0: New dialog “Variant Selection” for selecting the variants which are used for the view (dialog shall look and behave like the dialog used in the Diogenes export menu for variant selection. Note: the selection of the base variant is not mandatory)</p>
+<h2 id="overview">Overview</h2>
+
+<p>R003.0: New dialog “Diogenes Qualifier Overview”. The table is the same as in <a href="Qualifier%20Overview.htm">Qualifier overview</a> but with two additional columns:</p>
+<ul>
+<li>one at the left hand side with the heading “Diogenes Qualifier”,</li>
+<li>and another column “Variant” before the Object type column.</li>
+</ul>
+<p>his dialog has just a “Close” button. No other control elements are available.</p>
+<p>R011.0: The Diogenes qualifiers are shown as they are exported in the Diogenes file.</p>
+<p>Example: for</p>
+<pre><code>&lt;CLASSREF
+LINKEND=&#39;...&#39;&gt;CDS-5291_NoClassrefForGlobalDiagServices_small.Diag_0003.SES_Normal_Default_Session&lt;/CLASSREF&gt;</code></pre>
+<p>the following string is shown:</p>
+<pre><code>CDS-5291_NoClassrefForGlobalDiagServices_small.Diag_0003.SES_Normal_Default_Session</code></pre>
+<p>R012.0: If no CANdela qualifier is available for the Diogenes qualifier (e.g. for DIAG-SERVICEs exported for DTCs), just the Diogenes qualifier is listed with no CANdela qualifier or path.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="Qualifier%20Overview.htm">Qualifier overview</a></li>
+</ul>
+</body>
+</html>

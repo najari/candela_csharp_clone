@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Library</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="library-cds-37946-8.5-sp2">Library (CDS-37946 8.5 SP2)</h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Libraries.jpg" alt="Libraries Tree Node and List" />
+<p class="caption">Libraries Tree Node and List</p>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>A library is an <strong>authoring feature</strong>.</li>
+<li>It is not directly relevant for a test system or code generation (it may take effect only if its data is used in variants).</li>
+<li>A library provides <strong>DIDs</strong> and <strong>diagnostic classes</strong> for use in a document.</li>
+<li>It is either
+<ul>
+<li><strong>imported from ODX ECU-SHARED-DATA</strong> (<strong>import scope &quot;Library&quot;</strong>, not &quot;Selected parts only&quot;) and passed through the document to ODX export, or</li>
+<li><strong>created within the document</strong> as a base for copying and referencing across variants. This is especially helpful if the diagnostic process does not allow references into the base variant.</li>
+</ul></li>
+</ul>
+<p>Note: ODX ECU-SHARED-DATA imported via <strong>&quot;Selected Parts only&quot;</strong> are stored in the <a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA list on document level</a>, separate from libraries.</p>
+<h2 id="common-properties">Common Properties</h2>
+<p><span id="LIB-D010" class="rqDef" title="Library Authoring">[LIB-D010.0 Library Authoring]</span>: a library is an <strong>authoring feature</strong>, not relevant for a test system or code generation.</p>
+<p><span id="LIB-R010" class="rqDef" title="Library Definition">[LIB-R010 Library Definition]</span>: a CANdela document contains a list of 0..n <strong>Libraries</strong> on document level, each with the following properties:</p>
+<ul>
+<li><span id="LIB-R010-a" class="rqDef">[LIB-R010-a]</span> <a href="../../30%20Features/Common%20Properties/Qualifier.htm">qualifier</a>, <a href="../../30%20Features/Common%20Properties/Name.htm">name</a> and <a href="../../30%20Features/Common%20Properties/Description.htm">description</a>;</li>
+<li><span id="LIB-R010-b" class="rqDef">[LIB-R010-b]</span> diagnostic classes and singleton diagnostic instances (as for Base and ECU variant)</li>
+<li><span id="LIB-R010-c" class="rqDef">[LIB-R010-c]</span> DIDs (as for Base and ECU variant, <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R020' title="Existence">[DID-R020]</a>)</li>
+<li><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-LIB' title="">[ATTR-R050-LIB]</a> overriding attributes.</li>
+<li><a class='rqRef' href='../../30%20Features/Revision%20History/Revision%20History.htm#REV-R050-LIB' title="">[REV-R050-LIB]</a> revision history (if configured to be local to variants).</li>
+<li><span id="LIB-R010-h" class="rqDef">[LIB-R010-h]</span> the libraries list shall have a defined persistent order in the document. As a default, it shall be provided to the user in this order.</li>
+</ul>
+<p><span id="LIB-R012" class="rqDef" title="Uniqueness">[LIB-R012.1 Uniqueness]</span></p>
+<ul>
+<li><span id="LIB-R012-a" class="rqDef">[LIB-R012-a]</span> the qualifier shall be unique in the library list.
+<ul>
+<li><span id="LIB-R012-aVar" class="rqDef">[LIB-R012-aVar]</span> a library and a variant can have the same qualifier.</li>
+</ul></li>
+<li><span id="LIB-R012-b" class="rqDef">[LIB-R012-b]</span> the name shall be unique in the library list.
+<ul>
+<li><span id="LIB-R012-bVar" class="rqDef">[LIB-R012-bVar]</span> a library and a variant can have the same name. </li>
+</ul></li>
+</ul>
+<h2 id="individual-properties">Individual Properties</h2>
+<p><span id="LIB-R020" class="rqDef" title="Property „locked“">[LIB-R020.0 Property „locked“]</span>: a library shall have the Boolean property <strong>is locked</strong>, modifiable in expert mode.</p>
+<p>Semantics:</p>
+<ul>
+<li><span id="LIB-R020-a" class="rqDef">[LIB-R020-a]</span> protects against modification of the <strong>contents</strong> (also: update, document upgrade <a class='rqRef' href='../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm#DOCUP-R040' title="">[DOCUP-R040]</a>, import),</li>
+<li><span id="LIB-R020-b" class="rqDef">[LIB-R020-b]</span> but <strong>not against modification of properties</strong> (name, qualifier…) or <strong>deletion</strong>.</li>
+</ul>
+<p><span id="LIB-R022" class="rqDef" title="Created in Template">[LIB-R022.0 Created in Template]</span> whether a library has been created in a .cddt file can be deduced from the existing <a href="../../30%20Features/Common%20Properties/OID.htm">OID</a> at qualified objects, there is no explicit property.</p>
+
+<p><span id="LIB-R025" class="rqDef">[LIB-R025.0]</span>: a library does <strong>not</strong> have:</p>
+<ul>
+<li><span id="LIB-R025-a" class="rqDef">[LIB-R025-a]</span> Identifying Features,</li>
+<li><span id="LIB-R025-b" class="rqDef">[LIB-R025-b]</span> Identifying Patterns</li>
+</ul>
+<p><span id="LIB-R026" class="rqDef" title="Embedded External File">[LIB-R026.0 Embedded External File]</span>: a library shall have an optional embedded external file („ExtDoc“).</p>
+<p>Semantics: if the library has been imported from an ODX ECU-SHARED-DATA (ESD), the ExtDoc contains that ESD <a class='rqRef' href='../../30%20Features/Import/4_Import%20of%20Libraries.htm#ODXI-R514' title="">[ODXI-R514]</a>, otherwise the ExtDoc is empty / not set. It may be used in an export to ODX <a class='rqRef' href='../../30%20Features/Export/55_ODX%20Export%20of%20Libraries.htm#ODXE-R550' title="">[ODXE-R550]</a>. No CANdela operations process the ExtDoc.</p>
+<p>Note: before 8.5, such ESD was put into a <a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA list on document level</a>. After migration, this list still exists (<a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R200-b' title="">[LIB-R200-b]</a>). The GUI shall clarify <a class='rqRef' href='../../20%20UserInterface/Document/ODX%20ECU-SHARED-DATA.htm#ESD-R050' title="">[ESD-R050]</a> that new imported ESDs are not shown in the list on document level, since they belong to the Library.</p>
+<p>Note: the central ESD list is still needed e.g. for ESDs from DOPs and units <a class='rqRef' href='../../30%20Features/Import/4_Import%20of%20Libraries.htm#ODXI-540' title="">[ODXI-540]</a>.</p>
+<h2 id="library-document-context">Libraries in Document Context</h2>
+<p><a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-reqLIB' title="">[DTCA-R020-reqLIB]</a>, <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-reqAsRefLIB' title="">[DTCA-R020-reqAsRefLIB]</a> The <strong>required</strong> authorization of a <strong>DTC</strong> in DTC pool does not apply to Libraries, see operation <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DI-R010-LibDtcReq' title="">[DI-R010-LibDtcReq]</a>.</p>
+<p><a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R020' title="Property „required“">[DIA-R020]</a> The <strong>required</strong> authorization of a <strong>diagnostic instance</strong> in base variant does not apply to Libraries.</p>
+<p><a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R012' title="Required in all Variants">[DID-R012]</a> The <strong>required</strong> authorization of a <strong>DID</strong> in base variant does not apply to Libraries.</p>
+<p><a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm#VSG-R050' title="VSG and Library">[VSG-R050]</a> Objects in a library can be associated with a <strong>Vehicle System Group</strong>.</p>
+<p><a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm#VSG-R200' title="Library and Availability for Variants">[VSG-R200]</a> A library is not relevant for the VSG „<strong>Availability for Variants</strong>“.</p>
+<p><span id="LIB-R038" class="rqDef">[LIB-R038.0]</span>: the structure of diagnostic instances in a library is controlled by the <strong>DiagClassTemplates</strong> (like for diagnostic instances in an ECU variant).</p>
+<p><span id="LIB-R040" class="rqDef">[LIB-R040.0]</span>: services in a library shall have <strong>state transitions</strong> (like in variants; cf. the state dependencies user interface <a class='rqRef' href='../../20 UserInterface\State Dependency\Dependencies.htm#STUI-R200-LIB' title="No selection of library in state dependencies">[STUI-R200-LIB]</a>).</p>
+
+<p><span id="LIB-R042" class="rqDef">[LIB-R042.0]</span>: a library may contain <strong>DTC references</strong> into the DTC Pool.</p>
+<p><a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200-LIB' title="">[OBJP-R200-LIB]</a> A library shall have a <strong>path</strong>: like <code>qpath:/[LIBRARY]ES_WV81024</code>; cf. its namespace <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R012' title="Uniqueness">[LIB-R012]</a>.</p>
+<p><span id="LIB-R060" class="rqDef" title="Document Order">[LIB-R060.2 Document Order]</span>: the CANdelaStudio data model shall handle objects in the order (cf. GUI [TREE-R010 Order]):</p>
+
+<ul>
+<li>DTC Pool</li>
+<li>(since 8.2) Global Fault Memory</li>
+<li>(since 8.5) Libraries</li>
+<li>base variant</li>
+<li>variants.</li>
+</ul>
+<p><span id="LIB-R070" class="rqDef" title="Library Object Reference Semantics">[LIB-R070.0 Library Object Reference Semantics]</span>: for an object referenced in a library (e.g. a DID), the semantics of the reference is…</p>
+<ul>
+<li>like for a <strong>referenced diagnostic instance</strong>: the object exists at several locations, can be deleted at any of them, and disappears if deleted at the last location; pasting from one location does not effect in pasting the other location, too.</li>
+<li><strong>not like a data object reference to a data type</strong>: directed relationship; pasting the data object also pastes the data type if needed.</li>
+</ul>
+<h2 id="base-library">Base Library</h2>
+<p><span id="LIB-D080" class="rqDef">[LIB-D080]</span> <strong>Base Library</strong> = the first library (in document order) that has the attribute</p>
+<ul>
+<li>qualifier: &quot;IsBaseLibrary&quot;</li>
+<li>type: enum <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a></li>
+<li>enum ID <code>==</code> 1</li>
+</ul>
+
+<p><span id="LIB-D080-First" class="rqDef">[LIB-D080-First]</span> If multiple libraries have the attribute set to 1,</p>
+<ul>
+<li>the value 1 is ignored at all but the first such library.</li>
+<li>Note: CANdelaStudio does not prevent you from setting the value to 1 at multiple libraries.</li>
+</ul>
+<p>Tip: to find out <strong>which library in a list of libraries</strong> is the base library, use <a href="../../20%20UserInterface/Attributes/Attribute%20Overview.htm">attribute overview</a> on the &quot;Libraries&quot; tree node and inspect the values of the attribute with qualifier &quot;IsBaseLibrary&quot;.</p>
+<h2 id="attributes">Attributes</h2>
+<p><span id="LIB-R080" class="rqDef">[LIB-R080.0]</span>: objects imported from ODX into a library shall contain special attributes that allow reconstruction of the position in ODX during ODX Export (like objects imported elsewhere).</p>
+<p><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-LIB' title="">[ATTR-R050-LIB]</a> There shall be a separate default attribute list for libraries.</p>
+<h2 id="operations">Operations</h2>
+<p>The CANdelaStudio data model shall support <strong>library operations</strong> as follows:</p>
+<p><span id="LIB-R100" class="rqDef" title="New Library">[LIB-R100.2 New Library]</span>: <strong>create</strong> a Library. The properties shall be as follows: it shall…</p>
+<ul>
+<li><span id="LIB-R100-10b" class="rqDef">[LIB-R100-10b]</span> contain no diagnostic classes or diagnostic instances (cf. <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R010-b' title="">[LIB-R010-b]</a>)</li>
+<li><span id="LIB-R100-10c" class="rqDef">[LIB-R100-10c]</span> contain no DIDs (cf. <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R010-c' title="">[LIB-R010-c]</a>)</li>
+<li><span id="LIB-R100-20" class="rqDef">[LIB-R100-20]</span> not be locked, cf. <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R020' title="Property „locked“">[LIB-R020]</a></li>
+<li><span id="LIB-R100-22" class="rqDef">[LIB-R100-22]</span> get a unique OID, no TemplateOID (cf. <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R022' title="Created in Template">[LIB-R022]</a>).</li>
+<li><span id="LIB-R100-26" class="rqDef">[LIB-R100-26]</span> contain no ExtDoc (cf. <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R026' title="Embedded External File">[LIB-R026]</a>)</li>
+</ul>
+<p>Do not allow this…</p>
+<ul>
+<li><span id="LIB-R100-n1" class="rqDef">[LIB-R100-n1]</span> if uniqueness of qualifier and name would be violated (see <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R012' title="Uniqueness">[LIB-R012]</a>)</li>
+</ul>
+<p><span id="LIB-R105" class="rqDef" title="Delete Library">[LIB-R105.1 Delete Library]</span>: <strong>delete</strong> a Library.</p>
+<ul>
+<li><span id="LIB-R105-a" class="rqDef">[LIB-R105-a]</span> An object contained in the library that is also referenced outside the library (e.g. in a variant) shall still exist outside the Library.</li>
+<li><span id="LIB-R105-b" class="rqDef">[LIB-R105-b]</span> If the object contained attributes indicating that the object originated from the library (see <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R080' title="">[LIB-R080]</a>), then the attributes <strong>must be deleted</strong>. Note: this is presently done when you delete the ESD.</li>
+<li><a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R020-b' title="">[LIB-R020-b]</a> this shall even be allowed if the library is locked.</li>
+</ul>
+<p><span id="LIB-R108" class="rqDef" title="Move Library">[LIB-R108.1 Move Library]</span>: provide an operation to move multiple libraries in the persistent order <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R010-h' title="">[LIB-R010-h]</a> one object to the front / to the back.</p>
+<p><span id="LIB-R115" class="rqDef">[LIB-R115.0]</span>: do <strong>not</strong> provide copy/paste for a library as a whole. Motivation: use import instead; avoid complications due to transitive dependencies.</p>
+<p><span id="LIB-R117" class="rqDef">[LIB-R117.0]</span>: provide copy/paste for objects in a library like for objects in a variant.</p>
+
+
+<p><span id="LIB-R120" class="rqDef" title="Lock/Unlock">[LIB-R120.0 Lock/Unlock]</span> (cf. <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R020' title="Property „locked“">[LIB-R020]</a>)</p>
+<p>Do the same as when locking a variant (CDS-16124), i.e. write-protect data types, keep diagnostic instances referenced etc.</p>
+<p><span id="LIB-R125" class="rqDef" title="Library vs. „Reference Identical Diagnostic Instances and Job Container“">[LIB-R125.1 Library vs. „Reference Identical Diagnostic Instances and Job Container“]</span> (menu Edit): include Libraries.</p>
+<p><span id="LIB-R130" class="rqDef">[LIB-R130.0]</span>: do not provide „Reference as Base Variant“ for a Library.</p>
+<p><span id="LIB-R135" class="rqDef">[LIB-R135.0]</span>: operations traversing a document shall follow the order of <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R060' title="Document Order">[LIB-R060]</a>.</p>
+
+<h2 id="migration85">Migration 8.5</h2>
+<p><span id="LIB-R200" class="rqDef">[LIB-R200.0]</span>: after loading an older document in CANdelaStudio 8.5, ...</p>
+<ul>
+<li><span id="LIB-R200-a" class="rqDef">[LIB-R200-a]</span> no library exists.</li>
+<li><span id="LIB-R200-b" class="rqDef">[LIB-R200-b]</span> ECU-SHARED-DATA of the older document is not changed.</li>
+</ul>
+<p><span id="LIB-R210" class="rqDef">[LIB-R210.1]</span>: when saving to an older document, <strong>drop each Library</strong>.</p>
+<ul>
+<li><span id="LIB-R210-a" class="rqDef">[LIB-R210-a]</span> Move its ECU-SHARED-DATA (if it exists) to the global list (note: there can be no conflicts).</li>
+<li>(LIB-R210-b dropped)</li>
+<li><span id="LIB-R210-c" class="rqDef">[LIB-R210-c]</span> Preserve the ODX attributes that depend on the ESD (note: objects that are referenced in a library <em>and</em> in a variant are not deleted in the variant).</li>
+<li><span id="LIB-R210-d" class="rqDef">[LIB-R210-d]</span> drop the attribute definitions for libraries (cf. <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-LIB' title="">[ATTR-R050-LIB]</a>).</li>
+</ul>
+
+<h2 id="gui">GUI</h2>
+<p><span id="LIBUI-R300" class="rqDef">[LIBUI-R300.0]</span> = : CANdelaStudio shall show a „Libraries“ tree node</p>
+<ul>
+<li>Position: see <a class='rqRef' href='../../20 UserInterface\Tree\Navigation Tree.htm#TREE-R010' title="">[TREE-R010]</a>;</li>
+<li>GUI details see <a class='rqRef' href='../../20%20UserInterface/Library/Library.htm#LIBUI-R340' title="Contents of Library Tree Node">[LIBUI-R340]</a></li>
+</ul>
+<p><a class='rqRef' href='../../20 UserInterface\Variant\Variant Wizard.htm#VW-R050-Lib' title="">[VW-R050-Lib]</a> offer libraries in Variant Wizard.</p>
+
+<p><span id="LIBUI-R306" class="rqDef">[LIBUI-R306.0]</span>: In overviews: for a locked Library <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R020' title="Property „locked“">[LIB-R020]</a>, CANdelaStudio shall not allow interactive modification of its contents (note: as for a locked variant).</p>
+<ul>
+<li><span id="LIBUI-R306-a" class="rqDef">[LIBUI-R306-a]</span> Qualifier Overview (but allow modification of the library qualifier, <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R020-b' title="">[LIB-R020-b]</a>);</li>
+<li><span id="LIBUI-R306-c" class="rqDef">[LIBUI-R306-c]</span> Attribute Overview</li>
+<li><span id="LIBUI-R306-d" class="rqDef">[LIBUI-R306-d]</span> Target Group Overview</li>
+<li><span id="LIBUI-R306-b" class="rqDef">[LIBUI-R306-b]</span> CANdelaStudio shall show library data in the &quot;Shortcut Qualifier Overview&quot; (CDS-40761).</li>
+</ul>
+<p><span id="LIBUI-R308" class="rqDef">[LIBUI-R308.0]</span>: CANdelaStudio shall <strong>not</strong> show Libraries in the confirmation dialog for inserting an object into the Base Variant.</p>
+<p><span id="LIBUI-R310" class="rqDef">[LIBUI-R310.0]</span>: CANdelaStudio shall <strong>not</strong> show Libraries in the „Availability for Variants“ dialog at VSGs (cf. <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm#VSG-R200' title="Library and Availability for Variants">[VSG-R200]</a>).</p>
+<p><span id="LIBUI-R312" class="rqDef">[LIBUI-R312.0]</span>: The „References“ dialog of a diagnostic instance shall show Libraries above the Base Variant.</p>
+<p><span id="LIBUI-R314" class="rqDef">[LIBUI-R314.0]</span>: The „References“ dialog of a data type shall show references from Libraries in the order of <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R060' title="Document Order">[LIB-R060]</a>.</p>
+<p><a class='rqRef' href='../../20 UserInterface\Variant\Compact View.htm#VARCV-R050' title="Compact View and Library">[VARCV-R050]</a> CANdelaStudio shall <strong>not</strong> show Libraries in Compact View.</p>
+<p><span id="LIBUI-R318" class="rqDef">[LIBUI-R318.1]</span>: to create a Library, CANdelaStudio shall</p>
+<ul>
+<li><span id="LIBUI-R318-a" class="rqDef">[LIBUI-R318-a]</span> provide an operation to create an empty Library.</li>
+</ul>
+
+<p>For <strong>Libraries in the Tree</strong>, see...</p>
+<ul>
+<li>the tree node <a class='rqRef' href='../../20 UserInterface\Tree\Navigation Tree.htm#TREE-R010-LIB' title="Libraries in Tree">[TREE-R010-LIB]</a>,</li>
+<li>the list of libraries [LIBUI-R322.0] and</li>
+<li>the right side of a library node <a class='rqRef' href='../../20%20UserInterface/Library/Library.htm#LIBUI-R340' title="Contents of Library Tree Node">[LIBUI-R340]</a>.</li>
+</ul>
+<p><span id="LIBUI-R342" class="rqDef">[LIBUI-R342.0]</span>: CANdelaStudio shall not support Copy/Paste for a Library, see <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R115' title="">[LIB-R115]</a>.</p>
+<p><a class='rqRef' href='../../20 UserInterface\Tree\Navigation Tree.htm#TREE-R050-LIB' title="">[TREE-R050-LIB]</a> CANdelaStudio shall show the default attribute list for libraries between „Extended Data Records“ and „Variants“, consistent with <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R060' title="Document Order">[LIB-R060]</a>.</p>
+<p><strong>DTC Overview</strong></p>
+<p>In DTC Overview, CANdelaStudio shall...</p>
+<ul>
+<li>show a checkbox „Show Libraries“, see <a class='rqRef' href='../../20 UserInterface\DTC\DTC Overview.htm#DTCOV-R400' title="DTC Overview Show Libraries">[DTCOV-R400]</a>;</li>
+<li>provide &quot;Go To&quot;, see <a class='rqRef' href='../../20 UserInterface\DTC\DTC Overview.htm#DTCOV-R410' title="DTC Overview Go To">[DTCOV-R410]</a>;</li>
+<li>provide &quot;Copy to Variants&quot;, see <a class='rqRef' href='../../20 UserInterface\DTC\DTC Overview.htm#DTCOV-R450' title="">[DTCOV-R450]</a>;</li>
+<li>provide &quot;Reference in Variants&quot;, see <a class='rqRef' href='../../20 UserInterface\DTC\DTC Overview.htm#DTCOV-R460' title="">[DTCOV-R460]</a>;</li>
+<li>provide &quot;Delete&quot;, see <a class='rqRef' href='../../20 UserInterface\DTC\DTC Overview.htm#DTCOV-R470' title="">[DTCOV-R470]</a>.</li>
+</ul>
+<h2 id="other-gui-aspects">Other GUI Aspects</h2>
+<p><span id="LIBUI-R450" class="rqDef">[LIBUI-R450.0]</span>: CANdelaStudio shall continue to show a tree node with the ODX icon overlay („&lt;“) if the „ODX attributes“ are set (see <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R070' title="Library Object Reference Semantics">[LIB-R070]</a>).</p>
+<p>There shall be no special menu item to release the reference – there is „Replace Reference by Copy“.</p>
+<p><a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R150' title="ODX ECU Shared Data">[MENU-R150]</a> CANdelaStudio shall continue to show the „ECU-SHARED-DATA“ menu.</p>
+<p>Motivation: an ODX ECU-SHARED-DATA that contains only data types has no representation as a library but only as an ECU-SHARED-DATA.</p>
+<h2 id="report">Report</h2>
+<p><span id="LIBUI-R500" class="rqDef" title="Report of Libraries">[LIBUI-R500.0 Report of Libraries]</span>: if</p>
+<ul>
+<li>the CANdela document contains libraries, and</li>
+<li>the option <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Specification Chapters.htm#OPT-R520' title="Report Libraries">[OPT-R520]</a> is set,</li>
+</ul>
+<p>then report shall write the libraries in an additional chapter &quot;Libraries&quot; between &quot;Communication Parameter&quot; and &quot;Diagnostic Content&quot; (like for a variant):</p>
+<ul>
+<li>a level 2 chapter for each library (heading text: library name)</li>
+<li>the library description (if any) as paragraphs</li>
+<li>a &quot;DIDs&quot; level 3 sub-chapter</li>
+<li>sub-chapters for the diagnostic classes, diagnostic instances, job containers and jobs.</li>
+</ul>
+<p><span id="LIBUI-R510" class="rqDef">[LIBUI-R510.0]</span>: if the CANdela document does not contain a Library, the report shall completely suppress the „Libraries“ chapter.</p>
+<p><span id="LIBUI-R520" class="rqDef" title="Report Index">[LIBUI-R520.0 Report Index]</span>:</p>
+<ul>
+<li><span id="LIBUI-R520-a" class="rqDef">[LIBUI-R520-a.0]</span>: diagnostic objects of a library shall be linked in the index (like diagnostic objects of variants).</li>
+<li><span id="LIBUI-R520-b" class="rqDef">[LIBUI-R520-b.0]</span>: the libraries themselves shall be linked in the index with type &quot;Library&quot;.</li>
+</ul>
+<p>Example:</p>
+<pre><code>My Library
+    Library 30</code></pre>
+<p><span id="LIBUI-R530" class="rqDef" title="Library Compact Report">[LIBUI-R530.0 Library Compact Report]</span>: if the option <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Specification Chapters.htm#OPT-R520' title="Report Libraries">[OPT-R520]</a> is set, then compact report shall include libraries <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Specification Chapters.htm#OPT-R520-Compact' title="">[OPT-R520-Compact]</a> in the &quot;Diagnostic Content&quot; chapter:</p>
+<ul>
+<li><span id="LIBUI-R530-a" class="rqDef">[LIBUI-R530-a.0]</span> it shall use the fix string &quot;In libraries/variant(s): &quot; instead of &quot;In variant(s): &quot;.</li>
+<li><span id="LIBUI-R530-b" class="rqDef">[LIBUI-R530-b.0]</span> it shall list all libraries in which the diagnostic object occurs comma separated, before the enumerated variants or &quot;all variants&quot;.</li>
+</ul>
+<p>Example:</p>
+<pre><code>In libraries/variant(s): LIB-140, LIB-43l54, all variants</code></pre>
+<p>Note: if a diagnostic object occurs in all variants, compact report shall use &quot;all variants&quot; (as before). It shall always enumerate the libraries individually (no &quot;all libraries&quot;), motivation: it is not an expected use-case to have a diagnostic object referenced in all libraries.</p>
+<h2 id="data-exchange">Data Exchange</h2>
+<p><a class='rqRef' href='../../30%20Features/Import/4_Import%20of%20Libraries.htm#ODXI-R500' title="">[ODXI-R500]</a> CANdelaStudio ODX Import shall support libraries.</p>
+<p><span id="LIBDX-R630" class="rqDef">[LIBDX-R630.0]</span>: CANdelaStudio ODX Export shall put each library into an ESD.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Library/Libraries.htm">Libraries (List)</a></li>
+<li><a href="../../20%20UserInterface/Library/Library.htm">Library Tree Node</a></li>
+<li><a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA Feature</a></li>
+<li><a href="../../30%20Features/Import/4_Import%20of%20Libraries.htm">ODX Import of Libraries</a></li>
+<li><a href="../../30%20Features/Variant/Variant.htm">Variant</a></li>
+</ul>
+</body>
+</html>

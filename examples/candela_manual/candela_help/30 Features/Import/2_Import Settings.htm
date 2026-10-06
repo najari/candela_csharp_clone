@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>2_Import Settings</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="Settings">Import Settings</h1>
+<p>CANdelaStudio provides multiple settings to adapt the behaviour of the ODX Import to the specific requirements of the user.</p>
+<h2 id="Options">CANdelaStudio Import Options</h2>
+<p>The CANdelaStudio Import Options can be specified inside the <a href="../../30%20Features/CANdelaStudio%20Editor/Options.htm">CANdelaStudio.ini</a> file, some of them are also accessible over the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20ODX%20Import.htm">Import Options dialog</a>.</p>
+<table>
+<colgroup>
+<col width="39%" />
+<col width="18%" />
+<col width="42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">CANdelaStudio.ini option</th>
+<th align="left">GUI option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">LogDetails</td>
+<td align="left">Write detailed information (DiagComm oriented) in log file</td>
+<td align="left">Controls whether to log DiagComm oriented or not. This options is only provided for &quot;Full ODX ECU description&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">LogPerformance</td>
+<td align="left"><em>Not available</em></td>
+<td align="left">Dump performance statistics (time and memory consumption) for each imported DIAG-LAYER to log</td>
+</tr>
+<tr class="odd">
+<td align="left">StrictNegResponse</td>
+<td align="left">Negative Responses</td>
+<td align="left">Specify whether NEG-RESPONSE of ODX DIAG-SERVICE shall be considered during Import or not</td>
+</tr>
+<tr class="even">
+<td align="left">HandleDataTypeMergeInCaseOfRangeDifferences</td>
+<td align="left">Data Type:<br />
+&quot;use existing&quot; (0)<br />
+&quot;create new&quot; (1)<br />
+&quot;use existing if modifiable&quot;</td>
+<td align="left">On importing a complete ECU, decide how to handle DataTypes having a different specification but the same Qualifier.</td>
+</tr>
+<tr class="odd">
+<td align="left">SupportStableOIDs</td>
+<td align="left"><em>Not available</em></td>
+<td align="left">The CANdela data model supports OIDs. By default OIDs are either imported from data source (if existing), or generated anew.<br />
+<br />
+In some specific use cases it makes sense that &quot;generated&quot; OIDs ('cos the data source does not provide OIDs) are always generated using a hierarchical approach. (SHORT-NAME of LAYER + SN of DIAG-SERVICE + ...)</td>
+</tr>
+<tr class="even">
+<td align="left">ImportRequiredAndMissingNrcs</td>
+<td align="left"><em>Not available</em></td>
+<td align="left">For OEM specific use cases (but not in general), it makes sense to update/enhance the existing list of NRCs by numbers which are required by the ODX model.</td>
+</tr>
+<tr class="odd">
+<td align="left">RunImportPostProcessorPlugin</td>
+<td align="left"><em>Not available</em></td>
+<td align="left">For specific inter OEM cooperation (e.g. VAG/PAG), there exist process specific Plugins. Some of these Plugins are executed right after completing the ODX-Import to ensure data consistency.<br />
+<br />
+In certain use cases it makes sense not to execute the process specific Plugin at the end of an ODX-Import.</td>
+</tr>
+<tr class="even">
+<td align="left">DeactivateInstances</td>
+<td align="left"><em>Not available</em></td>
+<td align="left">This setting enhances controlling the deactivation of diagnostic instances (CDS-22911) before doing the ODX-Import. The standard way to deactivate diagnostic instances is via the import wizard setting &quot;Deactivate all CANdela diagnostic instances and job containers which are not part of the ODX data (as far as they can be deactivated)&quot;.<br />
+<br />
+In order to ensure specific process steps at OEMs side, it is strongly required to deactivate existing diagnostic instances &quot;all the time&quot; on importing from ODX. (Regardless of the UI-Wizard setting)</td>
+</tr>
+<tr class="odd">
+<td align="left">ForVariantWizardMapBaseVariantElementId</td>
+<td align="left"><em>Not available</em></td>
+<td align="left">In case of running an ODX-Import of kind &quot;Variants with selection of services/jobs&quot; (and only in this case), it is possible to specify, if the ECU related information like name, qualifier and description shall get updated from ODX or not. (CDS-14115).</td>
+</tr>
+<tr class="even">
+<td align="left">SkipImportOfVehicleInfoSpec</td>
+<td align="left"><em>Not available</em></td>
+<td align="left">By default, the ODX Import integrates the VEHICLE-INFO-SPEC as library into the CANdela document. As a result the VIS gets exported on running the ODX export.<br />
+In specific cases, the imported and re-exported VIS might have different BASE-VARIANT CANIds, SHORT-NAMES, .... IN those cases it might be useful to skip the import of the VEHICLE-INFO-SPEC (CDS-24970).</td>
+</tr>
+<tr class="odd">
+<td align="left">UniqueLocalIdDuringImport</td>
+<td align="left"><em>Not available</em></td>
+<td align="left">On every newly created diagnostic instance, the import checks if the identifier of an instance conflicts with any diagnostic instance already existing are already imported during this run of an ODX-Import (CDS-26930).</td>
+</tr>
+<tr class="even">
+<td align="left">AllowDuplicateServicePrefixInDifferentDiagClasses</td>
+<td align="left"><em>Not available</em></td>
+<td align="left">From ECU's diagnostic implementation point of view, it might not make sense to support duplicate service prefixes in a CANdela document. Therefore, the ODX-Import always skips duplicate service prefixes and provides an according message to the console. (The only work around is to disable the check for unique identifiers <a class='rqRef' href='../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#CIU-R020' title="">[CIU-R020]</a>.<br />
+<br />
+For specific uses cases, it is required to import a service prefix with two or more with different data parameter into different (not the same) diagnostic class. (CDS-24970)</td>
+</tr>
+<tr class="odd">
+<td align="left">DID2DiagClassMapping</td>
+<td align="left"><em>Not available</em></td>
+<td align="left">For some specific OEM use cases, it makes sense to predefine the mapping of DID ranges to according CANdelaStudio diagnostic class qualifiers. E.g. DIDs of the range 0xF1090 - 0xF19F shall get stored in a diagnostic class having the qualifier &quot;Identifications_Global&quot;, while the DIDs of the range 0x2000 - 0x20FF shall get stored in the diagnostic class &quot;LocalIdents&quot;.</td>
+</tr>
+<tr class="even">
+<td align="left">ODXImportCacheLimitationInMB</td>
+<td align="left"><em>Not available</em></td>
+<td align="left">While importing from ODX, the import component makes use of additional memory as cache to increase the import performance. As this cache memory consumption can get very huge, a limitation might be required. This is supported in the setting of below's table.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-import-options-in-candelastudio.ini">Example Import Options in CANdelaStudio.ini</h3>
+<pre><code>[OdxImport]
+LogDetails=1
+StrictNegResponse=0
+ImportRequiredAndMissingNrcs=0
+HandleDataTypeMergeInCaseOfRangeDifferences=0
+SkipImportOfVehicleInfoSpec=0</code></pre>
+<h2 id="Attributes">Import related attributes</h2>
+<p><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a> are document-specific settings, which modify the behaviour of the ODX Import for certain elements of the document on which they are set.</p>
+<h3 id="ecu-attributes">ECU attributes</h3>
+<h4 id="units">Units</h4>
+<p>ODX Import adds to an <a href="../../30%20Features/Attributes/Special%20Attributes.htm#units">ECU attribute &quot;units&quot;</a> that provides a set of units, used in data type dialogs.</p>
+<h4 id="SupersetLibraries">Keep deactivation even if imported from ODX</h4>
+<p>Specific use cases require configuring of a list of SHORT-NAMEs representing &quot;superset&quot; libraries (ECU-SHARED-DATAs). In case a deactivated diagnostic instance gets re-imported from out of one of these &quot;superset&quot; libraries, it shall remain deactivated.</p>
+<p>In order to achieve this behavior, the user can configure the <a href="../../30%20Features/Attributes/Special%20Attributes.htm#SupersetLibraries">ECU attribute &quot;Superset_Libraries&quot;</a>.</p>
+<h3 id="diagnostic-class-template-attributes">Diagnostic class template attributes</h3>
+<h4 id="VWODXTableShortName">Mapping of TABLEs to diagnostic classes</h4>
+<p>By default, the ODX-Import maps the instances automatically (FUNCT-CLASS, matching services, ...). At OEMs it makes sense to import Identifications/Measurements of VW into specific diagnostic classes in Porsche's CANdela document.</p>
+<p>In order to apply this behavior, you can configure the <a href="../../30%20Features/Attributes/Special%20Attributes.htm#VWODXTableShortName">diagnostic class template attribute &quot;VWODXTableShortName&quot;</a>.</p>
+<h3 id="diagnostic-instance-attribute">Diagnostic instance attribute</h3>
+<h4 id="lock-primarysecondary-properties-of-diagnostic-instance">Lock primary/Secondary properties of diagnostic instance</h4>
+<p>By default, the ODX-Import modifies the primary and secondary properties of an existing diagnostic instance as specified in its setting. In specific use cases and for process reasons, it is not possible to remove the primary and/or secondary properties modifiable flag. The user still needs to modify the properties inside the GUI of CANdelaStudio.</p>
+<p>On the other side, the ODX-Import must not modify any of those primary/secondary properties.</p>
+<p>In order to achieve this behavior, you can configure the <a href="../../30%20Features/Attributes/Special%20Attributes.htm#DoNotModify">diagnostic instance attribute &quot;DoNotModifyPrimaryAndSecondaryPropertiesByImport&quot;</a> (CDS-12326).</p>
+<h3 id="job-attribute">Job attribute</h3>
+<h4 id="SkipDeactivationOfJobDuringODXImport">Configurable job deactivation</h4>
+<p>The ODX-Import deactivates all jobs inside the CANdela document before starting the ODX-Import.</p>
+<ul>
+<li>In case a job in CANdela is represented by an according SINGLE-ECU-JOB in ODX, it will get activated again,</li>
+<li>otherwise it will remain deactivated.</li>
+</ul>
+<p>In order to keep a job activated, even if it is not present in the imported ODX, you can configure a job attribute that lets ODX Import skip the initial deactivation at this job.</p>
+<p>See the <a href="../../30%20Features/Attributes/Special%20Attributes.htm#SkipDeact">job attribute &quot;SkipDeactivationOfJobDuringODXImport&quot;</a> (CDS-26949).</p>
+<ul>
+<li>First <strong>prepare</strong> the template or document in Expert View: add the job attribute</li>
+<li>Then <strong>set the attribute value</strong> to 1 (e.g. &quot;Yes&quot;) for each job in the template or document you want to keep activated during ODX import.</li>
+</ul>
+<h2 id="import-options-in-gui">Import Options in GUI</h2>
+<p>Ribbon Tab <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20ODX%20Import.htm">File | Options | ODX Import</a> provides basic options for import.</p>
+<p>The <a href="../../20%20UserInterface/Import/ODX%20Import.htm">ODX import wizard</a> provides additional options.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="ODX%20Import%20Introduction.htm">ODX Import Introduction</a></li>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">CANdelaStudio Attributes</a></li>
+<li><a href="../../30%20Features/Attributes/Special%20Attributes.htm">Special Attributes</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>GUI Snapshot Records</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="gui-snapshot-records-v13-autosar-fault-memory-cds-71541">GUI Snapshot Records (v13 AUTOSAR Fault Memory, CDS-71541)</h1>
+<p>The following describes the user interface of the <strong>specific AUTOSAR data model</strong> available since CANdelaStudio 13, see the <a href="../../20%20UserInterface/Fault%20Memory/AUTOSAR%20Fault%20Memory%20GUI.htm">AUTOSAR Fault Memory GUI</a>.</p>
+<p>See also the <a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm">Snapshot Record Data Model</a> and <a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Operations.htm">Snapshot Record Operations</a>.</p>
+<p>Overview of Snapshot Data dialogs (AUTOSAR Fault Memory):</p>
+<ul>
+<li>Snapshot Records Page <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/GUI%20Snapshot%20Records.htm#SRUI-R010' title="">[SRUI-R010]</a> below</li>
+<li>TAB: Snapshot Records <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/TAB%20Snapshot%20Records.htm#SRUI-R100' title="">[SRUI-R100]</a>
+<ul>
+<li>List of Snapshot Records <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R200' title="">[SRUI-R200]</a></li>
+<li>Snapshot Data Common for All DTCs <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Data%20Common%20for%20All%20DTCs.htm#SRUI-R300' title="">[SRUI-R300]</a></li>
+</ul></li>
+<li>TAB: UDS Snapshot Data per DTC <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/TAB%20UDS%20Snapshot%20Data%20per%20DTC.htm#SRUI-R500' title="">[SRUI-R500]</a>
+<ul>
+<li>List UDS Snapshot Data per DTC <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/List%20UDS%20Snapshot%20Data%20per%20DTC.htm#SRUI-R600' title="">[SRUI-R600]</a></li>
+<li>Right Side: TAB &quot;Snapshot Data&quot; <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Data.htm#SRUI-R700' title="">[SRUI-R700]</a></li>
+<li>Right Side: TAB &quot;Snapshot Records to Store&quot; (Configured <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Records%20to%20Store%20(Configured).htm#SRUI-R810' title="">[SRUI-R810]</a></li>
+<li>Right Side: TAB &quot;Snapshot Records to Store&quot; (Calculated) <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Right%20Side%20TAB%20Snapshot%20Records%20to%20Store%20(Calculated).htm#SRUI-R900' title="">[SRUI-R900]</a></li>
+</ul></li>
+<li>TAB: OBD on UDS Snapshot Data per DTC <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/TAB%20OBD%20on%20UDS%20Snapshot%20Data%20per%20DTC.htm#SRUI-R550' title="">[SRUI-R550]</a></li>
+</ul>
+<h2 id="snapshot-records-page">Snapshot Records Page</h2>
+<p><span id="SRUI-R010" class="rqDef">[SRUI-R010]</span> The Snapshot Records page <img src="../../20%20UserInterface/Images/Snapshot%20Records%20Button.jpg" /> contains 2 or 3 top-level TABs, each with a main area and a details area to the right.</p>
+<ul>
+<li>TAB &quot;Snapshot Records&quot; <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/TAB%20Snapshot%20Records.htm#SRUI-R100' title="">[SRUI-R100]</a></li>
+<li>TAB &quot;UDS Snapshot Data per DTC&quot; <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/TAB%20UDS%20Snapshot%20Data%20per%20DTC.htm#SRUI-R500' title="">[SRUI-R500]</a></li>
+<li>(optional) TAB &quot;OBD on UDS Snapshot Data per DTC&quot; <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/TAB%20OBD%20on%20UDS%20Snapshot%20Data%20per%20DTC.htm#SRUI-R550' title="">[SRUI-R550]</a></li>
+</ul>
+<div class="figure">
+<img src="Images/SnapshotRecordsConfiguredWithOBD.png" alt="Snapshot Records Page" />
+<p class="caption">Snapshot Records Page</p>
+</div>
+<h2 id="dialog-visibility-cds-72050">Dialog Visibility (CDS-72050)</h2>
+<p><span id="SRUI-R020" class="rqDef">[SRUI-R020]</span> CANdelaStudio shows the Snapshot Data dialogs iff. any Protocol Service contains a SimpleProxyComp with semantics</p>
+<ul>
+<li><a class='rqRef' href='../../30 Features\Protocol Service\Proxy Component.htm#PC-R050-sr' title="">[PC-R050-sr]</a> Snapshot Records or</li>
+<li><a class='rqRef' href='../../30 Features\Protocol Service\Proxy Component.htm#PC-R050-sd' title="">[PC-R050-sd]</a> Snapshot Data</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../20%20UserInterface/Fault%20Memory/AUTOSAR%20Fault%20Memory%20GUI.htm">GUI AUTOSAR Fault Memory</a> (overview)</li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm">Snapshot Record Data Model</a></li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Operations.htm">Snapshot Record Operations</a></li>
+</ul>
+</body>
+</html>

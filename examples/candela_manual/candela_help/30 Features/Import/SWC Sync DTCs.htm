@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SWC Sync DTCs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="swc-sync-dtc">SWC Sync DTC</h1>
+<h2 id="extraction-of-sys-ex-dtcs">Extraction of SYS-EX DTCs</h2>
+<p>SWC Sync expects a SYS-EX DTC as an instance reference to a port, with the following conditions:</p>
+<ul>
+<li>The parent SWC type belongs to the ECU-INSTANCE.</li>
+<li>The SWC type includes a SWC-SERVICE-DEPENDENCY with a ROLE-BASED-PORT-ASSIGNMENT pointing to an R-PORT-PROTOTYPE.</li>
+<li>Note: SWC Sync does not check the role name (typically “DiagnosticMonitor”).</li>
+<li>The SWC-SERVICE-DEPENDENCY contains a DIAGNOSTIC-EVENT-NEEDS.</li>
+<li>Requirement SDs are at the R-PORT-PROTOTYPE.</li>
+</ul>
+<h2 id="sync-of-dtcs">Sync of DTCs</h2>
+<p><span id="SWC-R0410" class="rqDef">[SWC-R0410]</span>: For each DTC extracted from the SYS-EX,...</p>
+<ul>
+<li>if there is a DTC in the CANdela document whose Sync IDs <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R115' title="Requirements ID Storage">[RQ-R115]</a> equal the requirement ID of the SYS-EX DTC, ...</li>
+<li><span id="SWC-R0420" class="rqDef">[SWC-R0420]</span> the SWC Sync overwrites the value of the attribute “ASR SWC ServiceDependency Ref” <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R210' title="">[SWC-R210]</a> with the instance ref from the DTC,</li>
+<li><span id="SWC-R0430" class="rqDef">[SWC-R0430]</span> ... even if authorization does not allow the modification manually (e.g. in case of a locked variant).</li>
+<li><span id="SWC-R0440" class="rqDef">[SWC-R0440]</span>: SWC Sync does not modify...
+<ul>
+<li>existing DTCs without sync ID <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R115' title="Requirements ID Storage">[RQ-R115]</a>,</li>
+<li>DTCs with sync IDs for which no corresponding DTC is extracted from the SYS-EX.</li>
+</ul></li>
+<li>For the mapping of SWC with DTC vs. Event, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D050' title="">[ASR-D050]</a>.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a></li>
+<li><a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a></li>
+</ul>
+</body>
+</html>

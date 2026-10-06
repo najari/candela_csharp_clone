@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CANdelaStudio CSV Requirements Exchange Format</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="candelastudio-csv-requirements-exchange-format">CANdelaStudio CSV Requirements Exchange Format</h1>
+<h2 id="purpose">Purpose</h2>
+<p>This document describes the exchange format for requirements to be imported into / exported from CANdelaStudio.</p>
+<p>It is based on the <a href="Requirements.htm">CANdela requirements feature</a>.</p>
+<p>Tip: for an example .csv file, create some requirements in CANdelaStudio and export them.</p>
+<h2 id="data-exchange"><span id='_index_446728108' title='CSV' data-term='CSV'>Requirements Exchange Format</span></h2>
+<h3 id="lexical-structure">Lexical Structure</h3>
+<p><span id="RQ-R600" class="rqDef">[RQ-R600]</span>: the .csv file shall be compatible with MS Excel 2010:</p>
+<ul>
+<li><strong>Rows</strong> are separated by line-breaks,</li>
+<li><strong>Cells</strong> are separated by semicolon “;”.
+<ul>
+<li>Empty cells at the end of a row can be omitted
+<ul>
+<li>(i.e. no need to enumerate semicolons for all empty cells).</li>
+</ul></li>
+<li><strong>CANdelaStudio Import</strong> accepts <strong>multiple separator characters</strong> on reading a .csv file (CDS-26093 7.5 SP2):
+<ul>
+<li><code>,</code> = Comma</li>
+<li><code>|</code> = Pipe symbol (Ascii 124)</li>
+<li><code>;</code> = Semicolon</li>
+<li><code>TAB</code> = TAB character (Ascii 9)</li>
+<li>CANdelaStudio Import analyzes the first row to detect the separator character.</li>
+</ul></li>
+<li><strong>Microsoft Excel</strong> writes <strong>different separators</strong>, depending on the region settings of Windows, e.g.
+<ul>
+<li><code>,</code> = Comma (US)</li>
+<li><code>;</code> = Semicolon (German)</li>
+</ul></li>
+</ul></li>
+<li><strong>Within a cell</strong>, semicolon “;”, double-quote or line-break are preserved by...
+<ul>
+<li>enclosing the cell value with double-quotes, like <code>&quot;This is &quot;&quot;one&quot;&quot; cell&quot;</code></li>
+<li>doubling a double-quote within the cell-value.</li>
+<li>Note: a cell with an enclosed line-break means there are <strong>multiple text lines</strong> for one <strong>.csv row</strong>!</li>
+</ul></li>
+<li><strong>Cell enclosing</strong>: it is ok (but not required) to enclose each cell by double-quotes,
+<ul>
+<li>even if it does not contain characters that must be preserved.</li>
+</ul></li>
+</ul>
+<h3 id="syntactic-structure">Syntactic Structure</h3>
+<p><span id="RQ-R610" class="rqDef">[RQ-R610]</span>: A <strong>heading / requirement</strong> corresponds with <strong>one row</strong> of the .csv file.</p>
+<p><span id="RQ-R620" class="rqDef">[RQ-R620]</span>: A <strong>heading property</strong> / <strong>requirement property</strong> corresponds with <strong>one column</strong> of the .csv file.</p>
+<ul>
+<li>Each row contains all columns.</li>
+<li>If the property represented by a given row does not apply to the heading/requirement of a given column,
+<ul>
+<li>then the cell is empty.</li>
+</ul></li>
+</ul>
+<p><span id="RQ-R630" class="rqDef">[RQ-R630]</span>: the <strong>order of rows</strong> corresponds with the order of the headings / requirements.</p>
+<p><span id="RQ-R635" class="rqDef">[RQ-R635]</span>: the <strong>order of columns</strong> is free.</p>
+<p><span id="RQ-R640" class="rqDef">[RQ-R640]</span>: the requirements hierarchy information is stored in an additional <strong>column called “Level”</strong>:</p>
+<ul>
+<li>Top-level headings/requirements have level 1.</li>
+<li>If heading/requirement A <strong>contains</strong> heading/requirement B,
+<ul>
+<li>then the level of B is: (level of A) + 1.</li>
+</ul></li>
+</ul>
+<p><span id="RQ-R645" class="rqDef">[RQ-R645]</span>: initial rows with an empty first cell are considered <strong>comments</strong> that do not contain requirements.</p>
+<ul>
+<li>Comments may be used to transport <strong>meta properties</strong>.</li>
+<li>The recommended format is to put the property name into cell 2, the value into cell 3, like:</li>
+</ul>
+<!-- -->
+<pre><code>;SaveNo;47
+;Date;2012-11-13</code></pre>
+<p><span id="RQ-R650" class="rqDef">[RQ-R650]</span>: The first non-comment row contains the <strong>names of the properties</strong>:</p>
+<ul>
+<li><span id="RQ-R650-ID" class="rqDef">[RQ-R650-ID]</span> “<strong>ID</strong>” of requirement.</li>
+<li><span id="RQ-R650-NameDesc" class="rqDef">[RQ-R650-NameDesc]</span> “<strong>Name</strong>” and “<strong>Description</strong>” of heading/requirement
+<ul>
+<li>For a DTC requirement,
+<ul>
+<li><span id="RQ-R650-DTCName" class="rqDef">[RQ-R650-DTCName]</span> “Name” corresponds with the DTC error text,</li>
+<li><span id="RQ-R650-DTCDesc" class="rqDef">[RQ-R650-DTCDesc]</span> “Description” with a DTC column with qualifier “Description” (if defined in the CANdela template).</li>
+</ul></li>
+</ul></li>
+<li><span id="RQ-R650-TypeSpec" class="rqDef">[RQ-R650-TypeSpec]</span> The property name <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030' title="Specific Properties">[RQ-R030]</a> for <strong>type specific requirement properties</strong>,
+<ul>
+<li>e.g. “BitLength” or “Code”</li>
+</ul></li>
+<li><span id="RQ-R650-Level" class="rqDef">[RQ-R650-Level]</span> “<strong>Level</strong>” of heading/requirement <a class='rqRef' href='../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm#RQ-R640' title="">[RQ-R640]</a></li>
+<li><span id="RQ-R650-User" class="rqDef">[RQ-R650-User]</span> The property name of a user-defined property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a>.
+<ul>
+<li><span id="RQ-R650-DTC" class="rqDef">[RQ-R650-DTC]</span> If the property is specific to DTC requirements,</li>
+<li>its name is prefixed by “DTC.”,</li>
+<li>like “DTC.Set Condition”</li>
+<li>This does <strong>not</strong> apply to the DTC “Code” which is a type specific requirement property known to CANdelaStudio.</li>
+</ul></li>
+<li><span id="RQ-R650-Type" class="rqDef">[RQ-R650-Type]</span> “<strong>Type</strong>” representing the element type <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R012' title="Requirements Element Types">[RQ-R012]</a>,
+<ul>
+<li>with blanks and the suffix “Requirement” omitted, as follows:</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Element Type</th>
+<th align="left">Type in File</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Heading</td>
+<td align="left">Heading</td>
+</tr>
+<tr class="even">
+<td align="left">Data DiagInst Requirement</td>
+<td align="left">DataDiagInst</td>
+</tr>
+<tr class="odd">
+<td align="left">FaultMemory DiagInst Requirement</td>
+<td align="left">FaultMemoryDiagInst</td>
+</tr>
+<tr class="even">
+<td align="left">Routine DiagInst Requirement</td>
+<td align="left">RoutineDiagInst</td>
+</tr>
+<tr class="odd">
+<td align="left">IOControl DiagInst Requirement</td>
+<td align="left">IOControlDiagInst</td>
+</tr>
+<tr class="even">
+<td align="left">Data Requirement</td>
+<td align="left">Data</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Requirement</td>
+<td align="left">DTC</td>
+</tr>
+<tr class="even">
+<td align="left">VehicleSystemGroup Requirement</td>
+<td align="left">VehicleSystemGroup</td>
+</tr>
+<tr class="odd">
+<td align="left">Text Requirement</td>
+<td align="left">Text</td>
+</tr>
+</tbody>
+</table>
+<p><span id="RQ-R660" class="rqDef">[RQ-R660]</span>: An optional <strong>“Type” restriction</strong> to “integer” is represented by a “{int}” suffix of the respective cell in the first row.</p>
+<ul>
+<li>This is the default (= may be omitted) for the columns of “Level” and “BitLength”.</li>
+</ul>
+<p><span id="RQ-R665" class="rqDef">[RQ-R665]</span>: <strong>Integer values</strong> (even DTC Code) are represented in <strong>decimal format</strong>, like &quot;269&quot;.</p>
+<ul>
+<li>On reading a .csv file, CANdelaStudio also accepts numbers in hexadecimal format, like &quot;0x113&quot;.</li>
+</ul>
+<p><span id="RQ-R670" class="rqDef">[RQ-R670]</span>: Values of the “<strong>Services</strong>” column get mapped to...</p>
+<ul>
+<li>CANdela service qualifiers and
+<ul>
+<li>Services shall be separated by a comma, like “Read,Write”.</li>
+</ul></li>
+<li>optionally primitives
+<ul>
+<li>Primitives shall be written behind the service qualifier as
+<ul>
+<li>“RQ” (= request),</li>
+<li>“PR” (= positive response)</li>
+<li>separated by a blank,</li>
+<li>like “Read PR,Write RQ”.</li>
+</ul></li>
+</ul></li>
+<li>Note: this is the representation in the .csv file, not necessarily the representation in CANdelaStudio.</li>
+</ul>
+<p><span id="RQ-R680" class="rqDef">[RQ-R680]</span>: Values of the “<strong>VehicleSystemGroups</strong>” column contain a comma separated list of...</p>
+<ul>
+<li>either the <strong>Name</strong> or the <strong>ID</strong> of a VehicleSystemGroup Requirement,</li>
+<li>or the <strong>qualifier</strong> or <strong>name</strong> of a Vehicle System Group in the CANdela document.</li>
+</ul>
+<p>Note: this even allows for comma in a Name or ID of a VehicleSystemGroup and is not assumed to lead to ambiguities in practical situations.</p>
+<h3 id="restrictions">Restrictions</h3>
+<ul>
+<li>A Name shall fulfill the rules for <a href="../../30%20Features/Common%20Properties/Name.htm">names in CANdela</a>.</li>
+<li>A Name shall not contain a line-break.</li>
+<li>Integer values must obey the description in R665 above.</li>
+<li>Properties used by CANdelaStudio to update diagnostic objects (e.g. Services, DiagClass, DisplayFormat, Semantics) shall not contain line-breaks. Exception: the Description is free-text and may contain line-breaks.</li>
+<li>User defined properties <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a> may have any contents; it is up to the customer specific process to define restrictions for these values.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Requirements <a href="Requirements.htm">Feature</a></li>
+<li>Requirements <a href="Data%20Model.htm">Data Model</a></li>
+<li>Requirements <a href="../../30%20Features/Export/Requirements%20Export.htm">Export</a></li>
+<li>Requirements <a href="../../30%20Features/Import/Requirements%20Import.htm">Import</a></li>
+<li><a href="../../15%20Procedures/Excel/How%20to%20Open%20a%20CSV%20File%20in%20Excel.htm">How to Open a .CSV File in Excel</a></li>
+</ul>
+
+</body>
+</html>

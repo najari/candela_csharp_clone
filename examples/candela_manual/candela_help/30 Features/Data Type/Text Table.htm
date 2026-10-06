@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Text Table</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="text-table"><span id='_index_446727969'>Text Table</span></h1>
+<p>A text table maps...</p>
+<ul>
+<li>numeric raw values &quot;Start&quot;, optional different &quot;End&quot;</li>
+<li>to a an &quot;Assigned Text&quot;</li>
+<li>and to &quot;Additional Info&quot;.</li>
+</ul>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Text%20Table.htm">dialog</a>.</p>
+<h2 id="start-and-end">Start and End</h2>
+<p><span id="TT-R100" class="rqDef">[TT-R100]</span> The text table is based on numeric raw values:</p>
+<ul>
+<li><span id="TT-R100-Start" class="rqDef">[TT-R100-Start]</span> Start</li>
+<li><span id="TT-R100-End" class="rqDef">[TT-R100-End]</span> End</li>
+<li><span id="TT-R100-Discrete" class="rqDef">[TT-R100-Discrete]</span> <code>Start = End</code> denotes a <strong>discrete</strong> raw value</li>
+<li><span id="TT-R100-Range" class="rqDef">[TT-R100-Range]</span> <code>Start != End</code> denotes a <strong>range</strong>, with both Start and End <strong>included</strong> in the range.
+<ul>
+<li>Note: the text table dialog <a class='rqRef' href='../../20 UserInterface\Data Type\Data Type Property Page Text Table.htm#TTUI-R110' title="">[TTUI-R110]</a> provides a checkbox to enforce discrete values.</li>
+</ul></li>
+<li><span id="TT-R100-ValueType" class="rqDef">[TT-R100-ValueType]</span> the values given for Start and End must fit the <em>Value Type</em> of the text table.
+<ul>
+<li>e.g. for a data type with a field size (i.e. an array data type), Start and End values are arrays.</li>
+</ul></li>
+</ul>
+<h2 id="assigned-text">Assigned Text</h2>
+<p><span id="TT-R110" class="rqDef">[TT-R110]</span> For a discrete Start value or a range (see above), the text table defines a string Assigned Text.</p>
+<ul>
+<li><span id="TT-R110-ML" class="rqDef">[TT-R110-ML]</span> The Assigned Text is multi-language.</li>
+</ul>
+<h2 id="additional-info">Additional Info</h2>
+<p><span id="TT-R120" class="rqDef">[TT-R120]</span> For a discrete Start value or a range (see above), the text table defines an optional string Additional Info.</p>
+<ul>
+<li><span id="TT-R120-ML" class="rqDef">[TT-R120-ML]</span> The Additional Info is multi-language.</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<p><strong>Discrete raw values:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Value</th>
+<th align="left">Text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0x00</td>
+<td align="left">gear „N“</td>
+</tr>
+<tr class="even">
+<td align="right">0x01</td>
+<td align="left">gear “1”</td>
+</tr>
+<tr class="odd">
+<td align="right">...</td>
+<td align="left">...</td>
+</tr>
+</tbody>
+</table>
+<p>... or a Boolean:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Value</th>
+<th align="left">Text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0x00</td>
+<td align="left">off</td>
+</tr>
+<tr class="even">
+<td align="right">0x01</td>
+<td align="left">on</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ranges:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Value</th>
+<th align="left">Text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0x00..0x0F</td>
+<td align="left">not plausible – below valid range</td>
+</tr>
+<tr class="even">
+<td align="right">0x10..0xEF</td>
+<td align="left">valid</td>
+</tr>
+<tr class="odd">
+<td align="right">0xF0..0xFF</td>
+<td align="left">not plausible – above valid range</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Combined discrete values and ranges of values:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Value</th>
+<th align="left">Text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0x00</td>
+<td align="left">Switch “off”</td>
+</tr>
+<tr class="even">
+<td align="right">0x01 - 0xFF</td>
+<td align="left">Switch “on”</td>
+</tr>
+<tr class="odd">
+<td align="right">0x00</td>
+<td align="left">Variant “Europe”</td>
+</tr>
+<tr class="even">
+<td align="right">0x01</td>
+<td align="left">Variant = “US”</td>
+</tr>
+<tr class="odd">
+<td align="right">0x02</td>
+<td align="left">Variant = “Japan”</td>
+</tr>
+<tr class="even">
+<td align="right">0x03</td>
+<td align="left">Variant = “Asia”</td>
+</tr>
+<tr class="odd">
+<td align="right">0x04</td>
+<td align="left">Variant = “South America“</td>
+</tr>
+<tr class="even">
+<td align="right">0x05..0x07</td>
+<td align="left">Variant = “invalid”</td>
+</tr>
+</tbody>
+</table>
+<h2 id="inverse-values"><span id='_index_446727970' title='Text Table' data-text='Text Table'>Inverse Values</span></h2>
+<p>If...</p>
+<ul>
+<li>one line has a range of raw values (Start <code>&lt;</code> End), or</li>
+<li>multiple lines have the same assigned text T,</li>
+</ul>
+<p>... then the inverse conversion from a physical value T to a raw value is <strong>ambiguous</strong>: it could use any of the involved raw values as a result.</p>
+<p>To resolve the ambiguity, each line (assigned text) can have an <strong>inverse value</strong> (CDS-4979 6.0).</p>
+<p>With an inverse value given, the inverse value is used to unambiguously compute a raw value for a given physical value T.</p>
+<p>Note: the inverse value is used even if...</p>
+<ul>
+<li>it is outside the raw value Start/End range of the line, or</li>
+<li>the raw values are disjoint, i.e. the conversion is reversible.</li>
+</ul>
+<p>In the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Text%20Table.htm#use-inverse-values">user interface</a>, inverse values must be enabled for each text table individually.</p>
+
+<h2 id="uses">Uses</h2>
+<h3 id="used-protocol-service">Used Protocol Service</h3>
+<p><a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#text-table">Used Protocol Services</a> reference a text table.</p>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Text%20Table.htm">Data Type Property Page &quot;Text Table&quot;</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="Data%20Type.htm#conversions">Conversions</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li>Multi-Language <a class='rqRef' href='../../30%20Features/Multi-Language/Multi-Language.htm#ML-R100' title="Translatables">[ML-R100]</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used Protocol Service</a></li>
+</ul>
+</body>
+</html>

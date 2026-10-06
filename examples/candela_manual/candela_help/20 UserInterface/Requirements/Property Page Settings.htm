@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Property Page Settings</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="property-page-settings">Property Page &quot;Settings&quot;</h1>
+<p>See the <a href="../../30%20Features/Requirements/Requirements%20Settings.htm">Requirements Settings (Data Model)</a>.</p>
+<p>The dialog has two parts:</p>
+<ul>
+<li><a href="#properties">Property List</a> (top of dialog)</li>
+<li><a href="#settings">Settings</a> (bottom of dialog)</li>
+</ul>
+<div class="figure">
+<img src="Images/Property%20Page%20Settings.jpg" alt="Requirements Property Page &quot;Settings&quot;" />
+<p class="caption">Requirements Property Page &quot;Settings&quot;</p>
+</div>
+<h2 id="properties">Property List</h2>
+<p>The list on top of the Property Page &quot;Settings&quot; allows inspection and editing of <strong>user-defined properties</strong> <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a>.</p>
+<h3 id="name">Name</h3>
+<p><span id="RQUI-R240" class="rqDef">[RQUI-R240]</span> The &quot;Name&quot; column shows <a href="Requirements.htm#localizedPropertyNames">localized</a>.</p>
+<h3 id="new">New</h3>
+<p>A new user-defined property can be created by clicking the <em>New</em> button <img src="Images/New%20Button.jpg" /> or clicking the magic line.</p>
+<p>If a row is selected, the new user-defined property will be inserted before the selected row. Note: this refers only to the order of the columns in the requirement list. Technically the new user-defined property will be added at the end of the corresponding user defined property list (common or dtc).</p>
+<p>If no row is selected, or when clicking the magic line, the user-defined property will be added at the end of the list.</p>
+<p>The default settings for creating new user-defined properties are</p>
+<ul>
+<li><em>value type</em> = String</li>
+<li><em>property type</em> = (all).</li>
+</ul>
+<h3 id="specific-columns">Specific Columns</h3>
+<ul>
+<li><a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R030-Identifier' title="Requirement &quot;Identifier&quot; Property">[RQ-R030-Identifier]</a>: <em>name</em> &quot;Identifier&quot;, <em>value type</em> = Number, <em>property type</em> = (all).</li>
+</ul>
+
+<h3 id="delete">Delete</h3>
+<p><span id="RQUI-R210-Mandatory" class="rqDef">[RQUI-R210-Mandatory]</span> You cannot delete mandatory properties.</p>
+<p><span id="RQUI-R210-Optional" class="rqDef">[RQUI-R210-Optional]</span> You can delete optional specific properties <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R030-Optional' title="Optional Specific Properties">[RQ-R030-Optional]</a> (CDS-39287 8.5 SP2).</p>
+<h3 id="values-have-type-property-type">Values have Type (Property Type)</h3>
+<p>The value type of the property <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R040-Type' title="">[RQ-R040-Type]</a> can only be string or int, which can be selected in a combo box.</p>
+<h3 id="for-requirements-of-type">For Requirements of Type</h3>
+<p><span id="RQUI-R250" class="rqDef">[RQUI-R250]</span> The column shows the requirements type(s) at which the property exists.</p>
+<p>It is...</p>
+<ul>
+<li><span id="RQUI-R250-Specific" class="rqDef">[RQUI-R250-Specific]</span> fix for specific properties <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R030-Optional' title="Optional Specific Properties">[RQ-R030-Optional]</a>,</li>
+<li><span id="RQUI-R250-UserDefined" class="rqDef">[RQUI-R250-UserDefined]</span> modifiable for user defined properties <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R040-ForType' title="">[RQ-R040-ForType]</a>.</li>
+</ul>
+<h3 id="in-place-editing">In-Place Editing</h3>
+<p>The name and the value type and the property type can be changed by editing the cells of the table.</p>
+<h3 id="fix-properties">Fix Properties</h3>
+<p>The fix properties are shown in another color to indicate that they cannot be deleted.</p>
+<h3 id="move-up-move-down-order-of-properties">Move Up / Move Down (Order of Properties)</h3>
+<p>Further in this form the order of the property columns of the requirements list can also be defined with the help of <em>Move up/Move Down</em>. (R240.0)</p>
+<h3 id="show-in-table">Show in Table</h3>
+<p>The checkbox to the left of the first cell &quot;Name&quot; defines whether the property is shown in the requirement list (R240.0).</p>
+<h2 id="settings">Settings</h2>
+<p>The list at the bottom of the Property Page &quot;Settings&quot; provides general settings for requirements.</p>
+<h3 id="prefix-for-new-id">Prefix for new ID</h3>
+<p><span id="RQUI-R100-IDPrefix" class="rqDef">[RQUI-R100-IDPrefix]</span> CANdelaStudio uses this prefix <a class='rqRef' href='../../30 Features\Requirements\Requirements Settings.htm#RQ-R092' title="ID Prefix">[RQ-R092]</a> for the requirements ID <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R020' title="General Properties">[RQ-R020]</a> of a new requirement.</p>
+<h3 id="default-data-type-for-generation">Default Data Type for Generation</h3>
+<p><span id="RQUI-R100-DataType" class="rqDef">[RQUI-R100-DataType]</span> The combobox specifies the optional default data type <a class='rqRef' href='../../30 Features\Requirements\Requirements Settings.htm#RQ-R094' title="Default Data Type">[RQ-R094]</a> for creating data objects from requirements.</p>
+<h3 id="library-variant">Library / Variant</h3>
+<p><span id="RQUI-R100-Variant" class="rqDef">[RQUI-R100-Variant]</span> the CANdelaStudio requirements GUI provides a selection of a <strong>library</strong> or <strong>variant</strong> <a class='rqRef' href='../../30 Features\Requirements\Requirements Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a> for linking of requirements with diagnostic objects, as a combobox in the Settings page at the top of the &quot;Diagnostic Objects&quot; group box.</p>
+<ul>
+<li>CANdelaStudio supports libraries for requirements since v11 (CDS-70801).</li>
+<li>Note: this setting is also controlled in the SWC Sync Dialog <a class='rqRef' href='../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm#SWCUI-R345' title="">[SWCUI-R345]</a>.</li>
+</ul>
+<h3 id="update-of-diagnostic-objects-cds-41683-v11">Update of Diagnostic Objects (CDS-41683 v11)</h3>
+<p><span id="RQUI-R100-Update" class="rqDef">[RQUI-R100-Update]</span> Radio buttons control the behavior for diagnostic objects referenced in multiple variants:</p>
+<ul>
+<li><span id="RQUI-R100-Copy" class="rqDef">[RQUI-R100-Copy]</span> &quot;Replace References with Copy&quot;</li>
+<li><span id="RQUI-R100-UpdateRefs" class="rqDef">[RQUI-R100-UpdateRefs]</span> &quot;Update References&quot;</li>
+</ul>
+<p>See the description of the setting <a class='rqRef' href='../../30 Features\Requirements\Requirements Settings.htm#RQ-R096' title="">[RQ-R096]</a>, which takes effect in the operation &quot;Update Diagnostic Objects&quot; <a class='rqRef' href='../../30 Features\Requirements\Update Diagnostic Objects.htm#RQ-R520' title="">[RQ-R520]</a>.</p>
+<h3 id="diagnostic-classes-relevant-for-requirements">Diagnostic Classes Relevant for Requirements</h3>
+<ul>
+<li><span id="RQUI-R100-DiagnosticClasses" class="rqDef">[RQUI-R100-DiagnosticClasses]</span> Checkboxes represent the information whether the Diagnostic Classes <a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#requirements">support requirements</a>.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Requirements/Requirements.htm">Requirements Feature</a></li>
+<li><a href="../../30%20Features/Requirements/Requirements%20Settings.htm">Requirements Settings (Document Level)</a></li>
+<li><a href="Requirements.htm">Requirements User Interface</a></li>
+</ul>
+</body>
+</html>

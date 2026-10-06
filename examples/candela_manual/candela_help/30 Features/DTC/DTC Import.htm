@@ -1,0 +1,422 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DTC Import</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dtc-import">DTC <span id='_index_446728015' title='DTC' data-term='DTC'>Import</span></h1>
+<p>This chapter describes the data formats for an import of DTCs from an Excel file (.xlsx, .csv).</p>
+<p>For a description of the import wizard, see <a href="../../15%20Procedures/DTC/How%20to%20Import%20DTCs%20from%20Excel.htm">How to Import DTCs from Excel</a>.</p>
+<h2 id="example">Example</h2>
+<p>DTCs in CANdelaStudio:</p>
+<div class="figure">
+<img src="Images/SPN%20FMI%20DTC%20List.jpg" alt="DTC List in SAE J1939-73 Format" />
+<p class="caption">DTC List in SAE J1939-73 Format</p>
+</div>
+<p>Exported to xlsx:</p>
+<div class="figure">
+<img src="Images/SPN%20FMI%20in%20Excel.jpg" alt="DTC List in Excel" />
+<p class="caption">DTC List in Excel</p>
+</div>
+<p>Deleting the DTCs in CANdelaStudio, then importing the .xlsx list shows the DTCs in import wizard:</p>
+<div class="figure">
+<img src="Images/SPN%20FMI%20DTC%20List%20in%20Import%20Wizard.jpg" alt="SPN FMI DTC List in Import Wizard" />
+<p class="caption">SPN FMI DTC List in Import Wizard</p>
+</div>
+<p>... which results in the same DTC list in CANdelaStudio.</p>
+
+<h2 id="selection-of-worksheet">Selection of Worksheet</h2>
+<p><span id="DTCI-R100" class="rqDef">[DTCI-R100]</span> The import wizard lets you select one of the worksheets in the Excel file.</p>
+<h2 id="table-rows">Table Rows</h2>
+<div class="figure">
+<img src="Images/DTC%20in%20Excel%20Hex%20Example.jpg" alt="DTCs in Excel Example" />
+<p class="caption">DTCs in Excel Example</p>
+</div>
+<p><span id="DTCI-R120" class="rqDef">[DTCI-R120]</span> DTC Import from Excel expects the following table structure:</p>
+<ul>
+<li><strong>Heading</strong>:
+<ul>
+<li>The top line of the Excel table must match the column headers of the CANdela DTC table.</li>
+<li>When the document contains multiple languages, it is safe to use the qualifiers of the DTC table columns.</li>
+<li>CANdelaStudio displays these qualifiers when you move the mouse pointer over the column header in the DTC table.</li>
+</ul></li>
+<li><strong>(Rows)</strong>:
+<ul>
+<li>the following lines of the Excel table must contain the <strong>DTCs</strong></li>
+<li>import stops after a line that does not contain a DTC.</li>
+</ul></li>
+</ul>
+<h2 id="table-columns">Table Columns</h2>
+<ul>
+<li><span id="DTCI-R150" class="rqDef">[DTCI-R150]</span> <strong>DTC Number</strong>:
+<ul>
+<li>the first column(s) must represent the DTC number</li>
+<li>see next chapter</li>
+</ul></li>
+<li><span id="DTCI-R160" class="rqDef">[DTCI-R160]</span> <strong>Error Text</strong>:
+<ul>
+<li>the following column(s) must contain the error text</li>
+<li>see next chapter</li>
+</ul></li>
+<li><span id="DTCI-R170" class="rqDef">[DTCI-R170]</span> <strong>All further columns</strong>:
+<ul>
+<li>import copies column values to the CANdela document, if ...</li>
+<li>... the Excel column header matches the CANdela column header (i.e. matches the name in the displayed language, or the qualifier),</li>
+<li>... or you have manually assigned the columns in the import dialog.</li>
+<li>for DTC columns of type <code>enumeration</code> <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R010-Enum' title="">[DTCC-R010-Enum]</a>, there are further restrictions, see <a href="#enum">below</a>.</li>
+<li>for a <strong>mandatory column</strong> <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R060-Required' title="">[DTCC-R060-Required]</a>, ...
+<ul>
+<li>if the column is completely <strong>missing</strong> in the import file (i.e. the header does not exist),</li>
+<li>then import fills the column with the default value <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R080' title="Default Value">[DTCC-R080]</a> from the template;</li>
+</ul></li>
+<li>otherwise, if the mandatory column exists in the import file, but its cell is empty in a DTC row,
+<ul>
+<li>then import wizard shows that DTC row in red color and <strong>skips</strong> the DTC.</li>
+<li>Workaround, in order to avoid that import skips these DTCs: <strong>delete the entire column</strong> in the import file (assuming there are no DTCs where the column contains meaningful values in the import file).</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="dtc-number-and-error-text">DTC Number and Error Text</h2>
+<p>CANdelaStudio supports multiple <strong>conventions</strong> for the <strong>display of DTCs</strong>, controlled by the <a href="../../20%20UserInterface/Document/Property%20Page%20Display%20of%20DTCs.htm">Display of DTCs</a> document setting.</p>
+<p><strong>DTC Export</strong> writes the corresponding format. You can use DTC Export to create an example for the DTC list that can be imported:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Display of DTCs</th>
+<th align="left">Sample exported DTC Number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><a href="#hex">ISO 14229-1 (Hex)</a></td>
+<td align="left">0x000992</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="#J2012">ISO 15031-6 / SAE J2012</a></td>
+<td align="left">P0009, 0x92</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="#J1939">SAE J1939-73 (Version 4)</a></td>
+<td align="left">264448, 18</td>
+</tr>
+</tbody>
+</table>
+<p><span id="DTCI-R200" class="rqDef">[DTCI-R200]</span> <strong>DTC Import accepts all formats</strong>, independent of the &quot;Display of DTCs&quot; setting in the target document!</p>
+<p>Example: you can import...</p>
+<ul>
+<li>an xlsx file containing <strong>SAE J1939-73</strong> DTCs</li>
+<li>into a document with &quot;Display of DTCs&quot; set to <strong>ISO 14229-1 (Hex)</strong>.</li>
+</ul>
+<p>The following subchapters describe the different formats in detail.</p>
+<p>The procedure <a href="../../15%20Procedures/Excel/How%20to%20Convert%20Number%20Formats%20in%20Excel.htm">How to Convert Number Formats in Excel</a> may be useful to prepare the data in Excel.</p>
+<h3 id="hex">ISO 14229-1 (Hex)</h3>
+<p><span id="DTCI-R210" class="rqDef">[DTCI-R210]</span> For ISO 14229-1 (Hex), the first column contains the DTC number, the second one contains the error text:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Column</th>
+<th align="left">#1</th>
+<th align="left">#2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Property</td>
+<td align="left">DTC</td>
+<td align="left">error text</td>
+</tr>
+<tr class="even">
+<td align="right">Column name</td>
+<td align="left">(does not matter)</td>
+<td align="left">(does not matter)</td>
+</tr>
+<tr class="odd">
+<td align="right">Notation</td>
+<td align="left"><a href="#notation">hex or SAE</a></td>
+<td align="left">string</td>
+</tr>
+<tr class="even">
+<td align="right">Column Name in DTC Export</td>
+<td align="left"><code>DTC</code></td>
+<td align="left"><code>DTCText</code></td>
+</tr>
+</tbody>
+</table>
+<p>Table example:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">DTC</th>
+<th align="left">Error Text</th>
+<th align="left">Set Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">C002011</td>
+<td align="left">ABS Pump Motor Control - Circuit short to ground</td>
+<td align="left">Value &lt; 0,2V...</td>
+</tr>
+<tr class="even">
+<td align="left">C002012</td>
+<td align="left">ABS Pump Motor Control - Cicuit short to battery</td>
+<td align="left">Value &gt; 5V...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="J2012">ISO 15031-6 / SAE J2012</h3>
+<p><span id="DTCI-R220" class="rqDef">[DTCI-R220]</span> For <a href="../../30%20Features/DTC/Failure%20Type%20Byte.htm">ISO 15031-6 / SAE J2012</a>, the first two columns must contain the root DTC and the FTB:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Column</th>
+<th align="left">#1</th>
+<th align="left">#2</th>
+<th align="left">#3</th>
+<th align="left">#4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Property</td>
+<td align="left">DTC</td>
+<td align="left">FTB (numeric)</td>
+<td align="left">Error text</td>
+<td align="left">FTB text</td>
+</tr>
+<tr class="even">
+<td align="right">Column name</td>
+<td align="left"><code>BaseDTC</code></td>
+<td align="left"><code>FTB</code></td>
+<td align="left"><code>DTCText</code></td>
+<td align="left"><code>DTCTypeText</code></td>
+</tr>
+<tr class="odd">
+<td align="right">Column name (alternatives)</td>
+<td align="left"><code>DTC</code></td>
+<td align="left"><code>Failure Type</code></td>
+<td align="left"><code>DTCText</code></td>
+<td align="left"><code>DTCTypeText</code></td>
+</tr>
+<tr class="even">
+<td align="right">Notation</td>
+<td align="left"><a href="#notation">hex or SAE</a></td>
+<td align="left"><a href="#notation">hex or SAE</a></td>
+<td align="left">string</td>
+<td align="left">string</td>
+</tr>
+<tr class="odd">
+<td align="right">Column Name in DTC Export</td>
+<td align="left"><code>DTC</code></td>
+<td align="left"><code>Failure Type</code></td>
+<td align="left"><code>DTCText</code></td>
+<td align="left"><code>DTCTypeText</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note: import ignores column <code>DTCTypeText</code> because the information is already contained in the referenced FMI text table.</p>
+<p>Table example:</p>
+<table>
+<colgroup>
+<col width="6%" />
+<col width="13%" />
+<col width="37%" />
+<col width="27%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">DTC</th>
+<th align="left">Failure Type</th>
+<th align="left">DTCText</th>
+<th align="left">DTCTypeText</th>
+<th align="left">Set Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">C0020</td>
+<td align="left">0x11</td>
+<td align="left">ABS Pump Motor Control - Circuit short to ground</td>
+<td align="left">Circuit Voltage Above Threshold</td>
+<td align="left">Value &lt; 0,2V...</td>
+</tr>
+<tr class="even">
+<td align="left">C0020</td>
+<td align="left">0x12</td>
+<td align="left">ABS Pump Motor Control - Cicuit short to battery</td>
+<td align="left">Circuit Current Below Threshold</td>
+<td align="left">Value &gt; 5V...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="J1939">SAE J1939-73 (Version 4)</h3>
+<p><span id="DTCI-R230" class="rqDef">[DTCI-R230]</span> For <a href="../../30%20Features/DTC/Failure%20Mode%20Identifier.htm">SAE J1939-73 (Version 4)</a>, the first two columns must contain the SPN and the FMI:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Column</th>
+<th align="left">#1</th>
+<th align="left">#2</th>
+<th align="left">#3</th>
+<th align="left">#4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Property</td>
+<td align="left">SPN (dec)</td>
+<td align="left">FMI (dec)</td>
+<td align="left">Error text</td>
+<td align="left">FMI text</td>
+</tr>
+<tr class="even">
+<td align="left">Column name</td>
+<td align="left"><code>SPN</code></td>
+<td align="left"><code>FMI</code></td>
+<td align="left"><code>DTCText</code></td>
+<td align="left"><code>DTCTypeText</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Notation</td>
+<td align="left">decimal</td>
+<td align="left">decimal</td>
+<td align="left">string</td>
+<td align="left">string</td>
+</tr>
+<tr class="even">
+<td align="left">Column Name in DTC Export</td>
+<td align="left"><code>SPN</code></td>
+<td align="left"><code>FMI</code></td>
+<td align="left"><code>DTCText</code></td>
+<td align="left"><code>DTCTypeText</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note: as of v10, the import wizard shows the SPN and FMI values in <strong>hex notation</strong> only.</p>
+<p>Table example:</p>
+<table>
+<colgroup>
+<col width="7%" />
+<col width="7%" />
+<col width="42%" />
+<col width="28%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">SPN</th>
+<th align="left">FMI</th>
+<th align="left">DTCText</th>
+<th align="left">DTCTypeText</th>
+<th align="left">Set Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">8256</td>
+<td align="left">17</td>
+<td align="left">ABS Pump Motor Control - Circuit short to ground</td>
+<td align="left">Low – least severe (1)</td>
+<td align="left">Value &lt; 0,2V...</td>
+</tr>
+<tr class="even">
+<td align="left">8256</td>
+<td align="left">18</td>
+<td align="left">ABS Pump Motor Control - Cicuit short to battery</td>
+<td align="left">Low – moderate severity (2)</td>
+<td align="left">Value &gt; 5V...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notation">DTC Number Notation</h2>
+<p><span id="DTCI-R300" class="rqDef">[DTCI-R300]</span> For ISO 14229-1 (Hex) and ISO 15031-6 / SAE J2012, the DTC number can have hex or SAE notation:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Example</th>
+<th align="left">Format</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0x402011</td>
+<td align="left">prefix &quot;0x&quot;</td>
+<td align="left">hexadecimal DTC number</td>
+</tr>
+<tr class="even">
+<td align="left">C002011</td>
+<td align="left">prefix &quot;P&quot;, &quot;B&quot;, &quot;C&quot; or &quot;U&quot;</td>
+<td align="left">DTC number in SAE notation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enum">DTC Column Type <code>Enumeration</code></h2>
+<p><span id="DTCI-R310" class="rqDef">[DTCI-R310]</span> For enumeration <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R010-Enum' title="">[DTCC-R010-Enum]</a>, the values in the import file may contain the ID or symbol:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Example</th>
+<th align="left">Format</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Replace ECU</td>
+<td align="left">string</td>
+<td align="left">match against enum symbols (in current language)</td>
+</tr>
+<tr class="even">
+<td align="left">0</td>
+<td align="left">number</td>
+<td align="left">match against enum ID (numeric value)</td>
+</tr>
+</tbody>
+</table>
+<p>Table example:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">DTC</th>
+<th align="left">Error Text</th>
+<th align="left">Corrective Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">C002011</td>
+<td align="left">ABS Pump Motor Control - Circuit short to ground</td>
+<td align="left">Replace ECU</td>
+</tr>
+<tr class="even">
+<td align="left">C002012</td>
+<td align="left">ABS Pump Motor Control - Cicuit short to battery</td>
+<td align="left">0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="DTC.htm">DTC (Feature)</a></li>
+<li><a href="../../20%20UserInterface/DTC/DTCs.htm">DTCs (User Interface)</a></li>
+<li><a href="DTC%20Export.htm">DTC Export</a></li>
+<li><a href="../../30%20Features/Installation/Example%20Files.htm">Example Files</a></li>
+<li><a href="../../15%20Procedures/DTC/How%20to%20Import%20DTCs%20from%20Excel.htm">How to Import DTCs from Excel</a></li>
+<li><a href="../../15%20Procedures/Excel/How%20to%20Convert%20Number%20Formats%20in%20Excel.htm">How to Convert Number Formats in Excel</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Use%20of%20Excel.htm">Use of Excel</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">DTC Columns</a> (in the template)</li>
+</ul>
+</body>
+</html>

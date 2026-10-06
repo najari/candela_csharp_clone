@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Service Overview Export</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="service-overview-export">Service Overview Export</h1>
+<h2 id="use-case">Use-Case</h2>
+<p><strong>UC001.0</strong>: roughly compare the services in different ECU documents.</p>
+<p><strong>UC010.0</strong>: create checklists for services (e.g. which services are already tested/implemented)</p>
+<p><strong>UC020.0</strong>: use the service information in a documentation process.</p>
+<h2 id="user-requirements">User Requirements</h2>
+<p><strong>U010.0</strong>: CANdelaStudio shall provide an export of services.</p>
+<p><strong>U020.0</strong>: it shall be possible to print the exported data on paper</p>
+<p><strong>U030.0</strong>: it shall be possible to modify the exported data on screen.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The export is saved in a CSV (comma separated values) file, UTF-8 encoded.</p>
+<p>The CSV file has the following format:</p>
+<pre><code>&lt;File Name&gt;
+&lt;Date&gt;
+&lt;Variant&gt;|&lt;DiagClass&gt;|&lt;DiagInstance&gt;|&lt;Service&gt;|&lt;ServiceAbstract|&lt;Path&gt;|&lt;ProtocolService&gt;</code></pre>
+<p>The header contains the file name and the creation date of the service list. The body lists all services of an ECU document, including the paths leading to the service (for a diagnostic instance referenced in multiple variants, there are multiple paths).</p>
+<p>Example:</p>
+<pre><code>C:\Users\Public\Documents\Vector\CANdelaStudio\8.2\Examples\ABS_ESP-Example.cdd
+2016-02-29T13:00:41+01:00
+
+&quot;Variant&quot;;&quot;DiagClass&quot;;&quot;DiagInstance&quot;;&quot;Service&quot;;&quot;ShortcutName&quot;;&quot;ShortcutQualifier&quot;;&quot;ServiceAbstract&quot;;&quot;PhysRequest&quot;;&quot;FuncRequest&quot;;&quot;ProtocolService&quot;;&quot;Path&quot;
+&quot;Common Diagnostics&quot;;&quot;Sessions&quot;;&quot;Default Session&quot;;&quot;Start&quot;;&quot;Default Session Start&quot;;&quot;DefaultSession_Start&quot;;&quot;10 01 &quot;;&quot;P&quot;;&quot;F&quot;;&quot;(0x10) DiagnosticSessionControl&quot;;&quot;qpath:/CommonDiagnostics/Sessions/DefaultSession/[SERVICE]Start&quot;</code></pre>
+</body>
+</html>

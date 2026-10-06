@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Actions INI</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="actions.ini">Actions.ini</h1>
+<h2 id="location-of-the-actions-ini-file">Location of the Actions INI File</h2>
+<p>The actions configured by the user are stored in an INI file &quot;actions.ini&quot;, the path of which is derived from an entry <code>[General]Actions</code> in <a href="../../30%20Features/CANdelaStudio%20Editor/Options.htm">CANdelaStudio.ini</a> (not editable in GUI). You can find this file (e.g. for CANdelaStudio 8.5) at</p>
+<pre><code>C:\ProgramData\Vector\CANdelaStudio\8.5\actions.ini</code></pre>
+<p>or in the installation directory of CANdelaStudio in sub directory <code>Bin</code>.</p>
+<p>If on reading, <code>[General]Actions</code> is missing or the file referenced does not exists, then there are no actions available (i.e. for hard-coded actions, name equals qualifier, command line is empty).</p>
+<p>As a default for writing, <code>[General]Actions</code> should point to actions.ini in the CANdelaStudio.exe directory, and the hard-coded actions should be written into it.</p>
+<h2 id="contents-of-the-ini-file">Contents of the INI File</h2>
+<p>The INI file contains a section <code>[General]</code>, <code>[CommandLine]</code> and one section for any GUI language of CANdelaStudio, e.g. <code>[de-DE]</code>. Each section contains entries with the form</p>
+<pre><code>&lt;actionQualifier&gt;=&lt;value&gt;</code></pre>
+<p>The <code>[CommandLine]</code> section contains the command lines of all actions, using the action qualifier as a key and the command line as a value, like:</p>
+<pre><code>Report=winword $File;</code></pre>
+<p>The <code>[General]</code> section contains default names of all actions, the language sections contain the action names for the respective language.</p>
+<p>On reading any action, CANdelaStudio...</p>
+<ul>
+<li>looks for its name in the section of the current GUI language.</li>
+<li>If not present, it looks for an entry under <code>[General]</code>.</li>
+<li>If not present, and it is a hard-coded action, it uses the default name. Else it uses the qualifier.</li>
+</ul>
+<p>On writing any action, CANdelaStudio writes its name into the section of the current GUI language. If there is no entry for the action in <code>[General]</code>, it writes the action into <code>[General]</code>, too.</p>
+<p>In Section <code>[Version]</code>, CANdelaStudio stores its own version number in the key <code>Version</code>. If the section and/or key is not present in the Actions INI file, CANdelaStudio assumes the INI file has been created by a previous version which did not yet support UTF-8, and migrates the file contents to UTF-8 (to support multi-language names, all data must be stored in UTF-8).</p>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Used Protocol Service</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="used-protocol-service"><span id='_index_446727991'>Used Protocol Service</span></h1>
+<p>See also the <a href="../../20%20UserInterface/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">dialog description</a>.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Used Protocol Services are a key feature of the CANdela data model:</p>
+<p><span id="DCLT-R305" class="rqDef">[DCLT-R305]</span> A Used Protocol Service associates...</p>
+<ul>
+<li>a <strong>Protocol Service</strong> (e.g. UDS 0x22) with</li>
+<li>a <strong>Diagnostic Class</strong> (<strong>diagnostic use case</strong>, e.g. &quot;Identification&quot;, &quot;Variant Coding&quot;, &quot;Stored Data&quot;...).</li>
+</ul>
+<p>See the <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">overview in the Protocol Service chapter</a>.</p>
+<p>In the data model, a Diagnostic Class Template <strong>contains</strong> Used Protocol Services, see <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R160' title="">[DCLT-R160]</a>.</p>
+<h3 id="example">Example</h3>
+<p>If you define...</p>
+<ul>
+<li>a single Used Protocol Service &quot;Read&quot;</li>
+<li>referring to UDS 0x22</li>
+<li>in diagnostic class template &quot;Identification&quot;,</li>
+</ul>
+<p>this means that any diagnostic instance in the diagnostic class &quot;Identification&quot; can use UDS 0x22, but can use no other UDS service.</p>
+<p>The same Protocol Service can be used in multiple diagnostic class templates.</p>
+<p>Note: editing a Used Protocol Service re-computes qualifiers, see <a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCTUI-D410' title="">[DCTUI-D410]</a>.</p>
+<h2 id="relation-to-interfaces">Relation to Interfaces</h2>
+<p>See <a href="../../30%20Features/Interface/Services%20Supported%20for%20Interfaces.htm">Services Supported for Interfaces</a>.</p>
+<h2 id="convention">Convention</h2>
+<p><span id="DCLT-R310" class="rqDef" title="Used Protocol Service Convention">[DCLT-R310 Used Protocol Service Convention]</span> The <strong>Convention</strong> of a Used Protocol Service specifies whether (in a diagnostic instance) the service based on the Used Protocol Service is</p>
+<ul>
+<li><strong>required</strong>: you cannot delete it;</li>
+<li><strong>optional, default on</strong>: CANdelaStudio automatically creates it in a new diagnostic instance, but you can delete it;</li>
+<li><strong>optional, default off</strong>: CANdelaStudio does not automatically create it in a new diagnostic instance, but you can create it later.</li>
+</ul>
+<p><span id="DCLT-R310-RqOn" class="rqDef">[DCLT-R310-RqOn]</span> At least one of the Used Protocol Services in a diagnostic class template must have the convention &quot;Required&quot; or &quot;Optional (on)&quot;.</p>
+<h2 id="semantics">Semantics</h2>
+<p><span id="DCLT-R320" class="rqDef" title="Used Protocol Service Semantics">[DCLT-R320 Used Protocol Service Semantics]</span> The property represents the ODX service semantics. It will be used by <a href="../../30%20Features/Export/80_ODXExport_Services%20and%20telegrams.htm">ODX Export of services</a>.</p>
+<p>CANdelaStudio does not restrict the values of this property.</p>
+<p>It is the default for the respective property of a service <a class='rqRef' href='../../30%20Features/Service/Service.htm#SVC-R200' title="">[SVC-R200]</a>.</p>
+<h2 id="text-table">Reference to Text Table (CDS-18874 8.0)</h2>
+<p>The <strong>range of identifiers</strong> to use in diagnostic instances of a given diagnostic class can be restricted in the diagnostic class template.</p>
+<ul>
+<li><p><span id="DCLT-R400" class="rqDef">[DCLT-R400]</span> a &quot;Used ProtocolService&quot; that references a ProtocolService which has a variable value references a text table that defines the possible identifier values. The text table must have the same length as the variable value.</p></li>
+<li><p>R002.0: a &quot;Used ProtocolService&quot; that references a ProtocolService which has <strong>no</strong> variable value shall <strong>not</strong> reference such a text table.</p></li>
+</ul>
+<p>Semantics: in a Diagnostic Instance, only identifiers are allowed that are defined in all text tables of the Used ProtocolServices.</p>
+<p>The <a href="../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm#text-table">text table at the ProtocolService</a> (which existed before 8.0) is since 8.0 only taken as a <strong>default</strong> for the text table at the &quot;Used ProtocolService&quot;.</p>
+<p>The consistency check reports a fatal error for a Used ProtocolService that references a text table with a different length than the one in the referenced ProtocolService.</p>
+<p>R030.0: The consistency check reports an identifier value which is not a valid raw value of the datatype of any referenced Used ProtocolService for which a service exists in the diagnostic instance.</p>
+<p>R040.0: There is no warning if the user shares variable values that reference different text tables.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Diagnostic%20Class%20Template.htm">Diagnostic Class Template</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="../../30%20Features/Interface/Services%20Supported%20for%20Interfaces.htm">Services Supported for Interfaces</a></li>
+</ul>
+</body>
+</html>

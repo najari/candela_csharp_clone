@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Byte Order</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="byte-order">Byte Order</h1>
+<p>The byte order at a data type specifies</p>
+<ul>
+<li>for values defined for the data type</li>
+<li>e.g. at a data object</li>
+<li>how the <strong>value</strong> (i.e. a bit sequence)</li>
+<li>is mapped from/to a <strong>byte sequence</strong></li>
+<li>e.g. for transport on the line.</li>
+</ul>
+<p>For details about this mapping, see the chapter <a href="../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm">Bit and Byte Positions</a>.</p>
+<p><span id="BO-R100" class="rqDef">[BO-R100]</span> Byte order applies to...</p>
+<ul>
+<li>integer values with size &gt; 1 byte,
+<ul>
+<li>at data types with <a href="../../30%20Features/Data%20Type/Length.htm">quantity atom</a>.</li>
+<li>If the data type has <a href="../../30%20Features/Data%20Type/Length.htm">quantity field</a>, the optional <a href="../../30%20Features/Attributes/Special%20Attributes.htm#ReverseBitFieldBytes">attribute &quot;ReverseBitFieldBytes&quot;</a> may be used instead.</li>
+</ul></li>
+<li>2 byte (i.e. Unicode) character values,
+<ul>
+<li>i.e. to each element in a data type with quantity field.</li>
+</ul></li>
+</ul>
+<p><span id="BO-R110" class="rqDef">[BO-R110]</span> For the type of physical values, the byte order property...</p>
+<ul>
+<li>is not relevant since it is implicitly given by the test system.</li>
+<li>For identity data types, it must be identical to the byte order of the coded value type.</li>
+<li>For all other data types, it may differ from that of the coded value type.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Special%20Attributes.htm#ReverseBitFieldBytes">Attribute &quot;ReverseBitFieldBytes&quot;</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm">Bit and Byte Positions</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Bit%20Field.htm">Bit Field</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li>Data Type <a href="../../30%20Features/Data%20Type/Length.htm">Length</a></li>
+<li>Handling in Compare View <a class='rqRef' href='../../20 UserInterface\Compare\Compare View.htm#CMP-R410-ByteOrder' title="">[CMP-R410-ByteOrder]</a>.</li>
+</ul>
+</body>
+</html>

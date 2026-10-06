@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Transport a CANoe Automation Sequence Macro as a CANdela Job</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-transport-a-canoe-automation-sequence-macro-as-a-candela-job">How to Transport a CANoe Automation Sequence Macro as a CANdela Job</h1>
+<p>CANoe 10 supports <a href="../../30%20Features/Job/Jobs%20in%20Test%20Systems.htm#AutomationSequenceMacro">Automation Sequence Macros</a> to record the byte sequence of UDS requests.</p>
+<p>CANdelaStudio supports embedding &quot;job files&quot; in a CANdela document.</p>
+<p>The following describes how to <strong>manually</strong>...</p>
+<ol style="list-style-type: decimal">
+<li>store a CANoe Automation Sequence Macro in a CANdela document</li>
+<li>and later (maybe on a different computer) use the macro from the CANdela document again in CANoe.</li>
+</ol>
+<p>Note: in a future version, CANoe may offer comfort for step 2 - automatically provide the Automation Sequence Macros from a CANdela document for selection in a list.</p>
+<h2 id="record-an-automation-sequence-macro-in-canoe">Record an Automation Sequence Macro in CANoe</h2>
+<ol style="list-style-type: decimal">
+<li>In ribbon &quot;Simulation&quot;, press button &quot;Automation&quot;</li>
+<li>In the dialog &quot;Automation Sequence&quot;, page &quot;Macro&quot;, create a new macro</li>
+<li>specify a file name for the automation sequence macro</li>
+</ol>
+<h2 id="embed-the-automation-sequence-macro-in-a-candela-document">Embed the Automation Sequence Macro in a CANdela document</h2>
+<ol style="list-style-type: decimal">
+<li>In CANdelaStudio, open ribbon tab Document | Job File Manager.</li>
+<li>Press button &quot;New&quot;</li>
+<li>In the file dialog, select the file created in CANoe, close with OK.</li>
+<li>In the Job File Manager dialog, specify the runtime system &quot;AutomationSequenceMacro&quot;
+<ul>
+<li>in case your CANdelaStudio version does not provide this as a selection in the combo-box, you can just enter the string as free text.</li>
+</ul></li>
+<li>Press &quot;Close&quot; to leave the dialog. CANdelaStudio embeds the specified file in the CANdela document.</li>
+</ol>
+<h2 id="use-the-automation-sequence-macro-from-the-candela-document-in-canoe">Use the Automation Sequence Macro from the CANdela document in CANoe</h2>
+<ol style="list-style-type: decimal">
+<li>In CANoe, open CANdelaStudio (ribbon page &quot;Diagnostics&quot;)</li>
+<li>In CANdelaStudio, use File|Open to open the CANdela document</li>
+<li>Open ribbon tab Document | Job File Manager</li>
+<li>Select the respective file stored from the Automation Sequence Macro</li>
+<li>Press button &quot;Save As&quot;</li>
+<li>In the file dialog, specify a folder and file name of your choice, press OK.</li>
+<li>Close the Job File Manager dialog.</li>
+<li>Close CANdelaStudio.</li>
+<li>In CANoe, in the dialog &quot;Automation Sequences&quot;, page &quot;Macros&quot;, select &quot;Add Macro File&quot;; as a file, select the file saved from the CANdelaStudio Job File Manager dialog.</li>
+</ol>
+<p>Now you can use the Automation Sequence Macro in CANoe.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Job/Job.htm">Job (Feature)</a></li>
+<li><a href="../../30%20Features/Job/Jobs%20in%20Test%20Systems.htm">Jobs in Test Systems</a></li>
+</ul>
+</body>
+</html>

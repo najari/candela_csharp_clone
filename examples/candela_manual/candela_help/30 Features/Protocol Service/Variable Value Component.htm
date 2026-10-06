@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Variable Value Component</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="variable-value-component"><span id='_index_446728098'>Variable Value Component</span></h1>
+
+<p><span id="PS-R400" class="rqDef">[PS-R400]</span> A <strong>Variable Value Component</strong> is the Component where e.g. an identifier must be specified within a DiagInstance.</p>
+<h2 id="specification">&quot;Specification&quot; Property</h2>
+<p><span id="PS-R400-Specification" class="rqDef" title="Variable Value Component &quot;Specification&quot;">[PS-R400-Specification Variable Value Component &quot;Specification&quot;]</span> The following values are available for the &quot;Specification&quot; property:</p>
+<ul>
+<li>Access mode</li>
+<li>Address</li>
+<li>Common ID</li>
+<li>CPID</li>
+<li>DID</li>
+<li>DPID</li>
+<li>ID</li>
+<li>Info type</li>
+<li>Local ID</li>
+<li>Mode</li>
+<li>Option</li>
+<li>PID</li>
+<li>Status</li>
+<li>Subfunction</li>
+<li>TID</li>
+</ul>
+<h2 id="use-in-candela-layers">Use in CANdela Layers</h2>
+<p>A Variable Value Component from the Protocol Service is referenced...</p>
+<ul>
+<li>by a <strong>Combined Variable Value Component</strong> in the diagnostic class template, which is referenced...</li>
+<li>by a <strong>Variable Value</strong> (e.g. identifier) in the diagnostic instance. There is at most one such value in a diagnostic instance. This is similar to the Combined Proxy Component/telegram table mechanism.</li>
+</ul>
+<p>See the <strong>overview</strong> in the <a href="Protocol%20Service.htm">Protocol Service chapter</a>.</p>
+<p>Some manufacturers do not require the identifier to be unique. This is controlled by an <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Edit.htm#identifier-uniqueness">option</a> (see CDS-844).</p>
+<h2 id="consistency-conditions">Consistency Conditions</h2>
+<ul>
+<li>A Protocol Service used in a singleton diagnostic class must not have a Variable Value Component (cf. CDS-3280).</li>
+<li>A Protocol Service used in a non-singleton diagnostic class must have one Variable Value Component (cf. CDS-3280).</li>
+<li>There is at most one Variable Value Component per primitive.</li>
+</ul>
+<h2 id="semantics">Semantics</h2>
+<p>The Variable Value Component has a <strong>semantics</strong> (e.g. identifier or subfunction) which is usually given by manufacturer specifications.</p>
+<p>Since several Variable Value Components may be combined in a diagnostic class template, there may be an ambiguity: which semantics should be presented to the user?</p>
+<p>For this reason, a Combined Variable Value Component also has a semantics, to be defined by the editor of the template. At best, it is identical with the semantics of all combined Variable Value Components, but this is not a required consistency condition.</p>
+<h2 id="text-table">Reference to Text Table (CDS-8032 in 5.5)</h2>
+<ul>
+<li><span id="PS-R450" class="rqDef" title="Text Table">[PS-R450 Text Table]</span> A Variable Value Component has a mandatory reference to a text table.</li>
+</ul>
+<p>Since 8.0, this text table is only used as a default for a text table at the Used Protocol Service <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#DCLT-R400' title="">[DCLT-R400]</a> in a diagnostic class template.</p>
+<h3 id="restrictions-on-the-datatype">Restrictions on the datatype</h3>
+<ul>
+<li>TextTable only</li>
+<li>length restriction: max. 4 bytes, only byte-sized, atomar; or field with fix length</li>
+<li>Note: no restrictions with regard to range exclusions, attributes, bitmask, byte-order.</li>
+</ul>
+<p>BitLen and ByteOrder properties of the Variable Value are taken from the datatype.</p>
+<p>The consistency check shall fail (fatal, prevent loading) if above restrictions are not fulfilled (e.g. not a text table, …).</p>
+<h3 id="use-of-the-text-table">Use of the text table</h3>
+<p>Let consistency check fail (non-fatal, e.g. prevents exports)...</p>
+<ul>
+<li>iff a Protocol Service is used in a diagnostic instance with an identifier value which is not a valid raw value of the datatype of any referenced Variable Value Component (e.g. not covered by a textual mapping, or excluded via range exclusion).</li>
+<li>In other words, the identifier value must be valid in the data types of all referenced Variable Value Components</li>
+<li>Background: a DiagInstance references one Combined Variable Value Component which references 1..n Variable Value Components).</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Components.htm">Components</a></li>
+<li><a href="Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="Protocol%20Service.htm#signature">Signature: Constant and Variable Value Components</a></li>
+<li><a href="Addressing.htm#SPRMIB">SPRMIB</a></li>
+</ul>
+</body>
+</html>

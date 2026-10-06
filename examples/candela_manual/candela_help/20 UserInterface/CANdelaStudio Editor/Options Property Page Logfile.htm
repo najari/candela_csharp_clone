@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Options Property Page Logfile</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="file-options-logging---logfile">File | Options | Logging - Logfile</h1>
+<div class="figure">
+<img src="Images/Options%20Property%20Page%20Logfile.jpg" alt="Ribbon Tab File | Options, Page &quot;Logfile&quot;" />
+<p class="caption">Ribbon Tab File | Options, Page &quot;Logfile&quot;</p>
+</div>
+<p>This dialog configures the <a href="../../30%20Features/CANdelaStudio%20Editor/Logging.htm">Logging feature</a> of CANdelaStudio.</p>
+<h2 id="filter">Filter</h2>
+<p><span id="OPT-R610" class="rqDef">[OPT-R610]</span> The &quot;Filter&quot; radio buttons set the type <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Logging.htm#LOG-R100' title="">[LOG-R100]</a> of messages to be written to the logfile.</p>
+<p>Selecting a lower button includes writing messages of the upper buttons.</p>
+<h2 id="path">Path</h2>
+<p><span id="OPT-R620" class="rqDef">[OPT-R620]</span> Enter the <strong>path</strong> of the logfile...</p>
+<ul>
+<li>in the edit box
+<ul>
+<li>the path must denote an existing text file</li>
+<li>otherwise CANdelaStudio will not write the logfile</li>
+</ul></li>
+<li>or click <code>[...]</code> to use the File selection dialog.
+<ul>
+<li>the dialog allows selection of existing files only</li>
+<li>in order to use a new file, create it in the dialog first (right mouse, &quot;New | Text file...&quot;)</li>
+</ul></li>
+</ul>
+<h2 id="clear">Clear on CANdelaStudio start</h2>
+<p><span id="OPT-R630" class="rqDef">[OPT-R630]</span> With this option checked, CANdelaStudio clears and re-writes the logfile every time it starts. <strong>Note:</strong> you can still inspect the logfile from the previous run using <code>Open Log File (backup version)</code> from the Tools menu.</p>
+<p>With the option un-checked, CANdelaStudio continually appends at the end of the existing logfile. <strong>Caution</strong>: the logfile may <strong>grow large</strong> over time!</p>
+<h2 id="time-stamp-in-messages">Time Stamp in messages</h2>
+<p><span id="OPT-R640" class="rqDef">[OPT-R640]</span> With this option checked, CANdelaStudio adds the exact time of writing to each message written in the logfile.</p>
+<p>Note: Output Window shows the time stamp anyway <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R110' title="">[OW-R110]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Options.htm">File | Options Dialog</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Logging.htm">Logging (Feature)</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm">Output Window</a></li>
+</ul>
+</body>
+</html>

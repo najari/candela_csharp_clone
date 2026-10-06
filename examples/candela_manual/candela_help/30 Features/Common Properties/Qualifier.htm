@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Qualifier</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="qualifier"><span id='_index_446727930' title='Definition' data-text='Definition'>Qualifier</span></h1>
+<p>Most diagnostic objects in CANdela have a name, a qualifier and a <a href="Description.htm">description</a>.</p>
+<p>Note: this is different from the <a href="../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm">shortcut qualifier</a> of a service.</p>
+<h2 id="use-of-the-qualifier">Use of the Qualifier</h2>
+<p>The qualifier is used e.g.</p>
+<ul>
+<li>to uniquely identify an object within a list of objects</li>
+<li>as a variable name in generated code</li>
+</ul>
+<h2 id="generating-from-names"><span id='_index_446727931' title='Qualifier' data-term='Qualifier'>Generating from Names</span></h2>
+<p><span id="QUAL-R010" class="rqDef">[QUAL-R010]</span> For a new object, CANdelaStudio automatically generates the qualifier from the name, applying the restrictions for qualifiers (e.g. it must not contain a blank).</p>
+<p><span id="QUAL-R020" class="rqDef">[QUAL-R020]</span> If you modify the <em>name</em> of an object, CANdelaStudio automatically updates the <em>qualifier</em> if the qualifier still equals the qualifier that would be generated from the name.</p>
+<ul>
+<li><span id="QUAL-R020-VW" class="rqDef">[QUAL-R020-VW]</span> This includes a qualifier computed using the <a class='rqRef' href='../../30%20Features/Common%20Properties/Qualifier.htm#QUAL-R200-VW5CharRule' title="">[QUAL-R200-VW5CharRule]</a> (described below) (CDS-71416 v12). E.g. with...
+<ul>
+<li>name &quot;New Data Object&quot;,</li>
+<li>qualifier &quot;Param_NewDataObjec&quot;,</li>
+<li>... CANdelaStudio applies modifications of the name to the qualifier.</li>
+</ul></li>
+</ul>
+<p><span id="QUAL-R050" class="rqDef">[QUAL-R050]</span> The concrete algorithm for generating a qualifier includes:</p>
+<ul>
+<li><a href="../../30%20Features/Multi-Language/Romanization.htm">“Romanize”</a> characters that are not in the restricted character set, e.g. replace “ä” by “ae”.</li>
+<li>Optionally replace non-romanizable characters by an underscore “_”</li>
+<li>Compact multiple underscores to a single one.
+<ul>
+<li>Note: AUTOSAR forbids subsequent underscores.</li>
+</ul></li>
+<li>Drop a trailing underscore.</li>
+<li>If the qualifier starts with a digit, prepends an underscore</li>
+<li>Apply length restrictions (see the next chapters).</li>
+<li>Apply options for upper-/lower-case (see below at <a href="#generation">Qualifier Generation Options</a>).</li>
+</ul>
+<p>CANdelaStudio implements few variations of this algorithm, depending on the value for <a href="../../30%20Features/Document/Document.htm#diagnostics-based-on">&quot;Diagnostics Based on&quot;</a> (manufacturer) of the document.</p>
+
+<h2 id="qualifier-restrictions">Qualifier Restrictions</h2>
+<h3 id="multi-language">Multi-Language</h3>
+<p><span id="QUAL-R110" class="rqDef">[QUAL-R110]</span> Qualifiers are <strong>identical</strong> in all languages of the document, <strong>not multi-language</strong>.</p>
+<h3 id="character-set">Character set</h3>
+<p><span id="QUAL-R120" class="rqDef">[QUAL-R120]</span> Restrictions for the character set of a qualifier:</p>
+<ul>
+<li><span id="QUAL-R120-Chars" class="rqDef">[QUAL-R120-Chars]</span> only 0..9, A..Z, a..z, underscore “_”</li>
+<li><span id="QUAL-R120-Start" class="rqDef">[QUAL-R120-Start]</span> the first character must not be a digit 0..9
+<ul>
+<li>Motivation: allow use as a variable name in generated code.</li>
+<li>Note: this differs from ODX.</li>
+</ul></li>
+</ul>
+<h3 id="length">Length</h3>
+<p><span id="QUAL-R130" class="rqDef">[QUAL-R130]</span> Qualifier length:</p>
+<ul>
+<li><span id="QUAL-R130-NonEmpty" class="rqDef">[QUAL-R130-NonEmpty]</span> A qualifier must not be empty.</li>
+<li><span id="QUAL-R130-Max" class="rqDef">[QUAL-R130-Max]</span> A qualifier can have at most 128 characters
+<ul>
+<li>since 5.5, CDS-7946;</li>
+<li>before 5.5: 64 characters;</li>
+<li>cf. the <a href="Name.htm#length">maximum name length</a>.</li>
+</ul></li>
+</ul>
+<p>Note: for the qualifier length of new objects, see also the following chapter.</p>
+<h2 id="generation">Qualifier Generation Options</h2>
+<p><span id="QUAL-R200" class="rqDef">[QUAL-R200]</span> When CANdelaStudio computes a qualifier from a name, or re-computes a qualifier, it applies one of the following options:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">FeatureID</th>
+<th align="left">Algorithm</th>
+<th align="left">Example for &quot;New Data Object&quot;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span id="QUAL-R200-UpperLower" class="rqDef">[QUAL-R200-UpperLower]</span></td>
+<td align="left">Use upper-/lowercase characters of names</td>
+<td align="left">New_Data_Object</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="QUAL-R200-Upper" class="rqDef">[QUAL-R200-Upper]</span></td>
+<td align="left">Use uppercase characters only</td>
+<td align="left">NEW_DATA_OBJECT</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="QUAL-R200-Lower" class="rqDef">[QUAL-R200-Lower]</span></td>
+<td align="left">Use lowercase characters only</td>
+<td align="left">new_data_object</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="QUAL-R200-VW5CharRule" class="rqDef">[QUAL-R200-VW5CharRule]</span></td>
+<td align="left">VW 5 Character Rule (80128) (see below)</td>
+<td align="left">Param_NewDataObjec</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>You can specify the following options in menu File | Properties | Qualifier Generation Options <a class='rqRef' href='../../20 UserInterface\Document\Property Page Qualifier Generation Options.htm#DOCUI-R700' title="">[DOCUI-R700]</a>.</li>
+<li>The setting may be locally overridden in the &quot;Recreate Qualifier&quot; dialog <a class='rqRef' href='../../20 UserInterface\Common Properties\Recreate Qualifier.htm#RCRQ-R200' title="">[RCRQ-R200]</a> of the Qualifier Overview.</li>
+</ul>
+<h3 id="vw-5-character-rule-cds-38758-v11"><span id='_index_446727932'>VW 5 Character Rule</span> (CDS-38758 v11)</h3>
+<p>This option is specific for VW. When CANdelaStudio computes a qualifier from a name, it...</p>
+<ul>
+<li>splits the name into words</li>
+<li>takes the first 5 characters from each word</li>
+<li>concatenates the results (no separator)</li>
+<li>for some types of objects, adds a <strong>prefix</strong>, e.g.
+<ul>
+<li>&quot;Param&quot; for a data object</li>
+<li>&quot;DiagnServi&quot; for the Service Shortcut Qualifier
+<ul>
+<li>CANdelaStudio always adds this prefix</li>
+<li>ODX Export uses the prefix for individual services and static ODX Tables</li>
+<li>For dynamic ODX Tables, ODX Export recomputes the Service Shortcut Qualifier, anyway, so the prefix does no harm.</li>
+<li>See attribute <code>Export_as_TABLE</code> <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-e' title="">[PEnODX-R002-e]</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>For further details, see the VW specifications...</p>
+<ul>
+<li><code>03_20_N_VW80128-1_Autorenrichtlinie ODX_V3.1.pdf</code>
+<ul>
+<li>section 7.3 for details,</li>
+<li>table 7.3.2-1 for same examples</li>
+</ul></li>
+<li><code>03_21_N_VW80128-2_Autorenrichtlinie ODX Zusatz_V3.1.pdf</code>
+<ul>
+<li>section 2.3 for the prefixes used</li>
+</ul></li>
+</ul>
+
+<h2 id="fixed-qualifier"><span id='_index_446727933'>Fixed Qualifiers</span> (5.0 SP2)<span id='_index_446727934' title='Qualifier: Fixed' data-term='Qualifier' data-text='Fixed'></span></h2>
+<p><span id="QUAL-R300" class="rqDef">[QUAL-R300]</span> You can set a qualifier to being “fixed” (CDS-5967). This protects the qualifier against un-intentional changes:</p>
+<ul>
+<li>the qualifier will not be updated automatically if you change the name of the object</li>
+<li>the Qualifier edit control in the properties dialog will be disabled:</li>
+</ul>
+<div class="figure">
+<img src="Images/FixedQualifier.png" alt="Diagnostic Instance Property Dialog with Fixed Qualifier" />
+<p class="caption">Diagnostic Instance Property Dialog with Fixed Qualifier</p>
+</div>
+<p>You can <strong>always intentionally modify a fixed qualifier</strong> in the <a href="../../20%20UserInterface/Common%20Properties/Qualifier%20Overview.htm">Qualifier Overview dialog</a>.</p>
+<h3 id="objects-that-allow-fixing-the-qualifier">Objects that Allow Fixing the Qualifier</h3>
+<p><span id="QUAL-R310" class="rqDef">[QUAL-R310]</span></p>
+<ul>
+<li>ECU</li>
+<li>Variant</li>
+<li>Diagnostic instance</li>
+<li>Job container</li>
+<li>Job</li>
+<li>Data object / Bit field</li>
+<li>Data type</li>
+<li>Vehicle System Group</li>
+</ul>
+<p>The attribute is not relevant at diagnostic class and service (where the qualifier is not modifiable, anyway).</p>
+<h3 id="create-attributes-for-fixing-qualifiers">Create Attributes for Fixing Qualifiers</h3>
+<p>Run plug-in “Enable Fixed Qualifiers”. This will add the attributes for all objects specified above.</p>
+<p>If the attribute does not exist, the meaning is &quot;qualifier not fixed&quot;.</p>
+<p>The attribute applies only to the object itself, not to child objects.</p>
+<p>Alternative: to manually add the attributes, do the following:</p>
+<ul>
+<li>Open the CANdela document in Expert mode.</li>
+<li>If not already present, add an attribute category named “Editor” to the document.</li>
+<li>Add attributes of type “Unsigned” and qualifier “FixedQualifier” to the attributes list of the objects specified above.</li>
+</ul>
+<p>Attribute values:</p>
+<ul>
+<li>0 = &quot;qualifier not fixed&quot; (default)</li>
+<li>any other value = &quot;qualifier fixed&quot;</li>
+</ul>
+<h3 id="how-to-set-a-qualifier-to-be-fixed">How to Set a Qualifier to Be “Fixed”</h3>
+<p>This assumes you have created the required attributes (see above).</p>
+<ul>
+<li>Main menu: View | Qualifier Overview. The Qualifier Overview dialog opens.</li>
+<li>In column “Fixed”, select “Yes”:</li>
+</ul>
+<div class="figure">
+<img src="Images/QualifierOverview.jpg" alt="Qualifier Overview Dialog" />
+<p class="caption">Qualifier Overview Dialog</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Document/Property%20Page%20Qualifier%20Generation%20Options.htm">File | Properties Property Page &quot;Qualifier Generation Options&quot;</a></li>
+<li>Multi-Language <a class='rqRef' href='../../30%20Features/Multi-Language/Multi-Language.htm#ML-R100' title="Translatables">[ML-R100]</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">Object Property Page &quot;General&quot;</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Qualifier%20Overview.htm">Qualifier Overview dialog</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Recreate%20Qualifier.htm">Recreate Qualifier</a></li>
+<li><a href="../../30%20Features/Multi-Language/Romanization.htm">Romanization</a></li>
+<li><a href="../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm">Shortcut Qualifier</a></li>
+</ul>
+
+</body>
+</html>

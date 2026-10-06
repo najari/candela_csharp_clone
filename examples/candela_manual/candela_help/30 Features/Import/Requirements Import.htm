@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Requirements Import</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="requirements-import">Requirements Import</h1>
+<h2 id="import-from-.csv">Import from .csv</h2>
+<h3 id="file-format">File Format</h3>
+<p><span id="RQ-R800" class="rqDef">[RQ-R800]</span>: Import reads data from a .csv file formatted as described in the <a href="../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm">CANdelaStudio CSV Requirements Exchange Format</a>.</p>
+<p>This operation is also available in a combined operation <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R270' title="">[MENU-R270]</a> via the ribbon tab Data Exchange.</p>
+<h3 id="hierarchy">Hierarchy</h3>
+<p><span id="RQ-R810" class="rqDef">[RQ-R810]</span>: if...</p>
+<ul>
+<li>the <strong>hierarchy</strong> in the .csv file (as defined by the “Level” column) does not match the rules described in <a class='rqRef' href='../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm#RQ-R640' title="">[RQ-R640]</a>,</li>
+<li>then import “<strong>normalizes</strong>” it to match the rules.</li>
+</ul>
+<p>Example: a heading with level 3 directly after a heading with level 1 gets corrected: level 3 to 2.</p>
+<h3 id="input-completeness-and-deletion">Input Completeness and Deletion</h3>
+<p><span id="RQ-R815" class="rqDef">[RQ-R815]</span> if...</p>
+<ul>
+<li>the .csv root element already exists in the CDD as a requirement R,</li>
+<li>and at least one requirement in the subtree of R is not contained in the .csv,</li>
+<li>then CANdelaStudio prompts whether to delete these requirements missing in the .csv.</li>
+</ul>
+<p>Note: deleting the requirements does not automatically delete linked diagnostic objects.</p>
+<ul>
+<li>These will be shown as “dangling”,</li>
+<li>so you can inspect them in the regular “Linking with diagnostic objets” view</li>
+<li>and delete them there - no need for a separate new dialog.</li>
+</ul>
+<h3 id="rows">Rows</h3>
+<p><span id="RQ-R820" class="rqDef">[RQ-R820]</span>: if import of a row is not possible at the location indicated in the .csv file due to type restrictions, the violating row gets imported as a Text requirement (import does not create additional elements).</p>
+<p><span id="RQ-R830" class="rqDef">[RQ-R830]</span>: for all rows whose ID is already in the CDD, the resulting tree structure in the CDD is the normalized hierarchy (see <a class='rqRef' href='../../30%20Features/Import/Requirements%20Import.htm#RQ-R810' title="">[RQ-R810]</a>) from the .csv file.</p>
+<p><span id="RQ-R840" class="rqDef">[RQ-R840]</span> a level 1 row whose ID is not yet in the CDD will be top-level in the CDD.</p>
+<p><span id="RQ-R850" class="rqDef">[RQ-R850]</span> a row with level &gt; 1 whose ID is not yet in the CDD will be put as last element under the element corresponding with its parent row.</p>
+<p>Note: the element of the parent row may have been positioned by ID (RQ-R830], or by top-level rule <a class='rqRef' href='../../30%20Features/Import/Requirements%20Import.htm#RQ-R840' title="">[RQ-R840]</a>, or by its parent (<a class='rqRef' href='../../30%20Features/Import/Requirements%20Import.htm#RQ-R850' title="">[RQ-R850]</a> recursively).</p>
+<p><span id="RQ-R855" class="rqDef">[RQ-R855]</span> the order of siblings in .csv file and CDD gets be preserved as far as possible. For conflicts, the .csv file order takes precedence.</p>
+<p><span id="RQ-R860" class="rqDef">[RQ-R860]</span> an element of the CDD for which there is no row in the .csv file has the same parent element after import as before.</p>
+<p>Example (values are Type, ID, Name; indentation indicates level):</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CDD original</th>
+<th>.csv</th>
+<th>CDD after import</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><pre><code>Heading,1,Stored Data
+  Heading,2,Temperature
+    Data,3,Temperature
+Heading,4,Fault Memory
+  DTC,5,Power down</code></pre></td>
+<td><pre><code>Heading,4,Fault Memory
+  DTC,8,General failure
+Heading,1,Stored Data
+  Heading,6,Engine Speed
+    Data,7,Engine Speed</code></pre></td>
+<td><pre><code>Heading,4,Fault Memory
+  DTC,5,Power down
+  DTC,8,General failure
+Heading,1,Stored Data
+  Heading,2,Temperature
+    Data,3,Temperature</code></pre></td>
+</tr>
+</tbody>
+</table>
+<h3 id="vehicle-system-groups">Vehicle System Groups</h3>
+<p><span id="RQ-R870" class="rqDef">[RQ-R870]</span> VehicleSystemGroups <a class='rqRef' href='../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm#RQ-R680' title="">[RQ-R680]</a> get imported as follows:</p>
+<ul>
+<li>split by comma, for each part:
+<ul>
+<li>if the part matches an imported VehicleSystemGroup Requirement Name or ID,</li>
+<li>import treats the part as reference to that Requirement.</li>
+</ul></li>
+<li>if there is at least one part that does not match:
+<ul>
+<li>(rare use-case, e.g. in case VSG Requirement Name or ID contains a comma):</li>
+<li>for each VSG Requirement in the .csv file,</li>
+<li>import matches its Name and ID against the remaining (non-matching parts).</li>
+<li>If it matches, import treats the matching string as reference to that Requirement.</li>
+</ul></li>
+<li>import uses the remaining value as a reference to a VSG Requirement not contained in the import file
+<ul>
+<li>the reference may be resolved later in CANdelaStudio e.g. during an update of diagnostic objects.</li>
+</ul></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<ul>
+<li>property &quot;VehicleSystemGroups&quot; at DTC Requirement has value “Slave A,ID4711”,</li>
+<li>VSGRq1 Name = “Slave A”,</li>
+<li>VSGRq2 ID = “4711”.</li>
+<li>Result: DTC Requirement references VSGRq1 and VSGRq2.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<ul>
+<li>property &quot;VehicleSystemGroups&quot; at DTC Requirement has value “Actuator C,Slave A,B,ID4711”,</li>
+<li>VSGRq1 Name = “Slave A,B”,</li>
+<li>VSGRq2 ID = “4711”.</li>
+<li>Step 1:
+<ul>
+<li>checking parts “A”, “B”, “ID4711”,</li>
+<li>only “ID4711” matches,</li>
+<li>so DTC Requirement references VSG2.</li>
+</ul></li>
+<li>Step 2:
+<ul>
+<li>matching VSGRq1 Name “Slave A,B” against remaining VehicleSystemGroups value “Actuator C,Slave A,B”,</li>
+<li>DTC Requirement also references VSG1.</li>
+</ul></li>
+<li>Step 3:
+<ul>
+<li>treating the rest “Actuator C” as a reference to a VSGRq “Actuator C” not contained in the .csv file.</li>
+</ul></li>
+</ul>
+<h3 id="duplicate-column-names-cds-71308-v10-p1-v11-p1-v12">Duplicate Column Names (CDS-71308 v10 P1, v11 P1, v12)</h3>
+<p><span id="RQ-R890" class="rqDef">[RQ-R890]</span> When a column name occurs more than once in the .csv file, import...</p>
+<ul>
+<li>ensures the column name exists only once after import;</li>
+<li>merges the cells:
+<ul>
+<li>if for a given requirement, the columns contain no or an identical value of identical type,</li>
+<li>then import accepts that value,</li>
+<li>otherwise import emits an error message</li>
+</ul></li>
+</ul>
+<h3 id="cells">Cells</h3>
+<p><span id="RQ-R880" class="rqDef">[RQ-R880]</span> For a <strong>property that does not exist</strong> at the requirement (row), i.e. ...</p>
+<ul>
+<li>either a Specific Property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030' title="Specific Properties">[RQ-R030]</a>,</li>
+<li>or a User-Defined Property restricted to exist at DTC Requirements <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040-ForType' title="">[RQ-R040-ForType]</a>,</li>
+</ul>
+<p>import <strong>discards the value</strong>.</p>
+
+<h2 id="action-variable-rqcsvimporttmppath-cds-24780-7.5-sp2">Action Variable RqCSVImportTmpPath (CDS-24780 7.5 SP2)</h2>
+<p><span id="RQ-R895" class="rqDef">[RQ-R895]</span> The <a href="../../30%20Features/Actions/Actions.htm">Action</a> variable <code>RqCSVImportTmpPath</code> <strong>automates import of requirements</strong> into CANdelaStudio, as a post-step after running an external command.</p>
+<p>In detail: if an action contains the variable in a command line, on action execution, CANdelaStudio...</p>
+<ol style="list-style-type: decimal">
+<li>computes a temporary file path T</li>
+<li>in the action command line, replaces the variable by T</li>
+<li>executes the command line (runs your external command)</li>
+<li>then, if file T exists, <strong>imports it as a .csv requirements file</strong> (same as interactive import into requirements view, described above)</li>
+<li>deletes the file T</li>
+</ol>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Procedure: <a href="../../15%20Procedures/Requirements/How%20to%20Export%20all%20DTC%20Attribute%20Columns%20via%20Requirements.htm">How to Export all DTC Attribute Columns via Requirements</a></li>
+<li>Procedure: <a href="../../15%20Procedures/Requirements/How%20to%20Import%20Identifiers%20via%20Requirements.htm">How to Import Identifiers via Requirements</a></li>
+<li>Procedure: <a href="../../15%20Procedures/Excel/How%20to%20Open%20a%20CSV%20File%20in%20Excel.htm">How to Open CSV in Excel</a></li>
+<li><a href="../../30%20Features/Actions/Actions.htm">Actions</a></li>
+<li>Requirements <a href="../../30%20Features/Requirements/Requirements.htm">Feature</a></li>
+<li>Requirements <a href="../../30%20Features/Requirements/Data%20Model.htm">Data Model</a></li>
+<li>Requirements <a href="../../30%20Features/Export/Requirements%20Export.htm">Export</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#autosar">AUTOSAR Command Line Operation Examples</a></li>
+<li><a href="../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm">CANdelaStudio CSV Requirements Exchange Format</a></li>
+<li><a href="../../30%20Features/Installation/Documentation.htm">CANdelaStudio documentation folder</a></li>
+<li><a href="../../30%20Features/PREEvision%20CANdela%20Data%20Interchange/Introduction.htm">PREEvision CANdela Data Interchange</a>.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Use of Excel</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="use-of-excel">Use of Excel</h1>
+<p>CANdelaStudio uses an installed version of Excel to import and export DTCs.</p>
+<p>CANdelaStudio reads the version of the installed Excel application from the following Windows registry key: <code>SOFTWARE\Classes\Excel.Application\CurVer</code>.</p>
+<p>Import/Export of DTCs is available...</p>
+<ul>
+<li>... via <code>.xls</code>: if Excel 2000 (registry <code>Excel.Application.10</code>) or higher is installed</li>
+<li>... via <code>.xlsx</code>: if Excel 2007 (registry <code>Excel.Application.12</code>) or higher is installed;</li>
+</ul>
+<p>&quot;or higher&quot; means:</p>
+<ul>
+<li>(for CANdelaStudio up to 8.2 SP2) up to Excel 2010 (registry <code>Excel.Application.14</code>);</li>
+<li>(for CANdelaStudio 8.2 SP3 and higher): no limit for newer Excel versions (CDS-34805).</li>
+</ul>
+
+</body>
+</html>

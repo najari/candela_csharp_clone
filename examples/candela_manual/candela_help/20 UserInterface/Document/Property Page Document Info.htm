@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Property Page Document Info</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="file-properties-document-info">File | Properties | Document Info</h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Property%20Page%20Document%20Info.jpg" alt="Menu File | Properties, page &quot;Document Info&quot;" />
+<p class="caption">Menu File | Properties, page &quot;Document Info&quot;</p>
+</div>
+<h2 id="template">Template</h2>
+<p><span id="DOCUI-R110" class="rqDef">[DOCUI-R110]</span> Shows on which template the document is based, see at the <a href="../../30%20Features/Document/Document.htm#template">Document Feature</a>, empty for a template.</p>
+<h2 id="protocol-standard">Protocol Standard</h2>
+<p><span id="DOCUI-R120" class="rqDef">[DOCUI-R120]</span> Shows the Protocol Standard on which the document is based, see <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R140' title="">[DOC-R140]</a>.</p>
+<p>Can be modified in Expert view only.</p>
+<h2 id="diagnostics-based-on">Diagnostics Based on</h2>
+<p><span id="DOCUI-R140" class="rqDef">[DOCUI-R140]</span> This is the key information about any process specific handling of the template or document. See the <a href="../../30%20Features/Document/Document.htm#diagnostics-based-on">&quot;Diagnostics Based on&quot; Feature</a>.</p>
+<h2 id="save-number">Save Number</h2>
+<p><span id="DOCUI-R150" class="rqDef">[DOCUI-R150]</span> The save number is a document property <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R200' title="Save Number">[DOC-R200]</a> incremented with each save of the document.</p>
+<h2 id="status">Status</h2>
+<p><span id="DOCUI-R160" class="rqDef">[DOCUI-R160]</span> Shows the status of the last revision entry.</p>
+<h2 id="manufacturer">Manufacturer</h2>
+<p><span id="DOCUI-R170" class="rqDef">[DOCUI-R170]</span> See the <a href="../../30%20Features/Document/Document.htm#manufacturer">Manufacturer Feature</a>.</p>
+<h2 id="supported-languages">Supported Languages</h2>
+<p><span id="DOCUI-R200" class="rqDef">[DOCUI-R200]</span> The list of languages supported in the document (e.g. for names and descriptions).</p>
+<h2 id="document-may-contain-duplicate-objectids">Document May Contain Duplicate ObjectIDs</h2>
+<p><span id="DOCUI-R310" class="rqDef">[DOCUI-R310]</span> Some operations may lead to duplicate ObjectIDs. Therefore the default is to allow duplicate ObjectIDs.</p>
+
+<h2 id="document-supports-textids">Document Supports TextIDs</h2>
+<p><span id="DOCUI-R320" class="rqDef">[DOCUI-R320]</span> Enables <a href="../../30%20Features/Common%20Properties/TextID.htm">TextIDs</a> in the document.</p>
+<h2 id="supports-autosar-cds-71296-v13">Supports AUTOSAR (CDS-71296 v13)</h2>
+<p><span id="DOCUI-R520" class="rqDef">[DOCUI-R520]</span> All the following is available in Standard View.</p>
+<h3 id="checkbox-supports-autosar">Checkbox &quot;Supports AUTOSAR&quot;</h3>
+<p><span id="DOCUI-R500" class="rqDef">[DOCUI-R500]</span> This checkbox controls the &quot;AUTOSAR Type&quot;, see <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R530' title="">[DOC-R530]</a>.</p>
+<ul>
+<li>checkbox unchecked:
+<ul>
+<li>attribute does not exist, or</li>
+<li>value 0.</li>
+</ul></li>
+<li>otherwise: see the following.</li>
+</ul>
+<p><span id="DOCUI-R500-Checked" class="rqDef">[DOCUI-R500-Checked]</span> When you check the checkbox and leave the dialog with OK, ...</p>
+<ul>
+<li>CANdelaStudio ensures the required CANdela attributes that store AUTOSAR properties <a class='rqRef' href='../../30 Features\AUTOSAR\Attributes for AUTOSAR Diagnostic Extract export.htm#ASR-D001' title="">[ASR-D001]</a> exist:</li>
+<li>for any attribute not yet existing at the respective object type (based on the qualifier):
+<ul>
+<li>creates the attribute;</li>
+<li>writes an info message <code>Creating &quot;&lt;object type&gt;&quot; attribute &quot;&lt;name&gt;&quot;</code>.</li>
+<li>Note: before 9.1 (CDC-43826), CANdelaStudio set the default value of &quot;ASR Encoding&quot; to &quot;BOOLEAN&quot; instead of the specified empty string.</li>
+</ul></li>
+<li>for any attribute existing at the respective object type (based on the qualifier)
+<ul>
+<li>leaves it unchanged;</li>
+<li>writes a status message <code>Skipping existing &quot;&lt;object type&gt;&quot; attribute &quot;&lt;name&gt;&quot;</code>.</li>
+</ul></li>
+<li>Note: there is no convenient way to delete the AUTOSAR attributes.</li>
+<li>Note: <strong>before v13</strong>, ...
+<ul>
+<li>the checkbox was called &quot;Attributes for AUTOSAR Diagnostic Extract export&quot; (CDS-41055 9.0);</li>
+<li>only indicated the existence of the attributes, and allowed comfortable creation;</li>
+<li>was not stored explicitly in and attribute.</li>
+<li>Therefore the migration added attributes required in a new CANdelaStudio version
+<ul>
+<li>if all known AUTOSAR attributes of the older CANdelaStudio version existed.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><span id="DOCUI-R510" class="rqDef">[DOCUI-R510]</span> When you un-check the checkbox and leave the dialog with OK, ...</p>
+<ul>
+<li>CANdelaStudio does not delete any AUTOSAR related attributes.</li>
+</ul>
+<h3 id="autosar-type-radio-buttons">AUTOSAR Type Radio Buttons</h3>
+<p><span id="DOCUI-R530" class="rqDef">[DOCUI-R530]</span> The following <strong>radio buttons</strong> control the &quot;AUTOSAR Type&quot; <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R530' title="">[DOC-R530]</a>:</p>
+<ul>
+<li><span id="DOCUI-R530-Classic" class="rqDef">[DOCUI-R530-Classic]</span> Radio button &quot;Classic&quot;</li>
+<li><span id="DOCUI-R530-Adaptive" class="rqDef">[DOCUI-R530-Adaptive]</span> Radio button &quot;Adaptive&quot;</li>
+<li><span id="DOCUI-R530-Reset" class="rqDef">[DOCUI-R530-Reset]</span> Clicking any of these buttons resets the AUTOSAR Version.
+<ul>
+<li>Motivation: be defensive - for the first AUTOSAR versions, the version strings differ in Classic and Adaptive, so you have to reconsider the version entered.</li>
+</ul></li>
+</ul>
+<h3 id="autosar-version">AUTOSAR Version</h3>
+<ul>
+<li><span id="DOCUI-R540" class="rqDef">[DOCUI-R540]</span> The &quot;Version&quot; edit control represents the &quot;AUTOSAR Version&quot; <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R540' title="">[DOC-R540]</a>:</li>
+<li>You can enter any value.</li>
+<li><span id="DOCUI-R540-Combobox" class="rqDef">[DOCUI-R540-Combobox]</span> Additionally, a comboxbox provides...
+<ul>
+<li>the version strings known at the time of implementation,</li>
+<li>filled according with the selected AUTOSAR Type.</li>
+</ul></li>
+</ul>
+<h2 id="supports-events-cds-71376-v12">Supports Events (CDS-71376 v12)</h2>
+<p><span id="DOCUI-R600" class="rqDef">[DOCUI-R600]</span> The checkbox &quot;Support Events&quot; represents the document property &quot;Supports Events&quot; <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R010' title="">[EV-R010]</a>, see details there.</p>
+<ul>
+<li>You can modify the property in Expert view only <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R010' title="">[EVOP-R010]</a>.</li>
+<li>When the checkbox is checked, and you un-check it (each time you do this in the dialog), CANdelaStudio lets you confirm:
+<ul>
+<li>&quot;If you disable Event support for the current document, CANdelaStudio deletes all Events.<code>\n</code> Continue anyway?&quot;</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Properties.htm">File | Properties</a></li>
+</ul>
+</body>
+</html>

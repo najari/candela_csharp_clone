@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CAN FD</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="can-fd">CAN FD</h1>
+<h2 id="introduction">Introduction</h2>
+<p>CAN FD (CAN with flexible data rate) has been standardized in ISO 11898-1:2015. It allows...</p>
+<ul>
+<li>longer data (up to 64 bytes)</li>
+<li>optionally switching to a faster bit rate for the data phase</li>
+</ul>
+<h2 id="support-in-vector-tools">Support in Vector tools</h2>
+<ul>
+<li>CANdelaStudio: CAN FD support is a matter of having...
+<ul>
+<li>the required communication parameters,</li>
+<li>maybe in a separate interface.</li>
+<li>Both can be created in the Expert View by the template expert.</li>
+</ul></li>
+<li>The <a href="../../40%20Templates/Vector%20UDS/Introduction.htm">Vector UDS Template</a> contains CAN FD interfaces (CDS-41638 9.0)</li>
+<li>CANdelaStudio ODX Export supports export of the required communication parameters to ODX since 2017-01 (CDS-41701 8.2 SP2)</li>
+<li>Vector diagnostic test systems support CAN FD
+<ul>
+<li>vFlash: 2.6 / 3.0 for ISO CAN FD</li>
+<li>Indigo: 4.5</li>
+<li>D-PDU API: 1.0 SP3.</li>
+</ul></li>
+<li>Newer Vector Informatik network interfaces support CAN FD.</li>
+</ul>
+<h2 id="communication-parameters">Communication Parameters</h2>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Parameter</th>
+<th align="left">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CP_CANFDBaudrate</td>
+<td align="left">TP layer</td>
+</tr>
+<tr class="even">
+<td align="left">CP_CANFDBitSamplePoint</td>
+<td align="left">TP layer</td>
+</tr>
+<tr class="odd">
+<td align="left">CP_CANFDSyncJumpWidth</td>
+<td align="left">TP layer</td>
+</tr>
+<tr class="even">
+<td align="left">CP_CANFDTxMaxDataLength</td>
+<td align="left">Physical layer. Value <code>!= 0</code> enables CAN FD.</td>
+</tr>
+<tr class="odd">
+<td align="left">CanFdDataBaudrate</td>
+<td align="left">ODX Export 8.2 SP3 (CDS-41701): CAN FD is present if the interface contains this parameter.</td>
+</tr>
+<tr class="even">
+<td align="left">CanFdBrsHandling</td>
+<td align="left">(Vector toolchain) deprecated, bit rate will be switched directly in CAPL for individual PDUs without having a ComParam.</td>
+</tr>
+<tr class="odd">
+<td align="left">CanFdHandling</td>
+<td align="left">(Vector toolchain) deprecated, was used by older Vector tools to enable CAN FD, before the officical PDU API qualifiers had been defined.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Interface/Communication%20Parameter.htm">Communication Parameter (Feature)</a></li>
+<li><a href="../../15%20Procedures/Interface/How%20to%20Add%20a%20CAN%20FD%20Interface.htm">How to Add a CAN FD Interface</a></li>
+<li><a href="Interface.htm">Interfaces (User Interface)</a></li>
+<li><a href="../../30%20Features/Interface/Interface.htm">Interface (Feature)</a></li>
+</ul>
+</body>
+</html>

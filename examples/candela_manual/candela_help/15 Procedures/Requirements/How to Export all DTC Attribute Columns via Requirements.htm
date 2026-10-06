@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Export all DTC Attribute Columns via Requirements</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-export-dtc-attribute-columns-via-requirements">How to Export DTC Attribute Columns via Requirements</h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Requirements.jpg" alt="CANdelaStudio Requirements Pool" />
+<p class="caption">CANdelaStudio Requirements Pool</p>
+</div>
+<h2 id="generate-requirements-from-diagnostic-objects">Generate Requirements from Diagnostic Objects</h2>
+<ul>
+<li>in the CANdelaStudio tree, navigate to &quot;Requirements&quot;</li>
+<li>in the property page &quot;Settings&quot;, select the variant to export from</li>
+<li>in the property page &quot;Linking with Diagnostic Objects&quot;, in the right side, select &quot;Fault Memory&quot;
+<ul>
+<li>Note: the name may vary, it is defined in the CANdela template on which the document is based on.</li>
+</ul></li>
+<li>in the context menu (right mouse), select &quot;Update Requirements&quot;</li>
+</ul>
+<p>CANdelaStudio fills the requirements list.</p>
+<p>If some DTC columns are missing, you have to <strong>setup the requirements properties</strong> first (see chapter below).</p>
+<h2 id="export-requirements">Export Requirements</h2>
+<ul>
+<li>in the toolbar of the requirements list, click button &quot;Export Requirements&quot; <img src="Images/ExportRequirements.jpg" /></li>
+<li>specify a file name</li>
+<li>press Open</li>
+</ul>
+<h2 id="setup-requirements-properties">Setup Requirements Properties</h2>
+<p>Some of the DTC columns may be missing in the requirements list after the step &quot;Update Requirements&quot; above.</p>
+<p>Reason: for DTC properties defined as <a href="../../30%20Features/Attributes/Attributes.htm">generic attributes</a>, maybe with the flag “visible in separate table column” <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R090' title="VisibleInTableColumn">[ATTR-R090]</a> set, CANdelaStudio as a default does <strong>not</strong> generate requirements.</p>
+<p>The same holds for generic attributes defined for other diagnostic objects.</p>
+<p>Solution: for each attribute you want to represent in the requirements, <strong>define a requirements property</strong> with the <strong>name</strong> of the attribute.</p>
+<ul>
+<li>navigate to the DTC list in a variant</li>
+<li>in the DTC table, inspect the properties dialog of a DTC</li>
+<li>in property page &quot;Attributes&quot;, remember the name of the desired attribute</li>
+<li>navigate to the &quot;Requirements&quot; tree node</li>
+<li>in the right side, navigate to the &quot;Columns&quot; property page</li>
+<li>click the line &quot;Please click here...&quot;</li>
+<li>in the first column &quot;Name&quot;, enter the name of the existing attribute</li>
+<li>if the attribute represents a number, change the type in the second column to &quot;Number&quot;</li>
+</ul>
+<p>Now CANdelaStudio is prepared to fill the requirements property from an attribute of the same name.</p>
+<p>Note for <strong>multi-language documents</strong>:</p>
+<ul>
+<li>the attribute name may vary from one language to the other</li>
+<li>in this case, better use the <strong>qualifier</strong> of the attribute</li>
+<li>the <strong>qualifier</strong> of an attribute is shown in expert view in the attribute property dialog.</li>
+</ul>
+<h2 id="background">Background</h2>
+<p>CANdelaStudio fills requirements from attributes since 8.5 SP2 (CDC-36449), see <a class='rqRef' href='../../30 Features\Requirements\Requirements and Diagnostic Objects.htm#RQ-R100-Prop' title="Association with Attribute">[RQ-R100-Prop]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a></li>
+<li><a href="../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm">Requirements and Diagnostic Objects</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Navigation Tree</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="navigation-tree"><span id='_index_446727897'>Navigation Tree</span><span id='_index_446727898' title='Tree' data-term='Tree'></span></h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Navigation%20Tree.jpg" alt="Navigation Tree for ABS/ESP Example (Standard View)" />
+<p class="caption">Navigation Tree for ABS/ESP Example (Standard View)</p>
+</div>
+<h2 id="order">Order</h2>
+<p><span id="TREE-R010" class="rqDef">[TREE-R010]</span></p>
+<ul>
+<li>ECU Information <a class='rqRef' href='../../20%20UserInterface/Tree/Navigation%20Tree.htm#TREE-R020' title="">[TREE-R020]</a></li>
+<li>Fault Memory</li>
+<li>DID Overview <a class='rqRef' href='../../20%20UserInterface/DID/DID%20Overview.htm#DIDOV-R610' title="">[DIDOV-R610]</a></li>
+<li>Libraries <span id="TREE-R010-LIB" class="rqDef" title="Libraries in Tree">[TREE-R010-LIB Libraries in Tree]</span> (shown even if the document does not contain a Library)
+<ul>
+<li><span id="TREE-R010-LIB1" class="rqDef">[TREE-R010-LIB1]</span> CANdelaStudio shall show each library as a child of the „Libraries“ tree node.</li>
+<li><a class='rqRef' href='../../20%20UserInterface/Library/Libraries.htm#LIBUI-R322' title="">[LIBUI-R322]</a> (Details for Libraries list)</li>
+<li><a class='rqRef' href='../../20%20UserInterface/Library/Library.htm#LIBUI-R340' title="Contents of Library Tree Node">[LIBUI-R340]</a> (Details for Library tree node)</li>
+<li><a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R060' title="Document Order">[LIB-R060]</a> Document Order for Libraries</li>
+</ul></li>
+<li>Base Variant</li>
+<li>Variants (CDD only)</li>
+<li>States</li>
+<li>Vehicle System Groups</li>
+<li>Data Types</li>
+<li>Protocol Services</li>
+<li>Diagnostic Class Templates (Expert View only)</li>
+<li>Error Code Table (Expert View on CDDT only)</li>
+<li>Negative Responses</li>
+<li>Default Attributes (Expert View only)</li>
+<li>Import Pool</li>
+<li>Requirements</li>
+</ul>
+<p>This order is also applied in:</p>
+<ul>
+<li>Compare Dialog for New Document Upgrade <a class='rqRef' href='../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm#DUUI-R200-Order' title="">[DUUI-R200-Order]</a></li>
+</ul>
+
+<h2 id="ecu-information">ECU Information</h2>
+<p><span id="TREE-R020" class="rqDef">[TREE-R020]</span> <strong>ECU Information Context Menu]</strong></p>
+<ul>
+<li><a href="../../20%20UserInterface/Common%20Properties/Qualifier%20Overview.htm">Qualifier Overview</a></li>
+<li><a href="../../20%20UserInterface/Attributes/Attribute%20Overview.htm">Attribute Overview</a></li>
+<li>Target Group Overview</li>
+<li>Select as Left Side for Compare</li>
+<li>Compare to...</li>
+<li>Reverse Bit Fields <a class='rqRef' href='../../30 Features\Document\Bit Ordering.htm#DOC-R510' title="">[DOC-R510]</a></li>
+<li>Properties</li>
+</ul>
+<h2 id="variant">Variant</h2>
+<ul>
+<li>See <a class='rqRef' href='../../20%20UserInterface/DID/DIDs.htm#DIDUI-R700' title="">[DIDUI-R700]</a> for the “DIDs” node</li>
+</ul>
+<h3 id="run-variant-plug-in">Run Variant Plug-in</h3>
+<p><span id="TREE-R310" class="rqDef">[TREE-R310]</span> The context menu allows to run a variant plug-in <a class='rqRef' href='../../30 Features\Plug-ins\Using Plug-ins.htm#PLG-R100-Variant' title="">[PLG-R100-Variant]</a>.</p>
+<h2 id="default-attributes">Default Attributes</h2>
+<div class="figure">
+<img src="Images/DefaultAttributesInTree.jpg" alt="Attribute Lists in Navigation Tree" />
+<p class="caption">Attribute Lists in Navigation Tree</p>
+</div>
+<p><span id="TREE-R090" class="rqDef">[TREE-R090]</span> Chapter &quot;Default Attributes&quot; provides one sub-chapter for each CANdela data class that holds attributes <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R050' title="">[ATTR-R050]</a>.</p>
+<p><span id="TREE-R050" class="rqDef">[TREE-R050]</span> <strong>Default Attributes Order</strong> CANdelaStudio shows the tree nodes for default attribute lists in the following order:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Node</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Libraries</td>
+<td align="left"><span id="TREE-R050-LIB" class="rqDef">[TREE-R050-LIB]</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Variants</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Diagnostic Classes</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Diagnostic Instances</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Services</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Data Objects/Bit Fields</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Job Container</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Jobs</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DTCs</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DIDs</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Events</td>
+<td align="left"><span id="TREE-R050-Event" class="rqDef">[TREE-R050-Event]</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Event Operation Cycles</td>
+<td align="left"><span id="TREE-R050-OpCyc" class="rqDef">[TREE-R050-OpCyc]</span></td>
+</tr>
+<tr class="even">
+<td align="left">Event Indicators</td>
+<td align="left"><span id="TREE-R050-Ind" class="rqDef">[TREE-R050-Ind]</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Event Indicator Connections</td>
+<td align="left"><span id="TREE-R050-IndConn" class="rqDef">[TREE-R050-IndConn]</span></td>
+</tr>
+<tr class="even">
+<td align="left">Event Conditions</td>
+<td align="left"><span id="TREE-R050-EvCond" class="rqDef">[TREE-R050-EvCond]</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Event Debounce Algorithms</td>
+<td align="left"><span id="TREE-R050-Deb" class="rqDef">[TREE-R050-Deb]</span></td>
+</tr>
+<tr class="even">
+<td align="left">Snapshot Records</td>
+<td align="left"><span id="TREE-R050-SR" class="rqDef">[TREE-R050-SR]</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Extended Data Records</td>
+<td align="left"><span id="TREE-R050-EDR" class="rqDef">[TREE-R050-EDR]</span></td>
+</tr>
+<tr class="even">
+<td align="left">State Groups</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">States</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Data Types</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Vehicle System Groups</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Used Protocol Services</td>
+<td align="left">(E)</td>
+</tr>
+<tr class="odd">
+<td align="left">Diagnostic Class Templates</td>
+<td align="left">(E)</td>
+</tr>
+<tr class="even">
+<td align="left">Combined Proxy Components</td>
+<td align="left">(E)</td>
+</tr>
+<tr class="odd">
+<td align="left">Combined Variable Value Components</td>
+<td align="left">(E)</td>
+</tr>
+<tr class="even">
+<td align="left">Components</td>
+<td align="left">(E)</td>
+</tr>
+<tr class="odd">
+<td align="left">Protocol Services</td>
+<td align="left">(E)</td>
+</tr>
+<tr class="even">
+<td align="left">Primitives</td>
+<td align="left">(E)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legend</strong></p>
+<ul>
+<li><strong>(E)</strong> in Expert View on CDDT only (CDS-10219 6.0)</li>
+</ul>
+<h2 id="diagnostic-instance">Diagnostic Instance</h2>
+<h3 id="bold">Name in Boldface</h3>
+<p>Diagnostic instances whose names appear in boldface in the tree view are classified as <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm">&quot;required&quot;</a>.</p>
+<h3 id="maturity">Maturity (CDS-4014 4.0 SP2)</h3>
+<div class="figure">
+<img src="Images/Maturity.jpg" alt="Diagnostic Instance Shown with Maturity" />
+<p class="caption">Diagnostic Instance Shown with Maturity</p>
+</div>
+<p><span id="TREE-R200" class="rqDef">[TREE-R200]</span> If...</p>
+<ul>
+<li><strong>configured</strong> in the data model <a class='rqRef' href='../../30 Features\Common Properties\Maturity.htm#MAT-D100' title="">[MAT-D100]</a>,</li>
+<li>and <strong>enabled</strong> for display in Ribbon Tab <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Display.htm#maturity">File | Options | Display</a>,</li>
+</ul>
+<p>CANdelaStudio <strong>displays the Maturity</strong> of diagnostic instances and job containers in the <strong>tree</strong>:</p>
+<ul>
+<li>for a numeric attribute, CANdelaStudio shows a <strong>percentage</strong>, like <code>[44%]</code></li>
+<li>for an enumeration attribute <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a>, CANdelaStudio shows the <strong>symbol</strong>, like <code>[in progress]</code></li>
+</ul>
+<p>You can <strong>edit</strong> the maturity value in the <a href="../../20%20UserInterface/Attributes/Attribute%20Value.htm">Attributes Property Page</a> of an object.</p>
+<h3 id="segment-number-cds-6803-5.0-sp1">Segment Number (CDS-6803 5.0 SP1)</h3>
+<p><span id="TREE-R210" class="rqDef" title="Segment Number in Tree">[TREE-R210 Segment Number in Tree]</span> If...</p>
+<ul>
+<li>the template contains the <a href="../../30%20Features/Attributes/Special%20Attributes.htm#Segment_Number">&quot;Segment_Number&quot; attribute</a>,</li>
+<li>then CANdelaStudio shows the value of that attribute
+<ul>
+<li>for each diagnostic instance or job container in the tree,</li>
+<li>behind the name of the object, like <code>[SEGNUM=74]</code>,</li>
+<li>in decimal notation.</li>
+<li>Value 0 means “no Segment Number”.</li>
+</ul></li>
+</ul>
+<p>For display in the tree, CANdelaStudio does not check the attribute category (CDS-69251 9.0 SP1; before, it checked for the category qualifier &quot;DIOGENES&quot;).</p>
+<p>See <a class='rqRef' href='../../30 Features\Diagnostic Instance\Segment Number.htm#SEGNUM-R100' title="">[SEGNUM-R100]</a>.</p>
+<h3 id="run-diagnostic-instance-plug-in">Run Diagnostic Instance Plug-in</h3>
+<p><span id="TREE-R320" class="rqDef">[TREE-R320]</span> The context menu allows to run a diagnostic instance plug-in <a class='rqRef' href='../../30 Features\Plug-ins\Using Plug-ins.htm#PLG-R100-Instance' title="">[PLG-R100-Instance]</a>.</p>
+<h2 id="job-container">Job Container</h2>
+<h3 id="name-in-boldface">Name in Boldface</h3>
+<p>See above at <a href="#bold">Diagnostic Instance</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><p><a href="../../20%20UserInterface/Document/Properties.htm">Document Properties</a></p></li>
+<li><a href="../../20%20UserInterface/ECU/ECU.htm">ECU</a></li>
+<li><a href="../../20%20UserInterface/Interface/Interface.htm">Interface</a></li>
+<li><a href="../../20%20UserInterface/Compare/Compare%20View.htm">Compare View</a></li>
+<li><a href="../../20%20UserInterface/DID/DID%20Overview.htm">DID Overview</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Qualifier%20Overview.htm">Qualifier Overview</a></li>
+<li><p><a href="../../20%20UserInterface/Attributes/Attribute%20Overview.htm">Attribute Overview</a></p></li>
+<li><a href="../../20%20UserInterface/Variant/Variants.htm">Variants</a></li>
+<li><a href="../../20%20UserInterface/Variant/Identifying%20Features.htm">Identifying Features</a></li>
+<li><a href="../../20%20UserInterface/DID/DIDs.htm">DIDs</a></li>
+<li><a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instances.htm">Diagnostic Instances</a></li>
+<li><p><a href="../../20%20UserInterface/Fault%20Memory/AUTOSAR%20Fault%20Memory%20GUI.htm">GUI AUTOSAR Fault Memory</a></p></li>
+<li><a href="../../20%20UserInterface/State%20Dependency/States.htm">States</a></li>
+<li><a href="../../20%20UserInterface/Vehicle%20System%20Group/Vehicle%20System%20Group.htm">Vehicle System Groups</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="../../20%20UserInterface/Negative%20Response/Available%20Negative%20Response%20Codes.htm">Negative Response</a></li>
+<li><a href="../../20%20UserInterface/Import%20Pool/Import%20Pool.htm">Import Pool</a></li>
+<li><p><a href="../../20%20UserInterface/Requirements/Requirements.htm">Requirements</a></p></li>
+</ul>
+</body>
+</html>

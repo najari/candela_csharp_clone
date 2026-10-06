@@ -1,0 +1,12 @@
+Value;assigned Text;add. Information
+0x01;Alpine;www.alpine.de
+0x02;Bosch;www.bosch.de
+0x03;Denso;www.denso-europe.com
+0x07;Magneti Marelli;www.marelli.it
+0x08;Preh;www.preh.de
+0x09;Reis Elettronica;www.reisel.com
+0x0A;Siemens;www.siemens.de
+0x15;Valeo;www.valeo.com
+0x16;Vector;www.vector-informatik.de
+0x17;Visteon;www.visteon.com
+0xff;undefined;No additional information available

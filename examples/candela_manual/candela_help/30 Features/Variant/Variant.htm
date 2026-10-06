@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Variant</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="variant"><span id='_index_446728123' title='Introduction' data-text='Introduction'>Variant</span></h1>
+<h2 id="introduction">Introduction</h2>
+<p><span id="VAR-R001" class="rqDef">[VAR-R001]</span> A CANdela document can contain multiple variants. A CANdela template contains a base variant only.</p>
+<p>Each variant describes either</p>
+<ul>
+<li>a <strong>feature variation</strong> (optional, model series), or</li>
+<li><strong>development progress</strong> over time.</li>
+</ul>
+<p>The first variant (&quot;Base Variant&quot;, &quot;Common Diagnostics&quot;) may be used to store a <strong>common subset</strong> or a <strong>superset</strong> of diagnostic functionality for all variants. See the <a href="Base%20Variant.htm">Base Variant</a> feature.</p>
+<p>You always create a new variant based on an existing variant, with the possibility to <strong>reference (share) data</strong> which shall be common to both variants.</p>
+<p>A variant can contain “<a href="../../30%20Features/Variant/Variant%20Identification.htm">Identifying Features</a>”. When a tester communicates with an instance of an ECU, the Identifying Features allow the tester to automatically detect with which variant of the ECU it communicates.</p>
+<p>A variant can be <a href="../../30%20Features/Variant/Lock%20Variant.htm">locked</a> for editing. The lock can be broken in expert view only.</p>
+<h2 id="variants-in-the-candelastudio-tree">Variants in the CANdelaStudio Tree</h2>
+<p>CANdelaStudio shows...</p>
+<ul>
+<li>the Base Variant in a separate top-level <a href="../../20%20UserInterface/Tree/Navigation%20Tree.htm">tree</a> chapter</li>
+<li>all other variants (&quot;extended variants&quot;) in a tree chapter called &quot;Variants&quot; (not shown in a document template).</li>
+</ul>
+<h2 id="data-model">Data Model</h2>
+<p>A <strong>variant</strong> contains <strong>diagnostic classes</strong>.</p>
+<p>Some diagnostic classes may occur only once per variant (e.g. &quot;Fault Memory&quot;), diagnostic instances of these classes are contained directly in the variant.</p>
+<p>Some classes may have several instances, their diagnostic instances are grouped in folders (called &quot;diagnostic classes&quot; in user interface). Examples: &quot;Normal/Default Session&quot;, &quot;Stand By Session&quot;, &quot;Serial Number&quot;, ...).</p>
+<ul>
+<li>Identifying Feature</li>
+<li>Identifying Pattern</li>
+<li>Optionally: revision history.</li>
+</ul>
+<h2 id="bootloader">Bootloader</h2>
+<p>How to describe the bootloader services and maybe specific service execution restrictions?</p>
+<p>Motivation:</p>
+<ul>
+<li><p>when there is an external reprogramming request on power on or reset of an ECU, it enters a programming session;</p></li>
+<li><p>when the application is not valid on power on or reset of an ECU, it enters a default session in the bootloader, from which it also may enter an extended and programming session;</p></li>
+<li><p>services may transport different data (e.g. extended fingerprint) in bootloader</p></li>
+</ul>
+<h3 id="separate-boot-variant">Separate “Boot Variant”</h3>
+<p>Add a separate variant in the CANdela document, let it contain only the services available in the bootloader, and adapt the service execution description.</p>
+<p>This solution helps to describe specific data in bootloader services.</p>
+<p>The solution does not help for code generation (actually, the bootloader is not generated, it is constant - almost).</p>
+<p>The solution does not help for a CANdela based Vector tester. Actually, vFlash contains an internal CDD based description of the bootloader behavior. So there is no need to explicitly describe it in the CDD for an ECU project.</p>
+<p>The solution may help for a generic tester e.g. based on ODX exported from the CDD. But this effort makes sense only if the services actually behave different.</p>
+
+<h3 id="separate-session-states">Separate Session States</h3>
+<p>As special behaviour of the bootloader may show up in the service execution in Default and Extended Session, a more light-weight description may add two special “states” (like “Bootloader default session”, “Bootloader extended session”) to the regular application service description.</p>
+<h3 id="textual-description">Textual Description</h3>
+<p>If there is no tool that uses the formal data description, it may suffice to describe the bootloader behavior in a description field. You can even add diagrams there.</p>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/DTC/DTC%20Overview.htm">DTC Overview</a>: occurrence in variants</li>
+<li><a href="../../20%20UserInterface/DID/DID%20Overview.htm">DID Overview</a>: occurrence in variants</li>
+<li>Menu Edit: Replace Copy with Reference in Base Variant <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R040' title="Replace Reference with Copy">[DIOP-R040]</a></li>
+<li>Menu Edit: Reference Identical Diagnostic Instances and Job Containers <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R050' title="">[DIOP-R050]</a></li>
+<li><a href="../../20%20UserInterface/Variant/Variant%20Wizard.htm">Variant Wizard</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>Vehicle System Group: <a href="../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm">Availability for Variants</a></li>
+<li><a href="Base%20Variant.htm">Base Variant</a></li>
+<li><a href="../../30%20Features/Report/Compact%20Report.htm">Compact Report</a> (avoids redundancy between multiple variants)</li>
+<li><a href="../../30%20Features/ECU/ECU.htm">ECU (Feature)</a></li>
+<li><a href="Lock%20Variant.htm">Lock Variant</a></li>
+<li><a href="Variant%20Coding%20Keys.htm">Variant Coding Keys</a></li>
+<li><a href="Variant%20Identification.htm">Variant Identification</a> (Identifying Feature, Identifying Pattern)</li>
+<li><a href="Variant%20Operations.htm">Variant Operations</a></li>
+</ul>
+
+</body>
+</html>

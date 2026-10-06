@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Plug-in Enable ODX Mode</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="enable-odx-mode-cds-5907-5.0"><span id='_index_446728080' title='Plug-in' data-term='Plug-in'>Enable ODX Mode</span><span id='_index_446728081' title='ODX: Enable ODX Mode' data-term='ODX' data-text='Enable ODX Mode'></span> (CDS-5907 5.0)</h1>
+<h2 id="use-case">Use-Case</h2>
+<p>Prepare a template or document for use with ODX.</p>
+<h2 id="solution-overview">Solution Overview</h2>
+<p>The plug-in creates attributes needed for describing specific ODX-related properties.</p>
+<h2 id="specification">Specification</h2>
+
+<p><span id="PEnODX-R001" class="rqDef">[PEnODX-R001.0]</span>: the plug-in creates attributes required for ODX mode...</p>
+<ul>
+<li>for any manufacturer</li>
+<li>plug-in file name: &quot;Enable ODX mode&quot;</li>
+</ul>
+<p><span id="PEnODX-R004" class="rqDef">[PEnODX-R004.0]</span>: Plug-in name: &quot;Enable ODX Mode&quot;</p>
+<p><span id="PEnODX-R002" class="rqDef">[PEnODX-R002.0]</span>: the plug-in creates attributes with <strong>category &quot;ODX&quot;</strong>.</p>
+<p><span id="PEnODX-R002-a0" class="rqDef">[PEnODX-R002-a0]</span> For each of the attributes described below: if the attribute already exists, the plug-in leaves it unchanged.</p>
+<p><span id="PEnODX-D001" class="rqDef" title="ODX Link">[PEnODX-D001 ODX Link]</span> Definition &quot;<strong><span id='_index_446728082'>ODX Link</span></strong>&quot; := 3 attributes</p>
+<ul>
+<li><span id="PEnODX-D001-DOCTYPE" class="rqDef">[PEnODX-D001-DOCTYPE]</span>
+<ul>
+<li>Enum attribute</li>
+<li>qualifier ends with &quot;DOCTYPE&quot;</li>
+<li>name ends with &quot;DOCTYPE&quot;</li>
+<li>enumeration: 0 = CONTAINER, 1 = LAYER</li>
+<li>default of enumeration: 0 = CONTAINER</li>
+</ul></li>
+<li><span id="PEnODX-D001-DOCREF" class="rqDef">[PEnODX-D001-DOCREF]</span>
+<ul>
+<li>non-translatable string attribute:</li>
+<li>qualifier ends with &quot;DOCREF&quot;</li>
+<li>name ends with &quot;DOCREF&quot;</li>
+</ul></li>
+<li><span id="PEnODX-D001-ID_REF" class="rqDef">[PEnODX-D001-ID_REF]</span>
+<ul>
+<li>non-translatable string attribute:</li>
+<li>qualifier ends with &quot;ID_REF&quot;</li>
+<li>name ends with &quot;ID-REF&quot;</li>
+</ul></li>
+</ul>
+<p><span id="PEnODX-R002-a" class="rqDef" title="DIAG-LAYER">[PEnODX-R002-a DIAG-LAYER]</span></p>
+<ul>
+<li>Service Enum attribute</li>
+<li>is visible</li>
+<li>not modifiable in standard mode</li>
+<li>qualifier = &quot;DIAG_LAYER&quot;</li>
+<li>name = &quot;DIAG-LAYER&quot;</li>
+<li>enumeration of:
+<ul>
+<li>0 = not specified (default value)</li>
+<li>1 = PROTOCOL</li>
+<li>2 = FUNCTIONAL-GROUP</li>
+</ul></li>
+</ul>
+<p><span id="PEnODX-R002-b" class="rqDef">[PEnODX-R002-b]</span></p>
+<ul>
+<li>ECU non-translatable String attribute</li>
+<li>is visible and modifiable in standard mode</li>
+<li>qualifier = &quot;FUNCTIONAL_GROUP_SHORT_NAME&quot;</li>
+<li>name = &quot;FUNCTIONAL-GROUP.SHORT-NAME&quot;</li>
+</ul>
+<p><span id="PEnODX-R002-c" class="rqDef">[PEnODX-R002-c]</span> ECU non-translatable String attribute</p>
+<ul>
+<li>is visible and modifiable in standard mode</li>
+<li>qualifier = &quot;PROTOCOL_SHORT_NAME&quot;</li>
+<li>name = &quot;PROTOCOL.SHORT-NAME&quot;</li>
+</ul>
+<p><span id="PEnODX-R002-d1" class="rqDef">[PEnODX-R002-d1]</span> ECU &quot;ODX Link&quot; <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-D001' title="ODX Link">[PEnODX-D001]</a> attributes for <strong>Base Variant</strong>:</p>
+<ul>
+<li>is visible and modifiable in standard mode</li>
+<li>DOCTYPE:
+<ul>
+<li>qualifier &quot;BASE_VARIANT_PARENT_REF_DOCTYPE&quot;</li>
+<li>name &quot;BASE-VARIANT.PARENT-REF.DOCTYPE&quot;</li>
+</ul></li>
+<li>DOCREF:
+<ul>
+<li>qualifier &quot;BASE_VARIANT_PARENT_REF_DOCREF&quot;</li>
+<li>name &quot;BASE-VARIANT.PARENT-REF.DOCREF&quot;</li>
+</ul></li>
+<li>ID-REF:
+<ul>
+<li>qualifier &quot;BASE_VARIANT_PARENT_REF_ID_REF&quot;</li>
+<li>name &quot;BASE-VARIANT.PARENT-REF.ID-REF&quot;</li>
+</ul></li>
+</ul>
+<p><span id="PEnODX-R002-d2" class="rqDef">[PEnODX-R002-d2]</span> ECU &quot;ODX Link&quot; <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-D001' title="ODX Link">[PEnODX-D001]</a> attributes for <strong>Functional Group</strong>:</p>
+<ul>
+<li>is visible and modifiable in standard mode</li>
+<li>DOCTYPE:
+<ul>
+<li>qualifier &quot;FUNCTIONAL_GROUP_PARENT_REF_DOCTYPE&quot;</li>
+<li>name &quot;FUNCTIONAL-GROUP.PARENT-REF.DOCTYPE&quot;</li>
+</ul></li>
+<li>DOCREF:
+<ul>
+<li>qualifier &quot;FUNCTIONAL_GROUP_PARENT_REF_DOCREF&quot;</li>
+<li>name &quot;FUNCTIONAL-GROUP.PARENT-REF.DOCREF&quot;</li>
+</ul></li>
+<li>ID-REF:
+<ul>
+<li>qualifier &quot;FUNCTIONAL_GROUP_PARENT_REF_ID_REF&quot;</li>
+<li>name &quot;FUNCTIONAL-GROUP.PARENT-REF.ID-REF&quot;</li>
+</ul></li>
+</ul>
+<p><span id="PEnODX-R002-e" class="rqDef">[PEnODX-R002-e]</span> Diagnostic Class Enum attribute</p>
+<ul>
+<li>is visible and modifiable in standard mode</li>
+<li>qualfier &quot;Export_as_TABLE&quot;</li>
+<li>name &quot;Export as TABLE&quot;</li>
+<li>enumeration: 0 = no, 1 = yes</li>
+<li>default of enumeration is: 0 = no</li>
+</ul>
+<p><span id="PEnODX-R002-f" class="rqDef">[PEnODX-R002-f]</span> <strong>Data Type</strong> &quot;ODX Link&quot; attributes</p>
+<ul>
+<li>DOCTYPE, DOCREF, ID-REF see <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-D001' title="ODX Link">[PEnODX-D001]</a> above</li>
+<li>is visible</li>
+<li>not modifiable in standard mode</li>
+</ul>
+<p><span id="PEnODX-R002-i" class="rqDef">[PEnODX-R002-i]</span> <strong>DTC</strong> &quot;ODX Link&quot; attributes</p>
+<ul>
+<li>DOCTYPE, DOCREF, ID-REF see <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-D001' title="ODX Link">[PEnODX-D001]</a> above</li>
+<li>is visible but not modifiable in standard mode</li>
+</ul>
+<p><span id="PEnODX-R002-k1" class="rqDef">[PEnODX-R002-k1]</span> DTC integer attribute for <strong>error code</strong></p>
+<ul>
+<li>not visible in standard mode</li>
+<li>qualifier &quot;Source_Error_Code&quot;</li>
+<li>name &quot;Source Error Code&quot;</li>
+</ul>
+<p><span id="PEnODX-R002-k2" class="rqDef">[PEnODX-R002-k2]</span> DTC non-translatable string attribute for <strong>error text</strong></p>
+<ul>
+<li>not visible in standard mode</li>
+<li>qualifier &quot;Source_Error_Text&quot;</li>
+<li>name &quot;Source Error Text&quot;</li>
+</ul>
+<p><span id="PEnODX-R002-L" class="rqDef">[PEnODX-R002-L]</span> ECU Enum attribute &quot;<strong>ODX Mode</strong>&quot; (CDS-5625 5.0)</p>
+<ul>
+<li>is visible in standard mode and modifiable</li>
+<li>qualifier &quot;ODX_Mode_Enabled&quot;</li>
+<li>name &quot;ODX Mode Enabled&quot;</li>
+</ul>
+<p><span id="PEnODX-R002-m" class="rqDef">[PEnODX-R002-m]</span> Service non-translatable attribute for <strong>ODX SHORT-NAME</strong></p>
+<ul>
+<li>is visible in standard mode and modifiable</li>
+<li>qualifier &quot;DIAG_SERVICE_SHORT_NAME&quot;</li>
+<li>name &quot;DIAG-SERVICE.SHORT-NAME&quot;</li>
+</ul>
+<p><span id="PEnODX-R002-n" class="rqDef">[PEnODX-R002-n]</span> DataType Enum attribute for <strong>STATIC-FIELD</strong></p>
+<ul>
+<li>not visible in standard mode</li>
+<li>qualfier &quot;Is_STATIC_FIELD&quot;</li>
+<li>name &quot;Is STATIC-FIELD&quot;</li>
+<li>enumeration: 0 = no, 1 = yes</li>
+<li>default of enumeration is: 0 = no</li>
+</ul>
+<p><span id="PEnODX-R005" class="rqDef" title="Units">[PEnODX-R005.0 Units]</span> The plug-in...</p>
+<ul>
+<li>creates the <a href="../../30%20Features/Attributes/Special%20Attributes.htm#units">Units attribute</a></li>
+<li>... and adds the following SI units to the attribute:
+<ul>
+<li>m (=0)</li>
+<li>kg (=1)</li>
+<li>s</li>
+<li>A</li>
+<li>K</li>
+<li>mol</li>
+<li>cd (=6)</li>
+</ul></li>
+</ul>
+<p><span id="PEnODX-R003" class="rqDef">[PEnODX-R003.0]</span>: after creating the attributes, the plug-in <strong>enables &quot;ODX mode&quot;</strong> by setting the ECU Enum attribute <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-L' title="">[PEnODX-R002-L]</a> (above).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a></li>
+<li><a href="../../30%20Features/Attributes/Special%20Attributes.htm">Special Attributes</a></li>
+<li><a href="../../30%20Features/ODX/ODX.htm">ODX</a></li>
+<li><a href="../../30%20Features/Plug-ins/Introduction.htm">Plug-in Introduction</a></li>
+</ul>
+</body>
+</html>

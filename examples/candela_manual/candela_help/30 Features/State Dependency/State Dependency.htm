@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>State Dependency</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="state-dependency-cds-543">State Dependency (CDS-543)</h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/State%20Dependency%20Diagram.jpg" alt="State Dependency Diagram" />
+<p class="caption">State Dependency Diagram</p>
+</div>
+<p>For the user interface, see the <a href="../../20%20UserInterface/State%20Dependency/States.htm">&quot;States&quot; Tree Chapter</a>.</p>
+<h2 id="use-cases">Use-cases</h2>
+<ul>
+<li><strong>Sessions</strong>: some extended services may only be executed in a certain <a href="Session.htm">diagnostic session</a>.</li>
+<li><strong>Security Access</strong>: some writing services may only be executed when the ECU is unlocked (<a href="Security.htm">security access</a>).</li>
+<li><strong>Authorization</strong>: user-role based access to services, requires authentication (new ca. 2017) (<a href="Authorization.htm">Authorization</a>).</li>
+</ul>
+<h2 id="state-groups">State Groups</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/State%20Groups.jpg" alt="State Groups and States" />
+<p class="caption">State Groups and States</p>
+</div>
+<p>CANdelaStudio handles these use-cases in a generalized way:</p>
+<ul>
+<li>both <strong>sessions</strong> and <strong>security access</strong> are described by a <strong>state group</strong>;</li>
+<li>each state group contains <strong>states</strong>, like...
+<ul>
+<li>for Sessions: Default, Programming, Extended...</li>
+<li>for Security Access: Locked, Unlocked</li>
+</ul></li>
+<li>you can define additional state groups</li>
+<li>you can define additional states within a state group</li>
+<li>typically, the <strong>state groups</strong> and <strong>states</strong> are predefined in the <strong>template</strong>.</li>
+</ul>
+<p>For details, see <a href="State%20Group.htm">State Group</a> and <a href="State.htm">State</a>.</p>
+<h2 id="introduction-to-state-transitions">Introduction to State Transitions</h2>
+<p>For details, see <a href="State%20Transitions.htm">State Transitions</a>.</p>
+<h3 id="service-execution">Blocking Service Execution</h3>
+<p>State groups and states allow to <strong>block</strong> the execution of services (<a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R020-no' title="">[STTR-R020-no]</a>):</p>
+<div class="figure">
+<img src="Images/SessionExecution.jpg" alt="Execution of Services Depending on Session (in Tree Node States/Dependencies)" />
+<p class="caption">Execution of Services Depending on Session (in Tree Node States/Dependencies)</p>
+</div>
+<p>In the example, ...</p>
+<ul>
+<li>the &quot;<strong>(no)</strong>&quot; shows that service FaultMemory/ReportSupportedDTCs 19 0A <strong>cannot be executed</strong> (is blocked) <strong>in the &quot;Programming&quot; session</strong>
+<ul>
+<li>you will get a negative response code</li>
+</ul></li>
+<li>it can be executed in the other sessions</li>
+<li>service Diagnostic Identification/Read 22 F1 10 can be executed in all sessions.</li>
+</ul>
+<p>This shows which services are available in the <strong>boot loader</strong> of the ECU: all services that have &quot;<strong>(yes)</strong>&quot; in the <strong>programming session</strong>.</p>
+<div class="figure">
+<img src="Images/SecurityAccessExecution.jpg" alt="Execution of Services Depending on Security Access" />
+<p class="caption">Execution of Services Depending on Security Access</p>
+</div>
+<p>In this example, ...</p>
+<ul>
+<li>service FaultMemory/ReportSupportedDTCs 19 0A <strong>can be executed</strong> when the ECU is &quot;Locked&quot; or &quot;Unlocked #L2 (Extended)&quot;</li>
+<li>it <strong>cannot be executed</strong> when the ECU is &quot;Unlocked #L3 (Programming)&quot;.</li>
+<li>service Diagnostic Identification/Read 22 F1 10 can be executed always, independent of the Security Access state.</li>
+</ul>
+<h3 id="changing-state">Changing State</h3>
+<p>There must be some services that <strong>change</strong> the session (i.e. cause a &quot;state transition&quot;, <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R020-transition' title="">[STTR-R020-transition]</a>):</p>
+<div class="figure">
+<img src="Images/SessionTransition.jpg" alt="Change of Session State" />
+<p class="caption">Change of Session State</p>
+</div>
+<ul>
+<li>in Default mode, service Programming/Start 10 02 <strong>enters Programming mode</strong></li>
+<li>in Programming mode, service EcuReset 11 01 <strong>goes back to Default mode</strong></li>
+</ul>
+<p>Most other services <strong>do not change</strong> the session:</p>
+<ul>
+<li>in Default mode, service Programming/Default 10 01 can be executed but stays in Default mode</li>
+</ul>
+<p>Some other services <strong>cannot be executed</strong> (as described above):</p>
+<ul>
+<li>in Default mode, service EcuReset 11 01 cannot be executed.</li>
+</ul>
+<div class="figure">
+<img src="Images/SecurityAccessTransition.jpg" alt="Change of Security Access State" />
+<p class="caption">Change of Security Access State</p>
+</div>
+<p>In this example, ...</p>
+<ul>
+<li>service Key Level #1/Send 27 02 &quot;unlocks&quot; the ECU (changes state from &quot;Locked&quot; to &quot;Unlocked L1&quot;)</li>
+</ul>
+<p>... as opposed to...</p>
+<ul>
+<li>service EnableRxAndEnableTx/Control 28 which does not change the state.</li>
+</ul>
+<h2 id="interaction-between-session-and-security-state-groups">Interaction between Session and Security State Groups</h2>
+<p>All state groups (session, security access, ...) apply <strong>in parallel</strong>:</p>
+<ul>
+<li>for a service to be blocked, it is enough that it <strong>cannot be executed</strong> (is blocked) <strong>in one state group</strong></li>
+<li>in principle, a service may <strong>cause a state change in multiple state groups</strong>
+<ul>
+<li>e.g. both in session and security access;</li>
+</ul></li>
+<li>but note: UDS provides different services for different state groups:
+<ul>
+<li>service 0x10 for Session,</li>
+<li>service 0x27 for Security Access.</li>
+</ul></li>
+</ul>
+<h2 id="state-transitions-based-on-automata-theory">State Transitions Based on Automata Theory</h2>
+<p>The concept of states and state transitions in CANdela is based on the concept of a deterministic finite state automaton (DFA):</p>
+<ul>
+<li>the ECU is considered to have a <strong>state</strong>;</li>
+<li>a <strong>service</strong> can be <strong>blocked</strong> (= have <strong>no state transition</strong>)</li>
+<li>... or <strong>change the state</strong> (= cause a <strong>state transition</strong>);</li>
+</ul>
+<p>See the <a href="#dfa">next chapter</a> for some automata theory background.</p>
+<p>In CANdela, states are partitioned into <strong>state groups</strong>, typically “Session” and “Security”:</p>
+<ul>
+<li><strong>States</strong> are typically defined in the template in an ordered collection, e.g. &quot;DS_None&quot;, &quot;DS_Default&quot;, &quot;DS_EndOfLine&quot;.</li>
+<li>The <strong>input alphabet</strong> consists of <strong>services</strong> (to be precise: the successful execution of a service), e.g. &quot;Default session/Start&quot;, &quot; End-of-line session/Start&quot;.</li>
+<li><strong>initial state</strong>: the first state of a state group, e.g. &quot;DS_None&quot;.</li>
+<li><strong>final states</strong>: the initial state. At least one transition to this final state is required, it must be triggered by the same service in all automata (this is a simple part of the consistency condition &quot;the compound automaton must not contain dead ends&quot;.)</li>
+<li><strong>state transitions</strong> are defined at the service, e.g. for &quot; Default session/Start&quot;, there may be two transitions (&quot;DS_None&quot;, &quot;DS_Default&quot;) and (&quot;DS_EndOfLine&quot;, &quot;DS_Default&quot;).</li>
+<li>&quot;transition loop&quot; = &quot;self-transition&quot;</li>
+</ul>
+<p>Only <strong>executive self transitions</strong> are modeled as transitions (CDS-2721). An ECU application may perform operations (&quot;actions&quot;) when the ECU enters a state (even the same state). Therefore it makes a difference whether a service...</p>
+<ul>
+<li><strong>may be executed</strong> but <strong>has no transition</strong>, or...</li>
+<li><strong>may be executed</strong> and <strong>has a transition</strong> (= a &quot;reentering self transition&quot;).</li>
+</ul>
+<p>This means only self transitions which are having a real state entering action are modeled as a transition.</p>
+<p>The “transition function” of automata theory actually covers two aspects of diagnostics:</p>
+<ul>
+<li><strong>precondition/blocking</strong>: whether execution of a certain service is <strong>allowed</strong> in some state (the ECU must check this for each service execution), and</li>
+<li><strong>transition</strong>: the <strong>result state</strong> (typically only few services actually cause a transition to another state)</li>
+</ul>
+<p>The <strong>compound automaton</strong> is the combination of all automata, operating in parallel on the same input alphabet (successful service executions). Successful execution of a service means a transition in the compound automaton. The transition is possible if in each automaton (i.e. for each state group), there is an edge for the service given (either to the same or to another state). If in any automaton there is no edge for the service given, then execution of the service is <strong>blocked</strong>.</p>
+<h3 id="dfa">Background: Automata Theory</h3>
+<p>Each state group represents a deterministic finite state automaton (DFA).</p>
+<p>In automata theory, a <strong>DFA</strong> is defined by (Q, S, d, q<sub>0</sub>, F) where</p>
+<ul>
+<li>Q is a set of <strong>states</strong></li>
+<li>S is an <strong>input alphabet</strong></li>
+<li>q<sub>0</sub> IN Q is the <strong>initial state</strong></li>
+<li>F &lt;= Q is a set of <strong>final states</strong>, and</li>
+<li>d: Q x S -&gt; Q is the <strong>transition function</strong>.</li>
+</ul>
+<p>The transition function may be written...</p>
+<ul>
+<li>as a <strong>relation</strong> like &quot;(q, s, r) IN d&quot;, or</li>
+<li>as a <strong>function</strong> like &quot;d(q, s) = r&quot;:
+<ul>
+<li>for a <strong>source state</strong> q and an input symbol s, the function defines the <strong>target state</strong> r.</li>
+<li>There is <strong>no or exactly one transition (target state)</strong> for a given source state and input symbol.</li>
+<li>In other words: in a DFA, for any q and s, there is at most one (q, s, r) in the transition function.</li>
+</ul></li>
+</ul>
+<p>In a state q, the input symbol s is <strong>allowed</strong>...</p>
+<ul>
+<li>if there is a transition for s.</li>
+<li>The target state r may be the same state q, or a different state.</li>
+</ul>
+<h2 id="use-of-state-transitions-in-different-tools">Use of State Transitions in Different Tools</h2>
+<p>The information from the CANdela state transitions is used as follows:</p>
+<h3 id="autosar-diagnostic-extract">AUTOSAR Diagnostic Extract</h3>
+<p>The <a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> uses...</p>
+<ul>
+<li>for Session and Security only:
+<ul>
+<li>for a service in a given state: whether it can be executed (yes/no)</li>
+<li>it does not use the information about the target state</li>
+</ul></li>
+<li>it ignores all other state groups</li>
+</ul>
+<h3 id="candesc">CANdesc</h3>
+
+<p>CANdesc 6 (as of 2016) uses...</p>
+<ul>
+<li>for Session, Security and other state groups:
+<ul>
+<li>for a service in a given state: whether it can be executed (yes/no/is there a self-transition)</li>
+<li>for a service: the target state (a service must lead to the <strong>same</strong> target state for all states; the code generator checks this)</li>
+<li>Example: service 0x19 0x01 (&quot;Default Session/Start&quot;) must lead to the <strong>same</strong> state &quot;Default&quot; if executed in the states &quot;Default&quot;, &quot;Programming&quot; or &quot;Extended&quot;.</li>
+</ul></li>
+</ul>
+<h2 id="relevant">Relevance of a Service in a State Group</h2>
+<p>Most services in most states...</p>
+<ul>
+<li>do not cause a transition and</li>
+<li>are not blocked.</li>
+</ul>
+<p>For such states, CANdelaStudio calls the service <strong>irrelevant</strong>.</p>
+<p>In other words, a service is <strong>relevant</strong> in a state group if in at least one of the states,</p>
+<ul>
+<li>the service causes a transition, or</li>
+<li>is not allowed.</li>
+</ul>
+<p>If a service is irrelevant for all states of a state group, the CANdelaStudio <a href="../../20%20UserInterface/Service/Service%20Property%20Page%20State%20Transitions.htm">service property dialog</a> shows the state transitions read-only.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/State%20Dependency/States.htm">&quot;States&quot; Tree Chapter (User interface)</a></li>
+<li><a href="Authorization.htm">Authorization</a> (certificate-based)</li>
+<li><a href="Link%20Target%20Group%20to%20State.htm">Link Target Group to State</a></li>
+<li><a href="Security.htm">Security</a></li>
+<li><a href="Session%20Security%20Wizard.htm">Session Security Wizard</a></li>
+<li><a href="Session.htm">Session</a></li>
+<li><a href="../../20%20UserInterface/State%20Dependency/Dependencies.htm">State Dependencies Page</a></li>
+<li><a href="State%20Group.htm">State Group</a></li>
+<li><a href="State%20Transitions.htm">State Transitions (Feature)</a></li>
+<li><a href="State.htm">State</a></li>
+</ul>
+</body>
+</html>

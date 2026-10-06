@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Authorization</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="authorization-cds-68998-9.1"><span id='_index_446728120' title='for runtime security' data-text='for runtime security'>Authorization</span> (CDS-68998 9.1)</h1>
+<p>(looking for &quot;Authorization&quot; to <strong>control authoring in CANdelaStudio</strong>? See <a href="../../30%20Features/Common%20Properties/Authorization.htm">Authorization</a>.)</p>
+<p>In 2017, the <strong>traditional security access</strong> using <a href="Security.htm">Security</a> service 0x27 (seed/key) is considered out-dated and <strong>unsafe</strong>. In times of DoIP and other over the air interfaces, more and more scenarios for attacks to a vehicle are possible.</p>
+<p>As a consequence, manufacturers migrate to a <strong>certificate-based approach</strong> for diagnostic authorization. Certificates support a rather different way of access control.</p>
+<p>A <strong>certificate</strong> can be issued...</p>
+<ul>
+<li>individually for a user,</li>
+<li>for a use-case or</li>
+<li>time-limited.</li>
+</ul>
+<p>This will enable further <strong>use cases</strong>, like...</p>
+<ul>
+<li>coding (temporarily rent increased engine power)</li>
+<li>current data (retrieve protected information)</li>
+</ul>
+<p>The traditional security access is <strong>still in use</strong> e.g. for legislative requirements like protection of airbag disposal.</p>
+<h2 id="authorization-in-vector-tools">Authorization in Vector Tools</h2>
+<div class="figure">
+<img src="Images/Vector%20Security%20Manager.jpg" alt="Vector Security Manager" />
+<p class="caption">Vector Security Manager</p>
+</div>
+<p>A diagnostic tool like CANoe or CANoe.DiVa must be able to provide a certificate <strong>at runtime</strong> in order to successfully communicate with an ECU.</p>
+<p>For user comfort, certificates can be accessed automatically using <strong>information from the CANdela document</strong>.</p>
+<ul>
+<li>Vector tools use a central <strong>Security Manager</strong></li>
+<li>... which provides a generic <strong>interface</strong></li>
+<li>... to access OEM specific <strong>security sources</strong>.</li>
+<li>The CANdela document provides <strong>configuration</strong></li>
+<li>... and authentication <strong>parameters</strong>.</li>
+</ul>
+
+<h2 id="authorization-in-candela-data">Authorization in CANdela Data</h2>
+<p><span id="AUTH-R100" class="rqDef">[AUTH-R100]</span> CANdelaStudio 9.1 supports Authorization via the existing State Group mechanism.</p>
+<ul>
+<li><span id="AUTH-R100-State" class="rqDef">[AUTH-R100-State]</span> A <strong>user role</strong> is described as a <strong>state</strong> of the special &quot;Authorization&quot; State Group <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Group.htm#STG-R050-Authorization' title="">[STG-R050-Authorization]</a>.</li>
+<li><strong>Blocking</strong> the execution of a <strong>service</strong> is described as usual...
+<ul>
+<li>by setting a transition to &quot;no&quot;</li>
+<li>... for a <strong>state</strong> of the state group &quot;Authorization&quot;.</li>
+</ul></li>
+<li><span id="AUTH-R100-Trans" class="rqDef">[AUTH-R100-Trans]</span> <strong>Changing the User Role</strong> is described using <strong>State Transitions</strong> for <a href="../../30%20Features/Job/Job.htm">Jobs</a>.
+<ul>
+<li>At runtime, such a job indicates the desired state transition to the Security Manager.</li>
+<li>The <strong>job file</strong> of such a job is actually not used (there is no runtime system involved that interprets instructions in the job file).</li>
+<li>For interactive use in a Vector tool, the job must be stored in a job container with qualifier &quot;Security_Jobs&quot; (recommended name: &quot;Security Jobs&quot;).</li>
+<li>CANoe.DiVa automatically uses jobs causing state transitions, independent of the job container.</li>
+</ul></li>
+<li><span id="AUTH-R100-Job" class="rqDef">[AUTH-R100-Job]</span> <strong>Authentication Parameters</strong>: the Security Manager passes the <strong>job input parameters</strong> as key/value pairs to the security source:
+<ul>
+<li>key: the data object qualifier (typically: &quot;Role&quot;),</li>
+<li>value: the data object default value <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R350' title="">[DO-R350]</a>.</li>
+</ul></li>
+<li><span id="AUTH-R100-Link" class="rqDef">[AUTH-R100-Link]</span> Optionally, target groups can be <a href="Link%20Target%20Group%20to%20State.htm">linked</a> with Authorization states at a service.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance (Feature)</a></li>
+<li><a href="../../30%20Features/Job/Job.htm">Job</a></li>
+<li><a href="Security.htm">Security</a></li>
+<li><a href="Session.htm">Session</a></li>
+<li><a href="Session%20Security%20Wizard.htm">Session Security Wizard</a></li>
+<li><a href="../../20%20UserInterface/State%20Dependency/States.htm">State Dependency (User Interface)</a></li>
+<li><a href="State%20Dependency.htm">State Dependency (Feature)</a></li>
+<li><a href="State%20Group.htm">State Group</a></li>
+<li><a href="State%20Transitions.htm">State Transitions (Feature)</a></li>
+<li><a href="State.htm">State</a></li>
+</ul>
+</body>
+</html>

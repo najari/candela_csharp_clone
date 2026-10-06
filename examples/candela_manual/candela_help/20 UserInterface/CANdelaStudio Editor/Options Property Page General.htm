@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Options Property Page General</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="file-options-general">File | Options | General</h1>
+<div class="figure">
+<img src="Images/Options%20Property%20Page%20General.jpg" alt="Ribbon Tab File | Options, Page &quot;General&quot;" />
+<p class="caption">Ribbon Tab File | Options, Page &quot;General&quot;</p>
+</div>
+<h2 id="list-of-recently-used-files">List of Recently Used Files</h2>
+<p>The number of files to be shown in the ribbon tab File <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R340' title="">[MENU-R340]</a>.</p>
+<ul>
+<li>minimum: 0</li>
+<li>default: 4 files</li>
+<li>maximum: 16 files</li>
+</ul>
+<h2 id="maximum-path-length">Maximum Path Length</h2>
+<p>The maximum permitted length for the file paths in the list of most recently opened files.</p>
+<ul>
+<li>minimum length: 16 characters</li>
+<li>maximum length: 260 characters (i.e. file paths are not truncated)</li>
+<li>default value: 260 characters</li>
+</ul>
+<h2 id="create-backup-copy">Create Backup Copy</h2>
+<p>If you select this option, CANdelaStudio automatically creates a backup copy of a file with each save, see <a href="../../30%20Features/CANdelaStudio%20Editor/Backup.htm">Backup</a>.</p>
+<h2 id="automatically-save-document...">Automatically Save Document...</h2>
+<p>Choose this option if you wish to have CANdelaStudio automatically save opened documents.</p>
+<p>In the input box, indicate the time interval within which automatic saving should occur.</p>
+<p>See also <a href="../../30%20Features/CANdelaStudio%20Editor/Auto%20Save.htm">Auto Save</a>.</p>
+<h2 id="insert-version-number-in-the-name">Insert Version Number in the Name</h2>
+<p>If you select this option, CANdelaStudio includes the version number in the file name every time a document is saved in the format of a previous version.</p>
+<h2 id="base-directory"><span id='_index_446727864'>Base Directory</span></h2>
+<p>If you check this option, CANdelaStudio allows to edit the &quot;Path&quot; entry field below the option.</p>
+<p><span id="OPT-R150" class="rqDef">[OPT-R150]</span> The &quot;Path&quot; entry field specifies the <strong>base directory</strong>:</p>
+<ul>
+<li>CANdelaStudio <strong>saves</strong> all CANdela documents, specifications, ODX files, etc. in the following folder structure:
+<ul>
+<li>the <strong>base directory</strong></li>
+<li>a <strong>subfolder</strong>, name taken from the <strong>ECU Qualifier</strong> (which CANdelaStudio shows in the property dialog of tree node &quot;ECU Information&quot;)</li>
+</ul></li>
+<li>The <strong>Open Page</strong> shows the base directory in the Quick Access Area <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm#OPEN-R310-BaseDir' title="">[OPEN-R310-BaseDir]</a>.</li>
+</ul>
+<p>Example:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Base Directory</td>
+<td align="left"><code>D:\Project</code></td>
+</tr>
+<tr class="even">
+<td align="left">ECU qualifier</td>
+<td align="left"><code>ABS_ESP</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Resulting folder for saving</td>
+<td align="left"><code>D:\Project\ABS_ESP\</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="save-each-document-version-in-separate-subdirectory">Save Each Document Version in Separate Subdirectory</h3>
+<p>The dialog enables this additional option if you have checked the &quot;Base Directory&quot; option.</p>
+<p><span id="OPT-R155" class="rqDef">[OPT-R155]</span> With &quot;Save Each Document Version in Separate Subdirectory&quot; checked,</p>
+<ul>
+<li>CANdelaStudio <strong>saves</strong> as described in <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20General.htm#OPT-R150' title="">[OPT-R150]</a> above, but with the following deeper folder structure:
+<ul>
+<li>the <strong>base directory</strong></li>
+<li>a <strong>subfolder</strong>, name taken from the <strong>ECU Qualifier</strong> (which CANdelaStudio shows in the property dialog of tree node &quot;ECU Information&quot;)</li>
+<li>a further <strong>subfolder</strong>, name taken from the <strong>document version</strong> <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R130' title="">[DOC-R130]</a> (if it exists)</li>
+</ul></li>
+</ul>
+<p>Example:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Base Directory</td>
+<td align="left"><code>D:\Project</code></td>
+</tr>
+<tr class="even">
+<td align="left">ECU qualifier</td>
+<td align="left"><code>ABS_ESP</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Version</td>
+<td align="left"><code>17.04</code></td>
+</tr>
+<tr class="even">
+<td align="left">Resulting folder for saving</td>
+<td align="left"><code>D:\Project\ABS_ESP\17.04\</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="grid-lines">Grid Lines</h2>
+<p>If you check this option, CANdelaStudio shows data tables with line separators:</p>
+<div class="figure">
+<img src="Images/Grid%20Lines%20On.jpg" alt="Grid Lines On" />
+<p class="caption">Grid Lines On</p>
+</div>
+<p>Otherwise, CANdelaStudio does not show line separators:</p>
+<div class="figure">
+<img src="Images/Grid%20Lines%20Off.jpg" alt="Grid Lines Off" />
+<p class="caption">Grid Lines Off</p>
+</div>
+<h2 id="colored-rows">Colored Rows</h2>
+<p>If you select this option, CANdelaStudio shows table rows in alternating background colors.</p>
+<p>Click the buttons below the checkbox to define the background colors:</p>
+<ul>
+<li>the first button defines the color for the first and odd-numbered rows;</li>
+<li>the second button defines the color for the second and even-numbered rows.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Options.htm">File | Options Dialog</a></li>
+</ul>
+</body>
+</html>

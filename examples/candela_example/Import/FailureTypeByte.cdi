@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<CANDELAIMPORT dtdfilevers="1.4.0">
+	<IMPORTDOC>
+		<DATATYPES>
+			<TEXTTABLE id="_203">
+				<QUALIFIER>FailureTypeByteSelector</QUALIFIER>
+				<NAME>FailureTypeByte</NAME>
+				<DESCRIPTION>Texttable that lists all DTC failure category and sub type definitions for DTC failure type byte according to ISO/DIS 15031-6.2</DESCRIPTION>
+				<CODEDATOMPROPERTIES encoding="unsigned" bitlength="8"/>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="0"/>
+          <VALUE role="endrange" value="0"/>
+          <MAPPEDTEXT>no sub type information</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the base DTC text string provides the complete description of the failure itself (no Category and no Sub Type information used, e.g. emissions-related DTC (012700 hex): P0127 Intake Air Temperature Too High).</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="1"/>
+          <VALUE role="endrange" value="1"/>
+          <MAPPEDTEXT>General Electrical Failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for General Electrical Failures that cannot be assigned to a specific sub type (Category information and no Sub Type information, e.g. DTC (011501): P0115 Engine Coolant Temperature Sensor Circuit – General Electrical Failure).</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="2"/>
+          <VALUE role="endrange" value="2"/>
+          <MAPPEDTEXT>General Signal Failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for General Signal Failures that cannot be assigned to a specific sub type (Category information and no Sub Type information, e.g. DTC (014802): P0148 Fuel Delivery Error – General Signal Failure).</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="3"/>
+          <VALUE role="endrange" value="3"/>
+          <MAPPEDTEXT>FM (Frequency Modulated) / PWM (Pulse Width Modulated) Failures</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for FM / PWM Failures that cannot be assigned to a specific sub type.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="4"/>
+          <VALUE role="endrange" value="4"/>
+          <MAPPEDTEXT>System Internal Failures</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for control module Internal Failures that cannot be assigned to a specific sub type.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="5"/>
+          <VALUE role="endrange" value="5"/>
+          <MAPPEDTEXT>System Programming Failures</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for System Programming Failures that cannot be assigned to a specific sub type.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="6"/>
+          <VALUE role="endrange" value="6"/>
+          <MAPPEDTEXT>Algorithm Based Failures</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for Algorithm Based Failures that cannot be assigned to a specific sub type.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="7"/>
+          <VALUE role="endrange" value="7"/>
+          <MAPPEDTEXT>Mechanical Failures</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for Mechanical Failures that cannot be assigned to a specific sub type.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="8"/>
+          <VALUE role="endrange" value="8"/>
+          <MAPPEDTEXT>Bus Signal / Message Failures</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for Bus Signal / Message Failures that cannot be assigned to a specific sub type.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="9"/>
+          <VALUE role="endrange" value="9"/>
+          <MAPPEDTEXT>Component Failures</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for Component Failures that cannot be assigned to a specific sub type.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="17"/>
+          <VALUE role="endrange" value="17"/>
+          <MAPPEDTEXT>circuit short to ground</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module measures ground (battery negative) potential for greater than a specified time period or when some other value is expected.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="18"/>
+          <VALUE role="endrange" value="18"/>
+          <MAPPEDTEXT>circuit short to battery</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module measures vehicle system (battery positive) potential for greater than a specified time period or when some other value is expected.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="19"/>
+          <VALUE role="endrange" value="19"/>
+          <MAPPEDTEXT>circuit open </MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module determines an open circuit via lack of bias voltage, low current flow, no change in the state of an input in response to an output, etc.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="20"/>
+          <VALUE role="endrange" value="20"/>
+          <MAPPEDTEXT>circuit short to ground or open</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the condition detected by the control module is the same for either indicated failure mode.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="21"/>
+          <VALUE role="endrange" value="21"/>
+          <MAPPEDTEXT>circuit short to battery or open</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the condition detected by the control module is the same for either indicated failure mode.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="22"/>
+          <VALUE role="endrange" value="22"/>
+          <MAPPEDTEXT>circuit voltage below threshold</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module measures a voltage below a specified range but not necessarily a short to ground.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="23"/>
+          <VALUE role="endrange" value="23"/>
+          <MAPPEDTEXT>circuit voltage above threshold</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where, the control module measures a voltage above a specified range but not necessarily a short to battery.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="24"/>
+          <VALUE role="endrange" value="24"/>
+          <MAPPEDTEXT>circuit current below threshold</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module measures current flow below a specified range.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="25"/>
+          <VALUE role="endrange" value="25"/>
+          <MAPPEDTEXT>circuit current above threshold</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module measures current flow above a specified range.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="26"/>
+          <VALUE role="endrange" value="26"/>
+          <MAPPEDTEXT>circuit resistance below threshold</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module infers a circuit resistance below a specified range.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="27"/>
+          <VALUE role="endrange" value="27"/>
+          <MAPPEDTEXT>circuit resistance above threshold</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module infers a circuit resistance above a specified range.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="28"/>
+          <VALUE role="endrange" value="28"/>
+          <MAPPEDTEXT>circuit voltage out of range </MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module measures a voltage outside the expected range but not identified as too high or too low.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="29"/>
+          <VALUE role="endrange" value="29"/>
+          <MAPPEDTEXT>circuit current out of range</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module measures a current outside the expected range but not identified as too high or too low.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="30"/>
+          <VALUE role="endrange" value="30"/>
+          <MAPPEDTEXT>circuit resistance out of range</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module measures a resistance outside the expected range but not identified as too high or too low.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="31"/>
+          <VALUE role="endrange" value="31"/>
+          <MAPPEDTEXT>circuit intermittent</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures, where the control module momentarily detects one of the conditions defined above, but not long enough to set a specific sub type.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="33"/>
+          <VALUE role="endrange" value="33"/>
+          <MAPPEDTEXT>signal amplitude less than minimum</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module measures a signal voltage below a specified range but not necessarily a short to ground (e.g., low gain).</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="34"/>
+          <VALUE role="endrange" value="34"/>
+          <MAPPEDTEXT>signal amplitude greater than maximum</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module measures a signal voltage above a specified range but not necessarily a short to battery (e.g., gain too high).</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="35"/>
+          <VALUE role="endrange" value="35"/>
+          <MAPPEDTEXT>signal stuck low</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module measures a signal that remains low when transitions are expected.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="36"/>
+          <VALUE role="endrange" value="36"/>
+          <MAPPEDTEXT>signal stuck high</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module measures a signal that remains high when transitions are expected.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="37"/>
+          <VALUE role="endrange" value="37"/>
+          <MAPPEDTEXT>signal shape / waveform failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the shape of the signal (plot of the amplitude with respect to time) is not correct, e.g., improper circuit impedance.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="38"/>
+          <VALUE role="endrange" value="38"/>
+          <MAPPEDTEXT>signal rate of change below threshold</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the signal transitions more slowly than is reasonably allowed.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="39"/>
+          <VALUE role="endrange" value="39"/>
+          <MAPPEDTEXT>signal rate of change above threshold</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the signal transitions more quickly than is reasonably allowed.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="40"/>
+          <VALUE role="endrange" value="40"/>
+          <MAPPEDTEXT>signal bias level out of range / zero adjustment failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module applies a bias voltage to a circuit upon which is superimposed a signal voltage (e.g., Oxygen Sensor circuit.). This sub type is also used for failures where the control module applies a zero signal level to a circuit upon which is superimposed a signal voltage (e.g., bias voltage to an Oxygen Sensor circuit, or a filtered digital m/sec2 signal while vehicle stands still for a lateral accelerator sensor module.)</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="41"/>
+          <VALUE role="endrange" value="41"/>
+          <MAPPEDTEXT>signal invalid</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the value of the signal is not plausible given the operating conditions.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="47"/>
+          <VALUE role="endrange" value="47"/>
+          <MAPPEDTEXT>signal erratic</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the signal is momentarily implausible (not long enough for "signal invalid") or discontinuous.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="49"/>
+          <VALUE role="endrange" value="49"/>
+          <MAPPEDTEXT>no signal</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module does not detect a signal which ought to be present (e.g., wheel speed signals present for three of the four wheels and brakes not applied.)</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="50"/>
+          <VALUE role="endrange" value="50"/>
+          <MAPPEDTEXT>signal low time less than minimum</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects the low pulse is too narrow with respect to time.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="51"/>
+          <VALUE role="endrange" value="51"/>
+          <MAPPEDTEXT>signal low time greater than maximum</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects the low pulse is too wide with respect to time.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="52"/>
+          <VALUE role="endrange" value="52"/>
+          <MAPPEDTEXT>signal high time less than minimum</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects the high pulse is too narrow with respect to time.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="53"/>
+          <VALUE role="endrange" value="53"/>
+          <MAPPEDTEXT>signal high time greater than maximum</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects the high pulse is too wide with respect to time.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="54"/>
+          <VALUE role="endrange" value="54"/>
+          <MAPPEDTEXT>signal frequency too low</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects excessive duration for one cycle of the output across a specified sample size.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="55"/>
+          <VALUE role="endrange" value="55"/>
+          <MAPPEDTEXT>signal frequency too high</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects insufficient duration for one cycle of the output across a specified sample size.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="56"/>
+          <VALUE role="endrange" value="56"/>
+          <MAPPEDTEXT>signal frequency incorrect</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module measures an incorrect number of cycles in a given time period.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="57"/>
+          <VALUE role="endrange" value="57"/>
+          <MAPPEDTEXT>signal has too few pulses</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module measures too few pulses (e.g., position is calibrated in counts from one extreme to the other).</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="58"/>
+          <VALUE role="endrange" value="58"/>
+          <MAPPEDTEXT>signal has too many pulses</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module measures too many pulses (e.g., position is calibrated in counts from one extreme to the other).</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="65"/>
+          <VALUE role="endrange" value="65"/>
+          <MAPPEDTEXT>general checksum failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate an incorrect checksum calculation where memory type is not specified.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="66"/>
+          <VALUE role="endrange" value="66"/>
+          <MAPPEDTEXT>general memory failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate a memory failure where memory type is not specified.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="67"/>
+          <VALUE role="endrange" value="67"/>
+          <MAPPEDTEXT>special memory failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate a memory failure where the specific memory type is not defined in this category.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="68"/>
+          <VALUE role="endrange" value="68"/>
+          <MAPPEDTEXT>data memory failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate a data (or working) memory failure for embedded systems using FLASH memory.  This is equivalent to RAM in RAM/ROM/EEPROM embedded systems.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="69"/>
+          <VALUE role="endrange" value="69"/>
+          <MAPPEDTEXT>Program memory failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate a program memory failure for embedded systems using FLASH memory.  This is equivalent to ROM in RAM/ROM/EEPROM embedded systems</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="70"/>
+          <VALUE role="endrange" value="70"/>
+          <MAPPEDTEXT>calibration / parameter memory failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate a calibration / parameter memory failure for embedded systems using FLASH memory.  This is equivalent to EEPROM in RAM/ROM/EEPROM embedded systems.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="71"/>
+          <VALUE role="endrange" value="71"/>
+          <MAPPEDTEXT>watchdog / safety µC failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate a watchdog / safety µC failure.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="72"/>
+          <VALUE role="endrange" value="72"/>
+          <MAPPEDTEXT>supervision software failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate a supervision software failure.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="73"/>
+          <VALUE role="endrange" value="73"/>
+          <MAPPEDTEXT>internal electronic failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate the detection of an internal circuit failure.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="74"/>
+          <VALUE role="endrange" value="74"/>
+          <MAPPEDTEXT>incorrect component installed</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate a mismatch between the hardware connected to the control module and the hardware expected by the control module.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="75"/>
+          <VALUE role="endrange" value="75"/>
+          <MAPPEDTEXT>over temperature</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate the detection of an internal temperature above the expected range.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="81"/>
+          <VALUE role="endrange" value="81"/>
+          <MAPPEDTEXT>not programmed</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate that programming is required.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="82"/>
+          <VALUE role="endrange" value="82"/>
+          <MAPPEDTEXT>not activated</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate that some portion of the program has not been enabled</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="83"/>
+          <VALUE role="endrange" value="83"/>
+          <MAPPEDTEXT>deactivated</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate that that some portion of the program has been disabled.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="84"/>
+          <VALUE role="endrange" value="84"/>
+          <MAPPEDTEXT>missing calibration</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate that an operational range, etc., for a sensor or actuator must be taught to the control module, e.g. by programming or learning.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="85"/>
+          <VALUE role="endrange" value="85"/>
+          <MAPPEDTEXT>not configured</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate the need to enter (program) the sub system option content or the vehicle option content.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="97"/>
+          <VALUE role="endrange" value="97"/>
+          <MAPPEDTEXT>signal calculation failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for algorithm based calculation failures.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="98"/>
+          <VALUE role="endrange" value="98"/>
+          <MAPPEDTEXT>signal compare failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module compares two or more input parameters for plausibility.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="99"/>
+          <VALUE role="endrange" value="99"/>
+          <MAPPEDTEXT>circuit / component protection time-out</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects a function is active for greater than a specified time period.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="100"/>
+          <VALUE role="endrange" value="100"/>
+          <MAPPEDTEXT>signal plausibility failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects plausibility failures.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="101"/>
+          <VALUE role="endrange" value="101"/>
+          <MAPPEDTEXT>signal has too few transitions / events</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module monitors a parameter over time within specified limits and detects fewer than the expected number of transitions.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="102"/>
+          <VALUE role="endrange" value="102"/>
+          <MAPPEDTEXT>signal has too many transitions / events</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module monitors a parameter over time within specified limits and detects more than the expected number of transitions.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="103"/>
+          <VALUE role="endrange" value="103"/>
+          <MAPPEDTEXT>signal incorrect after event</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module does not see the correct change of a parameter or group of parameters in response to a particular event.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="104"/>
+          <VALUE role="endrange" value="104"/>
+          <MAPPEDTEXT>event information</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate the detection of a system event that was not caused by the control module itself but forces the control module to store a DTC (e.g. missing functionality from another system/control module).</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="113"/>
+          <VALUE role="endrange" value="113"/>
+          <MAPPEDTEXT>actuator stuck</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module does not detect any motion in response to energizing a motor, solenoid, relay, etc.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="114"/>
+          <VALUE role="endrange" value="114"/>
+          <MAPPEDTEXT>actuator stuck open</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module does not detect any motion upon commanding the operation of a motor, solenoid, relay, etc., to close some piece of equipment</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="115"/>
+          <VALUE role="endrange" value="115"/>
+          <MAPPEDTEXT>actuator stuck closed</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module does not detect any motion upon commanding the operation of a motor, solenoid, relay, etc., to open some piece of equipment.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="116"/>
+          <VALUE role="endrange" value="116"/>
+          <MAPPEDTEXT>actuator slipping</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects excessive duration to command a motor, solenoid, relay, etc., to move a piece of equipment to a desired position.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="117"/>
+          <VALUE role="endrange" value="117"/>
+          <MAPPEDTEXT>emergency position not reachable</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module is unable to command a motor, solenoid, relay, etc., to move a piece of equipment to the emergency position.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="118"/>
+          <VALUE role="endrange" value="118"/>
+          <MAPPEDTEXT>wrong mounting position</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects incorrectly mounted components, e.g., acceleration sensor showing a position error of 90°.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="119"/>
+          <VALUE role="endrange" value="119"/>
+          <MAPPEDTEXT>commanded position not reachable</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module is unable to command a motor, solenoid, relay, etc., to move a piece of equipment to the commanded position either due to a failure in the actuator or its mechanical environment.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="120"/>
+          <VALUE role="endrange" value="120"/>
+          <MAPPEDTEXT>alignment or adjustment incorrect</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects incorrectly adjusted or aligned components.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="121"/>
+          <VALUE role="endrange" value="121"/>
+          <MAPPEDTEXT>mechanical linkage failure </MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects that the actuator is operational but the driven device is not operating, e.g., drive cable for power sliding door broken.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="122"/>
+          <VALUE role="endrange" value="122"/>
+          <MAPPEDTEXT>fluid leak or seal failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects that a mechanical component has an unexpected gas or liquid flow in, out, or through the component.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="123"/>
+          <VALUE role="endrange" value="123"/>
+          <MAPPEDTEXT>low fluid level</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module detects that a fluid level is too low for proper operation of the system.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="129"/>
+          <VALUE role="endrange" value="129"/>
+          <MAPPEDTEXT>invalid serial data received</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate a signal was received with the corresponding validity bit equal to "invalid" or post processing of the signal determines it is invalid.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="130"/>
+          <VALUE role="endrange" value="130"/>
+          <MAPPEDTEXT>alive / sequence counter incorrect / not updated</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate that a signal was received without the corresponding rolling count value being properly updated.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="131"/>
+          <VALUE role="endrange" value="131"/>
+          <MAPPEDTEXT>value of signal protection calculation incorrect</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used by the control module to indicate, that a message was processed with an incorrect protection (checksum) calculation.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="132"/>
+          <VALUE role="endrange" value="132"/>
+          <MAPPEDTEXT>signal below allowable range</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where some circuit quantity, reported via serial data, is below a specified range.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="133"/>
+          <VALUE role="endrange" value="133"/>
+          <MAPPEDTEXT>signal above allowable range</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where some circuit quantity, reported via serial data, is above a specified range.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="134"/>
+          <VALUE role="endrange" value="134"/>
+          <MAPPEDTEXT>signal invalid</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where some circuit quantity, reported via serial data, is not plausible given the operating conditions.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="135"/>
+          <VALUE role="endrange" value="135"/>
+          <MAPPEDTEXT>missing message</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where one (or more) expected message(s) is not received, e.g., periodic transmission where the repetition time is too high, or message not received as a result of unforeseen reset events of the concerning component (e.g. engine control unit communicating with ABS).</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="136"/>
+          <VALUE role="endrange" value="136"/>
+          <MAPPEDTEXT>bus off</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where a data bus is not available.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="143"/>
+          <VALUE role="endrange" value="143"/>
+          <MAPPEDTEXT>erratic</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the signal, reported via serial data, is momentarily implausible or discontinuous.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="145"/>
+          <VALUE role="endrange" value="145"/>
+          <MAPPEDTEXT>parametric</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module has detected that a component parameter (e.g., capacitance or inductance) is outside its expected range.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="146"/>
+          <VALUE role="endrange" value="146"/>
+          <MAPPEDTEXT>performance or incorrect operation</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module has detected that the component performance is outside its expected range or operating in an incorrect way.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="147"/>
+          <VALUE role="endrange" value="147"/>
+          <MAPPEDTEXT>no operation</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module has detected that the component is not operating.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="148"/>
+          <VALUE role="endrange" value="148"/>
+          <MAPPEDTEXT>unexpected operation</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module has detected that the component is operating in a way or at a time that it has not been commanded to operate.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="149"/>
+          <VALUE role="endrange" value="149"/>
+          <MAPPEDTEXT>incorrect assembly</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module has detected that the component has been incorrectly installed (e.g., hydraulic pipes crossed over, circuits cross wired) or polarity errors.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="150"/>
+          <VALUE role="endrange" value="150"/>
+          <MAPPEDTEXT>component internal failure</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module has received an indication about the component that indicates a failure (e.g., an intelligent actuator or sensor) is indicating an internal fault.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="151"/>
+          <VALUE role="endrange" value="151"/>
+          <MAPPEDTEXT>component or system operation obstructed or blocked</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module has detected that the operation of a component is prevented by an obstruction, e.g., advanced cruise system radar beam obstructed.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+        <TEXTTABLEROW>
+          <VALUE role="startrange" value="152"/>
+          <VALUE role="endrange" value="152"/>
+          <MAPPEDTEXT>component or system over temperature</MAPPEDTEXT>
+          <ADDITIONALINFO>This sub type is used for failures where the control module has detected that the temperature is too high for the correct operation of the component or system.</ADDITIONALINFO>
+        </TEXTTABLEROW>
+      </TEXTTABLE>
+      </DATATYPES>
+   </IMPORTDOC>
+</CANDELAIMPORT>

@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>40_ODXExport_ECU Properties</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="ecu-properties">ECU properties</h1>
+<p>A CANdela ECU is exported into an ODX DIAG-LAYER-CONTAINER. Used interfaces (CAN_D, CAN_C ...) are exported into a PROTOCOL layer. The base variant is exported to BASE-VARIANT and CANdela variants are exported to ECU-VARIANTs.</p>
+<h2 id="communication-parameters-and-protocollayer">Communication Parameters and ProtocolLayer</h2>
+<p><span id="ODXE-R1040-ComParam" class="rqDef">[ODXE-R1040-ComParam]</span></p>
+<p><strong>Note:</strong> CANdelaStudio 3.0 SP4 does not export a COMPARAM-SPEC.</p>
+<p>Since CANdelaStudio 4.0 one PROTOCOL layer is exported per used interface in the CANdela data model. The PROTOCOL layer references one of the standardized (or customer specific) COMPARAM-SPECs. The COMPARAM-SPEC may be optionally exported to a separate file. The exported standardized COMPARAM-SPEC is determined by the value of the CANdela EcuDoc attribute &quot;Protocol Standard&quot; and the qualifier of the corresponding interface:</p>
+<p><span id="table-mapping-of-candelaprotocolstandard-to-comparam-spec"></span></p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>CANdela Protocol Standard</strong></th>
+<th><strong>Qualifier of interface attribute</strong></th>
+<th><strong>Resulting COMPARAM-SPEC</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&quot;UDS&quot;</td>
+<td>Not evaluated.</td>
+<td>UDS_on_CAN_CPS.odx</td>
+</tr>
+<tr class="even">
+<td>&quot;KWP&quot;</td>
+<td>&quot;KLINE&quot;</td>
+<td>KWP2000_CPS.odx</td>
+</tr>
+<tr class="odd">
+<td>&quot;KWP&quot;</td>
+<td>Not &quot;KLINE&quot;</td>
+<td>KWP_on_CAN_CPS.odx</td>
+</tr>
+<tr class="even">
+<td>UDS</td>
+<td>Bustype == &quot;DoIP&quot; or &quot;Ethernet&quot;</td>
+<td>ISO_13400</td>
+</tr>
+</tbody>
+</table>
+<p>Table 6: Mapping of CANdelaProtocolStandard to COMPARAM-SPEC</p>
+<p>The communication parameters defined in a CANdela interface are exported as COMPARAM-REFs at the BASE-VARIANT. Parameters that can not be mapped to a COMPARAM defined in the corresponding COMPARAM-SPEC are skipped with a warning. The optional snref from COMPARAM-REF to PROTOCOL is used to assign the the COMPARAM-REF to the corresponding interface in the CANdela data model.</p>
+<p>In case an Interface contains a Enum-Comparam &quot;InterfaceNotRelevantForOdx&quot; with value &quot;1&quot;/(&quot;Yes&quot;)&quot; the interface is skipped during ODX-Export and no PROTOCOL / COMPARAM-REFs are generated.</p>
+<p>See <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page ODX Export.htm#OPT-R360' title="">[OPT-R360]</a> in the options dialog.</p>
+<h3 id="optimization-of-comparam-refs">Optimization of COMPARAM-REFs</h3>
+<p>If the export option &quot;Export only necessary COMPARAM-REFs&quot; is activated, the ODX-Export will only generate a COMPARAM-REF if the value specified in CANdela differs from the value from the COMPARAM-SPEC.</p>
+<h4 id="mapping-of-unsupported-comparams">Mapping of &quot;Unsupported&quot; comparams</h4>
+<p>In case the Option &quot;Export only necessary COMPARAM-REFs&quot; is set, CANdela comparams are automatically mapped to the target ODX-COMPARAM-SPEC based on the qualifier. If the CANdela-Qualifier matches the COMPARAM.SHORT-NAME in ODX, a COMPARAM-REF is generated. With this mechanism it is possible to add additional COMPARAMs of the ODX-COMPARAM-SPEC to CANdela interfaces.</p>
+<h4 id="units-of-comparams">Units of Comparams</h4>
+<p><span id="ODXE-R900" class="rqDef">[ODXE-R900]</span> For additionally mapped COMPARAMs it is possible to specify the UNIT of the CANdela-Comparam in order to automatically adjust the value to the Target COMPARAM-SPEC.</p>
+<p>If the description of the CANdela comparam contains &quot;[Unit: microseconds]&quot;, the CANdela parameter is in microseconds and will not be multiplied when mapping to ODX.</p>
+<p>If the description of the CANdela comparam contains &quot;[Unit: milliseconds]&quot;, the CANdela parameter is in milliseconds and will be multiplied by 1000 if the ODX COMPARAM references the UNIT &quot;microseconds&quot;.</p>
+<h3 id="handling-of-addressing-schema">Handling of Addressing schema</h3>
+<p>The generation of COMPARAM-REFs for the addressing schema is based on several CANdela parameters. Especially in ODX2.0.1 and ODX2.2.0 and the usage of the ISO-COMPARAM-SPECs the CANdela parameters influence several ODX-COMPARAM-REFs. The following figure shows the relevant CANdela parameters for the calculation of the Addressing schema.</p>
+<div class="figure">
+<img src="Images/image8.png" alt="Addressing Scheme communication parameters" />
+<p class="caption">Addressing Scheme communication parameters</p>
+</div>
+<p>The following table shows how these parameters influence the generation of ODX-COMPARAM-REFS.</p>
+<table style="width:99%;">
+<colgroup>
+<col width="14%" />
+<col width="10%" />
+<col width="26%" />
+<col width="25%" />
+<col width="21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"><strong>Addressing Schema</strong></th>
+<th align="left"><strong>CAN-ID Type</strong></th>
+<th align="left"><strong>CP_CanPhysReqFormat</strong></th>
+<th align="left"><strong>CP_CanRespUSDTFormat</strong></th>
+<th align="left"><strong>CP_CanRespUUDTFormat</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">11-Bit</td>
+<td align="left">normal segmented 11-bit transmit with FC</td>
+<td align="left">normal segmented 11-bit receive with FC</td>
+<td align="left">normal unsegmented 11-bit receive</td>
+</tr>
+<tr class="even">
+<td align="left">Extended</td>
+<td align="left">11-Bit</td>
+<td align="left">extended segmented 11-bit transmit with FC</td>
+<td align="left">extended segmented 11-bit receive with FC</td>
+<td align="left">extended unsegmented 11-bit receive</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">29-Bit</td>
+<td align="left">normal segmented 29-bit transmit with FC</td>
+<td align="left">normal segmented 29-bit receive with FC</td>
+<td align="left">normal unsegmented 29-bit receive</td>
+</tr>
+<tr class="even">
+<td align="left">Extended</td>
+<td align="left">29-Bit</td>
+<td align="left">extended segmented 29-bit transmit with FC</td>
+<td align="left">extended segmented 29-bit receive with FC</td>
+<td align="left">extended unsegmented 29-bit receive</td>
+</tr>
+</tbody>
+</table>
+<p>Table 7: Communication paramters for functional addressing</p>
+<p>In case the functional addressing schema is defined explictly by the Parameters &quot;Functional Addressing Schema&quot; and &quot;Functional CAN-ID Type&quot;, the following mappins is applied. In case these parameters are not explicitly defined, the parameters &quot;Addressing schema&quot; and &quot;CAN-ID Type&quot; are used as basis.</p>
+<table style="width:98%;">
+<colgroup>
+<col width="31%" />
+<col width="26%" />
+<col width="40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"><strong>Functional Addressing Schema</strong></th>
+<th align="left"><strong>Functional CAN-ID Type</strong></th>
+<th align="left"><strong>CP_CanFuncReqFormat</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">11-Bit</td>
+<td align="left">normal segmented 11-bit transmit with FC</td>
+</tr>
+<tr class="even">
+<td align="left">Extended</td>
+<td align="left">11-Bit</td>
+<td align="left">extended segmented 11-bit transmit with FC</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">29-Bit</td>
+<td align="left">normal segmented 29-bit transmit with FC</td>
+</tr>
+<tr class="even">
+<td align="left">Extended</td>
+<td align="left">29-Bit</td>
+<td align="left">extended segmented 29-bit transmit with FC</td>
+</tr>
+</tbody>
+</table>
+<p>Table 8: Communication parameters for functional addressing</p>
+<p>Please not that the above mentioned names of communication parameters are not standardized. These names may vary dependant on the template of the manufacturer.</p>
+<h3 id="naming-of-exported-comparam-specs">Naming of exported COMPARAM-SPECs</h3>
+<p>The file name of the exported COMPARAM-SPEC is exported by adding the ECU-Qualifier as prefix to the Name of the COMPARAM-SPEC listed in the table <a href="#table-mapping-of-candelaprotocolstandard-to-comparam-spec">Mapping of CANdelaProtocolStandard to COMPARAM-SPEC</a>.</p>
+<h2 id="special"><span id='_index_446728025' title='Communication Parameter: in ODX Export' data-term='Communication Parameter' data-text='in ODX Export'>Special Communication Parameters</span></h2>
+<p>The <a href="../../30%20Features/Interface/Communication%20Parameter.htm#special">special communication parameters</a></p>
+<ul>
+<li>Max Length of TP Message (4095)</li>
+<li>Transport Protocol Type (ISO15765)</li>
+<li>Bus type (CAN)</li>
+</ul>
+<p>have no direct representation in ODX. ODX Export represents them only implicitly by using a COMPARAM-SPEC which has</p>
+<ul>
+<li>PHYSICAL-LINK-TYPE = <code>ISO_11898_2_DWCAN</code> and</li>
+<li>PROTOCOL-TYPE = <code>ISO_15765_3_on_ISO_15765_2</code>.</li>
+</ul>
+
+<h2 id="unsupported-negative-response-codes">Unsupported Negative Response Codes</h2>
+<p>Unsupported service NRCs are exported as GLOBAL-NEG-RESPONSE within the BASE-VARIANT.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+<li><a href="../../30%20Features/Interface/Communication%20Parameter.htm">Communication Parameter</a></li>
+</ul>
+</body>
+</html>

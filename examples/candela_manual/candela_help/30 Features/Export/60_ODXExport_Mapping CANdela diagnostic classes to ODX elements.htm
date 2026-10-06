@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>60_ODXExport_Mapping CANdela diagnostic classes to ODX elements</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="mapping-candela-diagnostic-classes-to-odx-elements">Mapping CANdela diagnostic classes to ODX elements</h1>
+<h2 id="mapping-to-funct-classs">Mapping to FUNCT-CLASSs</h2>
+<p>Usually Qualifier, name and description of a CANdela diagnostic class are exported as SHORT-NAME, LONG-NAME and DESCRIPTION of a FUNCT-CLASS in ODX. A DIAG-SERVICE corresponds to a CANdela Service within a DiagInstance and belongs therefore to a diagnostic class and accordingly to a FUNCT-CLASS. Hence, the export writes a reference from a DIAG-SERVICE to its FUNCT-CLASS.</p>
+<h2 id="diag-service-semantics">DIAG-SERVICE SEMANTICs</h2>
+<p>DIAG-SERVICE.SEMANTIC is set as it is shown in table &quot;Diagnostic Classes mapped to FUNCT-CLASSs&quot;.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela diagnostic class spec</strong></th>
+<th align="left"><strong>ODX SEMANTIC attribute of DIAG-SERVICE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">communication</td>
+<td align="left">COMMUNICATION</td>
+</tr>
+<tr class="even">
+<td align="left">session</td>
+<td align="left">SESSION</td>
+</tr>
+<tr class="odd">
+<td align="left">security</td>
+<td align="left">SECURITY</td>
+</tr>
+<tr class="even">
+<td align="left">identification</td>
+<td align="left">IDENTIFICATION</td>
+</tr>
+<tr class="odd">
+<td align="left">faultMemory</td>
+<td align="left">FAULTMEMORY</td>
+</tr>
+<tr class="even">
+<td align="left">varCoding</td>
+<td align="left">VARCODING</td>
+</tr>
+<tr class="odd">
+<td align="left">actualData</td>
+<td align="left">ACTUAL-DATA</td>
+</tr>
+<tr class="even">
+<td align="left">storedData</td>
+<td align="left">STORED-DATA</td>
+</tr>
+<tr class="odd">
+<td align="left">memory</td>
+<td align="left">MEMORY</td>
+</tr>
+<tr class="even">
+<td align="left">control</td>
+<td align="left">CONTROL</td>
+</tr>
+<tr class="odd">
+<td align="left">calibration</td>
+<td align="left">CALIBRATION</td>
+</tr>
+<tr class="even">
+<td align="left">routine</td>
+<td align="left">ROUTINE</td>
+</tr>
+<tr class="odd">
+<td align="left">function</td>
+<td align="left">FUNCTION</td>
+</tr>
+<tr class="even">
+<td align="left">download</td>
+<td align="left">UP-DOWNLOAD</td>
+</tr>
+<tr class="odd">
+<td align="left">upload</td>
+<td align="left">UP-DOWNLOAD</td>
+</tr>
+<tr class="even">
+<td align="left">jobs</td>
+<td align="left">JOB</td>
+</tr>
+<tr class="odd">
+<td align="left">testerPresent</td>
+<td align="left">TESTERPRESENT</td>
+</tr>
+<tr class="even">
+<td align="left">flashjob</td>
+<td align="left">FLASHJOB</td>
+</tr>
+</tbody>
+</table>
+<p>Table 9: Diagnostic classes mapped to FUNCT-CLASSs</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm">Diagnostic Class</a></li>
+</ul>
+</body>
+</html>

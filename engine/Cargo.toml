@@ -1,0 +1,28 @@
+[package]
+name = "diagauthor-engine"
+version = "0.1.0"
+edition = "2024"
+description = "Diagnostic data authoring engine: JSON Lines child-process server with SQLite projects"
+
+[lib]
+name = "diagauthor_engine"
+path = "src/lib.rs"
+
+[[bin]]
+name = "diagauthor-engine"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.40", features = ["bundled"] }
+thiserror = "2"
+uuid = { version = "1", features = ["v4", "serde"] }
+quick-xml = { version = "0.38", features = ["serialize"] }
+# Real SHA-256 for the CDD content digest. The save receipt's identifier digest
+# is deliberately non-cryptographic and lives in src/storage.rs; preview/apply
+# is a user-approval boundary and needs a collision-resistant one.
+sha2 = "0.10"
+
+[dev-dependencies]
+tempfile = "3"

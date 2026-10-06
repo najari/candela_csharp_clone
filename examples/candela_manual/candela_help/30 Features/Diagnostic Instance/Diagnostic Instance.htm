@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Instance</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-instance">Diagnostic Instance</h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Diagnostic%20Instances.png" alt="CANdelaStudio Tree and Diagnostic Instance in Right Side" />
+<p class="caption">CANdelaStudio Tree and Diagnostic Instance in Right Side</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p><span id="DI-D100" class="rqDef">[DI-D100]</span> The <strong>diagnostic instance</strong> is a core concept of the CANdela data model. It combines...</p>
+<ul>
+<li><strong>services</strong> (to be executed, e.g. “Start” on top in the screenshot) with...</li>
+<li><strong>data</strong> (to be transported, e.g. list with “P2”, “P2Ex” at the bottom in the screenshot)</li>
+</ul>
+<p>This structure is predefined in the <a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Class Template</a>.</p>
+<p><span id="DI-D010" class="rqDef">[DI-D010]</span> You can reuse (called &quot;reference&quot; or &quot;share&quot;) a diagnostic instance in multiple variants or libraries. This...</p>
+<ul>
+<li>reduces the <strong>size</strong> of the CANdela document and</li>
+<li>ensures that <strong>modifications</strong> consistently take effect in multiple variants.</li>
+</ul>
+<p>See <a href="Sharing%20Diagnostic%20Instances.htm">Sharing Diagnostic Instances</a>.</p>
+<p>The Diagnostic Class Template controls the number of diagnostic instances in a variant:</p>
+<ul>
+<li><strong>only one</strong> diagnostic instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R150-singleton' title="">[DCLT-R150-singleton]</a>,
+<ul>
+<li>e.g. for Fault Memory</li>
+<li>the CANdelaStudio tree shows such a diagnostic instance directly in the chapter &quot;Supported diagnostic classes&quot; of the variant.</li>
+</ul></li>
+<li><strong>multiple diagnostic instances</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R150-multiple' title="">[DCLT-R150-multiple]</a>,
+<ul>
+<li>distinguished by the <strong>Identifier</strong></li>
+<li>e.g. for Stored Data</li>
+<li>the CANdelaStudio tree shows these diagnostic instance below the diagnostic class.</li>
+</ul></li>
+</ul>
+<h2 id="identifier">Identifier</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Diagnostic%20Instance%20Identifier.jpg" alt="Diagnostic Instance Identifier" />
+<p class="caption">Diagnostic Instance Identifier</p>
+</div>
+<p><span id="DI-R100" class="rqDef">[DI-R100]</span> The <strong>Identifier</strong> distinguishes multiple diagnostic instances.</p>
+<ul>
+<li>Its presence and position in the request or response is defined in the Protocol Service by a <a href="../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm">Variable Value component</a>.</li>
+<li>As a default, the Identifier must be unique (but see <a class='rqRef' href='../../20 UserInterface\Diagnostic Instance\Diagnostic Instances.htm#DIUI-R200' title="">[DIUI-R200]</a>).</li>
+<li>A Variable Value component represents one type of Variable Value <a class='rqRef' href='../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm#PS-R400-Specification' title="Variable Value Component &quot;Specification&quot;">[PS-R400-Specification]</a>, e.g.
+<ul>
+<li>&quot;ID&quot; (Identifier) or</li>
+<li>&quot;Subfunction&quot;.</li>
+</ul></li>
+<li>The set of available Identifiers is restricted by a Text Table <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#DCLT-R400' title="">[DCLT-R400]</a>.</li>
+</ul>
+<p>See also</p>
+<ul>
+<li>Check for Identifier Uniqueness
+<ul>
+<li>in the user interface <a class='rqRef' href='../../20 UserInterface\Diagnostic Instance\Diagnostic Instances.htm#DIUI-R200' title="">[DIUI-R200]</a></li>
+<li><a href="../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm">feature</a></li>
+</ul></li>
+<li><a href="../../30%20Features/DID/DID.htm#identifiers">Identifiers in UDS and OBD Services</a></li>
+</ul>
+<h2 id="diagnostic-instance-as-a-did-definition">Diagnostic Instance as a &quot;DID Definition&quot;</h2>
+<p>For a DID object from UDS, CANdela describes...</p>
+<ul>
+<li>... the <strong>data objects</strong>: in a <strong>DID</strong> object,</li>
+<li>... but the <strong>communication</strong>: in a <strong>diagnostic instance</strong>.</li>
+</ul>
+<p>see the <a href="../../30%20Features/DID/DID.htm">overview diagram</a>.</p>
+<p><span id="DI-D110" class="rqDef" title="Diagnostic Instance as DID Definition">[DI-D110 Diagnostic Instance as DID Definition]</span> A diagnostic instance is a &quot;DID Definition&quot; if...</p>
+<ul>
+<li>there is a DID D, and</li>
+<li>the diagnostic instance contains a telegram table with a DID Data Reference <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R160' title="">[DID-R160]</a> referring to D;</li>
+<li>without respect to...
+<ul>
+<li>the services of the diagnostic instance,</li>
+<li>the number of DID Data References in the telegram table,</li>
+<li>the qualifiers and names,</li>
+<li>the identifier values.</li>
+</ul></li>
+<li>Note: this definition differs from...
+<ul>
+<li>... that of a &quot;DID Enabled&quot; diagnostic class <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001' title="">[DCL-D001]</a> in that it does not consider services and the number of objects.</li>
+<li>... the consistency condition <a class='rqRef' href='../../30%20Features/Data%20Objects/Telegram%20Table.htm#TT-R240' title="consistency condition">[TT-R240]</a> for the “DID Data Reference” semantics.</li>
+</ul></li>
+</ul>
+<p>Note: CANdelaStudio may show the DID Contents directly in the Diagnostic Instance <a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm#DIUI-R310' title="">[DIUI-R310]</a>.</p>
+<h2 id="activation">Activation</h2>
+<p><strong>Use-case:</strong> Some manufacturer specific information (diagnostic instance) is predefined in the template but optional to support for a concrete ECU document. When you delete such a predefined diagnostic instance in CANdelaStudio, all information is lost. If you decide later that the diagnostic instance should be supported by the ECU, you have to re-enter the content manually.</p>
+<p><strong>Example:</strong> some data package with a fix local identifier contains serial number information. If an ECU contains a serial number, it must support exactly this service.</p>
+<p><strong>Solution:</strong> The “activation” feature allows de-activating a diagnostic instance or job container. The user can always decide to re-activate this piece of information.</p>
+<p><strong>Details:</strong></p>
+<p><span id="DI-R150" class="rqDef">[DI-R150]</span> Each diagnostic instance (or job container, also in the following) may be <strong>activated</strong> or <strong>deactivated</strong>. Changing this <strong>activation state</strong> property is called to <strong>activate</strong> and <strong>deactivate</strong>. The property is persistent (i.e. remains the same when the file is saved and opened again).</p>
+<p>A new diagnostic instance is always activated.</p>
+<p>When copying a diagnostic instance, its activation gets copied, too.</p>
+<ul>
+<li>E.g. copying a deactivated diagnostic instance results in a new deactivated diagnostic instance.</li>
+</ul>
+<p>Deactivating diagnostic instances referenced in multiple variants or libraries takes effect at all references.</p>
+<p>Changing activation state requires the special authorization <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R030' title="Activation modifiable">[DIA-R030]</a>.</p>
+<p><strong>Semantics:</strong> a de-activated diagnostic instance or job container is no more valid for the ECU document:</p>
+<ul>
+<li>it is displayed greyed-out</li>
+<li>it does not appear in the report</li>
+<li>it does not appear in data oriented exports (e.g. ODX, Diogenes)</li>
+<li>it is ignored by Vector testers (i.e. by the DTL)</li>
+</ul>
+<h2 id="consistency-conditions">Consistency Conditions</h2>
+<h3 id="combined-components">Combined Components</h3>
+<p><strong>Within one DiagInstance</strong>, there is <strong>at most one <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram table</a> for a combined component</strong> in the associated DiagClassTemplate (the telegram table may be missing because a service may be missing if the Convention of the Used Protocol Service is not &quot;required&quot;).</p>
+<p><strong>Within one DiagInstance</strong>, there is <strong>at most</strong> one Identifier  for a combined variable value  in the associated DiagClassTemplate.</p>
+<p>The list of telegram tables  must reference all combined components of the Used Protocol Services, and only those ones. Analogous for the Identifier .</p>
+<h3 id="negative-response">Negative Response</h3>
+<p>The data object  in the negative response must have at least one entry in the text table if the respective proxy component is mandatory.</p>
+<h3 id="data-objects-and-proxy-component">Data Objects and Proxy Component</h3>
+<p>Data Objects  that belong to a proxy component which</p>
+<ol style="list-style-type: lower-alpha">
+<li>is not the last component, or</li>
+<li>is the last component within an iterative,</li>
+</ol>
+<p>must not have a datatype without length information. This holds in request and posResponse.</p>
+<p>Motivation: allow only objects that allow e.g. the tester library to associate posResponse data with the CANdela objects. That means:</p>
+<p>Not allowed: an Ascii or Unicode field datatype with no termination, or a numeric field (that never has termination).</p>
+<p>Allowed at any proxy: a datatype with fixed length (e.g. atom or fixed length field), or Ascii/Unicode field with leading size info or zero-termination.</p>
+<p><strong>v3.0.3 (CDS-3241)</strong>: variable length datatypes with length info are forbidden at a non-last proxy.</p>
+<h2 id="target-groups">Target Groups (Audience) at a Diagnostic Instance</h2>
+<p>See also the <a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance%20Property%20Page%20Target%20Groups.htm">property page for target groups</a>.</p>
+<p><span id="DI-R200" class="rqDef">[DI-R200]</span> Each diagnostic instance can be <strong>relevant</strong> for an n-of-m subset of the entire set of <a href="../../30%20Features/Target%20Groups/Target%20Groups.htm">target groups</a>, an <strong>audience</strong>, with <code>0 &lt;= n &lt;= m</code>.</p>
+<p>An empty audience is valid (the object is never exported).</p>
+<p>For new diagnostic instances, all target groups are in the audience.</p>
+<p>Copying corresponding diagnostics objects copies their audience.</p>
+<p>The audience at a diagnostic instance governs the audience at a service:</p>
+<ul>
+<li>If a diagnostic instance is not relevant for a target group, all contained services are automatically not relevant for this target group, too.</li>
+<li>If a diagnostic instance is relevant for a target group, the individual contained services may or may not be relevant for this target group.</li>
+</ul>
+<p>I.e. the relevance at a service is variable only if the target group is relevant for the diagnostic instance.</p>
+<p>Modification of audience is controlled by authorization.</p>
+<h2 id="dtc-status-bits">DTC Status Bits</h2>
+<p>See the definition of DTC Status Bits at Protocol Services.</p>
+<p>In a diagnostic instance, the CANdela data model holds a <strong>DTC Status Data Object</strong> for each combined DTC Status Bits proxy component of the Diagnostic Class Template.</p>
+<p>The <strong>DTC Status Data Object</strong> defines</p>
+<ul>
+<li>the bits available in this Fault Memory instance</li>
+<li>optional request default values for a test system</li>
+</ul>
+<h2 id="properties-for-snapshot-records">Properties for Snapshot Records</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Calculated' title="">[DI-R310-Calculated]</a> Snapshot Numeration Type &quot;Calculated&quot;</li>
+<li><a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R320' title="">[DI-R320]</a> Default Number of Calculated Snapshot Records (Numeration Type &quot;Calculated&quot;)</li>
+</ul>
+<h2 id="ecu-shared-data">ODX ECU-SHARED-DATA</h2>
+<p><span id="DIATTR-R100" class="rqDef">[DIATTR-R100]</span> A Diagnostic Instance originates from <a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA</a> if the following three <a href="../../30%20Features/Attributes/Special%20Attributes.htm">special attributes</a> are set (CDS-25736):</p>
+<ul>
+<li><span id="DIATTR-R100-DOCTYPE" class="rqDef">[DIATTR-R100-DOCTYPE]</span> DOCTYPE</li>
+<li><span id="DIATTR-R100-DOCREF" class="rqDef">[DIATTR-R100-DOCREF]</span> DOCREF</li>
+<li><span id="DIATTR-R100-ID_REF" class="rqDef">[DIATTR-R100-ID_REF]</span> ID_REF</li>
+</ul>
+
+<p>Such a diagnostic instance...</p>
+<ul>
+<li>will be shown with a special <a href="../../20%20UserInterface/Tree/Icons.htm">icon</a> in the tree and in the diagnostic instance list</li>
+<li>if the user starts editing such a diagnostic instance, CANdelaStudio shows a popup dialog:</li>
+</ul>
+<blockquote>
+<p>This diagnostic instance is a reference from an ECU-SHARED-DATA. Editing this diagnostic instance will break the link to the ECU-SHARED-DATA. Do you want to continue?</p>
+</blockquote>
+<ul>
+<li>if the user edits such a diagnostic instance, CANdelaStudio resets the special attributes.</li>
+<li>See CDS-71837 for resetting the attributes on copy <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R025' title="">[DIOP-R025]</a>.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001' title="">[DCL-D001]</a> Diagnostic Class Is DID enabled</li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Use-Cases.htm">Diagnostic Use-Cases</a></li>
+<li><a href="Diagnostic%20Instance%20Authorization.htm">Diagnostic Instance Authorization</a></li>
+<li><a href="Diagnostic%20Instance%20Operations.htm">Diagnostic Instance Operations</a></li>
+<li><a href="../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm">Document Upgrade</a></li>
+<li><a href="Sharing%20Diagnostic%20Instances.htm">Sharing Diagnostic Instances</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">Telegram Table</a></li>
+</ul>
+</body>
+</html>

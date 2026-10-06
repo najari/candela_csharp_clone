@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Editing Protocol Services</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="editing-protocol-services">Editing Protocol Services</h1>
+<ul>
+<li>In standard view, the chapter &quot;Protocol services&quot; is read-only.</li>
+<li>In Expert View, you can edit directly in the list, and create new and edit existing Protocol Services.</li>
+</ul>
+<h2 id="editing-protocol-services-1">Editing Protocol Services</h2>
+<p><strong>Note:</strong> Some of the editing actions described below require an update of all DiagClassTemplates and DiagInstances of the document (e.g. after adding/removing service components).</p>
+<h3 id="default-components-for-a-protocol-service">Default Components for a Protocol Service</h3>
+<p>New protocol services must be created with a default set of components, depending on the primitive type:</p>
+<ul>
+<li><p>Request:</p>
+<ul>
+<li>ConstComp (spec = “serviceId”, name = “SID-RQ”, qualifier = “SID_RQ”, value = defined by user).</li>
+</ul></li>
+<li><p>PosResponse:</p>
+<ul>
+<li>ConstComp (spec = “serviceId”, name = “SID-PR”, qualifier = “SID_PR” value = value of Request + 0x40).</li>
+</ul></li>
+<li><p>NegResponse:</p>
+<ul>
+<li>ConstComp (spec = “serviceId”, name = “SID-NR”, qualifier = “SID_NR”, value = 0x7F),</li>
+<li>ConstComp (spec = “serviceId”, name = “SID-RQ-NR”, qualifier = “SID_RQ_NR” value = value of Request),</li>
+<li>SimpleProxyComp (destiny = “resCode”, name = “RESPONSE CODE”, qualifier = “RESPONSE_CODE”).</li>
+</ul></li>
+</ul>
+<p>The Request primitive is always present, whereas primitives PosResponse and NegResponse must be selected on creation of a new protocol service.</p>
+<h3 id="adding-protocol-service-components">Adding Protocol Service Components</h3>
+<p>Protocol service components must be added in the table of a primitive. On creation of a new protocol service component, a dialog appears which provides a selection of protocol service components (see below). Special cases are:</p>
+<ol style="list-style-type: decimal">
+<li><p>MuxComp and NumeratorIterComp must have a selector (a SimpleProxyComp) which is to the left of the component. It must be possible to choose the selector from a list of proxy components in the selection dialog, since there is no means to set the selector to another proxy component after creation. If there is no proxy component in the primitive at all, then CANdelaStudio must create a new one first (before creating the MuxComp).</p></li>
+<li><p>StatusOfDtcProxyComp and GroupOfDtcProxyComp can only be added, if all necessary data types are available. Both classes inherit properties from SimpleProxyComp and can be created by selecting the appropriate specification in the selection dialog.</p></li>
+<li><p>EndMarkerIterComp needs an “end marker selector”. The default is always the very first component inside the EndMarkerIterComp.</p></li>
+</ol>
+<p>The combo box <strong>“Specification”</strong> contains the items</p>
+<ul>
+<li>“Any”,</li>
+<li>“Data “,</li>
+<li>“DTC”,</li>
+<li>“OBD-DTC”,</li>
+<li>“Environment Data” (only for option “Multiplexer”),</li>
+<li>“Response Code” (only for option “Proxy”),</li>
+<li>“Group of DTC” (only for option “Proxy”) and</li>
+<li>“DTC Status” (only for option “Proxy”).</li>
+</ul>
+<p>The combo box <strong>“Selector”</strong> contains...</p>
+<ul>
+<li>all SimpleProxyComps which will be to the left of the new MuxComp after creation, or</li>
+<li>“None (create new proxy)” if there are no proxy components at all.</li>
+</ul>
+<p>After adding the component, the following must be done:</p>
+<ul>
+<li><p>ConstComp: nothing. DiagClassTemplates and instances remain unchanged.</p></li>
+<li><p>Variable Value (StaticComp): all DiagClassTemplates using the protocol service must be updated by adding a new unshared static component. This unshared static component must then be shared with already existing shared static components.</p>
+<p>To avoid problems with different bit lengths of shared static components, the overall bit length must be computed before creating the new StaticComp.</p></li>
+<li><p>ProxyComp, IterComp: all DiagClassTemplates using the protocol service must be updated by adding appropriate unshared proxy components.</p></li>
+</ul>
+<h3 id="removing-protocol-service-components">Removing Protocol Service Components</h3>
+<p>After removing the component, the following must be done:</p>
+<ul>
+<li><p>ConstComp: nothing. DiagClassTemplates and instances remain unchanged.</p></li>
+<li><p>StaticComp: all DiagClassTemplates using the protocol service must be updated by removing the static component from shared static components.</p></li>
+<li><p>ProxyComp, IterComp: all DiagClassTemplates using the protocol service must be updated by removing the proxy component from shared proxy components.</p></li>
+</ul>
+<h3 id="modifying-protocol-service-components">Modifying Protocol Service Components</h3>
+<p>Protocol service components may only be modified if the following restrictions are met:</p>
+<p><strong>ConstComp</strong>: no restrictions. Length and specification can be edited at any time.</p>
+<p><strong>StaticComp</strong>: if the protocol service is already in use, then editing of the bit length must be prohibited.</p>
+<p><strong>ProxyComp</strong>: editing of the <code>destiny</code> must be prohibited. It must be set on creation of the Protocol service component and cannot be modified afterwards.</p>
+<p>Editing the bit length of a proxy component is possible if...</p>
+<ul>
+<li>the proxy component is not shared,</li>
+<li>and if the maximum length of all data objects created in the diagnostic instance using the proxy component/protocol service is less than the maximum length entered by the user (CDS-3673).</li>
+</ul>
+<p>Special cases are:</p>
+<ol style="list-style-type: decimal">
+<li><p>MuxComp, NumeratorIterComp: selector cannot be modified.</p></li>
+<li><p>StatusOfDtcProxyComp, GroupOfDtcProxyComp: data type describing bit length cannot be modified afterwards.</p></li>
+<li><p>EndMarkerIterComp: one of the components lying inside this component must be specified as “end marker”. All components lying before the “end marker” must have fix bit length, and the “end marker” itself must not be greater than 4 bytes.</p></li>
+</ol>
+<h2 id="creating-a-protocol-service">Creating a Protocol Service</h2>
+<p>Specify name, qualifier and service identifier of the protocol service.</p>
+<p>Specify whether the protocol service has primitives Positive Response and/or Negative Response.</p>
+<p>Specify whether primitives Request and (optionally) Positive Response contain a constant or variable value used to hold an identifier or the number of a sub function.</p>
+<p>Specify data components of primitive Request.</p>
+<p>Specify data components of primitive Positive Response.</p>
+<p>Select a subset of negative response codes from a list.</p>
+<h3 id="page-new-component">Page &quot;New Component&quot;</h3>
+<p>For a Variable Value component (CDS-8032 R020):</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>show a combo box for selecting the text table data type below option “Variable value”.</p></li>
+<li><p>fill the combo box with text table data types only, show an error message if there is no suitable text table data type if user clicks on [OK].</p></li>
+</ol>
+<h3 id="property-page-for-components">Property Page for Components</h3>
+<p>Controls “Name” and “Qualifier” are edit controls.</p>
+<p>Depending on the selected type of protocol service component, the list <strong>“Specification”</strong> contains items for</p>
+<ul>
+<li>Constants <a class='rqRef' href='../../30 Features\Protocol Service\Constant Component.htm#PS-R300-Specification' title="Constant Component &quot;Specification&quot;">[PS-R300-Specification]</a> or</li>
+<li>Variable Values <a class='rqRef' href='../../30 Features\Protocol Service\Variable Value Component.htm#PS-R400-Specification' title="Variable Value Component &quot;Specification&quot;">[PS-R400-Specification]</a>.</li>
+</ul>
+<p>“Value” is a numeric edit control. It additionally provides a selection box to change the input format. It is disabled if the component is a Variable Value.</p>
+<p>The controls are always visible.</p>
+<h3 id="property-page-for-data">Property Page for Data</h3>
+<p>Specify whether the protocol service transports data objects in its primitives Request and Positive Response.</p>
+<p>Controls “Component”, “Name” and “Qualifier” do not change (i.e. they may be edited but they do not disappear or will be disabled).</p>
+<p>All controls beneath control “Qualifier” are changing depending on the selection made in control “Component”:</p>
+<ul>
+<li>“Constant”: one combo box for the specification, two edit controls for bit length and value.</li>
+<li>“Proxy”: one combo box for the specification, two edit controls for min bit length and max bit length (see picture).</li>
+<li>“Mux”: controls for specifying the data selector (name, qualifier, specification, min/max bit length)</li>
+<li>“Iterator (n)”</li>
+<li>“Iterator (End)”</li>
+<li>“Iterator (Marker)”</li>
+</ul>
+<h3 id="property-page-for-negative-response-codes">Property Page for Negative Response Codes</h3>
+<p>Select one or several of the codes.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC%20Status%20Bits.htm">DTC Status Bits</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">Object Property Page &quot;General&quot;</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Services (Feature)</a></li>
+<li><a href="Protocol%20Services.htm">Protocol Services (List)</a></li>
+</ul>
+</body>
+</html>

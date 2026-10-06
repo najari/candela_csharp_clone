@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>120_ODXExport_ECU-SHARED-DATA</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="ecu-shared-data">ECU-SHARED-DATA</h1>
+<p><span id="ODXE-R1120" class="rqDef">[ODXE-R1120]</span></p>
+<p>Since version 5.0 SP 1 CANdelaStudio supports the usage of ODX-ECU-SHARED-DATA. Within CANdelaStudio, UNITs, DTCs and DOPs can be referenced. These items are imported by the regular OdxImport-mechanism. For the imported items, the ODXLINK-Triple (ID-REF, DOCREF and DOCTYPE) is stored within attributes. When exporting a cdd that references items from an ECU-SHARED-DATA these items are not exported anymore, but appropriate ODXLINKs to the elements within the ECU-SHARED-DATA are generated in case the references are still valid. When DTCs are imported from an ECU-SHARED-DATA and e.g. the error-code or the error text is modified, the DTC has to be exported. It cannot be referenced from the ECU-SHARED-DATA anymore.</p>
+<h2 id="table-rows-from-ecu-shared-data">TABLE-ROWs from ECU-SHARED-DATA</h2>
+<p>With CANdela 7.5 CANdelaStudio supports also references to TABLE-ROWs in ECU-SHARED-DATAs. Diagnostic Instances created from TABLE-ROWs in ECU-SHARED-DATAs during OdxImport will not be exported as TABLE-ROWs in the BASE-VARIANT/ECU-VARIANT but referenced from the contained ECU-SHARED-DATA.</p>
+<h2 id="support-for-different-versions">Support for different versions</h2>
+<p>With CANdela 8.0 it is possible to specify the ODX-Version for an ECU-SHARED-DATA. Thereby it is possible to integrate the same ECU-SHARED-DATA in different ODX-versions. This is required e.g. in case the cdd shall be exported to different ODX-versions. The ODX-Export will then use only the ECU-SHARED-DATA which has the same version as the ODX version selected for export.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+<li><a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>TAB Extended Data per DTC</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="tab-extended-data-per-dtc">TAB Extended Data per DTC</h1>
+<p><span id="EDUI-R500" class="rqDef">[EDUI-R500]</span> The &quot;Extended Data per DTC&quot; TAB shows...</p>
+<ul>
+<li>a list of DTCs and Extended Data Records to Store <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20per%20DTC.htm#EDUI-R600' title="">[EDUI-R600]</a></li>
+<li>a TAB &quot;stored for Extended Data Records&quot; <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20per%20DTC.htm#EDUI-R800' title="">[EDUI-R800]</a></li>
+</ul>
+<div class="figure">
+<img src="Images/ExtendedDataperDTC.png" alt="Extended Data per DTC" />
+<p class="caption">Extended Data per DTC</p>
+</div>
+<h2 id="list-extended-data-per-dtc">List &quot;Extended Data per DTC&quot;</h2>
+<p><span id="EDUI-R600" class="rqDef">[EDUI-R600]</span> List of <strong>DTCs</strong> with <strong>Extended Data Records to Store</strong></p>
+<ul>
+<li><span id="EDUI-R610-DTCs" class="rqDef">[EDUI-R610-DTCs]</span> The list shows all DTCs defined in the diagnostic instance.</li>
+<li><span id="EDUI-R610-Sort" class="rqDef">[EDUI-R610-Sort]</span> The DTCs are sorted by ascending Code.
+<ul>
+<li>No sorting by the user.</li>
+</ul></li>
+<li><span id="EDUI-R610-MultiSel" class="rqDef">[EDUI-R610-MultiSel]</span> The list supports multi-selection.</li>
+<li><span id="EDUI-R612" class="rqDef">[EDUI-R612]</span> The list can be filtered by a text control at top right, which applies to all texts shown.</li>
+</ul>
+<h3 id="list-columns">List Columns</h3>
+<p><span id="EDUI-R620" class="rqDef">[EDUI-R620]</span></p>
+<ul>
+<li><span id="EDUI-R630" class="rqDef">[EDUI-R630]</span> <strong>DTCs</strong>
+<ul>
+<li>shows the DTC Code and name.</li>
+</ul></li>
+<li><span id="EDUI-R640" class="rqDef">[EDUI-R640]</span> <strong>Extended Data Records to Store</strong>
+<ul>
+<li>&quot;(all)&quot; if all Extended Data Records checked <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R300' title="">[EDR-R300]</a></li>
+<li>otherwise comma separated Extended Data Records (number + name)</li>
+</ul></li>
+</ul>
+<h2 id="right-side-tab-extended-data-records-to-store">Right Side: TAB &quot;Extended Data Records to Store&quot;</h2>
+<p><span id="EDUI-R800" class="rqDef">[EDUI-R800]</span> The TAB shows...</p>
+<ul>
+<li>a list of Extended Data Records</li>
+<li>for each Extended Data Record, whether it is stored for the DTC(s) selected in the list of DTCs <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20per%20DTC.htm#EDUI-R600' title="">[EDUI-R600]</a></li>
+</ul>
+<div class="figure">
+<img src="Images/ExtendedDataperDTC.png" alt="Extended Data per DTC" />
+<p class="caption">Extended Data per DTC</p>
+</div>
+<h3 id="list-columns-1">List Columns</h3>
+<p><span id="EDUI-R812" class="rqDef">[EDUI-R812]</span> <strong>Number</strong></p>
+<ul>
+<li>shows the Extended Data Record Number <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R120' title="">[EDR-R120]</a></li>
+<li>see <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R120-DefaultDisplay' title="">[EDR-R120-DefaultDisplay]</a></li>
+</ul>
+<p><span id="EDUI-R814" class="rqDef">[EDUI-R814]</span> <strong>Name</strong></p>
+<ul>
+<li>shows the Extended Data Record Name</li>
+</ul>
+<p><span id="EDUI-R816" class="rqDef">[EDUI-R816]</span> <strong>to Store</strong></p>
+<ul>
+<li>a checkbox</li>
+<li>checked iff. &quot;Extended Data Record Stored for DTC&quot; <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R300' title="">[EDR-R300]</a> is true</li>
+<li>If multiple DTCs are selected:
+<ul>
+<li>see the Basic User Interface Rules <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-R400' title="">[UI-R400]</a>.</li>
+</ul></li>
+<li><span id="EDUI-R816-Check" class="rqDef">[EDUI-R816-Check]</span> <strong>Checking &quot;Stored&quot;</strong>:
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Operations.htm#EDOP-R260' title="">[EDOP-R260]</a></li>
+</ul></li>
+<li><span id="EDUI-R816-Uncheck" class="rqDef">[EDUI-R816-Uncheck]</span> <strong>Un-checking &quot;Stored&quot;</strong>:
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Operations.htm#EDOP-R265' title="">[EDOP-R265]</a></li>
+</ul></li>
+</ul>
+<h3 id="buttons-store-all-store-none">Buttons &quot;Store all&quot; / &quot;Store none&quot;</h3>
+<ul>
+<li><span id="EDRUI-R840" class="rqDef">[EDRUI-R840]</span> If a filter has been applied in the DTC list,
+<ul>
+<li>the buttons apply to the reduced list only,</li>
+<li>therefore the button text changes to &quot;Store all filtered&quot; / &quot;Store none filtered&quot;.</li>
+</ul></li>
+</ul>
+<h3 id="actions">Actions</h3>
+<ul>
+<li><span id="EDUI-R820" class="rqDef">[EDUI-R820]</span> <strong>Check &quot;to Store&quot;</strong>
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Operations.htm#EDOP-R260' title="">[EDOP-R260]</a></li>
+<li>Applies to all selected DTCs.</li>
+</ul></li>
+<li><span id="EDUI-R825" class="rqDef">[EDUI-R825]</span> <strong>Un-check &quot;to Store&quot;</strong>
+<ul>
+<li>Performs operation <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Operations.htm#EDOP-R265' title="">[EDOP-R265]</a></li>
+<li>Applies to all selected DTCs.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Fault%20Memory/AUTOSAR%20Fault%20Memory%20GUI.htm">AUTOSAR Fault Memory GUI</a> (overview)</li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm">Extended Data Record Data Model</a></li>
+<li><a href="../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Operations.htm">Extended Data Record Operations</a></li>
+<li><a href="GUI%20Extended%20Data.htm">GUI Extended Data</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li><a href="TAB%20Extended%20Data%20Records.htm">TAB Extended Data Records</a></li>
+</ul>
+</body>
+</html>

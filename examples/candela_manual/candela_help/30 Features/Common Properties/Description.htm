@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Description</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="description">Description</h1>
+<p>Most diagnostic objects in CANdela have a <a href="Name.htm">name</a>, a <a href="Qualifier.htm">qualifier</a> and a description.</p>
+<h2 id="use-cases">Use-Cases</h2>
+<p>You may use a description to...</p>
+<ul>
+<li>provide hints about the diagnostic object</li>
+<li>add pictures or diagrams</li>
+<li>add attachments to be processed by external applications</li>
+</ul>
+<h2 id="description-restrictions">Description Restrictions</h2>
+<ul>
+<li><span id="DESC-R010" class="rqDef">[DESC-R010]</span> Descriptions are multi-language.</li>
+<li><span id="DESC-R020" class="rqDef" title="Character Set">[DESC-R020 Character Set]</span> A description may contain any characters of the Unicode character set.</li>
+<li><span id="DESC-R030" class="rqDef" title="Length">[DESC-R030 Length]</span> A description may contain 0..65535 characters).</li>
+</ul>
+<h2 id="formatted-descriptions">Formatted Descriptions</h2>
+<p><span id="DESC-R100" class="rqDef">[DESC-R100]</span> Some descriptions may contain text formatting, images and attachments.</p>
+<p><strong>Handling in Exports</strong>:</p>
+<ul>
+<li>Exports transfer descriptions to a specific target format.</li>
+<li>If a target format cannot represent the formatting, the export represents the formatted description in an adequate way (e.g. rendering as plain text).</li>
+</ul>
+<h3 id="occurrence">Occurrence</h3>
+<p><span id="DESC-R110" class="rqDef">[DESC-R110]</span> CANdelaStudio supports <strong>formatted descriptions</strong> for the following diagnostic objects:</p>
+<ul>
+<li>ECU</li>
+<li>variant</li>
+<li>diagnostic class</li>
+<li>diagnostic instance</li>
+<li>job container</li>
+</ul>
+<p>Only at these objects formatted descriptions make sense in the specification report.</p>
+<h3 id="properties">Properties</h3>
+<p><span id="DESC-R120" class="rqDef">[DESC-R120]</span> Formatted descriptions can have the following formatting properties:</p>
+<ul>
+<li>bold</li>
+<li>italic</li>
+<li>underline</li>
+<li>font color</li>
+<li>background color</li>
+<li>bullet list</li>
+<li>numbered list</li>
+<li>image</li>
+<li>file attachment</li>
+</ul>
+<h3 id="images-and-attachments">Images and Attachments</h3>
+<ul>
+<li><span id="DESC-R130" class="rqDef">[DESC-R130]</span> Images and attachments are stored in a central pool on ECU level, independent from language.</li>
+<li><span id="DESC-R140" class="rqDef">[DESC-R140]</span> If an image is used in several descriptions or several languages, the <strong>single image</strong> is just <strong>referenced multiple times</strong>.</li>
+</ul>
+<p>Motivation:</p>
+<ul>
+<li>We assume most images do not have language dependent content.</li>
+<li>Avoid redundancy over multiple descriptions, or multiple language versions of a description.</li>
+</ul>
+<p>Display:</p>
+<ul>
+<li>In the description field, CANdelaStudio shows...
+<ul>
+<li><span id="DESCUI-R100" class="rqDef">[DESCUI-R100]</span> images as a picture,</li>
+<li><span id="DESCUI-R110" class="rqDef">[DESCUI-R110]</span> attachments as a special icon.</li>
+</ul></li>
+</ul>
+<h3 id="formatted-descriptions-in-odx">Formatted Descriptions in ODX</h3>
+<p>The ODX <code>&lt;DESC&gt;</code> element...</p>
+<ul>
+<li>contains text in <code>xhtml</code> format:
+<ul>
+<li>top-level: paragraphs <code>&lt;p&gt;</code>, lists <code>&lt;ol&gt;</code> , <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code></li>
+<li>inline elements <code>&lt;br&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;b&gt;</code>, <code>&lt;u&gt;</code>, <code>&lt;sub&gt;</code>, <code>&lt;sup&gt;</code> (see XML schema in appendix C.2, page 411)</li>
+</ul></li>
+<li>contains 0..n <code>EXTERNAL-DOC</code> elements</li>
+<li>has a TI attribute (for multi-language information)</li>
+</ul>
+
+<h3 id="formatted-descriptions-in-candela-vs.-odx">Formatted Descriptions in CANdela vs. ODX</h3>
+<p><span id="DESC-D100" class="rqDef">[DESC-D100]</span></p>
+<ul>
+<li>CANdela has...
+<ul>
+<li>font color and background color</li>
+<li>images and files positioned in the text, reused across multiple languages</li>
+</ul></li>
+<li>ODX has...
+<ul>
+<li>subscript and superscript</li>
+<li>line-breaks within paragraphs (CANdela has just paragraphs)</li>
+</ul></li>
+</ul>
+<h2 id="descriptions-for-code-generation">Descriptions for Code Generation</h2>
+<ul>
+<li><span id="DESC-D200" class="rqDef">[DESC-D200]</span> CANdesc uses the service description (plain text) for generation of source code documentation
+<ul>
+<li>&quot;Support description at service&quot; (CDS-10648 6.5)</li>
+</ul></li>
+<li>cf. <a href="../../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm#CANdesc">CANdesc</a> in the Vector Diagnostic Toolchain</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Multi-Language <a class='rqRef' href='../../30%20Features/Multi-Language/Multi-Language.htm#ML-R100' title="Translatables">[ML-R100]</a></li>
+<li><a href="Name.htm">Name</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">Object Property Page &quot;General&quot;</a></li>
+<li><a href="Qualifier.htm">Qualifier</a></li>
+</ul>
+
+</body>
+</html>

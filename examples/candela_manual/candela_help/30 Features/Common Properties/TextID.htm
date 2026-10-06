@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>TextID</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="textids-tis">TextIDs (TIs)</h1>
+<p>While a CANdela document may contain <a href="../../30%20Features/Multi-Language/Multi-Language.htm">multiple languages</a> in itself, <strong>TextIDs</strong> are an alternative way to support multiple languages:</p>
+<ul>
+<li>each <strong>translatable property</strong> (e.g. a name, or a description)</li>
+<li>at a CANdela <strong>object</strong> (e.g. a data object)</li>
+<li>may be assigned a <strong>TextID</strong> (an arbitrary string)</li>
+<li>which will be associated with translations <em>outside</em> to the CANdela document, e.g. in a translation tool.</li>
+</ul>
+<h2 id="enable">Enable</h2>
+<p>Support for TextIDs must be enabled in File | Properties, page &quot;Document Info&quot; <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R320' title="">[DOCUI-R320]</a>.</p>
+<h2 id="modes">Modes</h2>
+<p>If TextIDs have been enabled in a document, there are two <strong>modes</strong> for using them:</p>
+<ul>
+<li><strong>Edit</strong></li>
+<li><strong>Completion only</strong></li>
+</ul>
+<p>The concrete mode is specified in the dialog <a href="../../20%20UserInterface/Document/Property%20Page%20Authorization.htm#textid">File | Properties, page &quot;Authorization&quot;</a>.</p>
+<table>
+<colgroup>
+<col width="49%" />
+<col width="21%" />
+<col width="28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">CANdela feature</th>
+<th align="left">Mode &quot;Edit&quot;</th>
+<th align="left">Mode &quot;Completion only&quot;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Edit TextID in <a href="../../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">Object Property Dialog</a></td>
+<td align="left">yes (2)</td>
+<td align="left">yes (2)</td>
+</tr>
+<tr class="even">
+<td align="left">Edit TextID in <a href="../../20%20UserInterface/Multi-Language/Edit%20TextIDs.htm">Edit TextIDs Dialog</a></td>
+<td align="left">yes</td>
+<td align="left">yes (1)</td>
+</tr>
+<tr class="odd">
+<td align="left">Button &quot;Generate missing TextIDs&quot; in &quot;Edit TextIDs&quot; Dialog</td>
+<td align="left">yes</td>
+<td align="left">yes (3)</td>
+</tr>
+<tr class="even">
+<td align="left">Button &quot;Delete Selection&quot; in &quot;Edit TextIDs&quot; Dialog</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+</tr>
+<tr class="odd">
+<td align="left">Automatically create TextID for each new object</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+<tr class="even">
+<td align="left">Edit TextID in <a href="../../20%20UserInterface/Multi-Language/Translation%20View.htm">Translation View</a></td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+</tr>
+<tr class="odd">
+<td align="left">Button &quot;Complete TextIDs&quot; in Translation View</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+</tr>
+<tr class="even">
+<td align="left">Automatic TextID completion on Save</td>
+<td align="left">no</td>
+<td align="left"><strong>yes</strong></td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>= <em>before 8.5 SP2: in Expert View only</em> (CDS-36212 U001)</li>
+<li>= <em>before 8.5 SP2: no</em> (CDS-36212 U010)</li>
+<li>= <em>before 8.5 SP2: in Expert View only</em> (CDS-41298 U001)</li>
+</ol>
+<h2 id="operations">Operations</h2>
+<h3 id="reference-identical-diagnostic-instances-and-job-containers">Reference Identical Diagnostic Instances and Job Containers</h3>
+<p>For TextID handling in the <strong>operation &quot;Reference Identical Diagnostic Instances and Job Containers&quot;</strong>, see at the <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#reference-identical">Diagnostic Instance Operations</a>.</p>
+<h2 id="replace-similar-data-types">Replace Similar Data Types</h2>
+<p>If enabled in the document, TextIDs can be used as a criterion <a class='rqRef' href='../../30%20Features/Data%20Type/Replace%20Similar%20Data%20Types.htm#RDT-R020-TID' title="">[RDT-R020-TID]</a> in the &quot;Replace Similar Data Types&quot; operation.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Dialog: <a href="../../20%20UserInterface/Multi-Language/Edit%20TextIDs.htm">Edit TextIDs</a></li>
+<li>Dialog: <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm">TextID Support in Document</a></li>
+<li>Dialog: <a href="../../20%20UserInterface/Document/Property%20Page%20Authorization.htm">Authorization for TextID Support in Document</a></li>
+</ul>
+</body>
+</html>

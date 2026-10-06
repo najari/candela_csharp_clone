@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>100_ODXExport_Data objects and bitfields</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-objects-and-bitfields">Data objects and bitfields</h1>
+<p>Each data object or bit field is exported as POSITIONABLE-PARAM to ODX.</p>
+<div class="figure">
+<img src="Images/image31_2.png" alt="POSITIONABLE-PARAM" />
+<p class="caption">POSITIONABLE-PARAM</p>
+</div>
+<p>The BIT-POSITION is omitted if it is 0.</p>
+<h3 id="dataobjects-with-variable-length">Dataobjects with variable length</h3>
+<p>In case a dataObject with variable length is detected, the generation of Byte/Bit-Positions is omitted afterwards.<br />
+For Bitfields (not used for variant/VSG identification) the generation of duplicate param (used for interpretation of the whole byte) is skipped.<br />
+For Bitfields (used for variant identification/VSG identification) the detailed structure is skipped as only the Bitfield as a whole is relevant.</p>
+<h2 id="data-objects">Data objects</h2>
+<h3 id="default-or-const-value">Default or Const Value</h3>
+<p>A CANdela data object with default value is exported to a POSITIONED-PARAM VALUE with attribute PHYSICAL-DEFAULT-VALUE. The attribute value is set to the specified default value.</p>
+<p>A CANdela data object with constant value is exported to a POSITIONED-PARAM PHYS-CONST. The constant value is stored in the attribute PHYS-CONSTANT-VALUE.</p>
+<h3 id="system-param">SYSTEM-PARAM</h3>
+<p>In case the Semantic at the DataObject is set, a SYSTEM PARAM is exported. The type of SYSPARAM is determined from the DataObject-Semantic.</p>
+<p>In Odx, the possible PHYSICAL-TYPEs of the SYSTEM-PARAMs depend on the TYPE of SYSPARAM.</p>
+<p>With CANdela5.5 a check is implemented that ensures that only the appropriate dataTypes are used.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Semantic</strong></th>
+<th align="left"><strong>Allowed DataTypes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">TesterId, UserId</td>
+<td align="left">Encoding: BCD/Unsigned, Quantity: Field</td>
+</tr>
+<tr class="even">
+<td align="left">Year, Day, Month, Hours, Minutes, Seconds</td>
+<td align="left">Encoding: BCD/Unsigned, Quantity: Atom</td>
+</tr>
+</tbody>
+</table>
+<p>Table 28: semantic for DataObjects</p>
+<h3 id="diag-coded-type-of-fields">DIAG-CODED-TYPE of Fields</h3>
+<p>Since CANdelaStudio 5.0 SP2 Fields with fix-length, i.e Min-Length == Max-Length are exported with DIAG-CODED-TYPE STANDARD-LENGTH-TYPE. Fields with variable length are exported as DIAG-CODED-TYPE MIN-MAX-LENGTH-TYPE.</p>
+<h3 id="dataobjects-referencing-datatypes-with-bitmasks">DataObjects referencing DataTypes with BitMasks</h3>
+<p>For DataObjects used in a request that reference a DataType with a BitMask, a duplicate RESERVED-PARAM is exported at the same position but with inverted BIT-MASK specified.</p>
+<h3 id="reserved-dataobjects-in-intel-bitfields">Reserved-DataObjects in Intel-BitFields</h3>
+<p>For Reserved DataObjects in IntelBitFields, that are longer than 8-bit, a DIAG-CODED-TYPE is exported. The IS-HIGH-LOW-BYTE-ORDER is then set to false, so that the DataExtraction is done correctly.</p>
+<h3 id="data-objects-for-fault-memory">Data objects for Fault Memory</h3>
+<p><span id="ODXE-R1100-FaultMem" class="rqDef">[ODXE-R1100-FaultMem]</span></p>
+<h4 id="dtc-table">DTC table</h4>
+<ul>
+<li>A CANdela DTC data object (RecordDataObject) that references an empty fault memory is exported as RESERVED since a DTC-DOP with an empty DTCS wrapper is not allowed in ODX 2.0.1</li>
+<li>For each CANdelaDTC data object a DTC-DOP is created.
+<ul>
+<li>Note: the export creates a <strong>DTC-DOP even in an ODX 2.0.1 Request</strong>, which ODX 2.0.1 does not allow.</li>
+<li>There is no option to prevent this export.</li>
+<li>So far, no consuming tool complained about the constellation (obviously an arbitrary restriction in ODX 2.0.1).</li>
+</ul></li>
+<li>For each entry in the CANdelaDTC-Table, a DTC is created.</li>
+<li>The attribute LEVEL at element DTC is not exported. This information (if available in the corresponding cdd file) is exported in a SDG since 4.0 SP3)</li>
+<li>Attributes SI and TI at element SD are not exported</li>
+<li>SDG-CAPTIONS used to describe fault memory column headings are exported with the SDGS of every DTC. (Referencing is not possible in ODX 2.0.1) since 4.0 SP3</li>
+<li>The attribute DISPLAY-TROUBLE-CODE at element DTC is only exported if for CANdelaStudio View option 'Display of error codes' SAE format is selected.</li>
+<li>For DTC-DOP a COMPU-METHOD with COMPU_CATEGROY &quot;IDENTICAL&quot; is exported.</li>
+<li>BASE-DATA-TYPE of PHYSICAL-TYPE of DTC-DOP is always exported as A_UINT32. RADIX is always exported as HEX.</li>
+</ul>
+<blockquote>
+<div class="figure">
+<img src="Images/image32.png" alt="Mapping of DTC-Table to DTC-DOP" />
+<p class="caption">Mapping of DTC-Table to DTC-DOP</p>
+</div>
+</blockquote>
+<h5 id="reuse-of-dtcs">Reuse of DTCs</h5>
+<p><span id="ODXE-R1100-ReuseDTCs" class="rqDef">[ODXE-R1100-ReuseDTCs]</span></p>
+<p>In case the Option &quot;Reuse DTCs if possible&quot; is activated, the ODX-Export compares the currently exported DTC to those exported in the BASE-VARIANT. In case a similar DTC is found in the BASE-VARIANT, the DTC is not exported again but a DTC-REF is generated. The goal is to reduce the size of the ODX-file.</p>
+<h4 id="environment-data">Environment data</h4>
+<p><span id="ODXE-R1000-EnvData" class="rqDef">[ODXE-R1000-EnvData]</span></p>
+<div class="figure">
+<img src="Images/image33.png" alt="ENV-DATA-DESC" />
+<p class="caption">ENV-DATA-DESC</p>
+</div>
+<p>Environment data are exported to the COMPLEX-DOP ENV-DATA-DESC. No ENV-DATA is exported for empty DTC specific environment data in CANdela. If there are no environment data at all then no ENV-DATA-DESC is exported and no corresponding PARAM is exported. The ENV-DATA ALL-VALUE is only exported when all DTCs have default environment data.</p>
+<div class="figure">
+<img src="Images/image34.png" alt="Mapping of ENV-DATA-DESC" />
+<p class="caption">Mapping of ENV-DATA-DESC</p>
+</div>
+<h4 id="dtc-pool">DTC-pool</h4>
+<p>The ODX-Export will generate an ECU-SHARED-DATA for the DTC pool. The ECu-SHARED-DATA contains the DTCs from the CANdela DTC pool. ECU-VARIANTs and the BASE-VARIANT will reference the DTCs from the ECU-SHARED-DATA.</p>
+<div class="figure">
+<img src="Images/image35.png" alt="DTC pool" />
+<p class="caption">DTC pool</p>
+</div>
+<h4 id="groupofdtc">GroupOfDtc</h4>
+<div class="figure">
+<img src="Images/image36.png" alt="Group of DTC" />
+<p class="caption">Group of DTC</p>
+</div>
+<p>For each CANdela GroupOfDTC Proxy, a DATA-OBJECT-PROP with COMPU-METHOD TextTable is created, where the CANdela-Group are mapped to the COMPU-CONSTs of the generated DATA-OBJECT-PROP.</p>
+<h4 id="supports-single-errors">&quot;Supports single errors&quot;</h4>
+<p>In case the GroupOfDtc-DataObject supports &quot;single errors&quot;, an additional DIAG-SERVICE is created which references the DTC-DOP instead of the Texttable for GroupOfDTC.</p>
+<h4 id="default-values-for-groupofdtc">Default values for GroupOfDtc</h4>
+<p>With CANdela 6.0 Release it is possible to specify a default-value for the GroupOfDtc DataObject. In case this is specified, a PHYS-CONST-PARAM is generated in ODX.</p>
+<h4 id="statusofdtc">StatusOfDtc</h4>
+<div class="figure">
+<img src="Images/image37.png" alt="Export of DTC status bits" />
+<p class="caption">Export of DTC status bits</p>
+</div>
+<p>For each StatusOfDTC-ProxyComp, a STRUCTURE is created. The Status bits are exported in the following way:</p>
+<p>In case the Status-bit is not activated, a RESERVED-PARAM is generated. In case the Status-bit is activated, a VALUE-PARAM is created. This VALUE references then a DOP with COMPU-METHOD TEXTTABLE. The TEXTTABLE contains the COMPU-CONSTs 'true' and 'false'.</p>
+<p>With CANdela6.0 it is possible to define a physical default-value for each dataobject of the Bifield. This is then exported as PHYS-CONST-PARAM in ODX.</p>
+<p><span id="ODXE-R220" class="rqDef">[ODXE-R220]</span> if...</p>
+<ul>
+<li>the attribute of <a class='rqRef' href='../../30%20Features/DTC/DTC%20Status%20Bits.htm#DTCSB-R210' title="">[DTCSB-R210]</a> is set,</li>
+<li>and a datatype of that qualifier exists,</li>
+<li>then ODX Export refers to that datatype instead of the one referenced by the DTC Status Bits data object.</li>
+</ul>
+<h3 id="generic-muxes">Generic Muxes</h3>
+<p>Since CANdela 5.0 it is possible to use the component 'Mux' with selectors that are not of destiny 'dtc'. These muxes are exported to Odx as MUX. The structure of a MUX resembles the one of an ENV-DATA-Desc. The non-default-cases of the CANdelaMux can be mapped directly to the cases of the OdxMux, whereby the DataObjects of each Mux-Case are exported to a structure.</p>
+<div class="figure">
+<img src="Images/image38.png" alt="MUX in ODX" />
+<p class="caption">MUX in ODX</p>
+</div>
+<p>Since CANdela 5.5 in case the CaseContent is empty, the STRUCTURE-REF is omitted for both DEFAULT-CASE and CASES.</p>
+<p>Since CANdela 6.0 it is possible to define Ranges for a certain case. These ranges are specified for coded values.This is also possible in ODX (LOWER/UPPER-LIMIT). But here the range is specified for Physical Values. In case the PHYISICAL-TYPE of the MUX-SELECTOR is numerical the cases can be mapped directly. In case the CANdela-Selector is a String, the physical values of the cases might not be the same. This is not allowed in ODX. Here, in case the selector is a String, LOWER and UPPER-LIMIT has to be equal. Another point is that the Physical values for each Case have to be unique. It is not allowed to specify different Cases with the same LOWER/UPPPER-LIMITs.</p>
+<p>In case the selector is positioned behind the MUX, the MUX is only exported in case the Contents of the MUX-CASEs all have the same length.</p>
+<h2 id="bit-fields">Bit fields</h2>
+<p><span id="ODXE-R1100-Bitfields" class="rqDef">[ODXE-R1100-Bitfields]</span></p>
+<p>A CANdela bit field is exported as POSITIONABLE-PARAM of type VALUE which references a COMPLEX-DOP of type STRUCTURE. If the bit field value has to be interpreted a second POSITIONABLE-PARAM VALUE is exported with the corresponding DOP. More details in next subsection.</p>
+<h3 id="physical-interpretation-of-bit-field">Physical interpretation of bit field</h3>
+<p><span id="ODXE-R1100-PhysBitfield" class="rqDef">[ODXE-R1100-PhysBitfield]</span></p>
+<p>A CANdela bit field is exported to as POSITIONABLE-PARAM VALUE which references a COMPLEX-DOP STRUCTURE. COMPLEX-DOPs have no DIAG-CODED-TYPE and no PHYSICAL-TYPE. Therefore, if the value of the bit field must be physically interpreted a DOP for the STRUCTURE has to be exported and also an additional PARAM which references this DOP and has the same BYTE-POSITION like the STRUCTURE.</p>
+<p>This behavior can be influenced by the Bitfield-Attribute &quot;WrapBitfieldInStructure&quot;. If it is set to &quot;no&quot;, no additional STRUCTURE is generated for the Bitfield, but the PARAMs are exported on top-level.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX Export Introduction</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Bit%20Field.htm">Bit Field</a></li>
+</ul>
+</body>
+</html>

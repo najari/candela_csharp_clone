@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DTC Export</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dtc-export">DTC <span id='_index_446728014' title='DTC' data-term='DTC'>Export</span></h1>
+<p>CANdelaStudio provides an export of DTCs, started in the <a href="../../20%20UserInterface/DTC/DTCs.htm">DTC lists</a>.</p>
+<div class="figure">
+<img src="images/SPN%20FMI%20in%20Excel.jpg" alt="Export Example with SPN FMI in Excel" />
+<p class="caption">Export Example with SPN FMI in Excel</p>
+</div>
+<h2 id="using-excel">Using Excel</h2>
+<p>For export of DTCs to Excel, CANdelaStudio uses an <strong>installed version of Excel</strong>.</p>
+<p>CANdelaStudio reads the version of the installed Excel application from the following Windows registry key: <code>HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Excel.Application\CurVer</code>.</p>
+<p>Export of DTCs is available...</p>
+<ul>
+<li>... to <code>.xls</code>: if Excel 2000 (registry <code>Excel.Application.10</code>) or higher is installed</li>
+<li>... to <code>.xlsx</code>: if Excel 2007 (registry <code>Excel.Application.12</code>) or higher is installed;</li>
+</ul>
+<p>&quot;or higher&quot; means:</p>
+<ul>
+<li>(for CANdelaStudio up to 8.2 SP2) up to Excel 2010 (registry <code>Excel.Application.14</code>);</li>
+<li>(for CANdelaStudio 8.2 SP3 and higher): no limit for newer Excel versions (CDS-34805).</li>
+</ul>
+
+<h2 id="export-formats">Export Formats</h2>
+<ul>
+<li><span id="DTCE-R050" class="rqDef">[DTCE-R050]</span> Regular export: includes translated <strong>names</strong> of diagnostic objects.</li>
+<li><span id="DTCE-R060" class="rqDef">[DTCE-R060]</span> Language independent export: specifics see <a href="#indep">below</a>.</li>
+</ul>
+<h2 id="exported-rows">Exported Rows</h2>
+<p>The export includes</p>
+<ul>
+<li><span id="DTCE-R100" class="rqDef">[DTCE-R100]</span> a first row with headings (see next chapter)</li>
+<li><span id="DTCE-R110" class="rqDef">[DTCE-R110]</span> one row per DTC, with values (see <a href="#values">next but one chapter</a>).</li>
+</ul>
+<h2 id="heading">Heading Row</h2>
+<p><span id="DTCE-R120" class="rqDef">[DTCE-R120]</span> In the regular (not language-independent) export, the heading row contains...</p>
+<ul>
+<li><span id="DTCE-R120-DTC" class="rqDef">[DTCE-R120-DTC]</span> &quot;DTC&quot; (for the code)</li>
+<li><span id="DTCE-R120-ErrorText" class="rqDef">[DTCE-R120-ErrorText]</span> &quot;DTCText&quot; (for the error text)</li>
+<li><span id="DTCE-R120-FTB" class="rqDef">[DTCE-R120-FTB]</span> &quot;Failure Type&quot; and &quot;DTCTypeText&quot; if the document uses columns for Failure Type Byte (FTB) <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R028' title="">[DTC-R028]</a></li>
+<li><span id="DTCE-R120-FMI" class="rqDef">[DTCE-R120-FMI]</span> &quot;SPN&quot;, &quot;FMI&quot; and &quot;DTCTypeText&quot; if the document uses columns for Failure Mode Identifier (FMI) <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R028' title="">[DTC-R028]</a></li>
+<li><span id="DTCE-R120-ColumnHeading" class="rqDef">[DTCE-R120-ColumnHeading]</span> for a DTC Column: the <strong>name</strong></li>
+<li><span id="DTCE-R120-AttributeHeading" class="rqDef">[DTCE-R120-AttributeHeading]</span> for an attribute: the <strong>name</strong></li>
+<li><span id="DTCE-R120-VSGHeading" class="rqDef">[DTCE-R120-VSGHeading]</span>: the constant string &quot;Vehicle System Groups&quot;</li>
+</ul>
+<h2 id="values">Value Rows: Exported Columns</h2>
+<p>The export includes columns for...</p>
+<ul>
+<li><span id="DTCE-R210" class="rqDef">[DTCE-R210]</span> <strong>DTC Code</strong> <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R025' title="Code">[DTC-R025]</a></li>
+<li><span id="DTCE-R220" class="rqDef">[DTCE-R220]</span> DTC <strong>Error Text</strong> <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R030' title="Error Text">[DTC-R030]</a></li>
+<li><span id="DTCE-R230" class="rqDef">[DTCE-R230]</span> if the document uses columns for Failure Type Byte (FTB) or Failure Mode Identifier (FMI) <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R028' title="">[DTC-R028]</a>:
+<ul>
+<li><span id="DTCE-R230-Byte" class="rqDef">[DTCE-R230-Byte]</span> the separate byte value (column behind &quot;DTC&quot;)</li>
+<li><span id="DTCE-R230-String" class="rqDef">[DTCE-R230-String]</span> its string representation (column behind &quot;DTCText&quot;)</li>
+</ul></li>
+<li><span id="DTCE-R240" class="rqDef">[DTCE-R240]</span> the DTC <strong>Columns</strong> <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R040' title="DTC Columns">[DTC-R040]</a></li>
+<li><span id="DTCE-R250" class="rqDef">[DTCE-R250]</span> the DTC <strong>attributes</strong> <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-DTC' title="">[ATTR-R050-DTC]</a>
+<ul>
+<li><span id="DTCE-R250-All" class="rqDef">[DTCE-R250-All]</span> export includes <strong>all attributes</strong>, independent of
+<ul>
+<li>the flag “visible in separate table column” <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R090' title="VisibleInTableColumn">[ATTR-R090]</a></li>
+<li>the authorization “view” [ATTR-R080 Authorization]</li>
+</ul></li>
+<li><span id="DTCE-R250-Effective" class="rqDef">[DTCE-R250-Effective]</span> for each attribute, export writes the <strong>&quot;effective&quot; value</strong>, i.e....
+<ul>
+<li>the <strong>overridden value</strong> <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R140' title="">[ATTR-R140]</a> (if set),</li>
+<li>otherwise the <strong>default value</strong> <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R040' title="">[ATTR-R040]</a>.</li>
+</ul></li>
+</ul></li>
+<li><span id="DTCE-R260" class="rqDef">[DTCE-R260]</span> the associated <strong>Vehicle System Groups</strong> <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm#VSG-R100-DTC' title="">[VSG-R100-DTC]</a>
+<ul>
+<li><span id="DTCE-R260-Format" class="rqDef">[DTCE-R260-Format]</span> export writes all associated Vehicle System Groups in one cell, separated by &quot;, &quot; (comma blank).</li>
+<li><span id="DTCE-R260-Name" class="rqDef">[DTCE-R260-Name]</span> for each Vehicle System Group, export writes the <strong>name</strong> (in regular export).</li>
+</ul></li>
+</ul>
+
+<h2 id="indep">Language Independent Export (CDS-28395 8.0 SP2)</h2>
+<p>The language independent export helps to avoid roundtrip issues in case different users open a document in different languages <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Open Page.htm#OPEN-R420' title="">[OPEN-R420]</a>.</p>
+<h3 id="heading-row">Heading Row</h3>
+<p>The heading row for the language independent export differs from that of the regular export described <a href="#heading">above</a>.</p>
+<p><span id="DTCE-R420" class="rqDef">[DTCE-R420]</span> The heading row contains...</p>
+<ul>
+<li><span id="DTCE-R420-ColumnHeading" class="rqDef">[DTCE-R420-ColumnHeading]</span>: the <strong>qualifier</strong> of a DTC Column</li>
+<li><span id="DTCE-R420-AttributeHeading" class="rqDef">[DTCE-R420-AttributeHeading]</span>: the <strong>qualifier</strong> of the attribute</li>
+<li><span id="DTCE-R420-VSGHeading" class="rqDef">[DTCE-R420-VSGHeading]</span>: &quot;Vehicle System Groups&quot;, same as <a class='rqRef' href='../../30%20Features/DTC/DTC%20Export.htm#DTCE-R120-VSGHeading' title="">[DTCE-R120-VSGHeading]</a> above.</li>
+</ul>
+<h4 id="value-rows-exported-columns">Value Rows: Exported Columns</h4>
+<p>Some values in the language independent export differ from those of the regular export described <a href="#values">above</a>.</p>
+<p>The export includes the specific values...</p>
+<ul>
+<li><span id="DTCE-R440" class="rqDef">[DTCE-R440]</span> for a <strong>DTC Column</strong>:
+<ul>
+<li><span id="DTCE-R440-EnumColumnValue" class="rqDef">[DTCE-R440-EnumColumnValue]</span> for an <strong>enumeration</strong> DTC column <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R010-Enum' title="">[DTCC-R010-Enum]</a>,
+<ul>
+<li>the <strong>numeric value</strong> <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R010-Enum' title="">[DTCC-R010-Enum]</a> for the multi-language symbol.</li>
+</ul></li>
+<li><span id="DTCE-R440-TranslatableColumnValue" class="rqDef">[DTCE-R440-TranslatableColumnValue]</span> for a <strong>translatable</strong> DTC column <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R010-Translatable' title="">[DTCC-R010-Translatable]</a>,
+<ul>
+<li>the <strong>TextID</strong> (if set),</li>
+<li>otherwise the translatable string.</li>
+</ul></li>
+</ul></li>
+<li><span id="DTCE-R450" class="rqDef">[DTCE-R450]</span> for an <strong>attribute</strong>:
+<ul>
+<li><span id="DTCE-R450-EnumAttributeValue" class="rqDef">[DTCE-R450-EnumAttributeValue]</span> for an <strong>enumeration</strong> attribute <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a>,
+<ul>
+<li>the numeric value for the multi-language <strong>symbol</strong>.</li>
+</ul></li>
+</ul></li>
+<li><span id="DTCE-R460" class="rqDef">[DTCE-R460]</span> for Vehicle System Groups:
+<ul>
+<li><span id="DTCE-R640-Qual" class="rqDef">[DTCE-R640-Qual]</span> for each Vehicle System Group, export writes the <strong>qualifier</strong>.</li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/CDI%20Export.htm">CDI Export</a></li>
+<li><a href="DTC.htm">DTC (Feature)</a></li>
+<li><a href="../../20%20UserInterface/DTC/DTCs.htm">DTCs (User Interface)</a></li>
+<li><a href="DTC%20Import.htm">DTC Import</a></li>
+<li><a href="../../30%20Features/Import/Import%20from%20CDI.htm">Import from CDI</a></li>
+</ul>
+</body>
+</html>

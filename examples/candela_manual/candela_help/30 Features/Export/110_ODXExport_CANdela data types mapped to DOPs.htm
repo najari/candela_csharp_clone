@@ -1,0 +1,660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>110_ODXExport_CANdela data types mapped to DOPs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="candela-data-types-mapped-to-dops">CANdela data types mapped to DOPs</h1>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela data types</strong></th>
+<th align="left"><strong>ODX simple DOPs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Identity</td>
+<td align="left">IDENTICAL</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="#linear">Linear</a></td>
+<td align="left">LINEAR</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="#piecewise-linear">Piecewise linear</a></td>
+<td align="left">SCALE-LINEAR</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="#text-table">Text table</a></td>
+<td align="left">TEXTTABLE</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="#characteristic-curve">Characteristic curve</a></td>
+<td align="left">TAB-INTP</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="#formula">Formula</a></td>
+<td align="left">IDENTICAL</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="#procedural">Procedural</a></td>
+<td align="left">COMPUCODE</td>
+</tr>
+</tbody>
+</table>
+<p>Table 29: CANdela data types mapped to ODX simple DOPs</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela data types</strong></th>
+<th align="left"><strong>ODX COMPLEX-DOPs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><a href="#packet">Packet</a></td>
+<td align="left">STRUCTURE</td>
+</tr>
+</tbody>
+</table>
+<p>Table 30: CANdela data types mapped to COMPLEX-DOPs</p>
+<h2 id="mapping-of-common-data-types-properties-to-odx">Mapping of common data types properties to ODX</h2>
+<h3 id="general">General</h3>
+<ul>
+<li><p>INTERNAL-CONSTR must be exported only if there exists a Range-Exclusion in CANdela data model.</p></li>
+<li><p>The optional attribute IS-HIGH-LOW-BYTE-ORDER is only exported, if it has the value false.</p></li>
+<li><p>Bitmask is only exported if it is set in CANdelaStudio.</p></li>
+<li><p>Display format &quot;DECIMAL&quot; with data type float can not be exported to ODX 2.0.1. Therefore no RADIX is exported but precision is set to zero, which should result in the same behaviour.</p></li>
+</ul>
+<h4 id="candela-atomic-data-types">CANdela atomic data types</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Encoding of CANdela atomic data types</strong></th>
+<th align="left"><strong>ODX BASE-DATA-TYPE</strong></th>
+<th align="left"><strong>ODX ENCODING</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NumUnsigned</td>
+<td align="left">A_UINT32</td>
+<td align="left">NONE</td>
+</tr>
+<tr class="even">
+<td align="left">numSigned</td>
+<td align="left">A_INT32</td>
+<td align="left">2C</td>
+</tr>
+<tr class="odd">
+<td align="left">numBCD</td>
+<td align="left">A_UINT32</td>
+<td align="left">BCD-P</td>
+</tr>
+<tr class="even">
+<td align="left">numFloat</td>
+<td align="left">A_FLOAT32</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">numDouble</td>
+<td align="left">A_FLOAT64</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">charASCII</td>
+<td align="left">A_ASCII_STRING</td>
+<td align="left">ISO-8859-1</td>
+</tr>
+<tr class="odd">
+<td align="left">charUtf</td>
+<td align="left">A_UNICODE2STRING</td>
+<td align="left">UCS2</td>
+</tr>
+</tbody>
+</table>
+<p>Table 31: Encoding of CANdela atomic data types mapped to ODX ENCODING</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Encoding of CANdela atomic data types</strong></th>
+<th align="left"><strong>ODX PHYSICAL-DATA-TYPES</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NumUnsigned</td>
+<td align="left">A_UINT32</td>
+</tr>
+<tr class="even">
+<td align="left">numSigned</td>
+<td align="left">A_INT32</td>
+</tr>
+<tr class="odd">
+<td align="left">numBCD</td>
+<td align="left">A_UINT32</td>
+</tr>
+<tr class="even">
+<td align="left">numFloat</td>
+<td align="left">A_FLOAT32</td>
+</tr>
+<tr class="odd">
+<td align="left">numDouble</td>
+<td align="left">A_FLOAT64</td>
+</tr>
+<tr class="even">
+<td align="left">charASCII</td>
+<td align="left">A_UNICODE2STRING</td>
+</tr>
+<tr class="odd">
+<td align="left">charUtf</td>
+<td align="left">A_UNICODE2STRING</td>
+</tr>
+</tbody>
+</table>
+<p>Table 32: Encoding of CANdela atomic data types mapped to ODX PHYSICAL-DATA-TYPEs</p>
+<p>Note: ODX does not have A_ASCIISTRING as a PHYSICAL-DATA-TYPE</p>
+<h4 id="L64bit-atomic-data-types">64Bit Atomic data types</h4>
+<p>With CANdelaStudio 8.2 SP2 it is possible to use also 64Bit atomic datatypes (Encoding BCD, Unsigned or Signed).</p>
+<p>As there is no corresponding representation in ODX, a STANDARD-LENGTH-type datatype with encoding &quot;A_BYTEFIELD&quot; is created.</p>
+<h4 id="physical-types-for-linearscale-linear">PHYSICAL-TYPEs for Linear/Scale-Linear</h4>
+<p>With 6.0 Release the PHYSICAL-TYPE for linear, scale-linear and ComputationTable-DataTypes is exported as A_INT32/A_UINT32 in case the DisyplayType is specified as Decimal. Up to 6.0 A Float with precision 0 was exported.</p>
+<h4 id="candela-field-data-types">CANdela field data types</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Encoding of CANdela field data types</strong></th>
+<th align="left"><strong>ODX BASE-DATA-TYPE</strong></th>
+<th align="left"><strong>ODX ENCODING</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NumUnsigned</td>
+<td align="left">A_BYTEFIELD</td>
+<td align="left">NONE</td>
+</tr>
+<tr class="even">
+<td align="left">numBCD</td>
+<td align="left">A_BYTEFIELD</td>
+<td align="left">BCD-P</td>
+</tr>
+<tr class="odd">
+<td align="left">charASCII</td>
+<td align="left">A_ASCII_STRING</td>
+<td align="left">ISO-8859-1</td>
+</tr>
+<tr class="even">
+<td align="left">charUtf</td>
+<td align="left">A_UNICODE2STRING</td>
+<td align="left">UCS2</td>
+</tr>
+</tbody>
+</table>
+<p>Table 33: Encoding of CANdela field data types mapped to ODX ENCODING</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Encoding of CANdela field data types</strong></th>
+<th align="left"><strong>ODX PHYSICAL-DATA-TYPES</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NumUnsigned</td>
+<td align="left">A_BYTEFIELD</td>
+</tr>
+<tr class="even">
+<td align="left">numSigned</td>
+<td align="left">A_INT32</td>
+</tr>
+<tr class="odd">
+<td align="left">numBCD</td>
+<td align="left">A_BYTEFIELD</td>
+</tr>
+<tr class="even">
+<td align="left">numFloat</td>
+<td align="left">A_FLOAT32</td>
+</tr>
+<tr class="odd">
+<td align="left">numDouble</td>
+<td align="left">A_FLOAT64</td>
+</tr>
+<tr class="even">
+<td align="left">charASCII</td>
+<td align="left">A_UNICODE2STRING</td>
+</tr>
+<tr class="odd">
+<td align="left">charUtf</td>
+<td align="left">A_UNICODE2STRING</td>
+</tr>
+</tbody>
+</table>
+<p>Table 34: Encoding of CANdela field data types mapped to ODX PHYSICAL-DATA-TYPEs</p>
+<p>Note: ODX does not have A_ASCIISTRING as a PHYSICAL-DATA-TYPE</p>
+<h4 id="new-values-for-string-terminations-in-candela-6.5">New values for String terminations in CANdela 6.5</h4>
+<p><span id="ODXE-R1100-Term65" class="rqDef">[ODXE-R1100-Term65]</span></p>
+<h4 id="fix-length-fields">Fix length fields</h4>
+<p>In CANdela 6.5 the following termination values are now possible:</p>
+<div class="figure">
+<img src="Images/image39.png" alt="Termination values for Fix fields" />
+<p class="caption">Termination values for Fix fields</p>
+</div>
+<p>The following table describes which CANdela definitions for strings can be represented in ODX exactly.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Termination</strong></th>
+<th align="left"><strong>Padding</strong></th>
+<th align="left"><strong>Optional termination</strong></th>
+<th align="left"><strong>ODX 2.0.1</strong></th>
+<th align="left"><strong>ODX 2.2.0</strong></th>
+<th align="left"><strong>CANdela 6.0</strong></th>
+<th align="left"><strong>CANdela 6.5</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">None</td>
+<td align="left">No</td>
+<td align="left">n/a</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">zero-terminated</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+<tr class="odd">
+<td align="left">zero-terminated</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">zero-terminated</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">X</td>
+</tr>
+<tr class="odd">
+<td align="left">zero-terminated</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">-</td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">Leading-size-byte</td>
+<td align="left">No</td>
+<td align="left">n/a</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">X</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<p>Table 35: Support for Fixed Fields</p>
+<p>The TABLE below specifies how the CANdela-terminations are mapped to ODX DIAG-CODED-TYPEs</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Termination</strong></th>
+<th align="left"><strong>Padding</strong></th>
+<th><strong>Optional termination</strong></th>
+<th align="left"><strong>ODX DIAG-CODED-TYPE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">None</td>
+<td align="left">No</td>
+<td>n/a</td>
+<td align="left">STANDARD-LENGTH-TYPE<strong><sup>*1)</sup></strong></td>
+</tr>
+<tr class="even">
+<td align="left">zero-terminated</td>
+<td align="left">No</td>
+<td>No</td>
+<td align="left">STANDARD-LENGTH-TYPE<strong><sup>*1)</sup></strong></td>
+</tr>
+<tr class="odd">
+<td align="left">zero-terminated</td>
+<td align="left">No</td>
+<td>Yes</td>
+<td align="left">STANDARD-LENGTH-TYPE<strong><sup>*1)</sup></strong></td>
+</tr>
+<tr class="even">
+<td align="left">zero-terminated</td>
+<td align="left">Yes</td>
+<td>No</td>
+<td align="left">STANDARD-LENGTH-TYPE</td>
+</tr>
+<tr class="odd">
+<td align="left">zero-terminated</td>
+<td align="left">Yes</td>
+<td>Yes</td>
+<td align="left">STANDARD-LENGTH-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Leading-size-byte</td>
+<td align="left">No</td>
+<td>n/a</td>
+<td align="left">STANDARD-LENGTH-TYPE<strong><sup>*1)</sup></strong></td>
+</tr>
+</tbody>
+</table>
+<p>Table 36: Mapping of Terminations for Fixed Fields</p>
+<p><strong><sup>*1)</sup></strong> The CANdela termination &quot;zero-terminated / With Padding / Optional Termination&quot; is the only termination which can exactly be represented in ODX. For all other combinations the restrictions in CANdela are different than in ODX. For these cases an ODX-based testing application might handle certain data different than a CANdela-based testing application. For example an ODX based testing application might handle a string as valid whereas a CANdela based system would warn the user that the string does not comply with the restrictions defined in the CANdela file.</p>
+<p>From the table above it can be seen that ODX supports only one of the possible termination values available in CANdela 6.5. In case one of the incompatible terminations is used, a warning is emitted. The ODX-compliance check can then be used to detect these data types and adjust them to be ODX compliant.</p>
+<h4 id="variable-length-fields">Variable-length fields</h4>
+<p>In CANdela 6.5 the following termination values are now possible:</p>
+<div class="figure">
+<img src="Images/image40.png" alt="Termination values for variable fields" />
+<p class="caption">Termination values for variable fields</p>
+</div>
+<p>The Table below lists which CANdela terminations can be exactly described in ODX:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Termination</strong></th>
+<th align="left"><strong>Padding</strong></th>
+<th align="left"><strong>Termination optional</strong></th>
+<th align="left"><strong>ODX 2.0.1</strong></th>
+<th align="left"><strong>ODX 2.2.0</strong></th>
+<th align="left"><strong>CANdela 6.0</strong></th>
+<th align="left"><strong>CANdela 6.5</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">None</td>
+<td align="left">No</td>
+<td align="left">n/a</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">Zero-terminated</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+<tr class="odd">
+<td align="left">Zero-terminated</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">-</td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">Leading-size-byte</td>
+<td align="left">No</td>
+<td align="left">n/a</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+</tbody>
+</table>
+<p>Table 37: Mapping of Terminations for variable fields</p>
+<p>The mapping to ODX is described in the following table:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Termination</strong></th>
+<th align="left"><strong>Padding</strong></th>
+<th>**Optional*</th>
+<th align="left"><strong>ODX DIAG-CODED-TYPE</strong></th>
+<th align="left"><strong>TERMINATION</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">None</td>
+<td align="left">No</td>
+<td>n/a</td>
+<td align="left">MIN-MAX-LENGTH-TYPE</td>
+<td align="left">NONE</td>
+</tr>
+<tr class="even">
+<td align="left">zero-terminated</td>
+<td align="left">No</td>
+<td>No</td>
+<td align="left">MIN-MAX-LENGTH-TYPE <sup>*2)</sup></td>
+<td align="left">ZERO</td>
+</tr>
+<tr class="odd">
+<td align="left">zero-terminated</td>
+<td align="left">No</td>
+<td>Yes</td>
+<td align="left">MIN-MAX-LENGTH-TYPE</td>
+<td align="left">ZERO</td>
+</tr>
+<tr class="even">
+<td align="left">Leading-size-byte</td>
+<td align="left">No</td>
+<td>n/a</td>
+<td align="left">LEADING-LENGTH-INFO-TYPE</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<p>Table 38: Mapping of Terminations for variable fields</p>
+<p><strong><sup>*2)</sup></strong> The CANdela termination &quot;zero-terminated / No Padding / No Optional Termination&quot; cannot be represented in ODX exactly. The reason for this is that in ODX the zero termination is optional (i.e. byte can also be a character and not 0x00). In addition it is also valid to specify fewer characters than MIN-LENGTH and fill the rest of the elements with zeros.</p>
+<h4 id="units">Units</h4>
+<p>In case the UNIT in CANdela consists of only one character (e.g. %) the ODX-Export will map the following characters to their names:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Character</strong></th>
+<th align="left"><strong>UNIT.SHORT-NAME</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">€</td>
+<td align="left">Euro</td>
+</tr>
+<tr class="even">
+<td align="left">$</td>
+<td align="left">Dollar</td>
+</tr>
+<tr class="odd">
+<td align="left">%</td>
+<td align="left">Percent</td>
+</tr>
+<tr class="even">
+<td align="left">°</td>
+<td align="left">Degree</td>
+</tr>
+</tbody>
+</table>
+<p>Table 39: UNIT SHORT-NAME mapping</p>
+<h3 id="invalid-values">Invalid Values</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela &quot;invalid values&quot;</strong></th>
+<th align="left"><strong>ODX &quot;invalidity&quot;</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">notImplemented</td>
+<td align="left">notAvailable</td>
+</tr>
+<tr class="even">
+<td align="left">invalidSignal</td>
+<td align="left">notValid</td>
+</tr>
+<tr class="odd">
+<td align="left">unexpectedResult</td>
+<td align="left">notAvailable</td>
+</tr>
+<tr class="even">
+<td align="left">noSignal</td>
+<td align="left">notAvailable</td>
+</tr>
+<tr class="odd">
+<td align="left">undef</td>
+<td align="left">notDefined</td>
+</tr>
+</tbody>
+</table>
+<p>Table 40: Mapping of &quot;invalid values&quot; to ODX &quot;invalidity&quot;</p>
+<h3 id="uncovered-value-ranges">Uncovered value ranges</h3>
+<p>In order to avoid violations of Checker-Rule 140-1, it is checked whether a computation is specified for the complete coded value range. When this is not the case, the ODX-Export since 6.0 automatically generates InternalConstraints with Validity &quot;NOT-DEFINED&quot; for these value ranges.</p>
+<h2 id="linear">Linear</h2>
+<p>Export of Denominator at COMPU-RATIONAL-COEFFICIENTS only if it differs from 1.</p>
+<p>Since CANdela 6.0 it is possible to define the COMPU-INVERSE-VALUE for gradient 0.</p>
+<h2 id="piecewise-linear">Piecewise Linear</h2>
+<p>Since CANdela 5.5 the invertability is checked.</p>
+<p>Since CANdela 6.0 it is possible to define the COMPU-INVERSE-VALUE for gradient 0.</p>
+<h2 id="text-table">Text table</h2>
+<p>Since version 4.0 empty text tables are exported as DOP with COMPU-METHOD &quot;IDENTIY&quot; since COMPU-INTERNAL-TO-PHYS without COMPU-SCALE is not allowed in ODX. A warning is emitted in this case.</p>
+<p>Since CANdela 6.0 it is possible to define COMPU-INVERSE-VALUEs for the Mappings. These are then exported to ODX-COMPU-INVERSE-VALUEs at COMPU-SCALE</p>
+<h2 id="characteristic-curve">Characteristic curve</h2>
+<p>Since version 4.0 empty characteristic curves are exported as DOP with COMPU-METHOD &quot;IDENTIY&quot; since COMPU-INTERNAL-TO-PHYS without COMPU-SCALE is not allowed in ODX. A warning is emitted in this case.</p>
+<p>Since CANdela 6.0 it is possible to define COMPU-INVERSE-VALUEs for the Mappings. These are then exported to ODX-COMPU-INVERSE-VALUEs at COMPU-SCALE</p>
+<h2 id="formula">Formula</h2>
+<p>Since there is no generic formula data type in ODX, export...</p>
+<ul>
+<li>represents the CANdela data type Formula as DOP with COMPU-METHOD &quot;IDENTITY&quot;
+<ul>
+<li>does not check whether the formula can be represented e.g. in a rational function.</li>
+</ul></li>
+<li>inserts the CANdela formulas (internal to phys and phys to internal) in the DESC sub-element of the DOP.</li>
+<li>emits a warning that the formula is converted to an IDENTITY.</li>
+</ul>
+<p>Cf. chapter &quot;ODX&quot; at <a href="../../30%20Features/Data%20Type/Formula.htm#odx">Formula Data Type</a>.</p>
+<h2 id="procedural">Procedural</h2>
+<p>ProcConversion is exported as COMPU-METHOD with category COMPUCODE only if the file name extension is .java, .class or .jar. In other cases a COMPU-METHOD with category IDENTICAL is exported, because ODX only allows PROG-CODEs of those extensions within COMPU-METHOD of a DOP.</p>
+<p>The source-file included in CANdelaStudio is also exported to the FileSystem.</p>
+<h2 id="packet">Packet</h2>
+<p>Since CANdelaStudio 4.0, a CANdela packet data type is exported as COMPLEX-DOP of type STRUCTURE.</p>
+<div class="figure">
+<img src="Images/image72.png" alt="STRUCTURE Schema" />
+<p class="caption">STRUCTURE Schema</p>
+</div>
+<p>If the STRUCTURE has capacity left (is not completely specified) the CANdela ODX export uses a RESERVED data object for the difference between the BYTE-SIZE and the sum of bytes which are used by the specified data objects within the STRUCTURE.</p>
+<p>Since CANdelaStudio 6.5, it is possible to control the visibility of packet data types in the diagnostic application. If the display flag at a packet data type is set to true, the IS-VISIBLE attribute in ODX is set to false.</p>
+<div class="figure">
+<img src="Images/image42.png" alt="visibility of packet data type in diagnostic applications" />
+<p class="caption">visibility of packet data type in diagnostic applications</p>
+</div>
+<h3 id="flat-export-of-packet-content">Flat export of Packet content</h3>
+<p><span id="ODXE-R1110-Flat" class="rqDef">[ODXE-R1110-Flat]</span></p>
+<p>If the CANdelaStudio ODX-Export Option &quot;ExtractParamtersOfPacketDataTypes&quot; is set, no STRUCTURE is generated. Instead, the parameters of the packet datatype are exported to the position in the REQUEST/RESPONSE from which the Packet data type was referenced.</p>
+<p>To ensure unique SHORT-NAMEs, the SHORT-NAME +&quot;_&quot; of the referencing PARAM is added as PREFIX to the PARAM extracted from the packet data type</p>
+<p>To ensure unique LONG-NAMEs, the LONG-NAME +&quot; &quot; of the referencing PARAM is added as PREFIX to the PARAM extracted from the packet data type</p>
+<h3 id="packet-static-field">STATIC-FIELD</h3>
+<p>If the CANdela Packet data type has the Attribute 'Is-Static-Field' set to true, the Packet is exported as STATIC-FIELD. The number of repetitions is calculated from the CANdela-Packet data type by counting how often a qualifier is repeated.</p>
+<h2 id="field-data-types">FIELD data types</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela</strong></th>
+<th align="left"><strong>ODX Field</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Fixed count iteration data type (for telegram tables) or Iterator End Comp (predefined in CANdelaStudio ProtocolService)</td>
+<td align="left">END-OF-PDU-FIELD</td>
+</tr>
+<tr class="even">
+<td align="left">End-marker iteration data type (for telegram tables) or Iterator End Marker (predefined in CANdelaStudio ProtocolService)</td>
+<td align="left">DYNAMIC-ENDMARKER-FIELD</td>
+</tr>
+<tr class="odd">
+<td align="left">Counter iterator data type (for telegram tables) or Iterator Selector (predefined in CANdelaStudio ProtocolService)</td>
+<td align="left">DYNAMIC-LENGTH-FIELD</td>
+</tr>
+<tr class="even">
+<td align="left">Fixed count iterator data type</td>
+<td align="left">STATIC-FIELD</td>
+</tr>
+</tbody>
+</table>
+<p>Table 41: Mapping of CANdela FIELDs data types to ODX FIELDs</p>
+<h3 id="field-data-types-static-field">STATIC-FIELD</h3>
+<p>A data object that references a fixed count iteration data type will be exported as STATIC-FIELD.</p>
+<div class="figure">
+<img src="Images/image43.png" alt="STATIC-FIELD" />
+<p class="caption">STATIC-FIELD</p>
+</div>
+<h3 id="end-of-pdu-field">END-OF-PDU-FIELD</h3>
+<p>An End-of-service iteration data type will be exported as END-OF-PDU-FIELD.</p>
+<div class="figure">
+<img src="Images/image44.png" alt="END-OF-PDU-FIELD" />
+<p class="caption">END-OF-PDU-FIELD</p>
+</div>
+<h3 id="dynamic-length-field">DYNAMIC-LENGTH-FIELD</h3>
+<p>A counter iteration data type will be exported as DYNAMIC-LENGTH-FIELD.</p>
+<div class="figure">
+<img src="Images/image45.png" alt="DYNAMIC-LENGTH-FIELD" />
+<p class="caption">DYNAMIC-LENGTH-FIELD</p>
+</div>
+<h3 id="dynamic-endmarker-field">DYNAMIC-ENDMARKER-FIELD</h3>
+<p>An end-marker iteration data type will be exported as DYNAMIC-ENDMARKER-FIELD.</p>
+<div class="figure">
+<img src="Images/image46.png" alt="DYNAMIC-ENDMARKER-FIELD" />
+<p class="caption">DYNAMIC-ENDMARKER-FIELD</p>
+</div>
+<h2 id="mux">MUX</h2>
+<h3 id="mux-used-in-a-response">Mux used in a response</h3>
+<p>A multiplexer data type within a response will be exported as MUX. The BYTE-POSITION of the PARAM that points to the MUX is equal with the BYTE-POSITION of the selector PARAM. If the attribute &quot;Export as TABLE&quot; is set for the multiplexer data type, the ODX-Export will generate a TABLE instead of a MUX.</p>
+<p>If a multiplexer data type used in several telegram tables and the offset between the DataObject referencing the Multiplexer-DataType and the selector DataObject is different, for each offset a specific MUX will be generated in ODX.</p>
+<div class="figure">
+<img src="Images/image47.png" alt="MUX data type in a POS-RESPONSE" />
+<p class="caption">MUX data type in a POS-RESPONSE</p>
+</div>
+<h3 id="mux-used-in-a-request">Mux used in a request</h3>
+<p>A multiplexer data type that is used in a request will always be exported as TABLE. The ODX-Export will generate a TABLE-KEY for the selector DataObject that points to the TABLE that represents the multiplexer data type. The multiplexer DataObject will be exported as a TABLE-STRUCT that points to the TABLE-KEY.</p>
+<div class="figure">
+<img src="Images/image48.png" alt="MUX data type in a REQUEST" />
+<p class="caption">MUX data type in a REQUEST</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a></li>
+</ul>
+</body>
+</html>

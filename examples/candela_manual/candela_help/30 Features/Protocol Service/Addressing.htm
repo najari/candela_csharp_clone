@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Addressing</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="protocol-service-addressing">Protocol Service Addressing</h1>
+<p>Contents:</p>
+<ul>
+<li>Suppress Positive Response Message Indication Bit</li>
+<li><a href="#fixed">Addressing Properties: Fixed Values for All Services</a>
+<ul>
+<li>multiple responses</li>
+<li>periodic responses</li>
+</ul></li>
+<li><a href="#defaults">Addressing Properties: Default Values for New Services</a>
+<ul>
+<li>test system sends request...</li>
+<li>ECU sends a response...</li>
+</ul></li>
+</ul>
+<h2 id="SPRMIB"><span id='_index_446728099'>Suppress Positive Response Message Indication Bit</span> (<span id='_index_446728100'>SPRMIB</span>)</h2>
+<p>In UDS (ISO 14229-1), about half of the ProtocolServices has a bit (MSB) in the &quot;subfunction&quot; message parameter, indicating that an ECU should not send a response for the given request.</p>
+<ul>
+<li>If the bit is <strong>set</strong> (e.g. <code>0x81</code>), the ECU shall <strong>suppress</strong> a positive response message.</li>
+<li>If the bit is <strong>not set</strong> (e.g. <code>0x01</code>), the ECU shall <strong>send</strong> a positive response message.</li>
+<li>Negative response messages shall be sent independently of the bit (cf. CDS-2585).</li>
+</ul>
+<p>In CANdela, ...</p>
+<ul>
+<li>whether a Protocol Service supports the SPRMIB is defined at the Protocol Service component that represents the <strong>subfunction</strong> (Constant or Variable Value Component; default <code>false</code>)</li>
+<li>... and is also shown read-only in the property dialog of the Protocol Service itself.</li>
+<li>If a Protocol Service supports the SPRMIB, the bit 7 of the subfunction value specified in a diagnostic instance at <strong>authoring time</strong> does not matter, since it must be specified at <strong>runtime</strong> in the test system.</li>
+<li><span id="PS-R710" class="rqDef">[PS-R710]</span> In order to define the SPRMIB value at authoring time already, CANdela supports a Protocol Service property &quot;Test system sets SPRMIB&quot; (see below).
+<ul>
+<li><span id="PS-R710-All" class="rqDef">[PS-R710-All]</span> The property applies to all services based on the Protocol Service (there is no choice).</li>
+</ul></li>
+</ul>
+<h3 id="note-about-using-the-sprmib-with-specific-services">Note about using the SPRMIB with specific services</h3>
+<ul>
+<li>According with UDS 2013, services with <strong>subfunction</strong> support the SPRMIB</li>
+<li>therefore, e.g. the 0x19 0x04 and 0x19 0x06 services support the SPRMIB
+<ul>
+<li>UDS 2013 explicitly mentions the SPRMIB in the 0x19 context as follows:</li>
+<li>&quot;Explanations and usage of the possible levels are detailed below (suppressPosRspMsgIndicationBit (bit 7) not shown)&quot;</li>
+<li>&quot;For all examples the client requests to have a response message by setting the suppressPosRspMsgIndicationBit (bit 7 of the sub-function parameter) to &quot;FALSE&quot; ('0'). &quot;</li>
+<li>this indicates that 0x19 supports SPRMIB.</li>
+</ul></li>
+<li>therefore, Vector testers handle the SPRMIB for these 0x19 services</li>
+<li>it admittedly <strong>does not make sense</strong> to send a 0x19 0x04 request with the SPRMIB set,
+<ul>
+<li>why would you send the request, anyway?</li>
+<li>... but it is conforming with UDS</li>
+<li>and supported by Vector testers.</li>
+</ul></li>
+</ul>
+
+<h3 id="recommendation-use-sprmib-with-the-following-uds-services">Recommendation: Use SPRMIB with the following UDS Services</h3>
+<p><span id="PS-D700" class="rqDef">[PS-D700]</span></p>
+<ul>
+<li>0x10 Diagnostic Session Control</li>
+<li>0x11 ECU Reset</li>
+<li>0x28 Communication Control</li>
+<li>0x31 Routine Control</li>
+<li>0x3E Tester Present</li>
+<li>0x85 Control DTC Setting</li>
+</ul>
+
+<h3 id="constraints">Constraints</h3>
+<p><span id="PS-R715" class="rqDef">[PS-R715]</span> Constraints for SPRMIB Usage</p>
+<ul>
+<li><span id="PS-715-One" class="rqDef">[PS-715-One]</span> <strong>At most one</strong> component may have the &quot;supports SPRMIB&quot; bit set.</li>
+<li><span id="PS-715-NotFirst" class="rqDef">[PS-715-NotFirst]</span> The <strong>first</strong> component (typically ServiceID) must <strong>not</strong> have the bit set.</li>
+<li><span id="PS-715-Last" class="rqDef">[PS-715-Last]</span> It is <strong>not necessarily the last</strong> Constant or Variable Value Component that has the bit set.</li>
+<li><span id="PS-715-Singleton" class="rqDef">[PS-715-Singleton]</span> This applies to Protocol Services in singleton diagnostic classes <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R150-singleton' title="">[DCLT-R150-singleton]</a>, too.</li>
+</ul>
+
+<h2 id="fixed">Addressing Properties: Fixed Values for All Services<span id='_index_446728101' title='Multiple Responses' data-term='Multiple Responses'></span><span id='_index_446728102' title='Periodic Responses' data-term='Periodic Responses'></span></h2>
+<p>Note: whether the Protocol Service has a positive response influences possible values of the following addressing properties.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Addressing%20all%20Services.jpg" alt="Protocol Service Property Page &quot;Addressing&quot; (top part with settings for all services)" />
+<p class="caption">Protocol Service Property Page &quot;Addressing&quot; (top part with settings for all services)</p>
+</div>
+<table style="width:99%;">
+<colgroup>
+<col width="11%" />
+<col width="21%" />
+<col width="66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature ID</th>
+<th align="left">Property</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span id="PS-R720" class="rqDef">[PS-R720]</span></td>
+<td align="left">support multiple responses</td>
+<td align="left">Specific to GMW3110 for Service A9; the option should not be set in other templates.<br />
+CANdelaStudio does not show the flag in a file for UDS (CDS-39671 v11).<br />
+Indicates that the ECU sends multiple responses for one request.<br />
+The last response is recognized when a timeout in the tester occurs - as opposed with &quot;support periodic responses&quot;, which sends responses until the &quot;stop&quot; signal.<br />
+All responses are sent on a UUDT channel.<br />
+Migration 4.0 to 5.0: for GMW3110 Protocol Service A9 81, HasMultipleResponses flag set to true (CDS-5788 R011 5.0).<br />
+In ODX: <code>IS-MULTIPLE</code>.</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="PS-R730" class="rqDef">[PS-R730]</span></td>
+<td align="left">support periodic responses</td>
+<td align="left">indicates whether the ECU may send responses periodically.<br />
+UDS: service 2A.<br />
+GMW3110: service AA.<br />
+In ODX: <code>IS-CYCLIC</code>.</td>
+</tr>
+<tr class="odd">
+<td align="left"><a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R710' title="">[PS-R710]</a> above</td>
+<td align="left">support the &quot;Suppress Positive ResponseMessage Indication Bit&quot; (SPRMIB)</td>
+<td align="left">indicates whether the ECU supports the SPRMIB for the request of the Protocol Service</td>
+</tr>
+</tbody>
+</table>
+<h2 id="defaults">Addressing Properties: Default Values for New Services</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Addressing%20with%20SPRMIB.jpg" alt="Protocol Service Property Page &quot;Addressing&quot; for Protocol Service with SPRMIB set" />
+<p class="caption">Protocol Service Property Page &quot;Addressing&quot; for Protocol Service with SPRMIB set</p>
+</div>
+<table style="width:99%;">
+<colgroup>
+<col width="14%" />
+<col width="29%" />
+<col width="55%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature ID</th>
+<th align="left">Property</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong>Physical request</strong></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><span id="PS-R740" class="rqDef">[PS-R740]</span></td>
+<td align="left">Test system sends physical request</td>
+<td align="left">indicates whether the ECU supports physical addressing for the Protocol Service.<br />
+Default: <code>true</code>.</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="PS-R750" class="rqDef">[PS-R750]</span></td>
+<td align="left">The test system shall set the SPRMIB in the request...</td>
+<td align="left">indicates whether the test system shall set or reset the SPRMIB in a physical request unconditionally, without user choice.<br />
+This property describes behavior of the test system, not of the ECU!<br />
+It is up to the individual test system to respect the property.</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="PS-R750-Always" class="rqDef">[PS-R750-Always]</span></td>
+<td align="left">... always</td>
+<td align="left">The CANdela author decides that the test system shall always set the SPRMIB to 1, to <strong>suppress</strong> a physical positive response.</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="PS-R750-UserDefined" class="rqDef">[PS-R750-UserDefined]</span></td>
+<td align="left">... user-defined</td>
+<td align="left">The CANdela author leaves the decision whether to set the SPRMIB to the user of the test system.<br />
+This is the default.</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="PS-R750-Never" class="rqDef">[PS-R750-Never]</span></td>
+<td align="left">... never</td>
+<td align="left">The CANdela author decides that the test system shall always set the SPRMIB to 0, to <strong>require</strong> a physical positive response.</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="PS-R760" class="rqDef">[PS-R760]</span></td>
+<td align="left">ECU sends a response...</td>
+<td align="left">indicates whether the ECU sends a positive or negative response on a physical request.<br />
+If the Protocol Service has no positive and no negative response defined,<br />
+the property is <code>false</code> and cannot be changed at the Protocol Service or one of its services.<br />
+Otherwise, for UDS, the property is always <code>true</code> (&quot;UDS ECU always supports physical addressing.&quot;, CDS-39671 v11).</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong>Functional request</strong></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="PS-R745" class="rqDef">[PS-R745]</span></td>
+<td align="left">Test system sends functional request</td>
+<td align="left">indicates whether the ECU supports functional addressing for the Protocol Service.<br />
+Default: <code>false</code>.</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="PS-R755" class="rqDef">[PS-R755]</span></td>
+<td align="left">The test system shall set the SPRMIB in the request...</td>
+<td align="left">like <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R750' title="">[PS-R750]</a> above, for the functional request.</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="PS-R755-Always" class="rqDef">[PS-R755-Always]</span></td>
+<td align="left">... always</td>
+<td align="left">see at the physical request above.</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="PS-R755-UserDefined" class="rqDef">[PS-R755-UserDefined]</span></td>
+<td align="left">... user-defined</td>
+<td align="left">see at the physical request above.<br />
+This is the default.</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="PS-R755-Never" class="rqDef">[PS-R755-Never]</span></td>
+<td align="left">... never</td>
+<td align="left">see at the physical request above.</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="PS-R765" class="rqDef">[PS-R765]</span></td>
+<td align="left">ECU sends a response...</td>
+<td align="left">indicates whether the ECU sends a positive or negative response on a functional request.<br />
+Like the previous property <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R760' title="">[PS-R760]</a>, just for a functional request.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="use-in-vector-toolchain">Use in Vector Toolchain</h3>
+<ul>
+<li><strong>CANdesc</strong> for UDS 2006:
+<ul>
+<li>evaluates &quot;ECU sends a response&quot;</li>
+<li>e.g. you can configure CANdesc to <strong>not</strong> support a request for a given service.</li>
+</ul></li>
+<li><strong>CANdesc</strong> for UDS 2012, and</li>
+<li><strong>DCM</strong>:
+<ul>
+<li>The ECU handles the request according with ISO 14229-1,</li>
+<li>i.e. ignores the flag &quot;ECU sends a response&quot; for a functional request,</li>
+</ul></li>
+<li><strong>CANdesc</strong> in general:
+<ul>
+<li>On CAN, CANdesc assumes a functional request is not longer than 1 CAN frame; it has no special handling for the constellation.</li>
+<li>Typical use for functional addressing: keep bus traffic low e.g. for flashing, using services 0x20 Communication Control and 0x85 Control DTC Setting.</li>
+</ul></li>
+<li><strong>CANoe.DiVa</strong>:
+<ul>
+<li>if the flag &quot;Test system sends functional request&quot; is on,
+<ul>
+<li>DiVa generates a test,</li>
+<li>otherwise it does not send the service functioally.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2 id="combinations">Valid Combinations of Addressing Properties of a Protocol Service (CDS-14711)</h2>
+<p><span id="PS-R770" class="rqDef">[PS-R770]</span> The following lists valid combinations:</p>
+<table style="width:98%;">
+<colgroup>
+<col width="13%" />
+<col width="11%" />
+<col width="15%" />
+<col width="20%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">PosResponse<br />
+exists</th>
+<th align="left">SPRMIB<br />
+supported</th>
+<th align="left">Test system sends …</th>
+<th align="left">ECU sends a<br />
+response…</th>
+<th align="left">The test system<br />
+shall set the SPRMIB to…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">No <em>(fixed)</em></td>
+<td align="left"><span id="PS-R770-NNNN" class="rqDef">[PS-R770-NNNN]</span> user-defined <em>(fixed)</em></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><strong>Yes</strong></td>
+<td align="left">No <em>(fixed)</em></td>
+<td align="left"><span id="PS-R770-NNYN" class="rqDef">[PS-R770-NNYN]</span> user-defined <em>(fixed)</em></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Yes (1)</td>
+<td align="left">No</td>
+<td align="left">No <em>(fixed)</em></td>
+<td align="left"><span id="PS-R770-NYNN" class="rqDef">[PS-R770-NYNN]</span> user-defined <em>(fixed)</em></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><strong>Yes</strong></td>
+<td align="left">non-UDS: n/a</td>
+<td align="left"><span id="PS-R770-NYYK" class="rqDef">[PS-R770-NYYK]</span> <strong>always / user-defined / never</strong> (2)</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><strong>UDS</strong>: No <em>(fixed)</em></td>
+<td align="left"><span id="PS-R770-NYYU" class="rqDef">[PS-R770-NYYU]</span> <strong>always / user-defined / never</strong> (2)</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Yes</strong></td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">No <em>(fixed)</em></td>
+<td align="left"><span id="PS-R770-YNNN" class="rqDef">[PS-R770-YNNN]</span> user-defined <em>(fixed)</em></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><strong>Yes</strong></td>
+<td align="left">non-UDS: Yes/No</td>
+<td align="left"><span id="PS-R770-YNYK" class="rqDef">[PS-R770-YNYK]</span> user-defined <em>(fixed)</em></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><strong>UDS</strong>: Yes/No</td>
+<td align="left"><span id="PS-R770-YNYU" class="rqDef">[PS-R770-YNYU]</span> user-defined <em>(fixed)</em></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong>Yes</strong></td>
+<td align="left">No</td>
+<td align="left">No <em>(fixed)</em></td>
+<td align="left"><span id="PS-R770-YYNN" class="rqDef">[PS-R770-YYNN]</span> user-defined <em>(fixed)</em></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><strong>Yes</strong></td>
+<td align="left">non-UDS: n/a</td>
+<td align="left"><span id="PS-R770-YYYK" class="rqDef">[PS-R770-YYYK]</span> <strong>always / user-defined / never</strong> (2)</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><strong>UDS</strong>: No</td>
+<td align="left"><span id="PS-R770-YYYN" class="rqDef">[PS-R770-YYYN]</span> <strong>always / user-defined / never</strong> (2)</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><strong>UDS</strong>: Yes</td>
+<td align="left"><span id="PS-R770-YYYY" class="rqDef">[PS-R770-YYYY]</span> <strong>always / user-defined / never</strong> (2)</td>
+</tr>
+</tbody>
+</table>
+<p>(1) Without positive response, „SPRMIB supported“ = yes does not take effect, but is supported anyway, otherwise the service would not comply with UDS.</p>
+
+<p>(2) CANdelaStudio allows supporting SPRMIB for KWP, so “Test system sets SPRMIB” is available for KWP, too.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a></li>
+<li><a href="Protocol%20Service%20Authorization.htm">Protocol Service Authorization</a></li>
+<li><a href="../../20%20UserInterface/Protocol%20Service/Protocol%20Service%20Property%20Page%20Addressing.htm">Protocol Service Property Page &quot;Addressing&quot;</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="../../20%20UserInterface/Service/Service%20Property%20Page%20Addressing.htm">Service Property Page &quot;Addressing&quot;</a></li>
+<li>Vector UDS Template: <a href="../../40%20Templates/Vector%20UDS/Functional%20Addressing.htm">Functional Addressing</a></li>
+</ul>
+</body>
+</html>

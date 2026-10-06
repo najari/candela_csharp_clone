@@ -1,0 +1,389 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Class Templates</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="vector-uds-template---diagnostic-class-templates">Vector UDS Template - Diagnostic Class Templates</h1>
+<h2 id="overview">Overview</h2>
+<table>
+<colgroup>
+<col width="38%" />
+<col width="11%" />
+<col width="13%" />
+<col width="10%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Class Type</th>
+<th align="center">is singleton</th>
+<th align="left">Qualifier</th>
+<th align="center">relevant for requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sessions</td>
+<td align="left">ses</td>
+<td align="center">-</td>
+<td align="left">Sessions</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left">Ecu Reset</td>
+<td align="left">fun</td>
+<td align="center">-</td>
+<td align="left">Ecu_Reset</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left">Security Access</td>
+<td align="left">sec</td>
+<td align="center">-</td>
+<td align="left">SecurityAccess</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="#commCtrl">Communication Control</a></td>
+<td align="left">com</td>
+<td align="center">-</td>
+<td align="left">Communication_Control</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left">Communication Control - EnhancedAddressInformation</td>
+<td align="left">com</td>
+<td align="center">-</td>
+<td align="left">Communication_Control_EnhancedAddressInformation</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left">Tester Present</td>
+<td align="left">tpr</td>
+<td align="center">x</td>
+<td align="left">TesterPresent</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left">Control DTC Setting</td>
+<td align="left">fun</td>
+<td align="center">x</td>
+<td align="left">ControlDTCSetting</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left">Response on Event</td>
+<td align="left">fun</td>
+<td align="center">x</td>
+<td align="left">Response_on_Event</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left">LinkControl</td>
+<td align="left">act</td>
+<td align="center">x</td>
+<td align="left">LinkControl</td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="left">ECU Identification</td>
+<td align="left">idn</td>
+<td align="center">-</td>
+<td align="left">ECU_Identification</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left">Variant Coding</td>
+<td align="left">vcd</td>
+<td align="center">-</td>
+<td align="left">Variant_Coding</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left">Stored Data</td>
+<td align="left">std</td>
+<td align="center">-</td>
+<td align="left">Stored_Data</td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="left">Dynamic Data</td>
+<td align="left">act</td>
+<td align="center">-</td>
+<td align="left">Dynamic_Data</td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="left">Periodic Data</td>
+<td align="left">act</td>
+<td align="center">-</td>
+<td align="left">Periodic_Data</td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="#dyndef-periodic">Dynamically Define Periodic Data</a></td>
+<td align="left">fun</td>
+<td align="center">-</td>
+<td align="left">Dynamically_Define_Periodic_Data</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="#dyndef-nonperiodic">Dynamically Define Non-Periodic Data</a></td>
+<td align="left">fun</td>
+<td align="center">-</td>
+<td align="left">Dynamically_Define_Non_Periodic_Data</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left">IO Control</td>
+<td align="left">ctl</td>
+<td align="center">-</td>
+<td align="left">IOControl</td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="#routine-control">Routine Control</a></td>
+<td align="left">rtn</td>
+<td align="center">-</td>
+<td align="left">Routine_Control</td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="left">Memory</td>
+<td align="left">mem</td>
+<td align="center">x</td>
+<td align="left">Memory</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="#fault-memory">Fault Memory</a></td>
+<td align="left">ftm</td>
+<td align="center">x</td>
+<td align="left">FaultMemory</td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="#user-defined-fault-memories">User Defined Fault Memories</a></td>
+<td align="left">ftm</td>
+<td align="center">-</td>
+<td align="left">User_Defined_Fault_Memories</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left">Upload/Download</td>
+<td align="left">dwn</td>
+<td align="center">x</td>
+<td align="left">Upload_Download</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="#fileTransfer">File Transfer</a></td>
+<td align="left">dwn</td>
+<td align="center">x</td>
+<td align="left">File_Transfer</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="#freezeframe">Powertrain Diagnostic and Freeze Frame Data</a></td>
+<td align="left">rtn</td>
+<td align="center">-</td>
+<td align="left">Powertrain_Diagnostic_and_Freeze_Frame_Data</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left">Emission-related Trouble Codes</td>
+<td align="left">ftm</td>
+<td align="center">x</td>
+<td align="left">Emission_related_Trouble_Codes</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left">Onboard Monitoring Test Results for Specific Monitored Systems</td>
+<td align="left">rtn</td>
+<td align="center">-</td>
+<td align="left">Onboard_Monitoring_Test_Results_for_Specific_Monitored_Systems</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left">Control of Onboard Systems, Test or Control</td>
+<td align="left">rtn</td>
+<td align="center">-</td>
+<td align="left">Control_of_Onboard_Systems_Test_or_Control</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="#vehicle-information">Vehicle Information</a></td>
+<td align="left">act</td>
+<td align="center">-</td>
+<td align="left">Vehicle_Information</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="#security-jobs">Security Jobs</a></td>
+<td align="left">job</td>
+<td align="center">x</td>
+<td align="left">Securitz_Jobs</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left">Flash Jobs</td>
+<td align="left">flashjob</td>
+<td align="center">x</td>
+<td align="left">Flash_Jobs</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left">Generic Jobs</td>
+<td align="left">job</td>
+<td align="center">x</td>
+<td align="left">Generic_Jobs</td>
+<td align="center">-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="commCtrl">Communication Control</h2>
+<p>Note:</p>
+<ul>
+<li>in the &quot;Communication Type&quot; byte, for bits...
+<ul>
+<li>Normal Communication Messages (bit 0)</li>
+<li>Network Management Communication Messages (bit 1)</li>
+</ul></li>
+<li>the default value in the template is 0x3 (both bits set),</li>
+<li>the value 0x0 is ISO SAE Reserved (in UDS 2013 and 2019),
+<ul>
+<li>but the description in the template does not forbid the use of 0x0.</li>
+<li>If you need to explicitly define value 0x0 as invalid, you might define a data type of length 2 bits, with 0x0 as an invalid value.</li>
+</ul></li>
+</ul>
+
+<h2 id="dyndef-periodic">Dynamically Define Periodic Data</h2>
+<p><span id="VUDS-R540" class="rqDef">[VUDS-R540]</span> The Used Protocol Service for the &quot;... Define By Identifier&quot; Protocol Service has the same text table &quot;Short Identifier&quot; assigned <a class='rqRef' href='../../30 Features\Diagnostic Class Template\Used Protocol Service.htm#DCLT-R400' title="">[DCLT-R400]</a> as the Procotol Service.</p>
+<p>See note <a class='rqRef' href='../../40%20Templates/Vector%20UDS/Protocol%20Services.htm#VUDS-R855' title="">[VUDS-R855]</a> at the Protocol Service.</p>
+<h2 id="dyndef-nonperiodic">Dynamically Define Non-Periodic Data</h2>
+<p>Same as previous chapter <a class='rqRef' href='../../40%20Templates/Vector%20UDS/Diagnostic%20Class%20Templates.htm#VUDS-R540' title="">[VUDS-R540]</a>.</p>
+<h2 id="routine-control">Routine Control</h2>
+<p><span id="VUDS-R530" class="rqDef">[VUDS-R530]</span></p>
+<ul>
+<li>Class Type is &quot;Routine&quot; (CDS-41739 9.0; previously &quot;ctl&quot;).</li>
+<li>Used Protocol Services:
+<ul>
+<li>Start</li>
+<li>Stop</li>
+<li>Request Results
+<ul>
+<li>former &quot;Results&quot;, added verb, avoid issue CDS-71748 (CDS-71750 v12)</li>
+</ul></li>
+</ul></li>
+<li>Combined Proxy Components
+<ul>
+<li>Control Options (Start)</li>
+<li>Status (Start)</li>
+<li>Control Options (Stop)</li>
+<li>Status (Stop)</li>
+<li>Results
+<ul>
+<li>former &quot;Status (Results)&quot;, qualifier was &quot;Results&quot; already (CDS-71750 v12)</li>
+</ul></li>
+<li>Start NR</li>
+<li>Stop NR</li>
+<li>Request Results NR
+<ul>
+<li>former &quot;Results&quot; with qualifier &quot;RequestResults&quot;, avoid issue CDS-71748 (CDS-71750 v12)</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="fault-memory">Fault Memory</h2>
+<p>This diagnostic class describes the <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a>.</p>
+<h3 id="dtcstatusavailabilitymask-vs.-statusofdtc">DTCStatusAvailabilityMask vs. StatusOfDTC</h3>
+<p><span id="VUDS-R560" class="rqDef">[VUDS-R560]</span> In the Primary Fault Memory, the DTC Status related Proxy Components are combined as follows:</p>
+<div class="figure">
+<img src="Images/DTCStatusAvailabilityMask%20vs%20StatusOfDTC.jpg" alt="DTCStatusAvailabilityMask vs. StatusOfDTC in Vector UDS 2.5.0" />
+<p class="caption">DTCStatusAvailabilityMask vs. StatusOfDTC in Vector UDS 2.5.0</p>
+</div>
+<p>See DTC Status in CANdela <a class='rqRef' href='../../30 Features\DTC\DTC Status Bits.htm#DTCSB-D560' title="">[DTCSB-D560]</a> for background.</p>
+<h3 id="responses-with-an-optional-dtc-0x19-0x0a-..-0x0f">Responses with an Optional DTC: 0x19 0x0A .. 0x0F</h3>
+<p>The data structure is as described in the chapter &quot;Fault Memory in CANdela&quot; <a class='rqRef' href='../../30 Features\Fault Memory\Fault Memory in CANdela.htm#FM-D570' title="">[FM-D570]</a>.</p>
+<h3 id="faultread">FAULTREAD</h3>
+<p><span id="VUDS-R550" class="rqDef">[VUDS-R550]</span> The services for Snapshot Data have the semantics <a class='rqRef' href='../../30 Features\Diagnostic Class Template\Used Protocol Service.htm#DCLT-R320' title="Used Protocol Service Semantics">[DCLT-R320]</a> &quot;FAULTREAD&quot; (CDS-71774 v12):</p>
+<ul>
+<li>19 04 Read Snapshot Record</li>
+<li>19 05 Read Snapshot Identification</li>
+<li>19 18 User Defined Fault Memory - Read Snapshots</li>
+</ul>
+<p>In ODXStudio, this avoids the checker warning ODXStudio012 (Warning Level 1).</p>
+<h2 id="user-defined-fault-memories">User Defined Fault Memories (CDS-42499 9.0)</h2>
+<p>This diagnostic class describes the <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm#user-defined">User-Defined Fault Memory</a>.</p>
+<p>The <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used ProtocolServices</a> reference the text table &quot;<a href="Data%20Types.htm#user-defined-fault-memories">User Defined Fault Memories</a>&quot; that restricts the set of possible diagnostic instances for user defined fault memory.</p>
+<p>See <a href="../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#toolchain">Use in the Vector Toolchain</a> for support by CANdesc/AUTOSAR.</p>
+<p><span id="VUDS-R510" class="rqDef">[VUDS-R510]</span> The DTC Status proxy components are (CDS-68938 9.1)...</p>
+<ul>
+<li>combined in 19 17 request, 19 18 and 19 19 positive response (<code>zz</code>)</li>
+<li>separate in 19 17 positive response before the iteration (<code>uu</code>)</li>
+</ul>
+<pre><code>19 17 zz 01        59 17 01 uu *[yy tt]
+19 18 yy fd 01     59 18 01 yy zz *[fd fd xx]
+19 19 yy ww 01     59 19 01 yy zz *[fd vv]</code></pre>
+<h2 id="did-semantics">DID Semantics</h2>
+<p><span id="VUDS-R520" class="rqDef">[VUDS-R520]</span> The template uses the DID semantics for all diagnostic classes with 0x22 (CDS-69924 v10):</p>
+<ul>
+<li>in ECU Identification and Variant Coding</li>
+<li>not in special Protocol Services for Periodic Data, Dynamically Define... and OBD (which have 0x22 0xxx constants).</li>
+</ul>
+<h2 id="fileTransfer">File Transfer</h2>
+<p>See the description of the 0x38 Protocol Service <a class='rqRef' href='../../40%20Templates/Vector%20UDS/Protocol%20Services.htm#VUDS-R860-DClT' title="">[VUDS-R860-DClT]</a>.</p>
+<h2 id="freezeframe">Powertrain Diagnostic and Freeze Frame Data</h2>
+<p>Combined Components:</p>
+<ul>
+<li><span id="VUDS-R572" class="rqDef">[VUDS-R572]</span> Supported OBD PIDs (CDS-71900 v13)
+<ul>
+<li>0x41, &quot;ReadSupported PID (OBD)&quot;, Positive Response</li>
+<li>0x62 0xF4, &quot;ReadSupported PID (UDS)&quot;, Positive Response</li>
+</ul></li>
+</ul>
+<h2 id="vehicle-information">Vehicle Information</h2>
+<p>Combined Components:</p>
+<ul>
+<li><span id="VUDS-R574" class="rqDef">[VUDS-R574]</span> Supported OBD IDs (CDS-71900 v13)
+<ul>
+<li>0x49, &quot;Read supported Info Types (OBD)&quot;, Positive Response</li>
+<li>0x62 0xF8, &quot;Read supported Info Types (UDS)&quot;, Positive Response</li>
+</ul></li>
+<li><span id="VUDS-R576" class="rqDef">[VUDS-R576]</span> InfoTypeData
+<ul>
+<li>0x49, &quot;Read Info Type Data (OBD)&quot;, Positive Response</li>
+<li>0x62 0xF8, &quot;Read Info Type Data (UDS)&quot;, Positive Response</li>
+<li>Note that the &quot;Number of Data Items&quot; is present in the 0x09 Protocol Service, but not in the 0x22 WWH-OBD Protocol Service.</li>
+<li>The data behind the 0x09 &quot;Number of Data Items&quot; is the same as that behind the 0x22 <code>&lt;Identifier&gt;</code> (CDS-72042 v13).</li>
+</ul></li>
+</ul>
+<h2 id="security-jobs">Security Jobs</h2>
+<p><span id="VUDS-R529" class="rqDef">[VUDS-R529]</span> The jobs predefined in the template are used for UDS Service 0x29 <a class='rqRef' href='../../40%20Templates/Vector%20UDS/Protocol%20Services.htm#VUDS-R8290' title="">[VUDS-R8290]</a>.</p>
+<ul>
+<li>The actual job file named &quot;UnusedJob&quot; is not relevant.</li>
+<li>The main information of each job is in the default value of the input parameter &quot;Role&quot; for use by the security source,
+<ul>
+<li>as described in <a class='rqRef' href='../../30 Features\State Dependency\Authorization.htm#AUTH-R100' title="">[AUTH-R100]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Class Template (Feature)</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm">User-Defined Fault Memory in CANdela</a></li>
+<li><a href="Introduction.htm">Vector UDS Template - Introduction</a></li>
+<li><a href="Protocol%20Services.htm">Vector UDS Template - Protocol Services</a></li>
+</ul>
+</body>
+</html>

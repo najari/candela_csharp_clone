@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Types</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="vector-uds-template---data-types">Vector UDS Template - Data Types</h1>
+<p>This chapter describes special data types defined in the Vector UDS Template.</p>
+<h2 id="data-types-for-autosar-dem-objects">Data Types for AUTOSAR DEM Objects</h2>
+<p><span id="VUDS-R310" class="rqDef">[VUDS-R310]</span> Data Types and the &quot;Faultmemory Relevance&quot; Attribute <a class='rqRef' href='../../30 Features\Attributes\Special Attributes.htm#SATTR-R210' title="">[SATTR-R210]</a></p>
+<p>The <strong>AUTOSAR DEM</strong> (Diagnostic Event Manager)...</p>
+<ul>
+<li>collects some <strong>statistic information</strong> about each DTC internally</li>
+<li>and provides it to a client via <strong>UDS Service 19 06</strong>.</li>
+</ul>
+<p>In <strong>CANdelaStudio</strong>, ...</p>
+<ul>
+<li>when you describe a <strong>data object</strong> for UDS Service 19 06,</li>
+<li>for code generation, you should specify <strong>which statistic information</strong> it represents,
+<ul>
+<li>by selecting one of the predefined data types listed below.</li>
+</ul></li>
+</ul>
+<p>How this works:</p>
+<ul>
+<li>Each of the following data types has the <strong>attribute &quot;Faultmemory Relevance&quot;</strong> <a class='rqRef' href='../../30 Features\Attributes\Special Attributes.htm#SATTR-R210' title="">[SATTR-R210]</a> set to the respective predefined enumeration value.</li>
+<li>By this value, the code generator detects that the data object represents information available within the DEM.</li>
+</ul>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Data type</th>
+<th align="left">Attribute &quot;FaultMemory Relevance&quot;</th>
+<th align="left">Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">DTC Aged Counter</td>
+<td align="left">AgedCounter</td>
+<td align="left">(CDS-71776 v13)</td>
+</tr>
+<tr class="even">
+<td align="left">DTC Aging Counter (Counting Downwards)</td>
+<td align="left">AgingCounter_Downward</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Aging Counter (Counting Upwards)</td>
+<td align="left">AgingCounter_Upward</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DTC FaultDetectionCounter</td>
+<td align="left">FaultDetectionCounter</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Healing Counter (Counting Downwards)</td>
+<td align="left">HealingCounter_Downward</td>
+<td align="left">(9.1)</td>
+</tr>
+<tr class="even">
+<td align="left">DTC FaultDetectionCounter - Maximum since last DTC clear</td>
+<td align="left">MaxFaultDetectionCounter_SinceLastClear</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC FaultDetectionCounter - Maximum this Operation Cycle</td>
+<td align="left">MaxFaultDetectionCounter_ThisCycle</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DTC Fault Pending Counter</td>
+<td align="left">FaultPendingCounter</td>
+<td align="left">(CDS-71776 v13)</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Number of Consecutive Operation Cycles with Failed Test</td>
+<td align="left">NumConsecutiveFailedCycles</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DTC Number of Operation Cycles since first Fail</td>
+<td align="left">NumCyclesSinceFirstFailed</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Number of Operation Cycles since last Fail</td>
+<td align="left">NumCyclesSinceLastFailed</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DTC Number of Operation Cycles with Failed Test</td>
+<td align="left">NumFailedCycles</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Number of Tested Operation Cycles since first Fail</td>
+<td align="left">NumTestedCyclesSinceFirstFailed</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DTC Number of Tested Operation Cycles since last Fail</td>
+<td align="left">NumTestedCyclesSinceLastFailed</td>
+<td align="left">(CDS-70454 v10)</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC OBD Ratio</td>
+<td align="left">Obd_Ratio</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DTC OBD</td>
+<td align="left">ObdDTC</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC OBD (3 Byte)</td>
+<td align="left">ObdDTC_3Byte</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DTC OccurrenceCounter</td>
+<td align="left">OccurrenceCounter</td>
+<td align="left">Data type qualifier &quot;OccurrenceCounter&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC OccurrenceCounter (2 Byte)</td>
+<td align="left">OccurrenceCounter_2Byte</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">MemoryOverflowIndication</td>
+<td align="left">OverflowIndication</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Root Cause EventId</td>
+<td align="left">RootCauseEventId</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">DTC Significance</td>
+<td align="left">Significance</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Static Priority</td>
+<td align="left">StaticPriority</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Background</strong>: why is this semantic information predefined at <strong>data types</strong>?</p>
+<ul>
+<li>Alternative: using data object semantics <a class='rqRef' href='../../30 Features\Data Objects\Data Objects.htm#DO-R150' title="">[DO-R150]</a>
+<ul>
+<li>... whose list of values is fixed in the implementation</li>
+</ul></li>
+<li>Advantages of a data type: it...
+<ul>
+<li>also predefines the desired size and encoding of the data object</li>
+<li>can be referenced from multiple data objects, which is convenient and avoids redundant information</li>
+<li>can be extended in the template without adapting CANdelaStudio.</li>
+</ul></li>
+</ul>
+<h2 id="user-defined-fault-memories">User Defined Fault Memories (CDS-42499 9.0)</h2>
+<p>The data type contains a sample list of user-defined fault memories.</p>
+<p>It is used in the respective <a href="Diagnostic%20Class%20Templates.htm#user-defined-fault-memories">Diagnostic Class Template</a> to restrict the set of possible diagnostic instances for user defined fault memory.</p>
+<h2 id="data-types-snapshotrecords-and-snapshotrecordsplusff-cds-71915-template-2.6.0">Data Types &quot;SnapshotRecords&quot; and &quot;SnapshotRecordsPlusFF&quot; (CDS-71915 Template 2.6.0)</h2>
+<p><span id="VUDS-R320" class="rqDef">[VUDS-R320]</span> The data types have entries for the Snapshot Records <strong>0x01</strong> and <strong>0x02</strong>.</p>
+<ul>
+<li>used for Service 0x19 0x18</li>
+<li>The Numeration Type is &quot;calculated&quot;, which does not allow 0x10 and 0x20.
+<ul>
+<li>See Snapshot Record Numeration Type as an attribute <a class='rqRef' href='../../30 Features\Fault Memory\Snapshot Records Generic.htm#SR-R023' title="">[SR-R023]</a>.</li>
+<li>Cf. in v13 AUTOSAR Fault Memory: described by a separate property <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#DI-R310-Calculated' title="">[DI-R310-Calculated]</a>.</li>
+</ul></li>
+</ul>
+
+<h2 id="vin-17-byte-cds-70432-v10">VIN (17 Byte) (CDS-70432 v10)</h2>
+<p><span id="VUDS-R330" class="rqDef">[VUDS-R330]</span> Properties of the VIN data type:</p>
+<ul>
+<li>field fix 17 bytes</li>
+<li>encoding ASCII
+<ul>
+<li>since v10</li>
+<li>before, it had encoding <code>unsigned</code></li>
+</ul></li>
+<li>string type: no size info.</li>
+</ul>
+<h2 id="uds-version-4-byte-cds-71406-v12">UDS Version (4 Byte) (CDS-71406 v12)</h2>
+<p><span id="VUDS-R350" class="rqDef">[VUDS-R350]</span> The data type encodes the UDS Version as a 4 byte value Major (MSB), Minor, Revision, 0 (LSB); 0 to 255 each (new in UDS 2019):</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">4 byte value</th>
+<th align="right">UDS Version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0x01000000</td>
+<td align="right">2005</td>
+</tr>
+<tr class="even">
+<td align="right">0x02000000</td>
+<td align="right">2013</td>
+</tr>
+<tr class="odd">
+<td align="right">0x03000000</td>
+<td align="right">2019</td>
+</tr>
+</tbody>
+</table>
+<h2 id="can-protocols-supported-1-byte-cds-71406-v12">CAN Protocols Supported (1 Byte) (CDS-71406 v12)</h2>
+<p><span id="VUDS-R360" class="rqDef">[VUDS-R360]</span> The data type provides info about the CAN support of the diagnostic link connector (new in UDS 2019):</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">1 byte value</th>
+<th align="left">CAN Protocols Supported</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0x00</td>
+<td align="left">CAN Classical only</td>
+</tr>
+<tr class="even">
+<td align="right">0x01</td>
+<td align="left">CAN FD only</td>
+</tr>
+<tr class="odd">
+<td align="right">0x02</td>
+<td align="left">CAN Classical and CAN FD</td>
+</tr>
+</tbody>
+</table>
+<p>The range 0x03 - 0xFF is ISO reserved.</p>
+<h2 id="former-data-types-now-removed-cds-71763-v12">Former Data Types now Removed (CDS-71763 v12)</h2>
+<p><span id="VUDS-D370" class="rqDef">[VUDS-D370]</span> The following former Data Types have been removed with v12 since they where unused (most of them had been used by the pre 8.2 Snapshot Data modelling):</p>
+<ul>
+<li>DID 0xF410</li>
+<li>DID 0xF411</li>
+<li>DID 0xF412</li>
+<li>DID 0xF413</li>
+<li>DID 0xF414</li>
+<li>DTC AllSupportedSnapshotRecordNumbers with FF</li>
+<li>DTC SnapshotRecordNumbers only FF</li>
+<li>ExtendedDataRecordNumber Group A</li>
+<li>ExtendedDataRecordNumber with FF</li>
+<li>SnapshotRecord DTC P000002</li>
+<li>SnapshotRecord DTC P000003</li>
+<li>SnapshotRecordNumber 00 and 10</li>
+<li>SnapshotRecordNumber 10 and 20</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Class Template (Feature)</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/UDS%202013.htm">UDS 2013</a></li>
+<li><a href="Introduction.htm">Vector UDS Template - Introduction</a></li>
+</ul>
+</body>
+</html>

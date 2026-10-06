@@ -1,0 +1,2125 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+This file has been created by the Vector Legacy Database Converter Version 1.2.7.0
+Copyright © Vector Informatik GmbH 2011
+Please contact Vector Informatik whenever you need further information concerning the license conditions.
+-->
+<AUTOSAR xsi:schemaLocation="http://autosar.org/3.1.4.DAI.3 AUTOSAR_314DAI3.xsd" xmlns="http://autosar.org/3.1.4.DAI.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TOP-LEVEL-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>VehicleProject</SHORT-NAME>
+      <ELEMENTS>
+        <SYSTEM>
+          <SHORT-NAME>System</SHORT-NAME>
+          <FIBEX-ELEMENT-REFS>
+            <FIBEX-ELEMENT-REF DEST="CAN-CLUSTER">/Cluster/CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="LIN-CLUSTER">/Cluster/LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FLEXRAY-CLUSTER">/Cluster/FlexRay</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="ECU-INSTANCE">/ECU/MyECU</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="GATEWAY">/Gateway/MyECU</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__CAN00_Rx</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__CAN00_Tx</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__FlexRay_Rx</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__FlexRay_Tx</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__LIN00_Rx</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__LIN00_Tx</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/Dummy_RearECU</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/Frame_LinTr_MyECU__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/Frame_LinTr_RearECU__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/MasterReq__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/msg_diag_Request_MyECU__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/msg_diag_RequestGlobal__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/msg_diag_Response_MyECU__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/msg_diag_Uudt_Response_MyECU__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/msg_nm_MyECU__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/msg_Receive__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/msg_TxCycle10__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/msg_XCP_Request__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/msg_XCP_Response__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/nm_MyECU_Fr</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/SlaveResp__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/TpRouting_Rx</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/TpRouting_Tx</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="FRAME">/Frame/Transmit_MyECU</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="SIGNAL-I-PDU">/PDU/Frame_LinTr_MyECU__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="SIGNAL-I-PDU">/PDU/Frame_LinTr_RearECU__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="SIGNAL-I-PDU">/PDU/msg_Receive__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxCycle10__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxMulti100_Mx00__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxMulti100_Mx01__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="SIGNAL-I-PDU">/PDU/msg_XCP_Request__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="SIGNAL-I-PDU">/PDU/msg_XCP_Response__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="SIGNAL-I-PDU">/PDU/PDU_Dummy_RearECU</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="SIGNAL-I-PDU">/PDU/PDU_Transmit_MyECU</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="MULTIPLEXED-I-PDU">/PDU/msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="DCM-I-PDU">/PDU/MasterReq__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="DCM-I-PDU">/PDU/msg_diag_Request_MyECU__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="DCM-I-PDU">/PDU/msg_diag_RequestGlobal__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="DCM-I-PDU">/PDU/msg_diag_Response_MyECU__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="DCM-I-PDU">/PDU/msg_diag_Uudt_Response_MyECU__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="DCM-I-PDU">/PDU/SlaveResp__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="NM-PDU">/PDU/msg_nm_MyECU__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="NM-PDU">/PDU/PDU_nm_MyECU_Fr</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="N-PDU">/PDU/MasterReq_Tp__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="N-PDU">/PDU/msg_diag_Request_MyECU_Tp__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="N-PDU">/PDU/msg_diag_RequestGlobal_Tp__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="N-PDU">/PDU/msg_diag_Response_MyECU_Tp__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="N-PDU">/PDU/msg_diag_Uudt_Response_MyECU_Tp__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="N-PDU">/PDU/PDU_TpRouting_Rx_Tp</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="N-PDU">/PDU/PDU_TpRouting_Tx_Tp</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="N-PDU">/PDU/SlaveResp_Tp__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Sig_ErrBit_RearECU__Frame_LinTr_RearECU__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Sig_LinTr_MyECU__Frame_LinTr_MyECU__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Sig_LinTr_RearECU__Frame_LinTr_RearECU__LIN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_Dummy__PDU_Dummy_RearECU</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_RearInteriorLight__msg_Receive__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_RearLeftDoor__msg_Receive__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_RearRightDoor__msg_Receive__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_SwitchRearInteriorLight__PDU_Transmit_MyECU</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxCycle10__msg_TxCycle10__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti_0_0_Mx00__msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti0_1_Mx00__msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti0_2_Mx00__msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti0_3_Mx00__msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_0_Mx01__msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_1_Mx01__msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_2_Mx01__msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_3_Mx01__msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_4_Mx01__msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxMultiplexor_Mx00__msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+            <FIBEX-ELEMENT-REF DEST="I-SIGNAL">/ISignal/Signal_TxMultiplexor_Mx01__msg_TxMulti100__CAN00</FIBEX-ELEMENT-REF>
+          </FIBEX-ELEMENT-REFS>
+        </SYSTEM>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>Cluster</SHORT-NAME>
+      <ELEMENTS>
+        <CAN-CLUSTER>
+          <SHORT-NAME>CAN00</SHORT-NAME>
+          <LONG-NAME>
+            <L-4 L="FOR-ALL">CAN</L-4>
+          </LONG-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV:CanNmConfiguration">
+                <SD GID="DV:CanNmBaseAddress">1024</SD>
+                <SD GID="DV:CanNmMessageCount">64</SD>
+                <SD GID="DV:CanNmMsgCycleTime">0.1</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <PHYSICAL-CHANNELS>
+            <PHYSICAL-CHANNEL>
+              <SHORT-NAME>CHNL</SHORT-NAME>
+              <FRAME-TRIGGERINGSS>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_msg_diag_Request_MyECU</SHORT-NAME>
+                  <FRAME-PORT-REFS />
+                  <FRAME-REF DEST="FRAME">/Frame/msg_diag_Request_MyECU__CAN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS />
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>1552</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_msg_diag_RequestGlobal</SHORT-NAME>
+                  <FRAME-PORT-REFS />
+                  <FRAME-REF DEST="FRAME">/Frame/msg_diag_RequestGlobal__CAN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS />
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>1556</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_msg_diag_Response_MyECU</SHORT-NAME>
+                  <FRAME-PORT-REFS />
+                  <FRAME-REF DEST="FRAME">/Frame/msg_diag_Response_MyECU__CAN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS />
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>1554</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_msg_diag_Uudt_Response_MyECU</SHORT-NAME>
+                  <FRAME-PORT-REFS />
+                  <FRAME-REF DEST="FRAME">/Frame/msg_diag_Uudt_Response_MyECU__CAN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS />
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>1558</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_msg_nm_MyECU</SHORT-NAME>
+                  <FRAME-PORT-REFS />
+                  <FRAME-REF DEST="FRAME">/Frame/msg_nm_MyECU__CAN00</FRAME-REF>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>1024</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_msg_Receive</SHORT-NAME>
+                  <FRAME-PORT-REFS />
+                  <FRAME-REF DEST="FRAME">/Frame/msg_Receive__CAN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN00/CHNL/PT_msg_Receive</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>528</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_msg_TxCycle10</SHORT-NAME>
+                  <FRAME-PORT-REFS />
+                  <FRAME-REF DEST="FRAME">/Frame/msg_TxCycle10__CAN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN00/CHNL/PT_msg_TxCycle10</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>616</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_msg_TxMulti100</SHORT-NAME>
+                  <FRAME-PORT-REFS />
+                  <FRAME-REF DEST="FRAME">/Frame/msg_TxMulti100__CAN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN00/CHNL/PT_msg_TxMulti100</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>614</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_msg_XCP_Request</SHORT-NAME>
+                  <FRAME-PORT-REFS />
+                  <FRAME-REF DEST="FRAME">/Frame/msg_XCP_Request__CAN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN00/CHNL/PT_msg_XCP_Request</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>1795</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_msg_XCP_Response</SHORT-NAME>
+                  <FRAME-PORT-REFS />
+                  <FRAME-REF DEST="FRAME">/Frame/msg_XCP_Response__CAN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN00/CHNL/PT_msg_XCP_Response</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>1796</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+              </FRAME-TRIGGERINGSS>
+              <I-PDU-TRIGGERINGS>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_msg_diag_Request_MyECU</SHORT-NAME>
+                  <I-PDU-PORT-REFS />
+                  <I-PDU-REF DEST="DCM-I-PDU">/PDU/msg_diag_Request_MyECU__CAN00</I-PDU-REF>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_msg_diag_RequestGlobal</SHORT-NAME>
+                  <I-PDU-PORT-REFS />
+                  <I-PDU-REF DEST="DCM-I-PDU">/PDU/msg_diag_RequestGlobal__CAN00</I-PDU-REF>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_msg_diag_Response_MyECU</SHORT-NAME>
+                  <I-PDU-PORT-REFS />
+                  <I-PDU-REF DEST="DCM-I-PDU">/PDU/msg_diag_Response_MyECU__CAN00</I-PDU-REF>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_msg_diag_Uudt_Response_MyECU</SHORT-NAME>
+                  <I-PDU-PORT-REFS />
+                  <I-PDU-REF DEST="DCM-I-PDU">/PDU/msg_diag_Uudt_Response_MyECU__CAN00</I-PDU-REF>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_msg_Receive</SHORT-NAME>
+                  <I-PDU-PORT-REFS />
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_Receive__CAN00</I-PDU-REF>
+                  <I-SIGNAL-TRIGGERING-REFS>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_RearInteriorLight__msg_Receive</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_RearLeftDoor__msg_Receive</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_RearRightDoor__msg_Receive</I-SIGNAL-TRIGGERING-REF>
+                  </I-SIGNAL-TRIGGERING-REFS>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_msg_TxCycle10</SHORT-NAME>
+                  <I-PDU-PORT-REFS />
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxCycle10__CAN00</I-PDU-REF>
+                  <I-SIGNAL-TRIGGERING-REFS>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxCycle10__msg_TxCycle10</I-SIGNAL-TRIGGERING-REF>
+                  </I-SIGNAL-TRIGGERING-REFS>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_msg_TxMulti100</SHORT-NAME>
+                  <I-PDU-PORT-REFS />
+                  <I-PDU-REF DEST="MULTIPLEXED-I-PDU">/PDU/msg_TxMulti100__CAN00</I-PDU-REF>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_msg_TxMulti100_Mx00</SHORT-NAME>
+                  <I-PDU-PORT-REFS />
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxMulti100_Mx00__CAN00</I-PDU-REF>
+                  <I-SIGNAL-TRIGGERING-REFS>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxMulti_0_0__msg_TxMulti100_Mx00</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxMulti0_1__msg_TxMulti100_Mx00</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxMulti0_2__msg_TxMulti100_Mx00</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxMulti0_3__msg_TxMulti100_Mx00</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxMultiplexor__msg_TxMulti100_Mx00</I-SIGNAL-TRIGGERING-REF>
+                  </I-SIGNAL-TRIGGERING-REFS>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_msg_TxMulti100_Mx01</SHORT-NAME>
+                  <I-PDU-PORT-REFS />
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxMulti100_Mx01__CAN00</I-PDU-REF>
+                  <I-SIGNAL-TRIGGERING-REFS>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxMulti1_0__msg_TxMulti100_Mx01</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxMulti1_1__msg_TxMulti100_Mx01</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxMulti1_2__msg_TxMulti100_Mx01</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxMulti1_3__msg_TxMulti100_Mx01</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxMulti1_4__msg_TxMulti100_Mx01</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/CAN00/CHNL/ST_Signal_TxMultiplexor__msg_TxMulti100_Mx01</I-SIGNAL-TRIGGERING-REF>
+                  </I-SIGNAL-TRIGGERING-REFS>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_msg_XCP_Request</SHORT-NAME>
+                  <I-PDU-PORT-REFS />
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_XCP_Request__CAN00</I-PDU-REF>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_msg_XCP_Response</SHORT-NAME>
+                  <I-PDU-PORT-REFS />
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_XCP_Response__CAN00</I-PDU-REF>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+              </I-PDU-TRIGGERINGS>
+              <I-SIGNAL-TRIGGERINGS>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_RearInteriorLight__msg_Receive</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_RearInteriorLight__msg_Receive__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_RearLeftDoor__msg_Receive</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_RearLeftDoor__msg_Receive__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_RearRightDoor__msg_Receive</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_RearRightDoor__msg_Receive__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxCycle10__msg_TxCycle10</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxCycle10__msg_TxCycle10__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxMulti_0_0__msg_TxMulti100_Mx00</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti_0_0_Mx00__msg_TxMulti100__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxMulti0_1__msg_TxMulti100_Mx00</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti0_1_Mx00__msg_TxMulti100__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxMulti0_2__msg_TxMulti100_Mx00</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti0_2_Mx00__msg_TxMulti100__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxMulti0_3__msg_TxMulti100_Mx00</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti0_3_Mx00__msg_TxMulti100__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxMulti1_0__msg_TxMulti100_Mx01</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_0_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxMulti1_1__msg_TxMulti100_Mx01</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_1_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxMulti1_2__msg_TxMulti100_Mx01</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_2_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxMulti1_3__msg_TxMulti100_Mx01</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_3_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxMulti1_4__msg_TxMulti100_Mx01</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_4_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxMultiplexor__msg_TxMulti100_Mx00</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMultiplexor_Mx00__msg_TxMulti100__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_TxMultiplexor__msg_TxMulti100_Mx01</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS />
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMultiplexor_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+              </I-SIGNAL-TRIGGERINGS>
+              <TP-CHANNELS>
+                <CAN-TP-CONNECTION-CHANNEL S=":">
+                  <ADDRESSING-FORMAT>STANDARD</ADDRESSING-FORMAT>
+                  <DATA-PDU-REF DEST="N-PDU">/PDU/msg_diag_RequestGlobal_Tp__CAN00</DATA-PDU-REF>
+                  <MULTICAST-ADDRESSING>true</MULTICAST-ADDRESSING>
+                  <PADDING-ACTIVATION>true</PADDING-ACTIVATION>
+                  <TP-SDU-REF DEST="DCM-I-PDU">/PDU/msg_diag_RequestGlobal__CAN00</TP-SDU-REF>
+                </CAN-TP-CONNECTION-CHANNEL>
+                <CAN-TP-CONNECTION-CHANNEL S=":">
+                  <ADDRESSING-FORMAT>STANDARD</ADDRESSING-FORMAT>
+                  <DATA-PDU-REF DEST="N-PDU">/PDU/msg_diag_Response_MyECU_Tp__CAN00</DATA-PDU-REF>
+                  <FLOW-CONTROL-PDU-REF DEST="N-PDU">/PDU/msg_diag_Request_MyECU_Tp__CAN00</FLOW-CONTROL-PDU-REF>
+                  <MULTICAST-ADDRESSING>false</MULTICAST-ADDRESSING>
+                  <PADDING-ACTIVATION>true</PADDING-ACTIVATION>
+                  <SOURCE-REF DEST="COMMUNICATION-CONNECTOR">/ECU/MyECU/CN_CAN00</SOURCE-REF>
+                  <TP-SDU-REF DEST="DCM-I-PDU">/PDU/msg_diag_Response_MyECU__CAN00</TP-SDU-REF>
+                </CAN-TP-CONNECTION-CHANNEL>
+                <CAN-TP-CONNECTION-CHANNEL S=":">
+                  <ADDRESSING-FORMAT>STANDARD</ADDRESSING-FORMAT>
+                  <DATA-PDU-REF DEST="N-PDU">/PDU/msg_diag_Request_MyECU_Tp__CAN00</DATA-PDU-REF>
+                  <FLOW-CONTROL-PDU-REF DEST="N-PDU">/PDU/msg_diag_Response_MyECU_Tp__CAN00</FLOW-CONTROL-PDU-REF>
+                  <MULTICAST-ADDRESSING>false</MULTICAST-ADDRESSING>
+                  <PADDING-ACTIVATION>true</PADDING-ACTIVATION>
+                  <TARGET-REF DEST="COMMUNICATION-CONNECTOR">/ECU/MyECU/CN_CAN00</TARGET-REF>
+                  <TP-SDU-REF DEST="DCM-I-PDU">/PDU/msg_diag_Request_MyECU__CAN00</TP-SDU-REF>
+                </CAN-TP-CONNECTION-CHANNEL>
+              </TP-CHANNELS>
+            </PHYSICAL-CHANNEL>
+          </PHYSICAL-CHANNELS>
+          <PROTOCOL-NAME>CAN</PROTOCOL-NAME>
+          <SPEED>500000</SPEED>
+          <NM-LOWER-CAN-ID>1024</NM-LOWER-CAN-ID>
+          <NM-REPEAT-MESSAGE-STATE-TIME>0.4</NM-REPEAT-MESSAGE-STATE-TIME>
+          <NM-TIMEOUT-TIME>1</NM-TIMEOUT-TIME>
+          <NM-UPPER-CAN-ID>1087</NM-UPPER-CAN-ID>
+          <NM-WAIT-BUS-SLEEP-TIME>0.75</NM-WAIT-BUS-SLEEP-TIME>
+        </CAN-CLUSTER>
+        <LIN-CLUSTER>
+          <SHORT-NAME>LIN00</SHORT-NAME>
+          <LONG-NAME>
+            <L-4 L="FOR-ALL">LIN</L-4>
+          </LONG-NAME>
+          <DESC>
+            <L-2 L="FOR-ALL">/*************************************************************************************/
+
+//                                                                                     
+
+// Description: LIN Description file created using Vector's DaVinci Network Designer   
+
+// Created:     07 Jul 2009 09:46:32
+
+// Author:      vishgo
+
+// Version:     0.0
+
+//                                                                                     
+
+/*************************************************************************************/</L-2>
+          </DESC>
+          <PHYSICAL-CHANNELS>
+            <PHYSICAL-CHANNEL>
+              <SHORT-NAME>CHNL</SHORT-NAME>
+              <FRAME-TRIGGERINGSS>
+                <LIN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_Frame_LinTr_MyECU</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MyECU/CN_LIN00/FP_Frame_LinTr_MyECU_Tx</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/Frame_LinTr_MyECU__LIN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/LIN00/CHNL/PT_Frame_LinTr_MyECU</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CHECKSUM-TYPE>CLASSIC</CHECKSUM-TYPE>
+                  <IDENTIFIER>17</IDENTIFIER>
+                  <RELATIVELY-SCHEDULED-TIMINGS>
+                    <RELATIVELY-SCHEDULED-TIMING>
+                      <DELAY>0.005</DELAY>
+                      <POSITION-IN-TABLE>0</POSITION-IN-TABLE>
+                      <SCHEDULE-TABLE-REF DEST="LIN-SCHEDULE-TABLE">/Cluster/LIN00/Normal</SCHEDULE-TABLE-REF>
+                    </RELATIVELY-SCHEDULED-TIMING>
+                  </RELATIVELY-SCHEDULED-TIMINGS>
+                </LIN-FRAME-TRIGGERING>
+                <LIN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_Frame_LinTr_RearECU</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MyECU/CN_LIN00/FP_Frame_LinTr_RearECU_Rx</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/Frame_LinTr_RearECU__LIN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/LIN00/CHNL/PT_Frame_LinTr_RearECU</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CHECKSUM-TYPE>CLASSIC</CHECKSUM-TYPE>
+                  <IDENTIFIER>18</IDENTIFIER>
+                  <RELATIVELY-SCHEDULED-TIMINGS>
+                    <RELATIVELY-SCHEDULED-TIMING>
+                      <DELAY>0.005</DELAY>
+                      <POSITION-IN-TABLE>1</POSITION-IN-TABLE>
+                      <SCHEDULE-TABLE-REF DEST="LIN-SCHEDULE-TABLE">/Cluster/LIN00/Normal</SCHEDULE-TABLE-REF>
+                    </RELATIVELY-SCHEDULED-TIMING>
+                  </RELATIVELY-SCHEDULED-TIMINGS>
+                </LIN-FRAME-TRIGGERING>
+                <LIN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_MasterReq</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MyECU/CN_LIN00/FP_MasterReq_Tx</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/MasterReq__LIN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/LIN00/CHNL/PT_MasterReq</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CHECKSUM-TYPE>CLASSIC</CHECKSUM-TYPE>
+                  <IDENTIFIER>60</IDENTIFIER>
+                  <RELATIVELY-SCHEDULED-TIMINGS>
+                    <RELATIVELY-SCHEDULED-TIMING>
+                      <DELAY>0.08</DELAY>
+                      <POSITION-IN-TABLE>0</POSITION-IN-TABLE>
+                      <SCHEDULE-TABLE-REF DEST="LIN-SCHEDULE-TABLE">/Cluster/LIN00/Diagnose</SCHEDULE-TABLE-REF>
+                    </RELATIVELY-SCHEDULED-TIMING>
+                  </RELATIVELY-SCHEDULED-TIMINGS>
+                </LIN-FRAME-TRIGGERING>
+                <LIN-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_SlaveResp</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MyECU/CN_LIN00/FP_SlaveResp_Rx</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/SlaveResp__LIN00</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/LIN00/CHNL/PT_SlaveResp</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CHECKSUM-TYPE>CLASSIC</CHECKSUM-TYPE>
+                  <IDENTIFIER>61</IDENTIFIER>
+                  <RELATIVELY-SCHEDULED-TIMINGS>
+                    <RELATIVELY-SCHEDULED-TIMING>
+                      <DELAY>0.08</DELAY>
+                      <POSITION-IN-TABLE>1</POSITION-IN-TABLE>
+                      <SCHEDULE-TABLE-REF DEST="LIN-SCHEDULE-TABLE">/Cluster/LIN00/Diagnose</SCHEDULE-TABLE-REF>
+                    </RELATIVELY-SCHEDULED-TIMING>
+                  </RELATIVELY-SCHEDULED-TIMINGS>
+                </LIN-FRAME-TRIGGERING>
+              </FRAME-TRIGGERINGSS>
+              <I-PDU-TRIGGERINGS>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_Frame_LinTr_MyECU</SHORT-NAME>
+                  <I-PDU-PORT-REFS>
+                    <I-PDU-PORT-REF DEST="I-PDU-PORT">/ECU/MyECU/CN_LIN00/PP_Frame_LinTr_MyECU_Tx</I-PDU-PORT-REF>
+                  </I-PDU-PORT-REFS>
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/Frame_LinTr_MyECU__LIN00</I-PDU-REF>
+                  <I-SIGNAL-TRIGGERING-REFS>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/LIN00/CHNL/ST_Sig_LinTr_MyECU__Frame_LinTr_MyECU</I-SIGNAL-TRIGGERING-REF>
+                  </I-SIGNAL-TRIGGERING-REFS>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_Frame_LinTr_RearECU</SHORT-NAME>
+                  <I-PDU-PORT-REFS>
+                    <I-PDU-PORT-REF DEST="I-PDU-PORT">/ECU/MyECU/CN_LIN00/PP_Frame_LinTr_RearECU_Rx</I-PDU-PORT-REF>
+                  </I-PDU-PORT-REFS>
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/Frame_LinTr_RearECU__LIN00</I-PDU-REF>
+                  <I-SIGNAL-TRIGGERING-REFS>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/LIN00/CHNL/ST_Sig_ErrBit_RearECU__Frame_LinTr_RearECU</I-SIGNAL-TRIGGERING-REF>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/LIN00/CHNL/ST_Sig_LinTr_RearECU__Frame_LinTr_RearECU</I-SIGNAL-TRIGGERING-REF>
+                  </I-SIGNAL-TRIGGERING-REFS>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_MasterReq</SHORT-NAME>
+                  <I-PDU-PORT-REFS>
+                    <I-PDU-PORT-REF DEST="I-PDU-PORT">/ECU/MyECU/CN_LIN00/PP_MasterReq_Tx</I-PDU-PORT-REF>
+                  </I-PDU-PORT-REFS>
+                  <I-PDU-REF DEST="DCM-I-PDU">/PDU/MasterReq__LIN00</I-PDU-REF>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_SlaveResp</SHORT-NAME>
+                  <I-PDU-PORT-REFS>
+                    <I-PDU-PORT-REF DEST="I-PDU-PORT">/ECU/MyECU/CN_LIN00/PP_SlaveResp_Rx</I-PDU-PORT-REF>
+                  </I-PDU-PORT-REFS>
+                  <I-PDU-REF DEST="DCM-I-PDU">/PDU/SlaveResp__LIN00</I-PDU-REF>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+              </I-PDU-TRIGGERINGS>
+              <I-SIGNAL-TRIGGERINGS>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Sig_ErrBit_RearECU__Frame_LinTr_RearECU</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS>
+                    <I-SIGNAL-PORT-REF DEST="SIGNAL-PORT">/ECU/MyECU/CN_LIN00/SP_Sig_ErrBit_RearECU__Frame_LinTr_RearECU_Rx</I-SIGNAL-PORT-REF>
+                  </I-SIGNAL-PORT-REFS>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Sig_ErrBit_RearECU__Frame_LinTr_RearECU__LIN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Sig_LinTr_MyECU__Frame_LinTr_MyECU</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS>
+                    <I-SIGNAL-PORT-REF DEST="SIGNAL-PORT">/ECU/MyECU/CN_LIN00/SP_Sig_LinTr_MyECU__Frame_LinTr_MyECU_Tx</I-SIGNAL-PORT-REF>
+                  </I-SIGNAL-PORT-REFS>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Sig_LinTr_MyECU__Frame_LinTr_MyECU__LIN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Sig_LinTr_RearECU__Frame_LinTr_RearECU</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS>
+                    <I-SIGNAL-PORT-REF DEST="SIGNAL-PORT">/ECU/MyECU/CN_LIN00/SP_Sig_LinTr_RearECU__Frame_LinTr_RearECU_Rx</I-SIGNAL-PORT-REF>
+                  </I-SIGNAL-PORT-REFS>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Sig_LinTr_RearECU__Frame_LinTr_RearECU__LIN00</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+              </I-SIGNAL-TRIGGERINGS>
+            </PHYSICAL-CHANNEL>
+          </PHYSICAL-CHANNELS>
+          <PROTOCOL-NAME>LIN</PROTOCOL-NAME>
+          <PROTOCOL-VERSION>2.0</PROTOCOL-VERSION>
+          <SPEED>19200</SPEED>
+          <SCHEDULE-TABLES>
+            <LIN-SCHEDULE-TABLE>
+              <SHORT-NAME>Diagnose</SHORT-NAME>
+              <PRIORITY>255</PRIORITY>
+              <RUN-MODE>RUN-CONTINUOUS</RUN-MODE>
+            </LIN-SCHEDULE-TABLE>
+            <LIN-SCHEDULE-TABLE>
+              <SHORT-NAME>Normal</SHORT-NAME>
+              <PRIORITY>255</PRIORITY>
+              <RUN-MODE>RUN-CONTINUOUS</RUN-MODE>
+            </LIN-SCHEDULE-TABLE>
+          </SCHEDULE-TABLES>
+        </LIN-CLUSTER>
+        <FLEXRAY-CLUSTER>
+          <SHORT-NAME>FlexRay</SHORT-NAME>
+          <PHYSICAL-CHANNELS>
+            <FLEXRAY-PHYSICAL-CHANNEL>
+              <SHORT-NAME>Channel_A</SHORT-NAME>
+              <FRAME-TRIGGERINGSS>
+                <FLEXRAY-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_00020001</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MyECU/CN_Channel_A/FP_00020001_Tx</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/Transmit_MyECU</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/FlexRay/Channel_A/PT_PDU_Transmit_MyECU</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <ABSOLUTELY-SCHEDULED-TIMINGS>
+                    <ABSOLUTELY-SCHEDULED-TIMING>
+                      <COMMUNICATION-CYCLE>
+                        <CYCLE-REPETITION>
+                          <BASE-CYCLE>0</BASE-CYCLE>
+                          <CYCLE-REPETITION>CYCLE-REPETITION-1</CYCLE-REPETITION>
+                        </CYCLE-REPETITION>
+                      </COMMUNICATION-CYCLE>
+                      <SLOT-ID>2</SLOT-ID>
+                    </ABSOLUTELY-SCHEDULED-TIMING>
+                  </ABSOLUTELY-SCHEDULED-TIMINGS>
+                </FLEXRAY-FRAME-TRIGGERING>
+                <FLEXRAY-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_00030001</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MyECU/CN_Channel_A/FP_00030001_Rx</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/Dummy_RearECU</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/FlexRay/Channel_A/PT_PDU_Dummy_RearECU</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <ABSOLUTELY-SCHEDULED-TIMINGS>
+                    <ABSOLUTELY-SCHEDULED-TIMING>
+                      <COMMUNICATION-CYCLE>
+                        <CYCLE-REPETITION>
+                          <BASE-CYCLE>0</BASE-CYCLE>
+                          <CYCLE-REPETITION>CYCLE-REPETITION-1</CYCLE-REPETITION>
+                        </CYCLE-REPETITION>
+                      </COMMUNICATION-CYCLE>
+                      <SLOT-ID>3</SLOT-ID>
+                    </ABSOLUTELY-SCHEDULED-TIMING>
+                  </ABSOLUTELY-SCHEDULED-TIMINGS>
+                </FLEXRAY-FRAME-TRIGGERING>
+                <FLEXRAY-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_005A0040</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MyECU/CN_Channel_A/FP_005A0040_Tx</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/nm_MyECU_Fr</FRAME-REF>
+                  <ABSOLUTELY-SCHEDULED-TIMINGS>
+                    <ABSOLUTELY-SCHEDULED-TIMING>
+                      <COMMUNICATION-CYCLE>
+                        <CYCLE-REPETITION>
+                          <BASE-CYCLE>0</BASE-CYCLE>
+                          <CYCLE-REPETITION>CYCLE-REPETITION-64</CYCLE-REPETITION>
+                        </CYCLE-REPETITION>
+                      </COMMUNICATION-CYCLE>
+                      <SLOT-ID>90</SLOT-ID>
+                    </ABSOLUTELY-SCHEDULED-TIMING>
+                  </ABSOLUTELY-SCHEDULED-TIMINGS>
+                </FLEXRAY-FRAME-TRIGGERING>
+                <FLEXRAY-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_00610004</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MyECU/CN_Channel_A/FP_00610004_Tx</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/TpRouting_Tx</FRAME-REF>
+                  <ABSOLUTELY-SCHEDULED-TIMINGS>
+                    <ABSOLUTELY-SCHEDULED-TIMING>
+                      <COMMUNICATION-CYCLE>
+                        <CYCLE-REPETITION>
+                          <BASE-CYCLE>0</BASE-CYCLE>
+                          <CYCLE-REPETITION>CYCLE-REPETITION-4</CYCLE-REPETITION>
+                        </CYCLE-REPETITION>
+                      </COMMUNICATION-CYCLE>
+                      <SLOT-ID>97</SLOT-ID>
+                    </ABSOLUTELY-SCHEDULED-TIMING>
+                  </ABSOLUTELY-SCHEDULED-TIMINGS>
+                </FLEXRAY-FRAME-TRIGGERING>
+                <FLEXRAY-FRAME-TRIGGERING>
+                  <SHORT-NAME>FT_00630004</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MyECU/CN_Channel_A/FP_00630004_Rx</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/TpRouting_Rx</FRAME-REF>
+                  <ABSOLUTELY-SCHEDULED-TIMINGS>
+                    <ABSOLUTELY-SCHEDULED-TIMING>
+                      <COMMUNICATION-CYCLE>
+                        <CYCLE-REPETITION>
+                          <BASE-CYCLE>0</BASE-CYCLE>
+                          <CYCLE-REPETITION>CYCLE-REPETITION-4</CYCLE-REPETITION>
+                        </CYCLE-REPETITION>
+                      </COMMUNICATION-CYCLE>
+                      <SLOT-ID>99</SLOT-ID>
+                    </ABSOLUTELY-SCHEDULED-TIMING>
+                  </ABSOLUTELY-SCHEDULED-TIMINGS>
+                </FLEXRAY-FRAME-TRIGGERING>
+              </FRAME-TRIGGERINGSS>
+              <I-PDU-TRIGGERINGS>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_PDU_Dummy_RearECU</SHORT-NAME>
+                  <I-PDU-PORT-REFS>
+                    <I-PDU-PORT-REF DEST="I-PDU-PORT">/ECU/MyECU/CN_Channel_A/PP_PDU_Dummy_RearECU_Rx</I-PDU-PORT-REF>
+                  </I-PDU-PORT-REFS>
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_Dummy_RearECU</I-PDU-REF>
+                  <I-SIGNAL-TRIGGERING-REFS>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/FlexRay/Channel_A/ST_Signal_Dummy__PDU_Dummy_RearECU</I-SIGNAL-TRIGGERING-REF>
+                  </I-SIGNAL-TRIGGERING-REFS>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>PT_PDU_Transmit_MyECU</SHORT-NAME>
+                  <I-PDU-PORT-REFS>
+                    <I-PDU-PORT-REF DEST="I-PDU-PORT">/ECU/MyECU/CN_Channel_A/PP_PDU_Transmit_MyECU_Tx</I-PDU-PORT-REF>
+                  </I-PDU-PORT-REFS>
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_Transmit_MyECU</I-PDU-REF>
+                  <I-SIGNAL-TRIGGERING-REFS>
+                    <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/Cluster/FlexRay/Channel_A/ST_Signal_SwitchRearInteriorLight__PDU_Transmit_MyECU</I-SIGNAL-TRIGGERING-REF>
+                  </I-SIGNAL-TRIGGERING-REFS>
+                  <TIMING-REQUIREMENT />
+                </I-PDU-TRIGGERING>
+              </I-PDU-TRIGGERINGS>
+              <I-SIGNAL-TRIGGERINGS>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_Dummy__PDU_Dummy_RearECU</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS>
+                    <I-SIGNAL-PORT-REF DEST="SIGNAL-PORT">/ECU/MyECU/CN_Channel_A/SP_Signal_Dummy__PDU_Dummy_RearECU_Rx</I-SIGNAL-PORT-REF>
+                  </I-SIGNAL-PORT-REFS>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_Dummy__PDU_Dummy_RearECU</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>ST_Signal_SwitchRearInteriorLight__PDU_Transmit_MyECU</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS>
+                    <I-SIGNAL-PORT-REF DEST="SIGNAL-PORT">/ECU/MyECU/CN_Channel_A/SP_Signal_SwitchRearInteriorLight__PDU_Transmit_MyECU_Tx</I-SIGNAL-PORT-REF>
+                  </I-SIGNAL-PORT-REFS>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_SwitchRearInteriorLight__PDU_Transmit_MyECU</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+              </I-SIGNAL-TRIGGERINGS>
+              <TP-CHANNELS />
+              <CHANNEL-NAME>CHANNEL-A</CHANNEL-NAME>
+            </FLEXRAY-PHYSICAL-CHANNEL>
+          </PHYSICAL-CHANNELS>
+          <PROTOCOL-NAME>FlexRay</PROTOCOL-NAME>
+          <PROTOCOL-VERSION>3.0</PROTOCOL-VERSION>
+          <SPEED>10000000</SPEED>
+          <ACTION-POINT-OFFSET>3</ACTION-POINT-OFFSET>
+          <BIT>1E-07</BIT>
+          <CAS-RX-LOW-MAX>99</CAS-RX-LOW-MAX>
+          <COLD-START-ATTEMPTS>31</COLD-START-ATTEMPTS>
+          <CYCLE>0.005</CYCLE>
+          <DYNAMIC-SLOT-IDLE-PHASE>1</DYNAMIC-SLOT-IDLE-PHASE>
+          <LISTEN-NOISE>2</LISTEN-NOISE>
+          <MACRO-PER-CYCLE>5000</MACRO-PER-CYCLE>
+          <MACROTICK-DURATION>1E-06</MACROTICK-DURATION>
+          <MAX-INITIALISATION-ERROR>3.024E-06</MAX-INITIALISATION-ERROR>
+          <MAX-WITHOUT-CLOCK-CORRECTION-FATAL>1</MAX-WITHOUT-CLOCK-CORRECTION-FATAL>
+          <MAX-WITHOUT-CLOCK-CORRECTION-PASSIVE>1</MAX-WITHOUT-CLOCK-CORRECTION-PASSIVE>
+          <MINISLOT-ACTION-POINT-OFFSET>3</MINISLOT-ACTION-POINT-OFFSET>
+          <MINISLOT-DURATION>7</MINISLOT-DURATION>
+          <NETWORK-IDLE-TIME>105</NETWORK-IDLE-TIME>
+          <NETWORK-MANAGEMENT-VECTOR-LENGTH>0</NETWORK-MANAGEMENT-VECTOR-LENGTH>
+          <NUMBER-OF-MINISLOTS>267</NUMBER-OF-MINISLOTS>
+          <NUMBER-OF-STATIC-SLOTS>89</NUMBER-OF-STATIC-SLOTS>
+          <OFFSET-CORRECTION-START>4956</OFFSET-CORRECTION-START>
+          <PAYLOAD-LENGTH-STATIC>8</PAYLOAD-LENGTH-STATIC>
+          <SAMPLE-CLOCK-PERIOD>1.25E-08</SAMPLE-CLOCK-PERIOD>
+          <STATIC-SLOT-DURATION>34</STATIC-SLOT-DURATION>
+          <SYMBOL-WINDOW>0</SYMBOL-WINDOW>
+          <SYNC-NODE-MAX>9</SYNC-NODE-MAX>
+          <TRANSMISSION-START-SEQUENCE-DURATION>15</TRANSMISSION-START-SEQUENCE-DURATION>
+          <WAKE-UP-SYMBOL-RX-IDLE>59</WAKE-UP-SYMBOL-RX-IDLE>
+          <WAKE-UP-SYMBOL-RX-LOW>55</WAKE-UP-SYMBOL-RX-LOW>
+          <WAKE-UP-SYMBOL-RX-WINDOW>301</WAKE-UP-SYMBOL-RX-WINDOW>
+          <WAKE-UP-SYMBOL-TX-IDLE>180</WAKE-UP-SYMBOL-TX-IDLE>
+          <WAKE-UP-SYMBOL-TX-LOW>60</WAKE-UP-SYMBOL-TX-LOW>
+        </FLEXRAY-CLUSTER>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>ECU</SHORT-NAME>
+      <ELEMENTS>
+        <ECU-INSTANCE>
+          <SHORT-NAME>MyECU</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DV:CanNmConfiguration">
+                <SD GID="DV:CanNmMsgCycleOffset">0</SD>
+                <SD GID="DV:CanNmMsgReducedTime">0.05</SD>
+              </SDG>
+            </SDGS>
+          </ADMIN-DATA>
+          <ASSOCIATED-I-PDU-GROUP-REFS>
+            <ASSOCIATED-I-PDU-GROUP-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__CAN00_Rx</ASSOCIATED-I-PDU-GROUP-REF>
+            <ASSOCIATED-I-PDU-GROUP-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__CAN00_Tx</ASSOCIATED-I-PDU-GROUP-REF>
+            <ASSOCIATED-I-PDU-GROUP-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__FlexRay_Rx</ASSOCIATED-I-PDU-GROUP-REF>
+            <ASSOCIATED-I-PDU-GROUP-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__FlexRay_Tx</ASSOCIATED-I-PDU-GROUP-REF>
+            <ASSOCIATED-I-PDU-GROUP-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__LIN00_Rx</ASSOCIATED-I-PDU-GROUP-REF>
+            <ASSOCIATED-I-PDU-GROUP-REF DEST="I-PDU-GROUP">/IPDUGroup/MyECU__LIN00_Tx</ASSOCIATED-I-PDU-GROUP-REF>
+          </ASSOCIATED-I-PDU-GROUP-REFS>
+          <COM-PROCESSING-PERIOD>0.001</COM-PROCESSING-PERIOD>
+          <COMM-CONTROLLERS>
+            <FLEXRAY-COMMUNICATION-CONTROLLER>
+              <SHORT-NAME>MyECU</SHORT-NAME>
+              <ACCEPTED-STARTUP-RANGE>242</ACCEPTED-STARTUP-RANGE>
+              <ALLOW-HALT-DUE-TO-CLOCK>true</ALLOW-HALT-DUE-TO-CLOCK>
+              <ALLOW-PASSIVE-TO-ACTIVE>0</ALLOW-PASSIVE-TO-ACTIVE>
+              <CLUSTER-DRIFT-DAMPING>2</CLUSTER-DRIFT-DAMPING>
+              <DECODING-CORRECTION>72</DECODING-CORRECTION>
+              <DELAY-COMPENSATION-A>1</DELAY-COMPENSATION-A>
+              <DELAY-COMPENSATION-B>1</DELAY-COMPENSATION-B>
+              <EXTERN-OFFSET-CORRECTION>0</EXTERN-OFFSET-CORRECTION>
+              <EXTERN-RATE-CORRECTION>0</EXTERN-RATE-CORRECTION>
+              <KEY-SLOT-ID>2</KEY-SLOT-ID>
+              <KEY-SLOT-USED-FOR-START-UP>true</KEY-SLOT-USED-FOR-START-UP>
+              <KEY-SLOT-USED-FOR-SYNC>true</KEY-SLOT-USED-FOR-SYNC>
+              <LATEST-TX>1</LATEST-TX>
+              <LISTEN-TIMEOUT>401202</LISTEN-TIMEOUT>
+              <MACRO-INITIAL-OFFSET-A>5</MACRO-INITIAL-OFFSET-A>
+              <MACRO-INITIAL-OFFSET-B>5</MACRO-INITIAL-OFFSET-B>
+              <MAX-DRIFT>601</MAX-DRIFT>
+              <MAXIMUM-DYNAMIC-PAYLOAD-LENGTH>127</MAXIMUM-DYNAMIC-PAYLOAD-LENGTH>
+              <MICRO-INITIAL-OFFSET-A>7</MICRO-INITIAL-OFFSET-A>
+              <MICRO-INITIAL-OFFSET-B>7</MICRO-INITIAL-OFFSET-B>
+              <MICRO-PER-CYCLE>200000</MICRO-PER-CYCLE>
+              <MICROTICK-DURATION>2.5E-08</MICROTICK-DURATION>
+              <OFFSET-CORRECTION-OUT>150</OFFSET-CORRECTION-OUT>
+              <RATE-CORRECTION-OUT>601</RATE-CORRECTION-OUT>
+              <SAMPLES-PER-MICROTICK>2</SAMPLES-PER-MICROTICK>
+              <SINGLE-SLOT-ENABLED>false</SINGLE-SLOT-ENABLED>
+              <WAKE-UP-PATTERN>63</WAKE-UP-PATTERN>
+            </FLEXRAY-COMMUNICATION-CONTROLLER>
+            <LIN-MASTER>
+              <SHORT-NAME>CT_LIN00</SHORT-NAME>
+              <TIME-BASE>0.001</TIME-BASE>
+              <TIME-BASE-JITTER>0</TIME-BASE-JITTER>
+            </LIN-MASTER>
+          </COMM-CONTROLLERS>
+          <CONNECTORS>
+            <COMMUNICATION-CONNECTOR>
+              <SHORT-NAME>CN_LIN00</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DV:BusNmType">
+                    <SD GID="CanNm">false</SD>
+                    <SD GID="OSEK_Nm">false</SD>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <CHANNEL-REF DEST="PHYSICAL-CHANNEL">/Cluster/LIN00/CHNL</CHANNEL-REF>
+              <COMM-CONTROLLER-REF DEST="LIN-MASTER">/ECU/MyECU/CT_LIN00</COMM-CONTROLLER-REF>
+              <ECU-COMM-PORT-INSTANCES>
+                <FRAME-PORT>
+                  <SHORT-NAME>FP_Frame_LinTr_MyECU_Tx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>FP_Frame_LinTr_RearECU_Rx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>FP_MasterReq_Tx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>FP_SlaveResp_Rx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <I-PDU-PORT>
+                  <SHORT-NAME>PP_Frame_LinTr_MyECU_Tx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </I-PDU-PORT>
+                <I-PDU-PORT>
+                  <SHORT-NAME>PP_Frame_LinTr_RearECU_Rx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </I-PDU-PORT>
+                <I-PDU-PORT>
+                  <SHORT-NAME>PP_MasterReq_Tx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </I-PDU-PORT>
+                <I-PDU-PORT>
+                  <SHORT-NAME>PP_SlaveResp_Rx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </I-PDU-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>SP_Sig_ErrBit_RearECU__Frame_LinTr_RearECU_Rx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>SP_Sig_LinTr_MyECU__Frame_LinTr_MyECU_Tx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>SP_Sig_LinTr_RearECU__Frame_LinTr_RearECU_Rx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+              </ECU-COMM-PORT-INSTANCES>
+            </COMMUNICATION-CONNECTOR>
+            <FLEX-RAY-COMMUNICATION-CONNECTOR>
+              <SHORT-NAME>CN_Channel_A</SHORT-NAME>
+              <CHANNEL-REF DEST="FLEXRAY-PHYSICAL-CHANNEL">/Cluster/FlexRay/Channel_A</CHANNEL-REF>
+              <COMM-CONTROLLER-REF DEST="FLEXRAY-COMMUNICATION-CONTROLLER">/ECU/MyECU/MyECU</COMM-CONTROLLER-REF>
+              <ECU-COMM-PORT-INSTANCES>
+                <FRAME-PORT>
+                  <SHORT-NAME>FP_00020001_Tx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>FP_00030001_Rx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>FP_005A0040_Tx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>FP_00610004_Tx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>FP_00630004_Rx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <I-PDU-PORT>
+                  <SHORT-NAME>PP_PDU_Dummy_RearECU_Rx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </I-PDU-PORT>
+                <I-PDU-PORT>
+                  <SHORT-NAME>PP_PDU_Transmit_MyECU_Tx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </I-PDU-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>SP_Signal_Dummy__PDU_Dummy_RearECU_Rx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>SP_Signal_SwitchRearInteriorLight__PDU_Transmit_MyECU_Tx</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+              </ECU-COMM-PORT-INSTANCES>
+              <WAKE-UP-CHANNEL>false</WAKE-UP-CHANNEL>
+            </FLEX-RAY-COMMUNICATION-CONNECTOR>
+          </CONNECTORS>
+        </ECU-INSTANCE>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>Gateway</SHORT-NAME>
+      <ELEMENTS>
+        <GATEWAY>
+          <SHORT-NAME>MyECU</SHORT-NAME>
+          <ECU-REF DEST="ECU-INSTANCE">/ECU/MyECU</ECU-REF>
+          <I-PDU-MAPPINGS />
+          <SIGNAL-MAPPINGS />
+        </GATEWAY>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>IPDUGroup</SHORT-NAME>
+      <ELEMENTS>
+        <I-PDU-GROUP>
+          <SHORT-NAME>MyECU__CAN00_Rx</SHORT-NAME>
+          <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+          <I-PDU-REFS>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_Receive__CAN00</I-PDU-REF>
+          </I-PDU-REFS>
+        </I-PDU-GROUP>
+        <I-PDU-GROUP>
+          <SHORT-NAME>MyECU__CAN00_Tx</SHORT-NAME>
+          <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+          <I-PDU-REFS>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxCycle10__CAN00</I-PDU-REF>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxMulti100_Mx00__CAN00</I-PDU-REF>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxMulti100_Mx01__CAN00</I-PDU-REF>
+          </I-PDU-REFS>
+        </I-PDU-GROUP>
+        <I-PDU-GROUP>
+          <SHORT-NAME>MyECU__FlexRay_Rx</SHORT-NAME>
+          <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+          <I-PDU-REFS>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_Dummy_RearECU</I-PDU-REF>
+          </I-PDU-REFS>
+        </I-PDU-GROUP>
+        <I-PDU-GROUP>
+          <SHORT-NAME>MyECU__FlexRay_Tx</SHORT-NAME>
+          <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+          <I-PDU-REFS>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_Transmit_MyECU</I-PDU-REF>
+          </I-PDU-REFS>
+        </I-PDU-GROUP>
+        <I-PDU-GROUP>
+          <SHORT-NAME>MyECU__LIN00_Rx</SHORT-NAME>
+          <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+          <I-PDU-REFS>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/Frame_LinTr_RearECU__LIN00</I-PDU-REF>
+          </I-PDU-REFS>
+        </I-PDU-GROUP>
+        <I-PDU-GROUP>
+          <SHORT-NAME>MyECU__LIN00_Tx</SHORT-NAME>
+          <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+          <I-PDU-REFS>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/Frame_LinTr_MyECU__LIN00</I-PDU-REF>
+          </I-PDU-REFS>
+        </I-PDU-GROUP>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>Frame</SHORT-NAME>
+      <ELEMENTS>
+        <FRAME>
+          <SHORT-NAME>Dummy_RearECU</SHORT-NAME>
+          <FRAME-LENGTH>16</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>PDU_Dummy_RearECU</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_Dummy_RearECU</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>Frame_LinTr_MyECU__LIN00</SHORT-NAME>
+          <FRAME-LENGTH>1</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>Frame_LinTr_MyECU</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/Frame_LinTr_MyECU__LIN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>Frame_LinTr_RearECU__LIN00</SHORT-NAME>
+          <FRAME-LENGTH>1</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>Frame_LinTr_RearECU</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/Frame_LinTr_RearECU__LIN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>MasterReq__LIN00</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>MasterReq_Tp</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="N-PDU">/PDU/MasterReq_Tp__LIN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>msg_diag_Request_MyECU__CAN00</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>msg_diag_Request_MyECU_Tp</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="N-PDU">/PDU/msg_diag_Request_MyECU_Tp__CAN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>msg_diag_RequestGlobal__CAN00</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>msg_diag_RequestGlobal_Tp</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="N-PDU">/PDU/msg_diag_RequestGlobal_Tp__CAN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>msg_diag_Response_MyECU__CAN00</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>msg_diag_Response_MyECU_Tp</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="N-PDU">/PDU/msg_diag_Response_MyECU_Tp__CAN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>msg_diag_Uudt_Response_MyECU__CAN00</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>msg_diag_Uudt_Response_MyECU_Tp</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="N-PDU">/PDU/msg_diag_Uudt_Response_MyECU_Tp__CAN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>msg_nm_MyECU__CAN00</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>msg_nm_MyECU</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="NM-PDU">/PDU/msg_nm_MyECU__CAN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>msg_Receive__CAN00</SHORT-NAME>
+          <FRAME-LENGTH>2</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>msg_Receive</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_Receive__CAN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>msg_TxCycle10__CAN00</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>msg_TxCycle10</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxCycle10__CAN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>msg_TxMulti100__CAN00</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>msg_TxMulti100</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="MULTIPLEXED-I-PDU">/PDU/msg_TxMulti100__CAN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>msg_XCP_Request__CAN00</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>msg_XCP_Request</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_XCP_Request__CAN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>msg_XCP_Response__CAN00</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>msg_XCP_Response</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_XCP_Response__CAN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>nm_MyECU_Fr</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>PDU_nm_MyECU_Fr</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="NM-PDU">/PDU/PDU_nm_MyECU_Fr</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>SlaveResp__LIN00</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>SlaveResp_Tp</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="N-PDU">/PDU/SlaveResp_Tp__LIN00</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>TpRouting_Rx</SHORT-NAME>
+          <FRAME-LENGTH>16</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>PDU_TpRouting_Rx_Tp</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="N-PDU">/PDU/PDU_TpRouting_Rx_Tp</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>TpRouting_Tx</SHORT-NAME>
+          <FRAME-LENGTH>16</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>PDU_TpRouting_Tx_Tp</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="N-PDU">/PDU/PDU_TpRouting_Tx_Tp</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>Transmit_MyECU</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>PDU_Transmit_MyECU</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_Transmit_MyECU</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>PDU</SHORT-NAME>
+      <ELEMENTS>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>Frame_LinTr_MyECU__LIN00</SHORT-NAME>
+          <LENGTH>8</LENGTH>
+          <I-PDU-TIMING-SPECIFICATION />
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Sig_LinTr_MyECU</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Sig_LinTr_MyECU__Frame_LinTr_MyECU__LIN00</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>Frame_LinTr_RearECU__LIN00</SHORT-NAME>
+          <LENGTH>8</LENGTH>
+          <I-PDU-TIMING-SPECIFICATION />
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Sig_LinTr_RearECU</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Sig_LinTr_RearECU__Frame_LinTr_RearECU__LIN00</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Sig_ErrBit_RearECU</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Sig_ErrBit_RearECU__Frame_LinTr_RearECU__LIN00</SIGNAL-REF>
+              <START-POSITION>7</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>msg_Receive__CAN00</SHORT-NAME>
+          <LENGTH>16</LENGTH>
+          <I-PDU-TIMING-SPECIFICATION>
+            <CYCLIC-TIMING>
+              <REPEATING-TIME>
+                <VALUE>0.1</VALUE>
+              </REPEATING-TIME>
+              <STARTING-TIME>
+                <VALUE>0</VALUE>
+              </STARTING-TIME>
+            </CYCLIC-TIMING>
+            <MINIMUM-DELAY>0</MINIMUM-DELAY>
+            <TRANSMISSION-MODE-DECLARATION>
+              <TRANSMISSION-MODE-FALSE-TIMING>
+                <CYCLIC-TIMING>
+                  <REPEATING-TIME>
+                    <VALUE>0.1</VALUE>
+                  </REPEATING-TIME>
+                  <STARTING-TIME>
+                    <VALUE>0</VALUE>
+                  </STARTING-TIME>
+                </CYCLIC-TIMING>
+              </TRANSMISSION-MODE-FALSE-TIMING>
+            </TRANSMISSION-MODE-DECLARATION>
+          </I-PDU-TIMING-SPECIFICATION>
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_RearLeftDoor</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_RearLeftDoor__msg_Receive__CAN00</SIGNAL-REF>
+              <START-POSITION>1</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_RearRightDoor</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_RearRightDoor__msg_Receive__CAN00</SIGNAL-REF>
+              <START-POSITION>2</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_RearInteriorLight</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_RearInteriorLight__msg_Receive__CAN00</SIGNAL-REF>
+              <START-POSITION>8</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>msg_TxCycle10__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+          <I-PDU-TIMING-SPECIFICATION>
+            <CYCLIC-TIMING>
+              <REPEATING-TIME>
+                <VALUE>0.01</VALUE>
+              </REPEATING-TIME>
+              <STARTING-TIME>
+                <VALUE>0</VALUE>
+              </STARTING-TIME>
+            </CYCLIC-TIMING>
+            <MINIMUM-DELAY>0</MINIMUM-DELAY>
+            <TRANSMISSION-MODE-DECLARATION>
+              <TRANSMISSION-MODE-FALSE-TIMING>
+                <CYCLIC-TIMING>
+                  <REPEATING-TIME>
+                    <VALUE>0.01</VALUE>
+                  </REPEATING-TIME>
+                  <STARTING-TIME>
+                    <VALUE>0</VALUE>
+                  </STARTING-TIME>
+                </CYCLIC-TIMING>
+              </TRANSMISSION-MODE-FALSE-TIMING>
+            </TRANSMISSION-MODE-DECLARATION>
+          </I-PDU-TIMING-SPECIFICATION>
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxCycle10</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxCycle10__msg_TxCycle10__CAN00</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>msg_TxMulti100_Mx00__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+          <I-PDU-TIMING-SPECIFICATION>
+            <CYCLIC-TIMING>
+              <REPEATING-TIME>
+                <VALUE>0.2</VALUE>
+              </REPEATING-TIME>
+              <STARTING-TIME>
+                <VALUE>0</VALUE>
+              </STARTING-TIME>
+            </CYCLIC-TIMING>
+            <MINIMUM-DELAY>0</MINIMUM-DELAY>
+          </I-PDU-TIMING-SPECIFICATION>
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxMultiplexor</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMultiplexor_Mx00__msg_TxMulti100__CAN00</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxMulti_0_0</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti_0_0_Mx00__msg_TxMulti100__CAN00</SIGNAL-REF>
+              <START-POSITION>8</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxMulti0_1</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti0_1_Mx00__msg_TxMulti100__CAN00</SIGNAL-REF>
+              <START-POSITION>16</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxMulti0_2</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti0_2_Mx00__msg_TxMulti100__CAN00</SIGNAL-REF>
+              <START-POSITION>24</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxMulti0_3</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti0_3_Mx00__msg_TxMulti100__CAN00</SIGNAL-REF>
+              <START-POSITION>32</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>msg_TxMulti100_Mx01__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+          <I-PDU-TIMING-SPECIFICATION>
+            <CYCLIC-TIMING>
+              <REPEATING-TIME>
+                <VALUE>0.2</VALUE>
+              </REPEATING-TIME>
+              <STARTING-TIME>
+                <VALUE>0.1</VALUE>
+              </STARTING-TIME>
+            </CYCLIC-TIMING>
+            <MINIMUM-DELAY>0</MINIMUM-DELAY>
+          </I-PDU-TIMING-SPECIFICATION>
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxMultiplexor</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMultiplexor_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxMulti1_0</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_0_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+              <START-POSITION>8</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxMulti1_1</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_1_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+              <START-POSITION>16</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxMulti1_2</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_2_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+              <START-POSITION>24</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxMulti1_3</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_3_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+              <START-POSITION>32</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_TxMulti1_4</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_TxMulti1_4_Mx01__msg_TxMulti100__CAN00</SIGNAL-REF>
+              <START-POSITION>40</START-POSITION>
+              <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>msg_XCP_Request__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+          <I-PDU-TIMING-SPECIFICATION />
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>msg_XCP_Response__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+          <I-PDU-TIMING-SPECIFICATION />
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>PDU_Dummy_RearECU</SHORT-NAME>
+          <LENGTH>128</LENGTH>
+          <I-PDU-TIMING-SPECIFICATION>
+            <CYCLIC-TIMING>
+              <REPEATING-TIME>
+                <VALUE>0.1</VALUE>
+              </REPEATING-TIME>
+            </CYCLIC-TIMING>
+          </I-PDU-TIMING-SPECIFICATION>
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_Dummy</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_Dummy__PDU_Dummy_RearECU</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>PDU_Transmit_MyECU</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+          <I-PDU-TIMING-SPECIFICATION>
+            <CYCLIC-TIMING>
+              <REPEATING-TIME>
+                <VALUE>0.1</VALUE>
+              </REPEATING-TIME>
+            </CYCLIC-TIMING>
+          </I-PDU-TIMING-SPECIFICATION>
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Signal_SwitchRearInteriorLight</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Signal_SwitchRearInteriorLight__PDU_Transmit_MyECU</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <MULTIPLEXED-I-PDU>
+          <SHORT-NAME>msg_TxMulti100__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+          <DYNAMIC-PART>
+            <SEGMENT-POSITIONS>
+              <SEGMENT-POSITION>
+                <SEGMENT-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</SEGMENT-BYTE-ORDER>
+                <SEGMENT-LENGTH>48</SEGMENT-LENGTH>
+                <SEGMENT-POSITION>0</SEGMENT-POSITION>
+              </SEGMENT-POSITION>
+            </SEGMENT-POSITIONS>
+            <DYNAMIC-PART-ALTERNATIVES>
+              <DYNAMIC-PART-ALTERNATIVE>
+                <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxMulti100_Mx00__CAN00</I-PDU-REF>
+                <INITIAL-DYNAMIC-PART>true</INITIAL-DYNAMIC-PART>
+                <SELECTOR-FIELD-CODE>0</SELECTOR-FIELD-CODE>
+              </DYNAMIC-PART-ALTERNATIVE>
+              <DYNAMIC-PART-ALTERNATIVE>
+                <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/msg_TxMulti100_Mx01__CAN00</I-PDU-REF>
+                <INITIAL-DYNAMIC-PART>false</INITIAL-DYNAMIC-PART>
+                <SELECTOR-FIELD-CODE>1</SELECTOR-FIELD-CODE>
+              </DYNAMIC-PART-ALTERNATIVE>
+            </DYNAMIC-PART-ALTERNATIVES>
+          </DYNAMIC-PART>
+          <SELECTOR-FIELD-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</SELECTOR-FIELD-BYTE-ORDER>
+          <SELECTOR-FIELD-LENGTH>3</SELECTOR-FIELD-LENGTH>
+          <SELECTOR-FIELD-START-POSITION>0</SELECTOR-FIELD-START-POSITION>
+        </MULTIPLEXED-I-PDU>
+        <DCM-I-PDU>
+          <SHORT-NAME>MasterReq__LIN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </DCM-I-PDU>
+        <DCM-I-PDU>
+          <SHORT-NAME>msg_diag_Request_MyECU__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </DCM-I-PDU>
+        <DCM-I-PDU>
+          <SHORT-NAME>msg_diag_RequestGlobal__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </DCM-I-PDU>
+        <DCM-I-PDU>
+          <SHORT-NAME>msg_diag_Response_MyECU__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </DCM-I-PDU>
+        <DCM-I-PDU>
+          <SHORT-NAME>msg_diag_Uudt_Response_MyECU__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </DCM-I-PDU>
+        <DCM-I-PDU>
+          <SHORT-NAME>SlaveResp__LIN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </DCM-I-PDU>
+        <NM-PDU>
+          <SHORT-NAME>msg_nm_MyECU__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </NM-PDU>
+        <NM-PDU>
+          <SHORT-NAME>PDU_nm_MyECU_Fr</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </NM-PDU>
+        <N-PDU>
+          <SHORT-NAME>MasterReq_Tp__LIN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </N-PDU>
+        <N-PDU>
+          <SHORT-NAME>msg_diag_Request_MyECU_Tp__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </N-PDU>
+        <N-PDU>
+          <SHORT-NAME>msg_diag_RequestGlobal_Tp__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </N-PDU>
+        <N-PDU>
+          <SHORT-NAME>msg_diag_Response_MyECU_Tp__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </N-PDU>
+        <N-PDU>
+          <SHORT-NAME>msg_diag_Uudt_Response_MyECU_Tp__CAN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </N-PDU>
+        <N-PDU>
+          <SHORT-NAME>PDU_TpRouting_Rx_Tp</SHORT-NAME>
+          <LENGTH>128</LENGTH>
+        </N-PDU>
+        <N-PDU>
+          <SHORT-NAME>PDU_TpRouting_Tx_Tp</SHORT-NAME>
+          <LENGTH>128</LENGTH>
+        </N-PDU>
+        <N-PDU>
+          <SHORT-NAME>SlaveResp_Tp__LIN00</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+        </N-PDU>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>ISignal</SHORT-NAME>
+      <ELEMENTS>
+        <I-SIGNAL>
+          <SHORT-NAME>Sig_ErrBit_RearECU__Frame_LinTr_RearECU__LIN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Sig_ErrBit_RearECU</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Sig_LinTr_MyECU__Frame_LinTr_MyECU__LIN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Sig_LinTr_MyECU</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Sig_LinTr_RearECU__Frame_LinTr_RearECU__LIN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Sig_LinTr_RearECU</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_Dummy__PDU_Dummy_RearECU</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_Dummy</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_RearInteriorLight__msg_Receive__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_RearInteriorLight</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_RearLeftDoor__msg_Receive__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_RearLeftDoor</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_RearRightDoor__msg_Receive__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_RearRightDoor</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_SwitchRearInteriorLight__PDU_Transmit_MyECU</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_SwitchRearInteriorLight</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxCycle10__msg_TxCycle10__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxCycle10</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti_0_0_Mx00__msg_TxMulti100__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxMulti_0_0</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti0_1_Mx00__msg_TxMulti100__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxMulti0_1</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti0_2_Mx00__msg_TxMulti100__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxMulti0_2</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti0_3_Mx00__msg_TxMulti100__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxMulti0_3</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti1_0_Mx01__msg_TxMulti100__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxMulti1_0</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti1_1_Mx01__msg_TxMulti100__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxMulti1_1</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti1_2_Mx01__msg_TxMulti100__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxMulti1_2</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti1_3_Mx01__msg_TxMulti100__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxMulti1_3</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti1_4_Mx01__msg_TxMulti100__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxMulti1_4</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxMultiplexor_Mx00__msg_TxMulti100__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxMultiplexor_Mx00</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Signal_TxMultiplexor_Mx01__msg_TxMulti100__CAN00</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Signal_TxMultiplexor_Mx01</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>DataType</SHORT-NAME>
+      <ELEMENTS>
+        <BOOLEAN-TYPE>
+          <SHORT-NAME>DT_Sig_ErrBit_RearECU</SHORT-NAME>
+        </BOOLEAN-TYPE>
+        <BOOLEAN-TYPE>
+          <SHORT-NAME>DT_Signal_RearLeftDoor</SHORT-NAME>
+        </BOOLEAN-TYPE>
+        <BOOLEAN-TYPE>
+          <SHORT-NAME>DT_Signal_RearRightDoor</SHORT-NAME>
+        </BOOLEAN-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Sig_LinTr_MyECU</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Sig_LinTr_RearECU</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">127</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_RearInteriorLight</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_TxCycle10</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">4294967295</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_TxMulti_0_0</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">3</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_TxMulti0_1</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_TxMulti0_2</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">15</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_TxMulti0_3</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_TxMulti1_0</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_TxMulti1_1</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_TxMulti1_2</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_TxMulti1_3</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_TxMulti1_4</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>DT_Signal_TxMultiplexor</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">7</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>New_Coding_1</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</UPPER-LIMIT>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>New_Coding_2</SHORT-NAME>
+          <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+          <UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</UPPER-LIMIT>
+        </INTEGER-TYPE>
+      </ELEMENTS>
+      <SUB-PACKAGES />
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>Constant</SHORT-NAME>
+      <ELEMENTS>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Sig_ErrBit_RearECU</SHORT-NAME>
+          <VALUE>
+            <BOOLEAN-LITERAL>
+              <SHORT-NAME>C_Sig_ErrBit_RearECU</SHORT-NAME>
+              <TYPE-TREF DEST="BOOLEAN-TYPE">/DataType/DT_Sig_ErrBit_RearECU</TYPE-TREF>
+              <VALUE>false</VALUE>
+            </BOOLEAN-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_RearLeftDoor</SHORT-NAME>
+          <VALUE>
+            <BOOLEAN-LITERAL>
+              <SHORT-NAME>C_Signal_RearLeftDoor</SHORT-NAME>
+              <TYPE-TREF DEST="BOOLEAN-TYPE">/DataType/DT_Signal_RearLeftDoor</TYPE-TREF>
+              <VALUE>false</VALUE>
+            </BOOLEAN-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_RearRightDoor</SHORT-NAME>
+          <VALUE>
+            <BOOLEAN-LITERAL>
+              <SHORT-NAME>C_Signal_RearRightDoor</SHORT-NAME>
+              <TYPE-TREF DEST="BOOLEAN-TYPE">/DataType/DT_Signal_RearRightDoor</TYPE-TREF>
+              <VALUE>false</VALUE>
+            </BOOLEAN-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Sig_LinTr_MyECU</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Sig_LinTr_MyECU</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Sig_LinTr_MyECU</TYPE-TREF>
+              <VALUE>0</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Sig_LinTr_RearECU</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Sig_LinTr_RearECU</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Sig_LinTr_RearECU</TYPE-TREF>
+              <VALUE>0</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_Dummy</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_Dummy</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/New_Coding_2</TYPE-TREF>
+              <VALUE>0</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_RearInteriorLight</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_RearInteriorLight</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_RearInteriorLight</TYPE-TREF>
+              <VALUE>0</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_SwitchRearInteriorLight</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_SwitchRearInteriorLight</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/New_Coding_1</TYPE-TREF>
+              <VALUE>0</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxCycle10</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxCycle10</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxCycle10</TYPE-TREF>
+              <VALUE>0</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxMulti_0_0</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxMulti_0_0</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti_0_0</TYPE-TREF>
+              <VALUE>0</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxMulti0_1</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxMulti0_1</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti0_1</TYPE-TREF>
+              <VALUE>1</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxMulti0_2</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxMulti0_2</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti0_2</TYPE-TREF>
+              <VALUE>2</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxMulti0_3</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxMulti0_3</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti0_3</TYPE-TREF>
+              <VALUE>3</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxMulti1_0</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxMulti1_0</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti1_0</TYPE-TREF>
+              <VALUE>16</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxMulti1_1</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxMulti1_1</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti1_1</TYPE-TREF>
+              <VALUE>17</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxMulti1_2</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxMulti1_2</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti1_2</TYPE-TREF>
+              <VALUE>18</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxMulti1_3</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxMulti1_3</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti1_3</TYPE-TREF>
+              <VALUE>19</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxMulti1_4</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxMulti1_4</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti1_4</TYPE-TREF>
+              <VALUE>20</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxMultiplexor_Mx00</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxMultiplexor_Mx00</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMultiplexor</TYPE-TREF>
+              <VALUE>0</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+        <CONSTANT-SPECIFICATION>
+          <SHORT-NAME>C_Signal_TxMultiplexor_Mx01</SHORT-NAME>
+          <VALUE>
+            <INTEGER-LITERAL>
+              <SHORT-NAME>C_Signal_TxMultiplexor_Mx01</SHORT-NAME>
+              <TYPE-TREF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMultiplexor</TYPE-TREF>
+              <VALUE>1</VALUE>
+            </INTEGER-LITERAL>
+          </VALUE>
+        </CONSTANT-SPECIFICATION>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>Signal</SHORT-NAME>
+      <ELEMENTS>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Sig_ErrBit_RearECU</SHORT-NAME>
+          <DATA-TYPE-REF DEST="BOOLEAN-TYPE">/DataType/DT_Sig_ErrBit_RearECU</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="BOOLEAN-LITERAL">/Constant/C_Sig_ErrBit_RearECU/C_Sig_ErrBit_RearECU</INIT-VALUE-REF>
+          <LENGTH>1</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Sig_LinTr_MyECU</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Sig_LinTr_MyECU</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Sig_LinTr_MyECU/C_Sig_LinTr_MyECU</INIT-VALUE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Sig_LinTr_RearECU</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Sig_LinTr_RearECU</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Sig_LinTr_RearECU/C_Sig_LinTr_RearECU</INIT-VALUE-REF>
+          <LENGTH>7</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_Dummy</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/New_Coding_2</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_Dummy/C_Signal_Dummy</INIT-VALUE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_RearInteriorLight</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_RearInteriorLight</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_RearInteriorLight/C_Signal_RearInteriorLight</INIT-VALUE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_RearLeftDoor</SHORT-NAME>
+          <DATA-TYPE-REF DEST="BOOLEAN-TYPE">/DataType/DT_Signal_RearLeftDoor</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="BOOLEAN-LITERAL">/Constant/C_Signal_RearLeftDoor/C_Signal_RearLeftDoor</INIT-VALUE-REF>
+          <LENGTH>1</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_RearRightDoor</SHORT-NAME>
+          <DATA-TYPE-REF DEST="BOOLEAN-TYPE">/DataType/DT_Signal_RearRightDoor</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="BOOLEAN-LITERAL">/Constant/C_Signal_RearRightDoor/C_Signal_RearRightDoor</INIT-VALUE-REF>
+          <LENGTH>1</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_SwitchRearInteriorLight</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/New_Coding_1</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_SwitchRearInteriorLight/C_Signal_SwitchRearInteriorLight</INIT-VALUE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxCycle10</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxCycle10</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxCycle10/C_Signal_TxCycle10</INIT-VALUE-REF>
+          <LENGTH>32</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti_0_0</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti_0_0</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxMulti_0_0/C_Signal_TxMulti_0_0</INIT-VALUE-REF>
+          <LENGTH>2</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti0_1</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti0_1</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxMulti0_1/C_Signal_TxMulti0_1</INIT-VALUE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti0_2</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti0_2</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxMulti0_2/C_Signal_TxMulti0_2</INIT-VALUE-REF>
+          <LENGTH>4</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti0_3</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti0_3</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxMulti0_3/C_Signal_TxMulti0_3</INIT-VALUE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti1_0</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti1_0</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxMulti1_0/C_Signal_TxMulti1_0</INIT-VALUE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti1_1</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti1_1</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxMulti1_1/C_Signal_TxMulti1_1</INIT-VALUE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti1_2</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti1_2</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxMulti1_2/C_Signal_TxMulti1_2</INIT-VALUE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti1_3</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti1_3</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxMulti1_3/C_Signal_TxMulti1_3</INIT-VALUE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxMulti1_4</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMulti1_4</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxMulti1_4/C_Signal_TxMulti1_4</INIT-VALUE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxMultiplexor_Mx00</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMultiplexor</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxMultiplexor_Mx00/C_Signal_TxMultiplexor_Mx00</INIT-VALUE-REF>
+          <LENGTH>3</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Signal_TxMultiplexor_Mx01</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/DT_Signal_TxMultiplexor</DATA-TYPE-REF>
+          <INIT-VALUE-REF DEST="INTEGER-LITERAL">/Constant/C_Signal_TxMultiplexor_Mx01/C_Signal_TxMultiplexor_Mx01</INIT-VALUE-REF>
+          <LENGTH>3</LENGTH>
+        </SYSTEM-SIGNAL>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </TOP-LEVEL-PACKAGES>
+</AUTOSAR>

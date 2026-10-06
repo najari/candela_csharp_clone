@@ -1,0 +1,390 @@
+<Window x:Class="DiagAuthor.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:DiagAuthor.Desktop"
+        Title="DiagAuthor — 진단 데이터 작성 도구"
+        Width="1500" Height="950" MinWidth="1120" MinHeight="700"
+        Background="{StaticResource BgBrush}"
+        FontFamily="{StaticResource UiFont}" FontSize="12.5"
+        TextOptions.TextFormattingMode="Display"
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing"
+        PreviewKeyDown="Window_PreviewKeyDown">
+  <Window.Resources>
+    <local:KindBrushConverter x:Key="KindBrush"/>
+    <local:SeverityBrushConverter x:Key="SeverityBrush"/>
+
+    <HierarchicalDataTemplate DataType="{x:Type local:TreeItem}" ItemsSource="{Binding Children}">
+      <StackPanel Orientation="Horizontal">
+        <TextBlock Text="{Binding Glyph}" Foreground="{StaticResource MutedBrush}" FontSize="9"
+                   Margin="1,0,4,0" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Label}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+        <TextBlock Text="{Binding CountText}" Foreground="{StaticResource MutedBrush}" FontSize="11"
+                   Margin="5,0,0,0" VerticalAlignment="Center"/>
+      </StackPanel>
+    </HierarchicalDataTemplate>
+
+    <Style x:Key="KindCellStyle" TargetType="TextBlock">
+      <Setter Property="Foreground" Value="{Binding Kind, Converter={StaticResource KindBrush}}"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    <Style x:Key="SeverityCellStyle" TargetType="TextBlock">
+      <Setter Property="Foreground" Value="{Binding Severity, Converter={StaticResource SeverityBrush}}"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    <Style x:Key="LinkCellStyle" TargetType="TextBlock">
+      <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="MonoCellStyle" TargetType="TextBlock">
+      <Setter Property="FontFamily" Value="{StaticResource MonoFont}"/>
+    </Style>
+  </Window.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*" MinHeight="240"/>
+      <RowDefinition Height="5"/>
+      <RowDefinition x:Name="DockRow" Height="180"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <!-- 1. Menu bar -->
+    <Menu Grid.Row="0">
+      <MenuItem Header="파일">
+        <MenuItem Header="열기…" InputGestureText="Ctrl+O" Click="Open_Click"/>
+        <MenuItem Header="저장" InputGestureText="Ctrl+S" Click="Save_Click"/>
+        <MenuItem Header="다른 이름으로 저장…" InputGestureText="Ctrl+Shift+S" Click="SaveAs_Click"/>
+        <Separator/>
+        <MenuItem Header="종료" Click="Exit_Click"/>
+      </MenuItem>
+      <MenuItem Header="편집">
+        <MenuItem Header="실행 취소" InputGestureText="Ctrl+Z" Click="Undo_Click"/>
+        <MenuItem Header="다시 실행" InputGestureText="Ctrl+Y" Click="Redo_Click"/>
+        <Separator/>
+        <MenuItem Header="선택 행 복사" InputGestureText="Ctrl+C" Click="Copy_Click"/>
+        <MenuItem Header="삭제" InputGestureText="Del" Click="Delete_Click"/>
+      </MenuItem>
+      <MenuItem Header="보기">
+        <MenuItem Header="목록 크게" InputGestureText="Esc" Click="ListOnly_Click"/>
+        <MenuItem Header="하단 창 표시" Click="ShowDock_Click"/>
+        <MenuItem Header="열 정보" Click="ColumnInfo_Click"/>
+        <Separator/>
+        <MenuItem Header="보기 초기화" Click="ResetView_Click"/>
+      </MenuItem>
+      <MenuItem Header="가져오기">
+        <MenuItem Header="CDD · CDDT 미리보기…" Click="ImportPreview_Click"/>
+      </MenuItem>
+      <MenuItem Header="내보내기">
+        <MenuItem Header="ODX 2.2.0 내보내기…" Click="Export_Click"/>
+      </MenuItem>
+      <MenuItem Header="도움말">
+        <MenuItem Header="사용 안내" Click="Help_Click"/>
+        <MenuItem Header="성능 시험 (20,000행)" Click="PerfTest_Click"/>
+        <Separator/>
+        <MenuItem Header="정보" Click="About_Click"/>
+      </MenuItem>
+    </Menu>
+
+    <!-- 2. Toolbar -->
+    <Border Grid.Row="1" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource LineBrush}"
+            BorderThickness="0,0,0,1" Padding="8,3">
+      <DockPanel>
+        <TextBlock x:Name="ToolbarModeText" DockPanel.Dock="Right" Style="{StaticResource HintText}"
+                   VerticalAlignment="Center" Margin="8,0,2,0"/>
+        <StackPanel Orientation="Horizontal">
+          <Button Style="{StaticResource ToolButton}" Content="열기" ToolTip="CDD · CDDT 파일을 열어 미리 봅니다 (Ctrl+O)" Click="Open_Click"/>
+          <Button Style="{StaticResource ToolButton}" Content="저장" ToolTip="프로젝트를 저장합니다 (Ctrl+S)" Click="Save_Click"/>
+          <Border Width="1" Margin="5,3" Background="{StaticResource LineBrush}"/>
+          <Button Style="{StaticResource ToolButton}" Content="가져오기" ToolTip="CDD · CDDT 가져오기 미리보기" Click="ImportPreview_Click"/>
+          <Button Style="{StaticResource ToolButton}" Content="내보내기" ToolTip="ODX 2.2.0 내보내기 (M6 범위)" Click="Export_Click"/>
+          <Border Width="1" Margin="5,3" Background="{StaticResource LineBrush}"/>
+          <Button Style="{StaticResource ToolButton}" Content="검증" ToolTip="문서 일관성을 검사합니다 (F9)" Click="Validate_Click"/>
+        </StackPanel>
+      </DockPanel>
+    </Border>
+
+    <!-- 3. Path bar -->
+    <Border Grid.Row="2" Padding="12,5" Background="{StaticResource BgBrush}">
+      <DockPanel LastChildFill="True">
+        <TextBlock Text="ECU" Foreground="{StaticResource MutedBrush}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+        <ComboBox x:Name="EcuCombo" Width="190" Margin="0,0,6,0" VerticalAlignment="Center"/>
+        <Button x:Name="BackButton" Style="{StaticResource SmallButton}" Content="&#x2039;" Width="26" Padding="0"
+                Margin="0,0,2,0" ToolTip="뒤로" Click="Back_Click"/>
+        <Button x:Name="ForwardButton" Style="{StaticResource SmallButton}" Content="&#x203A;" Width="26" Padding="0"
+                Margin="0,0,6,0" ToolTip="앞으로" Click="Forward_Click"/>
+        <Button DockPanel.Dock="Right" Style="{StaticResource SmallButton}" Content="이름 경로 복사"
+                Margin="6,0,0,0" Click="CopyPath_Click"/>
+        <Button DockPanel.Dock="Right" Style="{StaticResource SmallButton}" Content="&#x25B6; 이동"
+                Margin="6,0,0,0" Click="PathGo_Click"/>
+        <TextBox x:Name="PathBox" VerticalContentAlignment="Center"
+                 ToolTip="이름 경로 · npath:/… · qpath:/… 를 넣고 Enter (Enter = 이동)"
+                 KeyDown="PathBox_KeyDown"/>
+      </DockPanel>
+    </Border>
+
+    <!-- 4. Mock-mode banner (unmistakable; visible only when the engine is unavailable) -->
+    <Border Grid.Row="3" x:Name="MockBanner" Visibility="Collapsed" Background="{StaticResource WarnSoftBrush}"
+            BorderBrush="{StaticResource WarnLineBrush}" BorderThickness="0,0,0,1" Padding="12,6">
+      <DockPanel>
+        <Border Background="{StaticResource WarnBrush}" CornerRadius="3" Padding="6,1" Margin="0,0,8,0" VerticalAlignment="Center">
+          <TextBlock Text="목업" Foreground="White" FontWeight="SemiBold" FontSize="11"/>
+        </Border>
+        <TextBlock x:Name="MockBannerText" Foreground="{StaticResource WarnBrush}" FontWeight="SemiBold"
+                   TextWrapping="Wrap" VerticalAlignment="Center"/>
+      </DockPanel>
+    </Border>
+
+    <!-- 5. Work area: tree | splitter | list + pane -->
+    <Grid Grid.Row="4" Margin="12,2,12,0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition x:Name="TreeColumn" Width="230" MinWidth="150"/>
+        <ColumnDefinition Width="5"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <Border Grid.Column="0" Style="{StaticResource Panel}">
+        <DockPanel>
+          <Border DockPanel.Dock="Top" Style="{StaticResource PanelHeader}">
+            <DockPanel LastChildFill="False">
+              <TextBlock Text="프로젝트 탐색" Foreground="{StaticResource HeadInkBrush}" FontWeight="SemiBold"/>
+              <TextBlock x:Name="TreeNodeCount" DockPanel.Dock="Right" Style="{StaticResource HintText}"/>
+            </DockPanel>
+          </Border>
+          <TextBlock x:Name="TreeEmpty" DockPanel.Dock="Top" TextWrapping="Wrap" Margin="10,10,10,0"
+                     Visibility="Collapsed" Foreground="{StaticResource MutedBrush}"
+                     Text="열린 프로젝트가 없습니다.&#x0a;[가져오기]로 CDD 파일을 미리 보거나 프로젝트를 여세요."/>
+          <TreeView x:Name="TreeRoot" SelectedItemChanged="Tree_SelectedItemChanged"/>
+        </DockPanel>
+      </Border>
+
+      <GridSplitter x:Name="TreeSplitter" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+      <Grid x:Name="RightSplit" Grid.Column="2" Margin="8,0,0,0">
+        <Grid.RowDefinitions>
+          <RowDefinition x:Name="ListRow" Height="1.5*" MinHeight="120"/>
+          <RowDefinition Height="5"/>
+          <RowDefinition x:Name="PaneRow" Height="*" MinHeight="120"/>
+        </Grid.RowDefinitions>
+
+        <!-- 5a. List zone -->
+        <Grid Grid.Row="0">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+
+          <Grid Grid.Row="0" Margin="0,0,0,5">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="ListLabel" Grid.Column="0" Text="DTC (0)" FontWeight="SemiBold"
+                       VerticalAlignment="Center" Margin="0,0,8,0"/>
+            <TextBox x:Name="FilterBox" Grid.Column="1" MinWidth="120" TextChanged="FilterBox_TextChanged"
+                     ToolTip="필터: 단어를 띄우면 하나라도 맞는 행, &quot;따옴표&quot;는 구절 그대로 (Ctrl+F)"/>
+            <Button x:Name="FilterApplyButton" Grid.Column="2" Style="{StaticResource SmallButton}" Content="필터"
+                    Margin="5,0,0,0" ToolTip="필터를 지금 적용합니다" Click="FilterApply_Click"/>
+            <CheckBox x:Name="RegexCheck" Grid.Column="3" Content="정규식" Margin="8,0,0,0" VerticalAlignment="Center"
+                      ToolTip=".NET 정규식으로 필터 (1초 매치 제한)" Click="RegexCheck_Click"/>
+            <Border x:Name="FilterChip" Grid.Column="4" Visibility="Collapsed" Background="#FFF7E6"
+                    BorderBrush="{StaticResource WarnLineBrush}" BorderThickness="1" CornerRadius="11"
+                    Padding="9,1" Margin="8,0,0,0" VerticalAlignment="Center">
+              <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="FilterChipText" Foreground="#7A5410" FontSize="11.5" VerticalAlignment="Center"/>
+                <Button Content="&#x2715;" BorderThickness="0" Background="Transparent" Foreground="#7A5410"
+                        Padding="4,0,0,0" Cursor="Hand" ToolTip="필터 지우기" Click="FilterChipClear_Click"/>
+              </StackPanel>
+            </Border>
+            <Button x:Name="ColumnInfoButton" Grid.Column="5" Style="{StaticResource SmallButton}" Content="열 정보"
+                    Margin="8,0,0,0" Click="ColumnInfo_Click"/>
+            <Button x:Name="ListOnlyButton" Grid.Column="6" Style="{StaticResource SmallButton}" Content="&#x2922; 목록 크게"
+                    Margin="8,0,0,0" ToolTip="목록만 크게 봅니다. Esc로 돌아갑니다" Click="ListOnly_Click"/>
+            <Border x:Name="FullNote" Grid.Column="7" Visibility="Collapsed" Background="{StaticResource WarnSoftBrush}"
+                    BorderBrush="{StaticResource WarnLineBrush}" BorderThickness="1" CornerRadius="11"
+                    Padding="9,1" Margin="8,0,0,0" VerticalAlignment="Center">
+              <TextBlock Text="목록 크게 보기 · Esc로 돌아가기" Foreground="{StaticResource WarnBrush}" FontSize="11.5"/>
+            </Border>
+          </Grid>
+
+          <Border Grid.Row="1" Style="{StaticResource Panel}">
+            <DataGrid x:Name="ObjectGrid" Style="{StaticResource ListGrid}" SelectionChanged="ObjectGrid_SelectionChanged"/>
+          </Border>
+
+          <TextBlock x:Name="PageInfo" Grid.Row="2" Style="{StaticResource HintText}" Margin="0,4,0,0"
+                     TextTrimming="CharacterEllipsis"/>
+        </Grid>
+
+        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        <!-- 5b. Selected-object pane -->
+        <Border Grid.Row="2" Style="{StaticResource Panel}">
+          <DockPanel>
+            <Border DockPanel.Dock="Top" Style="{StaticResource PanelHeader}">
+              <DockPanel LastChildFill="False">
+                <TextBlock Text="선택 객체" Foreground="{StaticResource HeadInkBrush}" FontWeight="SemiBold"/>
+                <TextBlock x:Name="PaneSubtitle" DockPanel.Dock="Right" Style="{StaticResource HintText}"/>
+              </DockPanel>
+            </Border>
+            <TabControl x:Name="PaneTabs">
+              <TabItem Header="속성">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                  <StackPanel x:Name="PropertySheetPanel"/>
+                </ScrollViewer>
+              </TabItem>
+              <TabItem Header="데이터 배치">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                  <StackPanel>
+                    <TextBlock x:Name="LayoutNote" Style="{StaticResource SheetNote}"
+                               Text="표에서 DID를 고르면 데이터 배치를 보여줍니다. 실데이터 배치는 후속 마일스톤(M5)에서 엔진 op로 연결됩니다."/>
+                  </StackPanel>
+                </ScrollViewer>
+              </TabItem>
+              <TabItem Header="서비스">
+                <StackPanel>
+                  <TextBlock x:Name="ServiceNote" Style="{StaticResource SheetNote}"
+                             Text="서비스 · Telegram 편집 화면은 후속 마일스톤(M4~M5) 범위입니다. 이 셸은 트리 · 목록 · 속성 · 검증 · 로그 동선을 검증합니다."/>
+                </StackPanel>
+              </TabItem>
+              <TabItem Header="검증">
+                <DockPanel>
+                  <Border DockPanel.Dock="Top" Padding="8,5" BorderBrush="{StaticResource LineBrush}" BorderThickness="0,0,0,1">
+                    <DockPanel>
+                      <Button DockPanel.Dock="Right" Style="{StaticResource PrimaryButton}" Content="검증 실행"
+                              Click="Validate_Click"/>
+                      <TextBlock x:Name="ValidationSummary" Style="{StaticResource HintText}" VerticalAlignment="Center"
+                                 Text="validation.run 결과가 여기에 모입니다."/>
+                    </DockPanel>
+                  </Border>
+                  <DataGrid x:Name="PaneIssuesGrid" Style="{StaticResource ListGrid}">
+                    <DataGrid.Columns>
+                      <DataGridTextColumn Header="규칙" Binding="{Binding Rule}" Width="90" ElementStyle="{StaticResource MonoCellStyle}"/>
+                      <DataGridTextColumn Header="심각도" Binding="{Binding SeverityText}" Width="70" ElementStyle="{StaticResource SeverityCellStyle}"/>
+                      <DataGridTextColumn Header="객체" Binding="{Binding Object}" Width="170"/>
+                      <DataGridTextColumn Header="필드" Binding="{Binding Field}" Width="110"/>
+                      <DataGridTextColumn Header="메시지" Binding="{Binding Message}" Width="*"/>
+                    </DataGrid.Columns>
+                  </DataGrid>
+                </DockPanel>
+              </TabItem>
+            </TabControl>
+          </DockPanel>
+        </Border>
+      </Grid>
+    </Grid>
+
+    <!-- 6. Output dock splitter + dock -->
+    <GridSplitter x:Name="DockSplitter" Grid.Row="5" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    <Border x:Name="OutputDock" Grid.Row="6" Margin="12,0,12,0" Style="{StaticResource Panel}">
+      <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource DockHeadBrush}" BorderBrush="{StaticResource LineBrush}"
+                BorderThickness="0,0,0,1" Padding="8,3">
+          <DockPanel>
+            <Button x:Name="DockToggle" DockPanel.Dock="Right" Style="{StaticResource SmallButton}" Content="&#x25BE; 접기"
+                    Click="DockToggle_Click"/>
+            <TextBlock Text="검증 · 작업 결과" FontWeight="SemiBold" Foreground="{StaticResource HeadInkBrush}"
+                       VerticalAlignment="Center"/>
+            <TextBlock x:Name="DockCountText" Style="{StaticResource HintText}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+          </DockPanel>
+        </Border>
+        <TabControl x:Name="DockTabs">
+          <TabItem Header="작업 기록">
+            <DockPanel>
+              <Border DockPanel.Dock="Top" Padding="6,4" BorderBrush="{StaticResource LineBrush}" BorderThickness="0,0,0,1">
+                <DockPanel>
+                  <Button DockPanel.Dock="Right" Style="{StaticResource SmallButton}" Content="지우기" Margin="6,0,0,0"
+                          Click="ClearLog_Click"/>
+                  <Button x:Name="LogAutoScrollButton" DockPanel.Dock="Right" Style="{StaticResource SmallButton}"
+                          Content="자동 스크롤" Margin="6,0,0,0" Click="LogAutoScroll_Click"/>
+                  <TextBlock x:Name="LogHint" Style="{StaticResource HintText}" VerticalAlignment="Center"
+                             Text="시작 로그 · 엔진 hello · 오류가 모두 여기에 남습니다"/>
+                </DockPanel>
+              </Border>
+              <DataGrid x:Name="LogGrid" Style="{StaticResource LogGrid}">
+                <DataGrid.Columns>
+                  <DataGridTextColumn Header="종류" Binding="{Binding Kind}" Width="58" ElementStyle="{StaticResource KindCellStyle}"/>
+                  <DataGridTextColumn Header="시각" Binding="{Binding Time}" Width="74" ElementStyle="{StaticResource MonoCellStyle}"/>
+                  <DataGridTextColumn Header="출처" Binding="{Binding Origin}" Width="86"/>
+                  <DataGridTextColumn Header="링크" Binding="{Binding LinkText}" Width="44" ElementStyle="{StaticResource LinkCellStyle}"/>
+                  <DataGridTextColumn Header="내용" Binding="{Binding Message}" Width="*"/>
+                </DataGrid.Columns>
+              </DataGrid>
+            </DockPanel>
+          </TabItem>
+          <TabItem Header="검증 결과">
+            <DataGrid x:Name="IssuesGrid" Style="{StaticResource ListGrid}">
+              <DataGrid.Columns>
+                <DataGridTextColumn Header="규칙" Binding="{Binding Rule}" Width="90" ElementStyle="{StaticResource MonoCellStyle}"/>
+                <DataGridTextColumn Header="심각도" Binding="{Binding SeverityText}" Width="70" ElementStyle="{StaticResource SeverityCellStyle}"/>
+                <DataGridTextColumn Header="객체" Binding="{Binding Object}" Width="190"/>
+                <DataGridTextColumn Header="필드" Binding="{Binding Field}" Width="120"/>
+                <DataGridTextColumn Header="메시지" Binding="{Binding Message}" Width="*"/>
+              </DataGrid.Columns>
+            </DataGrid>
+          </TabItem>
+        </TabControl>
+      </DockPanel>
+    </Border>
+
+    <!-- 7. Status bar -->
+    <Border Grid.Row="7" Background="{StaticResource StatusBarBrush}" BorderBrush="{StaticResource LineBrush}"
+            BorderThickness="0,1,0,0" Padding="12,4" MinHeight="26">
+      <DockPanel>
+        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+          <Border x:Name="EngineBadge" Background="{StaticResource GreyBrush}" CornerRadius="9" Padding="8,1"
+                  Margin="0,0,10,0" VerticalAlignment="Center">
+            <TextBlock x:Name="EngineBadgeText" Text="시작 중" Foreground="White" FontSize="11.5" FontWeight="SemiBold"/>
+          </Border>
+          <TextBlock x:Name="ProtocolText" Text="protocol=–" Foreground="{StaticResource PathInkBrush}"
+                     VerticalAlignment="Center" Margin="0,0,10,0"/>
+          <TextBlock x:Name="SchemaText" Text="schema=–" Foreground="{StaticResource PathInkBrush}"
+                     VerticalAlignment="Center" Margin="0,0,10,0"/>
+          <TextBlock x:Name="EngineVersionText" Foreground="{StaticResource MutedBrush}"
+                     VerticalAlignment="Center" Margin="0,0,10,0"/>
+          <Border Width="1" Background="{StaticResource Line2Brush}" Margin="0,4"/>
+          <TextBlock x:Name="CountText" Text="DID 0 · DTC 0" Foreground="{StaticResource PathInkBrush}"
+                     VerticalAlignment="Center" Margin="10,0,0,0"/>
+        </StackPanel>
+        <TextBlock x:Name="StatusText" Text="준비" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"
+                   Foreground="{StaticResource PathInkBrush}"/>
+      </DockPanel>
+    </Border>
+
+    <!-- 8. Column-information overlay (floating, non-modal) -->
+    <Grid x:Name="ColumnInfoOverlay" Grid.Row="0" Grid.RowSpan="8" Panel.ZIndex="50" Visibility="Collapsed"
+          Background="#33000000">
+      <Border Background="{StaticResource BgBrush}" BorderBrush="#9FB0C8" BorderThickness="1" CornerRadius="7"
+              Width="620" MaxHeight="430" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <DockPanel>
+          <Border DockPanel.Dock="Top" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource LineBrush}"
+                  BorderThickness="0,0,0,1" Padding="10,6">
+            <DockPanel>
+              <TextBlock x:Name="ColumnInfoTitle" Text="열 정보" FontWeight="SemiBold"/>
+              <Button DockPanel.Dock="Right" Style="{StaticResource SmallButton}" Content="닫기" Click="ColumnInfoClose_Click"/>
+            </DockPanel>
+          </Border>
+          <DataGrid x:Name="ColumnInfoGrid" Style="{StaticResource ListGrid}" MaxHeight="340">
+            <DataGrid.Columns>
+              <DataGridTextColumn Header="열" Binding="{Binding Header}" Width="140"/>
+              <DataGridTextColumn Header="Qualifier" Binding="{Binding Qualifier}" Width="150"/>
+              <DataGridTextColumn Header="설명" Binding="{Binding Description}" Width="*"/>
+            </DataGrid.Columns>
+          </DataGrid>
+          <TextBlock DockPanel.Dock="Bottom" Style="{StaticResource HintText}" Margin="10,6"
+                     Text="열 머리에 마우스를 올려도 같은 내용이 보입니다."/>
+        </DockPanel>
+      </Border>
+    </Grid>
+  </Grid>
+</Window>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Session</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="session"><span id='_index_446728119'>Session</span></h1>
+<p>Some extended services may only be executed in a certain diagnostic session. CANdelaStudio handles this in a generalized way, using the <a href="State%20Dependency.htm">State Dependency Feature</a>.</p>
+<p>Before sending the extended service, a test system needs to <strong>establish the required session</strong>:</p>
+<table class="blind">
+<tr>
+<td>
+<img src="Images/Session%20in%20CANoe.jpg" />
+</td>
+<td style="vertical-align: top;">
+<p>Example: <strong>Use of Session in CANoe</strong></p>
+<ol style="list-style-type: decimal">
+<li>Session control: Extended Diagnostic Session</li>
+<li>Tester Present</li>
+<li>IO Control for ID 0xFD74</li>
+</ol>
+</td>
+</tr>
+</table>
+<h2 id="sessions-in-candela">Sessions in CANdela</h2>
+<p>In CANdela documents based on the KWP or UDS protocol, a session has <strong>two aspects</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Communication</strong>:
+<ul>
+<li>a <strong>diagnostic instance</strong> in diagnostic class &quot;Session&quot;</li>
+<li>KWP: 0x10 - StartDiagnosticSession;</li>
+<li>UDS: 0x10 - DiagnosticSessionControl;</li>
+</ul></li>
+<li><strong>Service Blocking / State Transition</strong>:
+<ul>
+<li>a <strong>state</strong> in state group &quot;Session&quot;</li>
+</ul></li>
+</ol>
+<p>You can create the diagnostic instance and the state comfortably by using the <strong>Session wizard</strong>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance (Feature)</a></li>
+<li><a href="Authorization.htm">Authorization</a> (certificate-based)</li>
+<li><a href="Security.htm">Security</a></li>
+<li><a href="Session%20Security%20Wizard.htm">Session Security Wizard</a></li>
+<li><a href="../../20%20UserInterface/State%20Dependency/States.htm">State Dependency (User Interface)</a></li>
+<li><a href="State%20Dependency.htm">State Dependency (Feature)</a></li>
+</ul>
+</body>
+</html>

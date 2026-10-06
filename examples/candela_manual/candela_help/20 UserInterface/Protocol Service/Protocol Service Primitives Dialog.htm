@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Protocol Service Primitives Dialog</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="protocol-service-primitives-dialog">Protocol Service Primitives Dialog</h1>
+<div class="figure">
+<img src="Images/Protocol%20Service%20Primitives%20Dialog.jpg" alt="Protocol Service Primitives Dialog" />
+<p class="caption">Protocol Service Primitives Dialog</p>
+</div>
+<p><span id="PSPUI-R100" class="rqDef">[PSPUI-R100]</span> You can open the dialog...</p>
+<ul>
+<li>in the <a href="Protocol%20Services.htm">Protocol Services</a> list</li>
+<li>in a <a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm">diagnostic instance</a> using the hyperlink right to the service</li>
+</ul>
+<p><span id="PSPUI-R110" class="rqDef">[PSPUI-R110]</span> The dialog shows the Primitives <a class='rqRef' href='../../30 Features\Protocol Service\Protocol Service.htm#PS-R100' title="">[PS-R100]</a></p>
+<ul>
+<li>Request</li>
+<li>Positive Response</li>
+<li>Negative Response</li>
+</ul>
+<p><span id="PSPUI-R120" class="rqDef">[PSPUI-R120]</span> The property button (right to the description control) provides access to the <a href="Protocol%20Service%20Property%20Dialog.htm">Protocol Service Property Dialog</a> for futher individual properties of the Protocol Service.</p>
+<h2 id="autosar-fault-memory-cds-71541-v13">AUTOSAR Fault Memory (CDS-71541 v13)</h2>
+<p>The dialog for creating a Proxy Component...</p>
+<ul>
+<li>does not allow to create an <code>sd</code> Proxy Component (shows a message),</li>
+<li>... if the Primitive does not contain an <code>sr</code> Proxy Component.</li>
+<li>This fulfills the consistency condition:
+<ul>
+<li><a class='rqRef' href='../../30 Features\Protocol Service\Proxy Component.htm#PC-D050-sdsrUse' title="">[PC-D050-sdsrUse]</a> If a Primitive contains an <code>sd</code> proxy component, it must also contain an <code>sr</code> proxy component.</li>
+</ul></li>
+<li>Effect: when leaving the Protocol Service property dialog, either both proxies exist, or none.</li>
+<li>Dito for an <code>ed</code> Proxy Component without and <code>edr</code> Proxy Component, for <a class='rqRef' href='../../30 Features\Protocol Service\Proxy Component.htm#PC-D050-ededrUse' title="">[PC-D050-ededrUse]</a>.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Protocol%20Service/Addressing.htm">Addressing (Feature)</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/May%20Be%20Combined.htm">&quot;May Be Combined&quot; Feature</a></li>
+<li><a href="Protocol%20Service%20Property%20Page%20Addressing.htm">Protocol Service Property Page &quot;Addressing&quot;</a></li>
+<li><a href="Protocol%20Service%20Property%20Page%20Extended.htm">Protocol Service Property Page &quot;Extended&quot;</a></li>
+</ul>
+</body>
+</html>

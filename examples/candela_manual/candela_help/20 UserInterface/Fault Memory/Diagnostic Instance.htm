@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Instance</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="fault-memory-diagnostic-instance">Fault Memory (Diagnostic Instance)</h1>
+<p>In CANdelaStudio, you edit the Fault Memory of the ECU in a special <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">diagnostic instance</a>.</p>
+<p>CANdelaStudio shows the Fault Memory diagnostic instance in the subchapter &quot;<strong>Supported diagnostic classes</strong>&quot; of the base variant or of an extended variant or library.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Fault%20Memory%20Diagnostic%20Instance.jpg" alt="Fault Memory Diagnostic Instance" />
+<p class="caption">Fault Memory Diagnostic Instance</p>
+</div>
+<p>Because the Fault Memory services are special, the entry mask of the fault memory diagnostic instance contains the following <strong>special Tab pages</strong>. The name of the pages may vary, they are defined in the template.</p>
+<ul>
+<li><a href="../../20%20UserInterface/DTC/DTCs.htm">DTC table</a>: contains a table in which you can enter DTC codes, error texts, test conditions, conditions for setting and resetting events etc. (as defined in the tempate).
+<ul>
+<li>The DTC table represents a <strong>data object</strong> (typically 3 bytes on the line). You can access the properties of this data object via the context menu (right mouse) in the DTC table.</li>
+</ul></li>
+<li><a href="../../20%20UserInterface/DTC/Group%20of%20DTC.htm">Group of DTC</a></li>
+<li><a href="../../20%20UserInterface/DTC/DTC%20Status%20Bits.htm">Status of DTC</a></li>
+<li><a href="Snapshot%20Data.htm">Snapshot Data</a> (or Environment Data)</li>
+<li>AUTOSAR Fault Memory: the &quot;camera&quot; button shows the &quot;Snapshot Records&quot; page <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/GUI%20Snapshot%20Records.htm#SRUI-R010' title="">[SRUI-R010]</a></li>
+<li>AUTOSAR Fault Memory: the &quot;statistics&quot; button shows the &quot;Extended Data Records&quot; page <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/GUI%20Extended%20Data.htm#EDUI-R010' title="">[EDUI-R010]</a></li>
+</ul>
+<p><strong>Failure Type Bytes (FTB)</strong> or <strong>Failure Mode Identifiers (FMI)</strong> are only used if the template allows, see at the <a href="../../30%20Features/DTC/DTC.htm#ftb-fmi">DTC Feature</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Introduction to <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="AUTOSAR%20Fault%20Memory%20GUI.htm">AUTOSAR Fault Memory GUI</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Objects</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-objects"><span id='_index_446727940' title='Feature' data-text='Feature'>Data Objects</span></h1>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Data Object</strong></td>
+<td>base term for data transported over the line</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Telegram</strong></td>
+<td>sequence of data objects in a request or response</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Telegram table</strong></td>
+<td>GUI list control for a telegram</td>
+</tr>
+</tbody>
+</table>
+<p>You create data objects in the telegram table by clicking the line &quot;Please click here to create...&quot;, or using the context menu (right mouse).</p>
+<h2 id="types-of-parameters">Types of Parameters</h2>
+<p><span id="DO-R010" class="rqDef">[DO-R010]</span> CANdela supports different types of <strong>parameters</strong> (also called parameters, signals, or simply &quot;data objects&quot; in a general sense):</p>
+<ul>
+<li>Data Object <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R100' title="">[DO-R100]</a> (in the exact sense)</li>
+<li>Reserved Data Object <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R200' title="Reserved">[DO-R200]</a></li>
+<li><a href="Bit%20Field.htm">Bit Field</a></li>
+<li><strong>DTC data object</strong>, related with a special <code>dtc</code> or <code>obdDtc</code> <a href="../../30%20Features/Protocol%20Service/Proxy%20Component.htm">ProtocolService Proxy Component</a>)</li>
+<li><a href="../../30%20Features/DTC/Group%20of%20DTC.htm">Group of DTC</a></li>
+<li><strong>DID Data Reference</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R160' title="">[DID-R160]</a></li>
+<li><strong>DID Reference</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R180' title="">[DID-R180]</a></li>
+</ul>
+<h3 id="data-object">Data Object</h3>
+<p><span id="DO-R100" class="rqDef">[DO-R100]</span> A <strong>Data object</strong> describes a named piece of data transported over the line.</p>
+<ul>
+<li><span id="DO-R100-DataType" class="rqDef">[DO-R100-DataType]</span> A data object references a <a href="../../30%20Features/Data%20Type/Data%20Type.htm">data type</a>.</li>
+<li>The data type specifies the
+<ul>
+<li>length,</li>
+<li>structure,</li>
+<li>encoding and</li>
+<li>conversion between the “raw” value as transported on the line and the “physical” representation for the user (e.g. with a unit).</li>
+</ul></li>
+<li>A typical data object has a data type whose length is divisible by 8 (i.e. bit lengths of 8, 16, 24, 32... bits).</li>
+<li><span id="DO-R100-BitSized" class="rqDef">[DO-R100-BitSized]</span> A <strong>bit-sized data object</strong> (size not divisible by 8) must be wrapped in a <strong>bit field</strong>, see <a href="Bit%20Field.htm">Bit Fields</a>.</li>
+<li><span id="DO-R100-BitPos" class="rqDef">[DO-R100-BitPos]</span> A data object <strong>not starting at a byte boundary</strong> must also be wrapped in a bit field (even if its length is divisible by 8).</li>
+</ul>
+<h3 id="reserved-data-object-gap"><span id='_index_446727941' title='Feature' data-text='Feature'>Reserved Data Object</span> (<span id='_index_446727942'>Gap</span>)</h3>
+<p><span id="DO-R200" class="rqDef" title="Reserved">[DO-R200 Reserved]</span> A <strong>reserved data object</strong> (also called a <strong>gap</strong>) acts as a place holder for unnamed data objects that...</p>
+<ul>
+<li>have yet to be defined,</li>
+<li>or do not hold useful data, such as message padding.</li>
+</ul>
+<p>A reserved data object</p>
+<ul>
+<li>has a <strong>bit length</strong>
+<ul>
+<li>maximum size 65536 bytes (64KB) (CDS-9284 6.0)</li>
+</ul></li>
+<li>does not reference a data type</li>
+<li>may have a duplicate name within a telegram (typically <code>(reserved)</code>)</li>
+<li>must have a unique qualifier within a telegram (as usual)</li>
+<li>does not have a defined constant value on the line
+<ul>
+<li>a reasonable assumption is to assume the value is zero,</li>
+<li>but this is not a requirement (we've seen other values).</li>
+<li>If you want to <strong>force</strong> a value zero on the line, use a data object with a const value instead!</li>
+</ul></li>
+</ul>
+<p>See <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R210' title="">[DEXT-R210]</a> for use of reserved data objects in the DEXT export.</p>
+<h4 id="use-in-candesc">Use in CANdesc</h4>
+<p>For reserved data objects</p>
+<ul>
+<li>... on byte-level, CANdesc does not set a constant value</li>
+<li>dito in a bitfield where data objects do not have a constant value</li>
+</ul>
+
+<h4 id="use-in-vector-test-systems">Use in Vector Test Systems</h4>
+<p>For a reserved data object, Vector test systems...</p>
+<ul>
+<li>in a request: initialize the value to 0 (zero)</li>
+<li>in a positive response: assign the value from the line</li>
+<li>usually just hide the object (or may show it as &quot;reserved&quot;)</li>
+<li>may provide programming access to the value as for regular data objects (with Identity data type)</li>
+</ul>
+<h2 id="dynamic-length-cds-23099-7.5">Dynamic length (CDS-23099 7.5)</h2>
+<p><strong>S010.1</strong>: It shall be possible to define a <strong>data object with deterministic variable length before the end of a telegram</strong> table (this includes defining multiple such data objects, and any kind of datatype, even complex ones).</p>
+<p>This shall be possible in diagnostic instance, in a packet datatype, in the input and output parameters of jobs, in “fixed data” in a ProtocolService, in a case of a multiplexer and in iteration datatypes. Note: in import pool, there should be no such restrictions, anyway.</p>
+<p>Note: as a consequence, the data objects following the first variable length data object no longer have a fixed byte position.</p>
+<p><strong>S110.0</strong>: in template and document, provide <strong>authorization on ECU level</strong> “allow variable length data objects before the end of the telegram”.</p>
+<p><strong>S120.0</strong>: in template and document, provide <strong>authorization on “Combined components”</strong> (within diagnostic class template) level “allow variable length data objects before the end of the telegram”.</p>
+<p><strong>S125.0</strong>: if user creates a new “combined component”, take the default for the setting of S120 from the value of the setting of S110.</p>
+<p><strong>S130.0</strong>: in <strong>consistency check of any telegram</strong> (e.g. within a diagnostic instance, Mux, complex datatype, fixed data component in a protocol service), report a telegram as “non-fatal, prevent exports” if it contains a data object with variable length (deterministic or non-deterministic) before the end of the telegram if</p>
+<p>a) the property of S110 is false</p>
+<p><strong>S140.0</strong>: in <strong>consistency check</strong> of a telegram <strong>within a diagnostic instance</strong> or in a <strong>complex datatype</strong> referenced from a diagnostic instance, report a telegram as “non-fatal, prevent exports” if</p>
+<p>a) the property of S110 is true (motivation: if it is false, the telegram is reported due to S130), and</p>
+<p>b) the property of S120 of the referenced “Combined component” is false, and</p>
+<p>c) the telegram contains a data object with variable length (deterministic or non-deterministic) before the end of the telegram.</p>
+<p><strong>S150.0</strong>: in consistency check of telegram length,</p>
+<p>a) for minimum length requirement, check against maximum length of datatype;</p>
+<p>b) for maximum length requirement, check against minimum length of datatype.</p>
+<p>E.g. ProtocolService requires at most 10 bytes, datatype can have 5-20 bytes (string). This is ok – at runtime, the datatype may violate the condition (= if it is longer than 10 bytes), but the authoring system should not complain about this (cf. undesired warnings with functional CAN addressing length).</p>
+<p><strong>S280.0</strong>: for a bitfield itself or for its contents, a variable length datatype is not allowed.</p>
+<h2 id="description">Description</h2>
+<p>The <a href="../../30%20Features/Common%20Properties/Description.htm">description</a> of a data object contains plain text only (not rich text with images etc. - e.g. tables in the specification report would be too big and confusing).</p>
+<p>As an alternative, you may insert images in the description of the diagnostic instance or the job container.</p>
+<h2 id="semantics">Semantics</h2>
+<p><span id="DO-R150" class="rqDef">[DO-R150]</span> The <strong>semantics</strong> of a data object specifies whether...</p>
+<ul>
+<li>the data object has a <strong>fixed meaning</strong></li>
+<li>which is known to the test system.</li>
+</ul>
+<p>The list of supported values is predefined in CANdelaStudio:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Semantics</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(none)</td>
+<td align="left">no specific semantics</td>
+</tr>
+<tr class="even">
+<td align="left">Tester ID</td>
+<td align="left">Info that identifies the tester against the ECU</td>
+</tr>
+<tr class="odd">
+<td align="left">Year</td>
+<td align="left">Year current at runtime</td>
+</tr>
+<tr class="even">
+<td align="left">Month</td>
+<td align="left">Month current at runtime</td>
+</tr>
+<tr class="odd">
+<td align="left">Day</td>
+<td align="left">Day current at runtime</td>
+</tr>
+<tr class="even">
+<td align="left">Hour</td>
+<td align="left">Hour current at runtime</td>
+</tr>
+<tr class="odd">
+<td align="left">Minutes</td>
+<td align="left">Minutes current at runtime</td>
+</tr>
+<tr class="even">
+<td align="left">Seconds</td>
+<td align="left">Seconds current at runtime</td>
+</tr>
+<tr class="odd">
+<td align="left">User ID</td>
+<td align="left">Info that identifies the user against the ECU</td>
+</tr>
+<tr class="even">
+<td align="left">Version of Specification</td>
+<td align="left">Version of the ISO / OEM / CANdela document</td>
+</tr>
+</tbody>
+</table>
+<h2 id="constant-value">Constant Value</h2>
+<p><span id="DO-R300" class="rqDef">[DO-R300]</span> The constant value specifies that the data object is transported over the line with a given fixed value. Depending on the toolchain, it may also describe the value in the ECU implementation.</p>
+<p>The constant value belongs to the data object, not the datatype.</p>
+<p>It is always specified as raw value by the user. In the property dialog of the data object, the resulting physically value is also shown.</p>
+<h2 id="default-value">Default Value</h2>
+<p><span id="DO-R350" class="rqDef">[DO-R350]</span> The default value belongs to the data object, not the datatype.</p>
+<p>It is always specified as raw value by the user. In the property dialog of the data object, the resulting physically value is also shown.</p>
+<p>The default value is used as an optional default for a test system user interface.</p>
+<p>Note: for the service &quot;Reset to default&quot; for <code>IO Control</code> in a code generation context, the default values are defined by the application.</p>
+<h2 id="default-value-in-dcm">Default Value in DCM</h2>
+<p><span id="DO-D360" class="rqDef">[DO-D360]</span> In order to initialize the data in the ECU implementation, the AUTOSAR DCM uses...</p>
+<ul>
+<li>a default value from a link to the software component</li>
+<li>or (if no such link exists) the default value provided at the data object (see <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R350' title="">[DO-R350]</a> above).</li>
+</ul>
+
+<h2 id="default-value-for-fixed-count-iteration-in-tester-cds-33749-8.2-sp2">Default Value for Fixed Count Iteration in Tester (CDS-33749 8.2 SP2)</h2>
+<p><span id="DO-D365" class="rqDef">[DO-D365]</span> The Vector diagnostic toolchain provides specific functionality for...</p>
+<ul>
+<li>a <strong>data object</strong> that...
+<ul>
+<li>refers a <strong>Fixed Count Iteration</strong> Data Type <a class='rqRef' href='../../30%20Features/Data%20Type/Fixed%20Count%20Iteration.htm#FCDT-R100' title="">[FCDT-R100]</a></li>
+<li>and has a special attribute <a href="../../30%20Features/Attributes/Special%20Attributes.htm#ImplementationDefault">ImplementationDefault</a>
+<ul>
+<li>Qualifier: &quot;ImplementationDefault&quot;</li>
+<li>Type: String</li>
+<li>Category: &quot;SDG&quot;</li>
+</ul></li>
+</ul></li>
+<li><span id="DO-R365-ODX" class="rqDef">[DO-R365-ODX]</span> ODX Export exports the attribute as a <strong>Special Data Group</strong> (SDG) (CDS-37658 after 8.5 Release).</li>
+<li><span id="DO-D365-DTL" class="rqDef">[DO-D365-DTL]</span> Vector Testers use the attribute as <strong>default value</strong> for the Fixed Count Iteration parameter (DTL-47557 2018).</li>
+</ul>
+<p><strong>Syntax</strong></p>
+<p>(all examples denote the same byte sequence 0x00, 0x05, 0xAA, 0xFF)</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Format</th>
+<th align="left">Attribute Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">hex string</td>
+<td align="left">&quot;0x0005AAFF&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">hex with blanks</td>
+<td align="left">&quot;0x00 0x05 0xAA 0xFF&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left">dec</td>
+<td align="left">&quot;0 5 170 255&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">oct</td>
+<td align="left">&quot;o0 o5 o252 o377&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left">bin</td>
+<td align="left">&quot;%00000000 %00000101 %10101010 %11111111&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">bin without leading zeroes</td>
+<td align="left">&quot;%0 %101 %10101010 %11111111&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left">even mix of formats</td>
+<td align="left">&quot;0x00 5 o252 %11111111&quot;</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="operations">Operations</h2>
+<p><span id="DOOP-R110" class="rqDef">[DOOP-R110]</span> Move to New DID (CDS-36881 8.2 SP2)</p>
+<p>Conditions (menu item not shown otherwise):</p>
+<ul>
+<li><span id="DOOP-R110-Data" class="rqDef">[DOOP-R110-Data]</span> only in a &quot;data telegram table&quot;, i.e. that references a combined component with semantics &quot;data&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#CPC-R100' title="">[CPC-R100]</a>.</li>
+<li><span id="DOOP-R110-NonSingleton" class="rqDef">[DOOP-R110-NonSingleton]</span> only in a non-singleton <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R150' title="">[DCLT-R150]</a> diagnostic instance (note: no menu item in non-data telegram tables, or in a singleton diagnostic instance)</li>
+<li><span id="DOOP-R110-DIDRef" class="rqDef">[DOOP-R110-DIDRef]</span> only if the selection does not contain DID Reference <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R180' title="">[DID-R180]</a> or DID Data Reference <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R160' title="">[DID-R160]</a> (non-obvious)</li>
+<li><span id="DOOP-R110-Bitfield" class="rqDef">[DOOP-R110-Bitfield]</span> for bit-field only if bitfield and entire contents is selected
+<ul>
+<li>Note: this is consistent with &quot;Copy To New Packet Data Type&quot;.</li>
+<li>for more details: handle like in &quot;Copy To New Packet Data Type&quot;</li>
+</ul></li>
+</ul>
+<p>Operation:</p>
+<ul>
+<li><span id="DOOP-R110-DID" class="rqDef">[DOOP-R110-DID]</span> DID creation
+<ul>
+<li>take DID number (identifier) from diagnostic instance identifier.</li>
+<li>take DID qualifier/name from qualifier/name of diagnostic instance.</li>
+<li>if a DID with the qualifier or name already exists, prompt to copy with new qualifier / name or cancel.</li>
+<li>does not preserve the name in the other languages</li>
+<li>the new DID contains the selected data from the telegram table
+<ul>
+<li>preserves all properties: qualifier/name, attributes...</li>
+<li>no need to preserve OID and template OID (even &quot;move&quot; within a telegram table does not preserve them)</li>
+</ul></li>
+</ul></li>
+<li><span id="DOOP-R110-DIDDataRef" class="rqDef">[DOOP-R110-DIDDataRef]</span> DID Data Reference creation
+<ul>
+<li>in the telegram table, CANdelaStudio replaces the selected data by a DID Data Reference <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R160' title="">[DID-R160]</a> to the new DID,</li>
+<li>the DID Data Reference has the same qualifier/name as the new DID in the current language, made unique if necessary.</li>
+</ul></li>
+</ul>
+<p>Note: the functionality is intentionally not available in other telegram tables (Snapshot Data, Extended Data Records, Packet...).</p>
+<p>For the user interface, see the data objects list <a class='rqRef' href='../../20%20UserInterface/Data%20Objects/Data%20Objects.htm#DOUI-R110' title="">[DOUI-R110]</a>.</p>
+<p>See the related operation <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R070' title="">[DIOP-R070]</a> for diagnostic instances.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Data%20Objects/Data%20Objects.htm">Data Objects User Interface</a></li>
+<li><a href="../../30%20Features/DID/DID.htm">DIDs</a></li>
+<li><a href="../../20%20UserInterface/Data%20Objects/Graphical%20Telegram%20Table.htm">Graphical Telegram Table</a></li>
+<li><a href="Telegram%20Table.htm">Telegram Table (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Objects/Data%20Objects.htm">Telegram Table (User Interface)</a></li>
+<li><a href="../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Groups%20at%20Data%20Objects.htm">Vehicle System Groups at Data Objects</a></li>
+</ul>
+
+</body>
+</html>

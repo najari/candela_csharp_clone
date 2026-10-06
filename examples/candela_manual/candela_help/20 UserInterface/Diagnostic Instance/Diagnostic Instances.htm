@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Instances</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-instances">Diagnostic Instances</h1>
+<div class="figure">
+<img src="Images/Diagnostic%20Instances.jpg" alt="Diagnostic Class with List of Diagnostic Instances" />
+<p class="caption">Diagnostic Class with List of Diagnostic Instances</p>
+</div>
+<h2 id="list">List</h2>
+<p>The list shows all <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">diagnostic instances</a> and <a href="../../30%20Features/Job/Job.htm">job containers</a> contained in the diagnostic class.</p>
+<p>The list lets you select and edit multiple objects. Thus, for example, you can activate or deactivate all selected objects, move selected objects upwards or downwards or replace multiple references with copies.</p>
+<p>In addition, you can edit the identifiers of the diagnostic instances, as well as the names: select the desired line and column and press <code>F2</code>, or again click into the colum.</p>
+<p>The context menu provides the same commands as the the tree.</p>
+<h2 id="sorting-cds-7587-5.5-cds-71276-v13">Sorting (CDS-7587 5.5, CDS-71276 v13)</h2>
+<p><span id="DIUI-R050" class="rqDef">[DIUI-R050]</span> You can <strong>sort</strong> the list by clicking a header.</p>
+<ul>
+<li><span id="DIUI-R050-View" class="rqDef">[DIUI-R050-View]</span> This <strong>temporarily</strong> sorts the list view, not the data in the document.</li>
+<li><span id="DIUI-R050-Move" class="rqDef">[DIUI-R050-Move]</span> The operations Move Up <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R480' title="">[MENU-R480]</a> / Move Down <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R485' title="">[MENU-R485]</a> do not make sense after the temporary sort,
+<ul>
+<li>therefore they're disabled then (CDS-22721 7.1 SP2).</li>
+</ul></li>
+<li>This temporary sorting is different from the <strong>permanent sorting</strong> <a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Class/Diagnostic%20Class.htm#DCLUI-R490' title="">[DCLUI-R490]</a>.</li>
+<li>Note: when you create or modify an object in this situation,
+<ul>
+<li>CANdelaStudio does not re-apply the sorting,</li>
+<li>it is a feature to add new elements at the end (cf. CDS-38638, open).</li>
+</ul></li>
+</ul>
+<p><span id="DIUI-D060" class="rqDef">[DIUI-D060]</span> To keep Diagnostic Instances sorted, see Procedure <a href="../../15%20Procedures/Diagnostic%20Instance/How%20to%20Automatically%20Sort%20Diagnostic%20Instances.htm">How to Automatically Sort Diagnostic Instances</a>.</p>
+<h2 id="filter">Filter</h2>
+<p>The filter allows to restrict the list to objects matching the term entered (compared against the contents of the list), including</p>
+<ul>
+<li>identifier (CDS-37587 8.5) and</li>
+<li>services, e.g. &quot;, Write&quot; (CDS-39498 8.5).</li>
+</ul>
+<p>You can reset the filter by clicking the button right to the edit control.</p>
+<h2 id="icon">Icon</h2>
+<p>Shows the icon of the object, like in the <a href="../../20%20UserInterface/Tree/Icons.htm">tree</a>.</p>
+<h2 id="identifier">Identifier</h2>
+<p>Shows the identifier of a diagnostic instance in hexadecimal format.</p>
+<h2 id="name">Name</h2>
+<p>Shows the <a href="../../30%20Features/Common%20Properties/Name.htm">name</a> of the object.</p>
+<h2 id="services">Services</h2>
+<p>Shows the names of the services (comma separated) that exist in the diagnostic instance.</p>
+<h2 id="attributes">Attributes</h2>
+<p><span id="DIUI-R400" class="rqDef">[DIUI-R400]</span> The list shows diagnostic instance attributes that have the &quot;visible in separate table column&quot; flag <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R090-DiagInst' title="">[ATTR-R090-DiagInst]</a> set.</p>
+<h2 id="go-to...">Go To...</h2>
+<p>To conveniently inspect an object shown in the list, use the context menu item, e.g. &quot;Go To 'Braking'&quot;.</p>
+<p><span id="DIUI-R110" class="rqDef">[DIUI-R110]</span> For a diagnostic instance that transports a <a href="../../30%20Features/DID/DID.htm">DID</a>, there is an additional context menu item e.g. &quot;Go To DID 'Braking'&quot; that navigates to the <em>data</em> of the DID.</p>
+<ul>
+<li><span id="DIUI-R110-filter" class="rqDef">[DIUI-R110-filter]</span> if CANdelaStudio does not currently show the DID due to a filter, it drops the filter (CDS-39992 9.1).</li>
+</ul>
+<h2 id="replace-reference-with-copy">Replace Reference with Copy</h2>
+<p><span id="DIUI-R130" class="rqDef">[DIUI-R130]</span> for a diagnostic instance referenced in multiple variants or libraries, the operation replaces the reference with a copy in the current variant/library only.</p>
+<ul>
+<li><span id="DIUI-R130-ReqAsRef" class="rqDef">[DIUI-R130-ReqAsRef]</span>
+<ul>
+<li>For a diagnostic instance that is required as reference <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DIOP-R040-ReqAsRef' title="">[DIOP-R040-ReqAsRef]</a>,</li>
+<li>CANdelaStudio shows the menu item &quot;Replace Reference with Copy&quot; insensitive (CDS-70993 v11).</li>
+</ul></li>
+</ul>
+<h2 id="replace-copy-with-reference-in-base-variant">Replace Copy with Reference in Base Variant</h2>
+<p><span id="DIUI-R140" class="rqDef">[DIUI-R140]</span> for a diagnostic instance...</p>
+<ul>
+<li>in an extended variant,</li>
+<li>not referenced in the base variant,</li>
+<li>a diagnostic instance with the same diagnostic class and qualifier exists in the base variant,</li>
+<li>the diagnostic instance is not &quot;Required as Reference&quot;,</li>
+</ul>
+<p>... CANdelaStudio deletes the copy and instead inserts a reference to the diagnostic instance of the base variant.</p>
+<ul>
+<li><span id="DIUI-R140-BaseVariant" class="rqDef">[DIUI-R140-BaseVariant]</span> in the base variant, the menu item is insensitive (CDS-39058 9.1).</li>
+</ul>
+<h2 id="replace-copy-with-reference-in-base-library-cds-39323-v11">Replace Copy with Reference in Base Library (CDS-39323 v11)</h2>
+<p><span id="DIUI-R160" class="rqDef">[DIUI-R160]</span> for a diagnostic instance...</p>
+<ul>
+<li>in a variant or library,</li>
+<li>not referenced <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D010' title="">[DI-D010]</a> in any other variant or library,</li>
+<li>with a base library <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-D080' title="">[LIB-D080]</a> defined,</li>
+<li>if a diagnostic instance with the same diagnostic class and qualifier exists in the base library,</li>
+<li>the operation...
+<ul>
+<li><strong>deletes the copy</strong> and instead...</li>
+<li><strong>inserts a reference</strong> to the diagnostic instance of the base library.</li>
+</ul></li>
+<li><span id="DIUI-R160-InBaseLibrary" class="rqDef">[DIUI-R160-InBaseLibrary]</span> In the <strong>base library</strong>, the menu item is insensitive.</li>
+<li><span id="DIUI-R160-Referenced" class="rqDef">[DIUI-R160-Referenced]</span> If the diagnostic instance is <strong>referenced</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D010' title="">[DI-D010]</a>, the menu item is insensitive.</li>
+</ul>
+<h2 id="move-data-to-new-did-cds-36881-8.2-sp2">Move Data to New DID (CDS-36881 8.2 SP2)</h2>
+<p><span id="DIUI-R070" class="rqDef">[DIUI-R070]</span> See operation &quot;Move Data to New DID&quot; <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DIOP-R070' title="">[DIOP-R070]</a>.</p>
+<p>See <a class='rqRef' href='../../20%20UserInterface/Data%20Objects/Data%20Objects.htm#DOUI-R110' title="">[DOUI-R110]</a> for the same operation within the telegram table.</p>
+
+<h2 id="new-instance">New Instance</h2>
+<p><span id="DIUI-R100" class="rqDef">[DIUI-R100]</span> Creates a new diagnostic instance <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DI-R010' title="Diagnostic Instance Creation">[DI-R010]</a> with default properties.</p>
+<ul>
+<li><span id="DIUI-R100-Prompt" class="rqDef">[DIUI-R100-Prompt]</span> In the Base Variant, CANdelaStudio prompts to insert the new diagnostic instance also into other variants.</li>
+<li><span id="DIUI-R100-Close" class="rqDef">[DIUI-R100-Close]</span> The prompt dialog has no &quot;X&quot; close button top right.
+<ul>
+<li>The close button typically represents &quot;Cancel&quot;</li>
+<li>It could be misunderstand as cancelling the whole operation,</li>
+<li>but (as the prompt says) the diagnostic instance has already been created at that point.</li>
+</ul></li>
+</ul>
+<h3 id="from-DID">Diagnostic Instance Creation from DID (CDS-39296)</h3>
+<p><span id="DIUI-R020" class="rqDef" title="Diagnostic Instance Creation from DID">[DIUI-R020 Diagnostic Instance Creation from DID]</span></p>
+<ul>
+<li>in a diagnostic class that is DID enabled <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001' title="">[DCL-D001]</a></li>
+<li>(whether DID semantics <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R050' title="Combined Component DID Semantics">[DID-R050]</a> is set in the diagnostic class template or not)...</li>
+<li>when the user starts to <strong>create a diagnostic instance</strong> (context menu in tree, button in right side...),</li>
+<li>CANdelaStudio shows a dialog &quot;New Diagnostic Instance&quot; providing selection from the DID list.
+<ul>
+<li>For dialog details, <a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance%20from%20DID.htm#DIUI-R030-Dialog' title="">[DIUI-R030-Dialog]</a>.</li>
+</ul></li>
+<li>On OK, CANdelaStudio creates diagnostic instances <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DI-R020' title="Diagnostic Instance Creation from DID">[DI-R020]</a>.</li>
+</ul>
+<p><span id="DIUI-R020-report" class="rqDef">[DIUI-R020-report]</span></p>
+<ul>
+<li>If for any selected DID the dialog cannot create a diagnostic instance,</li>
+<li>the dialog finally reports the failed DIDs in one message box</li>
+<li>with the ID + names of the DIDs (as shown in the list).</li>
+<li>Note: details will be available only in the output window.</li>
+</ul>
+<h2 id="check-identifier-for-uniqueness">Check Identifier for Uniqueness</h2>
+<div class="figure">
+<img src="Images/Check%20Identifier%20Uniqueness.jpg" alt="Context Menu: Check Identifier Uniqueness" />
+<p class="caption">Context Menu: Check Identifier Uniqueness</p>
+</div>
+<p><span id="DIUI-R200" class="rqDef">[DIUI-R200]</span> In the context menu of a diagnostic instance, CANdelaStudio...</p>
+<ul>
+<li>provides a menu item with a checkbox, &quot;Check Identifier for Uniqueness&quot;,</li>
+<li>shows it <strong>sensitive</strong> iff. ...
+<ul>
+<li>the variant is not locked,</li>
+<li>and the primary properties of the diagnostic instance are modifiable <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Authorization.htm#DIA-R040' title="Primary properties modifiable">[DIA-R040]</a></li>
+<li>and the attribute authorization allows property modification <a class='rqRef' href='../../30 Features\Attributes\Attribute Authorization.htm#ATTRA-R020' title="Properties modifiable">[ATTRA-R020]</a>,</li>
+</ul></li>
+<li>shows it <strong>checked</strong> iff. the attribute requires the check <a class='rqRef' href='../../30 Features\Consistency Check\Check Identifier Uniqueness.htm#CIU-D040' title="Check Required">[CIU-D040]</a>,</li>
+<li>... and modifies the attribute value according with <a class='rqRef' href='../../30 Features\Consistency Check\Check Identifier Uniqueness.htm#CIU-D050' title="Modification">[CIU-D050]</a>.</li>
+</ul>
+<h2 id="delete-instance">Delete Instance</h2>
+<p>Creates the selected diagnostic instances.</p>
+<h2 id="repository">Repository</h2>
+<p><span id="DIUI-R150" class="rqDef" title="Select from Repository">[DIUI-R150 Select from Repository]</span> opens the <a href="../../20%20UserInterface/Import/Select%20from%20Repository.htm">Select from Repository</a> dialog to import DIDs and create diagnostic instances from a repository.</p>
+<h2 id="segment-number">Segment Number (Daimler)</h2>
+<p>See <a class='rqRef' href='../../30 Features\Diagnostic Instance\Segment Number.htm#SEGNUM-R100' title="">[SEGNUM-R100]</a>.</p>
+<p>For display in the tree, see <a class='rqRef' href='../../20%20UserInterface/Tree/Navigation%20Tree.htm#TREE-R210' title="Segment Number in Tree">[TREE-R210]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm">Check Identifier Uniqueness</a></li>
+<li><a href="../../20%20UserInterface/Diagnostic%20Class/Diagnostic%20Class.htm">Diagnostic Class</a></li>
+<li><a href="../../15%20Procedures/Diagnostic%20Instance/How%20to%20Automatically%20Sort%20Diagnostic%20Instances.htm">How to Automatically Sort Diagnostic Instances</a></li>
+<li><a href="../../15%20Procedures/Diagnostic%20Instance/How%20to%20Find%20out%20which%20Diagnostic%20Instances%20Are%20Excluded%20from%20the%20Identifier%20Uniqueness%20Check.htm">How to Find out which Diagnostic Instances Are Excluded from the Identifier Uniqueness Check</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../20%20UserInterface/Tree/Navigation%20Tree.htm">Navigation Tree</a></li>
+</ul>
+</body>
+</html>

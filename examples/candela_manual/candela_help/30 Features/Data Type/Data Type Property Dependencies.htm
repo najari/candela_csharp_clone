@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Type Property Dependencies</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-type-property-dependencies">Data Type Property Dependencies</h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Raw%20Value.jpg" alt="Sample Dialog Showing Data Type Properties" />
+<p class="caption">Sample Dialog Showing Data Type Properties</p>
+</div>
+<p>In the CANdela data model, ...</p>
+<ul>
+<li>a simple data type converts between a <strong>raw value</strong> and a <strong>physical value</strong></li>
+<li>both have, among other properties, ...
+<ul>
+<li><strong>Encoding</strong> (unsigned, signed...)</li>
+<li><strong>Quantity</strong> (atom/field)</li>
+<li><strong>bit length</strong></li>
+<li><strong>display format</strong></li>
+<li>For details see the <a href="Data%20Type.htm">Data Type</a> introduction.</li>
+</ul></li>
+<li>These are <strong>elementary properties</strong>.
+<ul>
+<li>Some <strong>combinations</strong> of their values do <strong>not</strong> make sense.</li>
+<li>The following lists combinations supported by the CANdela data model.</li>
+</ul></li>
+</ul>
+<h2 id="supported-property-combinations">Supported Property Combinations</h2>
+<p><span id="DTDEP-R100" class="rqDef">[DTDEP-R100]</span> <strong>Raw Encoding and Bit Length</strong></p>
+<p><img src="Images/DataType_PropertyDependencies_RawEncodingBitLength.jpg" /></p>
+<p><span id="DTDEP-R110" class="rqDef">[DTDEP-R110]</span> <strong>Physical Encoding and Bit Length</strong></p>
+<p><img src="Images/DataType_PropertyDependencies_PhysEncodingBitLength.jpg" /></p>
+<p><span id="DTDEP-R120" class="rqDef">[DTDEP-R120]</span> <strong>Encoding and Display Format</strong></p>
+<p><img src="Images/DataType_PropertyDependencies_EncodingDisplayFormat.jpg" /></p>
+<p><strong>Legend</strong></p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left">(fixed)</td>
+<td align="left">fixed length field only</td>
+</tr>
+<tr class="even">
+<td align="left">(def)</td>
+<td align="left">default value of the property</td>
+</tr>
+<tr class="odd">
+<td align="left">(any)</td>
+<td align="left">any encoding; allowed bit lengths as for Identity - &quot;Raw Encoding and Bit Length&quot;</td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul>
+<li>64 bit integers (for Encoding uns64, sgn64, BCD64) must be enabled in File | Properties, see <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R210' title="">[DTENC-R210]</a>.</li>
+<li>For fields, bit length is the length of one field (array) element.<br />
+</li>
+<li>The CANdela data model stores constant and default values as raw values
+<ul>
+<li>therefore CANdelaStudio uses the <strong>raw encoding</strong> and the <strong>raw display format</strong> for editing constant and default values..</li>
+</ul></li>
+<li>For convenience, the CANdelaStudio <a href="../../20%20UserInterface/Common%20Properties/Value.htm">edit control for data values</a> supports different formats:
+<ul>
+<li>e.g. for a value with encoding &quot;signed&quot;, display format decimal, it allows to edit the value also in hex format.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Characteristic%20Curve.htm">Characteristic Curve</a></li>
+<li><a href="Complex%20Data%20Types%20Introduction.htm">Complex Data Types Introduction</a></li>
+<li><a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">Data Object</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="Data%20Type%20Authorization.htm">Data Type Authorization</a></li>
+<li><a href="References.htm">Data Type References</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type Properties Dialog</a></li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a> (technically also a data type)</li>
+<li>Encoding <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R100' title="">[DTENC-R100]</a></li>
+<li><a href="Formula.htm">Formula</a></li>
+<li><a href="Identity.htm">Identity (Raw Values)</a></li>
+<li><a href="Linear.htm">Linear formula</a></li>
+<li><a href="Piecewise%20Linear.htm">Piecewise Linear</a></li>
+<li><a href="Procedure.htm">Procedural Conversion</a></li>
+<li><a href="Text%20Table.htm">Text table</a></li>
+</ul>
+
+</body>
+</html>

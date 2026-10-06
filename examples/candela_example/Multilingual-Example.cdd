@@ -1,0 +1,3336 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<!DOCTYPE CANDELA SYSTEM 'candela.dtd'>
+<CANDELA dtdvers='13.0.101'>
+<ECUDOC oid='C05A89F6BAE54b169C2CF6D133571D4B' temploid='{1DCA0988-4B31-4443-A70D-5056F6DD703B}' doctype='inst' manufacturer='unspecified' mid='j//mTS7IUcb71FIIi4vBPA==' saveno='2' languages='(en-US,de-DE,fr-FR,ja)' uptodateLanguages='(en-US,de-DE,fr-FR,ja)' jobfileext='' ftbPoolPath='qpath://[DATATYPE]FTB' xdtauth='30' docCheckedAndValid='1'>
+<EXTSTORAGEITEMS>
+<EXTSTORAGEITEM id='_000002B729C2D0D0'>
+<CAPTION>
+<TUV xml:lang='en-US'></TUV>
+<TUV xml:lang='de-DE'></TUV>
+<TUV xml:lang='fr-FR'></TUV>
+<TUV xml:lang='ja'></TUV>
+</CAPTION>
+<EXTDOC creationdt='2004-12-03 12:40:09+01:00' changedt='2004-12-03 12:40:09+01:00'>
+<FILENAME>D:\ExampleDocTemplate\Ecu.jpg</FILENAME>
+<FILECONTENTS len='13216'>
+/9j/4AAQSkZJRgABAgEASABIAAD/7QE0UGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAASAAAAAEA
+AgBIAAAAAQACOEJJTQPzAAAAAAAIAAAAAAAAAAA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1
+AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAA
+AAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////
+A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D
+6AAAAAD/////////////////////////////A+gAADhCSU0EBgAAAAAAAgAE/+4ADkFkb2JlAGQA
+AAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoKDBAMDAwMDAwQDAwMDAwMDAwMDAwM
+DAwMDAwMDAwMDAwMDAwMDAEHBwcNDA0YEBAYFA4ODhQUDg4ODhQRDAwMDAwREQwMDAwMDBEMDAwM
+DAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM/8AAEQgA4AEsAwERAAIRAQMRAf/EAaIAAAAHAQEBAQEA
+AAAAAAAAAAQFAwIGAQAHCAkKCwEAAgIDAQEBAQEAAAAAAAAAAQACAwQFBgcICQoLEAACAQMDAgQC
+BgcDBAIGAnMBAgMRBAAFIRIxQVEGE2EicYEUMpGhBxWxQiPBUtHhMxZi8CRygvElQzRTkqKyY3PC
+NUQnk6OzNhdUZHTD0uIIJoMJChgZhJRFRqS0VtNVKBry4/PE1OT0ZXWFlaW1xdXl9WZ2hpamtsbW
+5vY3R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo+Ck5SVlpeYmZqbnJ2en5KjpKWmp6ipqqusra6voR
+AAICAQIDBQUEBQYECAMDbQEAAhEDBCESMUEFURNhIgZxgZEyobHwFMHR4SNCFVJicvEzJDRDghaS
+UyWiY7LCB3PSNeJEgxdUkwgJChgZJjZFGidkdFU38qOzwygp0+PzhJSktMTU5PRldYWVpbXF1eX1
+RlZmdoaWprbG1ub2R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo+DlJWWl5iZmpucnZ6fkqOkpaanqK
+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</FILECONTENTS>
+</EXTDOC>
+</EXTSTORAGEITEM>
+</EXTSTORAGEITEMS>
+<DESC>
+<TUV xml:lang='en-US' struct='1'><PARA><FC>This CANdela template is based on ISO 14229-1:2006.</FC>
+</PARA>
+</TUV>
+<TUV xml:lang='de-DE' struct='1'><PARA><FC>Diese CANdela-Vorlage basiert auf ISO 14229-1:2006.</FC>
+</PARA>
+</TUV>
+<TUV xml:lang='fr-FR' struct='1'><PARA><FC>La template CANdela est basée sur l' ISO 14229-1:2006.</FC>
+</PARA>
+</TUV>
+<TUV xml:lang='ja' struct='1'><PARA><FC>ISO 14229-1:2006に基づいたCANdelaテンプレート・ファイル</FC>
+</PARA>
+</TUV>
+</DESC>
+<PROTOCOLSTANDARD>UDS</PROTOCOLSTANDARD>
+<SPECOWNER>Vector Informatik</SPECOWNER>
+<DTID>ZENWVFBcUllPHgVgBS0sNmlmFCk/LwUjbXRvYn1yHzU3Mzt4Y3p2cQ==</DTID>
+<QUALGENOPTIONS case='ignore' minLen='1' maxLen='64'/>
+<ATTRCATS>
+<ATTRCAT id='_000002B721102760' oid='F4AEDE78CFDE4c0391D99271E1EE8899' temploid='{FC008A0F-60C7-452e-B108-760C1B1D8ADA}' usage='sys' xauth='r'>
+<NAME>
+<TUV xml:lang='en-US'>Available interfaces</TUV>
+<TUV xml:lang='de-DE'>Auswählbare Schnittstellen</TUV>
+<TUV xml:lang='fr-FR'>Available interfaces</TUV>
+<TUV xml:lang='ja'>利用可能なインタフェース</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>(System category)</TUV>
+<TUV xml:lang='de-DE'>(Systemkategorie)</TUV>
+<TUV xml:lang='fr-FR'>(Catégorie Système)</TUV>
+<TUV xml:lang='ja'>(システム カテゴリ)</TUV>
+</DESC>
+<QUAL>COM.INTERFACES</QUAL>
+</ATTRCAT>
+<ATTRCAT id='_000002B7211032A0' oid='020A066A9D024c768D037CBDEF063940' temploid='{89B35B76-F79D-4efe-B8C3-833BB92787D3}' usage='sys' xauth='r'>
+<NAME>
+<TUV xml:lang='en-US'>Initialization</TUV>
+<TUV xml:lang='de-DE'>Initialisierung</TUV>
+<TUV xml:lang='fr-FR'>Initialisation</TUV>
+<TUV xml:lang='ja'>初期設定</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Initialization</TUV>
+<TUV xml:lang='de-DE'>Initialisierung</TUV>
+<TUV xml:lang='fr-FR'>Initialisation</TUV>
+<TUV xml:lang='ja'>初期設定</TUV>
+</DESC>
+<QUAL>COM.INIT</QUAL>
+</ATTRCAT>
+<ATTRCAT id='_000002B721102E20' oid='223810B234DC48c398390FAAD191DECC' temploid='{043AF51A-F4F4-4405-B33C-56BB7F772C27}' usage='sys' xauth='r'>
+<NAME>
+<TUV xml:lang='en-US'>Communication</TUV>
+<TUV xml:lang='de-DE'>Kommunikation</TUV>
+<TUV xml:lang='fr-FR'>Communication</TUV>
+<TUV xml:lang='ja'>コミュニケーション</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Communication</TUV>
+<TUV xml:lang='de-DE'>Kommunikation</TUV>
+<TUV xml:lang='fr-FR'>Communication</TUV>
+<TUV xml:lang='ja'>コミュニケーション</TUV>
+</DESC>
+<QUAL>COM.COM</QUAL>
+</ATTRCAT>
+<ATTRCAT id='_000002B721103120' oid='BAAC16350C59458d97DDD862F54616E5' temploid='{6F0C0C14-292F-45d3-97F8-040F99C9FB4D}' usage='sys' xauth='r'>
+<NAME>
+<TUV xml:lang='en-US'>Timing</TUV>
+<TUV xml:lang='de-DE'>Timing</TUV>
+<TUV xml:lang='fr-FR'>Délais</TUV>
+<TUV xml:lang='ja'>タイミング</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Timing</TUV>
+<TUV xml:lang='de-DE'>Timing</TUV>
+<TUV xml:lang='fr-FR'>Délais</TUV>
+<TUV xml:lang='ja'>タイミング</TUV>
+</DESC>
+<QUAL>COM.TIMING</QUAL>
+</ATTRCAT>
+<ATTRCAT id='_000002B721102820' oid='466B82FE6DC947839029089F51A26204' temploid='{DE9212D7-AC58-4397-8DE1-CFFA5F118A24}'>
+<NAME>
+<TUV xml:lang='en-US'>CANdesc</TUV>
+<TUV xml:lang='de-DE'>CANdesc</TUV>
+<TUV xml:lang='fr-FR'>CANdesc</TUV>
+<TUV xml:lang='ja'>CANdesc</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Information used by CANdelaGen to configure diagnostic software components.</TUV>
+<TUV xml:lang='de-DE'>Von CANdelaGen benötigte Information um Diagnose-Softwarekomponenten zu konfigurieren.</TUV>
+<TUV xml:lang='fr-FR'>Information utilisé par CANdelaGen pour configurer les composants logiciels de diagnostic.</TUV>
+<TUV xml:lang='ja'>インフォメーションは診断ソフトウェアコンポーネントの設定のためにCANdelaGenによって使用されます</TUV>
+</DESC>
+<QUAL>CANdesc</QUAL>
+</ATTRCAT>
+<ATTRCAT id='_000002B721102A60' oid='259896278BF5432bA62FB36E0E16B01D' temploid='{62402351-7D94-4c8f-8315-C3D2D49608FD}'>
+<NAME>
+<TUV xml:lang='en-US'>Any attribute category</TUV>
+<TUV xml:lang='de-DE'>Irgendeine Attributkategorie</TUV>
+<TUV xml:lang='fr-FR'>Catégorie d'attribut</TUV>
+<TUV xml:lang='ja'>任意のアトリビュートカテゴリー</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Example of a user-defined attribute category and its usage in CANdelaStudio documents.</TUV>
+<TUV xml:lang='de-DE'>Beispiel für eine benutzerdefinierte Attributkategorie und deren Verwendung in CANelaStudio-Dokumenten.</TUV>
+<TUV xml:lang='fr-FR'>Exemple d'une categorie d'attributs definis par l'utilisateur et son utilisation dans un document CANdela Studio</TUV>
+<TUV xml:lang='ja'>CANdelaStudioドキュメントでユーザ定義されたアトリビュート・カテゴリーとその使用方法の例。</TUV>
+</DESC>
+<QUAL>AnyAttributeCategory</QUAL>
+</ATTRCAT>
+<ATTRCAT id='_000002B721102B20' oid='9BF913659E9E4246950EC54A83647F43' temploid='{D8290D4C-277B-4ac2-B42C-64AF62A6567E}'>
+<NAME>
+<TUV xml:lang='en-US'>Quality Management</TUV>
+<TUV xml:lang='de-DE'>Qualitätsmanagement</TUV>
+<TUV xml:lang='fr-FR'>Management de qualité</TUV>
+<TUV xml:lang='ja'>クオリティ マネジメント</TUV>
+</NAME>
+<QUAL>Quality_Management</QUAL>
+</ATTRCAT>
+<ATTRCAT id='_000002B721103360' oid='0726F274287248e195E11E06826F6CD0' temploid='{0234B386-65D2-4a56-8A3F-D948E204B430}'>
+<NAME>
+<TUV xml:lang='en-US'>Editor</TUV>
+<TUV xml:lang='de-DE'>Editor</TUV>
+<TUV xml:lang='fr-FR'>Editor</TUV>
+<TUV xml:lang='ja'>Editor</TUV>
+</NAME>
+<QUAL>Editor</QUAL>
+</ATTRCAT>
+</ATTRCATS>
+<DEFATTS>
+<ECUATTS>
+<ENUMDEF id='_000002B7298B6A00' oid='174275D4AE8045d2B61E91386CDF014A' temploid='{58B9F24C-406A-48be-AA51-E82C1E106A39}' attrcatref='_000002B721102760' usage='sys' v='1' sort='id'>
+<NAME>
+<TUV xml:lang='en-US'>Diagnostic CAN</TUV>
+<TUV xml:lang='de-DE'>Diagnose-CAN</TUV>
+<TUV xml:lang='fr-FR'>CAN Diagnostic</TUV>
+<TUV xml:lang='ja'>ダイアグノスティック CAN</TUV>
+</NAME>
+<QUAL>DC</QUAL>
+<ETAG v='0'>
+<TUV xml:lang='en-US'>not supported</TUV>
+<TUV xml:lang='de-DE'>nicht unterstützt</TUV>
+<TUV xml:lang='fr-FR'>non supporté</TUV>
+<TUV xml:lang='ja'>not supported</TUV>
+</ETAG>
+<ETAG v='1'>
+<TUV xml:lang='en-US'>supported</TUV>
+<TUV xml:lang='de-DE'>unterstützt</TUV>
+<TUV xml:lang='fr-FR'>supporté</TUV>
+<TUV xml:lang='ja'>supported</TUV>
+</ETAG>
+</ENUMDEF>
+<ENUMDEF id='_000002B7298B7980' oid='62CE0F67259649ddBB703B7355FCEBED' temploid='{DA42157D-A464-409d-87A7-E06024214D0E}' attrcatref='_000002B721102E20' usage='sys' v='0' sort='id'>
+<NAME>
+<TUV xml:lang='en-US'>Addressing Scheme</TUV>
+<TUV xml:lang='de-DE'>Addressing Scheme</TUV>
+<TUV xml:lang='fr-FR'>Addressing Scheme</TUV>
+<TUV xml:lang='ja'>Addressing Scheme</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Addressing Scheme used for physical requests and responses.</TUV>
+<TUV xml:lang='de-DE'>Addressing Scheme used for physical requests and responses.</TUV>
+<TUV xml:lang='fr-FR'>Addressing Scheme used for physical requests and responses.</TUV>
+<TUV xml:lang='ja'>Addressing Scheme used for physical requests and responses.</TUV>
+</DESC>
+<QUAL>DC.AddrScheme</QUAL>
+<ETAG v='0'>
+<TUV xml:lang='en-US'>Normal</TUV>
+<TUV xml:lang='de-DE'>Normal</TUV>
+<TUV xml:lang='fr-FR'>Normal</TUV>
+<TUV xml:lang='ja'>Normal</TUV>
+</ETAG>
+</ENUMDEF>
+<ENUMDEF id='_000002B7298B6620' oid='1A9C684D854B422989F1266718F51443' temploid='{F16E5DCB-9DA2-4d75-989E-AA87ADDEC61A}' attrcatref='_000002B721102E20' usage='sys' v='0' sort='id'>
+<NAME>
+<TUV xml:lang='en-US'>CAN-ID Type</TUV>
+<TUV xml:lang='de-DE'>CAN-ID Type</TUV>
+<TUV xml:lang='fr-FR'>CAN-ID Type</TUV>
+<TUV xml:lang='ja'>CAN-ID Type</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>CAN-ID Type used for physical requests and responses</TUV>
+<TUV xml:lang='de-DE'>CAN-ID Type used for physical requests and responses</TUV>
+<TUV xml:lang='fr-FR'>CAN-ID Type used for physical requests and responses</TUV>
+<TUV xml:lang='ja'>CAN-ID Type used for physical requests and responses</TUV>
+</DESC>
+<QUAL>DC.CanIdType</QUAL>
+<ETAG v='0'>
+<TUV xml:lang='en-US'>11-Bit</TUV>
+<TUV xml:lang='de-DE'>11-Bit</TUV>
+<TUV xml:lang='fr-FR'>11-Bit</TUV>
+<TUV xml:lang='ja'>11-Bit</TUV>
+</ETAG>
+<ETAG v='1'>
+<TUV xml:lang='en-US'>29-Bit</TUV>
+<TUV xml:lang='de-DE'>29-Bit</TUV>
+<TUV xml:lang='fr-FR'>29-Bit</TUV>
+<TUV xml:lang='ja'>29-Bit</TUV>
+</ETAG>
+</ENUMDEF>
+<UNSDEF id='_000002B7274147B0' oid='FA09D9D8C44547d38AD683AA40524D3C' temploid='{C010BB00-06D1-4d7e-BB3F-361343EC285B}' attrcatref='_000002B721102E20' usage='sys' v='0' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>STmin</TUV>
+<TUV xml:lang='de-DE'>STmin</TUV>
+<TUV xml:lang='fr-FR'>STmin</TUV>
+<TUV xml:lang='ja'>STmin</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>(Separation Time) defines the minimum time gap between consecutive frames.Values from 0x00 to 0x7F (0 – 127) are absolute milliseconds.Values from 0xF1 to 0xF9 are even 100 micro seconds.Every other value range is reserved and should not be used.</TUV>
+<TUV xml:lang='de-DE'>(Separation Time) defines the minimum time gap between consecutive frames.Values from 0x00 to 0x7F (0 – 127) are absolute milliseconds.Values from 0xF1 to 0xF9 are even 100 micro seconds.Every other value range is reserved and should not be used.</TUV>
+<TUV xml:lang='fr-FR'>(Separation Time) defines the minimum time gap between consecutive frames.Values from 0x00 to 0x7F (0 – 127) are absolute milliseconds.Values from 0xF1 to 0xF9 are even 100 micro seconds.Every other value range is reserved and should not be used.</TUV>
+<TUV xml:lang='ja'>(Separation Time) defines the minimum time gap between consecutive frames.Values from 0x00 to 0x7F (0 – 127) are absolute milliseconds.Values from 0xF1 to 0xF9 are even 100 micro seconds.Every other value range is reserved and should not be used.</TUV>
+</DESC>
+<QUAL>DC.StMin</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B727413DB0' oid='164F6E75D17F429fAFE3C667B735AD5B' temploid='{63AA7272-1D02-455a-8CB1-A4A33A064DD8}' attrcatref='_000002B721102E20' usage='sys' v='0' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>Blocksize</TUV>
+<TUV xml:lang='de-DE'>Blocksize</TUV>
+<TUV xml:lang='fr-FR'>Blocksize</TUV>
+<TUV xml:lang='ja'>Blocksize</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>The maximum number of frames the receiver allows the sender to send, before waiting for an authorisation to continue transmission of the following frames.</TUV>
+<TUV xml:lang='de-DE'>Maximale Anzahl Frames, die der Empfänger dem Sender erlaubt zu senden, bevor dieser auf die Erlaubnis zum Senden der darauf folgenden Frames warten muß.</TUV>
+<TUV xml:lang='fr-FR'>The maximum number of frames the receiver allows the sender to send, before waiting for an authorisation to continue transmission of the following frames.</TUV>
+<TUV xml:lang='ja'>The maximum number of frames the receiver allows the sender to send, before waiting for an authorisation to continue transmission of the following frames.</TUV>
+</DESC>
+<QUAL>DC.Blocksize</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B7274141B0' oid='D76176FE4F404f0f8C3AD1C825F31FAC' temploid='{E5CBCE44-629B-44d7-8490-6A0AEF6AE095}' attrcatref='_000002B721102E20' usage='sys' v='25' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>Timeout As</TUV>
+<TUV xml:lang='de-DE'>Timeout As</TUV>
+<TUV xml:lang='fr-FR'>Timeout As</TUV>
+<TUV xml:lang='ja'>Timeout As</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Time for transmission of the CAN frame on the sender side.</TUV>
+<TUV xml:lang='de-DE'>Zeit für die Übertragung eines CAN-Frames auf der Seite des Senders.</TUV>
+<TUV xml:lang='fr-FR'>Time for transmission of the CAN frame on the sender side.</TUV>
+<TUV xml:lang='ja'>Time for transmission of the CAN frame on the sender side.</TUV>
+</DESC>
+<QUAL>DC.TimeoutAs</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B727416DB0' oid='A4F753214A6A425e98BD589B0D8C9585' temploid='{AA1622F3-22E9-4b29-B5D2-9F898100545E}' attrcatref='_000002B721102E20' usage='sys' v='25' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>Timeout Ar</TUV>
+<TUV xml:lang='de-DE'>Timeout Ar</TUV>
+<TUV xml:lang='fr-FR'>Timeout Ar</TUV>
+<TUV xml:lang='ja'>Timeout Ar</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Time for transmission of the CAN frame on the receiver side.</TUV>
+<TUV xml:lang='de-DE'>Zeit für die Übertragung eines CAN-Frames auf der Seite des Empfängers.</TUV>
+<TUV xml:lang='fr-FR'>Time for transmission of the CAN frame on the receiver side.</TUV>
+<TUV xml:lang='ja'>Time for transmission of the CAN frame on the receiver side.</TUV>
+</DESC>
+<QUAL>DC.TimeoutAr</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B727414FB0' oid='51E247BE6E8E4d898BF32872CDC9DD3F' temploid='{BBA865BF-C7D1-40ed-84B0-F31B72DA2A61}' attrcatref='_000002B721102E20' usage='sys' v='160' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>Timeout Bs</TUV>
+<TUV xml:lang='de-DE'>Timeout Bs</TUV>
+<TUV xml:lang='fr-FR'>Timeout Bs</TUV>
+<TUV xml:lang='ja'>Timeout Bs</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Time until reception of the next FlowControl frame.</TUV>
+<TUV xml:lang='de-DE'>Zeit bis zum Empfang des nächsten FlowControl-Frames.</TUV>
+<TUV xml:lang='fr-FR'>Time until reception of the next FlowControl frame.</TUV>
+<TUV xml:lang='ja'>Time until reception of the next FlowControl frame.</TUV>
+</DESC>
+<QUAL>DC.TimeoutBs</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B7274149B0' oid='60B855540C734dd9B1F09FD4BDC216FD' temploid='{7947B917-092D-4065-8561-A8E7A9221C2F}' attrcatref='_000002B721102E20' usage='sys' v='0' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>Time Br</TUV>
+<TUV xml:lang='de-DE'>Time Br</TUV>
+<TUV xml:lang='fr-FR'>Time Br</TUV>
+<TUV xml:lang='ja'>Time Br</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Time until transmission of the next FlowControl frame.</TUV>
+<TUV xml:lang='de-DE'>Zeit bis zum Übertragen des nächsten FlowControl-Frames.</TUV>
+<TUV xml:lang='fr-FR'>Time until transmission of the next FlowControl frame.</TUV>
+<TUV xml:lang='ja'>Time until transmission of the next FlowControl frame.</TUV>
+</DESC>
+<QUAL>DC.TimeBr</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B727414BB0' oid='FFC2C759B30A4ffaBE2AED22D18EF3D6' temploid='{3BDD4603-F6F9-466b-AB3B-EDE990227A44}' attrcatref='_000002B721102E20' usage='sys' v='25' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>Time Cs</TUV>
+<TUV xml:lang='de-DE'>Time Cs</TUV>
+<TUV xml:lang='fr-FR'>Time Cs</TUV>
+<TUV xml:lang='ja'>Time Cs</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Time until transmission of the next Consecutive frame.</TUV>
+<TUV xml:lang='de-DE'>Zeit bis zum Übertragen des nächsten Consecutive Frames.</TUV>
+<TUV xml:lang='fr-FR'>Time until transmission of the next Consecutive frame.</TUV>
+<TUV xml:lang='ja'>Time until transmission of the next Consecutive frame.</TUV>
+</DESC>
+<QUAL>DC.TimeCs</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B727414DB0' oid='FAFC9545EADF435eAE08A73738644D76' temploid='{0D975D96-15CC-4a48-A01C-BB504B2BD897}' attrcatref='_000002B721102E20' usage='sys' v='150' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>Timeout Cr</TUV>
+<TUV xml:lang='de-DE'>Timeout Cr</TUV>
+<TUV xml:lang='fr-FR'>Timeout Cr</TUV>
+<TUV xml:lang='ja'>Timeout Cr</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Time until reception of the next Consecutive frame.</TUV>
+<TUV xml:lang='de-DE'>Zeit bis zum Empfang des nächsten Consecutive Frames.</TUV>
+<TUV xml:lang='fr-FR'>Time until reception of the next Consecutive frame.</TUV>
+<TUV xml:lang='ja'>Time until reception of the next Consecutive frame.</TUV>
+</DESC>
+<QUAL>DC.TimeoutCr</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B7274167B0' oid='393DE2C9AF7D45a192FA34ED43186DBE' temploid='BA2C27C525E14c7fA0F556D67D5F5B07' attrcatref='_000002B721102E20' usage='sys' v='500000' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>Baudrate</TUV>
+<TUV xml:lang='de-DE'>Baudrate</TUV>
+<TUV xml:lang='fr-FR'>Baudrate</TUV>
+<TUV xml:lang='ja'>Baudrate</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Bus Speed of the used transport media. Caution, the Bus Speed has to be set identical in all ECUs connected to one subnet.</TUV>
+<TUV xml:lang='de-DE'>Bus Speed of the used transport media. Caution, the Bus Speed has to be set identical in all ECUs connected to one subnet.</TUV>
+<TUV xml:lang='fr-FR'>Bus Speed of the used transport media. Caution, the Bus Speed has to be set identical in all ECUs connected to one subnet.</TUV>
+<TUV xml:lang='ja'>Bus Speed of the used transport media. Caution, the Bus Speed has to be set identical in all ECUs connected to one subnet.</TUV>
+</DESC>
+<QUAL>DC.Baudrate</QUAL>
+</UNSDEF>
+<ENUMDEF id='_000002B7298B52C0' oid='F484768E67C94f95B71D11178A3ADBA2' temploid='5E3CA55DD4DD4c57BFE359C7B9F9FB53' attrcatref='_000002B721102E20' usage='sys' v='0' sort='id'>
+<NAME>
+<TUV xml:lang='en-US'>Bus Type</TUV>
+<TUV xml:lang='de-DE'>Bus Type</TUV>
+<TUV xml:lang='fr-FR'>Bus Type</TUV>
+<TUV xml:lang='ja'>Bus Type</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Type of transport media</TUV>
+<TUV xml:lang='de-DE'>Type of transport media</TUV>
+<TUV xml:lang='fr-FR'>Type of transport media</TUV>
+<TUV xml:lang='ja'>Type of transport media</TUV>
+</DESC>
+<QUAL>DC.BusType</QUAL>
+<ETAG v='0'>
+<TUV xml:lang='en-US'>CAN</TUV>
+<TUV xml:lang='de-DE'>CAN</TUV>
+<TUV xml:lang='fr-FR'>CAN</TUV>
+<TUV xml:lang='ja'>CAN</TUV>
+</ETAG>
+</ENUMDEF>
+<UNSDEF id='_000002B7274165B0' oid='5F1664F042E5478fB61F43B9C85399BD' temploid='3D090E2E316F46478E882469DCE29F88' attrcatref='_000002B721102E20' usage='sys' v='85' df='hex'>
+<NAME>
+<TUV xml:lang='en-US'>CANFrameFillerByte</TUV>
+<TUV xml:lang='de-DE'>CANFrameFillerByte</TUV>
+<TUV xml:lang='fr-FR'>CANFrameFillerByte</TUV>
+<TUV xml:lang='ja'>CANFrameFillerByte</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Fill byte used for filling CAN frames to eight byte length.</TUV>
+<TUV xml:lang='de-DE'>Fill byte used for filling CAN frames to eight byte length.</TUV>
+<TUV xml:lang='fr-FR'>Fill byte used for filling CAN frames to eight byte length.</TUV>
+<TUV xml:lang='ja'>Fill byte used for filling CAN frames to eight byte length.</TUV>
+</DESC>
+<QUAL>DC.CANFrameFillerByte</QUAL>
+</UNSDEF>
+<ENUMDEF id='_000002B7298B6FD0' oid='0B9192566E1B40648DB59DC96AC29938' temploid='9BB32ACDBADF478d8F2D7D3FB5AA9A99' attrcatref='_000002B721102E20' usage='sys' v='1' sort='id'>
+<NAME>
+<TUV xml:lang='en-US'>FillerByteHandling</TUV>
+<TUV xml:lang='de-DE'>FillerByteHandling</TUV>
+<TUV xml:lang='fr-FR'>FillerByteHandling</TUV>
+<TUV xml:lang='ja'>FillerByteHandling</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Enables use of fill bytes; if "true", fill bytes are used, otherwise DLC may be smaller than 8.</TUV>
+<TUV xml:lang='de-DE'>Enables use of fill bytes; if "true", fill bytes are used, otherwise DLC may be smaller than 8.</TUV>
+<TUV xml:lang='fr-FR'>Enables use of fill bytes; if "true", fill bytes are used, otherwise DLC may be smaller than 8.</TUV>
+<TUV xml:lang='ja'>Enables use of fill bytes; if "true", fill bytes are used, otherwise DLC may be smaller than 8.</TUV>
+</DESC>
+<QUAL>DC.FillerByteHandling</QUAL>
+<ETAG v='0'>
+<TUV xml:lang='en-US'>false</TUV>
+<TUV xml:lang='de-DE'>falsch</TUV>
+<TUV xml:lang='fr-FR'>faux</TUV>
+<TUV xml:lang='ja'>偽</TUV>
+</ETAG>
+<ETAG v='1'>
+<TUV xml:lang='en-US'>true</TUV>
+<TUV xml:lang='de-DE'>wahr</TUV>
+<TUV xml:lang='fr-FR'>vrai</TUV>
+<TUV xml:lang='ja'>真</TUV>
+</ETAG>
+</ENUMDEF>
+<ENUMDEF id='_000002B7298B4EE0' oid='BC28CC647A2D4d07821746CA906D8016' temploid='109E8272270F4af5A0880F72D72B5BAB' attrcatref='_000002B721102E20' usage='sys' v='0' sort='id'>
+<NAME>
+<TUV xml:lang='en-US'>Functional Addressing Scheme</TUV>
+<TUV xml:lang='de-DE'>Functional Addressing Scheme</TUV>
+<TUV xml:lang='fr-FR'>Functional Addressing Scheme</TUV>
+<TUV xml:lang='ja'>Functional Addressing Scheme</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Addressing Scheme used for functional requests.</TUV>
+<TUV xml:lang='de-DE'>Addressing Scheme used for functional requests.</TUV>
+<TUV xml:lang='fr-FR'>Addressing Scheme used for functional requests.</TUV>
+<TUV xml:lang='ja'>Addressing Scheme used for functional requests.</TUV>
+</DESC>
+<QUAL>DC.AddrSchemeFunc</QUAL>
+<ETAG v='0'>
+<TUV xml:lang='en-US'>Normal</TUV>
+<TUV xml:lang='de-DE'>Normal</TUV>
+<TUV xml:lang='fr-FR'>Normal</TUV>
+<TUV xml:lang='ja'>Normal</TUV>
+</ETAG>
+</ENUMDEF>
+<ENUMDEF id='_000002B7298B73B0' oid='6EBA82380D40436a94D41DAC8AEF6AB6' temploid='2339E92D8D674ee285DD6B7D0832FC09' attrcatref='_000002B721102E20' usage='sys' v='0' sort='id'>
+<NAME>
+<TUV xml:lang='en-US'>Functional CAN-ID Type</TUV>
+<TUV xml:lang='de-DE'>Functional CAN-ID Type</TUV>
+<TUV xml:lang='fr-FR'>Functional CAN-ID Type</TUV>
+<TUV xml:lang='ja'>Functional CAN-ID Type</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>CAN-ID Type used for functional request</TUV>
+<TUV xml:lang='de-DE'>CAN-ID Type used for functional request</TUV>
+<TUV xml:lang='fr-FR'>CAN-ID Type used for functional request</TUV>
+<TUV xml:lang='ja'>CAN-ID Type used for functional request</TUV>
+</DESC>
+<QUAL>DC.CanIdTypeFunc</QUAL>
+<ETAG v='0'>
+<TUV xml:lang='en-US'>11-Bit</TUV>
+<TUV xml:lang='de-DE'>11-Bit</TUV>
+<TUV xml:lang='fr-FR'>11-Bit</TUV>
+<TUV xml:lang='ja'>11-Bit</TUV>
+</ETAG>
+<ETAG v='1'>
+<TUV xml:lang='en-US'>29-Bit</TUV>
+<TUV xml:lang='de-DE'>29-Bit</TUV>
+<TUV xml:lang='fr-FR'>29-Bit</TUV>
+<TUV xml:lang='ja'>29-Bit</TUV>
+</ETAG>
+</ENUMDEF>
+<UNSDEF id='_000002B7274153B0' oid='45B1AE5B4E474eef9D05A7A7E9FCE009' temploid='427D7FBD6AD74c7aBEF8D8C13655EEBF' attrcatref='_000002B721102E20' usage='sys' v='1791' df='hex'>
+<NAME>
+<TUV xml:lang='en-US'>Functional Request CAN-ID</TUV>
+<TUV xml:lang='de-DE'>Functional Request CAN-ID</TUV>
+<TUV xml:lang='fr-FR'>Functional Request CAN-ID</TUV>
+<TUV xml:lang='ja'>Functional Request CAN-ID</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>The request CAN identifier for functional requests.</TUV>
+<TUV xml:lang='de-DE'>The request CAN identifier for functional requests.</TUV>
+<TUV xml:lang='fr-FR'>The request CAN identifier for functional requests.</TUV>
+<TUV xml:lang='ja'>The request CAN identifier for functional requests.</TUV>
+</DESC>
+<QUAL>DC.ReqCanIdFunc</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B727413BB0' oid='C6D94461D9984338AB59BFF01DEB9583' temploid='1ADDB43976044d0dB2DC214CB86019E1' attrcatref='_000002B721102E20' usage='sys' v='4095' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>Max Length of TP Message</TUV>
+<TUV xml:lang='de-DE'>Max Length of TP Message</TUV>
+<TUV xml:lang='fr-FR'>Max Length of TP Message</TUV>
+<TUV xml:lang='ja'>Max Length of TP Message</TUV>
+</NAME>
+<QUAL>DC.MaxLengthTpMessage</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B7274157B0' oid='0A693A35E9D6476dB54A7AB119A8ABA8' temploid='270A46BFC66745b1918CAEDCF5E5B6A6' attrcatref='_000002B721103120' usage='sys' v='5000' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>P2*Client</TUV>
+<TUV xml:lang='de-DE'>P2*Client</TUV>
+<TUV xml:lang='fr-FR'>P2*Client</TUV>
+<TUV xml:lang='ja'>P2*Client</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Enhanced timeout for the client to wait after the reception of a negative response message with response code 78 hex for the start of incoming response messages. In UDS this is the timeout for the default session.</TUV>
+<TUV xml:lang='de-DE'>Enhanced timeout for the client to wait after the reception of a negative response message with response code 78 hex for the start of incoming response messages. In UDS this is the timeout for the default session.</TUV>
+<TUV xml:lang='fr-FR'>Enhanced timeout for the client to wait after the reception of a negative response message with response code 78 hex for the start of incoming response messages. In UDS this is the timeout for the default session.</TUV>
+<TUV xml:lang='ja'>Enhanced timeout for the client to wait after the reception of a negative response message with response code 78 hex for the start of incoming response messages. In UDS this is the timeout for the default session.</TUV>
+</DESC>
+<QUAL>DC.P2ExClient</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B7274155B0' oid='60B2D6CFE99541cbBEFDBB9B37D43AB8' temploid='EC13D705736D4063B01D764E3596C33E' attrcatref='_000002B721103120' usage='sys' v='2000' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>P2*Server</TUV>
+<TUV xml:lang='de-DE'>P2*Server</TUV>
+<TUV xml:lang='fr-FR'>P2*Server</TUV>
+<TUV xml:lang='ja'>P2*Server</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Performance requirement for the server to start with the response message after the transmission of a negative response message with response code 78 hex (enhanced response timing). In UDS this is the timeout for the default session.</TUV>
+<TUV xml:lang='de-DE'>Performance requirement for the server to start with the response message after the transmission of a negative response message with response code 78 hex (enhanced response timing). In UDS this is the timeout for the default session.</TUV>
+<TUV xml:lang='fr-FR'>Performance requirement for the server to start with the response message after the transmission of a negative response message with response code 78 hex (enhanced response timing). In UDS this is the timeout for the default session.</TUV>
+<TUV xml:lang='ja'>Performance requirement for the server to start with the response message after the transmission of a negative response message with response code 78 hex (enhanced response timing). In UDS this is the timeout for the default session.</TUV>
+</DESC>
+<QUAL>DC.P2ExServer</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B7274159B0' oid='D6C563501C4146e5998E736B3FA9A379' temploid='9E0628ACAAC444faB6EBD7EF92D82ED9' attrcatref='_000002B721103120' usage='sys' v='50' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>P2Client</TUV>
+<TUV xml:lang='de-DE'>P2Client</TUV>
+<TUV xml:lang='fr-FR'>P2Client</TUV>
+<TUV xml:lang='ja'>P2Client</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Timeout for the client to wait after the successful transmission of a request message for the start of incoming response messages. In UDS this is the timeout for the default session.</TUV>
+<TUV xml:lang='de-DE'>Timeout for the client to wait after the successful transmission of a request message for the start of incoming response messages. In UDS this is the timeout for the default session.</TUV>
+<TUV xml:lang='fr-FR'>Timeout for the client to wait after the successful transmission of a request message for the start of incoming response messages. In UDS this is the timeout for the default session.</TUV>
+<TUV xml:lang='ja'>Timeout for the client to wait after the successful transmission of a request message for the start of incoming response messages. In UDS this is the timeout for the default session.</TUV>
+</DESC>
+<QUAL>DC.P2Client</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B7274131B0' oid='267302304EC94313AF045D12C607F058' temploid='2E63719C59C74ba69B02D8CACC1A8E1C' attrcatref='_000002B721103120' usage='sys' v='25' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>P2Server</TUV>
+<TUV xml:lang='de-DE'>P2Server</TUV>
+<TUV xml:lang='fr-FR'>P2Server</TUV>
+<TUV xml:lang='ja'>P2Server</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Performance requirement for the server to start with the response message after the reception of a request message. In UDS this is the timeout for the default session.The tester will also require the P2Server timeout, since in UDS service "DiagnosticSessionControl"returns the P2Server and P2*Server timeouts – the tester has to calculate the offset manually and has to add it to the returned P2Server and P2*Server timeouts.</TUV>
+<TUV xml:lang='de-DE'>Performance requirement for the server to start with the response message after the reception of a request message. In UDS this is the timeout for the default session.The tester will also require the P2Server timeout, since in UDS service "DiagnosticSessionControl"returns the P2Server and P2*Server timeouts – the tester has to calculate the offset manually and has to add it to the returned P2Server and P2*Server timeouts.</TUV>
+<TUV xml:lang='fr-FR'>Performance requirement for the server to start with the response message after the reception of a request message. In UDS this is the timeout for the default session.The tester will also require the P2Server timeout, since in UDS service "DiagnosticSessionControl"returns the P2Server and P2*Server timeouts – the tester has to calculate the offset manually and has to add it to the returned P2Server and P2*Server timeouts.</TUV>
+<TUV xml:lang='ja'>Performance requirement for the server to start with the response message after the reception of a request message. In UDS this is the timeout for the default session.The tester will also require the P2Server timeout, since in UDS service "DiagnosticSessionControl"returns the P2Server and P2*Server timeouts – the tester has to calculate the offset manually and has to add it to the returned P2Server and P2*Server timeouts.</TUV>
+</DESC>
+<QUAL>DC.P2Server</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B727415BB0' oid='E68E5BB1635C48e99FE02E889CE1D518' temploid='8BEDEFB3B1AB4d7780CFA660586DD90A' attrcatref='_000002B721103120' usage='sys' v='50' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>P3ClientFunc</TUV>
+<TUV xml:lang='de-DE'>P3ClientFunc</TUV>
+<TUV xml:lang='fr-FR'>P3ClientFunc</TUV>
+<TUV xml:lang='ja'>P3ClientFunc</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Minimum time for the client to wait after the successful transmission of a functionally addressed request message (indicated via N_USData.con) before it can transmit the next functionally addressed request message in case no response is required or the requested data is only supported by a subset of the functionally addressed servers.
+Minimum value = P2Server.</TUV>
+<TUV xml:lang='de-DE'>Minimum time for the client to wait after the successful transmission of a functionally addressed request message (indicated via N_USData.con) before it can transmit the next functionally addressed request message in case no response is required or the requested data is only supported by a subset of the functionally addressed servers.
+Minimum value = P2Server.</TUV>
+<TUV xml:lang='fr-FR'>Minimum time for the client to wait after the successful transmission of a functionally addressed request message (indicated via N_USData.con) before it can transmit the next functionally addressed request message in case no response is required or the requested data is only supported by a subset of the functionally addressed servers.
+Minimum value = P2Server.</TUV>
+<TUV xml:lang='ja'>Minimum time for the client to wait after the successful transmission of a functionally addressed request message (indicated via N_USData.con) before it can transmit the next functionally addressed request message in case no response is required or the requested data is only supported by a subset of the functionally addressed servers.
+Minimum value = P2Server.</TUV>
+</DESC>
+<QUAL>DC.P3ClientFunc</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B727415DB0' oid='146BC67D4748482f9F0C8BAB9EAC1662' temploid='DB6924CDFE4043adA45178D15AB747F3' attrcatref='_000002B721103120' usage='sys' v='50' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>P3ClientPhys</TUV>
+<TUV xml:lang='de-DE'>P3ClientPhys</TUV>
+<TUV xml:lang='fr-FR'>P3ClientPhys</TUV>
+<TUV xml:lang='ja'>P3ClientPhys</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Minimum time for the client to wait after the successful transmission of a physically addressed request message (indicated via N_USData.con) with no response required before it can transmit the next physically addressed request message.
+Minimum value = P2Server</TUV>
+<TUV xml:lang='de-DE'>Minimum time for the client to wait after the successful transmission of a physically addressed request message (indicated via N_USData.con) with no response required before it can transmit the next physically addressed request message.
+Minimum value = P2Server</TUV>
+<TUV xml:lang='fr-FR'>Minimum time for the client to wait after the successful transmission of a physically addressed request message (indicated via N_USData.con) with no response required before it can transmit the next physically addressed request message.
+Minimum value = P2Server</TUV>
+<TUV xml:lang='ja'>Minimum time for the client to wait after the successful transmission of a physically addressed request message (indicated via N_USData.con) with no response required before it can transmit the next physically addressed request message.
+Minimum value = P2Server</TUV>
+</DESC>
+<QUAL>DC.P3ClientPhys</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B727415FB0' oid='E7262E06CBDB41c8AB86399BC31C94C6' temploid='BE3F63021CF4495d9D27351D548B0853' attrcatref='_000002B721103120' usage='sys' v='2000' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>S3Client</TUV>
+<TUV xml:lang='de-DE'>S3Client</TUV>
+<TUV xml:lang='fr-FR'>S3Client</TUV>
+<TUV xml:lang='ja'>S3Client</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Time between functionally addressed Tester Present request messages transmitted by the client to keep a diagnostic session other than the defaultSession active in multiple servers (functional communication) or maximum time between physically transmitted request messages to a single server (physical communication).</TUV>
+<TUV xml:lang='de-DE'>Time between functionally addressed Tester Present request messages transmitted by the client to keep a diagnostic session other than the defaultSession active in multiple servers (functional communication) or maximum time between physically transmitted request messages to a single server (physical communication).</TUV>
+<TUV xml:lang='fr-FR'>Time between functionally addressed Tester Present request messages transmitted by the client to keep a diagnostic session other than the defaultSession active in multiple servers (functional communication) or maximum time between physically transmitted request messages to a single server (physical communication).</TUV>
+<TUV xml:lang='ja'>Time between functionally addressed Tester Present request messages transmitted by the client to keep a diagnostic session other than the defaultSession active in multiple servers (functional communication) or maximum time between physically transmitted request messages to a single server (physical communication).</TUV>
+</DESC>
+<QUAL>DC.S3Client</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B7274161B0' oid='337AB1E6125E45a2A9DCDF5557BA2EC3' temploid='4CD3170003074986BE6243229C13394F' attrcatref='_000002B721103120' usage='sys' v='5000' df='dec'>
+<NAME>
+<TUV xml:lang='en-US'>S3Server</TUV>
+<TUV xml:lang='de-DE'>S3Server</TUV>
+<TUV xml:lang='fr-FR'>S3Server</TUV>
+<TUV xml:lang='ja'>S3Server</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Time for the server to keep a diagnostic session other than the defaultSession active while not receiving any diagnostic request message</TUV>
+<TUV xml:lang='de-DE'>Time for the server to keep a diagnostic session other than the defaultSession active while not receiving any diagnostic request message</TUV>
+<TUV xml:lang='fr-FR'>Time for the server to keep a diagnostic session other than the defaultSession active while not receiving any diagnostic request message</TUV>
+<TUV xml:lang='ja'>Time for the server to keep a diagnostic session other than the defaultSession active while not receiving any diagnostic request message</TUV>
+</DESC>
+<QUAL>DC.S3Server</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B7274163B0' oid='BF61B88224914be2AAA2B7DEBBBDEED9' temploid='2543B0826C0F47668519319CEA366562' attrcatref='_000002B721102E20' usage='sys' v='1792' df='hex'>
+<NAME>
+<TUV xml:lang='en-US'>Request CAN-ID</TUV>
+<TUV xml:lang='de-DE'>Request CAN-ID</TUV>
+<TUV xml:lang='fr-FR'>Request CAN-ID</TUV>
+<TUV xml:lang='ja'>Request CAN-ID</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>The request CAN identifier for physical requests. The hex value not only describes the identifier but also the priority of the message. The higher the number, the lower the priority.</TUV>
+<TUV xml:lang='de-DE'>The request CAN identifier for physical requests. The hex value not only describes the identifier but also the priority of the message. The higher the number, the lower the priority.</TUV>
+<TUV xml:lang='fr-FR'>The request CAN identifier for physical requests. The hex value not only describes the identifier but also the priority of the message. The higher the number, the lower the priority.</TUV>
+<TUV xml:lang='ja'>The request CAN identifier for physical requests. The hex value not only describes the identifier but also the priority of the message. The higher the number, the lower the priority.</TUV>
+</DESC>
+<QUAL>DC.ReqCanId</QUAL>
+</UNSDEF>
+<UNSDEF id='_000002B7274169B0' oid='30A17EB302E94a1d80EF39A032A6D405' temploid='CB7EB582E0A3481bB621F28AF9C1F686' attrcatref='_000002B721102E20' usage='sys' v='1536' df='hex'>
+<NAME>
+<TUV xml:lang='en-US'>Response CAN-ID</TUV>
+<TUV xml:lang='de-DE'>Response CAN-ID</TUV>
+<TUV xml:lang='fr-FR'>Response CAN-ID</TUV>
+<TUV xml:lang='ja'>Response CAN-ID</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>The response CAN identifier for physical responses.The response for functional requests is sent via the physical path.</TUV>
+<TUV xml:lang='de-DE'>The response CAN identifier for physical responses.The response for functional requests is sent via the physical path.</TUV>
+<TUV xml:lang='fr-FR'>The response CAN identifier for physical responses.The response for functional requests is sent via the physical path.</TUV>
+<TUV xml:lang='ja'>The response CAN identifier for physical responses.The response for functional requests is sent via the physical path.</TUV>
+</DESC>
+<QUAL>DC.ResCanId</QUAL>
+</UNSDEF>
+<ENUMDEF id='_000002B7298B4CF0' oid='840A2544AEC44645ABA32D2C62BE1DB7' temploid='2BEE3DCB8F5248fc8D0771DEE13D225D' attrcatref='_000002B721102E20' usage='sys' v='0' sort='id'>
+<NAME>
+<TUV xml:lang='en-US'>Transport Protocol Type</TUV>
+<TUV xml:lang='de-DE'>Transport Protocol Type</TUV>
+<TUV xml:lang='fr-FR'>Transport Protocol Type</TUV>
+<TUV xml:lang='ja'>Transport Protocol Type</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Type of used Transport Protocol (e.g. ISO15765)</TUV>
+<TUV xml:lang='de-DE'>Type of used Transport Protocol (e.g. ISO15765)</TUV>
+<TUV xml:lang='fr-FR'>Type of used Transport Protocol (e.g. ISO15765)</TUV>
+<TUV xml:lang='ja'>Type of used Transport Protocol (e.g. ISO15765)</TUV>
+</DESC>
+<QUAL>DC.TransportProtocolType</QUAL>
+<ETAG v='0'>
+<TUV xml:lang='en-US'>ISO15765</TUV>
+<TUV xml:lang='de-DE'>ISO15765</TUV>
+<TUV xml:lang='fr-FR'>ISO15765</TUV>
+<TUV xml:lang='ja'>ISO15765</TUV>
+</ETAG>
+</ENUMDEF>
+</ECUATTS>
+</DEFATTS>
+<AUTHORS>
+</AUTHORS>
+<HISTITEMS>
+</HISTITEMS>
+<TARGETGROUPS>
+<TARGETGROUP oid='534E3FB249F04871A20082BEF816E294' temploid='{BB4F40AA-2B43-41b3-AC66-55BA5C9700DC}'>
+<NAME>
+<TUV xml:lang='en-US'>Development</TUV>
+<TUV xml:lang='de-DE'>Entwicklung</TUV>
+<TUV xml:lang='fr-FR'>Développement</TUV>
+<TUV xml:lang='ja'>開発部</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Description of development</TUV>
+<TUV xml:lang='de-DE'>Beschreibung der Entwicklung</TUV>
+<TUV xml:lang='fr-FR'>Description pour le développement</TUV>
+<TUV xml:lang='ja'>開発向け情報</TUV>
+</DESC>
+<QUAL>Development</QUAL>
+</TARGETGROUP>
+<TARGETGROUP oid='97FB86B73D4E45de9767DB0A0C2A182C' temploid='{D564A96D-0051-4730-8B4F-BF9A38DD3567}'>
+<NAME>
+<TUV xml:lang='en-US'>Manufacturing</TUV>
+<TUV xml:lang='de-DE'>Produktion</TUV>
+<TUV xml:lang='fr-FR'>Fabrication</TUV>
+<TUV xml:lang='ja'>製造部</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Description of manufacturing</TUV>
+<TUV xml:lang='de-DE'>Beschreibung der Produktion</TUV>
+<TUV xml:lang='fr-FR'>Description pour l'usine</TUV>
+<TUV xml:lang='ja'>製造向け情報</TUV>
+</DESC>
+<QUAL>Manufacturing</QUAL>
+</TARGETGROUP>
+<TARGETGROUP oid='B70BD665BC87442295F2B3C015B1D9DB' temploid='{93A9802F-D0CA-4929-99E6-197352197D52}'>
+<NAME>
+<TUV xml:lang='en-US'>Service</TUV>
+<TUV xml:lang='de-DE'>Service</TUV>
+<TUV xml:lang='fr-FR'>Service</TUV>
+<TUV xml:lang='ja'>サービス部</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Description of service</TUV>
+<TUV xml:lang='de-DE'>Beschreibung des Service</TUV>
+<TUV xml:lang='fr-FR'>Description du service</TUV>
+<TUV xml:lang='ja'>サービス向け情報</TUV>
+</DESC>
+<QUAL>Service</QUAL>
+</TARGETGROUP>
+</TARGETGROUPS>
+<NEGRESCODES bl='8' bo='21' stateGroupDefault='34'>
+<NEGRESCODE id='_000002B7212ACEA0' oid='340BDF93C95F49b5BDCCB45D61933E79' temploid='{5A212CD7-8053-4225-9AF5-C81256A622CB}' v='16'>
+<NAME>
+<TUV xml:lang='en-US'>General reject</TUV>
+<TUV xml:lang='de-DE'>Allgemeine Verweigerung</TUV>
+<TUV xml:lang='fr-FR'>Rejet général</TUV>
+<TUV xml:lang='ja'>General reject（拒否）</TUV>
+</NAME>
+<QUAL>General_reject</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212AC7E0' oid='9B19FEC69920430fB79CD048A89F98AD' temploid='{BD2975AF-378D-4c53-9BF1-C704344BB7DC}' v='17'>
+<NAME>
+<TUV xml:lang='en-US'>Service not supported</TUV>
+<TUV xml:lang='de-DE'>Service nicht unterstützt</TUV>
+<TUV xml:lang='fr-FR'>Service non disponible</TUV>
+<TUV xml:lang='ja'>Service not supported （非対応サービス）</TUV>
+</NAME>
+<QUAL>Service_not_supported</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212ACAB0' oid='6703AB9617E945cdBDCFB917D1BA71A0' temploid='{80C2D695-E8D7-47f3-B00E-99BE5D368CD7}' v='18'>
+<NAME>
+<TUV xml:lang='en-US'>Subfunction not supported</TUV>
+<TUV xml:lang='de-DE'>Unterfunktion nicht unterstützt</TUV>
+<TUV xml:lang='fr-FR'>Sous-fonction non supportée</TUV>
+<TUV xml:lang='ja'>Subfunction not supported</TUV>
+</NAME>
+<QUAL>Subfunction_not_supported</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212AD440' oid='6D232013D0784fe0BC748E35456C0DB4' temploid='{1A51AEF2-AE78-48e6-83C4-B327A82F6B2F}' v='19'>
+<NAME>
+<TUV xml:lang='en-US'>Incorrect message length or invalid format</TUV>
+<TUV xml:lang='de-DE'>Falsche Nachrichtenlänge oder ungültiges Format</TUV>
+<TUV xml:lang='fr-FR'>Taille de message incorrect ou format invalid</TUV>
+<TUV xml:lang='ja'>Incorrect message length or invalid format</TUV>
+</NAME>
+<QUAL>Incorrect_message_length_or_invalid_format</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212ACF30' oid='36B0D2B2DBDE45eeA98445EDE0793535' temploid='{96F8BF29-BE84-4f1b-8C1A-A89AD0E87A03}' v='20'>
+<NAME>
+<TUV xml:lang='en-US'>Response too long</TUV>
+<TUV xml:lang='de-DE'>Antwort zu lang</TUV>
+<TUV xml:lang='fr-FR'>Response too long</TUV>
+<TUV xml:lang='ja'>Response too long</TUV>
+</NAME>
+<QUAL>Response_too_long</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212ACD80' oid='E56855C88879448a8B2210E739B42FB8' temploid='{D554803F-2F91-42c8-849A-DC5D70A19416}' v='33'>
+<NAME>
+<TUV xml:lang='en-US'>Busy repeat request</TUV>
+<TUV xml:lang='de-DE'>Beschäftigt / Anforderung wiederholen</TUV>
+<TUV xml:lang='fr-FR'>Occupé, répéter la requête</TUV>
+<TUV xml:lang='ja'>ビジー リピート・リクエスト</TUV>
+</NAME>
+<QUAL>Busy_repeat_request</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212AC900' oid='1388E35521F94e59AD6E326974AF7102' temploid='{49B5EF28-B74C-4eb9-A142-415EA5B3DBB6}' v='34'>
+<NAME>
+<TUV xml:lang='en-US'>Conditions not correct</TUV>
+<TUV xml:lang='de-DE'>Eingangsbedingungen nicht erfüllt</TUV>
+<TUV xml:lang='fr-FR'>Conditions d'exécution non satisfaîtes</TUV>
+<TUV xml:lang='ja'>Conditions not correct</TUV>
+</NAME>
+<QUAL>Conditions_not_correct</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212AC6C0' oid='2EDBFCCE7C09436f9198DBEFF5E8083D' temploid='{494E1654-2EA0-4752-8D8C-A29CF4700334}' v='36'>
+<NAME>
+<TUV xml:lang='en-US'>Request sequence error</TUV>
+<TUV xml:lang='de-DE'>Reihenfolgefehler in Anforderung</TUV>
+<TUV xml:lang='fr-FR'>Erreur de séquence de requêtes</TUV>
+<TUV xml:lang='ja'>リクエスト・シーケンス・エラー</TUV>
+</NAME>
+<QUAL>Request_sequence_error</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212AD050' oid='9E5886288C134eea8C30A04F02EA9B0D' temploid='54EC47551C914c74A478955313C97515_25' v='37'>
+<NAME>
+<TUV xml:lang='en-US'>No response from subnet component</TUV>
+<TUV xml:lang='de-DE'>Keine Antwort von der Subnetz-Komponente</TUV>
+<TUV xml:lang='fr-FR'>No response from subnet component</TUV>
+<TUV xml:lang='ja'>No response from subnet component</TUV>
+</NAME>
+<QUAL>No_response_from_subnet_component</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212AD0E0' oid='EFA796C26E8D40e799F29DB48BF36239' temploid='54EC47551C914c74A478955313C97515_26' v='38'>
+<NAME>
+<TUV xml:lang='en-US'>Failure prevents execution of requested action</TUV>
+<TUV xml:lang='de-DE'>Fehler verhindert die Ausführung der angeforderten Aktion</TUV>
+<TUV xml:lang='fr-FR'>Failure prevents execution of requested action</TUV>
+<TUV xml:lang='ja'>Failure prevents execution of requested action</TUV>
+</NAME>
+<QUAL>Failure_prevents_execution_of_requested_action</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212ACBD0' oid='1C0F87CA050942bdAE7E8593F329D9F6' temploid='{F6CEC3CF-1BD9-42c3-936C-02F00969DD0A}' v='49'>
+<NAME>
+<TUV xml:lang='en-US'>Request out of range</TUV>
+<TUV xml:lang='de-DE'>Anforderung nicht im Bereich</TUV>
+<TUV xml:lang='fr-FR'>Requête hors plage</TUV>
+<TUV xml:lang='ja'>Request out of range</TUV>
+</NAME>
+<QUAL>Request_out_of_range</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212ACC60' oid='BB6E30C06F52446aBDA94C54933E84FD' temploid='{5E1B9F8B-7FE7-4eda-BDB8-C7D0FAB1F9D6}' v='51'>
+<NAME>
+<TUV xml:lang='en-US'>Security access denied</TUV>
+<TUV xml:lang='de-DE'>Sicherheitszugriff verweigert</TUV>
+<TUV xml:lang='fr-FR'>Security access denied</TUV>
+<TUV xml:lang='ja'>セキュリティ・アクセス 拒否</TUV>
+</NAME>
+<QUAL>Security_access_denied</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212ACE10' oid='CE3DE01E5AE544bc81FC1865B58219E5' temploid='{A81E9C63-D58E-460d-B255-61CD688B687E}' v='53'>
+<NAME>
+<TUV xml:lang='en-US'>Invalid key</TUV>
+<TUV xml:lang='de-DE'>Ungültiger Schlüssel</TUV>
+<TUV xml:lang='fr-FR'>Clef invalide</TUV>
+<TUV xml:lang='ja'>無効キー</TUV>
+</NAME>
+<QUAL>Invalid_key</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7212AD290' oid='4106B67512EA471f9081B1B3FDBD8E23' temploid='{AC348CC7-A2A6-4fbd-A2C4-DF2C50883B35}' v='54'>
+<NAME>
+<TUV xml:lang='en-US'>Exceed number of attempts</TUV>
+<TUV xml:lang='de-DE'>Anzahl der Versuche überschritten</TUV>
+<TUV xml:lang='fr-FR'>Nombre de tentatives dépassé</TUV>
+<TUV xml:lang='ja'>Exceed number of attempts</TUV>
+</NAME>
+<QUAL>Exceed_number_of_attempts</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B729C2CD70' oid='B9549A4C3CD44fd8BED5E0425D213C3C' temploid='{714D7B28-3660-4560-B72D-3191FDD7DA29}' v='55'>
+<NAME>
+<TUV xml:lang='en-US'>Required time delay not expired</TUV>
+<TUV xml:lang='de-DE'>Erforderliche Zeitverzögerung nicht eingehalten</TUV>
+<TUV xml:lang='fr-FR'>Required time delay not expired</TUV>
+<TUV xml:lang='ja'>Required time delay not expired</TUV>
+</NAME>
+<QUAL>Required_time_delay_not_expired</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B729C2D040' oid='76B20EBCD84A49b1ADF7145689014E05' temploid='{14B0BA89-73D8-4dae-8590-7ED33468EE49}' v='112'>
+<NAME>
+<TUV xml:lang='en-US'>Upload / Download not accepted</TUV>
+<TUV xml:lang='de-DE'>Upload / Download nicht akzeptiert</TUV>
+<TUV xml:lang='fr-FR'>Upload / Download pas accepté</TUV>
+<TUV xml:lang='ja'>アップロード / ダウンロード 拒否</TUV>
+</NAME>
+<QUAL>Upload_Download_not_accepted</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B729C2CC50' oid='0B704084D2F64d5cA80559E2CA99BA66' temploid='{CF094B6D-9721-4fb7-9DB6-96B37708C3D2}' v='113'>
+<NAME>
+<TUV xml:lang='en-US'>Transfer data suspended</TUV>
+<TUV xml:lang='de-DE'>Datenübertragung unterbrochen</TUV>
+<TUV xml:lang='fr-FR'>Transfert de données interrompu</TUV>
+<TUV xml:lang='ja'>転送データ停止</TUV>
+</NAME>
+<QUAL>Transfer_data_suspended</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B729C2CE90' oid='E8905EEABE5D4f2bAF68F9A50509BC47' temploid='{59AEDE24-6CED-481a-999B-E72B1804942F}' v='114'>
+<NAME>
+<TUV xml:lang='en-US'>General programming failure</TUV>
+<TUV xml:lang='de-DE'>Allgemeiner Programmierfehler</TUV>
+<TUV xml:lang='fr-FR'>Echec de programmation général</TUV>
+<TUV xml:lang='ja'>General programming failure</TUV>
+</NAME>
+<QUAL>General_programming_failure</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721006690' oid='0A8A2DEEDC104f2cA5F7AB4B3DAFB874' temploid='{11F7148B-10F1-4e3b-923C-A4F4E629BF8F}' v='115'>
+<NAME>
+<TUV xml:lang='en-US'>Wrong block sequence counter</TUV>
+<TUV xml:lang='de-DE'>Falscher Block-Reihenfolgezähler</TUV>
+<TUV xml:lang='fr-FR'>Wrong block sequence counter</TUV>
+<TUV xml:lang='ja'>ブロック・シーケンス・カウンタ誤り</TUV>
+</NAME>
+<QUAL>Wrong_block_sequence_counter</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721006060' oid='67F15FADE63D47adA93F891BC6115160' temploid='{D6DF6702-21FE-43a1-981A-C5514EE7E764}' v='120'>
+<NAME>
+<TUV xml:lang='en-US'>Request correctly received - response pending</TUV>
+<TUV xml:lang='de-DE'>Anforderung erhalten - Antwort steht aus</TUV>
+<TUV xml:lang='fr-FR'>Requête reçue correctement - Réponse en attente</TUV>
+<TUV xml:lang='ja'>Request correctly received - response pending （レスポンス・ペンディング）</TUV>
+</NAME>
+<QUAL>Request_correctly_received_response_pending</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721006600' oid='B646AA8816D1456199143BD5EED64964' temploid='{7A789812-B188-463c-BF48-9DA06B9D911B}' v='126'>
+<NAME>
+<TUV xml:lang='en-US'>Subfunction not supported in active session</TUV>
+<TUV xml:lang='de-DE'>Unterfunktion nicht unterstützt in aktiver Sitzung</TUV>
+<TUV xml:lang='fr-FR'>Sous-fonction non supportée en session active</TUV>
+<TUV xml:lang='ja'>現在のセッションではサブファンクション非対応</TUV>
+</NAME>
+<QUAL>Subfunction_not_supported_in_active_session</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7210064E0' oid='3EF649EAABF146bd912AD81E109D1E8F' temploid='{3086D7DA-6702-4cd6-B2A6-5310B08403C5}' v='127'>
+<NAME>
+<TUV xml:lang='en-US'>Service not supported in active session</TUV>
+<TUV xml:lang='de-DE'>Service nicht unterstützt in aktiver Sitzung</TUV>
+<TUV xml:lang='fr-FR'>Service non supporté en session active</TUV>
+<TUV xml:lang='ja'>現在のセッションではサービス非サポート</TUV>
+</NAME>
+<QUAL>Service_not_supported_in_active_session</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721005D00' oid='D87C39837667476f867F83B3DBA75B90' temploid='{90AF5957-BF7C-468d-B203-AE79BEB54C01}' v='129'>
+<NAME>
+<TUV xml:lang='en-US'>RPM too high</TUV>
+<TUV xml:lang='de-DE'>Umdrehungen zu hoch</TUV>
+<TUV xml:lang='fr-FR'>RPM trop élevé</TUV>
+<TUV xml:lang='ja'>エンジン回転数 高</TUV>
+</NAME>
+<QUAL>RPM_too_high</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7210063C0' oid='906594E6C1044d1391A3FD994595D563' temploid='{E4293909-9126-48a1-ACEB-2469415BEBAB}' v='130'>
+<NAME>
+<TUV xml:lang='en-US'>RPM too low</TUV>
+<TUV xml:lang='de-DE'>Umdrehungen zu niedrig</TUV>
+<TUV xml:lang='fr-FR'>RPM trop bas</TUV>
+<TUV xml:lang='ja'>エンジン回転数 低</TUV>
+</NAME>
+<QUAL>RPM_too_low</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721005D90' oid='E7D6567D90CE4e4e8B3A121D0E4C5861' temploid='{653640F9-1C43-48de-A97D-6EFFAE320CE0}' v='131'>
+<NAME>
+<TUV xml:lang='en-US'>Engine is running</TUV>
+<TUV xml:lang='de-DE'>Motor läuft</TUV>
+<TUV xml:lang='fr-FR'>Moteur tournant</TUV>
+<TUV xml:lang='ja'>エンジン動作中</TUV>
+</NAME>
+<QUAL>Engine_is_running</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721005BE0' oid='F4197B468E78428c93A74DB8F4DB149C' temploid='{01B0BE7D-B121-43ed-AD3A-9153CE3FE1F5}' v='132'>
+<NAME>
+<TUV xml:lang='en-US'>Engine is not running</TUV>
+<TUV xml:lang='de-DE'>Motor läuft nicht</TUV>
+<TUV xml:lang='fr-FR'>Moteur non tournant</TUV>
+<TUV xml:lang='ja'>エンジン停止中</TUV>
+</NAME>
+<QUAL>Engine_is_not_running</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721006720' oid='0D781A839EC04ee39932B8A950A51A7F' temploid='{548F6801-AA02-4405-8E40-C8CFB618D938}' v='133'>
+<NAME>
+<TUV xml:lang='en-US'>Engine runtime too low</TUV>
+<TUV xml:lang='de-DE'>Motorlaufzeit zu kurz</TUV>
+<TUV xml:lang='fr-FR'>Runtime moteur trop bas</TUV>
+<TUV xml:lang='ja'>エンジン・ランタイム 低</TUV>
+</NAME>
+<QUAL>Engine_runtime_too_low</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7210067B0' oid='16519B806DE24475A479974A19DE1117' temploid='{8EE4BB4D-F856-4e81-9CF9-94A135C479C5}' v='134'>
+<NAME>
+<TUV xml:lang='en-US'>Temperature too high</TUV>
+<TUV xml:lang='de-DE'>Temperatur zu hoch</TUV>
+<TUV xml:lang='fr-FR'>Température trop élevée</TUV>
+<TUV xml:lang='ja'>温度 高</TUV>
+</NAME>
+<QUAL>Temperature_too_high</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721006840' oid='9BCA848E0AA048ccA6A06F234B5AE2CD' temploid='{B30CCC2D-B54A-493f-B1CF-785CE849B507}' v='135'>
+<NAME>
+<TUV xml:lang='en-US'>Temperature too low</TUV>
+<TUV xml:lang='de-DE'>Temperatur zu niedrig</TUV>
+<TUV xml:lang='fr-FR'>Température trop basse</TUV>
+<TUV xml:lang='ja'>温度 低</TUV>
+</NAME>
+<QUAL>Temperature_too_low</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721006960' oid='FE1BDFBF3AA741729DDCDF0A95FFB6AD' temploid='{8C68B7FE-452D-4939-B238-BE386DA3CD63}' v='136'>
+<NAME>
+<TUV xml:lang='en-US'>Vehicle speed too high</TUV>
+<TUV xml:lang='de-DE'>Fahrzeuggeschwindigkeit zu hoch</TUV>
+<TUV xml:lang='fr-FR'>Vitesse véhicule trop élevée</TUV>
+<TUV xml:lang='ja'>速度 高</TUV>
+</NAME>
+<QUAL>Vehicle_speed_too_high</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721005C70' oid='3EBB39049AEE486e8BC917ECE70AD0B9' temploid='{761A3222-190D-4004-AE7F-E6C52505B62D}' v='137'>
+<NAME>
+<TUV xml:lang='en-US'>Vehicle speed too low</TUV>
+<TUV xml:lang='de-DE'>Fahrzeuggeschwindigkeit zu niedrig</TUV>
+<TUV xml:lang='fr-FR'>Vitesse véhicule trop basse</TUV>
+<TUV xml:lang='ja'>速度 低</TUV>
+</NAME>
+<QUAL>Vehicle_speed_too_low</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721005E20' oid='42C52CAD6D284494BE965B22855BBAC7' temploid='{1A496F29-5395-4efd-BC5F-E9F3BFFC678A}' v='138'>
+<NAME>
+<TUV xml:lang='en-US'>Throttle / Pedal too high</TUV>
+<TUV xml:lang='de-DE'>Drossel / Gaspedal zu hoch</TUV>
+<TUV xml:lang='fr-FR'>Accélérateur / Pédale trop haute</TUV>
+<TUV xml:lang='ja'>スロットル / ペダル 高</TUV>
+</NAME>
+<QUAL>Throttle_Pedal_too_high</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721005AC0' oid='347644AAEB1242d7817C4AD2AE6B03EF' temploid='{CFF9A82A-5EB5-4a03-8E77-5CC93610169C}' v='139'>
+<NAME>
+<TUV xml:lang='en-US'>Throttle / Pedal too low</TUV>
+<TUV xml:lang='de-DE'>Drossel / Gaspedal zu niedrig</TUV>
+<TUV xml:lang='fr-FR'>Accélérateur / Pédale trop basse</TUV>
+<TUV xml:lang='ja'>スロットル/ ペダル 低</TUV>
+</NAME>
+<QUAL>Throttle_Pedal_too_low</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721005EB0' oid='DF0E43BEC68342d0939EA9A7CC811D36' temploid='{4CFD7387-2697-4f8d-A2EE-15EB05ACF2F4}' v='140'>
+<NAME>
+<TUV xml:lang='en-US'>Transmission range not in neutral</TUV>
+<TUV xml:lang='de-DE'>Gang nicht in Stellung "Neutral"</TUV>
+<TUV xml:lang='fr-FR'>Transmission range not in neutral</TUV>
+<TUV xml:lang='ja'>トランスミッション・レンジがニュートラルでない</TUV>
+</NAME>
+<QUAL>Transmission_range_not_in_neutral</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7210068D0' oid='44F9684537DA43edB50C7555F4C91DF9' temploid='{85D1358F-B6D4-4202-AE7A-0797FD4902D8}' v='141'>
+<NAME>
+<TUV xml:lang='en-US'>Transmission range not in gear</TUV>
+<TUV xml:lang='de-DE'>Gang nicht eingelegt</TUV>
+<TUV xml:lang='fr-FR'>Transmission range not in gear</TUV>
+<TUV xml:lang='ja'>トランスミッション・レンジがギヤでない</TUV>
+</NAME>
+<QUAL>Transmission_range_not_in_gear</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7210062A0' oid='AF9A66CCF693485bA6B3E0E4A3DBCA00' temploid='{559B40CA-AC21-4854-8228-D399FBF79CF6}' v='143'>
+<NAME>
+<TUV xml:lang='en-US'>Break switch(es) not closed</TUV>
+<TUV xml:lang='de-DE'>Bremsschalter nicht geschlossen</TUV>
+<TUV xml:lang='fr-FR'>Break switch(es) not closed</TUV>
+<TUV xml:lang='ja'>ブレーキ・スイッチ オープン中</TUV>
+</NAME>
+<QUAL>Break_switch_es_not_closed</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721005B50' oid='ED5AFCE92D2B448c936A94CB179F2374' temploid='{B56A9488-D4D7-4f43-92E4-8904AB663BC9}' v='144'>
+<NAME>
+<TUV xml:lang='en-US'>Shifter lever not in park</TUV>
+<TUV xml:lang='de-DE'>Schalthebel nicht in Stellung "Parken"</TUV>
+<TUV xml:lang='fr-FR'>Levier de vitesse pas en position Park</TUV>
+<TUV xml:lang='ja'>シフター・レベルがパークでない</TUV>
+</NAME>
+<QUAL>Shifter_lever_not_in_park</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721005F40' oid='88EF17E09B0F489fA733E925567E8226' temploid='{8AF85FBE-4E9E-4a66-AC5E-E77DCFE48B92}' v='145'>
+<NAME>
+<TUV xml:lang='en-US'>Torque converter clutch locked</TUV>
+<TUV xml:lang='de-DE'>Kupplung des Drehmomentwandlers gesperrt</TUV>
+<TUV xml:lang='fr-FR'>Torque converter clutch locked</TUV>
+<TUV xml:lang='ja'>トルク・コンバータ・クラッチ ロック中</TUV>
+</NAME>
+<QUAL>Torque_converter_clutch_locked</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B721005FD0' oid='2F39C43531154790818C06B9FEF2DD9D' temploid='{EB0E66D4-4A22-484a-9F4B-6062AAA6D99F}' v='146'>
+<NAME>
+<TUV xml:lang='en-US'>Voltage too high</TUV>
+<TUV xml:lang='de-DE'>Spannung zu hoch</TUV>
+<TUV xml:lang='fr-FR'>Sur Tension</TUV>
+<TUV xml:lang='ja'>電圧過大</TUV>
+</NAME>
+<QUAL>Voltage_too_high</QUAL>
+</NEGRESCODE>
+<NEGRESCODE id='_000002B7210060F0' oid='0C7B16AE50E64bf89D7C4209630081FB' temploid='{DF09EF41-0FF1-413e-840E-093A26BDD105}' v='147'>
+<NAME>
+<TUV xml:lang='en-US'>Voltage too low</TUV>
+<TUV xml:lang='de-DE'>Spannung zu niedrig</TUV>
+<TUV xml:lang='fr-FR'>Sous Tension</TUV>
+<TUV xml:lang='ja'>電圧過小</TUV>
+</NAME>
+<QUAL>Voltage_too_low</QUAL>
+</NEGRESCODE>
+</NEGRESCODES>
+<STATEGROUPS>
+<STATEGROUP oid='4C7D538F56F64ede8E79581E88F25F06' temploid='{79248E0C-ACAC-4b55-B40C-5CB726C21152}' spec='session'>
+<NAME>
+<TUV xml:lang='en-US'>Session</TUV>
+<TUV xml:lang='de-DE'>Sitzungen</TUV>
+<TUV xml:lang='fr-FR'>Session</TUV>
+<TUV xml:lang='ja'>セッション</TUV>
+</NAME>
+<QUAL>Session</QUAL>
+<STATE oid='77C92A3073664630AB99577AC7936B0E' temploid='{800CCB35-12C8-4971-A9D3-4C47BF911EC5}'>
+<NAME>
+<TUV xml:lang='en-US'>Default</TUV>
+<TUV xml:lang='de-DE'>Standard</TUV>
+<TUV xml:lang='fr-FR'>Default</TUV>
+<TUV xml:lang='ja'>デフォルト</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>{P2=25, P2Ex=2000}</TUV>
+<TUV xml:lang='de-DE'>{P2=25, P2Ex=2000}</TUV>
+<TUV xml:lang='fr-FR'>{P2=25, P2Ex=2000}</TUV>
+<TUV xml:lang='ja'>{P2=25, P2Ex=2000}</TUV>
+</DESC>
+<QUAL>Default</QUAL>
+</STATE>
+<STATE oid='B0EACEBA5FEB4aa38512F4C421B9958E' temploid='{4454F7E7-6CD8-4a7e-8A9F-717437C00161}'>
+<NAME>
+<TUV xml:lang='en-US'>Programming</TUV>
+<TUV xml:lang='de-DE'>Programmierung</TUV>
+<TUV xml:lang='fr-FR'>Programmation</TUV>
+<TUV xml:lang='ja'>プログラミング</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>{P2=25, P2Ex=2000}</TUV>
+<TUV xml:lang='de-DE'>{P2=25, P2Ex=2000}</TUV>
+<TUV xml:lang='fr-FR'>{P2=25, P2Ex=2000}</TUV>
+<TUV xml:lang='ja'>{P2=25, P2Ex=2000}</TUV>
+</DESC>
+<QUAL>Programming</QUAL>
+</STATE>
+<STATE oid='24E06C0627794d7b81E724A6E4AA39AA' temploid='{9D13BD42-38B4-430b-B0B4-8D70F4C4FB35}'>
+<NAME>
+<TUV xml:lang='en-US'>Extended</TUV>
+<TUV xml:lang='de-DE'>Erweitert</TUV>
+<TUV xml:lang='fr-FR'>Etendu</TUV>
+<TUV xml:lang='ja'>拡張</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>{P2=25, P2Ex=2000}</TUV>
+<TUV xml:lang='de-DE'>{P2=25, P2Ex=2000}</TUV>
+<TUV xml:lang='fr-FR'>{P2=25, P2Ex=2000}</TUV>
+<TUV xml:lang='ja'>{P2=25, P2Ex=2000}</TUV>
+</DESC>
+<QUAL>Extended</QUAL>
+</STATE>
+<NEGRESCODEPROXY idref='_000002B721006600'/>
+</STATEGROUP>
+<STATEGROUP oid='3ADEC275E16C4992AB7523DC6C8DA46A' temploid='{66020251-8683-4b77-B92D-F64533BA7CFB}' spec='security'>
+<NAME>
+<TUV xml:lang='en-US'>SecurityAccess</TUV>
+<TUV xml:lang='de-DE'>Sicherheitszugriff</TUV>
+<TUV xml:lang='fr-FR'>SecurityAccess</TUV>
+<TUV xml:lang='ja'>セキュリティ アクセス</TUV>
+</NAME>
+<QUAL>SecurityAccess</QUAL>
+<STATE oid='9ADF8EBDF39246be843FE9C3CAE89CCA' temploid='{87277718-912E-4d13-A8C6-4AD385C8D121}'>
+<NAME>
+<TUV xml:lang='en-US'>Locked</TUV>
+<TUV xml:lang='de-DE'>Gesperrt</TUV>
+<TUV xml:lang='fr-FR'>Locked</TUV>
+<TUV xml:lang='ja'>Locked</TUV>
+</NAME>
+<QUAL>Locked</QUAL>
+</STATE>
+<STATE oid='1B5D0FC88CC14d86859E86C7AAE2FE2C' temploid='{D7FB18DD-DF26-4055-9BF9-C197DE057C8B}'>
+<NAME>
+<TUV xml:lang='en-US'>Unlocked L1</TUV>
+<TUV xml:lang='de-DE'>Entsperrt L1</TUV>
+<TUV xml:lang='fr-FR'>Unlocked L1</TUV>
+<TUV xml:lang='ja'>Unlocked L1</TUV>
+</NAME>
+<QUAL>UnlockedL1</QUAL>
+</STATE>
+<NEGRESCODEPROXY idref='_000002B7212ACC60'/>
+</STATEGROUP>
+</STATEGROUPS>
+<VCKMGR vckmode='none' vckmin='0' vckmax='0' vcknext='0'/>
+<DATATYPES>
+<IDENT id='_000002B729AFC080' oid='7061D40BAE884141A03A811E77D23D9E' temploid='{314FFC95-0532-4f9f-B3A5-885EE7EC4636}' bm='255'>
+<NAME>
+<TUV xml:lang='en-US'>HexDump (1 Byte)</TUV>
+<TUV xml:lang='de-DE'>HexDump (1 Byte)</TUV>
+<TUV xml:lang='fr-FR'>HexDump (1 octet)</TUV>
+<TUV xml:lang='ja'>HexDump (1 Byte)</TUV>
+</NAME>
+<QUAL>HexDump_1Byte</QUAL>
+<CVALUETYPE bl='8' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='8' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+</IDENT>
+<IDENT id='_000002B729AFC1B0' oid='C6A4DC1DA2724450866FA4E9427A9511' temploid='{D06EF0D6-509C-49db-8DB7-CD7948BDAA7A}' bm='65535'>
+<NAME>
+<TUV xml:lang='en-US'>HexDump (2 Byte)</TUV>
+<TUV xml:lang='de-DE'>HexDump (2 Byte)</TUV>
+<TUV xml:lang='fr-FR'>HexDump (2 octets)</TUV>
+<TUV xml:lang='ja'>HexDump (2 Byte)</TUV>
+</NAME>
+<QUAL>HexDump_2Byte</QUAL>
+<CVALUETYPE bl='16' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+</IDENT>
+<IDENT id='_000002B729AFF000' oid='55E4D227281F4a01B2AE7E3541736E1C' temploid='{60A54528-7A59-495e-9E11-DC8EC878552A}' bm='16777215'>
+<NAME>
+<TUV xml:lang='en-US'>HexDump (3 Byte)</TUV>
+<TUV xml:lang='de-DE'>HexDump (3 Byte)</TUV>
+<TUV xml:lang='fr-FR'>HexDump (3 octets)</TUV>
+<TUV xml:lang='ja'>HexDump (3 Byte)</TUV>
+</NAME>
+<QUAL>HexDump_3Byte</QUAL>
+<CVALUETYPE bl='24' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='24' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+</IDENT>
+<IDENT id='_000002B729AFCB30' oid='96801D1B32F94976A88946CB9FF7E9E0' temploid='{D665B1AF-6CFD-4d67-9D6F-8366F05EDE61}' bm='4294967295'>
+<NAME>
+<TUV xml:lang='en-US'>HexDump (4 Byte)</TUV>
+<TUV xml:lang='de-DE'>HexDump (4 Byte)</TUV>
+<TUV xml:lang='fr-FR'>HexDump (4 octets)</TUV>
+<TUV xml:lang='ja'>HexDump (4 Byte)</TUV>
+</NAME>
+<QUAL>HexDump_4Byte</QUAL>
+<CVALUETYPE bl='32' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='32' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+</IDENT>
+<IDENT id='_000002B729AFE7B0' oid='2BF9BADFF60A4911B4DA3DB9CB9ACE1A' temploid='{59BF6F66-7E74-4fb4-BB41-B6100ED33E03}' bm='255' xauth='me'>
+<NAME>
+<TUV xml:lang='en-US'>DTC Statusbyte</TUV>
+<TUV xml:lang='de-DE'>DTC-Statusbyte</TUV>
+<TUV xml:lang='fr-FR'>DTC Statusbyte</TUV>
+<TUV xml:lang='ja'>DTCステータス･バイト</TUV>
+</NAME>
+<QUAL>DtcStatusbyte</QUAL>
+<CVALUETYPE bl='8' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='8' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+</IDENT>
+<TEXTTBL id='_000002B72771D840' oid='F5EE01596A0F475e873A292968B41916' temploid='{963F865F-370E-4e3c-ABD2-6FD68FBA73A8}' bm='1' xauth='me'>
+<NAME>
+<TUV xml:lang='en-US'>Test failed</TUV>
+<TUV xml:lang='de-DE'>Test failed</TUV>
+<TUV xml:lang='fr-FR'>Test en échec</TUV>
+<TUV xml:lang='ja'>テスト失敗</TUV>
+</NAME>
+<QUAL>TestFailed</QUAL>
+<CVALUETYPE bl='1' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='0' e='0'>
+<TEXT>
+<TUV xml:lang='en-US'>false</TUV>
+<TUV xml:lang='de-DE'>falsch</TUV>
+<TUV xml:lang='fr-FR'>faux</TUV>
+<TUV xml:lang='ja'>偽</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='1' e='1'>
+<TEXT>
+<TUV xml:lang='en-US'>true</TUV>
+<TUV xml:lang='de-DE'>wahr</TUV>
+<TUV xml:lang='fr-FR'>vrai</TUV>
+<TUV xml:lang='ja'>真</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<TEXTTBL id='_000002B72771D480' oid='C52692541EA74d8e93CC4626ED5867A1' temploid='{462A8A5F-AC72-48c9-8E91-6B8872EDDA4F}' bm='1' xauth='me'>
+<NAME>
+<TUV xml:lang='en-US'>Test failed this monitoring cycle</TUV>
+<TUV xml:lang='de-DE'>Test failed this monitoring cycle</TUV>
+<TUV xml:lang='fr-FR'>Test en échec dans ce cycle</TUV>
+<TUV xml:lang='ja'>このモニタリング・サイクルではテスト失敗</TUV>
+</NAME>
+<QUAL>TestFailedThisMonitoringCycle</QUAL>
+<CVALUETYPE bl='1' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='0' e='0'>
+<TEXT>
+<TUV xml:lang='en-US'>false</TUV>
+<TUV xml:lang='de-DE'>falsch</TUV>
+<TUV xml:lang='fr-FR'>faux</TUV>
+<TUV xml:lang='ja'>偽</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='1' e='1'>
+<TEXT>
+<TUV xml:lang='en-US'>true</TUV>
+<TUV xml:lang='de-DE'>wahr</TUV>
+<TUV xml:lang='fr-FR'>vrai</TUV>
+<TUV xml:lang='ja'>真</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<TEXTTBL id='_000002B72771EEC0' oid='98677E151BD44388A87C11CB5AA60813' temploid='{4E82C1E0-2D2E-4373-A708-BAC0507427C0}' bm='1' xauth='me'>
+<NAME>
+<TUV xml:lang='en-US'>Pending DTC</TUV>
+<TUV xml:lang='de-DE'>Pending DTC</TUV>
+<TUV xml:lang='fr-FR'>Défauts en attente</TUV>
+<TUV xml:lang='ja'>ペンディング DTC</TUV>
+</NAME>
+<QUAL>PendingDtc</QUAL>
+<CVALUETYPE bl='1' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='0' e='0'>
+<TEXT>
+<TUV xml:lang='en-US'>false</TUV>
+<TUV xml:lang='de-DE'>falsch</TUV>
+<TUV xml:lang='fr-FR'>faux</TUV>
+<TUV xml:lang='ja'>偽</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='1' e='1'>
+<TEXT>
+<TUV xml:lang='en-US'>true</TUV>
+<TUV xml:lang='de-DE'>wahr</TUV>
+<TUV xml:lang='fr-FR'>vrai</TUV>
+<TUV xml:lang='ja'>真</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<TEXTTBL id='_000002B72771DE80' oid='9DCBEDFB02AF4e5cA53BAE384BB4C72F' temploid='{6462A483-CDEE-4a8a-A9D0-3D0AEBC76324}' bm='1' xauth='me'>
+<NAME>
+<TUV xml:lang='en-US'>Confirmed DTC</TUV>
+<TUV xml:lang='de-DE'>Confirmed DTC</TUV>
+<TUV xml:lang='fr-FR'>Défauts confirmés</TUV>
+<TUV xml:lang='ja'>コンファームド DTC</TUV>
+</NAME>
+<QUAL>ConfirmedDtc</QUAL>
+<CVALUETYPE bl='1' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='0' e='0'>
+<TEXT>
+<TUV xml:lang='en-US'>false</TUV>
+<TUV xml:lang='de-DE'>falsch</TUV>
+<TUV xml:lang='fr-FR'>faux</TUV>
+<TUV xml:lang='ja'>偽</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='1' e='1'>
+<TEXT>
+<TUV xml:lang='en-US'>true</TUV>
+<TUV xml:lang='de-DE'>wahr</TUV>
+<TUV xml:lang='fr-FR'>vrai</TUV>
+<TUV xml:lang='ja'>真</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<TEXTTBL id='_000002B72771C080' oid='B2F11B9F31274f42B1D58D91E83D123B' temploid='{D724A573-CC60-40ee-BC0E-D0BF41CA03E3}' bm='1' xauth='me'>
+<NAME>
+<TUV xml:lang='en-US'>Test not completed since last clear</TUV>
+<TUV xml:lang='de-DE'>Test not completed since last clear</TUV>
+<TUV xml:lang='fr-FR'>Le test n'a pas été terminé depuis le dernier effacement</TUV>
+<TUV xml:lang='ja'>最後のクリア以降、テスト未完了</TUV>
+</NAME>
+<QUAL>TestNotCompletedSinceLastClear</QUAL>
+<CVALUETYPE bl='1' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='0' e='0'>
+<TEXT>
+<TUV xml:lang='en-US'>false</TUV>
+<TUV xml:lang='de-DE'>falsch</TUV>
+<TUV xml:lang='fr-FR'>faux</TUV>
+<TUV xml:lang='ja'>偽</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='1' e='1'>
+<TEXT>
+<TUV xml:lang='en-US'>true</TUV>
+<TUV xml:lang='de-DE'>wahr</TUV>
+<TUV xml:lang='fr-FR'>vrai</TUV>
+<TUV xml:lang='ja'>真</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<TEXTTBL id='_000002B72771DAC0' oid='F1FDEC378A744594836012A767989AD7' temploid='{29819C4C-B223-466c-BA5E-BEAAF1BF7FFE}' bm='1' xauth='me'>
+<NAME>
+<TUV xml:lang='en-US'>Test failed since last clear</TUV>
+<TUV xml:lang='de-DE'>Test failed since last clear</TUV>
+<TUV xml:lang='fr-FR'>Le test a échoué depuis le dernier effacement</TUV>
+<TUV xml:lang='ja'>最後のクリア以降、テスト失敗</TUV>
+</NAME>
+<QUAL>TestFailedSinceLastClear</QUAL>
+<CVALUETYPE bl='1' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='0' e='0'>
+<TEXT>
+<TUV xml:lang='en-US'>false</TUV>
+<TUV xml:lang='de-DE'>falsch</TUV>
+<TUV xml:lang='fr-FR'>faux</TUV>
+<TUV xml:lang='ja'>偽</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='1' e='1'>
+<TEXT>
+<TUV xml:lang='en-US'>true</TUV>
+<TUV xml:lang='de-DE'>wahr</TUV>
+<TUV xml:lang='fr-FR'>vrai</TUV>
+<TUV xml:lang='ja'>真</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<TEXTTBL id='_000002B72771EB00' oid='0DC8E4DC8FCF4945919293BEEB4C41B1' temploid='{D90278CF-9800-4958-83C2-D76297C5FD10}' bm='1' xauth='me'>
+<NAME>
+<TUV xml:lang='en-US'>Test not completed this monitoring cycle</TUV>
+<TUV xml:lang='de-DE'>Test not completed this monitoring cycle</TUV>
+<TUV xml:lang='fr-FR'>Test non terminé dans ce cycle</TUV>
+<TUV xml:lang='ja'>このモニタリング・サイクルではテスト未完了</TUV>
+</NAME>
+<QUAL>TestNotCompletedThisMonitoringCycle</QUAL>
+<CVALUETYPE bl='1' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='0' e='0'>
+<TEXT>
+<TUV xml:lang='en-US'>false</TUV>
+<TUV xml:lang='de-DE'>falsch</TUV>
+<TUV xml:lang='fr-FR'>faux</TUV>
+<TUV xml:lang='ja'>偽</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='1' e='1'>
+<TEXT>
+<TUV xml:lang='en-US'>true</TUV>
+<TUV xml:lang='de-DE'>wahr</TUV>
+<TUV xml:lang='fr-FR'>vrai</TUV>
+<TUV xml:lang='ja'>真</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<TEXTTBL id='_000002B72771C580' oid='64E49CB124194a89BC1F9467319A39A6' temploid='{4F753295-C5F6-48ee-B8A9-4078327E3C3F}' bm='1' xauth='me'>
+<NAME>
+<TUV xml:lang='en-US'>Warning indicator requested</TUV>
+<TUV xml:lang='de-DE'>Warning indicator requested</TUV>
+<TUV xml:lang='fr-FR'>Attention indicateur attendu</TUV>
+<TUV xml:lang='ja'>Warning indicator requested</TUV>
+</NAME>
+<QUAL>WarningIndicatorRequested</QUAL>
+<CVALUETYPE bl='1' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='0' e='0'>
+<TEXT>
+<TUV xml:lang='en-US'>false</TUV>
+<TUV xml:lang='de-DE'>falsch</TUV>
+<TUV xml:lang='fr-FR'>faux</TUV>
+<TUV xml:lang='ja'>偽</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='1' e='1'>
+<TEXT>
+<TUV xml:lang='en-US'>true</TUV>
+<TUV xml:lang='de-DE'>wahr</TUV>
+<TUV xml:lang='fr-FR'>vrai</TUV>
+<TUV xml:lang='ja'>真</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<IDENT id='_000002B729AFDE30' oid='706BAE1151E54c57B0E46FB5BCC29E21' temploid='{96FF5882-E69B-4039-8F30-4EDF0AA6D073}' bm='65535'>
+<NAME>
+<TUV xml:lang='en-US'>Unsigned (2 Byte)</TUV>
+<TUV xml:lang='de-DE'>Unsigned (2 Byte)</TUV>
+<TUV xml:lang='fr-FR'>Non signé (2 octets)</TUV>
+<TUV xml:lang='ja'>Unsigned (2 Byte)</TUV>
+</NAME>
+<QUAL>Unsigned_2Byte</QUAL>
+<CVALUETYPE bl='16' bo='21' enc='uns' sig='0' df='dec' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='uns' sig='0' df='dec' qty='atom' sz='no' minsz='1' maxsz='1'/>
+</IDENT>
+<LINCOMP id='_000002B7298F1E10' oid='E21C34E15A6F4a32BFD9762E2FC22D01' temploid='{295CD9CF-A9B0-4c8d-9754-9183F9389C5C}' bm='255'>
+<NAME>
+<TUV xml:lang='en-US'>Voltage (1 Byte)</TUV>
+<TUV xml:lang='de-DE'>Spannung (1 Byte)</TUV>
+<TUV xml:lang='fr-FR'>Tension (1 octet)</TUV>
+<TUV xml:lang='ja'>電圧値 (1Byte)</TUV>
+</NAME>
+<QUAL>Voltage</QUAL>
+<CVALUETYPE bl='8' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='0' maxsz='255'/>
+<PVALUETYPE bl='64' bo='21' enc='dbl' sig='1' df='flt' qty='atom' sz='no' minsz='0' maxsz='255'>
+<UNIT>V</UNIT>
+</PVALUETYPE>
+<COMP f='0.1' o='0'>
+</COMP>
+</LINCOMP>
+<LINCOMP id='_000002B7298F2F20' oid='70F225CDCB3B46bfB63F2425D379D540' temploid='{BFDB6863-26B2-4408-996A-27EFCBC1B0DA}' bm='255'>
+<NAME>
+<TUV xml:lang='en-US'>Current (1 Byte)</TUV>
+<TUV xml:lang='de-DE'>Strom (1 Byte)</TUV>
+<TUV xml:lang='fr-FR'>Intensité (1 octet)</TUV>
+<TUV xml:lang='ja'>電流値 (1Byte)</TUV>
+</NAME>
+<QUAL>Current</QUAL>
+<CVALUETYPE bl='8' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='0' maxsz='255'/>
+<PVALUETYPE bl='64' bo='21' enc='dbl' sig='1' df='flt' qty='atom' sz='no' minsz='0' maxsz='255'>
+<UNIT>A</UNIT>
+</PVALUETYPE>
+<COMP f='0.1' o='0'>
+</COMP>
+</LINCOMP>
+<LINCOMP id='_000002B7298F25F0' oid='5B0DAC2B37A944ebBE412AF0250E0F68' temploid='{1932D254-2EF7-4f7c-B73E-FC637672715A}' bm='65535'>
+<NAME>
+<TUV xml:lang='en-US'>Resistance (2 Byte)</TUV>
+<TUV xml:lang='de-DE'>Widerstand (2 Byte)</TUV>
+<TUV xml:lang='fr-FR'>Résistance (2 octet)</TUV>
+<TUV xml:lang='ja'>抵抗値 (2Byte)</TUV>
+</NAME>
+<QUAL>Resistance</QUAL>
+<CVALUETYPE bl='16' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='0' maxsz='255'/>
+<PVALUETYPE bl='64' bo='21' enc='dbl' sig='0' df='dec' qty='atom' sz='no' minsz='0' maxsz='255'>
+<UNIT>Ohm</UNIT>
+</PVALUETYPE>
+<COMP f='10' o='0'>
+</COMP>
+</LINCOMP>
+<TEXTTBL id='_000002B727719EC0' oid='445E2F6325934104A64E65B5F81E983D' temploid='{F4515A73-5E1A-450d-8408-683CA15A5982}' bm='15'>
+<NAME>
+<TUV xml:lang='en-US'>Country Code (4 Bit)</TUV>
+<TUV xml:lang='de-DE'>Ländervariante (4 Bit)</TUV>
+<TUV xml:lang='fr-FR'>Code pays (4 bits)</TUV>
+<TUV xml:lang='ja'>国コード (4Bit)</TUV>
+</NAME>
+<QUAL>CountryCode</QUAL>
+<CVALUETYPE bl='4' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='0' e='0'>
+<TEXT>
+<TUV xml:lang='en-US'>(not defined)</TUV>
+<TUV xml:lang='de-DE'>(nicht angegeben)</TUV>
+<TUV xml:lang='fr-FR'>(non défini)</TUV>
+<TUV xml:lang='ja'>（未定義）</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='1' e='1'>
+<TEXT>
+<TUV xml:lang='en-US'>Europe</TUV>
+<TUV xml:lang='de-DE'>Europa</TUV>
+<TUV xml:lang='fr-FR'>Europe</TUV>
+<TUV xml:lang='ja'>欧州</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='2' e='2'>
+<TEXT>
+<TUV xml:lang='en-US'>USA</TUV>
+<TUV xml:lang='de-DE'>USA</TUV>
+<TUV xml:lang='fr-FR'>USA</TUV>
+<TUV xml:lang='ja'>米国</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='3' e='3'>
+<TEXT>
+<TUV xml:lang='en-US'>Japan</TUV>
+<TUV xml:lang='de-DE'>Japan</TUV>
+<TUV xml:lang='fr-FR'>Japon</TUV>
+<TUV xml:lang='ja'>日本</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='4' e='4'>
+<TEXT>
+<TUV xml:lang='en-US'>(others)</TUV>
+<TUV xml:lang='de-DE'>(andere)</TUV>
+<TUV xml:lang='fr-FR'>(autres)</TUV>
+<TUV xml:lang='ja'>（その他）</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='5' e='15'>
+<TEXT>
+<TUV xml:lang='en-US'>reserved</TUV>
+<TUV xml:lang='de-DE'>reserviert</TUV>
+<TUV xml:lang='fr-FR'>reservé</TUV>
+<TUV xml:lang='ja'>予約</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<TEXTTBL id='_000002B727718E80' oid='424F2A9EAC934f45852AA05C2055C665' temploid='{FDD48A34-C339-473b-BFB9-A3A37758DEF5}' bm='15'>
+<NAME>
+<TUV xml:lang='en-US'>Vehicle type (4 Bit)</TUV>
+<TUV xml:lang='de-DE'>Fahrzeugtyp (4 Bit)</TUV>
+<TUV xml:lang='fr-FR'>Type de véhicule (4 bits)</TUV>
+<TUV xml:lang='ja'>車両タイプ(4Bit)</TUV>
+</NAME>
+<QUAL>VehicleType</QUAL>
+<CVALUETYPE bl='4' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='0' e='0'>
+<TEXT>
+<TUV xml:lang='en-US'>(not defined)</TUV>
+<TUV xml:lang='de-DE'>(nicht angegeben)</TUV>
+<TUV xml:lang='fr-FR'>(non défini)</TUV>
+<TUV xml:lang='ja'>（未定義）</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='1' e='1'>
+<TEXT>
+<TUV xml:lang='en-US'>Coupe</TUV>
+<TUV xml:lang='de-DE'>Coupe</TUV>
+<TUV xml:lang='fr-FR'>Coupe</TUV>
+<TUV xml:lang='ja'>クーペ</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='2' e='2'>
+<TEXT>
+<TUV xml:lang='en-US'>Sedan</TUV>
+<TUV xml:lang='de-DE'>Limousine</TUV>
+<TUV xml:lang='fr-FR'>Sedan</TUV>
+<TUV xml:lang='ja'>セダン</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='3' e='3'>
+<TEXT>
+<TUV xml:lang='en-US'>Transporter</TUV>
+<TUV xml:lang='de-DE'>Kombi</TUV>
+<TUV xml:lang='fr-FR'>Transport</TUV>
+<TUV xml:lang='ja'>トランスポーター</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='4' e='15'>
+<TEXT>
+<TUV xml:lang='en-US'>(reserved)</TUV>
+<TUV xml:lang='de-DE'>(reserviert)</TUV>
+<TUV xml:lang='fr-FR'>(réservé)</TUV>
+<TUV xml:lang='ja'>（予約）</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<LINCOMP id='_000002B7298F0910' oid='52B7FBC6E2FC431682B16877F3DCAC44' temploid='{FF7D29A7-26C7-497c-A647-D14342C8497E}' bm='65535'>
+<NAME>
+<TUV xml:lang='en-US'>Engine Speed (2 Byte)</TUV>
+<TUV xml:lang='de-DE'>Motorgeschwindigkeit (2 Byte)</TUV>
+<TUV xml:lang='fr-FR'>Régime moteur (2 octets)</TUV>
+<TUV xml:lang='ja'>エンジン回転数 (2Byte)</TUV>
+</NAME>
+<QUAL>EngineSpeed2Byte</QUAL>
+<CVALUETYPE bl='16' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='0' maxsz='255'/>
+<PVALUETYPE bl='64' bo='21' enc='dbl' sig='0' df='dec' qty='atom' sz='no' minsz='0' maxsz='255'>
+<UNIT>RPM</UNIT>
+</PVALUETYPE>
+<COMP f='1' o='0'>
+</COMP>
+</LINCOMP>
+<TEXTTBL id='_000002B727719740' oid='53FC2F0BC58B4fe1A631D2CF6E28821A' temploid='{1130C14A-9D03-4472-AADE-65898E9C88E7}' bm='255' xauth='m'>
+<NAME>
+<TUV xml:lang='en-US'>SID-RQ-NR</TUV>
+<TUV xml:lang='de-DE'>SID-RQ-NR</TUV>
+<TUV xml:lang='fr-FR'>SID-RQ-NR</TUV>
+<TUV xml:lang='ja'>SID-RQ-NR</TUV>
+</NAME>
+<QUAL>SID_RQ_NR</QUAL>
+<CVALUETYPE bl='8' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='0' e='255'>
+<TEXT>
+<TUV xml:lang='en-US'>0x00..0xFF</TUV>
+<TUV xml:lang='de-DE'>0x00..0xFF</TUV>
+<TUV xml:lang='fr-FR'>0x00..0xFF</TUV>
+<TUV xml:lang='ja'>0x00..0xFF</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<TEXTTBL id='_000002B727717BC0' oid='883F73CC9B1742029A7A3BD9DA77A4F6' temploid='D06E54A56C4347e3837E11D54CAF45A2' bm='255'>
+<NAME>
+<TUV xml:lang='en-US'>Address and Length Format Identifier</TUV>
+<TUV xml:lang='de-DE'>Address and Length Format Identifier</TUV>
+<TUV xml:lang='fr-FR'>Address and Length Format Identifier</TUV>
+<TUV xml:lang='ja'>Address and Length Format Identifier</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US'>Examples for addressAndLengthFormatIdentifier parameter values regarding to ISO 14229-1 Annex G.1</TUV>
+<TUV xml:lang='de-DE'>Beispieldaten für AddressAndLengthFormatIdentifier Parameter gemäß ISO 14229-1 Annex G.1</TUV>
+<TUV xml:lang='fr-FR'>Examples for addressAndLengthFormatIdentifier parameter values regarding to ISO 14229-1 Annex G.1</TUV>
+<TUV xml:lang='ja'>Examples for addressAndLengthFormatIdentifier parameter values regarding to ISO 14229-1 Annex G.1</TUV>
+</DESC>
+<QUAL>AddressAndLengthFormatIdentifier</QUAL>
+<CVALUETYPE bl='8' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='17' e='17'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 1 byte, memorySize 1 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 1 byte, memorySize 1 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 1 byte, memorySize 1 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 1 byte, memorySize 1 byte</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='18' e='18'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 2 byte, memorySize 1 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 2 byte, memorySize 1 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 2 byte, memorySize 1 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 2 byte, memorySize 1 byte</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='19' e='19'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 3 byte, memorySize 1 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 3 byte, memorySize 1 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 3 byte, memorySize 1 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 3 byte, memorySize 1 byte</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='33' e='33'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 1 byte, memorySize 2 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 1 byte, memorySize 2 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 1 byte, memorySize 2 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 1 byte, memorySize 2 byte</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='34' e='34'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 2 byte, memorySize 2 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 2 byte, memorySize 2 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 2 byte, memorySize 2 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 2 byte, memorySize 2 byte</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='35' e='35'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 3 byte, memorySize 2 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 3 byte, memorySize 2 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 3 byte, memorySize 2 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 3 byte, memorySize 2 byte</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='49' e='49'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 1 byte, memorySize 3 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 1 byte, memorySize 3 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 1 byte, memorySize 3 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 1 byte, memorySize 3 byte</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='50' e='50'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 2 byte, memorySize 3 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 2 byte, memorySize 3 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 2 byte, memorySize 3 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 2 byte, memorySize 3 byte</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='51' e='51'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 3 byte, memorySize 3 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 3 byte, memorySize 3 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 3 byte, memorySize 3 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 3 byte, memorySize 3 byte</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='65' e='65'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 1 byte, memorySize 4 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 1 byte, memorySize 4 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 1 byte, memorySize 4 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 1 byte, memorySize 4 byte</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='66' e='66'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 2 byte, memorySize 4 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 2 byte, memorySize 4 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 2 byte, memorySize 4 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 2 byte, memorySize 4 byte</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='67' e='67'>
+<TEXT>
+<TUV xml:lang='en-US'>Length: memoryAddress 3 byte, memorySize 4 byte</TUV>
+<TUV xml:lang='de-DE'>Length: memoryAddress 3 byte, memorySize 4 byte</TUV>
+<TUV xml:lang='fr-FR'>Length: memoryAddress 3 byte, memorySize 4 byte</TUV>
+<TUV xml:lang='ja'>Length: memoryAddress 3 byte, memorySize 4 byte</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+<TEXTTBL id='_000002B72771A3C0' oid='9C29D7F310D24035B8A5D06D5BCC0EE9' temploid='78050EF48AFD47f48809EFDFA2216F21' bm='65535'>
+<NAME>
+<TUV xml:lang='en-US'>DataIdentifier</TUV>
+<TUV xml:lang='de-DE'>DataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>DataIdentifier</TUV>
+<TUV xml:lang='ja'>DataIdentifier</TUV>
+</NAME>
+<QUAL>DataIdentifier</QUAL>
+<CVALUETYPE bl='16' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='1' maxsz='1'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TEXTMAP s='256' e='61439'>
+<TEXT>
+<TUV xml:lang='en-US'>VehicleManufacturerSpecific</TUV>
+<TUV xml:lang='de-DE'>VehicleManufacturerSpecific</TUV>
+<TUV xml:lang='fr-FR'>VehicleManufacturerSpecific</TUV>
+<TUV xml:lang='ja'>VehicleManufacturerSpecific</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61440' e='61455'>
+<TEXT>
+<TUV xml:lang='en-US'>networkConfigurationDataForTractorTrailerApplicationDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>networkConfigurationDataForTractorTrailerApplicationDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>networkConfigurationDataForTractorTrailerApplicationDataIdentifier</TUV>
+<TUV xml:lang='ja'>networkConfigurationDataForTractorTrailerApplicationDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61456' e='61695'>
+<TEXT>
+<TUV xml:lang='en-US'>vehicleManufacturerSpecific</TUV>
+<TUV xml:lang='de-DE'>vehicleManufacturerSpecific</TUV>
+<TUV xml:lang='fr-FR'>vehicleManufacturerSpecific</TUV>
+<TUV xml:lang='ja'>vehicleManufacturerSpecific</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61696' e='61823'>
+<TEXT>
+<TUV xml:lang='en-US'>identificationOptionVehicleManufacturerSpecificDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>identificationOptionVehicleManufacturerSpecificDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>identificationOptionVehicleManufacturerSpecificDataIdentifier</TUV>
+<TUV xml:lang='ja'>identificationOptionVehicleManufacturerSpecificDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61824' e='61824'>
+<TEXT>
+<TUV xml:lang='en-US'>BootSoftwareIdentificationDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>BootSoftwareIdentificationDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>BootSoftwareIdentificationDataIdentifier</TUV>
+<TUV xml:lang='ja'>BootSoftwareIdentificationDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61825' e='61825'>
+<TEXT>
+<TUV xml:lang='en-US'>applicationSoftwareIdentificationDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>applicationSoftwareIdentificationDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>applicationSoftwareIdentificationDataIdentifier</TUV>
+<TUV xml:lang='ja'>applicationSoftwareIdentificationDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61826' e='61826'>
+<TEXT>
+<TUV xml:lang='en-US'>applicationDataIdentificationDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>applicationDataIdentificationDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>applicationDataIdentificationDataIdentifier</TUV>
+<TUV xml:lang='ja'>applicationDataIdentificationDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61827' e='61827'>
+<TEXT>
+<TUV xml:lang='en-US'>bootSoftwareFingerprintDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>bootSoftwareFingerprintDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>bootSoftwareFingerprintDataIdentifier</TUV>
+<TUV xml:lang='ja'>bootSoftwareFingerprintDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61828' e='61828'>
+<TEXT>
+<TUV xml:lang='en-US'>applicationSoftwareFingerprintDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>applicationSoftwareFingerprintDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>applicationSoftwareFingerprintDataIdentifier</TUV>
+<TUV xml:lang='ja'>applicationSoftwareFingerprintDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61829' e='61829'>
+<TEXT>
+<TUV xml:lang='en-US'>applicationDataFingerprintDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>applicationDataFingerprintDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>applicationDataFingerprintDataIdentifier</TUV>
+<TUV xml:lang='ja'>applicationDataFingerprintDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61830' e='61830'>
+<TEXT>
+<TUV xml:lang='en-US'>ActiveDiagnosticSessionDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>ActiveDiagnosticSessionDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>ActiveDiagnosticSessionDataIdentifier</TUV>
+<TUV xml:lang='ja'>ActiveDiagnosticSessionDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61831' e='61831'>
+<TEXT>
+<TUV xml:lang='en-US'>vehicleManufacturerSparePartNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>vehicleManufacturerSparePartNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>vehicleManufacturerSparePartNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>vehicleManufacturerSparePartNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61832' e='61832'>
+<TEXT>
+<TUV xml:lang='en-US'>vehicleManufacturerECUSoftwareNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>vehicleManufacturerECUSoftwareNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>vehicleManufacturerECUSoftwareNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>vehicleManufacturerECUSoftwareNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61833' e='61833'>
+<TEXT>
+<TUV xml:lang='en-US'>vehicleManufacturerECUSoftwareVersionNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>vehicleManufacturerECUSoftwareVersionNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>vehicleManufacturerECUSoftwareVersionNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>vehicleManufacturerECUSoftwareVersionNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61834' e='61834'>
+<TEXT>
+<TUV xml:lang='en-US'>systemSupplierIdentifierDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>systemSupplierIdentifierDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>systemSupplierIdentifierDataIdentifier</TUV>
+<TUV xml:lang='ja'>systemSupplierIdentifierDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61835' e='61835'>
+<TEXT>
+<TUV xml:lang='en-US'>ECUManufacturingDateDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>ECUManufacturingDateDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>ECUManufacturingDateDataIdentifier</TUV>
+<TUV xml:lang='ja'>ECUManufacturingDateDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61836' e='61836'>
+<TEXT>
+<TUV xml:lang='en-US'>ECUSerialNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>ECUSerialNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>ECUSerialNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>ECUSerialNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61837' e='61837'>
+<TEXT>
+<TUV xml:lang='en-US'>supportedFunctionalUnitsDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>supportedFunctionalUnitsDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>supportedFunctionalUnitsDataIdentifier</TUV>
+<TUV xml:lang='ja'>supportedFunctionalUnitsDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61838' e='61838'>
+<TEXT>
+<TUV xml:lang='en-US'>VehicleManufacturerKitAssemblyPartNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>VehicleManufacturerKitAssemblyPartNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>VehicleManufacturerKitAssemblyPartNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>VehicleManufacturerKitAssemblyPartNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61840' e='61840'>
+<TEXT>
+<TUV xml:lang='en-US'>VINDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>VINDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>VINDataIdentifier</TUV>
+<TUV xml:lang='ja'>VINDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61841' e='61841'>
+<TEXT>
+<TUV xml:lang='en-US'>vehicleManufacturerECUHardwareNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>vehicleManufacturerECUHardwareNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>vehicleManufacturerECUHardwareNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>vehicleManufacturerECUHardwareNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61842' e='61842'>
+<TEXT>
+<TUV xml:lang='en-US'>systemSupplierECUHardwareNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>systemSupplierECUHardwareNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>systemSupplierECUHardwareNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>systemSupplierECUHardwareNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61843' e='61843'>
+<TEXT>
+<TUV xml:lang='en-US'>systemSupplierECUHardwareVersionNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>systemSupplierECUHardwareVersionNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>systemSupplierECUHardwareVersionNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>systemSupplierECUHardwareVersionNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61844' e='61844'>
+<TEXT>
+<TUV xml:lang='en-US'>systemSupplierECUSoftwareNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>systemSupplierECUSoftwareNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>systemSupplierECUSoftwareNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>systemSupplierECUSoftwareNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61845' e='61845'>
+<TEXT>
+<TUV xml:lang='en-US'>systemSupplierECUSoftwareVersionNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>systemSupplierECUSoftwareVersionNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>systemSupplierECUSoftwareVersionNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>systemSupplierECUSoftwareVersionNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61846' e='61846'>
+<TEXT>
+<TUV xml:lang='en-US'>exhaustRegulationOrTypeApprovalNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>exhaustRegulationOrTypeApprovalNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>exhaustRegulationOrTypeApprovalNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>exhaustRegulationOrTypeApprovalNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61847' e='61847'>
+<TEXT>
+<TUV xml:lang='en-US'>systemNameOrEngineTypeDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>systemNameOrEngineTypeDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>systemNameOrEngineTypeDataIdentifier</TUV>
+<TUV xml:lang='ja'>systemNameOrEngineTypeDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61848' e='61848'>
+<TEXT>
+<TUV xml:lang='en-US'>repairShopCodeOrTesterSerialNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>repairShopCodeOrTesterSerialNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>repairShopCodeOrTesterSerialNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>repairShopCodeOrTesterSerialNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61849' e='61849'>
+<TEXT>
+<TUV xml:lang='en-US'>programmingDateDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>programmingDateDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>programmingDateDataIdentifier</TUV>
+<TUV xml:lang='ja'>programmingDateDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61850' e='61850'>
+<TEXT>
+<TUV xml:lang='en-US'>calibrationRepairShopCodeOrCalibrationEquipmentSerialNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>calibrationRepairShopCodeOrCalibrationEquipmentSerialNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>calibrationRepairShopCodeOrCalibrationEquipmentSerialNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>calibrationRepairShopCodeOrCalibrationEquipmentSerialNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61851' e='61851'>
+<TEXT>
+<TUV xml:lang='en-US'>calibrationDateDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>calibrationDateDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>calibrationDateDataIdentifier</TUV>
+<TUV xml:lang='ja'>calibrationDateDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61852' e='61852'>
+<TEXT>
+<TUV xml:lang='en-US'>calibrationEquipmentSoftwareNumberDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>calibrationEquipmentSoftwareNumberDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>calibrationEquipmentSoftwareNumberDataIdentifier</TUV>
+<TUV xml:lang='ja'>calibrationEquipmentSoftwareNumberDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61853' e='61853'>
+<TEXT>
+<TUV xml:lang='en-US'>ECUInstallationDateDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>ECUInstallationDateDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>ECUInstallationDateDataIdentifier</TUV>
+<TUV xml:lang='ja'>ECUInstallationDateDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61854' e='61854'>
+<TEXT>
+<TUV xml:lang='en-US'>ODXFileDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>ODXFileDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>ODXFileDataIdentifier</TUV>
+<TUV xml:lang='ja'>ODXFileDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61855' e='61855'>
+<TEXT>
+<TUV xml:lang='en-US'>EntityDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>EntityDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>EntityDataIdentifier</TUV>
+<TUV xml:lang='ja'>EntityDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61856' e='61935'>
+<TEXT>
+<TUV xml:lang='en-US'>identificationOptionVehicleManufacturerSpecific</TUV>
+<TUV xml:lang='de-DE'>identificationOptionVehicleManufacturerSpecific</TUV>
+<TUV xml:lang='fr-FR'>identificationOptionVehicleManufacturerSpecific</TUV>
+<TUV xml:lang='ja'>identificationOptionVehicleManufacturerSpecific</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61936' e='61951'>
+<TEXT>
+<TUV xml:lang='en-US'>identificationOptionSystemSupplierSpecific</TUV>
+<TUV xml:lang='de-DE'>identificationOptionSystemSupplierSpecific</TUV>
+<TUV xml:lang='fr-FR'>identificationOptionSystemSupplierSpecific</TUV>
+<TUV xml:lang='ja'>identificationOptionSystemSupplierSpecific</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='61952' e='62207'>
+<TEXT>
+<TUV xml:lang='en-US'>periodicDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>periodicDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>periodicDataIdentifier</TUV>
+<TUV xml:lang='ja'>periodicDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='62208' e='62463'>
+<TEXT>
+<TUV xml:lang='en-US'>DynamicallyDefinedDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>DynamicallyDefinedDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>DynamicallyDefinedDataIdentifier</TUV>
+<TUV xml:lang='ja'>DynamicallyDefinedDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='62464' e='62719'>
+<TEXT>
+<TUV xml:lang='en-US'>OBDDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>OBDDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>OBDDataIdentifier</TUV>
+<TUV xml:lang='ja'>OBDDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='62720' e='62975'>
+<TEXT>
+<TUV xml:lang='en-US'>OBDDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>OBDDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>OBDDataIdentifier</TUV>
+<TUV xml:lang='ja'>OBDDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='62976' e='63231'>
+<TEXT>
+<TUV xml:lang='en-US'>OBDMonitorDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>OBDMonitorDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>OBDMonitorDataIdentifier</TUV>
+<TUV xml:lang='ja'>OBDMonitorDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='63232' e='63487'>
+<TEXT>
+<TUV xml:lang='en-US'>OBDMonitorDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>OBDMonitorDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>OBDMonitorDataIdentifier</TUV>
+<TUV xml:lang='ja'>OBDMonitorDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='63488' e='63743'>
+<TEXT>
+<TUV xml:lang='en-US'>OBDInfoTypeDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>OBDInfoTypeDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>OBDInfoTypeDataIdentifier</TUV>
+<TUV xml:lang='ja'>OBDInfoTypeDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='63744' e='63999'>
+<TEXT>
+<TUV xml:lang='en-US'>TachographDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>TachographDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>TachographDataIdentifier</TUV>
+<TUV xml:lang='ja'>TachographDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='64000' e='64015'>
+<TEXT>
+<TUV xml:lang='en-US'>AirbagDeploymentDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>AirbagDeploymentDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>AirbagDeploymentDataIdentifier</TUV>
+<TUV xml:lang='ja'>AirbagDeploymentDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='64016' e='64255'>
+<TEXT>
+<TUV xml:lang='en-US'>SafetySystemDataIdentifier</TUV>
+<TUV xml:lang='de-DE'>SafetySystemDataIdentifier</TUV>
+<TUV xml:lang='fr-FR'>SafetySystemDataIdentifier</TUV>
+<TUV xml:lang='ja'>SafetySystemDataIdentifier</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='64256' e='64767'>
+<TEXT>
+<TUV xml:lang='en-US'>ReservedForLegislativeUse</TUV>
+<TUV xml:lang='de-DE'>ReservedForLegislativeUse</TUV>
+<TUV xml:lang='fr-FR'>ReservedForLegislativeUse</TUV>
+<TUV xml:lang='ja'>ReservedForLegislativeUse</TUV>
+</TEXT>
+</TEXTMAP>
+<TEXTMAP s='64768' e='65279'>
+<TEXT>
+<TUV xml:lang='en-US'>SystemSupplierSpecific</TUV>
+<TUV xml:lang='de-DE'>SystemSupplierSpecific</TUV>
+<TUV xml:lang='fr-FR'>SystemSupplierSpecific</TUV>
+<TUV xml:lang='ja'>SystemSupplierSpecific</TUV>
+</TEXT>
+</TEXTMAP>
+</TEXTTBL>
+</DATATYPES>
+<DOCTMPL oid='B70D82946CDD4c85B3469820CF8317E6' saveno='7'>
+<NAME>
+<TUV xml:lang='en-US'>Multilingual</TUV>
+<TUV xml:lang='de-DE'>Mehrsprachig</TUV>
+<TUV xml:lang='fr-FR'>Multilingue</TUV>
+<TUV xml:lang='ja'>Multilingual</TUV>
+</NAME>
+<QUAL>Multilingual</QUAL>
+<LABEL>2.0</LABEL>
+</DOCTMPL>
+<RECORDTMPLS>
+<RECORDTMPL spec='faultMemory'>
+<CVALUETYPE bl='24' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='0' maxsz='255'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<TRRECORDITEMTMPL id='_000002B727595DB0' oid='974D86CFD6224ab3965A8DCCEDFCE69B' temploid='{9DF7F4E6-EFE5-4c11-8BB7-84942DD6CD7C}' mayBeDup='1' conv='opt'>
+<NAME>
+<TUV xml:lang='en-US'>Set Condition</TUV>
+<TUV xml:lang='de-DE'>Setzbedingung</TUV>
+<TUV xml:lang='fr-FR'>Set Condition</TUV>
+<TUV xml:lang='ja'>セット コンディション</TUV>
+</NAME>
+<QUAL>SetCondition</QUAL>
+</TRRECORDITEMTMPL>
+<TRRECORDITEMTMPL id='_000002B727595FB0' oid='C389702160D04ea79AAAEB03640FDB9A' temploid='{0D1B721A-9F64-4e0a-A195-EFA82B571130}' mayBeDup='1' conv='opt'>
+<NAME>
+<TUV xml:lang='en-US'>Reset condition &#38; self healing</TUV>
+<TUV xml:lang='de-DE'>Fehlerrücksetzbedingung &#38; Selbstheilung</TUV>
+<TUV xml:lang='fr-FR'>Reset condition &#38; self healing</TUV>
+<TUV xml:lang='ja'>Reset condition &#38; self healing</TUV>
+</NAME>
+<QUAL>ResetCondition</QUAL>
+</TRRECORDITEMTMPL>
+<ENUMRECORDITEMTMPL id='_000002B729AFCD90' oid='4974B1E35DA34c408CFCF93A290AE520' temploid='{2C1F7058-4E16-4015-ACD4-2790A0E08C37}' mayBeDup='1' conv='req' v='5' sort='id'>
+<NAME>
+<TUV xml:lang='en-US'>Corrective action</TUV>
+<TUV xml:lang='de-DE'>Maßnahme zur Fehlerbeseitigung</TUV>
+<TUV xml:lang='fr-FR'>Action corrective</TUV>
+<TUV xml:lang='ja'>対処方法</TUV>
+</NAME>
+<QUAL>CorrectiveAction</QUAL>
+<ETAG v='0'>
+<TUV xml:lang='en-US'>Replace ECU</TUV>
+<TUV xml:lang='de-DE'>Steuergerät austauschen</TUV>
+<TUV xml:lang='fr-FR'>Remplacer ECU</TUV>
+<TUV xml:lang='ja'>ECU交換</TUV>
+</ETAG>
+<ETAG v='1'>
+<TUV xml:lang='en-US'>Check wiring connector</TUV>
+<TUV xml:lang='de-DE'>Steckverbinder prüfen</TUV>
+<TUV xml:lang='fr-FR'>Vérifier le connecteur du câble</TUV>
+<TUV xml:lang='ja'>配線コネクタ点検</TUV>
+</ETAG>
+<ETAG v='2'>
+<TUV xml:lang='en-US'>Check wiring</TUV>
+<TUV xml:lang='de-DE'>Verkabelung prüfen</TUV>
+<TUV xml:lang='fr-FR'>Vérifier le câblage</TUV>
+<TUV xml:lang='ja'>配線点検</TUV>
+</ETAG>
+<ETAG v='3'>
+<TUV xml:lang='en-US'>Check power supply</TUV>
+<TUV xml:lang='de-DE'>Stromversorgung prüfen</TUV>
+<TUV xml:lang='fr-FR'>Vérifier l’alimentation électrique</TUV>
+<TUV xml:lang='ja'>電源点検</TUV>
+</ETAG>
+<ETAG v='4'>
+<TUV xml:lang='en-US'>Update software</TUV>
+<TUV xml:lang='de-DE'>Software aktualisieren</TUV>
+<TUV xml:lang='fr-FR'>Mettre à jour le logiciel</TUV>
+<TUV xml:lang='ja'>ソフトウェア アップデート</TUV>
+</ETAG>
+<ETAG v='5'>
+<TUV xml:lang='en-US'>No known corrective action</TUV>
+<TUV xml:lang='de-DE'>Kein Hinweis</TUV>
+<TUV xml:lang='fr-FR'>Action corrective non connue</TUV>
+<TUV xml:lang='ja'>対処方法不明</TUV>
+</ETAG>
+<ETAG v='6'>
+<TUV xml:lang='en-US'>See special instruction</TUV>
+<TUV xml:lang='de-DE'>Siehe spezielle Arbeitsanweisung</TUV>
+<TUV xml:lang='fr-FR'>Voir l’instruction spéciale</TUV>
+<TUV xml:lang='ja'>特別指示参照</TUV>
+</ETAG>
+</ENUMRECORDITEMTMPL>
+<TRRECORDITEMTMPL id='_000002B7275930B0' oid='606EE56BCDFA4058914119DB57D48F4E' temploid='{99240899-F037-4d89-883E-ED655942A979}' mayBeDup='1' conv='opt'>
+<NAME>
+<TUV xml:lang='en-US'>Special instruction</TUV>
+<TUV xml:lang='de-DE'>Spezielle Arbeitsanweisung</TUV>
+<TUV xml:lang='fr-FR'>Instruction spéciale</TUV>
+<TUV xml:lang='ja'>特別指示</TUV>
+</NAME>
+<QUAL>SpecialInstruction</QUAL>
+</TRRECORDITEMTMPL>
+</RECORDTMPL>
+</RECORDTMPLS>
+<DTCSTATUSMASK dtref='_000002B729AFE7B0'>
+<DTCSTATUSBITGROUP conv='req' dtref='_000002B72771D840'/>
+<DTCSTATUSBITGROUP conv='optno' dtref='_000002B72771D480'/>
+<DTCSTATUSBITGROUP conv='optno' dtref='_000002B72771EEC0'/>
+<DTCSTATUSBITGROUP conv='req' dtref='_000002B72771DE80'/>
+<DTCSTATUSBITGROUP conv='req' dtref='_000002B72771C080'/>
+<DTCSTATUSBITGROUP conv='req' dtref='_000002B72771DAC0'/>
+<DTCSTATUSBITGROUP conv='req' dtref='_000002B72771EB00'/>
+<DTCSTATUSBITGROUP conv='optno' dtref='_000002B72771C580'/>
+</DTCSTATUSMASK>
+<UNSUPPSRVNEG oid='80BCBD79851B4db495F2278C7DD428D3' temploid='{372C73D4-FA9B-4def-8043-9AB124BA7B04}'>
+<NAME>
+<TUV xml:lang='en-US'>Negative Response Codes for unsupported services</TUV>
+<TUV xml:lang='de-DE'>Negative Response Codes für nicht unterstützten Service</TUV>
+<TUV xml:lang='fr-FR'>Negative Response Codes for unsupported services</TUV>
+<TUV xml:lang='ja'>Negative Response Codes for unsupported services</TUV>
+</NAME>
+<QUAL>UNSUPPORTED_SERVICE_NR</QUAL>
+<CONSTCOMP id='_000002B72771BA40' oid='63B07E39A66A4bcdBEFF9AE13D89C34A' temploid='{317B82F6-6296-44d0-B514-46F6764DFB93}' must='1' spec='sid' bl='8' v='127'>
+<NAME>
+<TUV xml:lang='en-US'>SID-NR</TUV>
+<TUV xml:lang='de-DE'>SID-NR</TUV>
+<TUV xml:lang='fr-FR'>SID-NR</TUV>
+<TUV xml:lang='ja'>SID-NR</TUV>
+</NAME>
+<QUAL>SID_NR</QUAL>
+</CONSTCOMP>
+<STATICCOMP id='_000002B729904BC0' oid='63A5CAC7E33046f0BAC23289606BFDCA' temploid='{33FD419C-1BEB-43b4-8AA2-102BA8963D8C}' must='1' spec='id' dtref='_000002B727719740'>
+<NAME>
+<TUV xml:lang='en-US'>SID-RQ-NR</TUV>
+<TUV xml:lang='de-DE'>SID-RQ-NR</TUV>
+<TUV xml:lang='fr-FR'>SID-RQ-NR</TUV>
+<TUV xml:lang='ja'>SID-RQ-NR</TUV>
+</NAME>
+<QUAL>SID_RQ_NR</QUAL>
+</STATICCOMP>
+<CONTENTCOMP id='_000002B7277FFE10' oid='F030B39237284d7bB1C736B8D060C30C' temploid='{A1F80F4F-AC0F-4752-B21A-9657CD53C072}' must='1'>
+<NAME>
+<TUV xml:lang='en-US'>RESPONSE CODE TABLE</TUV>
+<TUV xml:lang='de-DE'>RESPONSE CODE TABLE</TUV>
+<TUV xml:lang='fr-FR'>RESPONSE CODE TABLE</TUV>
+<TUV xml:lang='ja'>RESPONSE CODE TABLE</TUV>
+</NAME>
+<QUAL>RESPONSE_CODE_TABLE</QUAL>
+<SIMPLECOMPCONT oid='114D6472A91A410890DE8D27D7EBC04F' temploid='{E25D7AC9-205E-48ac-B5A7-3D54121F7149}'>
+<SPECDATAOBJ oid='35E45DA4C79D48279774653D67C1D31C' temploid='{B0843B09-4F92-427e-AED9-6865A5C09AE4}'>
+<NAME>
+<TUV xml:lang='en-US'>NEGATIVE RESPONSE CODES</TUV>
+<TUV xml:lang='de-DE'>NEGATIVE RESPONSE CODES</TUV>
+<TUV xml:lang='fr-FR'>NEGATIVE RESPONSE CODES</TUV>
+<TUV xml:lang='ja'>ネガティブ レスポンス コード</TUV>
+</NAME>
+<QUAL>NRC</QUAL>
+<NEGRESCODEPROXIES>
+<NEGRESCODEPROXY idref='_000002B7212AC7E0'/>
+<NEGRESCODEPROXY idref='_000002B7212ACAB0'/>
+<NEGRESCODEPROXY idref='_000002B7212ACBD0'/>
+</NEGRESCODEPROXIES>
+</SPECDATAOBJ>
+</SIMPLECOMPCONT>
+</CONTENTCOMP>
+</UNSUPPSRVNEG>
+<DIDS>
+<DID id='_000002B729B72A80' oid='430087000CBA44bbBB0643D046143DAC' temploid='C4BBDA37AB8343d2B4EAD9A9E4EEE806' n='262'>
+<NAME>
+<TUV xml:lang='en-US'>A/D Values</TUV>
+<TUV xml:lang='de-DE'>A/D-Werte</TUV>
+<TUV xml:lang='fr-FR'>A/D Values</TUV>
+<TUV xml:lang='ja'>A/D Values</TUV>
+</NAME>
+<QUAL>A_D_Values</QUAL>
+<STRUCTURE>
+<DATAOBJ oid='F29EF5BBDFCB4b1dBE6EBC8487FE0A84' temploid='4512624424BF4b718BC65D5BDB975ADC' spec='no' dtref='_000002B7298F1E10'>
+<NAME>
+<TUV xml:lang='en-US'>Voltage</TUV>
+<TUV xml:lang='de-DE'>Spannung</TUV>
+<TUV xml:lang='fr-FR'>Tension</TUV>
+<TUV xml:lang='ja'>電圧値</TUV>
+</NAME>
+<QUAL>Voltage</QUAL>
+</DATAOBJ>
+<DATAOBJ oid='F3C673F98D7A40788E597369964B7B3D' temploid='BA35CED23E004f798A1431E831F837DD' spec='no' dtref='_000002B7298F2F20'>
+<NAME>
+<TUV xml:lang='en-US'>Current</TUV>
+<TUV xml:lang='de-DE'>Strom</TUV>
+<TUV xml:lang='fr-FR'>Intensité</TUV>
+<TUV xml:lang='ja'>電流値</TUV>
+</NAME>
+<QUAL>Current</QUAL>
+</DATAOBJ>
+<DATAOBJ oid='452AFFD49732475791C57C596479D5FC' temploid='C4E00BE43DAF412dA9687E8C019B93D0' spec='no' dtref='_000002B7298F25F0'>
+<NAME>
+<TUV xml:lang='en-US'>Resistance</TUV>
+<TUV xml:lang='de-DE'>Widerstand</TUV>
+<TUV xml:lang='fr-FR'>Résistance</TUV>
+<TUV xml:lang='ja'>抵抗値</TUV>
+</NAME>
+<QUAL>Resistance</QUAL>
+</DATAOBJ>
+</STRUCTURE>
+</DID>
+<DID id='_000002B729B730E0' oid='2A02A61F731940ed8492F3D7C4CA778D' temploid='44A1258CC29048e6AAF99E12C4994FC0' n='263'>
+<NAME>
+<TUV xml:lang='en-US'>Engine Speed</TUV>
+<TUV xml:lang='de-DE'>Motorgeschwindigkeit</TUV>
+<TUV xml:lang='fr-FR'>Régime moteur</TUV>
+<TUV xml:lang='ja'>エンジン回転数</TUV>
+</NAME>
+<QUAL>Engine_Speed</QUAL>
+<STRUCTURE>
+<DATAOBJ oid='15793FAB0ED346248A027BD9AFEA2E06' temploid='E361C17AC8BB44d99A4D4A4B8F1DB61F' spec='no' dtref='_000002B7298F0910'>
+<NAME>
+<TUV xml:lang='en-US'>Engine Speed</TUV>
+<TUV xml:lang='de-DE'>Motorgeschwindigkeit</TUV>
+<TUV xml:lang='fr-FR'>Régime moteur</TUV>
+<TUV xml:lang='ja'>エンジン回転数</TUV>
+</NAME>
+<QUAL>Engine_Speed</QUAL>
+</DATAOBJ>
+</STRUCTURE>
+</DID>
+</DIDS>
+<PROTOCOLSERVICES>
+<PROTOCOLSERVICE id='_000002B727630C20' oid='6D2AF928CE14497e869B2653F790FF5D' temploid='{8AE31B71-849A-40bb-8688-A3219992C49B}' func='1' phys='1' mresp='0' respOnPhys='1' respOnFunc='1' maycombcont='1'>
+<NAME>
+<TUV xml:lang='en-US'>(0x22) ReadDataByIdentifier</TUV>
+<TUV xml:lang='de-DE'>(0x22) ReadDataByIdentifier</TUV>
+<TUV xml:lang='fr-FR'>(0x22) ReadDataByIdentifier</TUV>
+<TUV xml:lang='ja'>(0x22) ReadDataByIdentifier</TUV>
+</NAME>
+<QUAL>RDBI</QUAL>
+<REQ oid='F75FEBB8EF854e4695784CB03AEF46CB' temploid='{43DDF7D8-4F83-4b6e-BB3C-639960881D5D}'>
+<NAME>
+<TUV xml:lang='en-US'>RDBI-RQ</TUV>
+<TUV xml:lang='de-DE'>RDBI-RQ</TUV>
+<TUV xml:lang='fr-FR'>RDBI-RQ</TUV>
+<TUV xml:lang='ja'>RDBI-RQ</TUV>
+</NAME>
+<QUAL>RDBI_RQ</QUAL>
+<CONSTCOMP id='_000002B72771A8C0' oid='6832384A295340f9BAA459FD174665C5' temploid='{A15219A0-6A9F-43a4-BB70-E2E1FBD69CBA}' must='1' spec='sid' bl='8' v='34'>
+<NAME>
+<TUV xml:lang='en-US'>SID-RQ</TUV>
+<TUV xml:lang='de-DE'>SID-RQ</TUV>
+<TUV xml:lang='fr-FR'>SID-RQ</TUV>
+<TUV xml:lang='ja'>SID-RQ</TUV>
+</NAME>
+<QUAL>SID_RQ</QUAL>
+</CONSTCOMP>
+<STATICCOMP id='_000002B729903C00' oid='2F20C86FCA304c9f951DBDDD19D47B68' temploid='{7A9F9295-C106-4db4-ACE7-EA83F61DC89B}' must='1' spec='id' dtref='_000002B72771A3C0'>
+<NAME>
+<TUV xml:lang='en-US'>Identifier</TUV>
+<TUV xml:lang='de-DE'>Identifier</TUV>
+<TUV xml:lang='fr-FR'>Identifier</TUV>
+<TUV xml:lang='ja'>Identifier</TUV>
+</NAME>
+<QUAL>RecordDataIdentifier</QUAL>
+</STATICCOMP>
+</REQ>
+<POS oid='14242C00F66F4b468E8E51ACB5ADFD1F' temploid='{1D7B0B97-456B-4869-B822-7DF6A53C603A}'>
+<NAME>
+<TUV xml:lang='en-US'>RDBI-PR</TUV>
+<TUV xml:lang='de-DE'>RDBI-PR</TUV>
+<TUV xml:lang='fr-FR'>RDBI-PR</TUV>
+<TUV xml:lang='ja'>RDBI-PR</TUV>
+</NAME>
+<QUAL>RDBI_PR</QUAL>
+<CONSTCOMP id='_000002B727717A80' oid='BBA7262A8A0A4897B31252ADB6DF8FE3' temploid='{7A327E28-1C07-448d-B0EE-5D6FBD46348C}' must='1' spec='sid' bl='8' v='98'>
+<NAME>
+<TUV xml:lang='en-US'>SID-PR</TUV>
+<TUV xml:lang='de-DE'>SID-PR</TUV>
+<TUV xml:lang='fr-FR'>SID-PR</TUV>
+<TUV xml:lang='ja'>SID-PR</TUV>
+</NAME>
+<QUAL>SID_PR</QUAL>
+</CONSTCOMP>
+<STATICCOMP id='_000002B729903300' oid='4ED13F6C034B4cf6939193283432626A' temploid='{07A3E62B-9848-4a7c-BBDF-DFA1214E33CC}' must='1' spec='id' dtref='_000002B72771A3C0'>
+<NAME>
+<TUV xml:lang='en-US'>Identifier</TUV>
+<TUV xml:lang='de-DE'>Identifier</TUV>
+<TUV xml:lang='fr-FR'>Identifier</TUV>
+<TUV xml:lang='ja'>Identifier</TUV>
+</NAME>
+<QUAL>RecordDataIdentifier</QUAL>
+</STATICCOMP>
+<SIMPLEPROXYCOMP id='_000002B72771AA00' oid='CF8CAFE6F83C49a3BB79B8A9F4E78400' temploid='{4C8B75DD-3BCB-4e4a-A9E0-1A4D5EB9EBFC}' must='1' dest='data' minbl='8'>
+<NAME>
+<TUV xml:lang='en-US'>DataRecord</TUV>
+<TUV xml:lang='de-DE'>Daten</TUV>
+<TUV xml:lang='fr-FR'>DataRecord</TUV>
+<TUV xml:lang='ja'>データ レコード</TUV>
+</NAME>
+<QUAL>DataRecord</QUAL>
+</SIMPLEPROXYCOMP>
+</POS>
+<NEG oid='3194100810114bc2A17A1908D09511EF' temploid='{196E9DC1-1907-47f7-B382-75854FC57DDB}'>
+<NAME>
+<TUV xml:lang='en-US'>RDBI-NR</TUV>
+<TUV xml:lang='de-DE'>RDBI-NR</TUV>
+<TUV xml:lang='fr-FR'>RDBI-NR</TUV>
+<TUV xml:lang='ja'>RDBI-NR</TUV>
+</NAME>
+<QUAL>RDBI_NR</QUAL>
+<CONSTCOMP id='_000002B727718FC0' oid='98781CD497884e94B613F5A9A621E0B7' temploid='{15DF7DBE-FD91-4b4a-9469-1AC3EA836CF1}' must='1' spec='sid' bl='8' v='127'>
+<NAME>
+<TUV xml:lang='en-US'>SID-NR</TUV>
+<TUV xml:lang='de-DE'>SID-NR</TUV>
+<TUV xml:lang='fr-FR'>SID-NR</TUV>
+<TUV xml:lang='ja'>SID-NR</TUV>
+</NAME>
+<QUAL>SID_NR</QUAL>
+</CONSTCOMP>
+<CONSTCOMP id='_000002B72771AB40' oid='07FC3F187B3042faAB1D8594BE5AC535' temploid='{0F9F1AAC-8F4A-4826-A778-FB1757EB5CC1}' must='1' spec='sid' bl='8' v='34'>
+<NAME>
+<TUV xml:lang='en-US'>SIDRQ-NR</TUV>
+<TUV xml:lang='de-DE'>SIDRQ-NR</TUV>
+<TUV xml:lang='fr-FR'>SIDRQ-NR</TUV>
+<TUV xml:lang='ja'>SIDRQ-NR</TUV>
+</NAME>
+<QUAL>SIDRQ_NR</QUAL>
+</CONSTCOMP>
+<SIMPLEPROXYCOMP id='_000002B727719880' oid='F8FFE089B0924b6c95ABCA4EDFF63162' temploid='{A8FDF2D9-36A2-4907-A538-9DE90B4725DA}' must='1' dest='resCode' minbl='8' maxbl='8'>
+<NAME>
+<TUV xml:lang='en-US'>RESPONSE CODE</TUV>
+<TUV xml:lang='de-DE'>RESPONSE CODE</TUV>
+<TUV xml:lang='fr-FR'>CODE DE REPONSE</TUV>
+<TUV xml:lang='ja'>レスポンス コード</TUV>
+</NAME>
+<QUAL>RC</QUAL>
+</SIMPLEPROXYCOMP>
+</NEG>
+<NEGRESCODEPROXIES>
+<NEGRESCODEPROXY idref='_000002B7212AC900'/>
+</NEGRESCODEPROXIES>
+</PROTOCOLSERVICE>
+<PROTOCOLSERVICE id='_000002B72762F500' oid='08FE85C20D6043f8A594BF1DC5D5875D' temploid='{87D5177E-6748-4302-9928-B44BBE9814AD}' func='0' phys='1' mresp='0' respOnPhys='1' respOnFunc='0'>
+<NAME>
+<TUV xml:lang='en-US'>(0x2E) WriteDataByIdentifier</TUV>
+<TUV xml:lang='de-DE'>(0x2E) WriteDataByIdentifier</TUV>
+<TUV xml:lang='fr-FR'>(0x2E) WriteDataByIdentifier</TUV>
+<TUV xml:lang='ja'>(0x2E) WriteDataByIdentifier</TUV>
+</NAME>
+<QUAL>WDBI</QUAL>
+<REQ oid='CBEFF4D947F144e383AF5DC408B52D52' temploid='{CEB035B3-A05A-4712-B74B-96EC23E7C159}'>
+<NAME>
+<TUV xml:lang='en-US'>WDBI-RQ</TUV>
+<TUV xml:lang='de-DE'>WDBI-RQ</TUV>
+<TUV xml:lang='fr-FR'>WDBI-RQ</TUV>
+<TUV xml:lang='ja'>WDBI-RQ</TUV>
+</NAME>
+<QUAL>WDBI_RQ</QUAL>
+<CONSTCOMP id='_000002B72771AF00' oid='9CDB36D820BB4ae4A7860D841C5DF79F' temploid='{7EAF6855-E82B-4e49-AF7C-14591844356F}' must='1' spec='sid' bl='8' v='46'>
+<NAME>
+<TUV xml:lang='en-US'>SID-RQ</TUV>
+<TUV xml:lang='de-DE'>SID-RQ</TUV>
+<TUV xml:lang='fr-FR'>SID-RQ</TUV>
+<TUV xml:lang='ja'>SID-RQ</TUV>
+</NAME>
+<QUAL>SID_RQ</QUAL>
+</CONSTCOMP>
+<STATICCOMP id='_000002B729902460' oid='EF3A23350E944e609301662917C21B74' temploid='{BF78EFF7-F073-4823-A5A9-DF371F07C11A}' must='1' spec='id' dtref='_000002B72771A3C0'>
+<NAME>
+<TUV xml:lang='en-US'>Identifier</TUV>
+<TUV xml:lang='de-DE'>Identifier</TUV>
+<TUV xml:lang='fr-FR'>Identifier</TUV>
+<TUV xml:lang='ja'>Identifier</TUV>
+</NAME>
+<QUAL>RecordDataIdentifier</QUAL>
+</STATICCOMP>
+<SIMPLEPROXYCOMP id='_000002B72771B2C0' oid='4D27001B38324770A718CF25B5975C7D' temploid='{89198DC2-3D4C-4034-AB75-0FDBD002636A}' must='1' dest='data' minbl='8'>
+<NAME>
+<TUV xml:lang='en-US'>DataRecord</TUV>
+<TUV xml:lang='de-DE'>Daten</TUV>
+<TUV xml:lang='fr-FR'>DataRecord</TUV>
+<TUV xml:lang='ja'>データ レコード</TUV>
+</NAME>
+<QUAL>DataRecord</QUAL>
+</SIMPLEPROXYCOMP>
+</REQ>
+<POS oid='630D7AD7321549c88A134E686BAD3E6A' temploid='{2941E465-13AB-4be6-B61A-C97B626522CF}'>
+<NAME>
+<TUV xml:lang='en-US'>WDBI-PR</TUV>
+<TUV xml:lang='de-DE'>WDBI-PR</TUV>
+<TUV xml:lang='fr-FR'>WDBI-PR</TUV>
+<TUV xml:lang='ja'>WDBI-PR</TUV>
+</NAME>
+<QUAL>WDBI_PR</QUAL>
+<CONSTCOMP id='_000002B727717F80' oid='85CF16D9D4FF46c789981CB8BFA48F56' temploid='{A21163BC-E577-433e-95B1-E7BC062125CA}' must='1' spec='sid' bl='8' v='110'>
+<NAME>
+<TUV xml:lang='en-US'>SID-PR</TUV>
+<TUV xml:lang='de-DE'>SID-PR</TUV>
+<TUV xml:lang='fr-FR'>SID-PR</TUV>
+<TUV xml:lang='ja'>SID-PR</TUV>
+</NAME>
+<QUAL>SID_PR</QUAL>
+</CONSTCOMP>
+<STATICCOMP id='_000002B7299054C0' oid='18ED0481EBBC4f86868B951E939967C5' temploid='{77D284B7-56F8-472b-B671-012241AAFF93}' must='1' spec='id' dtref='_000002B72771A3C0'>
+<NAME>
+<TUV xml:lang='en-US'>Identifier</TUV>
+<TUV xml:lang='de-DE'>Identifier</TUV>
+<TUV xml:lang='fr-FR'>Identifier</TUV>
+<TUV xml:lang='ja'>Identifier</TUV>
+</NAME>
+<QUAL>RecordDataIdentifier</QUAL>
+</STATICCOMP>
+</POS>
+<NEG oid='272ACBF561604b6b988A8868FC839A11' temploid='{AA3FC864-D600-45ed-970D-0728268BECB9}'>
+<NAME>
+<TUV xml:lang='en-US'>WDBI-NR</TUV>
+<TUV xml:lang='de-DE'>WDBI-NR</TUV>
+<TUV xml:lang='fr-FR'>WDBI-NR</TUV>
+<TUV xml:lang='ja'>WDBI-NR</TUV>
+</NAME>
+<QUAL>WDBI_NR</QUAL>
+<CONSTCOMP id='_000002B72771B680' oid='238E515EECD1493a983B6C8609728938' temploid='{F62AE433-02BC-4de2-B0FD-88550BDD3BA5}' must='1' spec='sid' bl='8' v='127'>
+<NAME>
+<TUV xml:lang='en-US'>SID-NR</TUV>
+<TUV xml:lang='de-DE'>SID-NR</TUV>
+<TUV xml:lang='fr-FR'>SID-NR</TUV>
+<TUV xml:lang='ja'>SID-NR</TUV>
+</NAME>
+<QUAL>SID_NR</QUAL>
+</CONSTCOMP>
+<CONSTCOMP id='_000002B7277180C0' oid='2185C24825E943ee97B6678DCE8827CB' temploid='{142DE6F1-6BE4-4403-A2B9-42E6B1E89616}' must='1' spec='sid' bl='8' v='46'>
+<NAME>
+<TUV xml:lang='en-US'>SIDRQ-NR</TUV>
+<TUV xml:lang='de-DE'>SIDRQ-NR</TUV>
+<TUV xml:lang='fr-FR'>SIDRQ-NR</TUV>
+<TUV xml:lang='ja'>SIDRQ-NR</TUV>
+</NAME>
+<QUAL>SIDRQ_NR</QUAL>
+</CONSTCOMP>
+<SIMPLEPROXYCOMP id='_000002B727718200' oid='C814F8BE9C1A4697BCC80AFA49E4C948' temploid='{4C438E74-4C0A-4c9f-8D0A-BAEB84569947}' must='1' dest='resCode' minbl='8' maxbl='8'>
+<NAME>
+<TUV xml:lang='en-US'>RESPONSE CODE</TUV>
+<TUV xml:lang='de-DE'>RESPONSE CODE</TUV>
+<TUV xml:lang='fr-FR'>CODE DE REPONSE</TUV>
+<TUV xml:lang='ja'>レスポンス コード</TUV>
+</NAME>
+<QUAL>RC</QUAL>
+</SIMPLEPROXYCOMP>
+</NEG>
+<NEGRESCODEPROXIES>
+<NEGRESCODEPROXY idref='_000002B7212AC900'/>
+</NEGRESCODEPROXIES>
+</PROTOCOLSERVICE>
+</PROTOCOLSERVICES>
+<DCLTMPLS>
+<DCLTMPL id='_000002B729B70FF0' oid='63CB12845BD8403cBC42845AF7175BD9' temploid='{7A085A03-C423-4088-A6D7-41046B12B602}' cls='act' single='0' isRelevantForReq='1'>
+<NAME>
+<TUV xml:lang='en-US'>Dynamic Data</TUV>
+<TUV xml:lang='de-DE'>Dynamische Daten</TUV>
+<TUV xml:lang='fr-FR'>Donnée dynamique</TUV>
+<TUV xml:lang='ja'>ダイナミック データ</TUV>
+</NAME>
+<QUAL>DynamicData</QUAL>
+<DCLSRVTMPL id='_000002B729AFC2E0' oid='A89CF3E1C57848faA71C33121510AABF' temploid='{A945B8E7-FA20-4a50-8E9F-713542BB2063}' tmplref='_000002B727630C20' dtref='_000002B72771A3C0' conv='req'>
+<NAME>
+<TUV xml:lang='en-US'>Read</TUV>
+<TUV xml:lang='de-DE'>Lesen</TUV>
+<TUV xml:lang='fr-FR'>Lecture</TUV>
+<TUV xml:lang='ja'>読込み</TUV>
+</NAME>
+<QUAL>Read</QUAL>
+</DCLSRVTMPL>
+<SHSTATIC id='_000002B7278317B0' oid='A2E1B3A98DD84641907226734E7FB08A' temploid='{9A35F3D9-864C-4872-A592-ACB05CB88502}' spec='id'>
+<NAME>
+<TUV xml:lang='en-US'>Identifier</TUV>
+<TUV xml:lang='de-DE'>Identifier</TUV>
+<TUV xml:lang='fr-FR'>Identifier</TUV>
+<TUV xml:lang='ja'>Identifier</TUV>
+</NAME>
+<QUAL>RecordDataIdentifier</QUAL>
+<STATICCOMPREF idref='_000002B729903C00'/>
+<STATICCOMPREF idref='_000002B729903300'/>
+</SHSTATIC>
+<SHPROXY id='_000002B729B71100' oid='9187E37650CD44128EF3DF8AEFB3EE1E' temploid='{5B7CCD4D-9DAA-4813-8FE0-DDC71E2BE797}' dest='data'>
+<NAME>
+<TUV xml:lang='en-US'>Data</TUV>
+<TUV xml:lang='de-DE'>Daten</TUV>
+<TUV xml:lang='fr-FR'>Data</TUV>
+<TUV xml:lang='ja'>データ</TUV>
+</NAME>
+<QUAL>Data</QUAL>
+<PROXYCOMPREF idref='_000002B72771AA00'/>
+</SHPROXY>
+<SHPROXY id='_000002B729B71210' oid='26AD5F41A42D4daeA75C3F357837630B' temploid='{929E786B-EEC0-45c1-B6AB-2DF365B643DC}' dest='resCode'>
+<NAME>
+<TUV xml:lang='en-US'>Read NR</TUV>
+<TUV xml:lang='de-DE'>Read NR</TUV>
+<TUV xml:lang='fr-FR'>Read NR</TUV>
+<TUV xml:lang='ja'>Read NR</TUV>
+</NAME>
+<QUAL>Read_NR</QUAL>
+<PROXYCOMPREF idref='_000002B727719880'/>
+</SHPROXY>
+</DCLTMPL>
+<DCLTMPL id='_000002B729B71320' oid='D2C395FDE2FC4d8c94A096ADFABF24ED' temploid='{E1EA1654-D8BA-45b0-A614-AFDB47F037A7}' cls='std' single='0' isRelevantForReq='1'>
+<NAME>
+<TUV xml:lang='en-US'>Stored Data</TUV>
+<TUV xml:lang='de-DE'>Gespeicherte Daten</TUV>
+<TUV xml:lang='fr-FR'>Stored Data</TUV>
+<TUV xml:lang='ja'>Stored Data</TUV>
+</NAME>
+<QUAL>StoredData</QUAL>
+<DCLSRVTMPL id='_000002B729AFD710' oid='265B650DC15A477cA4E22F3B5743CB49' temploid='{6952BA31-FB47-4733-9D9B-FCFC65ECCFED}' tmplref='_000002B727630C20' dtref='_000002B72771A3C0' conv='req'>
+<NAME>
+<TUV xml:lang='en-US'>Read</TUV>
+<TUV xml:lang='de-DE'>Lesen</TUV>
+<TUV xml:lang='fr-FR'>Lecture</TUV>
+<TUV xml:lang='ja'>読込み</TUV>
+</NAME>
+<QUAL>Read</QUAL>
+</DCLSRVTMPL>
+<DCLSRVTMPL id='_000002B729AFC670' oid='1C55D3DD67A2406c80587382C11966D4' temploid='{1B17BB86-E365-4dc2-BDA5-ABE35169C967}' tmplref='_000002B72762F500' dtref='_000002B72771A3C0' conv='optno'>
+<NAME>
+<TUV xml:lang='en-US'>Write</TUV>
+<TUV xml:lang='de-DE'>Schreiben</TUV>
+<TUV xml:lang='fr-FR'>Ecriture</TUV>
+<TUV xml:lang='ja'>書込み</TUV>
+</NAME>
+<QUAL>Write</QUAL>
+</DCLSRVTMPL>
+<SHSTATIC id='_000002B727830EC0' oid='76E64FD61B6D4c86B14D706F7F8213CA' temploid='{BFA0A916-582F-4948-8DE4-B5F0BFADB8DE}' spec='id'>
+<NAME>
+<TUV xml:lang='en-US'>Identifier</TUV>
+<TUV xml:lang='de-DE'>Identifier</TUV>
+<TUV xml:lang='fr-FR'>Identifier</TUV>
+<TUV xml:lang='ja'>Identifier</TUV>
+</NAME>
+<QUAL>RecordDataIdentifier</QUAL>
+<STATICCOMPREF idref='_000002B729903C00'/>
+<STATICCOMPREF idref='_000002B729903300'/>
+<STATICCOMPREF idref='_000002B729902460'/>
+<STATICCOMPREF idref='_000002B7299054C0'/>
+</SHSTATIC>
+<SHPROXY id='_000002B729B6D7A0' oid='C50F3543F3AF4cde8A5649C8446E5124' temploid='{C7964978-7E2B-4255-813B-155B7CEB3479}' dest='data'>
+<NAME>
+<TUV xml:lang='en-US'>Data</TUV>
+<TUV xml:lang='de-DE'>Daten</TUV>
+<TUV xml:lang='fr-FR'>Data</TUV>
+<TUV xml:lang='ja'>データ</TUV>
+</NAME>
+<QUAL>Data</QUAL>
+<PROXYCOMPREF idref='_000002B72771AA00'/>
+<PROXYCOMPREF idref='_000002B72771B2C0'/>
+</SHPROXY>
+<SHPROXY id='_000002B729B6CE10' oid='7F8A77BE7D164d15B76B8AA16AB6C75D' temploid='{8FADE1EE-F638-436d-B23A-7D25321631B6}' dest='resCode'>
+<NAME>
+<TUV xml:lang='en-US'>Read NR</TUV>
+<TUV xml:lang='de-DE'>Read NR</TUV>
+<TUV xml:lang='fr-FR'>Read NR</TUV>
+<TUV xml:lang='ja'>Read NR</TUV>
+</NAME>
+<QUAL>Read_NR</QUAL>
+<PROXYCOMPREF idref='_000002B727719880'/>
+</SHPROXY>
+<SHPROXY id='_000002B729B6E350' oid='FC0DB949C4C04148983C249CC2A2D98B' temploid='{FE204075-20CD-4aa9-9DDB-04B201772843}' dest='resCode'>
+<NAME>
+<TUV xml:lang='en-US'>Write NR</TUV>
+<TUV xml:lang='de-DE'>Write NR</TUV>
+<TUV xml:lang='fr-FR'>Write NR</TUV>
+<TUV xml:lang='ja'>ライト NR</TUV>
+</NAME>
+<QUAL>Write_NR</QUAL>
+<PROXYCOMPREF idref='_000002B727718200'/>
+</SHPROXY>
+</DCLTMPL>
+<DCLTMPL id='_000002B729B6CBF0' oid='260B7D354EE04f91B65E0B2B5A2EF745' temploid='{CBCC0358-5340-4772-9202-81030CAF6E03}' cls='vcd' single='0' isRelevantForReq='1'>
+<NAME>
+<TUV xml:lang='en-US'>Variant Coding</TUV>
+<TUV xml:lang='de-DE'>Variantenkodierung</TUV>
+<TUV xml:lang='fr-FR'>Définition des variantes</TUV>
+<TUV xml:lang='ja'>バリアント コーディング</TUV>
+</NAME>
+<QUAL>VariantCoding</QUAL>
+<DCLSRVTMPL id='_000002B729AFE420' oid='7A9FD89CE5814b22A40E0A10D22C8545' temploid='{A38A3F15-0404-45c7-BB07-0F1011C10E1B}' tmplref='_000002B727630C20' dtref='_000002B72771A3C0' conv='req'>
+<NAME>
+<TUV xml:lang='en-US'>Read</TUV>
+<TUV xml:lang='de-DE'>Lesen</TUV>
+<TUV xml:lang='fr-FR'>Lecture</TUV>
+<TUV xml:lang='ja'>読込み</TUV>
+</NAME>
+<QUAL>Read</QUAL>
+</DCLSRVTMPL>
+<DCLSRVTMPL id='_000002B729AFF260' oid='3776BEC9970C4a69816BA92539436CC2' temploid='{E60AFD9A-8D04-44e0-86C6-030BA41ECCCE}' tmplref='_000002B72762F500' dtref='_000002B72771A3C0' conv='req'>
+<NAME>
+<TUV xml:lang='en-US'>Write</TUV>
+<TUV xml:lang='de-DE'>Schreiben</TUV>
+<TUV xml:lang='fr-FR'>Ecriture</TUV>
+<TUV xml:lang='ja'>書込み</TUV>
+</NAME>
+<QUAL>Write</QUAL>
+</DCLSRVTMPL>
+<SHSTATIC id='_000002B727831610' oid='B68DE7F268EA4f96A93DDFA978A19C33' temploid='{823AB2F3-095F-4815-8031-013B89642815}' spec='id'>
+<NAME>
+<TUV xml:lang='en-US'>Identifier</TUV>
+<TUV xml:lang='de-DE'>Identifier</TUV>
+<TUV xml:lang='fr-FR'>Identifier</TUV>
+<TUV xml:lang='ja'>Identifier</TUV>
+</NAME>
+<QUAL>RecordDataIdentifier</QUAL>
+<STATICCOMPREF idref='_000002B729903C00'/>
+<STATICCOMPREF idref='_000002B729903300'/>
+<STATICCOMPREF idref='_000002B729902460'/>
+<STATICCOMPREF idref='_000002B7299054C0'/>
+</SHSTATIC>
+<SHPROXY id='_000002B729B6CD00' oid='55481ADC7D70458bAB84BA3601C37337' temploid='{2CB3CADE-5C24-4b4b-9685-5F294EAAE63C}' dest='data'>
+<NAME>
+<TUV xml:lang='en-US'>Data</TUV>
+<TUV xml:lang='de-DE'>Daten</TUV>
+<TUV xml:lang='fr-FR'>Data</TUV>
+<TUV xml:lang='ja'>データ</TUV>
+</NAME>
+<QUAL>Data</QUAL>
+<PROXYCOMPREF idref='_000002B72771AA00'/>
+<PROXYCOMPREF idref='_000002B72771B2C0'/>
+</SHPROXY>
+<SHPROXY id='_000002B729B6E680' oid='3DFB41DAC43144dfA7798B9D49916835' temploid='{159F34D1-C5FC-4358-8523-4A6D129950BA}' dest='resCode'>
+<NAME>
+<TUV xml:lang='en-US'>Schreiben</TUV>
+<TUV xml:lang='de-DE'>Schreiben</TUV>
+<TUV xml:lang='fr-FR'>Schreiben</TUV>
+<TUV xml:lang='ja'>Schreiben</TUV>
+</NAME>
+<QUAL>Write</QUAL>
+<PROXYCOMPREF idref='_000002B727718200'/>
+</SHPROXY>
+<SHPROXY id='_000002B729B6D030' oid='639C610AD0004cc699888DB4EEE5E598' temploid='{FA1D3F1D-6DC1-403e-BF7D-2D07546E066C}' dest='resCode'>
+<NAME>
+<TUV xml:lang='en-US'>Read</TUV>
+<TUV xml:lang='de-DE'>Lesen</TUV>
+<TUV xml:lang='fr-FR'>Lecture</TUV>
+<TUV xml:lang='ja'>読込み</TUV>
+</NAME>
+<QUAL>Read</QUAL>
+<PROXYCOMPREF idref='_000002B727719880'/>
+</SHPROXY>
+</DCLTMPL>
+</DCLTMPLS>
+<RECORDDTPOOL>
+<RECORDDT id='_000002B7298F0D00' oid='3CDDBC69B666488eAFAFF587912E72BC' temploid='2320F2D78316477bA7E51110BFB12E8C' bm='4294967295' rtSpec='faultMemory'>
+<NAME>
+<TUV xml:lang='en-US'>OBDRecordDataType</TUV>
+<TUV xml:lang='de-DE'>OBDRecordDataType</TUV>
+<TUV xml:lang='fr-FR'>OBDRecordDataType</TUV>
+<TUV xml:lang='ja'>OBDRecordDataType</TUV>
+</NAME>
+<QUAL>OBDRecordDataType</QUAL>
+<CVALUETYPE bl='24' bo='21' enc='uns' sig='0' df='hex' qty='atom' sz='no' minsz='0' maxsz='255'/>
+<PVALUETYPE bl='16' bo='21' enc='utf' sig='0' df='text' qty='field' sz='no' minsz='0' maxsz='65535'/>
+<RECORD id='_000002B727801DF0' oid='3F07510B90C541378294B0F460FAD205' temploid='2DB9605CC2964c1883488FB127AD41AE' v='275'>
+<TEXT>
+<TUV xml:lang='en-US'>Fuel Volume Regulator Control Circuit/Open</TUV>
+<TUV xml:lang='de-DE'>Fuel Volume Regulator Control Circuit/Open</TUV>
+<TUV xml:lang='fr-FR'>Fuel Volume Regulator Control Circuit/Open</TUV>
+<TUV xml:lang='ja'>Fuel Volume Regulator Control Circuit/Open</TUV>
+</TEXT>
+<ENUMRECORDITEM idref='_000002B729AFCD90' v='5'/>
+</RECORD>
+<RECORD id='_000002B727801FD0' oid='F23B2EFF488F478eB987ACEBCCB16BEE' temploid='A22FE07CC48143f28F82CCAA07681FE5' v='658'>
+<TEXT>
+<TUV xml:lang='en-US'>Fuel Volume Regulator Control Circuit Range/Performance</TUV>
+<TUV xml:lang='de-DE'>Fuel Volume Regulator Control Circuit Range/Performance</TUV>
+<TUV xml:lang='fr-FR'>Fuel Volume Regulator Control Circuit Range/Performance</TUV>
+<TUV xml:lang='ja'>Fuel Volume Regulator Control Circuit Range/Performance</TUV>
+</TEXT>
+<ENUMRECORDITEM idref='_000002B729AFCD90' v='5'/>
+</RECORD>
+</RECORDDT>
+</RECORDDTPOOL>
+<ECU id='_000002B727594EB0' oid='C0C7D328C5B74a2f8CEB689BBB2DBD33' temploid='{A120ED60-20AB-4660-97EA-CD85CDFA5B23}' maxCombinedServiceIds='5'>
+<NAME>
+<TUV xml:lang='en-US'>Multilingual-Example</TUV>
+<TUV xml:lang='de-DE'>Mehrsprachiges Beispiel</TUV>
+<TUV xml:lang='fr-FR'>Multilingual-Example</TUV>
+<TUV xml:lang='ja'>Multilingual-Example</TUV>
+</NAME>
+<DESC>
+<TUV xml:lang='en-US' struct='1'><PARA><FC fs='220'>This CANdela document template shows how </FC>
+<FC bcol='15793151' b='1' fs='220'>CANdelaStudio</FC>
+<FC fs='220'> supports multiple languages within a document.</FC>
+</PARA>
+<PARA><FC fs='220'>It does not claim to be complete and is not intended for productive use!</FC>
+</PARA>
+</TUV>
+<TUV xml:lang='de-DE' struct='1'><PARA><FC fs='220'>Diese CANdela-Dokumentvorlage zeigt die Unterstützung der Mehrsprachigkeit in </FC>
+<FC bcol='65280' b='1' fs='220'>CANdelaStudio</FC>
+<FC fs='220'>.</FC>
+</PARA>
+<PARA><FC fs='220'>Sie hat nicht den Anspruch, vollständig zu sein, und ist nicht für den produktiven Einsatz geeignet!</FC>
+</PARA>
+</TUV>
+<TUV xml:lang='fr-FR' struct='1'><PARA><FC fs='220'>Ce template CANdela démontre les capacités multilingue de </FC>
+<FC bcol='65280' b='1' fs='220'>CANdelaStudio</FC>
+<FC fs='220'>.</FC>
+</PARA>
+<PARA><FC fs='220'>Il n'a pas la prétention d'être complet et n'est pas approprié pour un usage en développement Série.</FC>
+</PARA>
+</TUV>
+<TUV xml:lang='ja' struct='1'><PARA><FC fs='220'>このCANdelaドキュメント テンプレートは、</FC>
+<FC bcol='65280' b='1' fs='220'>CANdelaStudio</FC>
+<FC fs='220'>がどのようにドキュメントで複数言語をサポートできるのか示しています。</FC>
+</PARA>
+<PARA><FC fs='220'>このドキュメントは完成されたものではなく、生産用途を意図したものではありません。</FC>
+</PARA>
+</TUV>
+</DESC>
+<QUAL>Multilingual_Example</QUAL>
+<VAR id='_000002B7277F9D80' oid='C51E9AEDD4154233BAD68122B53B4071' temploid='{8E93F445-4173-4bff-9D7C-852EFDF68146}' base='1'>
+<NAME>
+<TUV xml:lang='en-US'>Base Variant</TUV>
+<TUV xml:lang='de-DE'>Basisvariante</TUV>
+<TUV xml:lang='fr-FR'>Diagnostic commun</TUV>
+<TUV xml:lang='ja'>共通診断項目</TUV>
+</NAME>
+<QUAL>BaseVariant</QUAL>
+<DIDREFS>
+<DIDREF didRef='_000002B729B72A80'/>
+<DIDREF didRef='_000002B729B730E0'/>
+</DIDREFS>
+<DIAGCLASS id='_000002B721381920' oid='573D3753F895494280EBA99C9E27968E' temploid='{EF7410F5-5AD2-4a55-A09C-033307317538}' tmplref='_000002B729B70FF0'>
+<NAME>
+<TUV xml:lang='en-US'>Dynamic Data</TUV>
+<TUV xml:lang='de-DE'>Dynamische Daten</TUV>
+<TUV xml:lang='fr-FR'>Donnée dynamique</TUV>
+<TUV xml:lang='ja'>ダイナミック データ</TUV>
+</NAME>
+<QUAL>DynamicData</QUAL>
+<DIAGINST id='_000002B72791FC60' oid='2B05A80B16A249ba90B1A78A0FB0F011' temploid='{8A65FFE5-320D-4ac4-8743-82D58AF83461}' tmplref='_000002B729B70FF0' req='notReq'>
+<NAME>
+<TUV xml:lang='en-US'>A/D Values</TUV>
+<TUV xml:lang='de-DE'>A/D-Werte</TUV>
+<TUV xml:lang='fr-FR'>Valeurs A/D</TUV>
+<TUV xml:lang='ja'>A/D値</TUV>
+</NAME>
+<QUAL>ADValues</QUAL>
+<SERVICE id='_000002B7298B50D0' oid='5FFC87CDEBC54347907A50097620FCCA' temploid='{0DB9D38B-7B03-46d1-97C7-467034AEEE7F}' tmplref='_000002B729AFC2E0' func='0' phys='1' respOnPhys='1' respOnFunc='0' req='0'>
+<NAME>
+<TUV xml:lang='en-US'>Read</TUV>
+<TUV xml:lang='de-DE'>Lesen</TUV>
+<TUV xml:lang='fr-FR'>Lecture</TUV>
+<TUV xml:lang='ja'>読込み</TUV>
+</NAME>
+<QUAL>Read</QUAL>
+<SHORTCUTNAME>
+<TUV xml:lang='en-US'>A/D Values Read</TUV>
+<TUV xml:lang='de-DE'>A/D-Werte Lesen</TUV>
+<TUV xml:lang='fr-FR'>Valeurs A/D Lecture</TUV>
+<TUV xml:lang='ja'>A/D値 読込み</TUV>
+</SHORTCUTNAME>
+<SHORTCUTQUAL>ADValues_Read</SHORTCUTQUAL>
+</SERVICE>
+<STATICVALUE oid='D985DBC471054161AFF867EB2E7B9AED' temploid='{B15D6D9E-595D-4672-912E-4D7171E9EF2E}' shstaticref='_000002B7278317B0' v='262'/>
+<SIMPLECOMPCONT oid='3BE975086D61425c95D71D4D9CE48499' temploid='{FC0CF2D8-3055-4dae-8B7F-D5BA0C88CFF6}' shproxyref='_000002B729B71100'>
+<DIDDATAREF oid='30B48CFC33894715A3394F069C9CC1B4' temploid='54735F0FC1B34dff9E2860C6C6C5E0F9' didRef='_000002B729B72A80'>
+<NAME>
+<TUV xml:lang='en-US'>A/D Values (DID Data)</TUV>
+<TUV xml:lang='de-DE'>A/D-Werte (DID-Daten)</TUV>
+<TUV xml:lang='fr-FR'>A/D Values (DID Data)</TUV>
+<TUV xml:lang='ja'>A/D Values (DID Data)</TUV>
+</NAME>
+<QUAL>A_D_Values_DID_Data</QUAL>
+</DIDDATAREF>
+</SIMPLECOMPCONT>
+<SIMPLECOMPCONT oid='C5999610D2B54eb899FC0B957D6040E1' temploid='{58A1AC2B-112E-4531-A482-625A3F90CC58}' shproxyref='_000002B729B71210'>
+<SPECDATAOBJ oid='C5D3462D1F894b34BB2BA64EE7C2EF70' temploid='{96CB1E5B-9813-4e0c-B9C6-C1C6C3B45797}'>
+<NAME>
+<TUV xml:lang='en-US'>Read NR</TUV>
+<TUV xml:lang='de-DE'>Read NR</TUV>
+<TUV xml:lang='fr-FR'>Read NR</TUV>
+<TUV xml:lang='ja'>Read NR</TUV>
+</NAME>
+<QUAL>Read_NR</QUAL>
+<NEGRESCODEPROXIES>
+<NEGRESCODEPROXY idref='_000002B7212AC900'/>
+</NEGRESCODEPROXIES>
+</SPECDATAOBJ>
+</SIMPLECOMPCONT>
+</DIAGINST>
+<DIAGINST id='_000002B72791FDE0' oid='79C0B0AB5B3D44bfB63C3D6AC3D3F834' temploid='{1B673792-C7B7-4386-8732-9C9F7DB3A3A1}' tmplref='_000002B729B70FF0' req='notReq'>
+<NAME>
+<TUV xml:lang='en-US'>Engine Status</TUV>
+<TUV xml:lang='de-DE'>Motorzustand</TUV>
+<TUV xml:lang='fr-FR'>Status moteur</TUV>
+<TUV xml:lang='ja'>エンジン ステータス</TUV>
+</NAME>
+<QUAL>EngineStatus</QUAL>
+<SERVICE id='_000002B7298B7790' oid='E9E9EBB3167847b29CEC952AF8E89D05' temploid='{A95CCEAD-B8A8-4aad-AEDB-DA7C0AEF1BD3}' tmplref='_000002B729AFC2E0' func='0' phys='1' respOnPhys='1' respOnFunc='0' req='0'>
+<NAME>
+<TUV xml:lang='en-US'>Read</TUV>
+<TUV xml:lang='de-DE'>Lesen</TUV>
+<TUV xml:lang='fr-FR'>Lecture</TUV>
+<TUV xml:lang='ja'>読込み</TUV>
+</NAME>
+<QUAL>Read</QUAL>
+<SHORTCUTNAME>
+<TUV xml:lang='en-US'>Engine Status Read</TUV>
+<TUV xml:lang='de-DE'>Motorzustand Lesen</TUV>
+<TUV xml:lang='fr-FR'>Status moteur Lecture</TUV>
+<TUV xml:lang='ja'>エンジン ステータス 読込み</TUV>
+</SHORTCUTNAME>
+<SHORTCUTQUAL>EngineStatus_Read</SHORTCUTQUAL>
+</SERVICE>
+<STATICVALUE oid='16278630FEFC4ff48F4A6DB95B7A39DC' temploid='{8B60EFD6-5628-405e-8EA5-0D75A914AFBA}' shstaticref='_000002B7278317B0' v='263'/>
+<SIMPLECOMPCONT oid='E1E30F7FFE80464288E89A6C5A3A805A' temploid='{F0E2DBEE-127F-40a1-A49A-49DC59296E14}' shproxyref='_000002B729B71100'>
+<DIDDATAREF oid='7614FCA57C514648A50E4782DDDA693B' temploid='FCA504B59D9D4979B12642F1481CE27F' didRef='_000002B729B730E0'>
+<NAME>
+<TUV xml:lang='en-US'>Engine Speed (DID Data)</TUV>
+<TUV xml:lang='de-DE'>Motorgeschwindigkeit (DID-Daten)</TUV>
+<TUV xml:lang='fr-FR'>Engine Speed (DID Data)</TUV>
+<TUV xml:lang='ja'>Engine Speed (DID Data)</TUV>
+</NAME>
+<QUAL>Engine_Speed_DID_Data</QUAL>
+</DIDDATAREF>
+</SIMPLECOMPCONT>
+<SIMPLECOMPCONT oid='5C6C7D6724B5422f895FB9094335E105' temploid='{C2A2A806-F5CA-4040-8198-8FDCF11B11C3}' shproxyref='_000002B729B71210'>
+<SPECDATAOBJ oid='3F908E27A62D4bea82440870EC113082' temploid='{F0A679E1-3290-4d18-8944-55664CC11774}'>
+<NAME>
+<TUV xml:lang='en-US'>Read NR</TUV>
+<TUV xml:lang='de-DE'>Read NR</TUV>
+<TUV xml:lang='fr-FR'>Read NR</TUV>
+<TUV xml:lang='ja'>Read NR</TUV>
+</NAME>
+<QUAL>ReadNR</QUAL>
+<NEGRESCODEPROXIES>
+<NEGRESCODEPROXY idref='_000002B7212AC900'/>
+</NEGRESCODEPROXIES>
+</SPECDATAOBJ>
+</SIMPLECOMPCONT>
+</DIAGINST>
+</DIAGCLASS>
+<DIAGCLASS id='_000002B721381AA0' oid='445E922A72B545daB6A0553C909D0290' temploid='{9C22AD20-000F-4393-A5BA-1FF882CD471B}' tmplref='_000002B729B6CBF0'>
+<NAME>
+<TUV xml:lang='en-US'>Variant Coding</TUV>
+<TUV xml:lang='de-DE'>Variantenkodierung</TUV>
+<TUV xml:lang='fr-FR'>Définition des variantes</TUV>
+<TUV xml:lang='ja'>バリアント コーディング</TUV>
+</NAME>
+<QUAL>VariantCoding</QUAL>
+<DIAGINST id='_000002B727920860' oid='149891ABB264431390FFB537445F8ECB' temploid='{56B4FFA0-01A4-41dc-A679-F0FED0E4F912}' tmplref='_000002B729B6CBF0' req='notReq'>
+<NAME>
+<TUV xml:lang='en-US'>Coding</TUV>
+<TUV xml:lang='de-DE'>Kodierung</TUV>
+<TUV xml:lang='fr-FR'>Codage</TUV>
+<TUV xml:lang='ja'>コーディング</TUV>
+</NAME>
+<QUAL>Coding</QUAL>
+<SERVICE id='_000002B7298B6DE0' oid='FF1D0677472A4d23AD333E465B4BA2FE' temploid='{B610683D-83C5-4c15-81D0-F3D1EC0B73C9}' tmplref='_000002B729AFE420' func='1' phys='1' respOnPhys='1' respOnFunc='1' req='0' mayBeExec='(5)'>
+<NAME>
+<TUV xml:lang='en-US'>Read</TUV>
+<TUV xml:lang='de-DE'>Lesen</TUV>
+<TUV xml:lang='fr-FR'>Lecture</TUV>
+<TUV xml:lang='ja'>読込み</TUV>
+</NAME>
+<QUAL>Read</QUAL>
+<SHORTCUTNAME>
+<TUV xml:lang='en-US'>Coding Read</TUV>
+<TUV xml:lang='de-DE'>Kodierung Lesen</TUV>
+<TUV xml:lang='fr-FR'>Codage Lecture</TUV>
+<TUV xml:lang='ja'>コーディング 読込み</TUV>
+</SHORTCUTNAME>
+<SHORTCUTQUAL>Coding_Read</SHORTCUTQUAL>
+</SERVICE>
+<SERVICE id='_000002B7298B71C0' oid='B7DAAC92440E42f1BD2723E6C84FCDDD' temploid='{82CF813A-42F0-481f-A53E-26BFA9DEBBCC}' tmplref='_000002B729AFF260' func='1' phys='1' respOnPhys='1' respOnFunc='1' req='0' mayBeExec='(5)'>
+<NAME>
+<TUV xml:lang='en-US'>Write</TUV>
+<TUV xml:lang='de-DE'>Schreiben</TUV>
+<TUV xml:lang='fr-FR'>Ecriture</TUV>
+<TUV xml:lang='ja'>書込み</TUV>
+</NAME>
+<QUAL>Write</QUAL>
+<SHORTCUTNAME>
+<TUV xml:lang='en-US'>Coding Write</TUV>
+<TUV xml:lang='de-DE'>Kodierung Schreiben</TUV>
+<TUV xml:lang='fr-FR'>Codage Ecriture</TUV>
+<TUV xml:lang='ja'>コーディング 書込み</TUV>
+</SHORTCUTNAME>
+<SHORTCUTQUAL>Coding_Write</SHORTCUTQUAL>
+</SERVICE>
+<STATICVALUE oid='193D186C3B0247988FBFEFBD9040D34E' temploid='{208D1321-A302-4766-B2FF-644EBF5237E2}' shstaticref='_000002B727831610' v='264'/>
+<SIMPLECOMPCONT oid='377C0A0ACE1B44b9A774D8722D98045B' temploid='{3CB4D5CE-D5D5-416f-9992-3CAD82E09DC0}' shproxyref='_000002B729B6CD00'>
+<STRUCT oid='FD04ABF100CF4a7cAA36A276E9B06DD8' temploid='{0461B2F7-F9FE-4ce2-A7B6-8A77FB065A11}' spec='no' dtref='_000002B729AFDE30'>
+<NAME>
+<TUV xml:lang='en-US'>Coding string</TUV>
+<TUV xml:lang='de-DE'>Kodierstring</TUV>
+<TUV xml:lang='fr-FR'>Chaine de codage</TUV>
+<TUV xml:lang='ja'>コーディング・ストリング</TUV>
+</NAME>
+<QUAL>Codingstring</QUAL>
+<DATAOBJ oid='D4FA1EEA50A04d4eAF7A8004F2AC6016' temploid='{5C456D17-6610-4112-B61A-579BC51C4C9F}' spec='no' dtref='_000002B727719EC0'>
+<NAME>
+<TUV xml:lang='en-US'>Country code</TUV>
+<TUV xml:lang='de-DE'>Ländervariante</TUV>
+<TUV xml:lang='fr-FR'>Code pays</TUV>
+<TUV xml:lang='ja'>国コード</TUV>
+</NAME>
+<QUAL>CountryType</QUAL>
+</DATAOBJ>
+<DATAOBJ oid='27C3A7D1513F436dB6667BD6D0FBFAC1' temploid='{0B523801-6479-440f-8794-DD262983EE70}' spec='no' dtref='_000002B727718E80'>
+<NAME>
+<TUV xml:lang='en-US'>Vehicle type</TUV>
+<TUV xml:lang='de-DE'>Fahrzeugtyp</TUV>
+<TUV xml:lang='fr-FR'>Type de véhicule</TUV>
+<TUV xml:lang='ja'>車両タイプ</TUV>
+</NAME>
+<QUAL>VehicleType</QUAL>
+</DATAOBJ>
+<DATAOBJ oid='1099E85A46D44f929770FC8E7C6563FD' temploid='{BBA1BCAE-C8FF-45f2-8D9B-F29ACBD70372}' spec='no' dtref='_000002B729AFC080'>
+<NAME>
+<TUV xml:lang='en-US'>Special preference</TUV>
+<TUV xml:lang='de-DE'>Spezialeinstellung</TUV>
+<TUV xml:lang='fr-FR'>Préférence spéciale</TUV>
+<TUV xml:lang='ja'>特別仕様</TUV>
+</NAME>
+<QUAL>SpecialAdjustment</QUAL>
+</DATAOBJ>
+</STRUCT>
+</SIMPLECOMPCONT>
+<SIMPLECOMPCONT oid='10BAF7659A964eed849239890FF9DED7' temploid='{92A86E36-23C5-47f5-94B2-906855A2C6AB}' shproxyref='_000002B729B6D030'>
+<SPECDATAOBJ oid='2438039543814b23A24DDBF7C0F89C68' temploid='{5B632F4E-E630-424a-8511-EB172773ECC6}'>
+<NAME>
+<TUV xml:lang='en-US'>Read</TUV>
+<TUV xml:lang='de-DE'>Lesen</TUV>
+<TUV xml:lang='fr-FR'>Lecture</TUV>
+<TUV xml:lang='ja'>読込み</TUV>
+</NAME>
+<QUAL>Read</QUAL>
+<NEGRESCODEPROXIES>
+<NEGRESCODEPROXY idref='_000002B7212AC900'/>
+</NEGRESCODEPROXIES>
+</SPECDATAOBJ>
+</SIMPLECOMPCONT>
+<SIMPLECOMPCONT oid='0CB31211E82D4509A6ACA64E8BABB0DA' temploid='{13277B6D-0B50-43bc-8619-DA8911E00986}' shproxyref='_000002B729B6E680'>
+<SPECDATAOBJ oid='361A40FD650041cfB9A7F115D18C8FCF' temploid='{6282B2D3-E465-4329-B42E-ADE38E3C20DF}'>
+<NAME>
+<TUV xml:lang='en-US'>Write</TUV>
+<TUV xml:lang='de-DE'>Schreiben</TUV>
+<TUV xml:lang='fr-FR'>Ecriture</TUV>
+<TUV xml:lang='ja'>書込み</TUV>
+</NAME>
+<QUAL>Write</QUAL>
+<NEGRESCODEPROXIES>
+<NEGRESCODEPROXY idref='_000002B7212AC900'/>
+</NEGRESCODEPROXIES>
+</SPECDATAOBJ>
+</SIMPLECOMPCONT>
+</DIAGINST>
+</DIAGCLASS>
+</VAR>
+</ECU>
+<REQDOC idPrefix='CDD_' defaultDatyType='HexDump_1Byte'>
+</REQDOC>
+</ECUDOC>
+</CANDELA>

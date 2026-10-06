@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CANdelaStudio MSI</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="candelastudio-msi">CANdelaStudio <span id='_index_446728059'>MSI</span></h1>
+<p>The CANdelaStudio installation comes with</p>
+<ul>
+<li>the <code>CANdelaStudio.msi</code> containing the functionality of the CANdelaStudio application,</li>
+<li><a href="Bundled%20Products.htm">bundled products</a> and</li>
+<li><a href="Prerequisites.htm">prerequisites</a>.</li>
+</ul>
+<p>The CANdelaStudio installer will install these parts automatically.</p>
+<p>The following information will be helpful if you want to take detailed control over the installation, typically for <strong>in-house installers</strong>.</p>
+<h2 id="interactive-use">Interactive Use</h2>
+<p>Only install <code>CANdelaStudio.msi</code> with the /quiet setting.</p>
+<p>Interactive use may show dialogs not supported by Vector.</p>
+
+<h2 id="installation-blocking-cds-69584-9.1">Installation Blocking (CDS-69584 9.1)</h2>
+<h3 id="use-case">Use-case</h3>
+<ul>
+<li>on a computer where CANdelaStudio has been (or will be) installed as main product, typically using an in-house installer,</li>
+<li>the off-the-shelf installation of another Vector diagnostic tool (CANoe, CANape...) shall <strong>not</strong> install its bundled CANdelaStudio.</li>
+</ul>
+
+<h3 id="definitions">Definitions</h3>
+<p><span id="CDSMSI-D010" class="rqDef">[CDSMSI-D010]</span>: registry keys to block bundled installation:</p>
+<ul>
+<li><span id="CDSMSI-D010-native" class="rqDef">[CDSMSI-D010-native]</span> <code>HKEY_LOCAL_MACHINE\SOFTWARE\Vector\CANdelaStudio\DoNotInstallAsBundledProduct</code>
+<ul>
+<li>string</li>
+</ul></li>
+</ul>
+
+<p><span id="CDSMSI-D020" class="rqDef">[CDSMSI-D020]</span>: MSI parameter to indicate installation as bundled product:</p>
+<ul>
+<li><code>INSTALLASBUNDLEDPRODUCT</code></li>
+<li>Note: MSI forces parameter names to be upper case.</li>
+</ul>
+<h3 id="solution">Solution</h3>
+<div class="figure">
+<img src="Images/Installation%20Blocking%20Overview.jpg" alt="Installation Blocking Overview" />
+<p class="caption">Installation Blocking Overview</p>
+</div>
+<p><span id="CDSMSI-R001" class="rqDef">[CDSMSI-R001]</span>: when the CANdelaStudio MSI gets installed,...</p>
+<ul>
+<li>if it has been started with parameter <a class='rqRef' href='../../30%20Features/Installation/CANdelaStudio%20MSI.htm#CDSMSI-D020' title="">[CDSMSI-D020]</a> <code>!= 0</code>,</li>
+<li>and the registry key of <a class='rqRef' href='../../30%20Features/Installation/CANdelaStudio%20MSI.htm#CDSMSI-D010-native' title="">[CDSMSI-D010-native]</a> exists, is not empty and not the string <code>0</code>,</li>
+<li>then the MSI writes an info to the logfile and skips installation, indicating success.</li>
+<li>The info looks like: <code>Skipping CANdelaStudio installation as bundled product due to registry key &lt;path&gt;</code>.</li>
+</ul>
+<h3 id="implementation">Implementation</h3>
+<ul>
+<li><strong>In the MSI</strong>, checking the registry key of <a class='rqRef' href='../../30%20Features/Installation/CANdelaStudio%20MSI.htm#CDSMSI-D010-native' title="">[CDSMSI-D010-native]</a> is enough, since this is how the MSI sees the key (even as 32 bit MSI on a 64 bit system).</li>
+<li>All <strong>Vector tools that bundle CANdelaStudio</strong> must set the parameter <a class='rqRef' href='../../30%20Features/Installation/CANdelaStudio%20MSI.htm#CDSMSI-D020' title="">[CDSMSI-D020]</a>.
+<ul>
+<li>CANape: implemented in 15.0 SP4 (CANAPE-136841) and 16.0 SP2 (CANAPE-136842).</li>
+<li>CANoe/CANalyzer: implemented in 10 SP6 and 11.0.</li>
+</ul></li>
+<li><strong>In-house installers at customers</strong> must ...
+<ul>
+<li>set the registry keys <a class='rqRef' href='../../30%20Features/Installation/CANdelaStudio%20MSI.htm#CDSMSI-D010' title="">[CDSMSI-D010]</a>, and</li>
+<li>not set the parameter <a class='rqRef' href='../../30%20Features/Installation/CANdelaStudio%20MSI.htm#CDSMSI-D020' title="">[CDSMSI-D020]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="msi-warnings">MSI Warnings</h2>
+<p><span id="CDSMSI-R050" class="rqDef">[CDSMSI-R050]</span> CANdelaStudio.msi no more installs desktop icons (CDS-28140 8.0) in order to avoid warning ICE69.</p>
+<h2 id="candelastudio-in-windows-explorer">CANdelaStudio in Windows Explorer</h2>
+<p><span id="CDSMSI-R060" class="rqDef">[CDSMSI-R060]</span> The CANdelaStudio.msi puts the CANdelaStudio version installed (starting with 7.0) as a menu item in the Windows Explorer context menu for CDD/CDDT files (CDS-13020 7.0).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Bundled%20Products.htm">Bundled Products</a></li>
+<li><a href="Documentation.htm">Documentation</a></li>
+<li><a href="Example%20Files.htm">Example Files</a></li>
+<li><a href="Installation%20Folder.htm">Installation Folder</a></li>
+<li><a href="Prerequisites.htm">Prerequisites (Installation)</a></li>
+<li><a href="Setup.htm">Setup</a></li>
+<li><a href="Supported%20Platforms.htm">Supported Platforms</a></li>
+</ul>
+</body>
+</html>

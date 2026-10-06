@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Characteristic Curve</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="characteristic-curve"><span id='_index_446727974'>Characteristic Curve</span></h1>
+<p>A Characteristic Curve converts a raw byte x using points or ranges on the x-axis in which a value <code>y</code> applies, i.e.</p>
+<ul>
+<li>a set of (x, y) pairs in a Cartesian coordinate system with
+<ul>
+<li>abscissa (x axis) and</li>
+<li>ordinates (y axis).</li>
+</ul></li>
+</ul>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Characteristic%20Curve.htm">dialog</a>.</p>
+<p>Example: Temperature</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Raw Value</th>
+<th align="right">Physical Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0x00</td>
+<td align="right">0.125</td>
+</tr>
+<tr class="even">
+<td align="right">0x01</td>
+<td align="right">(interpolated) 0.1875</td>
+</tr>
+<tr class="odd">
+<td align="right">0x02</td>
+<td align="right">0.25</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interpolation">Interpolation</h2>
+<p>The following describes the conversion of raw to physical values.</p>
+<p>The same holds vice versa for the conversion of physical to raw values.</p>
+<p>Note: in the corresponding ODX element <code>TAB-INTP</code>, physical values are always interpolated.</p>
+<h3 id="without-interpolation">Without Interpolation</h3>
+<p>The entries of the table refer to <strong>single coded values</strong> which are mapped to a (single) physical one.</p>
+<p>Only raw values for which an (x, y) pair exists are converted to physical values.</p>
+<h3 id="with-interpolation">With Interpolation</h3>
+<p>For an x value not contained in the data type definition, ...</p>
+<ul>
+<li>the range of adjacent x values is taken, and
+<ul>
+<li>the y value is computed (interpolated) using a <strong>linear formula</strong>...</li>
+<li>from the y values of the adjacent x values.</li>
+</ul></li>
+<li>This includes <strong>extrapolation</strong> below the minimum and above the maximum defined x value.</li>
+<li>The interpolation causes a growth of the coded range beyond the actual table entries, as all values in between the table entries are also considered as valid values.</li>
+</ul>
+<p>Note: this defines a similar mapping as a <strong>piecewise linear data type</strong>, but it uses <strong>single values</strong> as supporting points to be interpolated in between.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm#conversions">Conversions</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>1_Workflow</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="Workflow">Workflow</h1>
+<h2 id="preparation-optional---candelastudio-plug-in-enable-odx-mode">Preparation (optional) - CANdelaStudio Plug-in »Enable ODX Mode«</h2>
+<p>The <a href="../../30%20Features/Plug-ins/Introduction.htm">plug-in</a> <a href="../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm">&quot;Enable ODX Mode&quot;</a> creates several CANdelaStudio attributes in a CANdelaStudio document resp. Template within attribute category ODX. These attributes are not required for the Import or Export operation, but if they exist, they are used to store round-trip information during the Import and to use round-trip information for the Export.</p>
+<p>The first step of the plug-in is asking for a CANdelaStudio document resp. Template to which the changes are applied. It is recommended to apply the plug-in on the used CANdelaStudio Template first, because these attributes are then also available in all CANdelaStudio documents which are based on this Template. However, it is possible to apply the Plugin to a CANdelaStudio Document directly.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image2.png" alt="Menu item for plug-in &quot;Enable ODX Mode&quot;" />
+<p class="caption">Menu item for plug-in &quot;Enable ODX Mode&quot;</p>
+</div>
+<h2 id="user-guidance-and-data-selection">User Guidance and Data Selection</h2>
+<p>The user guidance and data selection for importing ODX data is done by a wizard starting in the CANdelaStudio menu: File --&gt; Import --&gt; Open Diagnostic Data Exchange (ODX).</p>
+<p>All read ODX files are checked if they fulfill the ODX XML scheme. If a file does not fulfill the ODX XML scheme, the errors are printed in the log file and the file itself is not used in the following import steps.</p>
+<h3 id="FullEcu">Import of an ODX ECU Description</h3>
+<p>To import an ODX ECU description CANdelaStudio offers a wizard to specify details. The wizard is available in &quot;File --&gt; Import --&gt; Open Diagnostic Data Exchange (ODX)&quot;. The first radio button &quot;Complete ODX ECU description&quot; must be selected.</p>
+<p>The option &quot;Deactivate all CANdelaStudio instances before import&quot; indicates that the resulting CANdelaStudio file applied in a Vector tester offers the same diagnostic services as the ODX file used in a tester. &quot;ODX overwrites CANdela&quot; removes an existing CANdelaStudio Service if an ODX DIAG-SERVICE with the same Service signature (e.g. SID + ID) is imported to ensure uniqueness of IDs/LIDs. And &quot;Deactivate all CANdelaStudio instances before import&quot; just deactivates all existing Services. Then, if a DIAG-SERVICE which corresponds to a deactivated Service is imported, the CANdelaStudio Service is reactivated again. In short, we can say that nothing else from the resulting CANdelaStudio document is executable than the imported ODX data.<br />
+More information regarding the activation/deactivation of DiagInstances and Job Containers can be found in <a href="../../30%20Features/Import/5_Selective%20Topics.htm#deactivate-jobs">Hints and Tips</a>.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image3.png" alt="Selection of Import Mode &quot;Complete ODX ECU description&quot;" />
+<p class="caption">Selection of Import Mode &quot;Complete ODX ECU description&quot;</p>
+</div>
+<p>Clicking on &quot;Next&quot; a file selection dialog appears. All ODX files which belong to the ECU description must be selected here. The import has only access to the selected files. If a pdx file is chosen, no additionally selected files are read or evaluated since the pdx file is self-contained. For both options &quot;Import of an ODX ECU description&quot; and &quot;Import of selected parts&quot;, all standardized ODX file name extensions (pdx, odx, odx-f, odx-v, odx-d, odx-m, odx-c) can be provided as source files for reading. All selected files are evaluated by the import.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image4.png" alt="Selection of files which shall be loaded" />
+<p class="caption">Selection of files which shall be loaded</p>
+</div>
+<p>Clicking on &quot;Next&quot; in the dialog of Figure 1-3 all loaded ODX BaseVariants are listed. Here one of the loaded ODX BaseVariants can be chosen for the import. All ODX EcuVariants for the selected ODX BaseVariant are imported as well. That means an ECU-VARIANT can only be imported by importing its BASE-VARIANT. Doing so all ECU-VARIANTs of the BASE-VARIANT which can be read from the selected files are imported. There is no further selection provided. The entire ECU diagnostic data is imported.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image5.png" alt="Selection which one of the loaded BASE-VARIANTs shall be imported" />
+<p class="caption">Selection which one of the loaded BASE-VARIANTs shall be imported</p>
+</div>
+<h3 id="VariantSelect">Variants with selection of services/jobs</h3>
+<p>The ODX Import also provides a Variant Import mode. With this option loaded BASE-/ECU-VARIANTs can be excluded from import (via a filter dialog - select row and press F2) or even mapped to existing variants of the CANdelaStudio document.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image6.png" alt="Selection of Import Mode &quot;Variant Import&quot;" />
+<p class="caption">Selection of Import Mode &quot;Variant Import&quot;</p>
+</div>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image7.png" alt="Mapping and selection of ECU-VARIANTs" />
+<p class="caption">Mapping and selection of ECU-VARIANTs</p>
+</div>
+<h4 id="filtering-of-diag-comms">Filtering of DIAG-COMMs</h4>
+<p>The &quot;Import of Variants&quot; option not only provides ways to (de-)select and map ECU-VARIANTs, it's also possible to filter DIAG-COMMs for each variants selected for import.</p>
+<p>In order to enable the DIAG-COMM filter dialog, the &quot;Select services/jobs&quot; checkbox in the variant mapping window must be activated.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image8.png" alt="Check DIAG-COMM filter option to activate filter dialog" />
+<p class="caption">Check DIAG-COMM filter option to activate filter dialog</p>
+</div>
+<p>In the subsequent wizard dialog a list of available Services and Jobs is displayed as a tree for each DIAG-LAYER to be imported. As default, all DiagComms are selected. DiagComms can be deselected by unchecking their checkbox. Deselected DiagComms are excluded from the import.</p>
+<p>For each DiagComm, its Service-ID, LONG-NAME and FUNCT-CLASS (in braces, if available) is displayed. In case one single DIAG-SERVICE contains a dynamic TABLE, each TABLE-ROW is listed as a separate Service.</p>
+<p>The list of DiagComms can be reduced by using the text filter field on top of the dialog. The filter searches for textual matches inside the complete DiagComm list, i.e. not only the LONG-NAME may be used for search but also the Service-ID (e.g. &quot;$10&quot;) or the FUNCT-CLASS (e.g. &quot;SESSION&quot;).</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image9.png" alt="Selection of DiagComms" />
+<p class="caption">Selection of DiagComms</p>
+</div>
+<h3 id="SelectedParts">Import of selected parts only (DTCs, data types, data objects, units)</h3>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image10.png" alt="Selection of Import Mode &quot;Selected parts only&quot;" />
+<p class="caption">Selection of Import Mode &quot;Selected parts only&quot;</p>
+</div>
+<p>DOPs which are importable as CANdelaStudio <a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Types</a> can be imported into the CANdelaStudio data type list. The same goes for units. <a href="../../30%20FEatures/DTC/DTC.htm">DTCs</a> can be imported into CANdelaStudio DTC tables. And PARAMs which are importable as CANdelaStudio data objects can be imported into a <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram table</a> (via context menu of the telegram table, see Figure 1-10) or into the volatile CANdelaStudio <a href="../../30%20Features/Import%20Pool/Import%20Pool.htm">Import Pool</a>.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image11.png" alt="Part of context menu in a telegram table" />
+<p class="caption">Part of context menu in a telegram table</p>
+</div>
+<h2 id="Options">CANdelaStudio Import Options</h2>
+<p>Additionally to the different Use Cases which can be chosen in the Import GUI, the ODX Import behavior can be controlled by a set of options. Details can be found in <a href="../../30%20Features/Import/2_Import%20Settings.htm#Options">Import Options</a>.</p>
+<h2 id="import-related-attributes">Import related attributes</h2>
+<p>To automatically modify the behaviour of the Import on specific CDD files, the user may set <a href="../../30%20Features/Attributes/Attributes.htm">CANdelaStudio Attributes</a> on these documents. For Import steering, there are multiple locations where attributes can be set in a CANdelaStudio document; the most usual ones are described in <a href="../../30%20Features/Import/2_Import%20Settings.htm#Attributes">Import Attributes</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="ODX%20Import%20Introduction.htm">ODX Import Introduction</a></li>
+<li>Plug-in <a href="../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm">&quot;Enable ODX Mode&quot;</a></li>
+<li><a href="../../30%20Features/Attributes/Special%20Attributes.htm">Special Attributes</a></li>
+</ul>
+</body>
+</html>

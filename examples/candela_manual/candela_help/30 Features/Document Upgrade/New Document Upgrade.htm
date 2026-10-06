@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>New Document Upgrade</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="new-document-upgrade-cds-70041-v11">New Document Upgrade (CDS-70041 v11)</h1>
+<p><span id="DOCUP-R600" class="rqDef">[DOCUP-R600]</span> Operation to transfer data from a newer template version to a document based on an older template version, with selection of variants to be affected.</p>
+<p>You start it via ribbon tab Document | Template | New Document Upgrade <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Document.htm#MENU-R568' title="">[MENU-R568]</a>, opening the dialog <a class='rqRef' href='../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm#DUUI-R100' title="">[DUUI-R100]</a>.</p>
+<p>Note: as of v11, the operation transfers <strong>only modifications of</strong>...</p>
+<ul>
+<li>Default Attributes</li>
+<li>Data Types</li>
+<li>DIDs</li>
+<li>Diagnostic Instances</li>
+</ul>
+<h2 id="use-cases">Use-Cases</h2>
+<p>Each CANdela document is based on a CANdela template.</p>
+<p>You may want to modify a template...</p>
+<ul>
+<li>for <strong>bugfixing</strong>
+<ul>
+<li>e.g. the old template contains a typo <code>Paramter</code>,</li>
+<li>correct it to <code>Parameter</code></li>
+</ul></li>
+<li>for adding a <strong>new diagnostic feature</strong>
+<ul>
+<li>e.g. add a new Security Access policy,</li>
+<li>or add a new DID.</li>
+</ul></li>
+</ul>
+<p>For both cases, it may be desirable to update existing documents as well, so that they are <strong>based on the new template</strong>:</p>
+<ul>
+<li>apply the bugfix <code>Parameter</code></li>
+<li>add the new Security Access policy or the new DID.</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<table>
+<tr>
+<td style="border:none; vertical-align: top">
+<p>The document upgrade...</p>
+<ul>
+<li>lets you select the <strong>old (original) template</strong> on which your document is based,</li>
+<li>and the <strong>new (modified) template</strong>.</li>
+<li>It computes the <strong>changes</strong> made in the new template,</li>
+<li>and <strong>applies these to your document</strong>,
+<ul>
+<li>to selected variants only.</li>
+<li>It <strong>copies over</strong> data that has been modified in the <strong>template only</strong>.</li>
+<li>It <strong>keeps</strong> data unchanged which has been modified in the <strong>document only</strong>.</li>
+</ul></li>
+<li>For <strong>conflicts</strong> (data modified in the document as well in the new template),
+<ul>
+<li>it shows a dialog to <strong>resolve</strong> the conflicts,</li>
+<li>i.e. select which data to use in the result.</li>
+</ul></li>
+<li>Finally, the operation allows to <strong>create a revision entry</strong> for the document upgrade.
+<ul>
+<li>The revision is pre-filled with generated information about the differences.</li>
+</ul></li>
+<li>Some data constellations may need further attention.
+<ul>
+<li>For this purpose, the document upgrade fills a <a href="../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade%20Rework%20List.htm">Rework list</a> which you can check afterwards.</li>
+<li>Document Upgrade clears the Rework List at each run <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R655' title="">[DOCUP-R655]</a>.</li>
+</ul></li>
+</ul>
+</td>
+<td style="border:none">
+<div class="figure">
+<img src="Images/NewDocumentUpgradeWorkflow.jpg" alt="Workflow New Document Upgrade" />
+<p class="caption">Workflow New Document Upgrade</p>
+</div>
+</td>
+</tr>
+</table>
+<h2 id="types-of-changes-in-the-new-template">Types of Changes in the New Template</h2>
+<div class="figure">
+<img src="Images/TemplateDataDocumentData.jpg" alt="Types of Data in a CANdela File" />
+<p class="caption">Types of Data in a CANdela File</p>
+</div>
+<p>A CANdela template contains...</p>
+<ul>
+<li><strong>Template Data</strong>
+<ul>
+<li>e.g. Protocol Services, Diagnostic Class Templates, Default Attributes</li>
+<li>in Standard View in a document based on the template, you <strong>cannot</strong> modify these objects</li>
+</ul></li>
+<li><strong>Document Data</strong>
+<ul>
+<li>(in the following, this includes <strong>Base Data</strong> from the diagram above)</li>
+<li>e.g. data types, diagnostic instances and DIDs in the base variant</li>
+<li>in Standard View in a document based on the template, you <strong>can</strong> modify these objects</li>
+</ul></li>
+</ul>
+<p><span id="DOCUP-R610" class="rqDef">[DOCUP-R610]</span> For <strong>Template Data</strong>, Document Upgrade...</p>
+<ul>
+<li><span id="DOCUP-R610-Coverage" class="rqDef">[DOCUP-R610-Coverage]</span> as of v11, <strong>supports only</strong> changes of...
+<ul>
+<li><strong>Default Attributes</strong>.</li>
+<li>Note: the wizard documents this in the static text <a class='rqRef' href='../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm#DUUI-R150' title="">[DUUI-R150]</a>.</li>
+</ul></li>
+<li><span id="DOCUP-R610-Other" class="rqDef">[DOCUP-R610-Other]</span>
+<ul>
+<li>It <strong>detects</strong> all other template data changes,</li>
+<li>but does <strong>not transport</strong> them to the document.</li>
+<li>Therefore, it reports them in the Rework List <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R650' title="">[DOCUP-R650]</a>.</li>
+</ul></li>
+<li><span id="DOCUP-R610-Always" class="rqDef">[DOCUP-R610-Always]</span> The operation <strong>applies the supported changes always</strong>, unconditionally.
+<ul>
+<li>E.g. when a Default Attribute has been changed from <code>unsigned</code> to <code>enum</code>, there is no choice for you (&quot;template wins&quot;).</li>
+<li>When this change effects in loss of document data, the operation adds the change to the Rework List,</li>
+<li>e.g. when the operation cannot automatically convert an overridden <code>unsigned</code> value to an <code>enum</code> value.</li>
+</ul></li>
+</ul>
+<p><span id="DOCUP-R615" class="rqDef">[DOCUP-R615]</span> For <strong>Document Data</strong>, Document Upgrade...</p>
+<ul>
+<li><span id="DOCUP-R615-Coverage" class="rqDef">[DOCUP-R615-Coverage]</span> as of v11, <strong>transports only changes of...</strong>.
+<ul>
+<li>DIDs</li>
+<li><a href="New%20Document%20Upgrade%20-%20Diagnostic%20Instance.htm">Diagnostic Instances</a></li>
+<li><a href="New%20Document%20Upgrade%20-%20Data%20Type.htm">Data Types</a></li>
+</ul></li>
+<li><span id="DOCUP-R615-Other" class="rqDef">[DOCUP-R615-Other]</span>
+<ul>
+<li>It detects all other Document Data changes,</li>
+<li>but does <strong>not</strong> transport them to the document.</li>
+<li>Therefore, it reports them in the Rework List <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R650' title="">[DOCUP-R650]</a>.</li>
+</ul></li>
+<li><span id="DOCUP-R615-NoConflict" class="rqDef">[DOCUP-R615-NoConflict]</span> The operation <strong>applies these changes</strong> only <strong>if there is no conflict</strong>.
+<ul>
+<li>For details about possible conflicts, see the types of changes in the following chapter.</li>
+</ul></li>
+</ul>
+<h2 id="principal-results-for-given-types-of-changes">Principal Results for Given Types of Changes</h2>
+<p><span id="DOCUP-R620" class="rqDef">[DOCUP-R620]</span> A <strong>conflict</strong> arises for each object modified/deleted both in the document and in the new template.</p>
+<ul>
+<li>You may resolve the conflicts in the second page of the dialog <a class='rqRef' href='../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm#DUUI-R200' title="">[DUUI-R200]</a>.</li>
+</ul>
+<p>The following constellations are possible:</p>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="31%" />
+<col width="28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Feature ID</th>
+<th align="center">Old Template</th>
+<th align="center">Document</th>
+<th align="center">New Template</th>
+<th align="center">Result Document</th>
+<th align="left">Change</th>
+<th align="left">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span id="DOCUP-R630-00X" class="rqDef">[DOCUP-R630-00X]</span></td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="left">Added in new template</td>
+<td align="left">Copy over</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="DOCUP-R630-0X0" class="rqDef">[DOCUP-R630-0X0]</span></td>
+<td align="center">-</td>
+<td align="center">X</td>
+<td align="center">-</td>
+<td align="center">X</td>
+<td align="left">Added in document</td>
+<td align="left">Keep</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="DOCUP-R630-0XX" class="rqDef">[DOCUP-R630-0XX]</span></td>
+<td align="center">-</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="left">Added identically in both</td>
+<td align="left">Keep</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="DOCUP-R630-0DT" class="rqDef">[DOCUP-R630-0DT]</span></td>
+<td align="center">-</td>
+<td align="center">D</td>
+<td align="center">T</td>
+<td align="center"><strong>(conflict)</strong></td>
+<td align="left">Added with different properties</td>
+<td align="left"><strong>Select one interactively</strong></td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="DOCUP-R630-XXT" class="rqDef">[DOCUP-R630-XXT]</span></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">T</td>
+<td align="center">T</td>
+<td align="left">Modified in new template</td>
+<td align="left">Copy over</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="DOCUP-R630-XDX" class="rqDef">[DOCUP-R630-XDX]</span></td>
+<td align="center">X</td>
+<td align="center">D</td>
+<td align="center">X</td>
+<td align="center">D</td>
+<td align="left">Modified in document</td>
+<td align="left">Keep</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="DOCUP-R630-XYY" class="rqDef">[DOCUP-R630-XYY]</span></td>
+<td align="center">X</td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+<td align="left">Modified identically in both</td>
+<td align="left">Keep</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="DOCUP-R630-XDT" class="rqDef">[DOCUP-R630-XDT]</span></td>
+<td align="center">X</td>
+<td align="center">D</td>
+<td align="center">T</td>
+<td align="center"><strong>(conflict)</strong></td>
+<td align="left">Modified differently in both</td>
+<td align="left"><strong>Select one interactively</strong></td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="DOCUP-R630-X0X" class="rqDef">[DOCUP-R630-X0X]</span></td>
+<td align="center">X</td>
+<td align="center">-</td>
+<td align="center">X</td>
+<td align="center">-</td>
+<td align="left">Deleted in document, not modified in new template</td>
+<td align="left">Keep deletion</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="DOCUP-R630-X0T" class="rqDef">[DOCUP-R630-X0T]</span></td>
+<td align="center">X</td>
+<td align="center">-</td>
+<td align="center">T</td>
+<td align="center"><strong>(conflict)</strong></td>
+<td align="left">Deleted in document, but modified in new template</td>
+<td align="left"><strong>Select</strong>: keep deletion, or copy over the modified element</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="DOCUP-R630-XX0" class="rqDef">[DOCUP-R630-XX0]</span></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="left">Deleted in new template</td>
+<td align="left">Also delete in document</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="DOCUP-R630-XD0" class="rqDef">[DOCUP-R630-XD0]</span></td>
+<td align="center">X</td>
+<td align="center">D</td>
+<td align="center">-</td>
+<td align="center"><strong>(conflict)</strong></td>
+<td align="left">Modified in document, deleted in new template</td>
+<td align="left"><strong>Select to delete or not</strong></td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="DOCUP-R630-X00" class="rqDef">[DOCUP-R630-X00]</span></td>
+<td align="center">X</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="left">Deleted both in document and new template</td>
+<td align="left">Keep deleted</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legend</strong>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>-</code></td>
+<td>object does not exist / has been deleted</td>
+</tr>
+<tr class="even">
+<td align="left"><code>0</code></td>
+<td>dito in FeatureID (zero, not letter &quot;O&quot;)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>X</code></td>
+<td>object in the original state</td>
+</tr>
+<tr class="even">
+<td align="left"><code>D</code></td>
+<td>object as changed in the document only</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>T</code></td>
+<td>object as changed in the new template only</td>
+</tr>
+<tr class="even">
+<td align="left"><code>Y</code></td>
+<td>object as changed in both the document and the new template</td>
+</tr>
+</tbody>
+</table>
+<h2 id="variant-selection">Variant Selection</h2>
+<p><span id="DOCUP-R640" class="rqDef">[DOCUP-R640]</span> The operation uses the variant selection <a class='rqRef' href='../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm#DUUI-R140' title="">[DUUI-R140]</a> to restrict application of template changes to the given variants.</p>
+<ul>
+<li><span id="DOCUP-R640-Global" class="rqDef">[DOCUP-R640-Global]</span> Since all objects in a CANdela document must conform with the template (which is a strength of the CANdela data model), <strong>some Template Data changes cannot be confined to a subset of variants</strong>.
+<ul>
+<li>E.g. removing a Default Attribute automatically removes all its Overridden Attributes in all variants.</li>
+</ul></li>
+<li><span id="DOCUP-R640-ReworkList" class="rqDef">[DOCUP-R640-ReworkList]</span> The operation reports such changes that violate the variant restriction in the Rework List <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R650' title="">[DOCUP-R650]</a>.</li>
+</ul>
+<h2 id="rework-list">Rework List</h2>
+<p><span id="DOCUP-R650" class="rqDef">[DOCUP-R650]</span> Document Upgrade puts the following information into the Rework List:</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R610-Other' title="">[DOCUP-R610-Other]</a> Template data changes not handled by the Upgrade</li>
+<li><a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R640-Global' title="">[DOCUP-R640-Global]</a> Template data changes that take effect on a variant not selected <a class='rqRef' href='../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm#DUUI-R140' title="">[DUUI-R140]</a>.</li>
+<li><a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R615-Other' title="">[DOCUP-R615-Other]</a> Document Data changes not handled by the Upgrade.</li>
+</ul>
+<p><span id="DOCUP-R655" class="rqDef">[DOCUP-R655]</span> Document Upgrade <strong>clears</strong> the Rework List at each run!</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Document%20Upgrade.htm">Document Upgrade</a> (as before v11)</li>
+<li><a href="../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm">New Document Upgrade</a> Dialog</li>
+<li>New Document Upgrade - <a href="New%20Document%20Upgrade%20-%20Diagnostic%20Instance.htm">Diagnostic Instance</a></li>
+<li>New Document Upgrade - <a href="New%20Document%20Upgrade%20-%20Data%20Type.htm">Data Type</a></li>
+<li><a href="../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade%20Rework%20List.htm">Rework List</a></li>
+</ul>
+</body>
+</html>

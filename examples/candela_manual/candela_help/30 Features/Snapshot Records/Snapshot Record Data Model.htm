@@ -1,0 +1,640 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Snapshot Record Data Model</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="snapshot-record-data-model-v13-autosar-fault-memory-cds-71541">Snapshot Record Data Model (v13 AUTOSAR Fault Memory, CDS-71541)</h1>
+<p>See also the <a href="Snapshot%20Record%20Operations.htm">Snapshot Record Operations</a> and <a href="../../20%20UserInterface/Snapshot%20Records/GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a>.</p>
+<p><strong>Contents</strong>:</p>
+<ul>
+<li><a href="#PS">Protocol Service</a></li>
+<li><a href="#DClT">Diagnostic Class Template</a></li>
+<li><a href="#DI">Diagnostic Instance</a></li>
+<li>Consistency Conditions <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D500' title="">[SR-D500]</a></li>
+<li>Migration <a class='rqRef' href='../../30%20Features/Migrations/CANdelaStudio%2013.htm#SR-R600' title="">[SR-R600]</a></li>
+</ul>
+
+<div class="figure">
+<img src="Images/SnapshotRecordsOverview.jpg" alt="Snapshot Records Overview" />
+<p class="caption">Snapshot Records Overview</p>
+</div>
+<h2 id="PS">Protocol Service</h2>
+<p>For v13 AUTOSAR Fault Memory, a Proxy Component has additional semantics for Snapshot Records:</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sr' title="">[PC-R050-sr]</a> Snapshot Records</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sd' title="">[PC-R050-sd]</a> Snapshot Data</li>
+</ul>
+<p>Note: sr/sd are relevant for the following UDS Protocol Services:</p>
+<ul>
+<li>19 03 reportDTCSnapshotIdentification</li>
+<li>19 04 reportDTCSnapshotRecordByDTCNumber</li>
+<li>19 05 reportDTCStoredDataByDataRecordNumber</li>
+<li>19 18 reportUserDefMemoryDTCSnapshotRecordByDTCNumber</li>
+</ul>
+<p>Note: <strong>not relevant</strong> are:</p>
+<ul>
+<li>19 42 reportWWHOBDDTCByMaskRecord
+<ul>
+<li>19 42 FunctionalGroupIdentifier DTCStatusMask DTCSeverityMask</li>
+<li>59 42 FunctionalGroupIdentifier DTCStatusAvailabilityMask DTCSeverityAvailabilityMask DTCFormatIdentifier *[DTCSeverity DTC StatusOfDTC]</li>
+</ul></li>
+<li>19 55 reportWWHOBDDTCWithPermanentStatus
+<ul>
+<li>19 55 FunctionalGroupIdentifier</li>
+<li>59 55 FunctionalGroupIdentifier DTCStatusAvailabilityMask DTCFormatIdentifier *[DTC StatusOfDTC]</li>
+</ul></li>
+</ul>
+<h2 id="DClT">Diagnostic Class Template</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#CPC-R108' title="">[CPC-R108]</a> Proxy components with the same semantics, one of <code>sr</code>, <code>sd</code>, <code>edr</code>, <code>ed</code>, <strong>must be combined</strong>.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sdMux' title="">[PC-R050-sdMux]</a> At most one of (<code>sd</code> proxy component, Multiplexer component) can be used in a Primitive.</li>
+</ul>
+<h2 id="DI">Diagnostic Instance</h2>
+<p>CANdelaStudio holds the following properties <strong>locally to a diagnostic instance</strong>.</p>
+<ul>
+<li>Therefore they can be referenced between multiple variants.</li>
+<li>If you want to <strong>modify</strong> of the following properties <strong>within one variant only</strong>, you must first replace the reference of the diagnostic instance by a copy <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R040' title="Replace Reference with Copy">[DIOP-R040]</a>.</li>
+</ul>
+<h2 id="snapshot-record-numeration-type">Snapshot Record <span id='_index_446728115'>Numeration Type</span></h2>
+<p><span id="SR-D050" class="rqDef">[SR-D050]</span> In <strong>AUTOSAR</strong>, a Fault Memory has the property <code>DemTypeOfFreezeFrameRecordNumeration</code> with the values <code>Calculated</code> and <code>Configured</code>.</p>
+<p>CANdelaStudio 13 supports this information as part of the Diagnostic Instance for AUTOSAR Fault Memory.</p>
+<p><span id="DI-R310" class="rqDef">[DI-R310]</span> A Fault Memory Diagnostic Instance that has a Snapshot Records List (see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R030' title="">[SR-R030]</a>) has a <strong>Snapshot Numeration Type</strong>.</p>
+<p><strong>Values:</strong></p>
+<ul>
+<li>Configured, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Configured' title="">[DI-R310-Configured]</a> below</li>
+<li>Calculated, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Calculated' title="">[DI-R310-Calculated]</a> below</li>
+</ul>
+<p><strong>Scope:</strong> the Snapshot Numeration Type...</p>
+<ul>
+<li><span id="DI-R310-UDS" class="rqDef">[DI-R310-UDS]</span> ... affects <strong>UDS Snapshot Records</strong> <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D130-UDS' title="">[SR-D130-UDS]</a>,</li>
+<li><span id="DI-R310-OBDonUDS" class="rqDef">[DI-R310-OBDonUDS]</span> does <strong>not</strong> affect <strong>OBD on UDS Snapshot Records</strong> <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D130-OBDonUDS' title="">[SR-D130-OBDonUDS]</a>.
+<ul>
+<li>Note: for WWH-OBD, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R130-OBDonUDS' title="">[SR-R130-OBDonUDS]</a></li>
+</ul></li>
+<li>Typically, the OEM pre-defines the Snapshot Numeration Type.
+<ul>
+<li>Switching the Numeration Type is not a typical use-case for a CANdela document!</li>
+</ul></li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>You may <strong>modify</strong> this property in the Diagnostic Instance property dialog <a class='rqRef' href='../../20 UserInterface\Fault Memory\Diagnostic Instance Property Page AUTOSAR Fault Memory.htm#DIUI-R350' title="">[DIUI-R350]</a>.
+<ul>
+<li>Modification depends on <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R040' title="Primary properties modifiable">[DIA-R040]</a> Primary properties modifiable, see <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R040-NumerationType' title="">[DIA-R040-NumerationType]</a>.</li>
+</ul></li>
+<li>The description of Snapshot Numeration Type for Snapshot Records in the <strong>generic</strong> Multiplexer based modelling <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20CANdela.htm#FM-D200-Generic' title="">[FM-D200-Generic]</a> is different:
+<ul>
+<li>using a special attribute see <a class='rqRef' href='../../30%20Features/Fault%20Memory/Snapshot%20Records%20Generic.htm#SR-R023' title="">[SR-R023]</a></li>
+<li>in DEXT export: <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R340' title="">[DEXT-R340]</a></li>
+</ul></li>
+</ul>
+<h3 id="snapshot-numeration-type-configured">Snapshot Numeration Type &quot;<span id='_index_446728116'>Configured</span>&quot;</h3>
+<p><span id="DI-R310-Configured" class="rqDef">[DI-R310-Configured]</span></p>
+<ul>
+<li>you can freely define Snapshot Record Numbers <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R120' title="">[SR-R120]</a>, gaps are allowed</li>
+<li>uses the “checkbox feature” <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R300' title="">[SR-R300]</a></li>
+<li>the number of Snapshot Records is only limited by the valid Snapshot Record Numbers</li>
+<li>the numbering represents chronological order.</li>
+<li>A Snapshot Record has a <strong>Storage Trigger property</strong>, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R150' title="">[SR-R150]</a>.</li>
+<li>A Snapshot Record has an <strong>Update property</strong>, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R160' title="">[SR-R160]</a>.</li>
+<li>In practice, the possible combinations of trigger and update property values limit the number of Snapshot Records.</li>
+</ul>
+<p>Example for Numeration Type &quot;Configured&quot;: Snapshot Records to Store for DTC</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">DTC</th>
+<th align="center">First Occurred (0x10)</th>
+<th align="center">Most Recent Occurred (0x20)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">DTC A</td>
+<td align="center">x</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="right">DTC B</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="right">DTC C</td>
+<td align="center"></td>
+<td align="center">x</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>First Occurred (0x10): Storage Trigger &quot;Test Failed&quot;, Update = No</li>
+<li>Last Occurred (0x20): Storage Trigger &quot;Test Failed&quot;, Update = Yes</li>
+</ul>
+<h3 id="snapshot-numeration-type-calculated">Snapshot Numeration Type &quot;<span id='_index_446728117'>Calculated</span>&quot;</h3>
+<p><span id="DI-R310-Calculated" class="rqDef">[DI-R310-Calculated]</span></p>
+<ul>
+<li>UDS Snapshot Records <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D130-UDS' title="">[SR-D130-UDS]</a> are defined only <strong>implicitly</strong>,
+<ul>
+<li>i.e. there is no Snapshot Record qualifier, name etc.</li>
+<li>Especially, there is no Storage Trigger <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R150' title="">[SR-R150]</a> and Updated <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R160' title="">[SR-R160]</a> information.
+<ul>
+<li>If described, these properties will <strong>not</strong> be transported via DEXT.</li>
+</ul></li>
+</ul></li>
+<li>For each DTC, you specify the <strong>maximum number</strong> of Snapshot Records Stored <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DTC-R310' title="">[DTC-R310]</a></li>
+<li>Each DTC can have a different number of Snapshot Records stored (<code>DemMaxNumberFreezeFrameRecords</code>).</li>
+<li>At each DTC, the numbers of the stored Snapshot Records must be in the range <code>1..DemMaxNumberFreezeFrameRecords</code>, without gaps.</li>
+<li>The numbering represents chronological order.</li>
+<li>Effect on the “checkbox feature” <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R300' title="">[SR-R300]</a>:
+<ul>
+<li>for a given DTC, the “checkbox” is implicitly true for a range of SRNs <code>1..MaxSnapshotRecordNumber</code></li>
+</ul></li>
+</ul>
+<p>Example for Numeration Type &quot;Calculated&quot;: Snapshot Records to Store for DTC</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">DTC</th>
+<th align="center">MaxSnapshotRecordNumber</th>
+<th align="center">SR 0x01</th>
+<th align="center">SR 0x02</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">DTC A</td>
+<td align="center">1</td>
+<td align="center">x</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="right">DTC B</td>
+<td align="center">2</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="right">DTC C</td>
+<td align="center">1</td>
+<td align="center">x</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="snapshot-records-list">Snapshot Records List</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/SnapshotRecordsConfiguredNoOBD.png" alt="Snapshot Records List" />
+<p class="caption">Snapshot Records List</p>
+</div>
+<p><span id="SR-R030" class="rqDef">[SR-R030]</span> A Fault Memory Diagnostic Instance contains a <strong>list of 0..n Snapshot Records</strong>.</p>
+<ul>
+<li><span id="SR-R030-Card" class="rqDef">[SR-R030-Card]</span> Cardinality: Diagnostic Instance 1..1 -- 0..n Snapshot Records</li>
+<li><a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Calculated' title="">[DI-R310-Calculated]</a> if the Snapshot Numeration Type is &quot;<strong>Calculated</strong>&quot;,
+<ul>
+<li>UDS Snapshot Records <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D130-UDS' title="">[SR-D130-UDS]</a> are <strong>not</strong> explicitly defined</li>
+</ul></li>
+<li><span id="SR-R030-Type" class="rqDef">[SR-R030-Type]</span> Snapshot Records are <strong>not allowed</strong> in a Diagnostic Instance of a <strong>type</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R200' title="">[DCLT-R200]</a> other than &quot;Fault Memory&quot;.
+<ul>
+<li>cf. modification of the class type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLTOP-R200-SR' title="">[DCLTOP-R200-SR]</a></li>
+<li>and the correction on loading <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Loading%20a%20Document%20or%20Template.htm#LOAD-R200-SR' title="">[LOAD-R200-SR]</a>.</li>
+</ul></li>
+<li><span id="SR-R030-OBDII" class="rqDef">[SR-R030-OBDII]</span> Snapshot Records are <strong>not allowed</strong> in an <strong>OBDII</strong> Fault Memory Diagnostic Instance.
+<ul>
+<li>cf. accordingly Snapshot Data <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200-OBDII' title="">[SR-R200-OBDII]</a></li>
+</ul></li>
+<li><span id="SR-R030-Protocol" class="rqDef">[SR-R030-Protocol]</span> Snapshot Records are <strong>allowed</strong> without restriction by the <strong>Protocol Standard</strong> <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R120' title="">[DOCUI-R120]</a></li>
+<li><span id="SR-R030-UserDef" class="rqDef">[SR-R030-UserDef]</span> Snapshot Records are <strong>allowed</strong> in a Fault Memory diagnostic instance of any Fault Memory Type: <strong>Primary</strong> or <strong>User Defined Memory</strong> <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D100' title="">[UDFM-D100]</a>.</li>
+<li>User interface: see <a class='rqRef' href='../../20 UserInterface\Snapshot Records\Snapshot Records.htm#SRUI-R200' title="">[SRUI-R200]</a>.</li>
+<li>Note: modification depends on <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R040' title="Primary properties modifiable">[DIA-R040]</a> Primary properties modifiable, see <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R040-SnapshotRecord' title="">[DIA-R040-SnapshotRecord]</a>.</li>
+</ul>
+<p><span id="SR-R035" class="rqDef">[SR-R035]</span> The Snapshot Records have no persistent <strong>sort order</strong>.</p>
+<ul>
+<li>Assumption: the user interface by default <a class='rqRef' href='../../20 UserInterface\Snapshot Records\Snapshot Records.htm#SRUI-R210' title="">[SRUI-R210]</a> sorts them ascending by Snapshot Record Number.</li>
+</ul>
+<p><span id="SR-R040" class="rqDef">[SR-R040]</span> The list of Snapshot Records corresponds with the <strong>Combined Proxy Component</strong> with semantics <code>sr</code> <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sr' title="">[PC-R050-sr]</a>.</p>
+<h2 id="snapshot-record-properties">Snapshot Record Properties</h2>
+<p>This chapter describes all <strong>properties</strong> and <strong>relationships</strong> of a Snapshot Record.</p>
+<p><span id="SR-R110" class="rqDef">[SR-R110]</span> A Snapshot Record has Name, Qualifier, Description.</p>
+<ul>
+<li><span id="SR-R110-Qualified" class="rqDef">[SR-R110-Qualified]</span> Name and Qualifier must be unique in the list <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R030' title="">[SR-R030]</a>.</li>
+<li>Name and Qualifier are used in object paths <a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200' title="">[OBJP-R200]</a>.</li>
+<li>User interface: see <a class='rqRef' href='../../20 UserInterface\Snapshot Records\Properties of Snapshot Record.htm#SRUI-R2000' title="">[SRUI-R2000]</a>.</li>
+</ul>
+<h3 id="snapshot-record-number">Snapshot Record Number</h3>
+<p><span id="SR-R120" class="rqDef">[SR-R120]</span> A Snapshot Record has a <strong>Snapshot Record Number (SRN)</strong></p>
+<ul>
+<li><span id="SR-R120-Range" class="rqDef">[SR-R120-Range]</span> Value range: <strong>0x00..0xFE</strong>.
+<ul>
+<li>SRN 0x00 is used by OBD II.</li>
+<li>SRN 0xFF is reserved as wildcard &quot;all records&quot; in the 19 04 Request.</li>
+</ul></li>
+<li><span id="SR-R120-Unique" class="rqDef">[SR-R120-Unique]</span> Snapshot Record Numbers shall be unique within the Snapshot Records list.</li>
+<li>Note: <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Calculated' title="">[DI-R310-Calculated]</a> if the Snapshot Numeration Type is &quot;<strong>Calculated</strong>&quot;,
+<ul>
+<li>UDS Snapshot Records <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D130-UDS' title="">[SR-D130-UDS]</a> are <strong>not</strong> explicitly defined.</li>
+</ul></li>
+<li><span id="SR-D120-OBDonUDS" class="rqDef">[SR-D120-OBDonUDS]</span> As of the draft at 2020-02,
+<ul>
+<li><strong>OBD on UDS</strong> (SAE J1979-2; see the next chapter &quot;Protocol&quot;) reserves SRNs <strong>0x00</strong> and <strong>0xF0</strong>.</li>
+<li>In CANdelaStudio 13, you can create Snapshot Records with Protocol &quot;UDS&quot; only.</li>
+<li>SRN 0xF0 is available for an UDS Snapshot Record.</li>
+<li>For the support of OBD on UDS in CANdelaStudio 13, see <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory.htm#FM-D050' title="">[FM-D050]</a></li>
+</ul></li>
+<li><span id="SR-R120-DefaultDisplay" class="rqDef">[SR-R120-DefaultDisplay]</span> <strong>Default display</strong> of the Snapshot Record Number:
+<ul>
+<li>2 hex characters</li>
+<li>upper case</li>
+<li>with leading zeroes</li>
+<li>examples: &quot;0x01&quot;, &quot;0xF0&quot;</li>
+</ul></li>
+</ul>
+<h3 id="protocol">Protocol</h3>
+<p><span id="SR-R130" class="rqDef">[SR-R130]</span> A Snapshot Record has a property that defines the <strong>Protocol</strong> for which the Snapshot Record is used:</p>
+<ul>
+<li><span id="SR-R130-UDS" class="rqDef">[SR-R130-UDS]</span> <strong>UDS</strong> (ISO-14229), or</li>
+<li><span id="SR-R130-OBDonUDS" class="rqDef">[SR-R130-OBDonUDS]</span> <strong>OBD on UDS</strong> (SAE J1979-2).
+<ul>
+<li>Also used for <strong>WWH-OBD</strong> (ISO 27145).
+<ul>
+<li>Motivation: as of 2020, we expect more widespread use for <strong>OBD on UDS</strong> than for <strong>WWH-OBD</strong>.</li>
+<li>Therefore, in the context of Snapshot Records, CANdelaStudio uses the term <strong>OBD on UDS</strong> only.</li>
+</ul></li>
+</ul></li>
+<li><span id="SR-R130-Default" class="rqDef">[SR-R130-Default]</span> In CANdelaStudio 13, you can create Snapshot Records with Protocol &quot;UDS&quot; only.</li>
+<li>UDS and OBD on UDS have different sets of Snapshot Data, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200' title="">[SR-R200]</a> below.</li>
+</ul>
+
+<h3 id="common-terms">Common Terms</h3>
+<p><span id="SR-D130-UDS" class="rqDef">[SR-D130-UDS]</span> <strong>UDS Snapshot Record</strong></p>
+<ul>
+<li>a Snapshot Record <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R030' title="">[SR-R030]</a> with Protocol <strong>UDS</strong> <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R130-UDS' title="">[SR-R130-UDS]</a>;</li>
+<li>for the Snapshot Record Number, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R130-Default' title="">[SR-R130-Default]</a>.</li>
+</ul>
+<p><span id="SR-D130-OBDonUDS" class="rqDef">[SR-D130-OBDonUDS]</span> <strong>OBD on UDS Snapshot Record</strong></p>
+<ul>
+<li>a Snapshot Record <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R030' title="">[SR-R030]</a> with Protocol <strong>OBD on UDS</strong> <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R130-OBDonUDS' title="">[SR-R130-OBDonUDS]</a>;</li>
+<li>for the Snapshot Record Number, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R130-Default' title="">[SR-R130-Default]</a>.</li>
+</ul>
+<h3 id="storage-trigger">Storage Trigger</h3>
+<p><span id="SR-R150" class="rqDef">[SR-R150]</span> A Snapshot Record has an enumeration property <strong>Storage Trigger</strong> which describes at which point in time the DEM module stores the Snapshot Record.</p>
+<ul>
+<li>Used only if <strong>Numeration Type</strong> is “<strong>configured</strong>” <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Configured' title="">[DI-R310-Configured]</a></li>
+<li>It is used in combination with the Boolean property &quot;Updated&quot; <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R160' title="">[SR-R160]</a> (below)</li>
+<li>Default: <strong>testFailed</strong></li>
+<li>Order of values: alphabetically, as given by the AUTOSAR <code>atp.EnumerationValue</code>.</li>
+<li>The set of Storage Triggers <strong>used</strong> may differ...
+<ul>
+<li>between OEMs and</li>
+<li>between Fault Memory Diagnostic Instances.</li>
+</ul></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Snapshot Record</th>
+<th align="left">Storage Trigger</th>
+<th align="left">Updated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">First Occurred</td>
+<td align="left">testFailed</td>
+<td align="left">no</td>
+</tr>
+<tr class="even">
+<td align="left">Most Recent Occurred</td>
+<td align="left">testFailed</td>
+<td align="left">yes</td>
+</tr>
+<tr class="odd">
+<td align="left">Confirmed</td>
+<td align="left">confirmed</td>
+<td align="left">no</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Possible values</strong>:</p>
+<p>(in parentheses: the AUTOSAR <code>atp.EnumerationValue</code>)</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="60%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Value (AUTOSAR <code>atp.EnumerationValue</code>)</th>
+<th align="left">Meaning</th>
+<th align="left">AUTOSAR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>confirmed</strong> (0)</td>
+<td align="left"><strong>UDS status bit 3</strong> “confirmedDTC” changes from 0 to 1</td>
+<td align="left"><code>[SWS_Dem_00803]</code></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>fdcThreshold</strong> (1)</td>
+<td align="left">the <strong>Fault Detection Counter</strong> (FDC; counter or time based) is reached by a positive increment; at most once per operation cycle</td>
+<td align="left"><code>[SWS_Dem_00799]</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>pending</strong> (2)</td>
+<td align="left"><strong>UDS status bit 2</strong> “pendingDTC” changes from 0 to 1</td>
+<td align="left"><code>[SWS_Dem_00801]</code></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>testFailed</strong> (3)</td>
+<td align="left"><strong>UDS status bit 0</strong> “testFailed” changes from 0 to 1</td>
+<td align="left"><code>[SWS_Dem_00800]</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>custom</strong> (4)</td>
+<td align="left">custom condition, described in the &quot;customTrigger&quot; string property, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R155' title="">[SR-R155]</a></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><span id="SR-R155" class="rqDef">[SR-R155]</span> A SnapshotRecord has a string property <strong>customTrigger</strong></p>
+<ul>
+<li>Used only if...
+<ul>
+<li>Numeration Type is “<strong>configured</strong>” <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Configured' title="">[DI-R310-Configured]</a>,</li>
+<li>Storage Trigger <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R150' title="">[SR-R150]</a> has value &quot;<strong>custom</strong>&quot;</li>
+</ul></li>
+<li>If Storage Trigger <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R150' title="">[SR-R150]</a> has a value <code>!=</code> &quot;custom&quot;,
+<ul>
+<li>customTrigger must be empty;</li>
+<li>otherwise, it must not be empty.</li>
+</ul></li>
+<li>Example: &quot;testFailedFirst&quot;</li>
+<li>Note:
+<ul>
+<li>for code generation, the string is used as a qualifier,</li>
+<li>DEXT export will convert it accordingly.</li>
+<li>In order to avoid potential loss of information, use Qualifier characters <a class='rqRef' href='../../30%20Features/Common%20Properties/Qualifier.htm#QUAL-R120' title="">[QUAL-R120]</a> only.</li>
+</ul></li>
+</ul>
+
+<h3 id="updated">Updated</h3>
+<p><span id="SR-R160" class="rqDef">[SR-R160]</span> A Snapshot Record has a Boolean property <strong>Updated</strong>, which describes whether already stored Snapshot Data can be updated (overwritten) <code>[ECUC_Dem_00802]</code>.</p>
+<ul>
+<li>Used only if Numeration Type is “configured” <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Configured' title="">[DI-R310-Configured]</a></li>
+<li>Values:
+<ul>
+<li>true = store/overwrite SD with each trigger (see “Storage Trigger” property <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R150' title="">[SR-R150]</a> above), <code>[SWS_Dem_00804]</code></li>
+<li>false = store SD only if not yet stored, <code>[SWS_Dem_00803]</code></li>
+</ul></li>
+<li><span id="SR-R160-Default" class="rqDef">[SR-R160-Default]</span> Default: false.</li>
+<li>Note: it makes sense to use each Storage Trigger/Update combination only once,
+<ul>
+<li>but CANdelaStudio does not enforce this restriction.</li>
+</ul></li>
+</ul>
+<h3 id="attributes">Attributes</h3>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-SR' title="">[ATTR-R050-SR]</a> A Snapshot Record has Default Attributes.</li>
+</ul>
+
+<h2 id="snapshot-data">Snapshot Data</h2>
+<p><span id="SR-R200" class="rqDef">[SR-R200]</span> A Fault Memory Diagnostic Instance contains two sets of Snapshot Data:</p>
+<ul>
+<li><span id="SR-R200-UDS" class="rqDef">[SR-R200-UDS]</span> <strong>UDS Snapshot Data</strong>
+<ul>
+<li>exists even if no UDS Snapshot Record <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R130-UDS' title="">[SR-R130-UDS]</a> exists;</li>
+<li>exists even if Snapshot Numeration Type is &quot;Calculated&quot; <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Calculated' title="">[DI-R310-Calculated]</a>.</li>
+</ul></li>
+<li><span id="SR-R200-OBDonUDS" class="rqDef">[SR-R200-OBDonUDS]</span> <strong>OBD on UDS Snapshot Data</strong>
+<ul>
+<li>exists iff. an OBD on UDS Snapshot Record <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R130-OBDonUDS' title="">[SR-R130-OBDonUDS]</a> exists</li>
+</ul></li>
+<li><span id="SR-R200-Type" class="rqDef">[SR-R200-Type]</span> These Snapshot Data are <strong>not allowed</strong> in a Diagnostic Instance of a <strong>type</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R200' title="">[DCLT-R200]</a> other than &quot;Fault Memory&quot;.
+<ul>
+<li>cf. modification of the class type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLTOP-R200-SR' title="">[DCLTOP-R200-SR]</a> and the correction on loading <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Loading%20a%20Document%20or%20Template.htm#LOAD-R200-SD' title="">[LOAD-R200-SD]</a>.</li>
+</ul></li>
+<li><span id="SR-R200-OBDII" class="rqDef">[SR-R200-OBDII]</span> Snapshot Data are <strong>not allowed</strong> in an <strong>OBDII</strong> Fault Memory Diagnostic Instance.
+<ul>
+<li>cf. accordingly Snapshot Records <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R030-OBDII' title="">[SR-R030-OBDII]</a></li>
+</ul></li>
+<li><span id="SR-R200-Protocol" class="rqDef">[SR-R200-Protocol]</span> Snapshot Data are <strong>allowed</strong> without restriction by the <strong>Protocol Standard</strong> <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R120' title="">[DOCUI-R120]</a></li>
+<li><span id="SR-R200-UserDef" class="rqDef">[SR-R200-UserDef]</span> Snapshot Data are <strong>allowed</strong> in a Fault Memory diagnostic instance of any Fault Memory Type: <strong>Primary</strong> or <strong>User Defined Memory</strong> <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D100' title="">[UDFM-D100]</a>.</li>
+<li>Snapshot Data are covered by object paths <a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200' title="">[OBJP-R200]</a>.</li>
+<li>Note: modification depends on <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R040' title="Primary properties modifiable">[DIA-R040]</a> Primary properties modifiable, see <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R040-SnapshotData' title="">[DIA-R040-SnapshotData]</a>.</li>
+<li>User interface: see <a class='rqRef' href='../../20 UserInterface\Snapshot Records\TAB UDS Snapshot Data per DTC.htm#SRUI-R500' title="">[SRUI-R500]</a>.</li>
+</ul>
+<h2 id="snapshot-data-lists">Snapshot Data Lists</h2>
+<div class="figure">
+<img src="Images/SnapshotDataObjectDiagram.jpg" alt="Snapshot Data Object Diagram" />
+<p class="caption">Snapshot Data Object Diagram</p>
+</div>
+<p><span id="SR-R230" class="rqDef">[SR-R230]</span> The two sets of Snapshot Data:</p>
+<ul>
+<li>UDS Snapshot Data <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200-UDS' title="">[SR-R200-UDS]</a> and</li>
+<li>OBD on UDS Snapshot Data <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200-OBDonUDS' title="">[SR-R200-OBDonUDS]</a></li>
+</ul>
+<p>... each consist of the following <strong>lists of DIDs</strong> (&quot;Cases&quot;):</p>
+<ul>
+<li><span id="SR-R230-Common" class="rqDef">[SR-R230-Common]</span>: <strong>Common Snapshot Data</strong>
+<ul>
+<li>these DIDs are <strong>stored for all DTCs</strong></li>
+<li>the list can be empty</li>
+<li>Use-case for Common Snapshot Data:
+<ul>
+<li>OEM spec requires some DIDs to be stored for all DTCs,</li>
+<li>no exceptions allowed.</li>
+</ul></li>
+<li>User interface: see <a class='rqRef' href='../../20 UserInterface\Snapshot Records\Snapshot Data Common for All DTCs.htm#SRUI-R300' title="">[SRUI-R300]</a>.</li>
+</ul></li>
+<li><span id="SR-D230-DTCSpecific" class="rqDef">[SR-D230-DTCSpecific]</span> <strong>DTC Specific Snapshot Data</strong>:
+<ul>
+<li><span id="SR-R230-Default" class="rqDef">[SR-R230-Default]</span>: <strong>Default Snapshot Data</strong>
+<ul>
+<li>these DIDs are stored for DTCs for which no Overridden Snapshot Data list <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R230-Overridden' title="">[SR-R230-Overridden]</a> <strong>exists</strong></li>
+<li>the list can be empty</li>
+</ul></li>
+<li><span id="SR-R230-Overridden" class="rqDef">[SR-R230-Overridden]</span>: <strong>Overridden Snapshot Data</strong> for one DTC (optional)
+<ul>
+<li>these DIDs are <strong>stored for the specific DTC</strong> only</li>
+<li>the list can be empty</li>
+<li><span id="SR-R230-OverriddenEmpty" class="rqDef">[SR-R230-OverriddenEmpty]</span> if the Overridden Snapshot Data list at a DTC <strong>exists</strong> but is <strong>empty</strong>,</li>
+<li>it overrides the Default Snapshot Data list at that DTC anyway:</li>
+<li>for this DTC, the ECU stores Common Snapshot Data only.</li>
+</ul></li>
+<li>Note: CANdelaStudio intentionally allows Overridden Snapshot Data for OBD on UDS <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200-OBDonUDS' title="">[SR-R200-OBDonUDS]</a>.</li>
+<li>User interface: see <a class='rqRef' href='../../20 UserInterface\Snapshot Records\Right Side TAB Snapshot Data.htm#SRUI-R700' title="">[SRUI-R700]</a>.</li>
+</ul></li>
+<li><span id="SR-R230-OnlyCommon" class="rqDef">[SR-R230-OnlyCommon]</span>
+<ul>
+<li>a DID number (Identifier <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R025' title="Identifier">[DID-R025]</a>) used in Common Snapshot Data...</li>
+<li>must <strong>not</strong> be used in Default Snapshot Data or Overridden Snapshot Data.</li>
+</ul></li>
+</ul>
+
+<h2 id="snapshot-data-effective-for-a-dtc">Snapshot Data Effective for a DTC</h2>
+<p><span id="SR-R235" class="rqDef">[SR-R235]</span> For a given DTC, Snapshot Data DIDs are transported over the line in the following order:</p>
+<ul>
+<li>first: <strong>Common Snapshot Data</strong>
+<ul>
+<li>in their <strong>defined order</strong>, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R240-Ordered' title="">[SR-R240-Ordered]</a> below.</li>
+</ul></li>
+<li>second: <strong>Overridden Snapshot Data</strong> (if they exist), otherwise <strong>Default Snapshot Data</strong>
+<ul>
+<li>in their <strong>defined order</strong>, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R240-Ordered' title="">[SR-R240-Ordered]</a> below.</li>
+</ul></li>
+</ul>
+<div class="figure">
+<img src="Images/SnapshotDataEffectiveforDTCDefault.jpg" alt="Snapshot Data Effective for DTC: Default Snapshot Data" />
+<p class="caption">Snapshot Data Effective for DTC: Default Snapshot Data</p>
+</div>
+<div class="figure">
+<img src="Images/SnapshotDataEffectiveforDTCOverridden.jpg" alt="Snapshot Data Effective for DTC: Overridden Snapshot Data" />
+<p class="caption">Snapshot Data Effective for DTC: Overridden Snapshot Data</p>
+</div>
+<h2 id="one-snapshot-data-list">One Snapshot Data List</h2>
+<p><span id="SR-R240" class="rqDef">[SR-R240]</span> Each List of <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R230' title="">[SR-R230]</a>, i.e. Common, Default, Overridden Snapshot Data, ...</p>
+<ul>
+<li><span id="SR-R240-DIDs" class="rqDef">[SR-R240-DIDs]</span> contains <strong>references to DIDs</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R020' title="Existence">[DID-R020]</a></li>
+<li><span id="SR-R240-Unique" class="rqDef">[SR-R240-Unique]</span> each DID number (Identifier <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R025' title="Identifier">[DID-R025]</a>) must occur <strong>at most once</strong> in the list</li>
+<li><span id="SR-R240-Ordered" class="rqDef">[SR-R240-Ordered]</span> the references are <strong>ordered</strong> (CDS-69421 v13)
+<ul>
+<li>Note: CANdelaStudio 13 does <strong>not</strong> allow to specify an <strong>arbitrary order</strong> of DIDs.</li>
+</ul></li>
+<li><span id="SR-R240-Empty" class="rqDef">[SR-R240-Empty]</span> the list may be <strong>empty</strong></li>
+<li><span id="SR-R240-Max" class="rqDef">[SR-R240-Max]</span> the <strong>number of DIDs</strong> in the list is not limited</li>
+<li><span id="SR-R240-Length" class="rqDef">[SR-R240-Length]</span> there are no <strong>length restrictions</strong> from the Protocol Service for the cumulated data contained in all DIDs of the list
+<ul>
+<li>cf. the Proxy Component <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sd' title="">[PC-R050-sd]</a></li>
+</ul></li>
+<li><span id="SR-D240-RuntimeOrder" class="rqDef">[SR-D240-RuntimeOrder]</span> For each DID referenced in one of the lists, <strong>over the line</strong> will be transported...
+<ul>
+<li>first: the 2 byte DID Identifier <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R025' title="Identifier">[DID-R025]</a></li>
+<li>second: the DID Data <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R155' title="">[DID-R155]</a></li>
+</ul></li>
+<li><span id="SR-D240-RuntimeNoDTC" class="rqDef">[SR-D240-RuntimeNoDTC]</span> When all referenced <code>sd</code> Proxy Components are in Primitives that do not contain a <code>dtc</code>/<code>obdDtc</code> component <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sdNoDtc' title="">[PC-R050-sdNoDtc]</a>,
+<ul>
+<li>only the DIDs in Common and Default Snapshot Data apply</li>
+<li>Overridden Snapshot Data must be empty.</li>
+</ul></li>
+</ul>
+<p><a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D020' title="Consistency Rule for References">[DID-D020]</a> the Consistency Rule for References (“Onion Rule”) applies:</p>
+<blockquote>
+<p><strong>A DID must be referenced at least in those variants in which the diagnostic instance that uses it is referenced.</strong></p>
+</blockquote>
+<ul>
+<li>in other words: if a Fault Memory Diagnostic instance is referenced in variants V,</li>
+<li>then its Snapshot Data can contain only DIDs that are referenced at least in these variants V</li>
+</ul>
+<h2 id="snapshot-record-to-store-for-dtc-numeration-type-configured">Snapshot Record to Store for DTC (Numeration Type &quot;Configured&quot;)</h2>
+<p>(also called &quot;Optional Snapshot Data Storage&quot;, &quot;Checkbox Feature&quot;)</p>
+<p><span id="SR-R300" class="rqDef">[SR-R300]</span> The diagnostic instance specifies whether the ECU stores...</p>
+<ul>
+<li>for a given <strong>DTC</strong></li>
+<li>the <strong>Snapshot Data</strong>
+<ul>
+<li>Common, Default and Overridden</li>
+</ul></li>
+<li>of a given
+<ul>
+<li><strong>OBD on UDS Snapshot Record</strong> <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D130-OBDonUDS' title="">[SR-D130-OBDonUDS]</a>,</li>
+<li><strong>UDS Snapshot Record</strong> <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D130-UDS' title="">[SR-D130-UDS]</a> if Snapshot Numeration Type &quot;Configured&quot; <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Configured' title="">[DI-R310-Configured]</a>.</li>
+</ul></li>
+<li><span id="SR-R300-Default" class="rqDef">[SR-R300-Default]</span> Default: true.
+<ul>
+<li>See operation <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Operations.htm#SROP-R100' title="">[SROP-R100]</a>.</li>
+</ul></li>
+<li>Note: for Snapshot Numeration Type &quot;Calculated&quot; <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Calculated' title="">[DI-R310-Calculated]</a>, the information whether the ECU stores a given Snapshot Record is only implicitly defined by the number MaxSnapshotRecordNumber <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DTC-R310' title="">[DTC-R310]</a>, not by a &quot;checkbox&quot;.</li>
+<li>User interface: see <a class='rqRef' href='../../20 UserInterface\Snapshot Records\Right Side TAB Snapshot Records to Store (Configured).htm#SRUI-R810' title="">[SRUI-R810]</a>.</li>
+</ul>
+<p>Example: the ECU stores...</p>
+<ul>
+<li>for DTC 0xC03113</li>
+<li>the DIDs specified for 0x01 First Occurrence.</li>
+</ul>
+<p><a class='rqRef' href='../../30%20Features/Import/ODX%20Import%20Introduction.htm#ODXI-R300' title="">[ODXI-R300]</a> Note: <strong>ODX Import</strong> (as of v13 Release) does not handle the &quot;checkbox feature&quot;.</p>
+<p>Note for <strong>Vector DEM implementation</strong> (as of 2019):</p>
+<ul>
+<li>DEM stores Snapshot Data based on DTC...</li>
+<li>in a static table</li>
+<li>with identical size for each DTC
+<ul>
+<li>(the maximum size needed for any DTC).</li>
+</ul></li>
+<li>Therefore <strong>the checkbox feature does not save space in ECU memory</strong>!</li>
+</ul>
+<h2 id="number-of-snapshot-records-to-store-for-dtc-numeration-type-calculated">Number of Snapshot Records to Store for DTC (Numeration Type &quot;Calculated&quot;)</h2>
+<p><span id="DTC-R310" class="rqDef">[DTC-R310]</span> For Snapshot Numeration Type &quot;Calculated&quot; <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Calculated' title="">[DI-R310-Calculated]</a>, ...</p>
+<ul>
+<li>for each DTC, you specify the <strong>maximum number of Snapshot Records</strong> to store for this DTC (<strong>&quot;MaxSnapshotRecordNumber&quot;</strong>)
+<ul>
+<li><span id="DTC-R310-Range" class="rqDef">[DTC-R310-Range]</span> <strong>Valid Range</strong>: 0 <code>&lt;=</code> MaxSnapshotRecordNumber <code>&lt;=</code> 0xFE
+<ul>
+<li>cf. the valid range <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R120-Range' title="">[SR-R120-Range]</a> for the Snapshot Record Number.</li>
+</ul></li>
+<li>The ECU stores unnamed Snapshot Records,</li>
+<li>with Snapshot Record Numbers...
+<ul>
+<li>starting at 0x01,</li>
+<li>without gaps,</li>
+<li>up to at most MaxSnapshotRecordNumber.</li>
+</ul></li>
+</ul></li>
+<li>AUTOSAR 4.4.0: <code>maxNumberFreezeFrameRecords</code></li>
+</ul>
+<h2 id="default-number-of-calculated-snapshot-records-numeration-type-calculated">Default Number of Calculated Snapshot Records (Numeration Type &quot;Calculated&quot;)</h2>
+<p><span id="DI-R320" class="rqDef">[DI-R320]</span> For Snapshot Numeration Type &quot;Calculated&quot; <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310-Calculated' title="">[DI-R310-Calculated]</a>, you specify...</p>
+<ul>
+<li>at a <strong>diagnostic instance</strong></li>
+<li>the <strong>default value</strong> for the Number of Snapshot Records to Store for DTC <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DTC-R310' title="">[DTC-R310]</a> above.
+<ul>
+<li><span id="DI-R320-Range" class="rqDef">[DI-R320-Range]</span> <strong>Valid Range</strong>: 0 <code>&lt;=</code> MaxSnapshotRecordNumber <code>&lt;=</code> 0xFE</li>
+<li>same value as <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DTC-R310-Range' title="">[DTC-R310-Range]</a>.</li>
+</ul></li>
+<li>User interface: see <a class='rqRef' href='../../20 UserInterface\Fault Memory\Diagnostic Instance Property Page AUTOSAR Fault Memory.htm#DIUI-R355' title="">[DIUI-R355]</a>.</li>
+</ul>
+
+<h2 id="consistency">Consistency Conditions</h2>
+<p>This chapter mainly references conditions specified directly in the data model chapters.</p>
+<p><span id="SR-D500" class="rqDef">[SR-D500]</span> Snapshot Record Consistency Conditions</p>
+<p><span id="SR-D150" class="rqDef">[SR-D150]</span> Storage Trigger/Update combinations need not be unique (makes sense but not required).</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-D050-sdsrUse' title="">[PC-D050-sdsrUse]</a> If a Primitive contains an <code>sd</code> proxy component, it must also contain an <code>sr</code> proxy component.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-srUnique' title="">[PC-R050-srUnique]</a> A Primitive may contain at most one <code>sr</code> proxy component.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sdUnique' title="">[PC-R050-sdUnique]</a> A Primitive may contain at most one <code>sd</code> proxy component.</li>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#CPC-R108' title="">[CPC-R108]</a> Proxy components with the same semantics, one of sr, sd, edr, ed, must be combined.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sdMux' title="">[PC-R050-sdMux]</a> A Primitive must not contain both an <code>sd</code> proxy component and a Multiplexer component.</li>
+<li>see more in the Proxy Semantics chapter <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R100' title="Proxy Semantics">[PC-R100]</a></li>
+<li><a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200-OBDonUDS' title="">[SR-R200-OBDonUDS]</a> OBD on UDS Snapshot Data exists iff. an OBD on UDS Snapshot Record <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D130-OBDonUDS' title="">[SR-D130-OBDonUDS]</a> exists.</li>
+<li><a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DTC-R310-Range' title="">[DTC-R310-Range]</a> Valid range of the maximum number of Snapshot Records per DTC
+<ul>
+<li>Violation emits an error, prevents from export (CDS-72175 U360 v13)</li>
+</ul></li>
+<li><a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R320-Range' title="">[DI-R320-Range]</a> Valid range of the Default Number of Calculated Snapshot Records
+<ul>
+<li>Violation emits a warning, allows export (CDS-72175 U350 v13)</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Protocol%20Service/Components.htm">Components</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="Snapshot%20Record%20Operations.htm">Snapshot Record Operations</a></li>
+<li><a href="../../20%20UserInterface/Snapshot%20Records/GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a></li>
+</ul>
+</body>
+</html>

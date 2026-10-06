@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Modify a DID in a New Variant</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-modify-a-did-in-a-new-variant">How to Modify a DID in a New Variant</h1>
+<h2 id="context">Context</h2>
+<ul>
+<li><p>a variant contains a diagnostic instance that describes a DID:</p>
+<div class="figure">
+<img src="Images/Diagnostic%20Instance%20Oil%20Temperature.jpg" alt="Diagnostic Instance 0x110 &quot;Oil Temperature&quot;" />
+<p class="caption">Diagnostic Instance 0x110 &quot;Oil Temperature&quot;</p>
+</div></li>
+<li><p>Its data is described in the DID list, using a 1 byte data type:</p>
+<div class="figure">
+<img src="Images/DID%20Oil%20Temperature.jpg" alt="DID &quot;Oil Temperature&quot; in the base variant" />
+<p class="caption">DID &quot;Oil Temperature&quot; in the base variant</p>
+</div></li>
+</ul>
+<p>Task: in a <strong>new variant</strong>, let the DID use a <strong>2 byte data type</strong>.</p>
+<h2 id="create-a-new-variant">Create a New Variant</h2>
+<ul>
+<li>in the CANdelaStudio tree, click the &quot;Variants&quot; tree node</li>
+<li>in the right side, click the button &quot;Variant Wizard&quot; at the bottom of the list</li>
+<li>enter a name e.g. &quot;New variant&quot;</li>
+<li>right to &quot;Create on basis of&quot;, select the newest variant e.g. &quot;C Sample&quot;</li>
+<li>press &quot;OK&quot;</li>
+</ul>
+<p>CANdelaStudio shows the new variant in the tree:</p>
+<div class="figure">
+<img src="Images/New%20Variant.jpg" alt="New Variant in the tree" />
+<p class="caption">New Variant in the tree</p>
+</div>
+<p>Note:</p>
+<ul>
+<li>all diagnostic instances and DIDs in the new variant are <strong>shared (referenced)</strong> with the variant selected as basis.</li>
+<li>Therefore all modifications would affect both variants!</li>
+<li>In order to modify the new variant only, you must first perform &quot;Replace Reference with Copy&quot;.</li>
+</ul>
+<h2 id="did-replace-reference-with-copy">DID: Replace Reference with Copy</h2>
+<ul>
+<li><p>in the new variant, navigate to the DID &quot;Oil Temperature&quot;, select it in the list:</p>
+<div class="figure">
+<img src="Images/New%20Variant%20DID%20Oil%20Temperature.jpg" alt="DID &quot;Oil Temperature&quot; in the new variant" />
+<p class="caption">DID &quot;Oil Temperature&quot; in the new variant</p>
+</div></li>
+<li>click ribbon tab Home | Replace | &quot;Replace Reference with Copy&quot; <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R230' title="Replace Reference with Copy">[DID-R230]</a>, confirm.
+<ul>
+<li>also available via right mouse in the context menu</li>
+</ul></li>
+<li>The DID is now local to the new variant.</li>
+<li>Also the diagnostic instance that uses <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-D001' title="DID Used">[DID-D001]</a> the DID is now local to the new variant: <img src="Images/Diagnostic%20Instance%20Copy.jpg" />
+<ul>
+<li>see the <a href="../../20%20UserInterface/Tree/Icons.htm">meaning of the tree icons</a></li>
+<li>Note: before 8.5 SP3 (CDS-40001), you had to &quot;Replace Reference with Copy&quot; for the Diagnostic Instance in a first separate step.</li>
+</ul></li>
+</ul>
+<h2 id="modify-the-did">Modify the DID</h2>
+<ul>
+<li>navigate to the list &quot;Data of Oil Temperature&quot;
+<ul>
+<li>either below or to the right of the DID list, as configured in the DID toolbar: <img src="Images/DID%20List%20Placement.jpg" />.</li>
+</ul></li>
+<li>modify the data as desired</li>
+</ul>
+<h2 id="background">Background</h2>
+<p>The above description includes copying the <strong>diagnostic instance</strong> as well as the <strong>DID</strong>.</p>
+<p>CANdelaStudio does not allow to <strong>copy the DID only</strong> while keeping the diagnostic instance <strong>referenced</strong>.</p>
+<p>Reason: Consistency Rule for References <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-D020' title="Consistency Rule for References">[DID-D020]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance (Feature)</a></li>
+<li><a href="../../20%20UserInterface/DID/DIDs.htm">DID (List)</a></li>
+<li><a href="../../30%20Features/DID/DID.htm">DID Feature</a></li>
+<li><a href="../../20%20UserInterface/Tree/Navigation%20Tree.htm">Tree</a></li>
+</ul>
+</body>
+</html>

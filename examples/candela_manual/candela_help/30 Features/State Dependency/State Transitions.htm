@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>State Transitions</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="state-transitions">State Transitions</h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/State%20Dependency%20Diagram.jpg" alt="State Dependency Diagram" />
+<p class="caption">State Dependency Diagram</p>
+</div>
+<p>CANdelaStudio describes the executability of services using the concept of a deterministic finite state automaton (DFA), see the <a href="State%20Dependency.htm">State Dependency</a> feature description.</p>
+<p>A State Transition is a <strong>relationship</strong> between a <a href="State.htm">state</a> and a <a href="../../30%20Features/Service/Service.htm">service</a> or <a href="../../30%20Features/Job/Job.htm">job</a>:</p>
+<ul>
+<li><span id="STTR-R020" class="rqDef">[STTR-R020]</span> the <strong>state transition</strong> describes whether in a given <strong>source state</strong>, the <strong>service</strong> or <strong>job</strong>...
+<ul>
+<li><span id="STTR-R020-no" class="rqDef">[STTR-R020-no]</span> is <strong>blocked</strong> = cannot be executed, shown as <strong>(no)</strong> in CANdelaStudio; or</li>
+<li><span id="STTR-R020-yes" class="rqDef">[STTR-R020-yes]</span> <strong>can be executed</strong>, shown as <strong>(yes)</strong>; or</li>
+<li><span id="STTR-R020-transition" class="rqDef">[STTR-R020-transition]</span> can be executed and <strong>(re-) initializes the state</strong> (see below), shown as name of the <strong>target state</strong>.</li>
+</ul></li>
+</ul>
+<p>See the introduction in the <a href="State%20Dependency.htm#service-execution">State Dependency</a> chapter.</p>
+<p><strong>Note</strong>: State Transitions apply <strong>within one State Group</strong> only:</p>
+<ul>
+<li>&quot;Lock&quot; or &quot;Unlock&quot; for State Group &quot;<strong>Security Access</strong>&quot;...</li>
+<li>has <strong>no effect</strong> for the State Group &quot;<strong>Session</strong>&quot;.</li>
+</ul>
+<h2 id="re-initialize-state">Re-Initialize State</h2>
+<p>According with UDS 2013 (chapter 9.2.1 for Diagnostic Session Control 0x10), <strong>re-initialize</strong> covers...</p>
+<ul>
+<li>stopping events</li>
+<li>relocking security
+<ul>
+<li>reset of diagnostic functionality depending on unlocked security (like active IO Control)</li>
+</ul></li>
+</ul>
+<h3 id="yes-vs.-same-state">Yes vs. Same State</h3>
+<p>For the transition, you can...</p>
+<ul>
+<li>specify &quot;<strong>(yes)</strong>&quot; , but you can also</li>
+<li>select the <strong>same state</strong> (i.e. the source state) as target state for the transition:</li>
+</ul>
+<div class="figure">
+<img src="Images/ProgrammingSameTransition.jpg" alt="For source state &quot;Programming&quot;, same state &quot;Programming&quot; selected" />
+<p class="caption">For source state &quot;Programming&quot;, same state &quot;Programming&quot; selected</p>
+</div>
+<p>For <strong>both cases</strong>, ...</p>
+<ul>
+<li>the service <strong>can be executed</strong></li>
+<li>afterwards, the state is the <strong>same state</strong> as before</li>
+</ul>
+<p>but the difference is:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Selecting <strong>&quot;yes&quot;</strong></td>
+<td align="left">session <strong>not re-initialized</strong></td>
+</tr>
+<tr class="even">
+<td align="left">Selecting the <strong>source state</strong></td>
+<td align="left">session <strong>re-initialized</strong></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="use-in-code-generation">Use in Code Generation</h2>
+<h3 id="candesc-same-target-state">CANdesc: Same Target State</h3>
+<p><span id="STTR-R025" class="rqDef">[STTR-R025]</span> In CANdesc, a <strong>service</strong> or <strong>job</strong>...</p>
+<ul>
+<li>is either <strong>blocked</strong> <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R020-no' title="">[STTR-R020-no]</a>,</li>
+<li>or has a <strong>transition</strong> <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R020-transition' title="">[STTR-R020-transition]</a> to the <strong>same target state for all source states</strong>.</li>
+</ul>
+<p>Example - for service 10 02 (Programming), this is ok in CANdesc:</p>
+<div class="figure">
+<img src="Images/ProgrammingSameTransition.jpg" alt="Same Target State &quot;Programming&quot;" />
+<p class="caption">Same Target State &quot;Programming&quot;</p>
+</div>
+<p>... this is not ok in CANdesc:</p>
+<div class="figure">
+<img src="Images/ProgrammingDifferentTransition.jpg" alt="Different Target States" />
+<p class="caption">Different Target States</p>
+</div>
+<h3 id="autosar-unlocking-service-not-blocked">AUTOSAR: Unlocking Service not Blocked</h3>
+<div class="figure">
+<img src="Images/UnlockedNo.jpg" alt="Service Blocked in State &quot;Unlocked L1&quot; - not in DEXT" />
+<p class="caption">Service Blocked in State &quot;Unlocked L1&quot; - not in DEXT</p>
+</div>
+<p><span id="STTR-R028" class="rqDef">[STTR-R028]</span> In DEXT and AUTOSAR DCM, ...</p>
+<ul>
+<li>a RequestSeed or SendKey service <strong>must not be blocked in any unlocked state</strong>.
+<ul>
+<li>e.g. if the service SendKey has a transition in state &quot;Locked&quot; of state group &quot;Security Access&quot;,</li>
+<li>then it must not have &quot;(no)&quot; in any other state.</li>
+<li>This is required by <strong>UDS</strong>: for RequestSeed in an already unlocked security level, the ECU shall send a positive response, with the seed set to zero. RequestSeed and SendKey behave identically with respect to blocking.</li>
+</ul></li>
+</ul>
+
+<p>Usage in Tools:</p>
+<ul>
+<li>In CANdela, the restriction does not hold
+<ul>
+<li>the generic data model of state transitions allows the constellation.</li>
+</ul></li>
+<li>In DEXT, the restriction holds:
+<ul>
+<li>export adapts data <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R410' title="">[DEXT-R410]</a>.</li>
+</ul></li>
+<li>In Vector MICROSAR DCM, the restriction does <strong>not</strong> hold:
+<ul>
+<li>a service with a transition in state &quot;Locked&quot; <strong>can</strong> be blocked in another state.</li>
+</ul></li>
+</ul>
+
+<h2 id="write-protection">Write-Protection</h2>
+<h3 id="use-case">Use Case</h3>
+<ul>
+<li>the manufacturer has set the Default Session 0x10 0x01 write protected</li>
+<li>the supplier has created an own state &quot;Production Mode&quot;</li>
+</ul>
+<p>In this situation, CANdelaStudio shall <em>allow</em> the supplier to specify the state transition from supplier state &quot;Production Mode&quot; to &quot;Default&quot; state.</p>
+<h3 id="conditions-for-modification-of-state-transitions">Conditions for Modification of State Transitions</h3>
+<div class="figure">
+<img src="Images/State%20Production%20Mode%20Authorization.jpg" alt="Diagram for Conditions for Write-Protection of State Transitions" />
+<p class="caption">Diagram for Conditions for Write-Protection of State Transitions</p>
+</div>
+<p><span id="STTR-R030" class="rqDef">[STTR-R030]</span> The <strong>transition</strong> for a service from a given state is <strong>read-only</strong> in Standard View (CDS-38199 8.5) if</p>
+<ul>
+<li>the diagnostic instance which contains the service has &quot;primary properties modifiable&quot; = false <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R040' title="Primary properties modifiable">[DIA-R040]</a>, and</li>
+<li>the state has &quot;mayBeModified&quot; = false <a class='rqRef' href='../../30%20Features/State%20Dependency/State.htm#ST-R050' title="Modifiable">[ST-R050]</a>.</li>
+</ul>
+<p>Therefore, ...</p>
+<ul>
+<li>in a diagnostic instance that has &quot;primary properties modifiable&quot; = true, all state transitions are modifiable.</li>
+<li>to protect a transition against changes in Standard View, the diagnostic instance must have &quot;primary properties modifiable&quot; = false, <em>and</em> the state must have &quot;mayBeModified&quot; = false.</li>
+</ul>
+<p>Note: in <strong>CANdelaStudio 8.0 - 8.2</strong>, the transition was read-only if the Diagnostic Instance had &quot;Primary properties modifiable&quot; = false (CDS-19301 8.0). Therefore a supplier could not modify the state transition for their supplier state.</p>
+<p>In order to prevent the supplier from modifying state transitions for states already created by the manufacturer (e.g. &quot;Default State&quot;), the manufacturer needs to set these states write-protected.</p>
+<h2 id="consistency-conditions">Consistency Conditions</h2>
+<p><span id="STTR-R200" class="rqDef">[STTR-R200]</span> the consistency check shall report an <strong>error</strong> (hinder exports) (CDS-8150 6.0) ...</p>
+<ul>
+<li><span id="STTR-R200-Act" class="rqDef">[STTR-R200-Act]</span> in an activated diagnostic instance (CDC-41895 8.5 SP3)</li>
+<li>for each service S</li>
+<li>and state group SG with semantics <strong>not &quot;Authorization&quot;</strong> <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Group.htm#STG-R050-Authorization' title="">[STG-R050-Authorization]</a> (CDC-43864 9.1 SP1)</li>
+<li>where for all states of SG,</li>
+<li>S &quot;may be executed&quot; == no</li>
+<li>i.e. the service is blocked in all states of SG</li>
+</ul>
+<p><span id="STTR-R200-Auth" class="rqDef">[STTR-R200-Auth]</span> (CDC-43864 9.1 SP1) the consistency shall report a <strong>status message</strong> only (not hinder exports)...</p>
+<ul>
+<li>in the same constellation,</li>
+<li>except the state group having semantics <strong>&quot;Authorization&quot;</strong>.</li>
+</ul>
+<p>See also the above consistency condition in CANdesc <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R025' title="">[STTR-R025]</a> (not checked by CANdelaStudio).</p>
+
+<p>Note: up to CDS-10402 6.0, such a data constellation was reset on loading.</p>
+<p>Note: jobs are not checked (RDPDU-42771).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Authorization.htm">Authorization</a> (certificate-based)</li>
+<li><a href="State%20Dependency.htm">State Dependency</a></li>
+<li><a href="../../20%20UserInterface/Service/Service%20Property%20Page%20State%20Transitions.htm">Service Property Page State Transitions</a></li>
+<li><a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Search Dialog</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="search-dialog"><span id='_index_446727867'>Search</span> Dialog<span id='_index_446727868' title='Find' data-term='Find'></span></h1>
+<p>See also the <a href="../../30%20Features/CANdelaStudio%20Editor/Search.htm">Search feature</a>.</p>
+<div class="figure">
+<img src="Images/Find%20Dialog.jpg" title="Search Dialog" alt="CANdelaStudio Search Dialog" />
+<p class="caption">CANdelaStudio Search Dialog</p>
+</div>
+<p>The Search dialog supports two ways of search:</p>
+<ul>
+<li>list all hits in the output window.</li>
+<li>navigate to the next hit.</li>
+</ul>
+<h2 id="find-what">Find what</h2>
+<p>Enter the search term.</p>
+<p>To select from a list of <strong>recently used search terms</strong>, press the down arrow at the right end of the edit control.</p>
+<h2 id="limit-search-to...">Limit search to...</h2>
+<p>Limits the search to</p>
+<ul>
+<li><a href="../../30%20Features/Common%20Properties/Name.htm">Names</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Qualifier.htm">Qualifier</a></li>
+<li>Name, Qualifier, <a href="../../30%20Features/Common%20Properties/Description.htm">Description</a>, <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#identifier">Identifier</a>, <a href="../../30%20Features/DTC/DTC.htm">DTC</a>, <a href="../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm">Service shortcut</a>, <a href="../../30%20Features/Negative%20Response/Negative%20Response.htm">Response code</a></li>
+<li><a href="../../20%20UserInterface/Service/Services.htm#abstract">Service Request</a></li>
+</ul>
+<h2 id="match-upperlower-case">Match upper/lower case</h2>
+<p>If checked, search distinguishes upper/lower case.</p>
+<p>Example: Searching for &quot;Year&quot; finds objects named &quot;Year&quot; or &quot;Yearly&quot;, but not objects named &quot;yearEnd&quot;.</p>
+<h2 id="match-whole-word-only">Match whole word only</h2>
+<p>If checked, search compares the search term against fragments of the name, qualifier etc. at the start or end or surrounded by blanks.</p>
+<p>Example: Searching for &quot;Key&quot; finds objects with this name, but not with the name &quot;Keyword&quot;.</p>
+<h2 id="compare-whole-text">Compare whole text</h2>
+<p>If checked, search compares the search term against the entire name, qualifier etc.</p>
+<p>Example: Searching for &quot;Switch on&quot; finds objects with that name, but not objects named &quot;Switch on and off&quot;.</p>
+<h2 id="find">Find</h2>
+<p>Starts searching at the beginning of the document, selects the object found.</p>
+<h2 id="find-next">Find Next</h2>
+<p><span id="SRCH-R150" class="rqDef">[SRCH-R150]</span> Continues search behind the last hit, selects the object found.</p>
+<ul>
+<li><span id="SRCH-R150-F3" class="rqDef">[SRCH-R150-F3]</span> Pressing key <code>F3</code> has the same effect.</li>
+<li><span id="SRCH-R150-Closed" class="rqDef">[SRCH-R150-Closed]</span> Pressing key <code>F3</code>...
+<ul>
+<li>works also after you closed the dialog,</li>
+<li><strong>if</strong> the focus is in the navigation tree (CDS-71142 v12).</li>
+</ul></li>
+</ul>
+<h2 id="find-all">Find All</h2>
+<p><span id="SRCH-R200" class="rqDef">[SRCH-R200]</span> Writes the hits as links into the output window <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R130' title="">[OW-R130]</a>.</p>
+<h2 id="cancel">Cancel</h2>
+<p>Leaves the dialog.</p>
+<p>Leaves the selection at the object selected by the last &quot;Find&quot; operation.</p>
+<p>After closing the dialog, key <code>F3</code> performs &quot;Find Next&quot;.</p>
+<h2 id="result-list-output-window">Result List (Output window)</h2>
+<p>The list shows the qpath to the object as a hyperlink, as it can be entered in the path control in the ribbon navigation area.</p>
+<p>A click on the hyperlink navigates to the object directly, or to the closest object that can be shown without opening a modal dialog.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Common%20Properties/Object%20Paths.htm">Object Paths</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm">Output Window</a></li>
+<li><a href="Ribbon%20Introduction.htm">Ribbon Introduction</a></li>
+<li>Ribbon Tab Home <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R470' title="">[MENU-R470]</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Search.htm">Search (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Multi-Language/Translation%20View%20Search%20Dialog.htm">Translation View Search Dialog</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Actions</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="actions-cds-539-1.4">Actions (CDS-539 1.4)</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Using <strong>actions</strong>, CANdelaStudio lets you automatically or manually execute external applications.</p>
+<h2 id="use-cases">Use Cases</h2>
+<ul>
+<li>automatic conversion of a document exported to RTF</li>
+<li>store a document in a central repository</li>
+<li>fetch a document in a central repository</li>
+<li>post-process an exported ODX file</li>
+<li>open an exported file in an editor or word processor</li>
+<li>run a code generator</li>
+<li>run a checker on an exported file</li>
+<li>etc.</li>
+</ul>
+<h2 id="actions">Actions</h2>
+<p><span id="ACT-R100" class="rqDef">[ACT-R100]</span> CANdelaStudio provides <strong>actions</strong> to run external commands via command line.</p>
+<ul>
+<li>Actions are configured for the CANdelaStudio installation.</li>
+<li>They are stored in the file <a href="Actions%20INI.htm">Actions INI</a>.</li>
+</ul>
+<p><span id="ACT-R110" class="rqDef">[ACT-R110]</span> An action is identified by a <strong>qualifier</strong>.</p>
+<ul>
+<li>The qualifier is language independent</li>
+<li>... and has the character repertoire of CANdela <a href="../../30%20Features/Common%20Properties/Qualifier.htm">qualifiers</a>.</li>
+</ul>
+<p><span id="ACT-R120" class="rqDef">[ACT-R120]</span> The <strong>name</strong> of an action is language-dependent.</p>
+<p><span id="ACT-R130" class="rqDef">[ACT-R130]</span> Errors in action processing do not alter the subsequent behaviour of CANdelaStudio.</p>
+<h2 id="example-action">Example Action</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">Report</td>
+</tr>
+<tr class="even">
+<td align="left">Qualifier</td>
+<td align="left">Report</td>
+</tr>
+<tr class="odd">
+<td align="left">Commands</td>
+<td align="left">notepad &quot;$LastReportPath;&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">Start in</td>
+<td align="left">(empty)</td>
+</tr>
+</tbody>
+</table>
+<p>The action...</p>
+<ul>
+<li>opens the HTML file from the last report in an editor</li>
+<li>uses the Windows application &quot;notepad&quot; as an editor
+<ul>
+<li>which can be run without specifying the full directory path to notepad.exe</li>
+</ul></li>
+<li>protects the file path by double-quotes</li>
+</ul>
+<h2 id="action-types">Action Types</h2>
+<p><span id="ACT-R140" class="rqDef">[ACT-R140]</span> CANdelaStudio supports <strong>user-defined</strong> and <strong>internal</strong> actions:</p>
+<h3 id="user-defined-actions">User-defined Actions <img src="../../20%20UserInterface/Images/Hammer%20-%20User%20Defined%20Action.jpg" /></h3>
+<ul>
+<li>can be freely edited</li>
+<li>shown in the main menu under <strong>Tools</strong></li>
+<li>are executed manually via the menu item</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>start an editor for a special data format</li>
+<li>start a compiler</li>
+</ul>
+<h3 id="internal-actions">Internal Actions <img src="../../20%20UserInterface/Images/Cog%20-%20Internal%20Action.jpg" /></h3>
+<ul>
+<li>are predefined by CANdelaStudio</li>
+<li>their qualifier is read-only</li>
+<li>you cannot delete them</li>
+<li>not shown in the Tools menu</li>
+<li>are automatically executed after some <strong>internal event</strong>, e.g. after an export, or after adding a revision to the revision history.</li>
+</ul>
+<h3 id="list-of-internal-actions">List of Internal Actions</h3>
+<p><span id="ACT-R200" class="rqDef">[ACT-R200]</span></p>
+<table style="width:98%;">
+<colgroup>
+<col width="21%" />
+<col width="28%" />
+<col width="47%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Action qualifier</th>
+<th align="left">Default name (english)</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AddRevision</td>
+<td align="left">Revision added</td>
+<td align="left">executed after a revision has been added to the revision history.</td>
+</tr>
+<tr class="even">
+<td align="left">DExport</td>
+<td align="left">Diogenes export done</td>
+<td align="left">executed after a CANdela document has been successfully exported to Diogenes format.</td>
+</tr>
+<tr class="odd">
+<td align="left">DataOverviewExport</td>
+<td align="left">Data overview export done</td>
+<td align="left">executed after an overview of all data objects of the document has been successfully exported to CSV format.</td>
+</tr>
+<tr class="even">
+<td align="left">ODX2Export</td>
+<td align="left">ODX 2.x export done</td>
+<td align="left">executed after a CANdela document has been successfully exported to ODX 2.x format.</td>
+</tr>
+<tr class="odd">
+<td align="left">SaveCurrentVersionDone</td>
+<td align="left">save current version done</td>
+<td align="left">executed after the document has been successfully saved in the file format of the current version of CANdelaStudio.</td>
+</tr>
+<tr class="even">
+<td align="left">ServiceOverviewExport</td>
+<td align="left">Service overview export done</td>
+<td align="left">executed after an overview of all services of the document has been successfully exported to CSV format.</td>
+</tr>
+<tr class="odd">
+<td align="left">SpecExport</td>
+<td align="left">Specification export done (RTF)</td>
+<td align="left">executed after a specification has been successfully exported to RTF format.<br />
+For example, you can use this action to start a word processing program that opens the specification for further editing.</td>
+</tr>
+<tr class="even">
+<td align="left">SpecExportHtml</td>
+<td align="left">Specification export done (HTML)</td>
+<td align="left">executed after a specification has been successfully exported to HTML format.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="command-line">Command Line</h2>
+<p>The <strong>command line</strong> of an action is a string that can be executed by the operating system.</p>
+<h3 id="multiple-commands">Multiple Commands</h3>
+<ul>
+<li><strong>Multiple commands</strong> are on separate lines.</li>
+<li>CANdelaStudio will run them in sequence.</li>
+<li>CANdelaStudio ignores lines that have white-space only.</li>
+</ul>
+<h3 id="command">Command</h3>
+<ul>
+<li>Each command must be specified as in the Windows command processor:
+<ul>
+<li>the <strong>complete path to the application</strong></li>
+<li><strong>optional parameters</strong></li>
+<li><strong>separated by blanks</strong></li>
+<li>If the name or the parameters contain a blank themselves, <strong>double-quotes</strong> &quot;&quot; must be put around each one.</li>
+</ul></li>
+<li>If the folder of the application is in the Windows PATH variable, the name of the application suffices (e.g. &quot;notepad&quot;)</li>
+<li>For internal actions, the command line may be empty.</li>
+<li>For user-defined actions, the command line must not be empty.</li>
+<li>CANdelaStudio expands windows environment variables in an action command line (CDS-22742 7.1 SP2)</li>
+</ul>
+<h3 id="return-codes">Return Codes</h3>
+<ul>
+<li>Since the return codes of commands are not standardized, CANdelaStudio
+<ul>
+<li>cannot track whether a command was executed successfully, and</li>
+<li>cannot break for errors, but unconditionally runs each command.</li>
+</ul></li>
+<li><p>To support the weak convention that value 0 means &quot;success&quot;, CANdelaStudio reports a non-zero value in the log, like:</p>
+<pre><code>  Command &#39;&lt;interpreted command line&gt;&#39; returned code &lt;return value&gt; (expected 0)</code></pre></li>
+</ul>
+
+<h2 id="start-in...-cds-9034-6.0">Start in... (CDS-9034 6.0)</h2>
+<p>An action has an optional property &quot;WorkingDirectory&quot;.</p>
+<p>If the working directory is specified, CANdelaStudio executes the action within this directory.</p>
+<h2 id="variables">Variables</h2>
+<p><span id="ACT-R300" class="rqDef">[ACT-R300]</span> When the command needs an information from CANdelaStudio (e.g. the path to an exported file) as a parameter, you need to specify the information in the command line. Since such information may vary over time, CANdelaStudio provides <strong>variables</strong> which it substitutes with the respective value before running the command.</p>
+<p>The set of variables supported is hard-coded (see the <a href="#document-independent-variables">list below</a>).</p>
+<h3 id="format">Format</h3>
+<p><span id="ACT-R310" class="rqDef">[ACT-R310]</span> The format of using a variable with qualifier <code>V</code> in the command line is:</p>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="10%" />
+<col width="77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Mode</th>
+<th align="left">Format</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">required</td>
+<td align="left"><code>$V;</code></td>
+<td align="left">the variable must have a non empty value when CANdelaStudio executes the action.<br />
+<br />
+If a required variable has not been set at the time the action shall be executed, then CANdelaStudio does not execute the action, but shows a message instead.</td>
+</tr>
+<tr class="even">
+<td align="left">optional</td>
+<td align="left"><code>$?V;</code></td>
+<td align="left">the value of the variable may be empty when CANdelaStudio executes the action.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The <code>$</code>, <code>$?</code> and <code>;</code> are delimiters for the variable qualifier.</li>
+<li>if the value of the variable may contain blanks, you have to put double-quotes around the variable to protect the value in the command line</li>
+</ul>
+<h3 id="static-and-dynamic-variables">Static and Dynamic Variables</h3>
+<p><span id="ACT-R320" class="rqDef">[ACT-R320]</span> Any variable is either static or dynamic:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Variable Type</th>
+<th align="left">Description</th>
+<th align="left">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">static</td>
+<td align="left">CANdelaStudio <strong>remembers</strong> its value at some point of execution</td>
+<td align="left">the name of the last specification report file</td>
+</tr>
+<tr class="even">
+<td align="left">dynamic</td>
+<td align="left">CANdelaStudio <strong>computes</strong> its value at the time the value is needed</td>
+<td align="left">current date, name of current document</td>
+</tr>
+</tbody>
+</table>
+<h3 id="document-independent-variables">Document Independent Variables</h3>
+<p><span id="ACT-R330" class="rqDef">[ACT-R330]</span> Static variables are in <em>italics</em>. CANdelaStudio remembers their values at the respective places (e.g. after successful generation of a report).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CANdelaStudioDir</td>
+<td align="left">Directory of CANdelaStudio.exe (e.g. &quot;C:\Programme\CANdelaStudio\bin&quot;)</td>
+</tr>
+<tr class="even">
+<td align="left">CANdelaStudioVersion</td>
+<td align="left">E.g. &quot;1.4.0&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left">Cmd</td>
+<td align="left">Path to command interpreter (e.g. &quot;C:\WINNT\system32\cmd.exe&quot;)</td>
+</tr>
+<tr class="even">
+<td align="left">CurrentDate</td>
+<td align="left">Current date in ISO format, e.g. &quot;2002-06-07&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left">CurrentTime</td>
+<td align="left">Current time in ISO format, e.g. &quot;08:34:17&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">DictionaryPath</td>
+<td align="left">Path to <a href="../../30%20Features/Multi-Language/Dictionary.htm#DictionaryPath">dictionary</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Drive</td>
+<td align="left">Drive of current directory followed by colon (C:, D: and so on)</td>
+</tr>
+<tr class="even">
+<td align="left"><em>LastDExportDir</em></td>
+<td align="left">Last folder of DExport (e.g. &quot;D:\temp&quot;)</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>LastDExportExt</em></td>
+<td align="left">Last file name extension of DExport (e.g. &quot;xml&quot;)</td>
+</tr>
+<tr class="even">
+<td align="left"><em>LastDExportName</em></td>
+<td align="left">Last file name of DExport (e.g. &quot;mydoc&quot;)</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>LastDExportPath</em></td>
+<td align="left">Last path of DExport (e.g. &quot;D:\temp\mydoc.xml&quot;)</td>
+</tr>
+<tr class="even">
+<td align="left"><em>LastODXExportDir</em></td>
+<td align="left">Last folder of ODXExport (e.g. &quot;D:\temp&quot;)</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>LastODXExportExt</em></td>
+<td align="left">Last file name extension of ODXExport (e.g. &quot;odx&quot;)</td>
+</tr>
+<tr class="even">
+<td align="left"><em>LastODXExportName</em></td>
+<td align="left">Last file name of ODXExport (e.g. &quot;mydoc&quot;)</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>LastODXExportPath</em></td>
+<td align="left">Last path of ODXExport (e.g. &quot;D:\temp\mydoc.odx&quot;)</td>
+</tr>
+<tr class="even">
+<td align="left"><em>LastReportDir</em></td>
+<td align="left">Last folder of Report (e.g. &quot;D:\temp&quot;)</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>LastReportExt</em></td>
+<td align="left">Last file name extension of Report (e.g. &quot;rtf&quot;)</td>
+</tr>
+<tr class="even">
+<td align="left"><em>LastReportName</em></td>
+<td align="left">Last file name of Report (e.g. &quot; mydoc&quot;)</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>LastReportPath</em></td>
+<td align="left">Last path of Report (e.g. &quot;D:\temp\mydoc.rtf&quot;)</td>
+</tr>
+<tr class="even">
+<td align="left"><em>LastRqCSVExportDir</em></td>
+<td align="left">Last folder of requirements export (e.g. &quot;D:\temp&quot;)</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>LastRqCSVExportExt</em></td>
+<td align="left">Last file name extension of requirements export (e.g. &quot;csv&quot;)</td>
+</tr>
+<tr class="even">
+<td align="left"><em>LastRqCSVExportName</em></td>
+<td align="left">Last file name of requirements export (e.g. &quot;mydoc&quot;)</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>LastRqCSVExportPath</em></td>
+<td align="left">Last path of requirements export (e.g. &quot;D:\temp.csv&quot;)</td>
+</tr>
+<tr class="even">
+<td align="left">Now</td>
+<td align="left">Current date/time in ISO format, e.g. &quot;2002-06-07 08:34:17+02:00&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left">TimeZone</td>
+<td align="left">Timezone in ISO format, e.g. &quot;+02:00&quot;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="document-dependent-variables">Document Dependent Variables</h3>
+<p><span id="ACT-R340" class="rqDef">[ACT-R340]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">DocManufacturer</td>
+<td align="left">Name of manufacturer of *.cdd file (e.g. &quot;DaimlerChrysler&quot;; as displayed in Help|About)</td>
+</tr>
+<tr class="even">
+<td align="left">DocName</td>
+<td align="left">Name of document (no directory, e.g. &quot;mydoc.cdd&quot;; empty if not saved)</td>
+</tr>
+<tr class="odd">
+<td align="left">DocPath</td>
+<td align="left">Path of document (e.g. &quot;d:\docs\mydoc.cdd&quot;; empty if not saved)</td>
+</tr>
+<tr class="even">
+<td align="left">DocSaveNo</td>
+<td align="left">Save number of document (e.g. &quot;4711&quot;, &quot;0&quot; if not saved)</td>
+</tr>
+<tr class="odd">
+<td align="left">DocTemplateLabel</td>
+<td align="left">Label of current template (e.g. &quot;1.2.8&quot;, i.e. second part displayed in File|Properties|Document Info|Template)</td>
+</tr>
+<tr class="even">
+<td align="left">DocTemplateName</td>
+<td align="left">Name of current template (e.g. &quot;KWP2000CAN&quot;; , i.e. first part displayed in File|Properties|Document Info|Template)</td>
+</tr>
+<tr class="odd">
+<td align="left">DocVersion</td>
+<td align="left">Version of latest history item (e.g. &quot;1.0.0&quot;; empty if no history item)</td>
+</tr>
+<tr class="even">
+<td align="left">DocVersionAuthor</td>
+<td align="left">ShortName of author of latest history item (as a string, e.g. &quot;Sb&quot;; empty if no history item)</td>
+</tr>
+<tr class="odd">
+<td align="left">DocVersionDate</td>
+<td align="left">Date of latest history item (ISO format as displayed in history item edit dialog; empty if no history item)</td>
+</tr>
+<tr class="even">
+<td align="left">DocVersionState</td>
+<td align="left">State of latest history item (as a string in GUI language and current codepage; empty if no history item)</td>
+</tr>
+<tr class="odd">
+<td align="left">DocVersionStateId</td>
+<td align="left">State of latest history item (internal ID, e.g. &quot;1&quot;; empty if no history item)</td>
+</tr>
+<tr class="even">
+<td align="left">EcuName</td>
+<td align="left">Name of ECU (in GUI language and current codepage; e.g. &quot;Example ECU&quot;)</td>
+</tr>
+<tr class="odd">
+<td align="left">EcuQualifier</td>
+<td align="left">Qualifier of ECU, e.g. &quot;IKB2002&quot;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="temporary-variables">Temporary Variables</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">DocRevisionsTmpPath</td>
+<td align="left">Path to a temporary file that contains the complete revision history, see Document Revisions Export <a class='rqRef' href='../../30%20Features/Export/Document%20Revisions%20Export.htm#DRE-R100' title="">[DRE-R100]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DocVersionTmpPath</td>
+<td align="left">Path to a temporary file that contains the latest history item, see Document Version Export <a class='rqRef' href='../../30%20Features/Export/Document%20Version%20Export.htm#DVE-R100' title="">[DVE-R100]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">LogfileTmpPath</td>
+<td align="left">Path to a temporary file that contains the logfile data of an action, see <a href="#LogfileTmpPath">below</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">RqCSVExportTmpPath</td>
+<td align="left">Path to a temporary file that contains the last requirements export, see <a class='rqRef' href='../../30%20Features/Export/Requirements%20Export.htm#RQ-R795' title="">[RQ-R795]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">RqCSVImportTmpPath</td>
+<td align="left">Path to a temporary file that contains requirements to import, see <a class='rqRef' href='../../30%20Features/Import/Requirements%20Import.htm#RQ-R895' title="">[RQ-R895]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">TmpNam</td>
+<td align="left">Temporary file name (e.g. &quot;d:\temp\_085&quot;)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="LogfileTmpPath">Variable LogfileTmpPath</h3>
+<p>Use this variable to <strong>transfer output of an external application</strong> (e.g. a checker) into the CANdelaStudio logging: run an action command with a temporary output path, then let CANdelaStudio transfer that output into logging(CDS-13574 6.5 SP1).</p>
+<p>If the variable is used in a command line, on action execution, CANdelaStudio...</p>
+<ol style="list-style-type: decimal">
+<li>computes a temporary path T</li>
+<li>in the action command line, replaces the variable by T</li>
+<li>runs the command line</li>
+<li>if file T exists, <strong>put contents of the file into logging</strong> (after each action command line when using multiple command lines)</li>
+<li>deletes the file T</li>
+</ol>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/Document%20Revisions%20Export.htm">Document Revisions Export</a></li>
+<li><a href="../../30%20Features/Export/Document%20Version%20Export.htm">Document Version Export</a></li>
+<li><a href="../../20%20UserInterface/Actions/Edit%20Actions.htm">Edit Actions Dialog</a></li>
+<li><a href="../../20%20UserInterface/Actions/Edit%20Command%20Line.htm">Edit Command Line</a></li>
+<li><a href="Actions%20INI.htm">Actions INI</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Options.htm">CANdelaStudio Options</a></li>
+</ul>
+</body>
+</html>

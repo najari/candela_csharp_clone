@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Assign Combined Components</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="assign-combined-components">Assign Combined Components</h1>
+<h2 id="context">Context</h2>
+<p>CANdelaStudio shows the &quot;Assign Combined Components&quot; dialog when you perform a <a href="../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm">Document Upgrade</a> of a CANdela document to a CANdela template.</p>
+<h2 id="overview">Overview</h2>
+<p>The <strong>CANdela document</strong> contains...</p>
+<ul>
+<li>the <strong>original CANdela template</strong>, and</li>
+<li>data that describe the <strong>ECU</strong> (diagnostic instances, services, data objects in telegram tables...).</li>
+</ul>
+<p>A <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram table</a> in a diagnostic instance must refer to a <a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">combined component</a> in the template (diagram from the <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Services</a> chapter):</p>
+<div class="figure">
+<img src="../../30%20Features/Images/Protocol%20Services%20and%20Services%203%20Layers.jpg" alt="Protocol Services and Services (3 Layers)" />
+<p class="caption">Protocol Services and Services (3 Layers)</p>
+</div>
+<h2 id="document-upgrade">Document Upgrade</h2>
+<p>Therefore, during document upgrade, CANdelaStudio must <strong>associate</strong>...</p>
+<ul>
+<li>the <strong>telegram tables</strong> of the document</li>
+<li>with the <strong>combined components</strong> of the new template.</li>
+</ul>
+<p>As a <strong>default</strong>, CANdelaStudio uses the combined component that has the <strong>same qualifier</strong> than the combined component of the document.</p>
+<h2 id="assign-combined-components-1">Assign Combined Components</h2>
+<div class="figure">
+<img src="Images/Assign%20Combined%20Components.jpg" alt="&quot;Assign Combined Components&quot; Dialog" />
+<p class="caption">&quot;Assign Combined Components&quot; Dialog</p>
+</div>
+<p>If there is no combined component with the same qualifier, CANdelaStudio shows the &quot;Assign Combined Components&quot; dialog so that you can <strong>manually select a combined component</strong> from the new template.</p>
+<p>This typically happens when...</p>
+<ul>
+<li>the template author changed a combined component qualifier, or</li>
+<li>you try to upgrade to a totally different template.</li>
+</ul>
+<p>If you don't select a combined component, CANdelaStudio drops the telegram table.</p>
+<h3 id="diagnostic-class-template">Diagnostic Class Template</h3>
+<p>The upper list shows all diagnostic class templates of the document that contain unassigned Combined Components:</p>
+<ul>
+<li><strong>Diagnostic Class Template</strong>: the name of the Diagnostic Class Template.</li>
+<li><strong>Number of Unassigned Components</strong>: the sum of Combined Components that have &quot;(unassigned)&quot; in the lower table.</li>
+</ul>
+<h3 id="combined-components">Combined Components</h3>
+<p>The lower list shows the Combined Components of the diagnostic class template selected in the upper list.</p>
+<ul>
+<li><strong>in Source (Left Side)</strong> lists the name of the Combined Component in the document.</li>
+<li><strong>matches in Target (Right Side)</strong> lists the currently associated Combined Component of the new template:
+<ul>
+<li>either &quot;(unassigned)&quot; if none has been associated so far,</li>
+<li>or the name of the associated Combined Component.</li>
+</ul></li>
+</ul>
+<p>In order to <strong>associate a Combined Component</strong>:</p>
+<ul>
+<li>click into the cell in the &quot;matches in Target (Right Side)&quot; column;</li>
+<li>click again, or press key <code>F2</code> to enter edit mode;</li>
+<li>from the list, select a Combined Component.</li>
+</ul>
+<p>If the list does not show a Combined Component, the diagnostic class templates are not compatible. In this case, you cannot take over the telegram table to the new template.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Class Template</a></li>
+<li><a href="../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm">Document Upgrade</a></li>
+<li>Ribbon Tab File | Compare File to Left Side <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R310' title="">[MENU-R310]</a></li>
+<li>Ribbon Tab Home | Compare to Left Side <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R495' title="">[MENU-R495]</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+</ul>
+</body>
+</html>

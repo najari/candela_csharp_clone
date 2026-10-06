@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<CANDELAIMPORT dtdfilevers="1.4.0">
+	<IMPORTDOC>
+		<DATATYPES>
+			<TEXTTABLE id="_203">
+				<QUALIFIER>FailureModeIdentifier</QUALIFIER>
+				<NAME>Failure Mode Identifier</NAME>
+				<DESCRIPTION>Texttable that lists all DTC failure mode identifiers according to SAE J1939 -73 (FMI)</DESCRIPTION>
+				<CODEDATOMPROPERTIES encoding="unsigned" bitlength="5"/>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="0"/>
+  <VALUE role="endrange" value="0"/>
+  <MAPPEDTEXT>High – most severe (3)</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="1"/>
+  <VALUE role="endrange" value="1"/>
+  <MAPPEDTEXT>Low – most severe (3)</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="2"/>
+  <VALUE role="endrange" value="2"/>
+  <MAPPEDTEXT>Erratic, Intermittent, or Incorrect</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="3"/>
+  <VALUE role="endrange" value="3"/>
+  <MAPPEDTEXT>Voltage Above Normal</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="4"/>
+  <VALUE role="endrange" value="4"/>
+  <MAPPEDTEXT>Voltage Below Normal</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="5"/>
+  <VALUE role="endrange" value="5"/>
+  <MAPPEDTEXT>Current Below Normal</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="6"/>
+  <VALUE role="endrange" value="6"/>
+  <MAPPEDTEXT>Current Above Normal</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="7"/>
+  <VALUE role="endrange" value="7"/>
+  <MAPPEDTEXT>Not Responding Properly</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="8"/>
+  <VALUE role="endrange" value="8"/>
+  <MAPPEDTEXT>Abnormal Frequency, Pulse Width, or Period</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="9"/>
+  <VALUE role="endrange" value="9"/>
+  <MAPPEDTEXT>Abnormal Update Rate</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="10"/>
+  <VALUE role="endrange" value="10"/>
+  <MAPPEDTEXT>Abnormal Rate of Change</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="11"/>
+  <VALUE role="endrange" value="11"/>
+  <MAPPEDTEXT>Other Failure Mode</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="12"/>
+  <VALUE role="endrange" value="12"/>
+  <MAPPEDTEXT>Failure</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="13"/>
+  <VALUE role="endrange" value="13"/>
+  <MAPPEDTEXT>Out of Calibration</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="14"/>
+  <VALUE role="endrange" value="14"/>
+  <MAPPEDTEXT>Special Instruction</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="15"/>
+  <VALUE role="endrange" value="15"/>
+  <MAPPEDTEXT>High – least severe (1)</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="16"/>
+  <VALUE role="endrange" value="16"/>
+  <MAPPEDTEXT>High – moderate severity (2)</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="17"/>
+  <VALUE role="endrange" value="17"/>
+  <MAPPEDTEXT>Low – least severe (1)</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="18"/>
+  <VALUE role="endrange" value="18"/>
+  <MAPPEDTEXT>Low – moderate severity (2)</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="19"/>
+  <VALUE role="endrange" value="19"/>
+  <MAPPEDTEXT>Data Error</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="20"/>
+  <VALUE role="endrange" value="20"/>
+  <MAPPEDTEXT>Data Drifted High</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="21"/>
+  <VALUE role="endrange" value="21"/>
+  <MAPPEDTEXT>Data Drifted Low</MAPPEDTEXT>
+</TEXTTABLEROW>
+<TEXTTABLEROW>
+  <VALUE role="startrange" value="31"/>
+  <VALUE role="endrange" value="31"/>
+  <MAPPEDTEXT>-</MAPPEDTEXT>
+</TEXTTABLEROW>
+      </TEXTTABLE>
+      </DATATYPES>
+   </IMPORTDOC>
+</CANDELAIMPORT>

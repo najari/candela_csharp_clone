@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Available DTCs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="available-dtcs-dtc-pool-cds-13824-6.5">Available DTCs (DTC Pool) (CDS-13824 6.5)</h1>
+<h2 id="use-case">Use-Case</h2>
+<p>Some car manufacturers centralize DTCs: instead of adding an ad hoc code and text in the description of an ECU, they maintain a <strong>centralized list</strong>. DTCs existing in that list must be <strong>reused</strong> as far as possible.</p>
+<p>ODX 2.2 also allows references to DTCs (see chapter 7.3.6.8 “DTC data object property” of ISO 22901-1:2008).</p>
+<h2 id="dtc-pool">DTC Pool</h2>
+<p>The DTC pool provide DTCs which can be used in the CANdela document by referencing.</p>
+<p>It also provides import and export for DTCs.</p>
+<p>A CANdela document may contain multiple “Error Code Tables” <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R001' title="">[ECT-R001]</a>, e.g. one for 16 bit (OBDII), one for 24 bit. Each one has an according DTC Pool.</p>
+<ul>
+<li>the semantics of the Pool is to <strong>support authoring</strong>;</li>
+<li>the DTC list and its DTCs in the pool are not considered part of the ECU</li>
+<li>and are not expected to be exported in data oriented exports.</li>
+</ul>
+<h2 id="data-model">Data Model</h2>
+<p><span id="DTCP-R001" class="rqDef" title="DTC Pool">[DTCP-R001.0 DTC Pool]</span>: For each “Error Code Table” <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R001' title="">[ECT-R001]</a>,...</p>
+<ul>
+<li>the ECU document contains a “Pool” of DTCs stored outside all variants.</li>
+<li><span id="DTCP-R001-unique" class="rqDef">[DTCP-R001-unique]</span> The list cannot contain duplicate numeric codes.</li>
+<li>The pool itself does not have attributes (contained individual DTCs have).</li>
+</ul>
+<p><span id="DTCP-R002" class="rqDef" title="DTC Referencing">[DTCP-R002.0 DTC Referencing]</span>: for each DTC in the Pool, it shall be possible to reference the DTC...</p>
+<ul>
+<li>from each DTC list in the variants or libraries</li>
+<li>of the respective Error Code Table <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R001' title="">[ECT-R001]</a></li>
+<li><span id="DTCP-R002-UDFM" class="rqDef">[DTCP-R002-UDFM]</span> except from a <strong>DTC List for User-Defined Fault Memory only</strong> <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D105' title="">[UDFM-D105]</a>.</li>
+<li>See the diagram for the DTC Data Object <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R021' title="DTC Data Object">[DTC-R021]</a>.</li>
+<li>Note: References are only allowed into the Pool, not between DTCs in variants.</li>
+</ul>
+<p><span id="DTCP-R003" class="rqDef">[DTCP-R003]</span>: there is no DTC Pool for <a href="../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm">User Defined Fault Memory in CANdela</a>.</p>
+<ul>
+<li>Motivation: we assume there is no use-case to centralize or prescribe DTCs for the special User Defined Fault Memory.</li>
+</ul>
+<p>See also <a href="DTC%20Authorization.htm">DTC Authorization</a>.</p>
+<h2 id="operations">Operations</h2>
+<p>See <a href="DTC%20Operations.htm">DTC Operations</a>.</p>
+<h2 id="migration">Migration</h2>
+<p><span id="DTCP-R022" class="rqDef" title="Migration 6.0 to 6.5">[DTCP-R022.0 Migration 6.0 to 6.5]</span> After loading an older document into CANdelaStudio 6.5, the DTC Pools shall be empty (CDS-13824 R022).</p>
+<p><span id="DTCP-R024" class="rqDef" title="Migration 6.5 to 6.0">[DTCP-R024.0 Migration 6.5 to 6.0]</span> When saving a document to a version oder than 6.5, CANdelaStudio shall (CDS-13824 R022)...</p>
+<ul>
+<li>drop the Pool;</li>
+<li>in the variants, save all references into the pool as copies.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/DTC/Available%20DTCs.htm">Available DTCs (User Interface)</a></li>
+<li><a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a></li>
+<li><a href="../../30%20Features/Document/Authorization.htm">Document-Level Authorization</a></li>
+<li><a href="DTC.htm">DTC</a></li>
+<li><a href="DTC%20Authorization.htm">DTC Authorization</a></li>
+<li><a href="DTC%20Operations.htm">DTC Operations</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></li>
+</ul>
+</body>
+</html>

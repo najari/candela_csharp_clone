@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Revision History</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="revision-history">Revision History</h1>
+<p>Each CANdela document contains a list of revisions as well as a list of authors.</p>
+<p>Revisions are sometimes also called &quot;revision items&quot;.</p>
+<p>For the User Interface, see the <a href="../../20%20UserInterface/Revision%20History/Revision%20History%20Dialog.htm">Revision History dialog</a>.</p>
+<h2 id="revisions">Revisions</h2>
+<p>As a default, a CANdela document contains revisions that apply to all variants.</p>
+<p><span id="REV-R010" class="rqDef">[REV-R010]</span> A revision entry has...</p>
+<ul>
+<li><span id="REV-R010-Version" class="rqDef">[REV-R010-Version]</span> <strong>Version</strong> (must optionally conform with a given version format, see <a href="#format">below</a>)</li>
+<li><span id="REV-R010-Date" class="rqDef">[REV-R010-Date]</span> <strong>Date</strong> (in ISO format)</li>
+<li><span id="REV-R010-Tool" class="rqDef">[REV-R010-Tool]</span> <strong>Tool</strong> (free text)
+<ul>
+<li><span id="REV-R010-ToolLang" class="rqDef">[REV-R010-ToolLang]</span> The Tool text is <strong>not multi-language</strong>.</li>
+</ul></li>
+<li><span id="REV-R010-Status" class="rqDef">[REV-R010-Status]</span> <strong>Status</strong> (see Status chapter below)</li>
+<li><span id="REV-R010-Author" class="rqDef">[REV-R010-Author]</span> <strong>Author</strong> (see Authors chapter <a href="#authors">below</a>)</li>
+<li><span id="REV-R010-Mod" class="rqDef">[REV-R010-Mod]</span> <strong>Modification</strong> (free text)
+<ul>
+<li><span id="REV-R010-ModLang" class="rqDef">[REV-R010-ModLang]</span> The Modification text is <strong>not multi-language</strong>.</li>
+</ul></li>
+<li><span id="REV-R010-Reason" class="rqDef">[REV-R010-Reason]</span> <strong>Reason</strong> (free text, optional)
+<ul>
+<li><span id="REV-R010-ReasonLang" class="rqDef">[REV-R010-ReasonLang]</span> The Reason text is <strong>not multi-language</strong>.</li>
+</ul></li>
+</ul>
+<p>Note: the texts are intentionally not multi-language.</p>
+<ul>
+<li>They are concerned with authoring and not interesting for the user of a test system.</li>
+<li>Therefore it would be unnecessary effort to synchronize them in multiple languages.</li>
+</ul>
+<h2 id="status">Status</h2>
+<p>For a revision entry, CANdelaStudio supports a <strong>numeric status</strong>.</p>
+<p>The <a href="../../20%20UserInterface/Revision%20History/Revision%20History%20Dialog.htm#status">revision history dialog</a> maps the numeric status values to <strong>hard-coded strings</strong>.</p>
+<h2 id="local">Per Variant and Library</h2>
+<p>Starting with version 7.0 (CDS-16560), the template has a boolean flag to force each variant in the CANdela document to have its own revision history (cf. the <a href="../../20%20UserInterface/Document/Property%20Page%20Revision%20History.htm">dialog</a>).</p>
+<p><span id="REV-R050-LIB" class="rqDef">[REV-R050-LIB]</span> Starting with 8.5 SP2, this applies to <a href="../../30%20Features/Library/Library.htm">libraries</a>, too.</p>
+<h2 id="authors">Authors</h2>
+<p>Each revision history entry references an author.</p>
+<p>An author has</p>
+<ul>
+<li>first name</li>
+<li>last name</li>
+<li>short cut (must be unique; see below)</li>
+<li>company</li>
+<li>department (optional)</li>
+<li>email (optional)</li>
+<li>phone (optional)</li>
+<li>fax (optional)</li>
+<li>info (optional)</li>
+<li>outdated (see below)</li>
+<li>responsible for this ECU (see <a href="../../20%20UserInterface/Revision%20History/Revision%20History%20Dialog%20Property%20Page%20Author.htm#responsible">visualization in dialog</a>). Multiple authors can have this property.</li>
+</ul>
+<h3 id="shortcut"><index term="Shortcut" text="for author">Shortcut<index></h3>
+<p>The author shortcut is a unique, identifying property.</p>
+<p>Such a shortcut seems well established in companies. Even if the shortcut may be not unique in the company, it makes sense to demand uniqueness within one CANdela document.</p>
+<h3 id="outdated">Outdated</h3>
+<p>If you modify author properties (e.g. change of department or even company), the modification may be inappropriate for existing revision history items that reference this author (&quot;do not manipulate history&quot;).</p>
+<p>If you want to precise about the relationship of the author and the revision items, you may</p>
+<ul>
+<li>mark the existing author as &quot;outdated&quot;</li>
+<li>create a new author with the modified properties and refer to this one in future revision entries</li>
+</ul>
+<h2 id="revision-history-from-import">Revision History from Import</h2>
+<p>Import automatically adds ODX variant information to revision history (8.2 SP3, CDS-38709).</p>
+<h2 id="format">Version Format (CDS-1454 5.0)</h2>
+<p>In the template, you can define an optional <strong>format</strong> for the version string of a revision item.</p>
+<ul>
+<li>the format is defined as a regular expression;</li>
+<li>any length allowed (even 0). Empty property means no restrictions;</li>
+<li>the character set is unrestricted;</li>
+<li>additionally, there is a human readable description of the version format (not translatable)</li>
+</ul>
+<p>Document upgrade warns if a revision version does not match Version format of the target template.</p>
+<p>Consistency check compares the revision version against the version format from the template. It treats mismatch as a non-fatal error (= allows loading the file in CANdelaStudio, but disallows exports). It reports the mismatch as a warning, like</p>
+<pre><code>Revision version &#39;4.0.a&#39; does not match pattern &#39;\d+\.\d+\.\d+&#39;</code></pre>
+<p>When loading files with version <code>&lt;</code> 5.0 (forward migration), the property is empty (no modification of existing revision versions).</p>
+<p>When saving to files with version <code>&lt;</code> 5.0 (backward migration), the property gets dropped.</p>
+<h2 id="deleting-revisions">Deleting Revisions</h2>
+<p><span id="REV-R200-DeleteAll" class="rqDef">[REV-R200-DeleteAll]</span> In Standard View, only all revision entries can be deleted together.</p>
+<ul>
+<li>therefore, multi-selection and the <code>DEL</code> key are not available in Standard View (CDS-70302 v10).</li>
+</ul>
+<p><span id="REV-R200-Delete" class="rqDef">[REV-R200-Delete]</span> In Expert View, any individual revision entry can be deleted.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Document/Property%20Page%20Revision%20History.htm">Format in File | Properties | Revision History</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Latest%20Revision.htm">Latest revision window</a></li>
+<li><a href="../../20%20UserInterface/Revision%20History/Revision%20History%20Dialog.htm">Revision History Dialog</a></li>
+</ul>
+</body>
+</html>

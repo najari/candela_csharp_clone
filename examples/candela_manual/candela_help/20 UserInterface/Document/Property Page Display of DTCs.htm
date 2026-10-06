@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Property Page Display of DTCs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="file-properties-display-of-dtcs">File | Properties | Display of DTCs</h1>
+<div class="figure">
+<img src="Images/Property%20Page%20Display%20of%20DTCs.jpg" alt="Ribbon Tab File | Properties, page &quot;Document Info&quot;" />
+<p class="caption">Ribbon Tab File | Properties, page &quot;Document Info&quot;</p>
+</div>
+<h2 id="dtc-format">DTC Format</h2>
+<p><span id="DOCUI-R610" class="rqDef">[DOCUI-R610]</span> This setting represents the CANdela document property &quot;DTC Format&quot;, for details see <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R400' title="">[DOC-R400]</a>.</p>
+
+<h3 id="iso-14229-1-hex">ISO 14229-1 / HEX</h3>
+<p><span id="DOCUI-R610-14229" class="rqDef">[DOCUI-R610-14229]</span> With this option, the 3 byte DTC number is used as a <strong>single value</strong>, see <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R400-14229' title="">[DOC-R400-14229]</a>.</p>
+<p>The editor setting Ribbon Tab <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Display.htm">File | Options | Display</a> lets you select between DTC display as hexadecimal / with prefix &quot;PCBU&quot;.</p>
+<h3 id="iso-15031-6-sae-j2012">ISO 15031-6 / SAE J2012</h3>
+<p><span id="DOCUI-R610-J2012" class="rqDef">[DOCUI-R610-J2012]</span> With this option, the 3 byte DTC number is structured in <strong>16 + 8 bits</strong>, see <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R400-J2012' title="">[DOC-R400-J2012]</a>.</p>
+<p><span id="DOCUI-R610-CBJ2012" class="rqDef">[DOCUI-R610-CBJ2012]</span> The combobox specifies the text table data type that specifies the FTB values.</p>
+<ul>
+<li>if the document does not contain a suitable data type, the combobox is grayed out.</li>
+</ul>
+<h3 id="sae-j1939-73-version-4">SAE J1939-73 (Version 4)</h3>
+<p><span id="DOCUI-R610-J1939" class="rqDef">[DOCUI-R610-J1939]</span> With this option, the 3 byte DTC number is structured in <strong>19 + 5 bits</strong>, see <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R400-J1939' title="">[DOC-R400-J1939]</a>.</p>
+<p><span id="DOCUI-R610-CBJ1939" class="rqDef">[DOCUI-R610-CBJ1939]</span> The combobox specifies the text table data type that specifies the FMI values.</p>
+<ul>
+<li>if the document does not contain a suitable data type, the combobox is grayed out.</li>
+</ul>
+<h2 id="byte-order-cds-37113-9.1">Byte Order (CDS-37113 9.1)</h2>
+<p><span id="DOCUI-R620" class="rqDef">[DOCUI-R620]</span> At the bottom, the dialog informs about the byte order of DTC transmission <a class='rqRef' href='../../30 Features\DTC\DTC.htm#DTC-R050' title="Byte Order">[DTC-R050]</a>. This is a property of the template used.</p>
+<p>Please contact Vector in the rare situation that you need to modify this byte order.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC (Feature)</a></li>
+<li><a href="Properties.htm">File | Properties</a></li>
+</ul>
+</body>
+</html>

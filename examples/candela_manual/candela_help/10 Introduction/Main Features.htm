@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Main Features</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="main-features">Main Features</h1>
+<ul>
+<li><p><a href="../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR workflow support</a> (requirements, SWC Sync, DEXT export)</p></li>
+<li><p>Support for protocol standards <strong>UDS, KWP and OBD II</strong></p></li>
+<li>Support for <strong>open standards and data formats</strong>:
+<ul>
+<li><a href="../30%20Features/ODX/ODX.htm">ODX</a> (2.0.1, 2.1.0, 2.2.0)</li>
+<li>AUTOSAR (System extract, DEXT)</li>
+<li>FIBEX</li>
+<li>A2L</li>
+<li>CDI (CANdela Data Import, a structured XML format)</li>
+<li>RTF</li>
+<li>CSV</li>
+<li>XML</li>
+<li>XHTML</li>
+</ul></li>
+<li>Support for <strong>manufacturer-specific data formats</strong>:
+<ul>
+<li>Diogenes (Daimler)</li>
+<li>MDX (Ford)</li>
+<li>DDx (FCA)</li>
+<li>...</li>
+</ul></li>
+<li><p>Describe UDS Services with DIDs, Routines, IO Controls, DTCs, Snapshot Data, Extended Data</p></li>
+<li><p>Describe AUTOSAR <a href="../30%20Features/Event/Events%20Introduction.htm">Events</a></p></li>
+<li><p>Sychronisation of <a href="../30%20Features/Requirements/Requirements.htm">requirements</a></p></li>
+<li>CANdelaStudio works <strong>file-oriented</strong>.
+<ul>
+<li>It stores data in a CANdela document (<strong>CDD file</strong> - CANdela Diagnostic Data), a structured XML format.</li>
+<li>A <strong>single user</strong> opens a CANdela document, eventually modifies and saves it.</li>
+<li>there is no inherent multi-user or client-server functionality (it may be added using import/export, plug-ins, actions).</li>
+</ul></li>
+<li><p>Support of <a href="../30%20Features/Document%20Template/Document%20Template.htm">document templates</a> for creating new CANdela documents</p></li>
+<li><strong>Object-oriented</strong> description of...
+<ul>
+<li><strong>data</strong> (data objects) and</li>
+<li><strong>operations</strong> (services)</li>
+<li>... bundled in a <a href="../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">diagnostic instance</a></li>
+</ul></li>
+<li><p><a href="../20%20UserInterface/Compare/Compare%20View.htm">Compare View</a> for comparing diagnostic objects and whole CANdela documents</p></li>
+<li><strong>Multiple <a href="../30%20Features/Variant/Variant.htm">variants</a></strong> of a control unit, in both...
+<ul>
+<li>chronological (for example improved versions) and</li>
+<li>functional variants (for example with additional/different functions)</li>
+</ul></li>
+<li><p><a href="../20%20UserInterface/Variant/Variant%20Wizard.htm">Variant wizard</a> for creating variants of a control unit</p></li>
+<li><p><a href="../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Introduction.htm">Ribbons</a> provide convenient access to operations</p></li>
+<li><p><strong>Data entry</strong> in lists and <a href="../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">Property dialogs</a></p></li>
+<li><p><a href="../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a> in a special chapter</p></li>
+<li><p><strong>Non-redundant storage</strong> of data through <a href="../30%20Features/Diagnostic%20Instance/Sharing%20Diagnostic%20Instances.htm">reuse</a> of diagnostic instances</p></li>
+<li><a href="../30%20Features/Data%20Type/Data%20Type.htm">Data Types</a> provide re-usable conversion between
+<ul>
+<li>coded information (on the line) and</li>
+<li>physical information (for a human)</li>
+</ul></li>
+<li><p><a href="../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency checks</a>, both when a document is edited and before it is saved or exported</p></li>
+<li><p><a href="../30%20Features/Report/Report%20Generator.htm">Specification export</a> to RTF and HTML</p></li>
+<li><p>Full support for <strong>Unicode</strong>, as well as Eastern European and Asian languages</p></li>
+<li><p>Support for <a href="../30%20Features/Multi-Language/Multi-Language.htm">multi-language documents</a>, and translation using an integrated translation view and TMX files (Pro and Admin <a href="../30%20Features/CANdelaStudio%20Editor/Editions.htm">Editions</a>)</p></li>
+<li><p><strong>Integration of external applications</strong> via <a href="../30%20Features/Actions/Actions.htm">actions</a>, for example code generators, compilers, editors for special data formats</p></li>
+</ul>
+<div class="figure">
+<img src="Images/PDG_CANdelaStudio_Import_Export.jpg" alt="CANdelaStudio Import Export" />
+<p class="caption">CANdelaStudio Import Export</p>
+</div>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm">Basic User Interface Rules</a></li>
+<li><a href="../30%20Features/CANdelaStudio%20Editor/Editions.htm">Editions</a></li>
+<li><a href="Getting%20Started.htm">Getting Started</a></li>
+<li><a href="../30%20Features/CANdelaStudio%20Editor/Views.htm">Views</a></li>
+</ul>
+</body>
+</html>

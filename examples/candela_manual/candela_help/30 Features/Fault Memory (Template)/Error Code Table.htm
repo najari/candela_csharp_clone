@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Error Code Table</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="error-code-table">Error Code Table</h1>
+<p>See also the <a href="../../20%20UserInterface/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a> User Interface and the introduction to <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a>.</p>
+<p>An Error Code Table is defined in a CANdela template. It describes the <strong>structure of DTCs</strong>.</p>
+<h2 id="data-model">Data Model</h2>
+<p><span id="ECT-R001" class="rqDef">[ECT-R001]</span> A CANdela template can contain up to 2 Error Code Tables:</p>
+<ul>
+<li><span id="ECT-R001-3" class="rqDef">[ECT-R001-3]</span> Primary/User-Defined/WWH-OBD (3 byte) (CDS-42498 U035 9.0)</li>
+<li><span id="ECT-R001-2" class="rqDef">[ECT-R001-2]</span> OBD-II (2 byte)</li>
+</ul>
+
+<p><span id="ECT-R010" class="rqDef" title="DTC Columns">[ECT-R010 DTC Columns]</span> Each Error Code Table contains its own <a href="DTC%20Columns.htm">DTC Columns</a> which define the set of properties available for a DTC in a CANdela document.</p>
+<p>Note: having an Error Code Table of the <strong>according byte size</strong> is required for defining a <strong>Proxy Component with semantics &quot;dtc&quot;</strong> <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-dtcErrorCodeTable' title="">[PC-R050-dtcErrorCodeTable]</a> in a Protocol Service.</p>
+<h2 id="specific-dtc-columns">Specific DTC Columns</h2>
+<ul>
+<li><span id="ECT-R510" class="rqDef">[ECT-R510]</span> Qualifier <code>DTC_OCCURRENCE_FLAG</code>
+<ul>
+<li>see DEXT Export <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R360' title="">[DEXT-R360]</a></li>
+</ul></li>
+<li><span id="ECT-R520" class="rqDef">[ECT-R520]</span> Qualifier <code>UDS_DTC_Reference</code>
+<ul>
+<li>evaluated by Vector DEM at an <strong>OBD-II DTC</strong>
+<ul>
+<li>CANdesc has no support for OBD-II</li>
+</ul></li>
+<li>Defines the UDS DTCs which shall be linked with the OBD-II DTC.</li>
+<li>Format:
+<ul>
+<li>3 byte hexadecimal DTC numbers</li>
+<li>with optional &quot;0x&quot; prefix</li>
+<li>separated by comma</li>
+</ul></li>
+<li>Example: <code>0x402025,403113</code></li>
+<li>See <a class='rqRef' href='../../40 Templates\Vector UDS\OBDII DTC Columns.htm#VUDS-R480' title="">[VUDS-R480]</a> for use in the Vector UDS Template.</li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Introduction to <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a></li>
+<li><a href="DTC%20Columns.htm">DTC Columns</a></li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../20%20UserInterface/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table (User Interface)</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Proxy%20Component.htm">Proxy Component</a></li>
+</ul>
+</body>
+</html>

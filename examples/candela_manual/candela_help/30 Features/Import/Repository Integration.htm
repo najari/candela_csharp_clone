@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Repository Integration</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="repository-integration-cds-30694-8.1"><span id='_index_446728050' title='Feature' data-text='Feature'>Repository Integration</span> (CDS-30694 8.1)</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The CANdelaStudio Repository feature...</p>
+<ul>
+<li>provides a special type of <strong>import</strong></li>
+<li>in a simple <strong>selection list</strong></li>
+<li>from an <strong>arbitrary data source</strong> (database, XML file, ...)</li>
+<li>is made available using a <strong>custom DLL implementation</strong></li>
+<li>for
+<ul>
+<li><strong>DIDs</strong> (CDS-30694 8.1)</li>
+<li><strong>DTCs</strong> (CDS-32365 8.2 SP2)</li>
+</ul></li>
+</ul>
+<div class="figure">
+<img src="Images/Select%20DID%20from%20Repository.jpg" alt="Select DID from Repository" />
+<p class="caption">Select DID from Repository</p>
+</div>
+<p>The integration of repositories in CANdelaStudio...</p>
+<ul>
+<li><strong>supports different data sources</strong>: customer databases, CSV, Excel, ODX, CDD may be integrated</li>
+<li>is <strong>platform independent</strong></li>
+<li>is <strong>network enabled</strong></li>
+<li>is <strong>highly scalable</strong>: database from 100 to 100000 DIDs or DTCs</li>
+<li>transports data via the accepted <strong>ODX standard</strong></li>
+<li>provides an <strong>open client API</strong> that allows integration into other tools</li>
+<li>comes with <strong>sample implementations</strong> for an easy start.</li>
+</ul>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<div class="figure">
+<img src="Images/Repository%20Integration%20Architecture.jpg" alt="Repository Integration Architecture" />
+<p class="caption">Repository Integration Architecture</p>
+</div>
+<h2 id="general-candelastudio-requirements">General CANdelaStudio Requirements</h2>
+<p><span id="RPS-R100" class="rqDef" title="Plug-in Interface">[RPS-R100 Plug-in Interface]</span> CANdelaStudio provides an open plug-in interface that allows access to any diagnostic repository.</p>
+<p><span id="RPS-R110" class="rqDef" title="Plug-in Implementation">[RPS-R110 Plug-in Implementation]</span> Repository plug-ins may be implemented by Vector, Customers or 3<sup>rd</sup> party developers. The plug-ins needs to be implemented as a Dynamic Link Library (DLL) with a defined C-API interface (see API Specification)</p>
+<h2 id="candelastudio-integration">CANdelaStudio Integration</h2>
+<p><span id="RPS-R200" class="rqDef" title="Plug-in Loading">[RPS-R200 Plug-in Loading]</span> CANdelaStudio supports one plug-in DLL under the CANdelaStudio <a href="../../30%20Features/Installation/Installation%20Folder.htm">installation folder</a>:</p>
+<pre><code>InstallDir\Bin\Plugins\DiagnosticRepository.dll</code></pre>
+<p>In order to switch to another repository, the plug-in DLL has to be replaced.</p>
+
+<p><span id="RPS-R200-Conditions" class="rqDef">[RPS-R200-Conditions]</span> Conditions for loading the plug-in:</p>
+<ul>
+<li>file name ends with <code>.dll</code>
+<ul>
+<li>... not with <code>.cdlplg</code> as for regular CANdelaStudio plug-ins</li>
+</ul></li>
+<li>the DLL provides the defined API entry points <a class='rqRef' href='../../30%20Features/Import/Repository%20Integration.htm#RPS-R480' title="">[RPS-R480]</a></li>
+<li>the version number of the API corresponds to the minimal requirements of CANdelaStudio.</li>
+</ul>
+<p><span id="RPS-R210" class="rqDef" title="Plug-in Selection">[RPS-R210 Plug-in Selection]</span> CANdelaStudio does not provide a selection mechanism for plug-ins so far.</p>
+
+<p><span id="RPS-R220" class="rqDef" title="Plug-in Configuration">[RPS-R220 Plug-in Configuration]</span> CANdelaStudio allows to configure a repository plug-in <strong>at runtime</strong>:</p>
+<ul>
+<li>after loading the plug-in, CANdelaStudio reads a parameter <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Options.htm#INI-R220' title="">[INI-R220]</a> from the INI file</li>
+<li>... and passes it to the plug-in by calling the API function <code>SetRepositoryConfig(string ConfigString)</code>.</li>
+<li>The format of the configuration string is...
+<ul>
+<li>up to the plug-in (maybe vendor specific)</li>
+<li>subject to restrictions of the Windows INI file format</li>
+<li>maximum length 16kByte</li>
+</ul></li>
+</ul>
+<p><span id="RPS-R460" class="rqDef" title="Default Configuration for Repository Samples">[RPS-R460 Default Configuration for Repository Samples]</span> If CANdelaStudio detects that...</p>
+<ul>
+<li><code>bin\Plugins\DiagnosticRepository.dll</code> is the sample Local Repository <a class='rqRef' href='../../30%20Features/Import/Repository%20Integration.htm#RPS-R300' title="Local Repository">[RPS-R300]</a>
+<ul>
+<li>based on the name returned from API</li>
+</ul></li>
+<li>and CANdelaStudio.ini <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Options.htm#INI-R220' title="">[INI-R220]</a> does not contain configuration for the plug-in,</li>
+<li>then as a default configuration, CANdelaStudio passes the path of the sample files <a class='rqRef' href='../../30%20Features/Installation/Example%20Files.htm#EX-R400' title="Repository Example Files">[EX-R400]</a> to the plug-in.</li>
+</ul>
+<p><span id="RPS-R230" class="rqDef" title="Repository Dialog">[RPS-R230 Repository Dialog]</span> See the <a href="../../20%20UserInterface/Import/Select%20from%20Repository.htm">Select from Repository</a> dialog.</p>
+<h2 id="sample-repository-plug-ins-by-vector">Sample Repository Plug-ins by Vector</h2>
+<div class="figure">
+<img src="Images/Repository%20Integration%20Sample%20Plug-ins.jpg" alt="Repository Integration Sample Plug-ins" />
+<p class="caption">Repository Integration Sample Plug-ins</p>
+</div>
+<p><span id="RPS-R300" class="rqDef" title="Local Repository">[RPS-R300 Local Repository]</span></p>
+<ul>
+<li>sample implementation that accesses a local repository based on a CSV file</li>
+<li>binary: <code>bin/Plugins/LocalRepository.dll</code></li>
+<li>source code shipped as Visual Studio C++ solution, in the Examples folder <a class='rqRef' href='../../30%20Features/Installation/Example%20Files.htm#EX-R400' title="Repository Example Files">[EX-R400]</a>.</li>
+</ul>
+<p><span id="RPS-R310" class="rqDef" title="Remote Repository">[RPS-R310 Remote Repository]</span></p>
+<ul>
+<li>sample implementation that accesses a remote repository based on a web service which reads data from a CSV file.</li>
+<li>binary: <code>bin/Plugins/RemoteRepository.dll</code></li>
+<li>source code shipped as Visual Studio C# solution, in the Examples folder <a class='rqRef' href='../../30%20Features/Installation/Example%20Files.htm#EX-R400' title="Repository Example Files">[EX-R400]</a>.</li>
+</ul>
+<p><span id="RPS-R320" class="rqDef" title="CDD Repository">[RPS-R320 CDD Repository]</span></p>
+<ul>
+<li>sample implementation that accesses a local repository based on a CDD file (CANdela document)</li>
+<li>binary: <code>bin/Plugins/CDDBasedRepository.dll</code></li>
+<li>source code not shipped.</li>
+</ul>
+<h2 id="repository-examples-installed-with-candelastudio">Repository Examples Installed with CANdelaStudio</h2>
+<p>See the list of <a href="../../30%20Features/Installation/Example%20Files.htm#repository">repository example files</a>.</p>
+<p><span id="RPS-R400" class="rqDef">[RPS-R400]</span> As shipped, CANdelaStudio provides import from a sample .CSV and ODX-D file.</p>
+<p><span id="RPS-R450" class="rqDef">[RPS-R450]</span> For this purpose, the installation additionally copies the local repository sample <a class='rqRef' href='../../30%20Features/Import/Repository%20Integration.htm#RPS-R300' title="Local Repository">[RPS-R300]</a> to <code>bin\Plugins\DiagnosticRepository.dll</code>.</p>
+<h2 id="repository-api">Repository API</h2>
+<p><span id="RPS-R480" class="rqDef">[RPS-R480]</span> The client API is a classic C-API, defined in the DiagnosticRepository.h header file, see <a class='rqRef' href='../../30%20Features/Installation/Example%20Files.htm#EX-R400' title="Repository Example Files">[EX-R400]</a>.</p>
+<p>The format of the ODX envelope is specified below <a class='rqRef' href='../../30%20Features/Import/Repository%20Integration.htm#RPS-R500' title="">[RPS-R500]</a>.</p>
+
+<p>A typical sequence of API calls by CANdelaStudio looks like:</p>
+<div class="figure">
+<img src="Images/Repository%20Integration%20Sequence%20Diagram.jpg" alt="Repository Integration Sequence Diagram" />
+<p class="caption">Repository Integration Sequence Diagram</p>
+</div>
+<h2 id="odx-envelope">ODX Envelope</h2>
+<h3 id="odx-envelope-constraints">ODX Envelope Constraints</h3>
+<p><span id="RPS-R500" class="rqDef">[RPS-R500]</span> An <strong>ODX Envelope</strong> is a complete, self-contained ODX-D file.</p>
+<p><span id="RPS-R600" class="rqDef">[RPS-R600]</span> Only ODX version <strong>2.2.0</strong> is allowed as envelope.</p>
+<p><span id="RPS-R610" class="rqDef">[RPS-R610]</span> An ODX envelope contains of exactly <strong>one DIAG-LAYER-CONTAINER</strong>.</p>
+<p><span id="RPS-R620" class="rqDef">[RPS-R620]</span> The DIAG-LAYER-CONTAINER must contain exactly <strong>one</strong> DIAG-LAYER of kind “<strong>ECU-SHARED-DATA</strong>”.</p>
+<p><span id="RPS-R630" class="rqDef">[RPS-R630]</span> The DIAG-LAYER must not use any PARENT-REFs.</p>
+<p><span id="RPS-R640" class="rqDef">[RPS-R640]</span> The DIAG-LAYER must not use any IMPORT-REFs.</p>
+<p><span id="RPS-R650" class="rqDef">[RPS-R650]</span> The DIAG-LAYER must not use any SHORT-NAME refs.</p>
+<p><span id="RPS-R660" class="rqDef">[RPS-R660]</span> The DIAG-LAYER must not have any unresolvable (dangling) ODX-LINKs.</p>
+<p><span id="RPS-R670" class="rqDef">[RPS-R670]</span> The DIAG-LAYER container must fulfill the ODX checker rules.</p>
+<h3 id="odx-envelope-examples">ODX Envelope Examples</h3>
+<p>See <code>SampleData\ODXEnvelope\F190_VIN.odx-d</code> and other files in <code>SampleRepositoriesSource.zip</code> in the <a href="../../30%20Features/Installation/Example%20Files.htm#repository">repository example files</a>.</p>
+<h3 id="odx-envelope-for-dtcs-cds-32365-8.2-sp2">ODX Envelope for DTCs (CDS-32365 8.2 SP2)</h3>
+<p><span id="RPS-R800" class="rqDef">[RPS-R800]</span> The DIAG-LAYER must contain exactly one valid <strong>DTC-DOP</strong> specifying the DTCs.</p>
+<p><span id="RPS-R820" class="rqDef">[RPS-R820]</span> The DTC-DOP must contain <strong>exactly one DTC</strong> which shall get imported</p>
+<p><span id="RPS-R840" class="rqDef">[RPS-R840]</span> A <strong>DTC-REF</strong> is <strong>not allowed</strong> inside the DTC-DOP</p>
+<p><span id="RPS-R860" class="rqDef">[RPS-R860]</span> The import ignores any <strong>bit-length</strong> of the DTC-DOP.</p>
+<p><span id="RPS-R900" class="rqDef">[RPS-R900]</span> The DTC properties...</p>
+<ul>
+<li>are specified in SDGs;</li>
+<li>each SDG contains one DSG-CPATION for the target qualifier used in the CANdela fault memory</li>
+<li>... and one SD containing the according value.</li>
+</ul>
+<p><span id="RPS-R920" class="rqDef">[RPS-R920]</span> DTC Properties:</p>
+<ul>
+<li>Their number is not limited.</li>
+<li>Use one SDG for each DTC column (property).</li>
+<li>Import maps the SDGs to DTC columns / DTC attributes by mapping...
+<ul>
+<li>the SDG-CAPTION SHORTNAME</li>
+<li>with the qualifier of the DTC property or attribute.</li>
+<li>Import ignores SDGs that do not match.</li>
+<li>The plug-in DLL must ensure that the SDG shortnames are matching with the DTC property and DTC attribute qualifiers of the CANdela document.</li>
+<li>Tip: CANdelaStudio shows the qualifier in expert view in the Error Code Table, and in the column tooltip in the DTC List in standard view.</li>
+</ul></li>
+<li>See DTC Import <a class='rqRef' href='../../30%20Features/DTC/DTC%20Import.htm#DTCI-R170' title="">[DTCI-R170]</a> for details of column mapping.</li>
+</ul>
+<p>ODX Envelope for DTCs Example:</p>
+<div class="figure">
+<img src="Images/Repository%20Integration%20ODX%20DTC%20Envelope.png" alt="Screenshot of ODX Envelope for DTCs in Repository" />
+<p class="caption">Screenshot of ODX Envelope for DTCs in Repository</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Installation/Example%20Files.htm">Example Files</a></li>
+<li><a href="../../30%20Features/Import/ODX%20Import%20Introduction.htm">ODX Import</a></li>
+<li><a href="../../20%20UserInterface/Import/Select%20from%20Repository.htm">Select from Repository</a> (User Interface)</li>
+</ul>
+</body>
+</html>

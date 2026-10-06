@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>5_Selective Topics</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="selective-topics">Selective Topics</h1>
+<h2 id="deactivate-jobs">Deactivate all CANdela diagnostic instances and job containers</h2>
+<ul>
+<li>if the <a href="../../20%20UserInterface/Import/ODX%20Import.htm#deactivate">import wizard option</a> is unchecked, import...
+<ul>
+<li>just <strong>adds</strong> data to the CANdela document, and</li>
+<li>does not affect existing jobs.</li>
+</ul></li>
+<li>if this option is checked, the CANdela document resulting from import to <strong>correspond</strong> with the contents of the imported ODX file.
+<ul>
+<li>To achieve this, import <strong>de-activates</strong> diagnostic instances and job containers missing in the import data (it intentionally does not provide the option to delete them).</li>
+<li>see the following chapter about how to <strong>protect individual jobs</strong> from being de-activated.</li>
+</ul></li>
+</ul>
+<h2 id="Prefer_flat_DID">Prefer Flat DIAG-SERVICE over TABLE Using DIAG-SERVICE (CDS-35161 8.1 SP2 P1)</h2>
+<ul>
+<li>In case a DID used by DIAG-SERVICEs <strong>0x22</strong> or <strong>0x2E</strong> is defined twice, ...
+<ul>
+<li>one time using a <strong>TABLE</strong></li>
+<li>and the other time in a <strong>flat DIAG-SERVCE</strong>,</li>
+</ul></li>
+<li>import shall provide a meaningful message and <strong>drop the TABLE DIAG-SERVICE</strong>,</li>
+<li>depending on the value of an <strong>ECU string attribute</strong> having qualifier <code>Prefer_flat_DID</code>:
+<ul>
+<li>if the attribute does not exist, do not drop;</li>
+<li><code>ALL</code>: apply to all DIDs;</li>
+<li>comma-separated list of DIDs (e.g. <code>F1A1;F1A2;F1A3</code>): apply to these DIDs only.</li>
+</ul></li>
+</ul>
+<h2 id="formula-data-type">Formula Data Type</h2>
+<p>See <a href="../../30%20Features/Data%20Type/Formula.htm#odx">Formula Data Type</a></p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="ODX%20Import%20Introduction.htm">ODX Import Introduction</a></li>
+<li>CANdelaStudio <a href="../../30%20Features/Installation/Documentation.htm">Documentation folder</a></li>
+<li><a href="../../30%20Features/ODX/ODX.htm">Introduction to ODX</a></li>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX Export Introduction</a></li>
+<li><a href="../../30%20Features/Import/3_ODX%20Import%20Bit%20Positioning.htm">ODX Import - Positioning of Bit Objects</a></li>
+<li><a href="../../30%20Features/Import/4_Import%20of%20Libraries.htm">ODX Import of Libraries</a></li>
+<li>Menu for ODX Import <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R210' title="">[MENU-R210]</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20ODX%20Export.htm">Options Property Page &quot;ODX Export&quot;</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20ODX%20Import.htm">Options Property Page &quot;ODX Import&quot;</a></li>
+<li><a href="../../30%20Features/Attributes/Special%20Attributes.htm">Special Attributes</a></li>
+<li><a href="../../30%20Features/Data%20Type/Formula.htm#odx">Formula Data Type</a></li>
+</ul>
+</body>
+</html>

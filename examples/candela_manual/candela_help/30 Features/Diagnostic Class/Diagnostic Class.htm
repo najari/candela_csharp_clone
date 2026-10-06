@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Class</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-class">Diagnostic Class</h1>
+<h2 id="introduction">Introduction</h2>
+<p>CANdelaStudio divides diagnostic services into &quot;diagnostic classes&quot;.</p>
+<p>A diagnostic class represents a &quot;use-case&quot;, or “functional unit” (in UDS). See the <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">diagnostic instance chapter</a> for the idea of <em>object orientation</em> behind diagnostic classes and diagnostic instances.</p>
+<p>The set of diagnostic class in a CANdela document is predefined in the <a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">diagnostic class template</a>. Typically it is specific for the manufacturer process.</p>
+<p>A diagnostic class contains</p>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">diagnostic instances</a></li>
+<li>job containers</li>
+</ul>
+<p>CANdelaStudio shows diagnostic instances that can occur only once in a variant (e.g. Fault Memory) on the same level as diagnostic classes.</p>
+<h2 id="diagnostic-class-and-dids">Diagnostic Class and DIDs</h2>
+<p><span id="DCL-D001" class="rqDef">[DCL-D001]</span> A diagnostic class is <span id="did-enabled"><strong>DID enabled</strong></span> if</p>
+<ul>
+<li><span id="DCL-D001-a" class="rqDef">[DCL-D001-a]</span> it has the <strong>“DID Data Reference” semantics</strong> set <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050' title="Combined Component DID Semantics">[DID-R050]</a>, or</li>
+<li><span id="DCL-D001-b" class="rqDef">[DCL-D001-b]</span>
+<ul>
+<li><span id="DCL-D001-service" class="rqDef">[DCL-D001-service]</span> it has <strong>service 0x22, 0x2E or 0x2F</strong> (cf. <a href="../../30%20Features/DID/DID.htm#identifiers">Identifiers in UDS and OBD Services</a>),</li>
+<li>and <span id="DCL-D001-b1" class="rqDef">[DCL-D001-b1]</span> either <strong>no diagnostic instance exists</strong> in the diagnostic class,</li>
+<li>or <span id="DCL-D001-b2" class="rqDef">[DCL-D001-b2]</span> <strong>at least one</strong> diagnostic instance contains a <strong>DID Data Reference</strong> as the single data object in a telegram.</li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Diagnostic Instance as DID Definition <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D110' title="Diagnostic Instance as DID Definition">[DI-D110]</a></li>
+<li><a href="../../20%20UserInterface/Diagnostic%20Class/Diagnostic%20Class.htm">Diagnostic Class (User Interface)</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Use-Cases.htm">Diagnostic Use-Cases</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Class Template</a></li>
+<li>&quot;DID&quot; on the Telegram Table Header <a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm#DIUI-R305' title="">[DIUI-R305]</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Failure Type Byte</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="failure-type-byte-ftb">Failure Type Byte (FTB)</h1>
+<p>ISO 15031-6 / SAE J2012 defines a list of <strong>failure type bytes</strong>. The list contains 1 byte values for typical failure situations, like</p>
+<ul>
+<li>8: Bus Signal / Message Failures</li>
+<li>17: circuit short to ground</li>
+<li>24: circuit current below threshold</li>
+</ul>
+
+<p>The list helps to unify the DTC values.</p>
+<h2 id="ftb-in-candela">FTB in CANdela</h2>
+<p>You can setup a template <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R400' title="">[DOC-R400]</a> to take Byte 0 (LSB) of a 3 byte DTC from a list:</p>
+<p><span id="DTC-R500" class="rqDef">[DTC-R500]</span> The FTB is taken from a text table in the data type list.</p>
+<p>Each text table entry associates a <strong>1 byte value</strong> with a <strong>translatable text</strong>.</p>
+<h2 id="editing">Editing</h2>
+<p>This setup enables editing of DTCs <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R030' title="">[DTCUI-R030]</a> using</p>
+<ul>
+<li>two bytes DTC (free input)</li>
+<li>error text (free input)</li>
+<li>1 byte <strong>Failure Type Byte</strong> (selecting from list)</li>
+</ul>
+<p>CANdelaStudio automatically shows the text associated with the FTB as a suffix of the error text.</p>
+<h2 id="example-file">Example File</h2>
+<p>See <code>FailureTypeByte.cdi</code> <a class='rqRef' href='../../30%20Features/Installation/Example%20Files.htm#EX-R300-FTB' title="">[EX-R300-FTB]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Document/Property%20Page%20Display%20of%20DTCs.htm">Document Property Page &quot;Display of DTCs&quot;</a></li>
+<li><a href="DTC.htm">DTC (Feature)</a></li>
+<li>Editing Failure Type Byte <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R040' title="">[DTCUI-R040]</a></li>
+<li><a href="Failure%20Mode%20Identifier.htm">Failure Mode Identifier</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory Introduction</a></li>
+<li><a href="../../15%20Procedures/Fault%20Memory/How%20to%20Prepare%20a%20Document%20for%20FTB%20and%20FMI.htm">How to Prepare a Document for FTB and FMI</a></li>
+</ul>
+</body>
+</html>

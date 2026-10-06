@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Dictionary</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dictionary-cds-547">Dictionary (CDS-547)</h1>
+<p>Some manufacturers want to use terms from a central &quot;dictionary&quot; for the diagnostic objects described in a CANdela file.</p>
+<p>CANdelaStudio can use such a dictionary in the form of a TMX file, and offer the terms from the dictionary when you edit a name.</p>
+<p>See the procedure <a href="../../15%20Procedures/Multi-Language/How%20to%20Use%20a%20Dictionary.htm">How to Use a Dictionary</a>.</p>
+
+<h2 id="dictionary-setup">Dictionary Setup</h2>
+<p><strong>R001.0 (Frontend):</strong> in Ribbon Tab <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Edit.htm#dictionary">File | Options | Edit</a></p>
+<p>a) provide setting “Path to dictionary file (.tmx)”. Remember the setting in INI file / registry. Default: empty.</p>
+<p>b) provide “Reload” button to force reloading of the TMX file, specified in the edit box</p>
+<p>c) The user cannot leave dialog when TMX file path is non empty and D002 not fulfilled</p>
+<p><strong>Definition D001:</strong> two language codes <strong>match</strong>, if</p>
+<p>a) they either match exactly (e.g. “en-US” with “en-US”), or</p>
+<p>b) <em>they match based on the language part only (e.g. “en-GB” with “en” or with “en-US</em>”) NOT in 6.5 SP1</p>
+<p><strong>Definition D002</strong>: the dictionary is <strong>available for a document</strong> if</p>
+<p>a) it is non-empty (= at least one entry from TMX file of R001 has been read), and</p>
+<p>b) at least one document language matches (see D001) with at least one language in the TMX file.</p>
+
+<p><strong>D003: attribute “AcceptOnlyTextIDFromDictionary”:</strong> see <a href="../../30%20Features/Attributes/Special%20Attributes.htm#AcceptOnlyTextIDFromDictionary">Special Attributes</a>.</p>
+<p><strong>R010.0 (Frontend):</strong> provide a dialog similar to “Edit translation memory”:</p>
+<p>a) title “Select term from dictionary”</p>
+<p>b) on top of the list: edit control to filter the list, with button to clear the control. If user enters the filter value, after some time delay (tip: 0.7 sec), apply the filter to the contents of all columns shown in the list (with case-sensitivity according with CDS-15525).</p>
+<p>c) On entry of the dialog, set the focus into the filter edit control of b).</p>
+<p>d) If the text from the calling edit control matches at least one term (row of the list), then</p>
+<p>d1) enter this text in the filter control,</p>
+<p>d2) apply the filter (show only matching rows),</p>
+<p>d3) select the row that matches all up-to-date translation items from the calling edit control (see R020).</p>
+<p>e) If the text from the calling edit control does not match any term, then leave the filter empty.</p>
+<p>f) in the list, show all terms / filtered terms from the TMX file specified in R001. Do not allow editing in the list. Allow selection of a single list row.</p>
+<p>g) Show the current GUI language in first column. After installation, sort the list by first column and use reasonable column widths. Then remember the sort criteria and the column widths.</p>
+<p>h) iff. document supports <a href="../../30%20Features/Common%20Properties/TextID.htm">TextIDs</a>, and TextID mode is “Edit” (not “CompletionOnly”), show a second column “TextID” filled from the TMX file (cells may be empty!).</p>
+<p>i) provide buttons “Apply” and “Close” (do not show the other buttons “Add TMX…” etc. shown at the bottom of the “Edit translation memory” dialog).</p>
+<h2 id="dictionary-use">Dictionary Use</h2>
+<p><strong>R020.1 (Frontend):</strong></p>
+<p>Iff. a dictionary according to D002 is available:</p>
+<p>a) add a button “…” (Use icon e.g. dictionary that opens the dialog of R010)</p>
+<p><span id="DICT-R020-a1" class="rqDef">[DICT-R020-a1]</span> in each <a href="../../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">object property dialog</a>, to the right of the “Name” edit control,</p>
+<p><span id="DICT-R020-a2" class="rqDef">[DICT-R020-a2]</span> in the <a href="../../20%20UserInterface/DTC/DTC%20Property%20Page%20General.htm">DTC property dialog</a> for the “Error text”</p>
+<p><span id="DICT-R020-a3" class="rqDef">[DICT-R020-a3]</span> In the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Text%20Table.htm">TextTable property dialog</a> (e.g. at the right). Enable button when a text table entry is selected and open the dialog for the respective entry when the button is clicked</p>
+<p><span id="DICT-R020-a4" class="rqDef">[DICT-R020-a4]</span> In <a href="../../20%20UserInterface/Service/Service%20Property%20Page%20Shortcuts.htm">service property page</a> for shortcut name as in the object property dialog (a1) dialog</p>
+<p>c) if user leaves the dialog of R010 with “Apply”, and “AcceptOnlyTextIDFromDictionary” (see D003) exists and is non-zero, CANdelaStudio puts the TextID from the selected TMX entry into the calling dialog, it shall not modify any other property of the translatable object.</p>
+<p>d) if user leaves the dialog of R010 with “Apply”, and “AcceptOnlyTextIDFromDictionary” (see D003) does not exist or is zero, CANdelaStudio puts the terms (including TextID) from the selected TMX entry into the calling dialog:</p>
+<p>d1. it shall insert any non-empty term (i.e. in different languages) from the TMX entry into the dialog, with uptodate=true, for each TMX <code>TUV</code> element with a language code matching (see D001) the language code in the document.</p>
+<p>d2. it shall keep any term that is missing or empty in the TMX entry unchanged in the dialog (even if it is the term for the GUI language), it shall not modify the uptodate flag for this term during “Apply”. If the user modifies the term in the edit control later on, it shall set uptodate=false for all other languages, as usual).</p>
+<p>Iff. a dictionary according to D002 is NOT available:</p>
+<p>CANdelaStudio shall show a message and shall not open the TMX dialog.</p>
+<h2 id="DictionaryPath">Action Variable</h2>
+<p><strong>R050.1:</strong> “DictionaryPath” variable:</p>
+<p>a) CANdelaStudio shall provide a new action variable “DictionaryPath”;</p>
+<p>b) when used in a action, CANdelaStudio shall replace the variable by the path described in R001.</p>
+<p>c) after an action was executed that used this variable, CANdelaStudio shall reload the TMX file and write an error message if the TMX file does not conform to D002.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Actions/Actions.htm#document-independent-variables">Actions Variables</a></li>
+<li>Procedure <a href="../../15%20Procedures/Multi-Language/How%20to%20Use%20a%20Dictionary.htm">How to Use a Dictionary</a></li>
+<li><a href="../../30%20Features/Common%20Properties/TextID.htm">TextIDs</a></li>
+<li>Ribbon Tab <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Edit.htm#dictionary">File | Options | Edit</a></li>
+</ul>
+</body>
+</html>

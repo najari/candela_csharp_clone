@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Communication Parameters at Services and Jobs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="communication-parameters-at-services-and-jobs-cds-7548-6.0-sp1">Communication Parameters at Services and Jobs (CDS-7548 6.0 SP1)</h1>
+<p>See the procedure <a href="../../15%20Procedures/Interface/How%20to%20Specify%20Communication%20Parameters%20at%20Services%20and%20Jobs.htm">How to Specify Communication Parameters at Services and Jobs</a>.</p>
+<h2 id="introduction">Introduction</h2>
+<p>As a default, a <a href="Communication%20Parameter.htm">communication parameter</a> is defined once for an ECU document, in the &quot;Interfaces&quot; section.</p>
+<p>CANdelaStudio allows to overwrite communication parameters locally at Services or Jobs.</p>
+
+<h2 id="enabling-communication-parameters-at-services-and-jobs">Enabling Communication Parameters at Services and Jobs</h2>
+<p><span id="LCP-R100" class="rqDef">[LCP-R100]</span> The communication parameter list of an interface allows the enabling of &quot;local&quot; values for a communication parameter in the property dialog <a class='rqRef' href='../../20 UserInterface\Interface\Communication Parameter Property Page Unsigned.htm#CPUI-R210' title="">[CPUI-R210]</a>.</p>
+<p>The dialog creates the necessary default attribute(s) to store the values at a service or job.</p>
+<h2 id="restriction-by-services-supported-for-interfaces">Restriction by Services Supported for Interfaces</h2>
+<div class="figure">
+<img src="Images/UsedProtocolServicesAndInterfaces.jpg" alt="Used ProtocolServices and Interfaces" />
+<p class="caption">Used ProtocolServices and Interfaces</p>
+</div>
+<p><span id="LCP-R200" class="rqDef">[LCP-R200]</span> A communication parameter can only be edited at a service in a diagnostic instance if its <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used Protocol Service</a> (i.e. the Protocol Service as used in a diagnostic class) is supported <a class='rqRef' href='../../30%20Features/Interface/Services%20Supported%20for%20Interfaces.htm#SSI-R100' title="">[SSI-R100]</a> for the interface of the communication parameter.</p>
+<h2 id="overriding-a-communication-parameter-at-a-service-or-job">Overriding a Communication Parameter at a Service or Job</h2>
+<p>Local communication parameters for a service in a diagnostic instance are edited in the <a href="../../20%20UserInterface/Service/Service%20Property%20Page%20General.htm">Service property dialog</a>, the values are stored in the attributes enabled as described in the previous chapter.</p>
+<p>The same holds for jobs.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Procedure <a href="../../15%20Procedures/Interface/How%20to%20Specify%20Communication%20Parameters%20at%20Services%20and%20Jobs.htm">How to Specify Communication Parameters at Services and Jobs</a></li>
+<li><a href="../../30%20Features/Interface/Communication%20Parameter.htm">Communication Parameter (Feature)</a></li>
+<li><a href="Interface.htm">Interfaces (User Interface)</a></li>
+<li><a href="../../30%20Features/Interface/Interface.htm">Interface (Feature)</a></li>
+<li><a href="Services%20Supported%20for%20Interfaces.htm">Services Supported for Interfaces</a></li>
+</ul>
+</body>
+</html>

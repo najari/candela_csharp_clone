@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>List UDS Snapshot Data per DTC</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="list-uds-snapshot-data-per-dtc">List &quot;UDS Snapshot Data per DTC&quot;</h1>
+<p>See also the overview of the <a href="GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a> and the <a href="TAB%20UDS%20Snapshot%20Data%20per%20DTC.htm">TAB &quot;UDS Snapshot Data per DTC&quot;</a>.</p>
+<p><span id="SRUI-R600" class="rqDef">[SRUI-R600]</span> List of <strong>DTCs</strong> with <strong>Snapshot Data</strong> and <strong>Snapshot Records to Store</strong></p>
+<ul>
+<li><span id="SRUI-R600-Default" class="rqDef">[SRUI-R600-Default]</span> with a special first entry &quot;(Default)&quot;</li>
+<li><span id="SRUI-R610-DTCs" class="rqDef">[SRUI-R610-DTCs]</span> The list shows all DTCs defined in the diagnostic instance.</li>
+<li><span id="SRUI-R610-Sort" class="rqDef">[SRUI-R610-Sort]</span> The DTCs are sorted by ascending Code.
+<ul>
+<li>No sorting by the user.</li>
+</ul></li>
+<li><span id="SRUI-R610-MultiSel" class="rqDef">[SRUI-R610-MultiSel]</span> The list supports multi-selection.</li>
+<li><span id="SRUI-R612" class="rqDef">[SRUI-R612]</span> The list can be filtered by a text control at top right, which applies to all texts shown.</li>
+</ul>
+<div class="figure">
+<img src="Images/UDSSnapshotDataPerDTCConfiguredList.png" alt="DTC List for Snapshot Data per DTC (Numeration Type &quot;Configured)&quot;" />
+<p class="caption">DTC List for Snapshot Data per DTC (Numeration Type &quot;Configured)&quot;</p>
+</div>
+<h2 id="dtc-list-columns">DTC List Columns</h2>
+<ul>
+<li><span id="SRUI-R620" class="rqDef">[SRUI-R620]</span> <strong>DTCs</strong>
+<ul>
+<li>shows the special entry <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/List%20UDS%20Snapshot%20Data%20per%20DTC.htm#SRUI-R600-Default' title="">[SRUI-R600-Default]</a>, or the DTC Code and name.</li>
+</ul></li>
+<li><span id="SRUI-R630" class="rqDef">[SRUI-R630]</span> <strong>Snapshot Data</strong>
+<ul>
+<li>for the Special &quot;(Default)&quot; list row:
+<ul>
+<li>the Default Snapshot Data <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R230-Default' title="">[SR-R230-Default]</a></li>
+</ul></li>
+<li>for a regular DTC list row with Overridden Snapshot Data <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R230-Overridden' title="">[SR-R230-Overridden]</a></li>
+<li>otherwise &quot;(Default)&quot;</li>
+<li>Default Snapshot Data and Overridden Snapshot Data are shown as follows:
+<ul>
+<li>DIDs separated by comma + blank</li>
+<li>for each DID, the identifier <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R025-DefaultDisplay' title="">[DID-R025-DefaultDisplay]</a></li>
+<li>optionally followed by blank + the DID name</li>
+</ul></li>
+</ul></li>
+<li>for Numeration Type &quot;<strong>Configured</strong>&quot;:
+<ul>
+<li><span id="SRUI-R640" class="rqDef">[SRUI-R640]</span> <strong>Snapshot Records to Store</strong></li>
+<li>&quot;n/a&quot; for the special entry <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/List%20UDS%20Snapshot%20Data%20per%20DTC.htm#SRUI-R600-Default' title="">[SRUI-R600-Default]</a></li>
+<li>&quot;(all)&quot; if all checked</li>
+<li>otherwise Snapshot Records
+<ul>
+<li>separated by comma + blank</li>
+<li>for each Snapshot Record, the Snapshot Record Number <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R120-DefaultDisplay' title="">[SR-R120-DefaultDisplay]</a></li>
+<li>optionally followed by blank + the Snapshot Record name</li>
+</ul></li>
+</ul></li>
+<li>for Numeration Type &quot;<strong>Calculated</strong>&quot;:
+<ul>
+<li><span id="SRUI-R645" class="rqDef">[SRUI-R645]</span> <strong>Number of Snapshot Records to Store</strong></li>
+<li>&quot;n/a&quot; for the special entry <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/List%20UDS%20Snapshot%20Data%20per%20DTC.htm#SRUI-R600-Default' title="">[SRUI-R600-Default]</a></li>
+<li>the Number of Calculated Snapshot Records Stored per DTC <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#DTC-R310' title="">[DTC-R310]</a></li>
+</ul></li>
+</ul>
+<div class="figure">
+<img src="Images/UDSSnapshotDataPerDTCCalculatedList.png" alt="DTC List for Snapshot Data per DTC (Numeration Type &quot;Calculated)&quot;" />
+<p class="caption">DTC List for Snapshot Data per DTC (Numeration Type &quot;Calculated)&quot;</p>
+</div>
+<h2 id="dtc-list-context-menu">DTC List Context Menu</h2>
+<p>The list has no context menu.</p>
+<h2 id="dtc-list-actions">DTC List Actions</h2>
+<ul>
+<li>multi-selection</li>
+<li>no sorting</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a></li>
+<li><a href="TAB%20UDS%20Snapshot%20Data%20per%20DTC.htm">TAB UDS Snapshot Data per DTC</a></li>
+</ul>
+</body>
+</html>

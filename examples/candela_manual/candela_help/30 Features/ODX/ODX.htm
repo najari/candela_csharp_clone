@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>ODX</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="introduction-to-odx"><span id='_index_446728075' title='ODX' data-term='ODX'>Introduction to ODX</span></h1>
+<p>The <strong>Open Diagnostic eXchange format</strong> (ODX) is an XML-based ISO standard (ISO 22901-1:2008) for describing ECU data relevant for diagnostics.</p>
+<p>Vehicle, ECU and tester manufacturers can use the ODX format to describe and exchange diagnostic data. ODX was designed as an open format for data exchange. It is a good choice for joint projects between automotive OEMs.</p>
+<h2 id="vector-odx-mission-statement">Vector ODX Mission Statement</h2>
+<blockquote>
+<p>Vector supports ODX in all diagnostic-related products, providing a simple and effective way to handle ODX diagnostic data.</p>
+</blockquote>
+<blockquote>
+<p>Since 2001, Vector is contributing to define the ODX standard in ASAM and ISO working committees. ODX is now released officially as ISO 22901-1:2008. Some automotive OEMs and suppliers are already integrating ODX into their development processes. It is now apparent that in practice the flexibility of the ODX standard leads to different ODX dialects. Vector strives to meet the challenge of supporting these ODX dialects in all phases of the diagnostic process.</p>
+</blockquote>
+<h2 id="odx-support-by-candelastudio">ODX Support by CANdelaStudio</h2>
+<!-- TODO
+CANdelaStudio supports ODX in the form of [special consistency
+checks](/cdlhelp_en-00f9.htm), [import](/cdlhelp_en-00d5.htm) and
+[export](/cdlhelp_en-0060.htm) functions, and by creating [shortcut names
+and qualifiers](/cdlhelp_en-00f3.htm).
+-->
+<p>CANdelaStudio supports ODX in the form of special consistency checks, import and export functions, and by creating <a href="../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm">shortcut names and qualifiers</a>.</p>
+<p>The CANdelaStudio delivery additionally includes <strong>ODXStudio View</strong> to display ODX files before import or after export.</p>
+<h2 id="odx-and-authoring-guidelines">ODX and Authoring Guidelines</h2>
+<p>The ODX specification is flexible, therefore typically an OEM develops an <strong>own <span id='_index_446728076'>Authoring Guideline</span> (<span id='_index_446728077'>AGL</span>)</strong> and uses it for creating an OEM specific &quot;flavor&quot; of ODX. The OEM specific AGL reduces the flexibility of the pure ODX standard to the set of features required for the OEM specific process.</p>
+<p>In CANdelaStudio, the <strong>template</strong> represents part of the information covered by an AGL. Therefore in order to support a specific AGL in <strong>CANdelaStudio ODX import and export</strong>, you need...</p>
+<ul>
+<li>an appropriate CANdela <strong>template</strong>,</li>
+<li>a customized <strong>ODX Import</strong> and</li>
+<li>a correspondingly customized <strong>ODX Export</strong>.</li>
+</ul>
+<p>To this purpose, Vector provides a <strong>customization project</strong>.</p>
+<h2 id="candela-template-and-odx-rs">CANdela Template and <span id='_index_446728078'>ODX RS</span></h2>
+<p><strong>ODX Recommended Style</strong> (ODX RS) is an authoring guideline that reduces the flexibility of the pure ODX standard to a set of features agreed by multiple OEMs (members of the ASAM - Association for Standardization of Automation and Measuring Systems).</p>
+<p>Basically CANdelaStudio is able to import ODX RS data if</p>
+<ul>
+<li>the structure of the <strong>ODX data</strong></li>
+<li>is compliant with the structure of the <strong>template</strong>.</li>
+</ul>
+<p>So provided there is a template compliant with the ODX RS structure, it is possible to <strong>import</strong> ODX RS data.</p>
+<p>So far, Vector does <strong>not</strong> provide a template with specific ODX RS settings.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Installation/Documentation.htm">CANdelaStudio documentation folder</a></li>
+<li><a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA Feature</a></li>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX Export Introduction</a></li>
+<li><a href="../../30%20Features/Import/ODX%20Import%20Introduction.htm">ODX Import</a></li>
+<li><a href="../../30%20Features/Data%20Type/Formula.htm#odx">Formula and ODX</a></li>
+<li><a href="../../30%20Features/Data%20Type/Self-Referencing%20Mux.htm">Self-Referencing Multiplexer</a></li>
+</ul>
+</body>
+</html>

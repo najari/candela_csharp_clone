@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Components</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="protocol-service-components">Protocol Service Components</h1>
+<h2 id="overview">Overview</h2>
+<p>There are different types of Protocol Service Components:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="18%" />
+<col width="48%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Component</th>
+<th align="left">Example</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><a href="Constant%20Component.htm">Constant</a></td>
+<td align="left">Service ID 0x22</td>
+<td align="left">Value predefined in the template, cannot be changed in the document.</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="Variable%20Value%20Component.htm">Variable Value</a></td>
+<td align="left">Identifier, Subfunction...</td>
+<td align="left">Value to be defined in a diagnostic instance</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="Proxy%20Component.htm">Proxy</a></td>
+<td align="left">Response data for 0x22</td>
+<td align="left">Data objects to be defined for individual services in diagnostic instances</td>
+</tr>
+<tr class="even">
+<td align="left">Proxy with semantics <code>any</code></td>
+<td align="left">Transfer data for 0x36</td>
+<td align="left">Data not described in the CANdela document but only known at test system runtime</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="DTC%20Status%20Proxy%20Component.htm">DTC Status</a></td>
+<td align="left">0x19</td>
+<td align="left">Data describes status of DTC in ECU</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="Multiplexer%20Component.htm">Multiplexer</a> (Mux)</td>
+<td align="left">Snapshot data per DTC<br />
+</td>
+<td align="left">Data structures that vary depending on another transported value, the &quot;selector&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="Iteration%20Component.htm">Iteration</a></td>
+<td align="left">Snapshot data for multiple DTCs</td>
+<td align="left">Repeated data structures. There are different iteration components with different iteration conditions.</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="Fixed%20Data%20Component.htm">Fixed Data</a></td>
+<td align="left">Address and size combinations for 0x23</td>
+<td align="left">Data objects predefined in the Protocol Service, not to be changed in a diagnostic instance.<br />
+To be used if a protocol service will always be transferring the same data objects regardless of the diagnostic class in which it is used.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-definition-stages">Data Definition Stages</h2>
+<p>Using the above described components, data values are specified in one of 3 possible stages:</p>
+<ol style="list-style-type: decimal">
+<li>when editing a template (Constant Component)</li>
+<li>when editing a diagnostic instance in aCANdela document (Variable Value, Proxy, Mux Component)</li>
+<li>at runtime of a test system (Proxy Component with semantics <code>any</code>)</li>
+</ol>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Mandatory%20and%20Mandatory%20at%20Runtime.htm">Mandatory and Mandatory at Runtime</a></li>
+</ul>
+
+</body>
+</html>

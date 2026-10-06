@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Select Supported Diagnostic Classes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-select-supported-diagnostic-classes">How to Select Supported Diagnostic Classes</h1>
+
+<p>CANdelaStudio divides diagnostic services into <a href="../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm">diagnostic classes</a>. It shows them under a variant in the tree node &quot;Supported diagnostic classes&quot;, together with singleton <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">diagnostic instances</a>.</p>
+<ul>
+<li>In the CANdelaStudio tree, click on the node &quot;Supported diagnostic classes&quot; under a variant.</li>
+<li>The tree node contains the diagnostic classes and singleton diagnostic instances existing <em>in this variant</em>.</li>
+<li>In the right side, CANdelaStudio shows all <a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">diagnostic class templates</a> and singleton diagnostic instances predefined <em>in the template</em>.</li>
+<li>A checkbox to the left of an object shows whether it actually exists in this variant;</li>
+<li>check it to create the object in the variant;</li>
+<li>un-check it to delete the object from the variant (including all contained services and data). CANdelaStudio does not allow this for diagnostic instances that have been set &quot;required&quot; in the template.</li>
+<li>In a new, empty diagnostic class, click the button &quot;New Instance&quot; (in the right side, or in the context menu) to create a diagnostic instance.</li>
+</ul>
+</body>
+</html>

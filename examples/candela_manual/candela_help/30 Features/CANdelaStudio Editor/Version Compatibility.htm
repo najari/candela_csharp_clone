@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Version Compatibility</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="version-compatibility">Version Compatibility</h1>
+<p>Data constellations to avoid for tools based on older CANdelaStudio document versions:</p>
+<h2 id="candelastudio-13">CANdelaStudio 13</h2>
+<p>When saving to a file version <code>&lt;</code> 13, CANdelaStudio does not preserve AUTOSAR properties of the v13 <a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory</a>.</p>
+<h2 id="candelastudio-12">CANdelaStudio 12</h2>
+<ul>
+<li>When saving to a file version <code>&lt;</code> 12, CANdelaStudio does not preserve Events, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R250' title="">[EV-R250]</a>.</li>
+</ul>
+<h2 id="candelastudio-11">CANdelaStudio 11</h2>
+<p>(none)</p>
+<h2 id="candelastudio-10">CANdelaStudio 10</h2>
+<ul>
+<li>(customer specific) do not enable <a href="../../30%20Features/Diagnostic%20Instance/Segment%20Number.htm">segment numbers</a>&quot; &gt; 99 if the document shall be processed or exported by CANdelaStudio versions before v10.</li>
+<li>CANdelaStudio will preserve the segment number value
+<ul>
+<li>since it is stored in a generic <a href="../../30%20Features/Attributes/Attributes.htm">attribute</a>,</li>
+</ul></li>
+<li>... but will not interprete it as necessary.</li>
+</ul>
+<h2 id="candelastudio-9.1">CANdelaStudio 9.1</h2>
+<ul>
+<li>when using the new State Group semantics &quot;Authorization&quot; <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Group.htm#STG-R050-Authorization' title="">[STG-R050-Authorization]</a>,
+<ul>
+<li>the qualifier should be &quot;Authorization&quot;</li>
+<li>so that loading loading the data constellation again from a version <code>&lt;</code> 9.1 will detect the semantics <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Group.htm#STG-R210' title="">[STG-R210]</a>.</li>
+</ul></li>
+<li>when using Vehicle System Group Identification for a variant other than the base variant <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm#VSG-R150' title="">[VSG-R150]</a>, a CANdelaStudio version <code>&lt;</code> 9.1 will load the file but not support the feature. If you don't modify the identifying feature there, you can again load the file in CANdelaStudio <code>&gt;=</code> 9.1 and use the feature.</li>
+</ul>
+<h2 id="candelastudio-9.0">CANdelaStudio 9.0</h2>
+<p>(none)</p>
+<h2 id="candelastudio-8.5">CANdelaStudio 8.5</h2>
+<ul>
+<li><a href="../../30%20Features/Library/Library.htm">Libraries</a> (cannot be represented in documents <code>&lt; 8.5</code>)</li>
+<li>DIDs differing between variants are down-migrated with name and qualifier made unique, see <a href="../../30%20Features/DID/DID%20Operations.htm#save-82">DID Operations</a>.</li>
+</ul>
+<h2 id="candelastudio-8.2">CANdelaStudio 8.2</h2>
+<ul>
+<li>64-bit integer data type <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R200' title="">[DTENC-R200]</a> - it will be down-migrated to a byte array.</li>
+</ul>
+<h2 id="candelastudio-8.1">CANdelaStudio 8.1</h2>
+<ul>
+<li><p>Expert view: do not set the DID semantics “DID Data Reference” at more than one combined component in the template. In 8.0, it becomes a “DID Definition”, for which only one may exist.</p></li>
+<li><p>Expert view: do not set the DID semantics “DID Data References” or “DID References” at a combined component without having “DID Reference” at another combined component. In 8.0, these become “DID Referencer”, “DID Referencer with Number” and “DID Definition”, and having one of the first is not allowed without having a DID Definition. For a telegram table where the diagnostic class template specifies whDo not insert a DID Data Reference to the same DID in one telegram table.</p></li>
+<li><p>8.1 SP1 supports an Identifying Feature to reference a data object within a DID (CDS-32647). In 8.0, the Identifying Feature cannot use a data object within a DID.</p>
+<p>A workaround in 8.1 is to manually replace the DID Data Reference by the data object contained in the DID. If the DID Data Reference is required by the DID semantics in the Diagnostic Class Template, the DID semantics should be removed for that Diagnostic Class Template.</p></li>
+</ul>
+<h2 id="candelastudio-8.0">CANdelaStudio 8.0</h2>
+<ul>
+<li>In the “Identifying Features” list, do not reference output parameters of jobs. CANdelaStudio drops them on saving to a pre 8.0 format.</li>
+</ul>
+<h2 id="candelastudio-7.5">CANdelaStudio 7.5</h2>
+<ul>
+<li>Do not use a dynamic-length data object (e.g. zero-terminated string) before the end of a telegram (when used before the end of the telegram, this data object and all data objects following in the telegram will be represented by one combined dynamic-length data object in the older document version)</li>
+</ul>
+<h2 id="candelastudio-7.1">CANdelaStudio 7.1</h2>
+<ul>
+<li><p>Do not use a name longer than 128 characters (it must be truncated in the older document version)</p></li>
+<li><p>Do not use state transitions or target groups (audience) at jobs (it will be missing in the older document version)</p></li>
+<li><p>Do not protect access to job files (the job files will not be accessible in the older document version)</p></li>
+</ul>
+<h2 id="candelastudio-7.0">CANdelaStudio 7.0</h2>
+<ul>
+<li><p>Do not use revision history at variants (it will be missing in the older document version)</p></li>
+<li><p>Do not de-activate jobs (they will be activated in the older document version)</p></li>
+<li><p>Do not use state transitions at jobs (they will be dropped in the older document version)</p></li>
+</ul>
+<h2 id="candelastudio-6.5">CANdelaStudio 6.5</h2>
+<ul>
+<li><p>Do not use Iteration or Multiplexer datatypes</p></li>
+<li><p>Do not use field datatypes with leading size greater one byte</p></li>
+<li><p>Do not use numeric field datatypes with zero termination</p></li>
+<li><p>Do not use multiple complex datatypes with variable length (see 6.5 SP 2 feature CDS-16887)</p></li>
+<li><p>Do not use variable length DIDs, for details see next item (notes for versions older than 6.0).</p></li>
+</ul>
+<h2 id="candelastudio-6.0">CANdelaStudio 6.0</h2>
+<ul>
+<li>Do not use variable length DIDs. Background: CANdelaStudio 6.0 SP 1 allows variable length DIDs (CDS-12845; e.g. a packet datatype may contain a data object which references a field datatype with min length &lt; max length). In CANdelaStudio 5.5 and 6.0 Release, a check forbids variable length DIDs, therefore CANdelaStudio 6.0 SP 1 on saving to 5.5 and 6.0 format sets min length = max length - <strong>the DID will not be variable in 5.5 and 6.0 Release</strong>! Additionally, the min length is preserved in a special attribute and will be restored when loading the document again in 6.0 SP 1 or higher.</li>
+</ul>
+<h2 id="candelastudio-5.5">CANdelaStudio 5.5</h2>
+<ul>
+<li>Qualifiers that are longer than 64 characters will be shortened to 64 characters for use in 5.0 documents (CDS-7946)</li>
+<li>Multiplexer selector behind the multiplexer itself (will be replaced by proxy with semantics “any”, i.e. no structure information) (CDS-7621)</li>
+<li>Files with manufacturer &quot;Standard&quot; <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R110-String' title="">[DOC-R110-String]</a> will be saved to 5.0 with manufacturer &quot;unknown&quot;, which 4.0 SP4 cannot open (see 5.0 chapter).</li>
+</ul>
+<h2 id="candelastudio-5.0">CANdelaStudio 5.0</h2>
+<ul>
+<li>Environment data that depend on data other than DTCs (e.g. UDS RecordNumber; CDS-5368). Such data will be stored as proxy with semantics “any”, no data objects, in a 4.0 file.</li>
+<li>In services that may be combined, do not use variable-length datatypes that have no length information.</li>
+<li><span id="VCMP-R051" class="rqDef">[VCMP-R051]</span> Files with manufacturer <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R110' title="">[DOC-R110]</a> &quot;unknown&quot; will be saved to 4.0, but 4.0 SP4 cannot open them (CDS-70649).</li>
+</ul>
+<h2 id="candelastudio-4.0">CANdelaStudio 4.0</h2>
+<ul>
+<li>Identification feature that references a data object within a bitfield: in CANdelaStudio 3.0, this identification feature is reported as a non-fatal inconsistency, which prevents the file from being used for exports or in other Vector tools. But you can adapt the reference in CANdelaStudio 3.0 or newer.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,20 @@
+0110;"Switches";"{Brake Switch [open/closed (1 Byte)]} {Parking Brake Switch [open/closed (1 Byte)]} {Rear Gear Switch [open/closed (1 Byte)]}";ODXEnvelope\0110_Switches.odx-d
+0107;"Supply Voltage ECU";"{Voltage ECU [Voltage (1 Byte)]}";ODXEnvelope\0107_Supply_Voltage_ECU.odx-d
+010A;"Wheel Speed";"{Wheel Speed FR [RPM (1 Byte)]} {Wheel Speed FL [RPM (1 Byte)]} {Wheel Speed RR [RPM (1 Byte)]} {Wheel Speed RL [RPM (1 Byte)]} {Wheel Voltage FR [Voltage (1 Byte)]} {Wheel Voltage FL [Voltage (1 Byte)]} {Wheel Voltage RR [Voltage (1 Byte)]} {Wheel Voltage RL [Voltage (1 Byte)]} {Direction Of Rotation FR [Direction of rotation (2 Bit)]} {Direction Of Rotation FL [Direction of rotation (2 Bit)]} {Direction Of Rotation RR [Direction of rotation (2 Bit)]} {Direction Of Rotation RL [Direction of rotation (2 Bit)]}";ODXEnvelope\010A_Wheel_Speed.odx-d
+010B;"Acceleration Sensor";"{Voltage [Voltage (1 Byte)]} {Acceleration [Acceleration]}";ODXEnvelope\010B_Acceleration_Sensor.odx-d
+0113;"Yaw Rate Sensor";"{Voltage [Voltage (1 Byte)]} {Yaw acceleration [Acceleration]}";ODXEnvelope\0113_Yaw_Rate_Sensor.odx-d
+010C;"Hydro Unit";"{Valve Voltage FR [Voltage (1 Byte)]} {Valve Voltage FL [Voltage (1 Byte)]} {Valve Voltage RR [Voltage (1 Byte)]} {Valve Voltage RL [Voltage (1 Byte)]} {Valve Status FR [open/closed (1 Byte)]} {Valve Status FL [open/closed (1 Byte)]} {Valve Status RR [open/closed (1 Byte)]} {Valve Status RL [open/closed (1 Byte)]}";ODXEnvelope\010C_Hydro_Unit.odx-d
+010D;"Brake Pedal";"{Valve Voltage FR [Voltage (1 Byte)]} {Valve Voltage FL [Voltage (1 Byte)]} {Valve Voltage RR [Voltage (1 Byte)]} {Valve Voltage RL [Voltage (1 Byte)]} {Valve Status FR [open/closed (1 Byte)]} {Valve Status FL [open/closed (1 Byte)]} {Valve Status RR [open/closed (1 Byte)]} {Valve Status RL [open/closed (1 Byte)]}";ODXEnvelope\010D_Brake_Pedal.odx-d
+010E;"Brake Pressure";"{Brake Pressure [Pressure (1 Byte)]}";ODXEnvelope\010E_Brake_Pressure.odx-d
+010F;"Hydraulic Pump";"{Hydraulic Pump Voltage [Voltage (1 Byte)]} {Status Hydraulic Pump [active/not avtive]} {Hydraulic Pump Performance [Percent (1 Byte)]}";ODXEnvelope\010F_Hydraulic_Pump.odx-d
+0111;"Inflation Pressure";"{Inflation Pressure FR [Pressure (1 Byte)]} {Inflation Pressure FL [Pressure (1 Byte)]} {Inflation Pressure RR [Pressure (1 Byte)]} {Inflation Pressure RL [Pressure (1 Byte)]}";ODXEnvelope\0111_Inflation_Pressure.odx-d
+0100;"Braking";"{Brake Pedal [Percent (1 Byte)]} {Brake Pressure [Pressure (1 Byte)]} {Status Hydraulic Pump [active/not avtive]} {Valve Status FR [open/closed (1 Byte)]} {Valve Status FL [open/closed (1 Byte)]} {Valve Status RR [open/closed (1 Byte)]} {Valve Status RL [open/closed (1 Byte)]}";ODXEnvelope\0100_Braking.odx-d
+0112;"Service Information ";"{Remaining Service Brake Fluid Life [Percent (1 Byte)]} {Remaining Service Time Left [Time (2 Byte)]}";ODXEnvelope\0112_Service_Information.odx-d
+0109;"Wheel Type";"{Wheel type [Wheel type]}";ODXEnvelope\0109_Wheel_Type.odx-d
+F190;"VIN";"{VIN [ASCII [17]]}";ODXEnvelope\F190_VIN.odx-d
+F191;"Hardware Part Number";"{PartNumber [Part Number ASCII (13 Byte)]}";ODXEnvelope\F191_Hardware_Part_Number.odx-d
+F194;"Software Supplier Identification";"{SoftwareSupplier [Supplier (1 Byte)(1)]}";ODXEnvelope\F194_Software_Supplier_Identification.odx-d
+F192;"Hardware Supplier Identification";"{HardwareSupplier [Supplier (1 Byte)(1)]}";ODXEnvelope\F192_Hardware_Supplier_Identification.odx-d
+F18C;"Serial Number";"{SerialNumber [Part Number ASCII (13 Byte)]}";ODXEnvelope\F18C_Serial_Number.odx-d
+F198;"Fingerprint";"{Serial number of flash tool [ASCII (8 Byte)]} {Repair Shop Identification [IdentificationList]} {Programming Date [ASCII (8 Byte)]}";ODXEnvelope\F198_Fingerprint.odx-d
+F189;"Software Version";"{SoftwareVersion [Version (5 Byte)]}";ODXEnvelope\F189_Software_Version.odx-d

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Create a DID</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-create-a-did">How to Create a DID</h1>
+<p>Note: hyperlinks in the description navigate to details about the respective topic.</p>
+<h2 id="create-a-did">Create a DID</h2>
+<ul>
+<li>in the CANdelaStudio <a href="../../20%20UserInterface/Tree/Navigation%20Tree.htm">tree</a>, navigate to the variant in which you want to create a DID.</li>
+<li><p>Navigate to the &quot;DIDs&quot; tree node:</p>
+<div class="figure">
+<img src="Images/DIDs%20Tree%20Node.jpg" alt="DIDs Tree Node" />
+<p class="caption">DIDs Tree Node</p>
+</div></li>
+<li>in the <a href="../../20%20UserInterface/DID/DIDs.htm">list in the right side</a>, press button &quot;New DID&quot;.
+<ul>
+<li>CANdelaStudio creates a new list entry.</li>
+</ul></li>
+<li><p>in the new list entry, specify the DID Identifier <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R025' title="Identifier">[DID-R025]</a> and the name of the DID (&quot;0x0110&quot; and &quot;Oil Temperature&quot; in the example):</p>
+<div class="figure">
+<img src="Images/New%20DID.jpg" alt="New DID in DID List" />
+<p class="caption">New DID in DID List</p>
+</div></li>
+<li><p>in the list at the bottom, specify one or multiple data objects for the DID:</p>
+<div class="figure">
+<img src="Images/Data%20Object.jpg" alt="Data Object" />
+<p class="caption">Data Object</p>
+</div></li>
+</ul>
+<p>Now you created the DID with its data.</p>
+<p>In order to specify services for the DID (how the DID can be read or written), continue in the next chapter.</p>
+<h2 id="specify-services-for-the-did">Specify Services for the DID</h2>
+<ul>
+<li>in the DID list at the top of the right side, select the column &quot;Diagnostic Class&quot;.
+<ul>
+<li>Note: you can also do this already during creation of the new DID, before you create the data objects.</li>
+</ul>
+<div class="figure">
+<img src="Images/DID%20Diagnostic%20Instance.jpg" alt="DID and new Diagnostic Instance in the Tree" />
+<p class="caption">DID and new Diagnostic Instance in the Tree</p>
+</div></li>
+<li><p>click again to open a combobox of <a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#relevant-for-DIDs">diagnostic classes relevant for DIDs</a></p></li>
+<li>select the diagnostic class &quot;Dynamic Data&quot;.
+<ul>
+<li>CANdelaStudio creates a diagnostic instance in that diagnostic class,</li>
+<li>based on the DID <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DI-R020' title="Diagnostic Instance Creation from DID">[DI-R020]</a>,</li>
+<li>and shows it in the tree to the left, under &quot;Dynamic Data&quot;.</li>
+</ul></li>
+<li><p>In the tree, click on the new diagnostic instance to inspect it:</p>
+<div class="figure">
+<img src="Images/Diagnostic%20Instance%20Oil%20Temperature.jpg" alt="New Diagnostic Instance" />
+<p class="caption">New Diagnostic Instance</p>
+</div>
+<ul>
+<li>the <strong>identifier</strong> has been taken from the DID you created</li>
+<li>the identifier is <strong>write-protected</strong> in the diagnostic instance window. You can modify it in the DID list only.</li>
+<li>the <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram table</a> of the diagnostic instance contains just a DID Data Reference <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R160' title="">[DID-R160]</a> to the DID, visualized by the word &quot;DID&quot; with an arrow.</li>
+</ul></li>
+</ul>
+<p>Now you can modify service details for the diagnostic instance e.g. in the <a href="../../20%20UserInterface/Service/Services.htm#properties">service property dialog</a>.</p>
+<p>In order to modify the <strong>data objects</strong> of the diagnostic instances, navigate back to the &quot;DIDs&quot; list and modify the data in the list at the bottom.</p>
+<h2 id="background">Background</h2>
+<p>DIDs (data identifiers) associate...</p>
+<ul>
+<li><strong>diagnostic data</strong></li>
+<li>with a <strong>number</strong> (identifier),</li>
+<li>for use in various diagnostic services</li>
+</ul>
+<p>For an overview, see the <a href="../../30%20Features/DID/DID.htm">DID Feature</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#relevant-for-DIDs">Diagnostic classes relevant for DIDs</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance (Feature)</a></li>
+<li><a href="../../20%20UserInterface/DID/DID%20Overview.htm">DID Overview (List)</a></li>
+<li><a href="../../20%20UserInterface/DID/DIDs.htm">DID (List)</a></li>
+<li><a href="../../30%20Features/DID/DID.htm">DID Feature</a></li>
+</ul>
+</body>
+</html>

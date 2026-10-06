@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Compare via Command Line</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="compare-via-command-line"><span id='_index_446727936' title='Command Line' data-term='Command Line'>Compare via Command Line</span><span id='_index_446727937' title='Compare: Compare via Command Line' data-term='Compare' data-text='Compare via Command Line'></span></h1>
+<p><a href="../../20%20UserInterface/Compare/Compare%20View.htm">Compare View</a> allows to export the computed difference to a file <a class='rqRef' href='../../20 UserInterface\Compare\Compare View.htm#CMP-R131-DiffExport' title="">[CMP-R131-DiffExport]</a>.</p>
+<p>CANdelaStudio even provides this <strong>export via command line</strong>, without opening the user interface and Compare View.</p>
+<h2 id="command-line-parameters">Command Line Parameters</h2>
+<p><span id="CMP-R135-CompareCommandLine" class="rqDef">[CMP-R135-CompareCommandLine]</span> Command line parameters as defined in chapter <a href="../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm">Command Line</a> have a specialized meaning in the Compare Export case:</p>
+<table>
+<colgroup>
+<col width="4%" />
+<col width="71%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th align="left">Meaning in Use Case 'Diff Export'</th>
+<th>Definition in chapter Command Line</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>/i</td>
+<td align="left">'Left' file for comparison.</td>
+<td><a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-importFile' title="">[CLI-R100-importFile]</a></td>
+</tr>
+<tr class="even">
+<td>/r</td>
+<td align="left">'Right' file for comparison.</td>
+<td><a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-referenceFile' title="">[CLI-R100-referenceFile]</a></td>
+</tr>
+<tr class="odd">
+<td>/o</td>
+<td align="left">Exported diffs.</td>
+<td><a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-output' title="">[CLI-R100-output]</a></td>
+</tr>
+<tr class="even">
+<td>/e</td>
+<td align="left">Output format, e.g. &quot;textdiff&quot;</td>
+<td><a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-DataExchange' title="">[CLI-R100-DataExchange]</a></td>
+</tr>
+<tr class="odd">
+<td>/g</td>
+<td align="left"><strong>Optional:</strong> Log File.</td>
+<td><a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-logfile' title="">[CLI-R100-logfile]</a></td>
+</tr>
+<tr class="even">
+<td>/u</td>
+<td align="left"><strong>Optional:</strong> Defines the language the documents are compared in, e.g. 'en-US' (for comparing multi-language documents).<br />
+If not specified, the first completely translated language (in both languages) is used, if these do not match, an error is thrown.<br />
+<strong>Best practise:</strong> Always set this parameter in <strong>automated</strong> diff exports (e.g. per batch file). Otherwise, adding new fully translated languages might change diff export behavior behind the scene!</td>
+<td><a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-documentLanguage' title="">[CLI-R100-documentLanguage]</a></td>
+</tr>
+<tr class="odd">
+<td>/l</td>
+<td align="left"><strong>Optional:</strong> this parameter defines the language of the User Interface the export is started with. In the 'Diff Export' use case this controls in which language headings are exported, e.g.:<br />
+<img src="Images/DiffExport%20Parameter_l.png" alt="Diff Export" /><br />
+In the left panel, -l &quot;de-DE&quot; was used, in the right -l &quot;en-US&quot;.</td>
+<td><a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-language' title="">[CLI-R100-language]</a></td>
+</tr>
+<tr class="even">
+<td>/q</td>
+<td align="left"><strong>Optional:</strong> quiet mode.</td>
+<td><a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-quiet' title="">[CLI-R100-quiet]</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="example">Example</h2>
+<pre><code>CANdelaStudio.exe -i &quot;D:\test\source.cdd&quot; -o &quot;D:\test\diff_output.txt&quot; -r &quot;D:\test\target.cdd&quot; -g &quot;D:\test\out.log&quot; -e &quot;textdiff&quot;</code></pre>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../15%20Procedures/Compare/How%20to%20Compare%20Documents%20from%20Command%20Line.htm">Procedure &quot;How to Compare Documents from Command Line&quot;</a></li>
+<li><a href="../../20%20UserInterface/Compare/Compare%20View.htm">Compare View</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Compare.htm">Options Property Page &quot;Compare&quot;</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm">Command Line</a></li>
+</ul>
+</body>
+</html>

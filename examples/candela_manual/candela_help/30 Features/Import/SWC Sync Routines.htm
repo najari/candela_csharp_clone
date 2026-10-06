@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SWC Sync Routines</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="swc-sync-routines">SWC Sync Routines</h1>
+<h2 id="extraction-of-sys-ex-routines">Extraction of SYS-EX Routines</h2>
+<p>A SYS-EX Routine is an instance reference to a port, with the following conditions:</p>
+<ul>
+<li>The parent SWC type belongs to the ECU-INSTANCE.</li>
+<li>The SWC type includes a SWC-SERVICE-DEPENDENCY with a ROLE-BASED-PORT-ASSIGNMENT pointing to a P-PORT-PROTOTYPE.</li>
+<li>Note: SWC Sync does not check the role name (typically “RoutineServices”).</li>
+<li>The P-PORT-PROTOTYPE references a CLIENT-SERVER-INTERFACE.</li>
+<li>The SWC-SERVICE-DEPENDENCY contains a DIAGNOSTIC-ROUTINE-NEED.</li>
+<li>The requirement SDs are at the port interface of the P-PORT-PROTOTYPE.</li>
+</ul>
+<p>The CLIENT-SERVER-OPERATIONs of the CLIENT-SERVER-INTERFACE represent the data objects for the routine control records and routine status records:</p>
+<ul>
+<li>operation “Start” represents the “StartRoutine” protocol service</li>
+<li>operation “Stop” represents the “StopRoutine” protocol service</li>
+<li>operation “RequestResults” represents the “RequestRoutineResults” protocol service</li>
+</ul>
+<p>The ARGUMENT-DATA-PROTOTYPEs with direction “IN” represent the routine <em>control</em> record of the respective protocol service.</p>
+<p>The ARGUMENT-DATA-PROTOTYPEs with direction “OUT” represent the routine <em>status</em> record of the respective protocol service.</p>
+<h2 id="sync-of-routines">Sync of Routines</h2>
+<h3 id="control-option-and-routine-status-records">Control Option and Routine Status Records</h3>
+<p><span id="SWC-R0810" class="rqDef">[SWC-R0810]</span>: For (one or more) CANdela routine diagnostic instances...</p>
+<ul>
+<li>whose “Instance Type” attribute <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R200' title="">[SWC-R200]</a> equals the <strong>port interface</strong> requirement ID of a SYS-EX routine,</li>
+<li>SWC Sync updates the control option and routine status records.
+<ul>
+<li>Note: SWC Sync expects the requirement ID at the <strong>port interface</strong>, not at the <strong>port prototype</strong>.</li>
+</ul></li>
+<li><span id="SWC-R0820" class="rqDef">[SWC-R0820]</span> SWC Sync...
+<ul>
+<li><strong>replaces all data objects</strong> belonging to a routine control option record or a routine info / routine status record of any routine service subfunction</li>
+<li>... <strong>by new data objects</strong> based on the SYS-EX data object lists belonging to the routine,</li>
+<li>... following the same rules as in syncing stored and present value data records (see previous chapter).</li>
+</ul></li>
+</ul>
+<p><span id="SWC-R0830" class="rqDef">[SWC-R0830]</span>: If...</p>
+<ul>
+<li>no such CANdela routine diagnostic instance exists,</li>
+<li>or a routine record or subfunction is missing,</li>
+</ul>
+<p>... SWC Sync...</p>
+<ul>
+<li>writes a warning to the log,</li>
+<li>with a hint that such a routine diagnostic instance must be created with the appropriate “Instance Type” attribute value</li>
+<li>either manually or automatically (e.g. after a re-import of updated requirements from PREEvision, DOORS…).</li>
+</ul>
+<p><span id="SWC-R0840" class="rqDef">[SWC-R0840]</span>: SWC Sync does <strong>not modify</strong>...</p>
+<ul>
+<li>any routine diagnostic instance which does not have an “Instance Type” attribute value corresponding to a routine extracted from the processed SYS-EX (it completely ignores such routine diagnostic instances).</li>
+<li>... including any data objects contained within such a routine,</li>
+<li><strong>even</strong> if those data objects have a sync ID <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R115' title="Requirements ID Storage">[RQ-R115]</a>, and there are SYS-EX data objects with the same sync ID.</li>
+</ul>
+<h3 id="update-of-swc-service-dependency-references">Update of SWC Service Dependency References</h3>
+<p><span id="SWC-R0850" class="rqDef">[SWC-R0850]</span>: SWC Sync...</p>
+<ul>
+<li>update the “ASR SWC ServiceDependency Ref” <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R210' title="">[SWC-R210]</a> attribute from the instance ref of the SYS-EX routine</li>
+<li>for each CANdela routine diagnostic instance whose “Instance Type” attribute <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R200' title="">[SWC-R200]</a> equals the port interface requirement ID of a routine,</li>
+<li>but only if there is no other CANdela routine diagnostic instance with the same “Instance Type” in any of the variants that the diagnostic instance belongs to.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance</a></li>
+<li><a href="SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a></li>
+<li><a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a></li>
+</ul>
+</body>
+</html>

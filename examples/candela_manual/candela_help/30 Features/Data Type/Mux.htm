@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Mux</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="multiplexer-data-type"><span id='_index_446727980' title='Multiplexer: Data Type' data-term='Multiplexer' data-text='Data Type'>Multiplexer Data Type</span> (<span id='_index_446727981'>Mux</span>) (CDS-10216 in 6.5)</h1>
+<p>A Multiplexer data type defines multiple <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram tables</a> (&quot;<strong>Mux cases</strong>&quot;).</p>
+<p>At runtime, the <strong>value of a data object</strong> sent before or after the Multiplexer (the so-called <strong>Selector</strong>) describes which telegram table is actually being transmitted (like a switch-case statement in a programming language).</p>
+<p>The Multiplexer contains a default telegram table (&quot;<strong>default case</strong>&quot;) which applies if at runtime there is no telegram table specified for the value of the selector data object.</p>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Mux.htm">dialog</a>.</p>
+<h2 id="relation-to-multiplexer-component">Relation to Multiplexer Component</h2>
+<p>The behavior of the multiplexer <strong>data type</strong> is similar to that of the <a href="../../30%20Features/Protocol%20Service/Multiplexer%20Component.htm">multiplexer component of a protocol service</a>, but...</p>
+<ul>
+<li>the multiplexer component is <strong>predefined</strong> in the protocol service in the template,</li>
+<li>its data in a diagnostic instance is described using a &quot;<strong>local Multiplexer data type</strong>&quot;.</li>
+</ul>
+<h2 id="constraints">Constraints</h2>
+<p>Creation and use of a Mux can be <strong>forbidden in the template</strong>, e.g. if a tool chain does not support it see <a href="../../30%20Features/Data%20Type/Data%20Type%20Authorization.htm">Data Type Authorization</a>).</p>
+<p><strong>R006.3</strong> Constraints:</p>
+<ul>
+<li><p>A multiplexer data type must not be referenced inside a Bit field.</p></li>
+<li><p>A Mux must specify a <strong>selector data type</strong>, iff. it is used as a local data type for a Mux component defined in a Protocol Service</p></li>
+<li><p>the data object used as selector for the Mux...</p>
+<ul>
+<li>must exist in the same telegram table where the Mux is used and</li>
+<li>must be located before the Mux</li>
+<li>must be referenced by the data object that references the Mux data type (repair: CDC-42027 8.5 SP3)</li>
+</ul></li>
+<li><p>the selector data object must not refer to a “complex” datatype.</p></li>
+<li><p>the size of the Mux must not exceed any proxy component size restriction of which it is used in.</p></li>
+<li><p>if the Mux contains at least one data object that has variable length, the object that uses the Mux is subject to the same restrictions as if it directly used a data object that has variable length (e.g. usage only at end of PDU).</p></li>
+<li><p>If the telegram sizes of the cases (including the default case) differ, the data type becomes a variable size data type, and the same restrictions apply as for other data types with variable size (e.g. usage only at end of PDU).</p></li>
+<li><p>the representation in a diagnostic instance  for a Mux proxy component must contain exactly one data object that has selector not set and references a Mux.</p></li>
+<li><p>A Mux case’s data object collection (including the default case’s collection) may remain empty. However in case of a local mux of the Mux proxy component, the collection size restrictions of the Mux proxy component must be considered.</p></li>
+<li><p>a Mux with variable length must be used only at the end of a PDU</p></li>
+<li>a data object referencing a Mux must not have a default or const value.</li>
+<li><p><span id="MDT-R220" class="rqDef">[MDT-R220]</span> If <strong>cases</strong> for <strong>all valid selector values</strong> exist for a selector with a fixed set of values, the Default Case is <strong>not relevant</strong>, as for Mux Components <a class='rqRef' href='../../30%20Features/Protocol%20Service/Multiplexer%20Component.htm#MUX-R220' title="">[MUX-R220]</a>.</p></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Multiplexer%20Component.htm">Multiplexer Component of Protocol Service</a></li>
+<li><a href="Self-Referencing%20Mux.htm">Self-Referencing Multiplexer</a></li>
+<li><a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a></li>
+</ul>
+</body>
+</html>

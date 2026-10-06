@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Attribute Definition</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="attribute-definition">Attribute Definition</h1>
+<p>See also the <a href="../../20%20UserInterface/Attributes/Attribute%20Value.htm">Attribute Values</a> user interface and the <a href="../../30%20Features/Attributes/Attributes.htm">Attributes Feature</a>.</p>
+<p>The Expert View of CANdelaStudio supports editing of default attributes (= attribute definitions) and attribute categories in a template and in a document.</p>
+
+<h2 id="attributes-list">Attributes List</h2>
+<div class="figure">
+<img src="Images/Default%20Attributes%20List.jpg" alt="Attribute List for Diagnostic Instances" />
+<p class="caption">Attribute List for Diagnostic Instances</p>
+</div>
+<p>Each attribute list has similar columns:</p>
+<ul>
+<li>Name <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R010-Name' title="">[ATTR-R010-Name]</a></li>
+<li>Type <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R020' title="Attribute Type">[ATTR-R020]</a></li>
+<li>Category <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R100' title="">[ATTR-R100]</a></li>
+<li>Display (= display format)</li>
+<li>Default value <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R040' title="">[ATTR-R040]</a></li>
+<li>Description <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R010-Desc' title="">[ATTR-R010-Desc]</a></li>
+</ul>
+<p>A combo box on top allows filtering by attribute category, or no filtering (&quot;all&quot;). If filtering is active, the &quot;category&quot; column must be insensitive.</p>
+<p>For ease of use, attributes can be edited directly in the list.</p>
+<p>Properties not displayed in the list can be edited in a property dialog.</p>
+<h2 id="attribute-categories">Attribute Categories</h2>
+<p>Attribute categories are edited in a <a href="Edit%20Categories.htm">dialog of their own</a>. It is opened using a button &quot;Categories&quot; in the list of attributes.</p>
+<h2 id="creation">Creation</h2>
+<p>The type of an attribute <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R020' title="Attribute Type">[ATTR-R020]</a> cannot be modified after creation of the attribute. Therefore, the attribute type must be selected in a special dialog before creation of the attribute:</p>
+<div class="figure">
+<img src="Images/Default%20Attribute%20Type%20Selection.jpg" alt="Default Attribute Type Selection" />
+<p class="caption">Default Attribute Type Selection</p>
+</div>
+<p>After selecting the type of the attribute, the attribute property dialog appears. The attribute is created only if you click “Apply” or “OK” in the property dialog.</p>
+<p>Creation of enumeration attributes requires special handling: the set of enumeration symbols must not be empty. When you create a new enumeration attribute, the property dialog will stay open, until either “Cancel” is clicked or at least one symbol has been created. If none of the symbols is defined as default, then CANdelaStudio will automatically set the first symbol as default.</p>
+<h2 id="page-general">Page General</h2>
+<div class="figure">
+<img src="Images/Default%20Attribute%20Property%20Page%20General.jpg" alt="Default Attribute Property Page General" />
+<p class="caption">Default Attribute Property Page General</p>
+</div>
+<p>The page contains the attribute’s name, <a href="../../30%20Features/Common%20Properties/Qualifier.htm">qualifier</a> and description.</p>
+<h2 id="page-unsigned-signed...">Page &quot;Unsigned&quot;, &quot;Signed&quot;...</h2>
+<div class="figure">
+<img src="Images/Default%20Attribute%20Property%20Page%20Unsigned.jpg" alt="Default Attribute Property Page Unsigned" />
+<p class="caption">Default Attribute Property Page Unsigned</p>
+</div>
+<p>Page for the type of attribute values (named after the type <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R020' title="Attribute Type">[ATTR-R020]</a>) containing additional data of the attribute:</p>
+<ul>
+<li>type (read-only),</li>
+<li>category</li>
+<li>default value</li>
+<li>display option (if applicable).</li>
+</ul>
+<p>For changing the default value, see <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R040-mod' title="">[ATTR-R040-mod]</a>.</p>
+<h3 id="enum">Enum</h3>
+<p>For attribute type “Enum” <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a> only:</p>
+<ul>
+<li>the button &quot;Edit symbols...&quot; opens the dialog for editing the enum symbols;</li>
+<li>the combo-box &quot;Display order&quot; specifies the sort order of the symbols.</li>
+</ul>
+<p>For <strong>deleting an enum symbol</strong> used in overridden values, see <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R020-enumDel' title="">[ATTR-R020-enumDel]</a>.</p>
+<h2 id="string-format">Page &quot;String Format&quot;</h2>
+<div class="figure">
+<img src="Images/Default%20Attribute%20Property%20Page%20String%20Format.jpg" alt="Default Attribute Property Page &quot;String Format&quot;" />
+<p class="caption">Default Attribute Property Page &quot;String Format&quot;</p>
+</div>
+<p>The page “String Format” allows to specify an optional restriction on the values of string attributes, using a <a href="../../30%20Features/Common%20Properties/Regular%20Expressions.htm">regular expression</a>.</p>
+<h3 id="format">Format</h3>
+<p>The regular expression used to restrict the values.</p>
+<p>If empty, values are not restricted.</p>
+<h3 id="description">Description</h3>
+<p>A readable description of the regular expression.</p>
+<h3 id="predefined-format">Predefined Format</h3>
+<p>A list of regular expressions to start with.</p>
+<h3 id="button-use-format">Button &quot;Use Format&quot;</h3>
+<p>Inserts the regular expression selected in the &quot;Predefined Format&quot; list into the edit controls &quot;Format&quot; and &quot;Description&quot;. You can still adapt the inserted values.</p>
+<h2 id="page-restrictions">Page &quot;Restrictions&quot;</h2>
+<div class="figure">
+<img src="Images/Default%20Attribute%20Property%20Page%20Restrictions.jpg" alt="Default Attribute Property Page &quot;Restrictions&quot;" />
+<p class="caption">Default Attribute Property Page &quot;Restrictions&quot;</p>
+</div>
+<p>The page “Restriction” only appears for attribute definition lists that <a href="../../30%20Features/Attributes/Attributes.htm#occurrence-restrictions">support restrictions</a> (e.g. diagnostic instance). It must allow multi-selection e.g. from the set of diagnostic classes, or &quot;no restriction&quot;.</p>
+<h2 id="page-authorization">Page &quot;Authorization&quot;</h2>
+<div class="figure">
+<img src="Images/Default%20Attribute%20Property%20Page%20Authorization.jpg" alt="Default Attribute Property Page &quot;Authorization&quot;" />
+<p class="caption">Default Attribute Property Page &quot;Authorization&quot;</p>
+</div>
+<p>Covers the flags “view” and “modify”.</p>
+<h2 id="format">Format Restrictions</h2>
+<p>This page is shown only for <a href="../../30%20Features/Attributes/Attributes.htm#occurrence-restrictions">default attributes that support occurrence restrictions</a>.</p>
+<p>R030.1: Dialog accessibility and behavior:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Edit the string format in the default attribute property dialog in a separate property page.</p></li>
+<li><p>When changing the string format, and some strings do violate the new format restrictions, warn the user that strings do not conform to the new format but do not enforce to change the strings.</p></li>
+</ol>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a> (Feature)</li>
+<li>Navigation Tree - Default Attributes <a class='rqRef' href='../../20%20UserInterface/Tree/Navigation%20Tree.htm#TREE-R090' title="">[TREE-R090]</a></li>
+</ul>
+</body>
+</html>

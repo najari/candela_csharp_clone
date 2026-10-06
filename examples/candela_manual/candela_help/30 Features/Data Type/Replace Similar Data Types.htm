@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Replace Similar Data Types</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="replace-similar-data-types-cds-68992-v11"><span id='_index_446727948'>Replace Similar Data Types</span><span id='_index_446727949' title='Data Type: Replace Similar' data-term='Data Type' data-text='Replace Similar'></span> (CDS-68992 v11)</h1>
+<p>See also the description of the &quot;Replace Similar Data Types&quot; <a href="../../20%20UserInterface/Data%20Type/Replace%20Similar%20Data%20Types.htm">Dialog</a>.</p>
+<h2 id="use-case">Use-Case</h2>
+<ul>
+<li>The CANdela document contains multiple data types,
+<ul>
+<li>i.e. data types that have the <strong>same values for crucial properties</strong> (conversion, length...)</li>
+<li>and <strong>differ in irrelevant properties</strong> only (blanks in the description...)</li>
+</ul></li>
+<li>Such data types may result from multiple import,
+<ul>
+<li>where the first import creates a new data type (the &quot;original&quot;),</li>
+<li>and a subsequent import maybe with a slightly modified data type creates a &quot;duplicate&quot;.</li>
+</ul></li>
+<li>Editing operations in a huge data type list may also result in unintended duplicates.</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>The feature <strong>analyzes</strong> the entire data type list for similar data types;</li>
+<li>then for each group of similar data types,
+<ul>
+<li>you choose one data type to be <strong>kept</strong> as an &quot;<strong>original</strong>&quot;</li>
+<li>by default, CANdelaStudio deletes all other data types of the group,</li>
+<li>but you can choose to <strong>keep individual ones</strong> of these, too.</li>
+<li>CANdelaStudio <strong>replaces all references</strong> to deleted data types by a reference to the chosen original data type.</li>
+</ul></li>
+</ul>
+<h2 id="conversions">Conversions</h2>
+<p><span id="RDT-R010" class="rqDef">[RDT-R010]</span> The feature detects similar data types of the conversions:</p>
+<ul>
+<li><span id="RDT-R010-Identity" class="rqDef">[RDT-R010-Identity]</span> <a href="Identity.htm">Identity (raw values)</a></li>
+<li><span id="RDT-R010-Linear" class="rqDef">[RDT-R010-Linear]</span> <a href="Linear.htm">Linear Formula</a></li>
+<li><span id="RDT-R010-TextTable" class="rqDef">[RDT-R010-TextTable]</span> <a href="Text%20Table.htm">Text Table</a></li>
+</ul>
+<h2 id="crucial-properties">Crucial Properties</h2>
+<p><span id="RDT-R020" class="rqDef">[RDT-R020]</span> For analyzing data types for similarity, you can specify whether the following properties is crucial, or shall be ignored:</p>
+<ul>
+<li><span id="RDT-R020-Desc" class="rqDef">[RDT-R020-Desc]</span> Description</li>
+<li><span id="RDT-R020-Enc" class="rqDef">[RDT-R020-Enc]</span> Encoding <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R100' title="">[DTENC-R100]</a></li>
+<li><span id="RDT-R020-Attr" class="rqDef">[RDT-R020-Attr]</span> Attributes</li>
+<li><span id="RDT-R020-ByteOrder" class="rqDef">[RDT-R020-ByteOrder]</span> <a href="../../30%20Features/Data%20Type/Byte%20Order.htm">Byte Order</a></li>
+<li><span id="RDT-R020-DisplayFormat" class="rqDef">[RDT-R020-DisplayFormat]</span> <a href="../../30%20Features/Data%20Type/Display%20Format.htm">Display Format</a></li>
+<li><span id="RDT-R020-TID" class="rqDef">[RDT-R020-TID]</span> TextID
+<ul>
+<li>Note: the checkbox for TextID may be hidden <a class='rqRef' href='../../20%20UserInterface/Data%20Type/Replace%20Similar%20Data%20Types.htm#RDTUI-R120-TextID' title="">[RDTUI-R120-TextID]</a>.</li>
+</ul></li>
+<li><span id="RDT-R020-v11" class="rqDef">[RDT-R020-v11]</span> <strong>Note: missing in v11</strong> (CDS-71212):
+<ul>
+<li>Linear data types with different <strong>byte order</strong> are never in the same group.</li>
+<li>Text tables with different <strong>encoding</strong> are never in the same group.</li>
+</ul></li>
+</ul>
+<p><span id="RDT-R030" class="rqDef">[RDT-R030]</span> You can define default settings of these properties using the special INI file parameter <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Options.htm#INI-R500-Default' title="">[INI-R500-Default]</a>.</p>
+<p><span id="RDT-R040" class="rqDef">[RDT-R040]</span> Editing of these settings can be prevented in Standard View by an INI file parameter <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Options.htm#INI-R500-Cfg' title="">[INI-R500-Cfg]</a>.</p>
+<h2 id="authorization-ignored-for-document-modifications">Authorization Ignored for Document Modifications</h2>
+<p><span id="RDT-R050" class="rqDef">[RDT-R050]</span> <strong>Caution</strong>: the feature so far <strong>does not consider authorization</strong> (CDS-70978, open):</p>
+<ul>
+<li>data type deletion <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type%20Authorization.htm#DTAUTH-R320' title="">[DTAUTH-R320]</a></li>
+<li>data type used in a locked variant or library <a class='rqRef' href='../../30%20Features/Variant/Lock%20Variant.htm#VAR-R010' title="isLocked">[VAR-R010]</a></li>
+<li>data type used in a protected diagnostic instance: secondary properties modifiable, <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R050' title="Secondary properties modifiable">[DIA-R050]</a>)</li>
+<li>data type used in a protected DID: DID modifiable <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R010' title="Modifiable">[DID-R010]</a></li>
+</ul>
+<h2 id="contexts">Contexts</h2>
+<p><span id="RDT-R060" class="rqDef">[RDT-R060]</span> The operation replaces data type references in the contexts:</p>
+<ul>
+<li>Data Object,</li>
+<li>Complex Data Type,</li>
+<li>DID number Data Object,</li>
+<li>Data Object in Fixed Data.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Data%20Type/Replace%20Similar%20Data%20Types.htm">&quot;Replace Similar Data Types&quot; Dialog</a></li>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types List</a></li>
+</ul>
+
+</body>
+</html>

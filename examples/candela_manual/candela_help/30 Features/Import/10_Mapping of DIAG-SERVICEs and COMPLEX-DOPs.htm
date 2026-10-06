@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>10_Mapping of DIAG-SERVICEs and COMPLEX-DOPs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="DIAG-SERVICEs">Mapping of DIAG-SERVICEs and COMPLEX-DOPs</h1>
+<h2 id="mapping-of-requests-pos-responses-neg-responses-and-global-neg-responses">Mapping of REQUESTs, POS-RESPONSEs, NEG-RESPONSEs and GLOBAL-NEG-RESPONSEs</h2>
+<ul>
+<li>An ODX DIAG-SERVICE can reference...
+<ul>
+<li>at most one REQUEST,</li>
+<li>zero, one or several POS-RESPONSEs and</li>
+<li>zero, one or several NEG-RESPONSEs.</li>
+</ul></li>
+<li>A CANdelaStudio Service always has...
+<ul>
+<li>one Request,</li>
+<li>at most one PosResponse and</li>
+<li>at most one NegResponse.</li>
+</ul></li>
+<li>The CANdelaStudio Service in which a DIAG-SERVICE is imported determines the number of Request, PosReponses and NegResponses expected at the ODX DIAG-SERVICE:
+<ul>
+<li>If the CANdelaStudio Service has a PosResponse,
+<ul>
+<li>the DIAG-SERVICE must specify at least one POS-RESPONSE etc.</li>
+<li>Otherwise the DIAG-SERVICE cannot be imported into the CANdelaStudio Service.</li>
+</ul></li>
+<li>If the DIAG-SERVICE specifies more than one POS-RESPONSE,
+<ul>
+<li>and the CANdelaStudio Service has one PosResponse,</li>
+<li>import checks each PosResponse whether it is importable,</li>
+<li>and imports the first one which fits the CANdelaStudio Service restrictions.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="mapping-of-params-with-complex-dops">Mapping of PARAMs with COMPLEX-DOPs</h2>
+<h3 id="param-with-fields">PARAM with FIELDs</h3>
+<h4 id="high-level-mapping">High level mapping</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ODX Field</th>
+<th align="left">Imported into CANdelaStudio as...</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">END-OF-PDU-FIELD</td>
+<td align="left">Fixed count iteration data type (for telegram tables) or Iterator End Comp (predefined in CANdelaStudio ProtocolService)</td>
+</tr>
+<tr class="even">
+<td align="left">DYNAMIC-ENDMARKER-FIELD</td>
+<td align="left">End-marker iteration data type (for telegram tables) or Iterator End Marker (predefined in CANdelaStudio ProtocolService)</td>
+</tr>
+<tr class="odd">
+<td align="left">DYNAMIC-LENGTH-FIELD</td>
+<td align="left">Counter iterator data type (for telegram tables) or Iterator Selector (predefined in CANdelaStudio ProtocolService)</td>
+</tr>
+<tr class="even">
+<td align="left">STATIC-FIELD</td>
+<td align="left">Fixed count iterator data type</td>
+</tr>
+</tbody>
+</table>
+<h4 id="param-with-static-field">PARAM with STATIC-FIELD</h4>
+<p>A VALUE referencing a STATIC-FIELD is imported to a CANdelaStudio telegram table as data object referencing a fixed count iteration data type</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image16.jpg" alt="Mapping of STATIC-FIELD to CANdelaStudio fixed count iteration data type" />
+<p class="caption">Mapping of STATIC-FIELD to CANdelaStudio fixed count iteration data type</p>
+</div>
+<h4 id="param-with-end-of-pdu-field">PARAM with END-OF-PDU-FIELD</h4>
+<h5 id="to-candelastudio-end-of-service-iteration-data-type-for-telegram-tables">To CANdelaStudio End-of-service iteration data type (for telegram tables)</h5>
+<p>A VALUE referencing an END-OF-PDU-FIELD can be imported as a CANdelaStudio End-of-service iteration data type.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image17.jpg" alt="Mapping of END-OF-PDU-FIELD to CANdelaStudio End-of-service iteration data type" />
+<p class="caption">Mapping of END-OF-PDU-FIELD to CANdelaStudio End-of-service iteration data type</p>
+</div>
+<h5 id="to-candelastudio-iterator-end-predefined-in-protocolservice">To CANdelaStudio Iterator End (predefined in ProtocolService)</h5>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image18.jpg" alt="Mapping of END-OF-PDU-FIELD to CANdelaStudio Iterator End" />
+<p class="caption">Mapping of END-OF-PDU-FIELD to CANdelaStudio Iterator End</p>
+</div>
+<p>A VALUE referencing an END-OF-PDU-FIELD can be imported as a CANdelaStudio Iterator End if the byte position of the VALUE (within REQUEST resp. RESPONSE) is the same as the byte position of Iterator End.</p>
+<p>The content of the END-OF-PDU-FIELD STRUCTURE is imported in the telegram table of the iterated Proxy Data if the PARAMs lie in the valid byte range of the telegram table. Note: Min-, Max and Fix-Length of the telegram table are considered and are not modified by the ODX Import.</p>
+<h4 id="param-with-dynamic-length-field">PARAM with DYNAMIC-LENGTH-FIELD</h4>
+<h5 id="to-candelastudio-counter-iteration-data-type-for-telegram-tables">To CANdelaStudio Counter iteration data type (for telegram tables)</h5>
+<p>A VALUE referencing a DYNAMIC-LENGTH-FIELD can be imported as a CANdelaStudio Counter iteration data type</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image19.jpg" alt="Mapping of DYNAMIC-LENGTH-FIELD to Counter iteration data type" />
+<p class="caption">Mapping of DYNAMIC-LENGTH-FIELD to Counter iteration data type</p>
+</div>
+<h5 id="to-candelastudio-iterator-selector-predefined-in-protocolservice">To CANdelaStudio Iterator Selector (predefined in ProtocolService)</h5>
+<p>A VALUE referencing a DYNAMIC-LENGTH-FIELD can be imported as a CANdelaStudio Iterator Selector if the byte position of the VALUE (within REQUEST resp. RESPONSE) is the same as the byte position of the Proxy Selector of the Iterator Selector and if the byte position of the iterated Proxy Data is the same as the DYNAMIC-LENGTH-FIELD STRUCTURE (Note: the OFFSET must be considered to determine the byte position of the DYNAMIC-LENGTH-FIELD STRUCTURE)</p>
+<p>The content of the DYNAMIC-LENGTH-FIELD STRUCTURE is imported in the telegram table of the iterated Proxy Data if the PARAMs lie in the valid byte range of the telegram table. Note: Min-, Max and Fix-Length of the telegram table are considered and are not modified.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image20.jpg" alt="Mapping of DYNAMIC-LENGTH-FIELD to Iterator Selector" />
+<p class="caption">Mapping of DYNAMIC-LENGTH-FIELD to Iterator Selector</p>
+</div>
+<h4 id="param-with-dynamic-endmarker-field">PARAM with DYNAMIC-ENDMARKER-FIELD</h4>
+<h5 id="to-candelastudio-end-marker-iteration-data-type-for-telegram-tables">To CANdelaStudio End-marker iteration data type (for telegram tables)</h5>
+<p>A VALUE referencing a DYNAMIC-ENDMARKER-FIELD can be imported as a CANdelaStudio End-marker iteration data type.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image21.jpg" alt="Mapping of DYNAMIC-ENDMARKER-FIELD to Iterator End-marker iteration data type" />
+<p class="caption">Mapping of DYNAMIC-ENDMARKER-FIELD to Iterator End-marker iteration data type</p>
+</div>
+<h5 id="to-candelastudio-iterator-endmarker-predefined-in-protocolservice">To CANdelaStudio Iterator Endmarker (predefined in ProtocolService)</h5>
+<p>A VALUE referencing a DYNAMIC-ENDMARKER-FIELD can be imported as a CANdelaStudio Iterator Endmarker if the byte position of the VALUE (within REQUEST resp. RESPONSE) is the same as the byte position of the Iterator Endmarker is the same as the DYNAMIC- ENDMARKER-FIELD STRUCTURE.</p>
+<p>The content of the DYNAMIC- ENDMARKER -FIELD STRUCTURE is imported in the telegram table of the iterated Proxy Data if the PARAMs lie in the valid byte range of the telegram table. Note: Min-, Max and Fix-Length of the telegram table are considered and are not modified.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image22.jpg" alt="Mapping of DYNAMIC-ENDMARKER-FIELD to Iterator EndMarker" />
+<p class="caption">Mapping of DYNAMIC-ENDMARKER-FIELD to Iterator EndMarker</p>
+</div>
+<h3 id="param-with-env-data-desc-to-candelastudio-mux-predefined-in-protocolservice">PARAM with ENV-DATA-DESC to CANdelaStudio Mux (predefined in ProtocolService)</h3>
+<p>A VALUE referencing an ENV-DATA-DESC can be imported as a CANdelaStudio Multiplexer multiplexing DTCs if the byte position of the VALUE (within REQUEST resp. RESPONSE) is the same as the byte position of the Multiplexer. To remain consistent the byte position of the VALUE referencing the DTC-DOP must be the same as the byte position of the CANdelaStudio DTC table (Proxy DTC).</p>
+<p>The content of the ENV-DATA STRUCTUREs is imported as telegram tables of the Multiplexer if the PARAMs lie in the valid byte range of the corresponding telegram table. Note: Min-, Max and Fix-Length of the telegram table are considered and are not modified.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image23.jpg" alt="Mapping of ENV-DATA-DESC to CANdelaStudio Multiplexer" />
+<p class="caption">Mapping of ENV-DATA-DESC to CANdelaStudio Multiplexer</p>
+</div>
+<h4 id="env-data-desc-has-exactly-one-env-data-for-all-value">ENV-DATA-DESC has exactly one ENV-DATA for ALL-VALUE</h4>
+<p>The ENV-DATA for ALL-VALUE will be taken as the default environment data in CANdela. The ENV-DATA for ALL-VALUE will be taken for all other CANdelaStudio environment data as first part in telegram table.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image24.jpg" alt="Mapping of ENV-DATA-DESC with ALL-VALUE to CANdelaStudio Multiplexer" />
+<p class="caption">Mapping of ENV-DATA-DESC with ALL-VALUE to CANdelaStudio Multiplexer</p>
+</div>
+<h4 id="env-data-desc-has-no-env-data-for-all-value">ENV-DATA-DESC has no ENV-DATA for ALL-VALUE</h4>
+<p>In case of missing ALL-VALUE, the ODX Import checks whether all DTCs are covered.</p>
+<ul>
+<li>If not all DTCs are covered in ENV-DATA-DESC: The import checks, if an empty default environment data is allowed by CANdelaStudio template.</li>
+<li><p>If &quot;min byte size&quot; is &gt; zero -&gt; CANdelaStudio skips the import. CANdelaStudio ensures the correctness of the diagnostic specification.</p></li>
+<li><p>If &quot;min byte size&quot; == zero. Default environment data remains empty.</p></li>
+</ul>
+<p>If all DTCs are covered in an ENV-DATA-DESC: Import searches for ENV-DATA with _max(count(DTC-VALUE)). This ENV-DATA will be taken as Default environment data.</p>
+<h3 id="param-with-mux">PARAM with MUX</h3>
+<h3 id="to-candelastudio-multiplexer-data-type-for-telegram-tables">To CANdelaStudio Multiplexer data type (for telegram tables)</h3>
+<p>A VALUE referencing a MUX can be imported as a CANdelaStudio Multiplexer data type.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image25.jpg" alt="Mapping of MUX to CANdelaStudio Multiplexer data type" />
+<p class="caption">Mapping of MUX to CANdelaStudio Multiplexer data type</p>
+</div>
+<h3 id="to-candelastudio-mux-predefined-in-protocolservice">To CANdelaStudio Mux (predefined in ProtocolService)</h3>
+<p>A VALUE referencing a MUX can be imported as a CANdelaStudio Multiplexer (predefined in ProtocolService).</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image26.jpg" alt="Mapping of MUX to CANdelaStudio Multiplexer predefined in ProtocolService" />
+<p class="caption">Mapping of MUX to CANdelaStudio Multiplexer predefined in ProtocolService</p>
+</div>
+<p>The content of the MUX STRUCTUREs is imported as telegram tables of the Multiplexer if the PARAMs lie in the valid byte range of the corresponding telegram table. Note: Min-, Max and Fix-Length of the telegram table are considered and are not modified.</p>
+<p>If there is a MUX DEFAULT-CASE it is importer as default case of the CANdelaStudio Multiplexer.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image27.jpg" alt="Mapping of MUX CASEs" />
+<p class="caption">Mapping of MUX CASEs</p>
+</div>
+<h2 id="mapping-of-other-params">Mapping of other PARAMs</h2>
+<h3 id="param-with-dtc-dop-to-candelastudio-dtc-table">PARAM with DTC-DOP to CANdelaStudio DTC Table</h3>
+<p>A VALUE referencing a DTC-DOP can be imported as a CANdelaStudio DTC table (Proxy DTC) if the byte position of the VALUE (within REQUEST resp. RESPONSE) is the same as the byte position of the DTC table.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image28.jpg" alt="Mapping of VALUE with DTC-DOP to CANdelaStudio DTC Proxy" />
+<p class="caption">Mapping of VALUE with DTC-DOP to CANdelaStudio DTC Proxy</p>
+</div>
+<p>For each DTC the CANdelaStudio error text is determined by the value of DTC.TEXT and the values of the DTC table columns are determined by the non-recursive SDG structure. The mapping of SDG to DTC column is done by SDG.SHORTNAME to DTC column qualifier mapping. They must be exactly the same. Note: The qualifiers of the DTC columns can only be shown and modified in the CANdelaStudio Expert Mode.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image29.jpg" alt="Mapping of DTC SGD/SD content to content of CANdelaStudio DTC table column" />
+<p class="caption">Mapping of DTC SGD/SD content to content of CANdelaStudio DTC table column</p>
+</div>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image30.jpg" alt="Mapping of DTC-DOP and DTC SDGs to CANdelaStudio DTC Table" />
+<p class="caption">Mapping of DTC-DOP and DTC SDGs to CANdelaStudio DTC Table</p>
+</div>
+<p>Starting with CANdelaStudio 7.5 SP3 also LINKED-DTC-DOPs are supported.</p>
+<h3 id="table-key-and-table-struct">TABLE-KEY and TABLE-STRUCT</h3>
+<p>A TABLE-KEY referencing a TABLE can be imported as a CANdelaStudio Variable Values (which is fix within a DiagInstance) if the byte position of the TABLE-KEY (within REQUEST resp. RESPONSE) is the same as the byte position of the Variable Value. Each TABLE-ROW is imported as CANdelaStudio DiagInstance in which the Variable Value is set to the value of TABLE-ROW.KEY.</p>
+<p>The DiagInstances can only be created if the corresponding TABLE-ROW STRUCTURE can be imported into a telegram table. That means the byte positions (within REQUEST resp. RESPONSE) of the PARAMs within the TABLE-ROW.STRUCTURE (determined by the byte position of TABLE-STRUCT) lie within the valid range of the telegram table.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image31.jpg" alt="Mapping of DIAG-SERVICE with TABLE-KEY to CANdelaStudio DiagInstance(s)" />
+<p class="caption">Mapping of DIAG-SERVICE with TABLE-KEY to CANdelaStudio DiagInstance(s)</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="ODX%20Import%20Introduction.htm">ODX Import Introduction</a></li>
+<li><a href="../../30%20Features/Service/Service.htm">Service</a></li>
+</ul>
+</body>
+</html>

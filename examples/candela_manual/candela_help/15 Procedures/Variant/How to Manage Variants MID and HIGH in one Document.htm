@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Manage Variants MID and HIGH in one Document</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-manage-variants-mid-and-high-in-one-document">How to Manage Variants MID and HIGH in one Document</h1>
+<p>Note: as of version 8.5, CANdelaStudio supports only variants that have the same CAN ID.</p>
+<h2 id="setup-variants">Setup Variants</h2>
+<div class="figure">
+<img src="Images/Variants%20List.jpg" alt="Variants List" />
+<p class="caption">Variants List</p>
+</div>
+<ul>
+<li>create a variant “MID”</li>
+<li>create a variant “HIGH”, based on “MID” (in the “Variant Wizard”, select “Create on basis of…”) In the default setting, then, all data is shared between MID and HIGH.</li>
+</ul>
+<div class="figure">
+<img src="Images/Variant%20Wizard%20MID%20HIGH.jpg" alt="Creating Variant HIGH in the Variant Wizard" />
+<p class="caption">Creating Variant HIGH in the Variant Wizard</p>
+</div>
+<ul>
+<li>to describe the differences between both of them, locate the diagnostic instance e.g. in HIGH, and execute “Replace Reference with Copy” in the context menu in the tree.</li>
+</ul>
+<div class="figure">
+<img src="Images/Diagnostic%20Instance%20Copy.jpg" alt="Diagnostic Instance &quot;Fault Memory&quot; after &quot;Replace Reference with Copy&quot;" />
+<p class="caption">Diagnostic Instance &quot;Fault Memory&quot; after &quot;Replace Reference with Copy&quot;</p>
+</div>
+<ul>
+<li>as a result, the <a href="../../20%20UserInterface/Tree/Icons.htm">icon</a> of the diagnostic instance indicates that it is a copy in variant &quot;HIGH&quot;, no more referenced with variant &quot;MID&quot;.</li>
+<li>now proceed to describe the differing data in Fault Memory of variant &quot;HIGH&quot;</li>
+</ul>
+<h2 id="variant-identification">Variant Identification</h2>
+<p>If the test system involved supports automatic detection of the variant at runtime, describe the input data for this detection:</p>
+<div class="figure">
+<img src="Images/Identifying%20Features.jpg" alt="Identifying Features" />
+<p class="caption">Identifying Features</p>
+</div>
+<ul>
+<li>in variant &quot;Common Diagnostics&quot; under &quot;Identifying Features&quot;, specify one or more data objects that the tester may request from the ECU in order to detect the respective variant (&quot;Software Version&quot; in the example)</li>
+<li>in variant &quot;MID&quot; under &quot;Identifying Patterns&quot;, specify the value the ECU returns for the data object in that variant.</li>
+<li>do the same for variant &quot;HIGH&quot;.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../15%20Procedures/DID/How%20to%20Modify%20a%20DID%20in%20a%20New%20Variant.htm">How to Modify a DID in a New Variant.htm</a></li>
+</ul>
+
+</body>
+</html>

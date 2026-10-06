@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Replace Data Type</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="replace-data-type-cds-3177-7.0">Replace Data Type (CDS-3177, 7.0)</h1>
+<p><strong>D001:</strong> The following objects reference a data type which can be replaced:</p>
+<ul>
+<li>DO (data object) ::= { data object, bit field }</li>
+<li>TO (template object) ::= { variable value component, GroupOfDtc proxy component, StatusOfDtc proxy component, GroupOfDtc data object }</li>
+<li>IF ::= { Identifying Feature }</li>
+</ul>
+<p><strong>D002:</strong> A data type may be replaced by another one of the same or different <a href="Data%20Type.htm#conversions">conversion</a>, if the following conditions are fulfilled:</p>
+<ul>
+<li>Authorization of the object containing the DO allows modification of the data type.</li>
+<li>If replacing at a DO: the <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram table</a> is not incremented above its maximally allowed length.</li>
+<li>The DO is not used as a <a href="../../30%20Features/Data%20Type/Mux.htm">Mux selector</a>.</li>
+<li>None of the two data types needs a selector.</li>
+<li>If replacing at a TO: the file opened is a template (cddt), and both data types have the same conversion and length.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types List</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Replace%20Data%20Type.htm">&quot;Replace Data Type&quot; Dialog</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">Telegram Table</a></li>
+</ul>
+</body>
+</html>

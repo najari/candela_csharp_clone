@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Bit and Byte Positions</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="bit-and-byte-positions"><span id='_index_446727921' title='Bit' data-term='Bit'>Bit and Byte Positions</span></h1>
+<ul>
+<li>Overview</li>
+<li><a href="#definitions">Definitions</a></li>
+<li><a href="#positions">Positions</a></li>
+<li><a href="#display">Display</a></li>
+<li><a href="#relatedTopics">Related Topics</a></li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>A CANdela document (*.cdd file) describes the communication of a test system with an ECU module. CANdelaStudio presents the CANdela document for editing, other tools use the CANdela document to generate ECU source code or to parameterize the communication of a test system with the ECU.</p>
+<p>This application note describes how CANdelaStudio and tools that process CANdela documents map <strong>data objects in the CANdela data model</strong> and <strong>positions</strong> <strong>in the communication data stream</strong>, including the use of byte-order (high-low &quot;Motorola&quot; vs. low-high &quot;Intel&quot;) and bit-order (&quot;MSB&quot; most significant bit first vs. &quot;LSB&quot; least significant bit first).</p>
+<p>CANdelaStudio provides a graphical view of the communication data stream which visualizes the positions of the data objects (not the positions of individual bytes within a multi-byte data object).</p>
+<h2 id="definitions">Definitions</h2>
+<h3 id="bit-sequence">Bit Sequence</h3>
+<p><span id="POS-D010" class="rqDef">[POS-D010]</span> A Bit Sequence is one linear sequence of bits. The order of bits is relevant</p>
+<p>Examples:</p>
+<ul>
+<li>number written in place-value system (highest order of magnitude written left)</li>
+<li>a 1 or 2 byte character</li>
+<li>a value on a serial line.</li>
+</ul>
+<p>Visualization:</p>
+<ul>
+<li>as one sequence of bits:</li>
+</ul>
+<p><img src="Images/BitSequence.jpg" /></p>
+<h3 id="byte-sequence">Byte Sequence</h3>
+<p><span id="POS-D020" class="rqDef">[POS-D020]</span> In a Byte Sequence, bits are grouped in bytes. The order of bytes is independent from the order of bits.</p>
+<p>Examples:</p>
+<ul>
+<li>array of bytes in RAM</li>
+<li>request or response described in the UDS standard</li>
+<li>CANoe trace window</li>
+<li>driver programming API</li>
+</ul>
+<p>Visualization:</p>
+<ul>
+<li>as a matrix</li>
+<li>n rows correspond with n bytes</li>
+<li>8 columns correspond with 8 bits in a byte</li>
+</ul>
+<p><img src="Images/ByteSequence.jpg" /></p>
+<h3 id="relation-with-osi-layers">Relation with OSI Layers</h3>
+<div class="figure">
+<img src="Images/RelationWithOSILayers.png" alt="Relation with OSI Layers" />
+<p class="caption">Relation with OSI Layers</p>
+</div>
+<p>In the CANdelaStudio <strong>application (layer 7)</strong>, you specify a numeric value as an <strong>integer number</strong>, e.g. the constant value for a “HexDump (2 Byte)” data type. The integer number is equivalent to a <strong>bit sequence</strong>.</p>
+<p>When the number is transported over a communication line, it must be converted to a <strong>byte sequence</strong> e.g. at a <strong>driver API (layer 6)</strong>.</p>
+<p>These two representations (bit sequence and byte sequence) are covered in the following.</p>
+<p>Note: On the physical layer of a serial medium, the numeric value also takes the form of a bit sequence. The order of bits in this representation depends on the serial medium; it need not correspond with the order of bits shown in the application and is not covered here.</p>
+<p>Note: The Open Systems Interconnection model (OSI) is a conceptual model that characterizes and standardizes the internal functions of a communication system by partitioning it into abstraction layers.</p>
+<h3 id="mappings">Mappings</h3>
+<p>To map <strong>data objects</strong> shown in the user interface to <strong>positions</strong> in the communication data stream, a data object must be mapped to a byte sequence. There are two kinds of such mappings:</p>
+<ul>
+<li>Apply byte order (for single, “atomic” objects)</li>
+<li>Reverse bytes (for “field” objects of 1-byte elements)</li>
+</ul>
+<h4 id="apply-byte-order">Apply Byte Order</h4>
+<p><span id="POS-R100" class="rqDef">[POS-R100]</span> To map (convert) a single value between the representation as a <strong>bit sequence</strong> (see chapter <a href="#bit-sequence">Bit Sequence</a>) and as a <strong>byte sequence</strong> (see chapter <a href="#byte-sequence">Byte Sequence</a>), a <a href="../../30%20Features/Data%20Type/Byte%20Order.htm">byte Order</a> is applied. This holds for</p>
+<ul>
+<li>an <strong>integer number</strong> (size &gt; 1 byte)</li>
+<li>a <strong>Unicode character</strong> (2 bytes, = UTF-16)</li>
+<li>but <strong>not for a float or double number</strong> (the IEEE standard defines the exact structure of such numbers)</li>
+</ul>
+<p>Applying byte order:</p>
+<ul>
+<li>For byte order <strong>“Motorola” (“high-low”)</strong>, the most significant bit (<strong>MSB</strong>) is put <strong>first</strong>.</li>
+<li>For byte order <strong>“Intel” (“low-high”)</strong>, the least significant bit (<strong>LSB</strong>) is put <strong>first</strong>.</li>
+</ul>
+<div class="figure">
+<img src="Images/ConversionApplyByteOrder.jpg" alt="Applying Byte Order" />
+<p class="caption">Applying Byte Order</p>
+</div>
+<p><strong>“Most significant”</strong> means the highest order of magnitude (i.e. what is written left in the place-value system).</p>
+<p>In the CANdela data model, the byte order of a data object is specified in the <strong>data type</strong> associated with the data object. The CANdelaStudio data type properties dialog shows the byte order:</p>
+<div class="figure">
+<img src="Images/CANdelaStudioByteOrder.jpg" alt="Byte Order in CANdelaStudio Data Type Dialog" />
+<p class="caption">Byte Order in CANdelaStudio Data Type Dialog</p>
+</div>
+<h4 id="ReverseBitfieldBytes">Reverse Bitfield Bytes (Attribute &quot;<span id='_index_446727922'>ReverseBitfieldBytes</span>&quot;)</h4>
+<p>Motivation:</p>
+<ul>
+<li>A data type can describe an <strong>array of values</strong> (Quantity &quot;fields&quot; <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R310' title="">[DT-R310]</a>, of integer numbers, Ascii or Unicode characters).</li>
+<li><strong>Byte-order does not apply</strong> to the elements of such an array data type as a whole, since the array has no <strong>bit sequence</strong>, just <strong>array elements</strong>.</li>
+<li>The <strong>order of array elements</strong> is usually fixed: starting with array index 0.</li>
+<li>Some manufacturer specific processes require a <strong>reversed order of bytes</strong> also in such an array of integer numbers or Ascii characters:</li>
+</ul>
+<div class="figure">
+<img src="Images/ConversionReverseBytes.jpg" alt="Reverse Bitfield Bytes for Array Data Type" />
+<p class="caption">Reverse Bitfield Bytes for Array Data Type</p>
+</div>
+<p><span id="POS-R110" class="rqDef">[POS-R110]</span> CANdelaStudio supports <strong>Reverse of bytes</strong> for...</p>
+<ul>
+<li>a bitfield</li>
+<li>referencing a <strong>field data type</strong> <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R310-field' title="">[DT-R310-field]</a> that has...
+<ul>
+<li>elements of <strong>size 1 byte</strong>
+<ul>
+<li>(i.e. not for an array of Unicode characters, which does not make sense at a bitfield)</li>
+</ul></li>
+<li>an enumeration attribute</li>
+<li>with qualifier &quot;<strong>ReverseBitFieldBytes</strong>&quot;</li>
+<li>with a nonzero enumeration identifier value.</li>
+</ul></li>
+<li>This has the same effect as the <strong>byte order</strong> for atomic data types.</li>
+</ul>
+<div class="figure">
+<img src="Images/ByteArrayFieldFix.png" alt="Data Type Dialog with Array Data Type" />
+<p class="caption">Data Type Dialog with Array Data Type</p>
+</div>
+<p>You can set the attribute in the “Attributes” page of the CANdelaStudio data type dialog:</p>
+<div class="figure">
+<img src="Images/CANdelaStudioReverseBytesAttribute.jpg" alt="Attributes Page with Attribute ReverseBitFieldBytes" />
+<p class="caption">Attributes Page with Attribute ReverseBitFieldBytes</p>
+</div>
+<p>The attribute can be defined in the CANdela template, see <a href="../../30%20Features/Attributes/Special%20Attributes.htm#ReverseBitFieldBytes">attribute &quot;ReverseBitFieldBytes&quot;</a> (CDS-18374 7.1).</p>
+<p>Note: only CANdelaStudio Admin edition supports defining attributes.</p>
+
+<h2 id="positions">Positions</h2>
+<h3 id="byte-positions">Byte Positions</h3>
+<p><span id="POS-R200" class="rqDef">[POS-R200]</span> CANdela data objects <strong>on top-level</strong> in a service or in a complex data type must be byte-sized and start at a byte position.</p>
+<p>For bit-sized objects or objects starting at a bit-position, see chapter <a href="#bit-positions">Bit Positions</a>.</p>
+<p>For a visualization of the positions in CANdelaStudio, see chapter <a href="#display">Display</a>.</p>
+<h4 id="single-value">Single Value</h4>
+<p><span id="POS-R210" class="rqDef">[POS-R210]</span> For a data type that specifies a single value on top-level (not within a bitfield), <strong>the byte-order defined at the data type</strong> specifies the positions of the individual bytes (as described above in <a class='rqRef' href='../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm#POS-R100' title="">[POS-R100]</a>).</p>
+<div class="figure">
+<img src="Images/CANdelaStudioByteObjectsInteger.jpg" alt="Byte Positions for a Single Value" />
+<p class="caption">Byte Positions for a Single Value</p>
+</div>
+<p>For instance, CANdelaStudio may show a 2-byte value as “0x0F31”. With “Motorola” byte-order specified at the data type, at the driver API, the first byte (position 0) will be “0x31”, the second byte (position 1) will be “0x0F”.</p>
+<h4 id="array">Array</h4>
+<p><span id="POS-R220" class="rqDef">[POS-R220]</span> For a data type that specifies an array on top-level (not within a bitfield), an <strong>attribute at the data type</strong> optionally defines that the <strong>positions of the individual byte elements shall be reversed</strong> (as described above in <a class='rqRef' href='../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm#POS-R110' title="">[POS-R110]</a>).</p>
+<div class="figure">
+<img src="Images/CANdelaStudioByteObjectsArray.jpg" alt="Byte Positions for an Array" />
+<p class="caption">Byte Positions for an Array</p>
+</div>
+<h3 id="bit-positions">Bit Positions</h3>
+<p>For a visualization of the positions in CANdelaStudio, see chapter <a href="#display">Display</a>.</p>
+<p><span id="POS-R230" class="rqDef">[POS-R230]</span> For any data object within a bitfield, the bitfield defines a <strong>“frame” for the position</strong> <strong>of the data object</strong>.</p>
+<p>Note: In CANdela, a data object that is bit-sized (i.e. where bit-size is not multiple of 8) or that does not start at a byte position must be placed into a bitfield. A bitfield can contain multiple data objects.</p>
+<p>CANdelaStudio shows all data objects within a bitfield in a “logical” order with consecutive bit positions.</p>
+<p>Note: While both the <strong>bitfield</strong> and the <strong>data object within a bitfield</strong> reference a data type, CANdela uses only the byte-order (or “reverse bytes” setting) of the <strong>bitfield</strong>’s data type. The data types of the data objects within the bitfield are <strong>ignored</strong> for the mapping.</p>
+<p>The mapping between the bitfield and a byte array can be described conceptually in two steps:</p>
+<ul>
+<li><strong>Step 1</strong>: map the data objects to a bit sequence;</li>
+<li><strong>Step 2</strong>: map the bit sequence to a byte array.</li>
+</ul>
+<h4 id="bitfield-with-single-value-data-type">Bitfield with Single Value Data Type</h4>
+<p>In <strong>Step 1</strong>, the first data object (= the one with the lowest “logical” position) is placed at the <strong>least significant bit position</strong> in the bit sequence (motivation: a data object shown with “logical” position 0 is placed at bit position 0 in the bit sequence).</p>
+<div class="figure">
+<img src="Images/FirstObjectToLSB.png" alt="First Object to LSB" />
+<p class="caption">First Object to LSB</p>
+</div>
+<p>Note: There is no setting in CANdela which would place the first data object at the most significant bit position in step 1 – to achieve this, you would have to re-order the data objects (i.e. put the first object last).</p>
+<p><strong>Step 2</strong> applying byte-order works as described in chapter 4.1 above:</p>
+<div class="figure">
+<img src="Images/FirstObjectToLSBMapped.png" alt="First Object to LSB with Byte Order" />
+<p class="caption">First Object to LSB with Byte Order</p>
+</div>
+<h4 id="bitfield-with-array-data-type">Bitfield with Array Data Type</h4>
+<p><span id="POS-R230-Array" class="rqDef">[POS-R230-Array]</span> A bitfield may refer to a data type that specifies a <strong>field</strong> of 1- or 2-byte values.</p>
+<p><strong>Step 1</strong> (mapping of data objects to a bit sequence) is identical to that for a single value within a bitfield (described in chapter 5.1 above).</p>
+<p><strong>Step 2</strong> (mapping of the bit sequence to a byte array) there are two data constellations:</p>
+<p>a) <span id="POS-R230-Array1" class="rqDef">[POS-R230-Array1]</span> elements of size 1:</p>
+<p>The <strong>byte order</strong> property of the data type is <strong>not applied</strong>.</p>
+<p>As a default, the <strong>MSB</strong> is put <strong>first</strong>, like for “Motorola” byte order.</p>
+<p><span id="POS-R230-Array1Rev" class="rqDef">[POS-R230-Array1Rev]</span> With the <strong>“reverse bytes”</strong> attribute set, the order of all bytes is <strong>reversed</strong> (as described in chapter 3.2), like for “Intel” byte order:</p>
+<div class="figure">
+<img src="Images/BitObjectsFirstObjectToLSBMapped.png" alt="Array with Bit Objects" />
+<p class="caption">Array with Bit Objects</p>
+</div>
+<p>b) <span id="POS-R230-Array2" class="rqDef">[POS-R230-Array2]</span> elements of size 2 (i.e. a “Unicode string” - each field element is a 2-byte Unicode character):</p>
+<div class="figure">
+<img src="Images/UnicodeString.png" alt="Data Type Dialog with Unicode String" />
+<p class="caption">Data Type Dialog with Unicode String</p>
+</div>
+<p>Note: This is a very special data constellation, which should be avoided!</p>
+<p><span id="POS-R230-Array2NoRev" class="rqDef">[POS-R230-Array2NoRev]</span> “Reverse bytes” is not supported for Unicode fields.</p>
+<p><span id="POS-R230-Motorola" class="rqDef">[POS-R230-Motorola]</span> For <strong>“Motorola” byte order</strong> at the Unicode field data type,</p>
+<ul>
+<li>the <strong>MSB</strong> of the entire bit sequence is put <strong>first</strong> (i.e. “Motorola” byte order is applied to the sequence).</li>
+</ul>
+<p><span id="POS-R230-Intel" class="rqDef">[POS-R230-Intel]</span> For <strong>“Intel” byte order</strong> at the Unicode field data type,</p>
+<ul>
+<li><p>the <strong>MSB</strong> of the entire bit sequence is put <strong>first</strong> (i.e. “Motorola” byte order is applied to the bit sequence),</p></li>
+<li><p>the bytes in each Unicode character (2 bytes each) are <strong>reversed</strong> (like applying “Intel” byte to each element).</p></li>
+</ul>
+<div class="figure">
+<img src="Images/UnicodeStringMapped.png" alt="First Object to LSB with Unicode String" />
+<p class="caption">First Object to LSB with Unicode String</p>
+</div>
+<h2 id="display">Display</h2>
+<h3 id="graphical-view">Graphical View</h3>
+<p>CANdelaStudio visualizes the positions of data objects in a <a href="../../20%20UserInterface/Data%20Objects/Graphical%20Telegram%20Table.htm">graphical view</a>:</p>
+<div class="figure">
+<img src="Images/GraphicalView.png" alt="CANdelaStudio Graphical Telegram Table" />
+<p class="caption">CANdelaStudio Graphical Telegram Table</p>
+</div>
+<p>To switch to graphical view, use the colored button at the bottom of the data objects list <a class='rqRef' href='../../20 UserInterface\Data Objects\Graphical Telegram Table.htm#DOUIG-R020' title="">[DOUIG-R020]</a>.</p>
+<p><span id="POS-R300" class="rqDef">[POS-R300]</span> Graphical view shows data objects as transported over the line, therefore the document option <a href="../../30%20Features/Document/Bit%20Ordering.htm">&quot;Bit Ordering&quot;</a> described in the next chapter does <strong>not</strong> apply to graphical view (cf. CDS-69433 9.1).</p>
+<h3 id="bitfield-display-variation">Bitfield Display Variation</h3>
+<p><span id="POS-R310" class="rqDef">[POS-R310]</span> The following is controlled by the document option <a href="../../30%20Features/Document/Bit%20Ordering.htm">&quot;Bit Ordering&quot;</a>.</p>
+<p>The variation applies to the <strong>list view</strong> only, <strong>not to the graphical view</strong> (see previous chapter).</p>
+<h4 id="showing-bit-0-on-top">Showing Bit 0 on Top</h4>
+<p><span id="POS-R310-0Top" class="rqDef">[POS-R310-0Top]</span> As a default, CANdelaStudio shows “logical” bit position 0 on top in a bitfield:</p>
+<div class="figure">
+<img src="Images/Bit0OnTop.jpg" alt="Bitfield with Bit 0 on Top" />
+<p class="caption">Bitfield with Bit 0 on Top</p>
+</div>
+<h4 id="showing-bit-0-at-the-bottom">Showing Bit 0 at the Bottom</h4>
+<p><span id="POS-R310-0Bottom" class="rqDef">[POS-R310-0Bottom]</span> As an alternative, CANdelaStudio can show “logical” bit position 0 at the bottom in a bitfield:</p>
+<div class="figure">
+<img src="Images/Bit0AtBottom.jpg" alt="Bitfield with Bit 0 at the Bottom" />
+<p class="caption">Bitfield with Bit 0 at the Bottom</p>
+</div>
+<p>The position shown is the <strong>end position</strong> of a data object (like “6”, for the first object, 7-bit sized), not the start position (like “0”).</p>
+<h4 id="implicit-reserved-objects">Implicit Reserved Objects</h4>
+<p><span id="POS-R320" class="rqDef">[POS-R320]</span> If the data objects within a bitfield do not completely fill the bitfield, CANdela assumes an <strong>implicit reserved object</strong> (gap) at the end of the bitfield.</p>
+<p>While this reserved object is not shown when bit position 0 is on top, it must be shown when bit position 0 is at the bottom.</p>
+<p>Example: in order to describe the same data on the line, a reserved data object must explicitly describe the reserved 7 bits:</p>
+<div class="figure">
+<img src="Images/ReservedShown.jpg" alt="Bitfield with Bit 0 at the Bottom and a Visible Reserved Object" />
+<p class="caption">Bitfield with Bit 0 at the Bottom and a Visible Reserved Object</p>
+</div>
+<h4 id="data-vs.-display">Data vs. Display</h4>
+<p>Showing bit 0 on top or at the bottom is <strong>a display variation</strong> in CANdelaStudio. The conversion to a byte array and hence the <strong>positions</strong> (the data on the line) are <strong>identical</strong>:</p>
+<div class="figure">
+<img src="Images/Bit0OnTopBottom.png" alt="Bitfield with Bit 0 on Top or at the Bottom with Data Positions" />
+<p class="caption">Bitfield with Bit 0 on Top or at the Bottom with Data Positions</p>
+</div>
+<h2 id="relatedTopics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Data%20Objects/Bit%20Field.htm">Bit Field</a></li>
+<li><a href="../../30%20Features/Data%20Type/Byte%20Order.htm">Byte Order</a></li>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a></li>
+<li>Document Option <a href="../../30%20Features/Document/Bit%20Ordering.htm">&quot;Bit Ordering&quot;</a></li>
+<li><a href="../../20%20UserInterface/Data%20Objects/Graphical%20Telegram%20Table.htm">Graphical Telegram Table</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">Telegram Table</a></li>
+</ul>
+</body>
+</html>

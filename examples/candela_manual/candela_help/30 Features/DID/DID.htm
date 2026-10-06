@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DID</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dids-data-identifier"><span id='_index_446727995' title='Identifier' data-term='Identifier'>DIDs (Data Identifier)</span></h1>
+<h2 id="dids-in-uds">DIDs in UDS</h2>
+<p>UDS Annex C.1:</p>
+<blockquote>
+<p>“The parameter dataIdentifier (DID) logically represents an object (e.g., Air Inlet Door Position) or collection of objects. This parameter shall be available in the server’s memory. … In general, a dataIdentifier is capable of being utilized in many diagnostic service requests including 0x22 (readDataByIdentifier), 0x2E (writeDataByIdentifier), and 0x2F (inputOutputControlByIdentifier). A dataIdentifier is also used in various diagnostic service responses (e.g., positive response to service 0x19 subfunction readDTCSnapshotRecordByDTCNumber).</p>
+</blockquote>
+<blockquote>
+<p>Important – Regardless of which service a dataIdentifier is used with, it shall consistently represent the same thing (i.e., a given object with a given size / meaning / etc.) on a given ECU.”</p>
+</blockquote>
+<h2 id="dids-in-candela">DIDs in CANdela</h2>
+<div class="figure">
+<img src="Images/Variants%20DIDs%20and%20Diagnostic%20Instances.jpg" alt="Overview: Variants, DIDs and Diagnostic Instances" />
+<p class="caption">Overview: Variants, DIDs and Diagnostic Instances</p>
+</div>
+<p><span id="DID-R001" class="rqDef">[DID-R001]</span> In the CANdela data model, DIDs are <strong>defined</strong> within a variant:</p>
+<ul>
+<li>in the <strong>DID list</strong> (= the <strong>data</strong>): identifier + data objects,</li>
+<li>and in a <strong>diagnostic instance</strong> (= the <strong>communication</strong>), in one of the <a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#relevant-for-DIDs">diagnostic classes relevant for DIDs</a> (e.g. UDS 0x22). The diagnostic instance contains...
+<ul>
+<li>the service details,</li>
+<li>a <a href="#did-data-reference">DID Data Reference</a> representing the DID data</li>
+</ul></li>
+</ul>
+<p>DIDs are <strong>used</strong> in <strong>Fault Memory</strong>...</p>
+<ul>
+<li>by a <strong>diagnostic instance</strong> that typically contains the UDS service 19 04 (read snapshot data);</li>
+<li>and either by multiple <a href="#did-reference">DID References</a> which represent the identifier <em>and</em> the DID data,</li>
+<li>or by references to DIDs in the &quot;Fault Memory&quot; / &quot;Snapshot Records&quot; list</li>
+</ul>
+<h2 id="protocols-and-identifiers">Protocols and Identifiers</h2>
+<p>One ECU can support multiple protocols (e.g. an emission related ECU with UDS and OBD, or a gateway).</p>
+<p>Note: some combinations of protocols may be considered invalid.</p>
+<p>Identifier values are typically required to be <strong>unique</strong> within an <strong>Identifier Scope</strong> (e.g. KWP: Local Identifiers vs. Common Identifiers).</p>
+<table style="width:81%;">
+<colgroup>
+<col width="36%" />
+<col width="44%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Protocol</th>
+<th align="left">Identifier, Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">UDS</td>
+<td align="left">Identifier (2 byte)</td>
+</tr>
+<tr class="even">
+<td align="left">Specialization: WWH-OBD</td>
+<td align="left">Ditto</td>
+</tr>
+<tr class="odd">
+<td align="left">KWP</td>
+<td align="left">Local Identifier<br />
+Common Identifier<br />
+Mixed in special service 0x2C:<br />
+0x2C 01 LocalIdentifier<br />
+0x2C 02 CommonIdentifier<br />
+0x2C 03 MemoryAddress</td>
+</tr>
+<tr class="even">
+<td align="left">OBDII</td>
+<td align="left">MID, TID, PID (1 byte)</td>
+</tr>
+<tr class="odd">
+<td align="left">J1939</td>
+<td align="left">PGN (18/19 bit)</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="identifiers">Identifiers in UDS and OBD Services</h2>
+<table style="width:98%;">
+<colgroup>
+<col width="23%" />
+<col width="46%" />
+<col width="28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Service Signature</th>
+<th align="left">Service Name</th>
+<th align="left">DID Identifier Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>UDS</strong></td>
+<td align="left">(see ISO 14229-1)</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">22 yy xx<br />
+2E yy xx<br />
+2F yy xx</td>
+<td align="left">ReadDataByIdentifier<br />
+WriteDataByIdentifier<br />
+InputOutputControlByIdentifier</td>
+<td align="left">yy xx<br />
+(for range details see the UDS spec)</td>
+</tr>
+<tr class="odd">
+<td align="left">2A xx</td>
+<td align="left">ReadDataByPeriodicIdentifier</td>
+<td align="left">F2 xx</td>
+</tr>
+<tr class="even">
+<td align="left">2C xx</td>
+<td align="left">DynamicallyDefineDataIdentifier</td>
+<td align="left">F3 xx</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>OBDII</strong></td>
+<td align="left">(see ISO 15031-5)</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">01 nn</td>
+<td align="left">PID</td>
+<td align="left">F4 nn</td>
+</tr>
+<tr class="odd">
+<td align="left">06 nn</td>
+<td align="left">On-board monitoring</td>
+<td align="left">F6 nn</td>
+</tr>
+<tr class="even">
+<td align="left">09 nn</td>
+<td align="left">Info type</td>
+<td align="left">F8 nn</td>
+</tr>
+</tbody>
+</table>
+<p>Restrictions for UDS services:</p>
+<ul>
+<li>Service 2A xx exists iff. service 22 F2 xx exists</li>
+<li>Service 2C xx exists iff. service 22 F3 xx exists</li>
+<li>References to the DID (e.g. in 19 04) use the full number (F3 01, not just 01).</li>
+</ul>
+<p>Restrictions for OBDII services:</p>
+<ul>
+<li>none (UDS and/or OBDII services may exist independently)</li>
+</ul>
+<p>Examples</p>
+<ul>
+<li>getting tyre pressure control (Reifendruckkontrolle) status for each wheel needs <strong>4 DIDs</strong>, but they <strong>should have the same contents</strong> (current pressure, temperature, battery status, …)</li>
+<li>“fingerprint” packet datatype shall be used in several diagnostic instances to describe the identical structure</li>
+<li>the same DID contents shall be retrieved (CDS-18497) by
+<ul>
+<li>OBD2 service 0x01 &lt;PID#&gt; &lt;data&gt;</li>
+<li>UDS service 0x22 0xF4 &lt;PID#&gt; &lt;data&gt;</li>
+</ul></li>
+<li>0x19 0x04 snapshot data references DIDs</li>
+</ul>
+<h2 id="multiple-identifier-request">Multiple Identifier Request</h2>
+<p>See the CANdela <a href="Multiple%20Identifier%20Request.htm">ECU settings for Multiple Identifier Request</a>.</p>
+<h2 id="template">Template</h2>
+<p>In Expert View in a template, you can enforce the use of DIDs in a diagnostic class template, by setting a semantics at the <a href="../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm">Combined Component</a> which controls one telegram table in each diagnostic instance of the diagnostic class:</p>
+<p><span id="DID-R050" class="rqDef" title="Combined Component DID Semantics">[DID-R050 Combined Component DID Semantics]</span> the Combined Component semantics shall be:</p>
+<ul>
+<li><span id="DID-R050-DIDDataReference" class="rqDef">[DID-R050-DIDDataReference]</span> DID Data Reference
+<ul>
+<li>reference to DID data,</li>
+<li><strong>one</strong> is allowed in a telegram;</li>
+<li>up to 8.0: “DID Definition”;</li>
+<li>cf. the wider definition of &quot;DID Enabled&quot; Diagnostic Class <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001' title="">[DCL-D001]</a></li>
+<li>cf. <strong>DID Data Reference</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R160' title="">[DID-R160]</a></li>
+<li>cf. CANdelaStudio may show the DID data directly in the Diagnostic Instance <a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm#DIUI-R310' title="">[DIUI-R310]</a>.</li>
+</ul></li>
+<li><span id="DID-R050-DIDDataReferences" class="rqDef">[DID-R050-DIDDataReferences]</span> DID Data References
+<ul>
+<li>reference to DID data,</li>
+<li><strong>n times</strong> in a telegram;</li>
+<li>up to 8.0: “DID Referencer”;</li>
+</ul></li>
+<li><span id="DID-R050-DIDReferences" class="rqDef">[DID-R050-DIDReferences]</span> DID References
+<ul>
+<li>reference to DID number + data,</li>
+<li>n times in a telegram;</li>
+<li>up to 8.0: “DID Referencer with Number”.</li>
+<li>cf. <strong>DID Reference</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R180' title="">[DID-R180]</a></li>
+</ul></li>
+</ul>
+<p>Each of this semantics values can occur multiple times in a document (as opposed to 8.0 where „DID Definition“ is allowed only once, cf. CDC-33807).</p>
+
+<h2 id="definitions">Definitions</h2>
+<p><span id="DID-D001" class="rqDef" title="DID Used">[DID-D001 DID Used]</span> DIDs are <strong>used</strong> by</p>
+<ul>
+<li><span id="DID-D001-a" class="rqDef">[DID-D001-a]</span> Common Snapshot Data (direct reference, or DID Data Reference and DID Reference)</li>
+<li><span id="DID-D001-b" class="rqDef">[DID-D001-b]</span> DTC Specific Snapshot Data (ditto)</li>
+<li><span id="DID-D001-b2" class="rqDef">[DID-D001-b2]</span> Extended Data Record (may use DID Data Reference and DID Reference)</li>
+<li><span id="DID-D001-c" class="rqDef">[DID-D001-c]</span> DID Reference in a diagnostic instance (for DID Reference occurrences: see <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R183' title="Consistency Conditions">[DID-R183]</a>)</li>
+<li><span id="DID-D001-d" class="rqDef">[DID-D001-d]</span> DID Data Reference (ditto)</li>
+<li><span id="DID-D001-e" class="rqDef">[DID-D001-e]</span> DID Reference in fixed data</li>
+<li><span id="DID-D001-f" class="rqDef">[DID-D001-f]</span> DID Data Reference in fixed data</li>
+</ul>
+<p><span id="DID-D005" class="rqDef" title="DID Referenced">[DID-D005.0 DID Referenced]</span> a DID exists in one or multiple variants (here and in the following: or libraries - CDS-37946 8.5 SP2). If it exists in multiple variants, we say it is <strong>referenced</strong> in these variants.</p>
+<ul>
+<li>this is different from the <strong>use</strong> of a DID e.g. by a DID Data reference;</li>
+<li>this is “referenced <em>in</em> a variant”, not “referenced <em>by</em> a variant”;</li>
+<li>this does not mean that the DID is contained in the first variant while the others have only “references” – actually it is the same kind of reference in all variants, and if the DID is deleted from all these variants, it does no more exist (except maybe still in the clipboard).</li>
+</ul>
+<p><span id="DID-D020" class="rqDef" title="Consistency Rule for References">[DID-D020 Consistency Rule for References]</span> (&quot;<span id='_index_446727996'>Onion Rule</span>&quot;)</p>
+<blockquote>
+<p><strong>A DID must be referenced at least in those variants in which the diagnostic instance that uses it is referenced.</strong></p>
+</blockquote>
+<p>Example (see diagram below):</p>
+<ul>
+<li>Diagnostic Instance &quot;Oil Temperature&quot; (to the right) is &quot;the diagnostic instance that uses it&quot;</li>
+<li>the diagnostic instance is referenced in 4 variants, including variant &quot;C Sample&quot;</li>
+<li>it uses the DID 0x0110 &quot;Oil Temperature&quot; (via a DID Data Reference)</li>
+<li>the Consistency Rule says: the DID must be referenced at least in the 4 variants in which the diagnostic instance is referenced (green color)</li>
+<li>the DID is actually referenced in 3 variants only, excluding variant &quot;C Sample&quot; (red color)</li>
+<li>this violates the Consistency Rule.</li>
+</ul>
+<div class="figure">
+<img src="Images/DiagnosticInstanceDIDSharingConsistency.png" alt="Consistency Rule for Diagnostic Instance and DID References (Sharing)" />
+<p class="caption">Consistency Rule for Diagnostic Instance and DID References (Sharing)</p>
+</div>
+<p>Motivation for the rule: e.g. when inspecting data used in a test system, users require that a diagnostic instance referenced in multiple variants is <strong>completely</strong> equal in these variants, including all used DIDs, data objects and data types. This is given when the DID is referenced in the variants.</p>
+<p><span id="DID-D210" class="rqDef" title="DID Identity and Authorization">[DID-D210 DID Identity and Authorization]</span></p>
+<p>Motivation: authorization is typically defined for a DID in the base variant in the template. The template contains only the base variant. In a document, authorization propagates to all instances of the DID in other variants.</p>
+<p>1. DID A in one variant and DID B in another variant are considered “<strong>the same DID</strong>” (<strong>identity</strong>) if they have the <strong>same qualifier</strong>.</p>
+<p>2. DID <strong>&quot;required&quot; authorization</strong> applies to the “<strong>DID per se</strong>”, i.e. to the “same DID” in all variants in which it exists, not to one variant only.</p>
+<p>DID <strong>&quot;modifiable&quot; authorization</strong> applies to the “<strong>DID instance</strong>”, i.e. to DID in all variants in which it is referenced (like for diagnostic instances). As a consequence, if authorization allows deletion of a DID, and you delete and re-create the DID, modification is possible for the new DID as a default. If this is not desired, you have to forbid deletion of the DID.</p>
+<p>3. If you <strong>modify the DID qualifier</strong> in one variant only, the DID becomes another “DID per se”. If that DID existed already, the authorization of that DID applies.</p>
+<p><span id="DID-D212" class="rqDef" title="Identifiers Correspond">[DID-D212 Identifiers Correspond]</span></p>
+<p>a DID Identifier <strong>corresponds</strong> with a diagnostic instance identifier iff. the DID identifier and the diagnostic instance service signature are related as described in <a href="#identifiers">Identifiers in UDS and OBD Services</a> for all services except 2A and 2C.</p>
+<p>Example:</p>
+<ul>
+<li><p>A DID Identifier 0x0207 corresponds with a diagnostic instance having signature 22 02 07, 2E 02 07, 2F 02 07, 01 07, 06 07 or 09 07.</p></li>
+<li><p>A DID Identifier 0xF207 corresponds with no diagnostic instance since it is in the range for service 0x2A.</p></li>
+</ul>
+<p><span id="DID-D214" class="rqDef" title="DID and Diagnostic Instance Correspond">[DID-D214.0 DID and Diagnostic Instance Correspond]</span></p>
+<p>A DID and a diagnostic instance within a variant correspond if</p>
+<p>a) the diagnostic instance references the DID via a single DID Data Reference in the first combined data component, and</p>
+<p>b) the DID Identifier and the diagnostic instance identifier <strong>correspond</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D212' title="Identifiers Correspond">[DID-D212]</a></p>
+<p><span id="DID-D300" class="rqDef" title="Order of the Variants">[DID-D300.0 Order of the Variants]</span>: Base variant, ECU variants.</p>
+<p>Note: for libraries (8.5 SP2, CDS-37946) see <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R060' title="Document Order">[LIB-R060]</a>.</p>
+<p><span id="DID-D310" class="rqDef" title="Variant Suffix">[DID-D310 Variant Suffix]</span>: an 8.2 DID qualifier can encode the qualifier Q of an 8.5 DID which occurs first <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D300' title="Order of the Variants">[DID-D300]</a> in Variant V as follows: <strong><code>Q[8.2] = Q + “_” + V</code></strong>,</p>
+<p>ditto the name: <strong><code>N[8.2] = N + “ ” + V</code></strong></p>
+<p>V is the longest matching suffix (for variants “A” and “A_B” and “B”, the suffix “A_B” matches variant “A_B”).</p>
+<p>Example:</p>
+<p>8.2:</p>
+<pre><code>DID 0x10, Temperature
+DID 0x10, Temperature_ASample (*)
+DID 0x10, Temperature_BSample
+DID 0x11, EngineSpeed_ASample</code></pre>
+<p>8.5</p>
+<pre><code>Base Variant
+  DID 0x10, Temperature
+ASample
+  DID 0x10, Temperature (*)
+  DID 0x11, EngineSpeed
+BSample
+  DID 0x10, Temperature</code></pre>
+<p><span id="DID-D320" class="rqDef" title="Authorization Mapping">[DID-D320.0 Authorization Mapping]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>8.2 deletable</strong></th>
+<th align="left"><strong>8.5 required in all variants</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">No</td>
+<td align="left">As reference</td>
+</tr>
+<tr class="even">
+<td align="left">No</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="odd">
+<td align="left">Yes</td>
+<td align="left">No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="document">Document</h2>
+<p><span id="DID-R005" class="rqDef" title="May Modify Allow Duplicate DIDs">[DID-R005.0 May Modify Allow Duplicate DIDs]</span>: a document contains an authorization flag “<strong>may modify allow duplicate DIDs</strong>”, default true.</p>
+<p><span id="DID-R008" class="rqDef" title="Allow Duplicate DIDs">[DID-R008.0 Allow Duplicate DIDs]</span>: a document contains a flag “<strong>allow duplicate DIDs</strong>”, default false.</p>
+<p>The flag can be modified (in Standard and Expert View) iff. the authorization flag of R005 is true.</p>
+
+<h2 id="did-properties">DID Properties</h2>
+<p>A DID has <strong>authorization properties</strong>:</p>
+<p><span id="DID-R010" class="rqDef" title="Modifiable">[DID-R010 Modifiable]</span> … (as in 8.2), default true. See <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D210' title="DID Identity and Authorization">[DID-D210]</a> above.</p>
+<p><span id="DID-R012" class="rqDef" title="Required in all Variants">[DID-R012 Required in all Variants]</span> with the following possible values:</p>
+<ul>
+<li><span id="DID-R012-notReq" class="rqDef">[DID-R012-notReq]</span>: &quot;No&quot;,
+<ul>
+<li>the DID is not required,</li>
+<li>it can be deleted in Standard View.</li>
+</ul></li>
+<li><span id="DID-R012-req" class="rqDef">[DID-R012-req]</span>: &quot;Yes&quot;,
+<ul>
+<li>the DID is required: a DID with the given qualifier must exist in all variants</li>
+<li>you cannot delete the DID</li>
+<li><span id="DID-R012-reqLIB" class="rqDef">[DID-R012-reqLIB]</span> This does not apply in Libraries: a library need not contain a DID with the given qualifier (but it may contain it as a copy or reference). See also <a href="../../30%20Features/Library/Library.htm#library-document-context">Libraries in Document Context</a>.</li>
+</ul></li>
+<li><span id="DID-R012-reqAsRef" class="rqDef">[DID-R012-reqAsRef]</span>: &quot;Required as reference&quot;
+<ul>
+<li>the DID is required: like &quot;Yes&quot;, but the DID from the base variant must be <strong>referenced</strong> in all variants.</li>
+<li><span id="DID-R012-reqAsRefLIB" class="rqDef">[DID-R012-reqAsRefLIB]</span> same as <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R012-reqLIB' title="">[DID-R012-reqLIB]</a>.</li>
+</ul></li>
+<li><span id="DID-R012-LIB" class="rqDef">[DID-R012-LIB]</span>: a DID in a library that is not referenced in the base variant shall not have required = &quot;Yes&quot; or &quot;required as reference&quot;.</li>
+<li>default value: &quot;No&quot;</li>
+<li>Note: the property controls DIDs with the same <strong>qualifier</strong> across variants (see <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D210' title="DID Identity and Authorization">[DID-D210]</a> above); the <strong>identifier</strong> may vary!</li>
+</ul>
+<p>Relationship with DIDs in the 8.2 data model:</p>
+<ul>
+<li>this property replaces the “deletable” property of 8.2. Motivation: “required” = “not deletable”.</li>
+<li>see <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D320' title="Authorization Mapping">[DID-D320]</a> for the value mapping.</li>
+</ul>
+<p><span id="DID-R020" class="rqDef" title="Existence">[DID-R020.0 Existence]</span>: A DID <strong>exists</strong> (= is referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a>) <strong>in a Variant</strong> (here and in the following: <strong>or Library</strong> <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R010-c' title="">[LIB-R010-c]</a>).</p>
+<p><span id="DID-R025" class="rqDef" title="Identifier">[DID-R025 Identifier]</span>: A DID has an <strong>Identifier</strong> = an unsigned number in the range 0 .. 65535.</p>
+<ul>
+<li><span id="DID-R025-DefaultDisplay" class="rqDef">[DID-R025-DefaultDisplay]</span> <strong>Default display</strong> of the Identifier:
+<ul>
+<li>4 hex characters</li>
+<li>upper case</li>
+<li>with leading zeroes</li>
+<li>examples: &quot;0x0012&quot;, &quot;0xF190&quot;</li>
+</ul></li>
+</ul>
+<p><span id="DID-R030" class="rqDef" title="Constraints">[DID-R030 Constraints]</span>:</p>
+<ul>
+<li><p><span id="DID-R030-a" class="rqDef">[DID-R030-a]</span> the DID <strong>qualifier</strong> and <strong>name</strong> must be <strong>unique</strong> within a variant</p>
+<p>Note: the consistency condition for the name does not apply to languages that are not up-to-date in the document.</p></li>
+<li><span id="DID-R030-b" class="rqDef">[DID-R030-b]</span> the DID <strong>identifier</strong> must be <strong>unique</strong> within a variant iff. the flag of <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R008' title="Allow Duplicate DIDs">[DID-R008]</a> is false.</li>
+<li><p><span id="DID-R030-c" class="rqDef">[DID-R030-c]</span> <!--TODO--> constraints check shall emit a warning (allow exports) if DID number is <code>&gt;= 2^16</code></p></li>
+</ul>
+<h2 id="did-uses">DID Uses</h2>
+<p><span id="DID-R035" class="rqDef">[DID-R035]</span>: in cross-document context, DIDs are associated by qualifier.</p>
+
+<p><span id="DID-R040" class="rqDef">[DID-R040]</span>: the same DID can exist (= be <strong>referenced</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R020' title="Existence">[DID-R020]</a>) in multiple variants (like a diagnostic instance in 8.2).</p>
+<p>Note: this means that any changes of DID properties and DID Data apply to multiple variants.</p>
+<p><span id="DID-R100" class="rqDef">[DID-R100]</span>: if a DID is used by a <strong>DID Reference</strong> or <strong>DID Data Reference</strong> in a diagnostic instance, then the <strong>DID must be referenced</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R020' title="Existence">[DID-R020]</a>, <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R040' title="">[DID-R040]</a> in the variant.</p>
+<p><span id="DID-R110" class="rqDef">[DID-R110]</span>: if a <strong>DID</strong> is used by <strong>DTC Specific Snapshot Data</strong> in a diagnostic instance, then the <strong>DID must be referenced</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R040' title="">[DID-R040]</a> in the variant.</p>
+<p><span id="DID-R120" class="rqDef">[DID-R120]</span>: If the diagnostic instance of <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R100' title="">[DID-R100]</a> or <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R110' title="">[DID-R110]</a> is referenced in n Variants (n&gt;1), then the DID must <strong>be referenced</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R040' title="">[DID-R040]</a> at least in these n Variants.</p>
+<p>Note: this applies to de-activated diagnostic instances, too.</p>
+<p><span id="DID-R130" class="rqDef">[DID-R130]</span>: a <strong>DID</strong> used by <strong>Common Snapshot Data</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001-a' title="">[DID-D001-a]</a> must be <strong>referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R040' title="">[DID-R040]</a> in all Variants</strong> (<span id="DID-R130-Lib" class="rqDef">[DID-R130-Lib]</span> not necessarily in Libraries, CDS-68396 9.1).</p>
+<p><span id="DID-R140" class="rqDef">[DID-R140]</span>: a <strong>DID</strong> used by <strong>fixed data</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001-e' title="">[DID-D001-e]</a>, <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001-f' title="">[DID-D001-f]</a> must be <strong>referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R040' title="">[DID-R040]</a> in all Variants</strong>.</p>
+<p>Note: this means the ECU level fixed data references an object that exists in (multiple) variants.</p>
+
+<h2 id="did-data">DID Data</h2>
+<p><span id="DID-R155" class="rqDef">[DID-R155]</span>: a DID <strong>contains</strong> <strong>DID Data</strong> (= 8.1 R140.3):</p>
+<ul>
+<li><span id="DID-R155-a" class="rqDef">[DID-R155-a]</span> data objects,</li>
+<li><span id="DID-R155-b" class="rqDef">[DID-R155-b]</span> reserved objects</li>
+<li><span id="DID-R155-c" class="rqDef">[DID-R155-c]</span> bit-fields</li>
+</ul>
+<p><strong>Not allowed</strong>:</p>
+<ul>
+<li><span id="DID-R155-d" class="rqDef">[DID-R155-d]</span> bit-sized objects on top-level;</li>
+<li><span id="DID-R155-d2" class="rqDef">[DID-R155-d2]</span> data objects <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R155-a' title="">[DID-R155-a]</a> and bit-fields <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R155-c' title="">[DID-R155-c]</a> forbidden by template authorization “Allowed type of data type nesting” (treat DID like packet data type);</li>
+<li><span id="DID-R155-e" class="rqDef">[DID-R155-e]</span> DID References, DID Data References</li>
+<li><span id="DID-R155-f" class="rqDef">[DID-R155-f]</span> a DID must contain at least one object
+<ul>
+<li>otherwise CANdelaStudio reports an error and prevents from exports;</li>
+<li>like in a Packet Data Type</li>
+</ul></li>
+<li><span id="DID-R155-g" class="rqDef">[DID-R155-g]</span> a DID may contain variable length data objects
+<ul>
+<li>like a Packet Data Type</li>
+</ul></li>
+<li><span id="DID-R155-h" class="rqDef">[DID-R155-h]</span> constraints check shall report an error (prevent from export) if a DID violates <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R155-d' title="">[DID-R155-d]</a> or <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R155-e' title="">[DID-R155-e]</a>.</li>
+</ul>
+<p>Note: <strong>to reuse data objects</strong> in multiple DIDs, the data objects can be defined in a Packet Data type (as usual in the CANdela data model).</p>
+<p><span id="DID-R155-DefaultDisplay" class="rqDef">[DID-R155-DefaultDisplay]</span>: Showing DID Data within a line, e.g. in Snapshot Data <a class='rqRef' href='../../20 UserInterface\Snapshot Records\Right Side TAB Snapshot Data.htm#SRUI-R778' title="">[SRUI-R778]</a>, contains...</p>
+<ul>
+<li>top-level elements separated by comma + blank</li>
+<li>for a data object:
+<ul>
+<li>the name</li>
+</ul></li>
+<li>for a reserved object:
+<ul>
+<li>the string <code>(reserved)</code></li>
+</ul></li>
+<li>for a bit-field:
+<ul>
+<li>the name of the bit-field</li>
+<li>followed by
+<ul>
+<li>blank + <code>(</code></li>
+<li>the contained elements shown using the same rules</li>
+<li><code>)</code></li>
+</ul></li>
+</ul></li>
+<li>Note: no other types of</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>&quot;Diagnostic Module (Version), Flags (Bit 1, (reserved)), Temperature, (reserved)&quot;</li>
+<li>This string represents, in sequence:
+<ul>
+<li>data object with name &quot;Diagnostic Module (Version)&quot;</li>
+<li>bit-field with name &quot;Flags&quot;, and contents...
+<ul>
+<li>data object with name &quot;Bit 1&quot;</li>
+<li>reserved data object</li>
+</ul></li>
+<li>data object with name &quot;Temperature&quot;</li>
+<li>reserved data object</li>
+</ul></li>
+</ul>
+<h2 id="did-data-reference"><span id='_index_446727997'>DID Data Reference</span></h2>
+<p>Note: a <strong>DID Data Reference</strong> represents <strong>DID Data only</strong> (not including the identifier).</p>
+<p><span id="DID-R160" class="rqDef">[DID-R160]</span>: CANdelaStudio provides a kind of data object (CDS-19553, 8.1): “<strong>DID Data Reference</strong>” with the following <strong>properties</strong>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>name, qualifier, description, OIDs</li>
+<li>attributes (details see attribute <a href="../../30%20Features/Attributes/Attributes.htm#occurrence">occurrence</a> and <a href="../../30%20Features/Attributes/Attributes.htm#occurrence-restrictions">restrictions</a>)</li>
+<li>reference to DID
+<ul>
+<li><span id="DID-R160-Var" class="rqDef">[DID-R160-Var]</span> The DID must be referenced at least in the variants in which the diagnostic instance containing the data object is referenced (Onion Rule <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D020' title="Consistency Rule for References">[DID-D020]</a>).</li>
+</ul></li>
+<li><strong>not</strong> the data object properties: default value, constant value, semantics.</li>
+<li>defaults for name and qualifier shall be taken from the referenced DID (but made unique if necessary) (CDS-38519 8.5)</li>
+</ol>
+<p><strong>Semantics of the reference</strong>: the reference shall be handled like a <strong>reference to a packet data type</strong> that has <strong>“visible as structure” = true</strong>, not false. I.e. the reference shall not be “replaced” by the DID Data.</p>
+<p>Motivation: this is necessary to avoid qualifier uniqueness violations if a telegram references the same DID twice, and it is compatible with the data model before 8.1 (avoid differences).</p>
+<p><span id="DID-R163" class="rqDef">[DID-R163]</span>: a DID Data Reference shall be allowed <strong>in the same contexts as a DID Reference</strong> (see <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R183' title="Consistency Conditions">[DID-R183]</a>).</p>
+<pre><code>R165.0: - removed – with R185.</code></pre>
+<p><span id="DID-R167" class="rqDef">[DID-R167]</span>: template authorization “Variable length of data objects…” applies to DID Data References (treat a DID like a packet data type here).</p>
+<p><span id="DID-R168" class="rqDef">[DID-R168]</span>: in a telegram table, CANdelaStudio shall allow multiple DID Data References that refer to the same DID.</p>
+<h2 id="did-reference"><span id='_index_446727998'>DID Reference</span></h2>
+<p>Note: a <strong>DID Reference</strong> represents the <strong>identifier</strong> <code>+</code> the <strong>DID Data</strong>.</p>
+<p><span id="DID-R180" class="rqDef">[DID-R180]</span>: CANdelaStudio provides a kind of data object (CDS-19553, 8.1): “<strong>DID Reference</strong>” with the following <strong>properties</strong>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>name, qualifier, description, OIDs (OID + Template OID)</li>
+<li>attributes (details see attribute <a href="../../30%20Features/Attributes/Attributes.htm#occurrence">occurrence</a> and <a href="../../30%20Features/Attributes/Attributes.htm#occurrence-restrictions">restrictions</a>)</li>
+<li>reference to DID
+<ul>
+<li><span id="DID-R180-Var" class="rqDef">[DID-R180-Var]</span> The DID must be referenced at least in the variants in which the diagnostic instance containing the data object is referenced (Onion Rule <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D020' title="Consistency Rule for References">[DID-D020]</a>).</li>
+</ul></li>
+<li>defaults for name and qualifier shall be taken from the referenced DID (but made unique if necessary) (CDS-38519, 8.5)</li>
+</ol>
+<p><span id="DID-R182" class="rqDef">[DID-R182.5]</span>: the DID Reference shall contain a <strong>data object that represents the DID number</strong> in a service oriented view:</p>
+<ol style="list-style-type: lower-alpha">
+<li>with <strong>const number</strong> set (= DID number)</li>
+<li><p>the const number shall be initialized from the DID number 1:1 or by a heuristics (e.g. take low byte from UDS DID number in an OBD service with 1 byte ID)<br />
+a2) constraints check shall warn if the const number is not set (prevent from export)<br />
+a3) if the const number is missing, constraints satisfier shall fill it from the DID number</p></li>
+<li>a constraints check shall report a warning (prevent from exports) if the data object length is &gt; 1 Byte and the const number is not equal to the DID number. Motivation: there may be protocols where the number transported in the service must vary.<br />
+</li>
+<li><p>after creation, the data object shall be unique in the namespace of the telegram that contains the <em>DID Reference</em>.</p></li>
+<li><p>a constraints check shall report a data object that is not unique in the namespace of the telegram that contains the <em>DID Reference</em> (warn, prevent from export).</p></li>
+<li><p>the data object shall reference an identity data type (like in 8.0)</p></li>
+<li><p>a list of possible data types shall for the DID number data object shall contain data types with the following properties: quantity atom, identity data type, <code>1 &lt;= atom bit length &lt; 3</code> bytes (including bit-sized data types in this size range), has maximum size.</p></li>
+<li><p>a default data type shall be contained in the list of g) and have the following properties:<br />
+h1) for document ProtocolStandard “UDS”: atom bit length 2 bytes, and (qualifier substring “HexDump”, or: display format “hex”)<br />
+h2) for document ProtocolStandard “OBD2” or “KWP”: ditto with atom bit length 1 byte<br />
+h3) otherwise: the first 1-byte data type of g).</p></li>
+</ol>
+<p><strong>Note:</strong> the data type referenced by the data object defines the size of the DID number in the service.</p>
+<p><span id="DID-R183" class="rqDef" title="Consistency Conditions">[DID-R183 Consistency Conditions]</span>:</p>
+<p><span id="DID-R183-a" class="rqDef">[DID-R183-a]</span> an object of type DID Reference shall in principle (if not forbidden by other constraints) be allowed <strong>in telegrams of any Combined Component</strong> <strong>semantics</strong> (not only for semantics “DID Reference”).</p>
+<p><strong>Motivation:</strong> allow use of the new DID feature in all documents, without changing semantics in template.</p>
+<p><span id="DID-R183-b" class="rqDef">[DID-R183-b]</span> an object of type DID Reference shall in principle (if not forbidden by other constraints ) be allowed in a diagnostic instance within a <strong>Multiplexer component</strong>.</p>
+<p><strong>Motivation:</strong> reference to DID in 0x19 04.</p>
+<p><span id="DID-R183-c" class="rqDef">[DID-R183-c]</span> an object of type DID Reference shall <strong>not</strong> be allowed within a <strong>complex data type</strong> in the global list.</p>
+<p><strong>Note:</strong> this does not forbid the Multiplexer in b).</p>
+<p><strong>Motivation:</strong> keep DIDs simple as top-level objects. Avoid that DIDs may lead to circular references (as packet data types may).</p>
+<p><strong>Note:</strong> there is a <strong>use-case for DIDs in a Mux data type</strong> - VW Extended Data Record 0x71 contains a DID Reference in an iteration. Solution sketch: specify DID Number data object, then Mux with selector that object, each case contains a reference to the respective DID.</p>
+<p><span id="DID-R183-d" class="rqDef">[DID-R183-d]</span> an object of type DID Reference shall in principle (if not forbidden by other constraints) be <strong>allowed in fixed data</strong>.</p>
+<blockquote>
+<p>R185.0: - removed</p>
+</blockquote>
+
+<p><span id="DID-R188" class="rqDef">[DID-R188]</span>: in a telegram table, CANdelaStudio shall allow multiple DID References that refer to the same DID.</p>
+<p><strong>Note for CANoe</strong>: before 9.0 SP3 (2016-08), a DID Reference typically leads to duplicate qualifiers in CANoe:</p>
+<ol style="list-style-type: decimal">
+<li>the parameter that represents the DID number (qualifier taken from the DID Reference), and</li>
+<li>the parameter (packet) which contains the DID data (qualifier taken from the DID)</li>
+</ol>
+<p>CANoe 9.0 SP3 (DTLLIB-39381) instead uses the qualifiers from the following objects, which are unique due to R182 d):</p>
+<ol style="list-style-type: decimal">
+<li>the data object that represents the DID number, and</li>
+<li>the DID Reference itself</li>
+</ol>
+<h3 id="semantics-of-a-did-reference">Semantics of a DID Reference</h3>
+<p>Where to put the DID Number data object (cf. R182):</p>
+<div class="figure">
+<img src="Images/WhereToPutTheDIDNumberDataObject.png" alt="DID Reference: Data Model and Service Oriented View" />
+<p class="caption">DID Reference: Data Model and Service Oriented View</p>
+</div>
+<ol style="list-style-type: upper-alpha">
+<li><p>the DID Reference shall be handled like a reference to a packet data type that has <strong>“visible as structure” = true</strong>, not false. I.e. the DID Data shall not “replace” the reference. Motivation: provide a namespace to avoid qualifier uniqueness violations.</p></li>
+<li><p>in a service oriented view of the data (e.g. for export, or for migration to 8.0), the DID Reference <strong>logically</strong> represents a <strong>sequence</strong>:</p></li>
+</ol>
+<ol style="list-style-type: decimal">
+<li>a data object with the DID number <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R182' title="">[DID-R182]</a></li>
+<li>then the data objects contained in the DID <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R140' title="">[DID-R140]</a></li>
+</ol>
+<p>This logical sequence <strong>may</strong> be represented by different concrete data structures, depending on the consumer of the data (see diagram above):</p>
+<ul>
+<li><p>on top-level, the telegram contains <strong>pairs</strong>: first the DID Number data object, then the reference to the DID Data.</p>
+<p>This is what the “DID reference with number” semantics forced in the data model of CANdelaStudio up to 8.0, and what CANdelaStudio 8.1 supports by checks:</p>
+<p><strong>Qualifier conflicts</strong> on telegram level between DID Number data objects and DID References are forbidden by R182 d) and e).</p></li>
+<li><p>on top-level, the telegram contains only references to an <strong>additional data structure</strong>: DID Number data object + DID Data.</p>
+
+<p>An export may need to <strong>export two structures</strong> for a DID: 1. one for the DID with DID Data, 2. an additional one that includes the DID number.</p>
+<p><strong>Qualifier conflicts</strong> within the new structure between the DID Number data object and the DID Data are not forbidden by the data model and must be handled by the client.</p></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<p>Procedures:</p>
+<ul>
+<li><a href="../../15%20Procedures/DID/How%20to%20Create%20a%20DID.htm">How to Create a DID</a></li>
+<li><a href="../../15%20Procedures/DID/How%20to%20Modify%20a%20DID%20in%20a%20New%20Variant.htm">How to Modify a DID in a New Variant</a></li>
+<li><a href="../../15%20Procedures/DID/How%20to%20Move%20Data%20from%20a%20Diagnostic%20Instance%20to%20a%20DID.htm">How to Move Data from a Diagnostic Instance to a DID</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm#occurrence">Attributes</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#relevant-for-DIDs">Diagnostic Classes Relevant for DIDs</a></li>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DI-R020' title="Diagnostic Instance Creation from DID">[DI-R020]</a> Diagnostic Instance Creation from DID</li>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001' title="">[DCL-D001]</a> Diagnostic Class Is DID enabled</li>
+<li><a href="DID%20Operations.htm">DID Operations</a></li>
+<li>DIDs in Report <a class='rqRef' href='../../30%20Features/Report/Report%20Generator.htm#RP-R900' title="">[RP-R900]</a></li>
+<li><a href="Dynamically%20Define%20Data%20Identifier.htm">Dynamically Define Data Identifier</a></li>
+<li><a href="Multiple%20Identifier%20Request.htm">Multiple Identifier Request</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Object%20Paths.htm#object-type-selector">Object Paths</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Search.htm#DIDs">Search</a></li>
+<li><a href="../../30%20Features/Variant/Variant%20Identification.htm#identifying-feature">Variant Identification</a></li>
+<li>Variant Locking <a class='rqRef' href='../../30%20Features/Variant/Lock%20Variant.htm#VAR-R015-DIDs' title="">[VAR-R015-DIDs]</a></li>
+</ul>
+</body>
+</html>

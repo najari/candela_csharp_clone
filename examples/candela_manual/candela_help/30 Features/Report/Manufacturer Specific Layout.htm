@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Manufacturer Specific Layout</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="manufacturer-specific-layout-cds-282">Manufacturer Specific Layout (CDS-282)</h1>
+<h2 id="use-case">Use Case</h2>
+<p>You want to generate the RTF report in a company specific layout (front page, headers, footers, font…).</p>
+<h2 id="scope">Scope</h2>
+<p>Layout that may specific:</p>
+<ul>
+<li>front page</li>
+<li>headers</li>
+<li>footers</li>
+<li>headlines</li>
+</ul>
+<p>No impact on:</p>
+<ul>
+<li>number of columns in tables</li>
+<li>order of chapters</li>
+</ul>
+<h2 id="selection">Selection</h2>
+<p>Selection of the specific layout:</p>
+<ul>
+<li>without user interaction</li>
+<li>based on the <a href="../../30%20Features/Document/Document.htm#manufacturer">free text “manufacturer” info</a> in the CANdela file:</li>
+<li>if there is a specific layout with the name <code>&lt;Manufacturer&gt;_Template.tmx</code> (e.g. <code>Vector_Template.tmx</code>), then report uses that layout,</li>
+<li>otherwise it uses the default layout <code>Neutral_Template.tmx</code>.</li>
+</ul>
+<h2 id="details">Details</h2>
+<ul>
+<li>each layout is described in a structured XML file in .TMX format, stored in the CANdelaStudio installation subfolder <code>bin/Report</code>;</li>
+<li>you can also adapt the file <code>Neutral_Template.tmx</code> for the default neutral layout;</li>
+<li>a layout file contains multiple <strong>RTF fragments</strong>;</li>
+<li>one <strong>main fragment</strong> contains RTF for the front page, headers, footers;</li>
+<li>other typically small fragments cover e.g. specific headings</li>
+<li>a fragment contains <strong>placeholders</strong> which thereport replaces by data from the CANdela document (language of the document, etc.)</li>
+</ul>
+<h2 id="placeholders">Placeholders</h2>
+<p>Report supports two types of placeholders in the fragments:</p>
+<h3 id="fixed-string-placeholder">Fixed String Placeholder</h3>
+<p>Used for a constant text to be translated in different languages, e.g. the string “Diagnostic Specification”.</p>
+<p>Fixed string variables look like this: <code>_fst_name_</code></p>
+<ul>
+<li><code>fst</code> = “fixed string”</li>
+<li>the <code>_</code> is used to discern the report variables from RTF codes</li>
+</ul>
+<p>The value of a fixed string variable is taken from the <a href="Report%20Generator.htm#fix-strings">fixed text TMX repository</a>.</p>
+<h3 id="data-placeholder">Data Placeholder</h3>
+<p>Used for data from the CANdela document.</p>
+<ul>
+<li>E.g. <code>_dat_author_</code> gets replaced with the name of the document author.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Placeholder</th>
+<th align="left">Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>_dat_audience_</code></td>
+<td align="left">Audience (target groups) specified for the report</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_authorname_</code></td>
+<td align="left">Name of the author (from the last history item)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_compactline_</code></td>
+<td align="left">Note about compact report</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_date_</code></td>
+<td align="left">Same as <code>_dat_docdate_</code>_</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_deflang_</code></td>
+<td align="left">Language in which document has been opened</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_department_</code></td>
+<td align="left">Department of the author</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_docdate_</code></td>
+<td align="left">Date of last history item</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_docstatus_</code></td>
+<td align="left">String status of last history item (manufacturer dependent)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_docversion_</code></td>
+<td align="left">Version of last history item</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_ecuname_</code></td>
+<td align="left">Name of the ECU</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_editor_</code></td>
+<td align="left">Formatted author information</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_genbyline_</code></td>
+<td align="left">Formatted info about generation (<code>_dat_moduleversion_</code>, <code>_dat_processdate_</code>)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_historyline_</code></td>
+<td align="left">Formatted info from last history item</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_manufacturername_</code></td>
+<td align="left">&quot;Diagnostics Based on&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_moduleversion_</code></td>
+<td align="left">Version of report generator</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_processdate_</code></td>
+<td align="left">Date of report generation</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_revision_</code></td>
+<td align="left">Same as <code>_dat_docversion_</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_status_</code></td>
+<td align="left">Same as <code>_dat_docstatus_</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_tabwidth_</code></td>
+<td align="left">Needed for RTF internally.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_targetline_</code></td>
+<td align="left">Formatted info about audience</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_targetnames_</code></td>
+<td align="left">Same as <code>_dat_audience_</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_templateline_</code></td>
+<td align="left">Formatted info about template</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_templatename_</code></td>
+<td align="left">Name of the CANdela template</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_templateversion_</code></td>
+<td align="left">Version of the CANdela template</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_variantline_</code></td>
+<td align="left">Formatted info about variant</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_variantname_</code></td>
+<td align="left">Name of the variant (if not all variants are exported)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_dat_vgsline_</code></td>
+<td align="left">Formatted info about Vehicle System Groups (<code>vgs</code> sic!, not <code>vsg</code>)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_dat_vgsnames_</code></td>
+<td align="left">Vehicle System Groups specified for the report (<code>vgs</code> sic!, not <code>vsg</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-rtf-fragment">Example RTF Fragment</h2>
+<pre><code>&lt;tu tuid=&#39;frontpage&#39;&gt;
+&lt;tuv
+xml:lang=&#39;en-US&#39;&gt;&lt;seg&gt;{\rtf1\ansi\ansicpg1252\uc1\deff0\_dat_deflang_
+\deflangfe1031
+{\fonttbl
+{\f0\fnil\f 
+\b _fst_author_:\b0 _dat_authorname\par
+... }
+&lt;/seg&gt;
+&lt;/tuv&gt;&lt;/tu&gt;</code></pre>
+<p>Explanation:</p>
+<ul>
+<li><code>_dat_authorname_</code> gets replaced with the name of the document author</li>
+<li><code>_fst_author_</code> gets replaced with the translated fixed string for ”author”</li>
+<li><code>&lt;tu tuid='frontpage'&gt;...</code> is the XML structure hosting the <code>frontpage</code> fragment</li>
+<li><code>{\rtf1... }</code> is the RTF fragment value</li>
+<li>backslashed words are individual RTF codes, like <code>\b</code> and <code>\b0</code> to start and end of bold text.</li>
+</ul>
+<h2 id="how-to-apply-a-specific-layout-tmx-file">How to Apply a Specific Layout TMX File</h2>
+<p>Recipe to apply a specific layout TMX file e.g. <code>Vector_Template.tmx</code>:</p>
+<ol style="list-style-type: decimal">
+<li>Copy the <code>Vector_Template.tmx</code> to the <code>CANdelaStudio\bin\Report</code> folder</li>
+<li>Set the <a href="../../30%20Features/Document/Document.htm#manufacturer">manufacturer in File|Properties|Document Info</a> to &quot;Vector&quot;</li>
+<li>Export to document</li>
+</ol>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Report%20Generator.htm#fix-strings">Fix Strings from TMX File</a></li>
+<li><a href="Report%20Generator.htm">Report Generator</a></li>
+</ul>
+</body>
+</html>

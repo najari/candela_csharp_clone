@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>May Be Combined</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="may-be-combined-of-protocol-service"><span id='_index_446728103'>May Be Combined</span> (of Protocol Service)</h1>
+<h2 id="use-case">Use-case</h2>
+<p>The test system wants to <strong>combine multiple data services</strong> (0x22) into one:</p>
+<ul>
+<li>The test system enumerates identifiers from multiple service Requests in a <strong>combined Request</strong>.</li>
+<li>The ECU responds with an <strong>combination</strong> of the according <strong>positive responses</strong>.</li>
+</ul>
+<h2 id="example">Example</h2>
+<pre><code>Request: 
+  0x22 0x40 0x01  0x40 0x02  0x40 0x03
+
+Positive Response: 
+  0x62 0x40 0x01 (2 bytes data objects1...)
+       0x40 0x02 (4 bytes data objects2...) 
+       0x40 0x03 (1 byte data objects3...)</code></pre>
+<h2 id="may-be-combined-in-candela">&quot;May be Combined&quot; in CANdela</h2>
+<p><span id="PS-R610" class="rqDef">[PS-R610]</span> A Protocol Service has a flag &quot;<strong>may be combined</strong>&quot;.</p>
+<ul>
+<li>CANdelaStudio shows the flag in the <a href="../../20%20UserInterface/Protocol%20Service/Protocol%20Service%20Property%20Page%20Extended.htm">&quot;Extended&quot; page</a> of the Protocol Service property dialog.</li>
+<li>For code generation, you may <strong>specify the maximum number of identifiers</strong>, see <a href="../../30%20Features/DID/Multiple%20Identifier%20Request.htm">Multiple Identifier Request</a>.</li>
+</ul>
+<h3 id="effect">Effect</h3>
+<ul>
+<li>If &quot;may be combined&quot; is true,</li>
+<li>then in all Diagnostic Instances...</li>
+<li>within a Diagnostic Class that uses <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#DCLT-R305' title="">[DCLT-R305]</a> this Protocol Service,</li>
+<li>a tester...
+<ul>
+<li>allows to <strong>combine multiple Requests</strong></li>
+<li>and <strong>accepts multiple combined Responses</strong>.</li>
+</ul></li>
+</ul>
+<h3 id="definition-of-the-combined-request">Definition of the Combined Request</h3>
+<p>The combined Request consists of:</p>
+<ul>
+<li>If the Request in the Protocol Service starts with one or multiple <strong>Constant Components</strong> <a class='rqRef' href='../../30%20Features/Protocol%20Service/Constant%20Component.htm#PS-R300' title="">[PS-R300]</a> (typically the ServiceID 0x22):
+<ul>
+<li>the entire Request of the first Service,</li>
+<li>followed by the other Services, with only the Components following the initial Constant Components
+<ul>
+<li>(typically the Variable Value <a class='rqRef' href='../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm#PS-R400' title="">[PS-R400]</a> for the Identifier <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R025' title="Identifier">[DID-R025]</a>).</li>
+</ul></li>
+<li>E.g. <strong>0x22</strong> 0x40 0x01 - 0x40 0x02 - 0x40 0x03.</li>
+</ul></li>
+<li>If the Request does not contain an initial Constant Component:
+<ul>
+<li>all entire Requests combined.</li>
+</ul></li>
+<li>The Requests are considered in the order of the Diagnostic Instances in the document.</li>
+</ul>
+<h3 id="denied-services">Denied Services</h3>
+<p>For a combined...</p>
+<ul>
+<li><strong>physical Request</strong>:
+<ul>
+<li>if at least one of the identifiers fails,</li>
+<li>the <strong>entire Request</strong> gets a <strong>negative response</strong>;</li>
+</ul></li>
+<li><strong>functional Request</strong>:
+<ul>
+<li>if one of the identifiers fails,</li>
+<li>the negative response for the identifier is simply <strong>suppressed</strong>.</li>
+</ul></li>
+</ul>
+<h3 id="availability-in-vector-tools">Availability in Vector tools</h3>
+<ul>
+<li>in CANape since 17.0 SP3.</li>
+</ul>
+<h3 id="may-be-combined-in-odx">&quot;May be Combined&quot; in ODX</h3>
+<ul>
+<li>ODX has no corresponding flag.</li>
+<li>You may express the combination by iteration.</li>
+</ul>
+<h3 id="no-relation-with-hasmultipleresponses">No Relation with &quot;hasMultipleResponses&quot;</h3>
+<p>&quot;May be combined&quot; is not related with &quot;hasMultipleResponses&quot; <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R720' title="">[PS-R720]</a>.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/ECU/ECU%20Property%20Page%20Maximum%20Number%20of%20Identifiers.htm">ECU Property Page &quot;Maximum Number of Identifiers&quot;</a></li>
+<li><a href="../../30%20Features/DID/Multiple%20Identifier%20Request.htm">Multiple Identifier Request</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="../../20%20UserInterface/Protocol%20Service/Protocol%20Service%20Property%20Page%20Extended.htm">Protocol Service Property Page &quot;Extended&quot;</a></li>
+</ul>
+</body>
+</html>

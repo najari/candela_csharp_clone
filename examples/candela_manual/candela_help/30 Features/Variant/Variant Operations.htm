@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Variant Operations</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="variant-operations">Variant Operations</h1>
+<h2 id="create">Create</h2>
+<p><span id="VAR-R100" class="rqDef" title="Create from Other Variant in Document">[VAR-R100 Create from Other Variant in Document]</span> (<a href="../../20%20UserInterface/Variant/Variant%20Wizard.htm">Variant Wizard</a>)</p>
+<ul>
+<li><span id="VAR-R100-DI" class="rqDef">[VAR-R100-DI]</span> Create copies of or references to diagnostic instances
+<ul>
+<li>as specified in the wizard;</li>
+<li>ensure consistency conditions for new diagnostic instances <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DI-R010' title="Diagnostic Instance Creation">[DI-R010]</a></li>
+</ul></li>
+<li><span id="VAR-R100-Attributes" class="rqDef" title="Copy Variant Attributes">[VAR-R100-Attributes Copy Variant Attributes]</span> when creating the new variant, CANdelaStudio optionally copies all attributes from the other variant to the new variant.</li>
+</ul>
+<h2 id="modify-variant-qualifier">Modify Variant Qualifier</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093-SelVariantRename' title="">[RQ-R093-SelVariantRename]</a> reset the variant selected for requirements and diagnostic objects.</li>
+</ul>
+<h2 id="lock-variant">Lock Variant</h2>
+<ul>
+<li>see <a href="Lock%20Variant.htm#lock">Lock Variant</a>.</li>
+</ul>
+<h2 id="unlock-variant">Unlock Variant</h2>
+<ul>
+<li>see <a href="Lock%20Variant.htm#unlock">Lock Variant</a>.</li>
+</ul>
+<h2 id="variant-pasting">Copy/Paste</h2>
+<h3 id="within-a-document">Within a Document</h3>
+<p><span id="VAR-R700" class="rqDef" title="CopyNPaste IntraCdd">[VAR-R700 CopyNPaste IntraCdd]</span> Pasting a variant to the same document:</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R260' title="New Variant">[DID-R260]</a> take over all DIDs from the other variant as a reference</li>
+<li>ensure consistency conditions for new diagnostic instances <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DI-R010' title="Diagnostic Instance Creation">[DI-R010]</a></li>
+</ul>
+<h3 id="across-documents">Across Documents</h3>
+<p><span id="VAR-R705" class="rqDef" title="CopyNPaste InterCdd">[VAR-R705 CopyNPaste InterCdd]</span> Pasting a variant to a different document:</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R262' title="Paste Variant">[DID-R262]</a> take over all DIDs from the other variant including referenced data types.</li>
+<li>ensure consistency conditions for new diagnostic instances <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DI-R010' title="Diagnostic Instance Creation">[DI-R010]</a></li>
+</ul>
+<h2 id="delete">Delete</h2>
+<p><span id="VAR-R750" class="rqDef" title="Delete Variant">[VAR-R750 Delete Variant]</span> Delete a variant:</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R265' title="Delete Variant">[DID-R265]</a> delete all DIDs contained in the variant.</li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093-SelVariantDelete' title="">[RQ-R093-SelVariantDelete]</a> reset the variant selected for requirements and diagnostic objects.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Variant/Variants.htm">Variant (List)</a></li>
+<li><a href="../../20%20UserInterface/Variant/Variant.htm">Variant (Right Side)</a></li>
+<li><a href="../../20%20UserInterface/Variant/Variant%20Wizard.htm">Variant Wizard</a></li>
+<li><a href="../../30%20Features/Variant/Variant.htm">Variant (Feature)</a></li>
+</ul>
+</body>
+</html>

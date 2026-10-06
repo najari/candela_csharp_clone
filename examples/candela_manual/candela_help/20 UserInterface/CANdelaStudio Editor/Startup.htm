@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Startup</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="start-up"><span id='_index_446727869'>Start-Up</span></h1>
+<h2 id="disclaimer"><span id='_index_446727870'>Disclaimer</span></h2>
+<p><span id="STRT-R010" class="rqDef">[STRT-R010]</span> On start-up, CANdelaStudio shows a disclaimer dialog</p>
+<blockquote>
+<p>&quot;Warning! The application of this product can be dangerous. Please use it with care.&quot;</p>
+</blockquote>
+<p>You must either accept or cancel start-up of CANdelaStudio.</p>
+<h2 id="splash-screen"><span id='_index_446727871'>Splash Screen</span></h2>
+<div class="figure">
+<img src="Images/Splash%20Screen.jpg" alt="Splash Screen" />
+<p class="caption">Splash Screen</p>
+</div>
+<p><span id="STRT-R020" class="rqDef">[STRT-R020]</span> After the disclaimer dialog, CANdelaStudio shows the splash screen with the same information as the &quot;About&quot; <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File%20-%20Product%20Information%20-%20About.htm#MENU-R1270' title="">[MENU-R1270]</a> section shown in Ribbon Tab File - Product Information <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R360' title="">[MENU-R360]</a>.</p>
+<p>This includes information about <a href="../../30%20Features/CANdelaStudio%20Editor/32%20or%2064%20Bit.htm">32 or 64 bit</a>.</p>
+<p><span id="STRT-R060" class="rqDef">[STRT-R060]</span> The dialog shows info about patch installers <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File%20-%20Product%20Information%20-%20About.htm#ABOUT-R060' title="Patch Installer">[ABOUT-R060]</a>, but somewhat restricted:</p>
+<ul>
+<li>For the first found Patch Installer file, CANdelaStudio shows the text from the file in the first line.</li>
+<li>For further Patch Installer files, CANdelaStudio replaces all blanks in the text from the file by '_' and shows them after the first line.
+<ul>
+<li>This is technically necessary to get a well formatted output in the About Dialog.</li>
+</ul></li>
+</ul>
+<p>Drag'n drop of CANdela documents onto the CANdelaStudio window is disabled until the splash screen disappears (CDS-39210 8.5).</p>
+<h2 id="user-feedback">User Feedback</h2>
+<p><span id="STRT-R070" class="rqDef">[STRT-R070]</span> On start-up, ...</p>
+<ul>
+<li>after the 15th start-up after installation of a main version (12, 13,...) (CDS-70910 v12)</li>
+<li>CANdelaStudio shows the <a href="User%20Feedback.htm">User Feedback</a> dialog.</li>
+<li>The dialog is also available in Ribbon Tab File <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File%20-%20Product%20Information.htm#MENU-R1250' title="">[MENU-R1250]</a>.</li>
+</ul>
+<h2 id="admin">Running CANdelaStudio with <span id='_index_446727872'>Admin Privileges</span></h2>
+<p><span id="STRT-R030" class="rqDef">[STRT-R030]</span> You may run CANdelaStudio with Windows admin privileges (<strong>not recommended</strong>!).</p>
+<ul>
+<li><span id="STRT-R030-Install" class="rqDef">[STRT-R030-Install]</span> This situation arises if you start CANdelaStudio directly from <strong>within the installation</strong> <a class='rqRef' href='../../30 Features\Installation\Setup.htm#ISETUP-R340-Start' title="">[ISETUP-R340-Start]</a>.</li>
+</ul>
+<p>The following <strong>restrictions</strong> apply:</p>
+<ul>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R340-Admin' title="">[MENU-R340-Admin]</a> The recent file list does not show files on network shares.</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm#OPEN-R120-Admin' title="">[OPEN-R120-Admin]</a> The File|Open page does not show network shares.</li>
+<li>Reason: by default, Windows network shares are user-specific, therefore regular network shares are not available.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/32%20or%2064%20Bit.htm">32 or 64 Bit</a></li>
+<li><a href="Drag%20and%20Drop%20of%20Files.htm">Drag and Drop of Files</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Loading%20a%20Document%20or%20Template.htm">Loading a Document or Template</a></li>
+<li>Ribbon Tab File - Product Information <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R360' title="">[MENU-R360]</a></li>
+</ul>
+</body>
+</html>

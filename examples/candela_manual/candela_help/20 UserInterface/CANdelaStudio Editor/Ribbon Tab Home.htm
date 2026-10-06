@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Ribbon Tab Home</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="ribbon-tab-home">Ribbon Tab &quot;Home&quot;</h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Ribbons.jpg" alt="Ribbon Tab &quot;Home&quot;" />
+<p class="caption">Ribbon Tab &quot;Home&quot;</p>
+</div>
+<h2 id="navigation">Navigation</h2>
+<p>The ribbon group &quot;Navigation&quot; provides access to previously visited objects.</p>
+<p>See also the <a href="Ribbon%20Navigation%20Area.htm">Ribbon Navigation Area</a> top-right in the CANdelaStudio window for navigation using object paths.</p>
+<h3 id="back">Back</h3>
+<p><span id="MENU-R696" class="rqDef">[MENU-R696]</span> Navigates back in the history of visited objects (like in a web browser).</p>
+<h3 id="forward">Forward</h3>
+<p><span id="MENU-R698" class="rqDef">[MENU-R698]</span> Navigates forward in the history of visited objects (like in a web browser).</p>
+<h2 id="edit">Edit</h2>
+<h3 id="cut">Cut</h3>
+<p><span id="MENU-R410" class="rqDef">[MENU-R410]</span> Cuts the selected objects to the CANdelaStudio clipboard.</p>
+<h3 id="copy">Copy</h3>
+<p><span id="MENU-R413" class="rqDef">[MENU-R413]</span> Copies the selected objects to the CANdelaStudio internal clipboard.</p>
+<h3 id="paste">Paste</h3>
+<p><span id="MENU-R415" class="rqDef">[MENU-R415]</span> Pastes the previously cut or copied objects from the CANdelaStudio internal clipboard,</p>
+<ul>
+<li>preserves the key properties</li>
+<li>not available in case key properties would not be unique
+<ul>
+<li>as opposed to &quot;Paste Content&quot;</li>
+</ul></li>
+</ul>
+<h3 id="paste-content">Paste Content</h3>
+<p><span id="MENU-R417" class="rqDef">[MENU-R417]</span> Pastes the previously cut or copied objects from the CANdelaStudio clipboard, adapting key properties to be unique if necessary.</p>
+<h3 id="paste-as-reference">Paste as Reference</h3>
+<p><span id="MENU-R425" class="rqDef">[MENU-R425]</span> Paste as Reference | Copies object(s) from the CANdelaStudio internal clipboard as a reference, see diagnostic instance operation <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DIOP-R030' title="Paste as Reference">[DIOP-R030]</a>.</p>
+<ul>
+<li><span id="MENU-R425-Insens" class="rqDef">[MENU-R425-Insens]</span> The button is insensitive e.g. after deleting a previously copied element (CDS-70068 v10).</li>
+</ul>
+<h3 id="delete">Delete</h3>
+<p><span id="MENU-R420" class="rqDef">[MENU-R420]</span> Deletes the selected objects.</p>
+<h2 id="element">Element</h2>
+<h3 id="properties">Properties</h3>
+<p><span id="MENU-R590" class="rqDef">[MENU-R590]</span> Opens the property dialog of the selected object.</p>
+<p>For most objects, the dialog has at least the page <a href="../../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">General</a>.</p>
+<h3 id="references">References</h3>
+<p><span id="MENU-R710" class="rqDef">[MENU-R710]</span> Opens the &quot;References&quot; dialog for the selected object:</p>
+<ul>
+<li><a href="../../20%20UserInterface/Common%20Properties/Object%20References%20Dialog.htm">References</a> dialog in variants</li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Object%20Used%20by%20Dialog.htm">Used by</a> dialog for other objects</li>
+</ul>
+<h2 id="document">Document</h2>
+<h3 id="replace-reference-with-copy">Replace Reference with Copy</h3>
+<p><span id="MENU-R440" class="rqDef">[MENU-R440]</span> Runs the diagnostic instance operation <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DIOP-R040' title="Replace Reference with Copy">[DIOP-R040]</a> and the DID operation <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R230' title="Replace Reference with Copy">[DID-R230]</a>.</p>
+<h3 id="replace-copy-with-reference-in-base-variant">Replace Copy with Reference in Base Variant</h3>
+<p><span id="MENU-R450" class="rqDef">[MENU-R450]</span> Runs the diagnostic instance operation <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DIOP-R050' title="">[DIOP-R050]</a>.</p>
+<h3 id="replace-identical-diagnostic-instances-and-job-container">Replace Identical Diagnostic Instances and Job Container</h3>
+<p><span id="MENU-R460" class="rqDef">[MENU-R460]</span> Runs the diagnostic instance operation <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DIOP-R060' title="">[DIOP-R060]</a>.</p>
+<ul>
+<li><span id="MENU-R460-No" class="rqDef">[MENU-R460-No]</span> If there are no sharable Diagnostic Instances or Job Containers, CANdelaStudio shows a hint in a message box.</li>
+</ul>
+<h3 id="replace-data-type">Replace Data Type</h3>
+<p><span id="MENU-R475" class="rqDef">[MENU-R475]</span> Opens the <a href="../../30%20Features/Data%20Type/Replace%20Data%20Type.htm">&quot;Replace Data Type&quot; Dialog</a>.</p>
+<h3 id="replace-similar-data-types-cds-68992-v11">Replace Similar Data Types (CDS-68992 v11)</h3>
+<p><span id="MENU-R500" class="rqDef">[MENU-R500]</span> Opens the <a href="../../20%20UserInterface/Data%20Type/Replace%20Similar%20Data%20Types.htm">&quot;Replace Similar Data Types&quot; Dialog</a>.</p>
+<h3 id="check-document-consistency">Check Document Consistency</h3>
+<p><span id="MENU-R950" class="rqDef">[MENU-R950]</span> Runs the <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a>.</p>
+
+<h2 id="move">Move</h2>
+<h3 id="up">Up</h3>
+<p><span id="MENU-R480" class="rqDef">[MENU-R480]</span> Moves the selected object up in the document (if allowed in the specific tree or list).</p>
+<h3 id="down">Down</h3>
+<p><span id="MENU-R485" class="rqDef">[MENU-R485]</span> Moves the selected object down in the document (if allowed in the specific tree or list).</p>
+<h2 id="compare-element">Compare Element</h2>
+<h3 id="select-as-left-side">Select as Left Side</h3>
+<p><span id="MENU-R490" class="rqDef">[MENU-R490]</span> Selects the selected object as left side for the &quot;Compare&quot; operation, to be completed by &quot;Compare to Left Side&quot; (next chapter).</p>
+<h3 id="compare-to-left-side">Compare to Left Side</h3>
+<p><span id="MENU-R495" class="rqDef">[MENU-R495]</span> Compares the selected object to the object specified via &quot;Select as Left Side&quot; (see previous chapter).</p>
+<p>See <a href="../../20%20UserInterface/Compare/Compare%20View.htm">Compare View</a>.</p>
+<h2 id="find">Find</h2>
+<h3 id="find-1">Find</h3>
+<p><span id="MENU-R470" class="rqDef">[MENU-R470]</span> Opens the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Search%20Dialog.htm">Search Dialog</a>.</p>
+<h3 id="next">Next</h3>
+<p><span id="MENU-R472" class="rqDef">[MENU-R472]</span> Repeats the last search (also available via key <code>F3</code>).</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Ribbon%20Introduction.htm">Ribbon Introduction</a></li>
+</ul>
+</body>
+</html>

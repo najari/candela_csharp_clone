@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Instance from DID</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-instance-creation-from-did-cds-39296">Diagnostic Instance Creation from DID (CDS-39296)</h1>
+<p><span id="DIUI-R030" class="rqDef" title="Diagnostic Instance Creation from DID">[DIUI-R030 Diagnostic Instance Creation from DID]</span></p>
+<p>Context: <a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instances.htm#DIUI-R020' title="Diagnostic Instance Creation from DID">[DIUI-R020]</a> Diagnostic Instance Creation from DID.</p>
+<div class="figure">
+<img src="Images/New%20Diagnostic%20Instance.jpg" alt="Dialog &quot;New Diagnostic Instance&quot;" />
+<p class="caption">Dialog &quot;New Diagnostic Instance&quot;</p>
+</div>
+<ul>
+<li><span id="DIUI-R030-Dialog" class="rqDef">[DIUI-R030-Dialog]</span> CANdelaStudio shows a selection dialog from the DID list of the variant
+<ul>
+<li>(like &quot;Add DIDs&quot; in Common Snapshot Data).</li>
+</ul></li>
+<li><span id="DIUI-R030-showAll" class="rqDef">[DIUI-R030-showAll]</span> <strong>&quot;Show all DIDs&quot;</strong>
+<ul>
+<li>The dialog provides a checkbox to select between...</li>
+<li><span id="DIUI-R030-all" class="rqDef">[DIUI-R030-all]</span> showing all DIDs of the current variant, and</li>
+<li><span id="DIUI-R030-NotYetUsed" class="rqDef">[DIUI-R030-NotYetUsed]</span> showing only DIDs of the current variant which are not yet used <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-D001' title="DID Used">[DID-D001]</a> by a diagnostic instance in the variant.</li>
+</ul></li>
+<li><span id="DIUI-R030-Selection" class="rqDef">[DIUI-R030-Selection]</span> The dialog supports multi-selection.
+<ul>
+<li>Note: CANdelaStudio creates <strong>one</strong> diagnostic instance <strong>for each</strong> selected DID, respectively.</li>
+</ul></li>
+<li><span id="DIUI-R030-ButtonWithoutDID" class="rqDef">[DIUI-R030-ButtonWithoutDID]</span> <strong>Button &quot;Create without DID&quot;</strong>
+<ul>
+<li>If the diagnostic class template does <strong>not</strong> force the use of DIDs via the <strong>DID semantics</strong> <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R050' title="Combined Component DID Semantics">[DID-R050]</a>,</li>
+<li>and the diagnostic class is <strong>DID enabled</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001-a' title="">[DCL-D001-a]</a>,</li>
+<li>then the dialog provides a button &quot;Create without DID&quot; at the bottom left side of the dialog (CDS-40460 8.5 SP2).</li>
+<li>Note: the dialog does <strong>not</strong> show the button because there is no choice if the diagnostic class
+<ul>
+<li>... forces the use of DIDs (the dialog must create a DID),</li>
+<li>... is not DID enabled (the dialog shall not create a DID)</li>
+</ul></li>
+</ul></li>
+<li><span id="DIUI-R030-Create" class="rqDef">[DIUI-R030-Create]</span> <strong>Checkbox &quot;Create with New Identifier&quot;</strong> (CDS-38622 v12)
+<ul>
+<li>If the checkbox is checked,
+<ul>
+<li>the DID list is insensitive, the edit control to the right is sensitive</li>
+<li>this is the case automatically if the DID list is empty (CDS-38622 R080)</li>
+</ul></li>
+<li>If the checkbox is un-checked,
+<ul>
+<li>the DID list is sensitive, the edit control to the right is insensitive</li>
+</ul></li>
+</ul></li>
+<li><span id="DIUI-R030-NoDID" class="rqDef">[DIUI-R030-NoDID]</span> If the DID list is empty, the dialog initially...
+<ul>
+<li>checks &quot;Create with New Identifier&quot; and</li>
+<li>focuses the identifier edit control.</li>
+</ul></li>
+<li><span id="DIUI-R030-Invalid" class="rqDef">[DIUI-R030-Invalid]</span> When you enter an invalid identifier (e.g. an already existing one), the dialog shows a message and stays open.</li>
+</ul>
+
+<p>Future: the dialog may have a button &quot;Go to DID List&quot;.</p>
+<h2 id="create-without-did">Create without DID</h2>
+<p><span id="DIUI-R030-WithoutDID" class="rqDef">[DIUI-R030-WithoutDID]</span> When the user presses the button &quot;Create without DID&quot; (<a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance%20from%20DID.htm#DIUI-R030-ButtonWithoutDID' title="">[DIUI-R030-ButtonWithoutDID]</a> above), CANdelaStudio creates a diagnostic instance without DID Data Reference <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DI-R010' title="Diagnostic Instance Creation">[DI-R010]</a>, and close the dialog.</p>
+<h2 id="ok">OK</h2>
+<p>On OK, CANdelaStudio creates a diagnostic instance <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DI-R020' title="Diagnostic Instance Creation from DID">[DI-R020]</a> and close the dialog.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance Feature</a></li>
+<li><a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance User Interface</a></li>
+</ul>
+</body>
+</html>

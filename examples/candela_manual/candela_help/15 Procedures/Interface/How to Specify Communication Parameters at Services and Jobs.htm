@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Specify Communication Parameters at Services and Jobs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-specify-communication-parameters-at-services-and-jobs">How to Specify Communication Parameters at Services and Jobs</h1>
+<h2 id="enabling-communication-parameters-at-services-and-jobs">Enabling Communication Parameters at Services and Jobs</h2>
+<p>This can be done in Expert View only.</p>
+<p>In the communication parameter list of an interface,</p>
+<ul>
+<li>open the property dialog for a communication parameter, and</li>
+<li>enable the checkboxes „Can be overwritten at Services“ or „Can be overwritten at Jobs“.</li>
+</ul>
+<p>The example shows communication parameter „RC21CompletionTimeout“ in the interface „CANOE DoIP“:</p>
+<div class="figure">
+<img src="Images/Communication%20Parameter%20Properties.jpg" alt="Checkboxes for Overwriting Communication Parameters" />
+<p class="caption">Checkboxes for Overwriting Communication Parameters</p>
+</div>
+<ul>
+<li>In the tree node &quot;Services Supported for Interfaces&quot;, ensure the services are supported for the interfaces.</li>
+</ul>
+<p>For example, in the screenshot below, for the Used Protocol Service „Session/Start“ of Protocol Service &quot;($10) DiagnosticSessionControl&quot;, communication parameter „RC21CompletionTimeout“ is supported for interface „CANOE DoIP“:</p>
+<div class="figure">
+<img src="Images/Services%20Supported%20for%20Interfaces.jpg" alt="Services Supported for Interfaces" />
+<p class="caption">Services Supported for Interfaces</p>
+</div>
+<h2 id="overriding-a-communication-parameter-at-a-service-or-job">Overriding a Communication Parameter at a Service or Job</h2>
+<p>The property page for local communication parameter values is hidden by default (to avoid clutter of the user interface), it must be <strong>enabled</strong> in the &quot;General&quot; page first.</p>
+<p>To have a local communication parameter for a service in a diagnostic instance,...</p>
+<ul>
+<li>open the Service property dialog in the diagnostic instance, and</li>
+<li>check &quot;Edit communication parameter&quot; in the &quot;General&quot; page:</li>
+</ul>
+<div class="figure">
+<img src="Images/Communication%20Parameter%20at%20Service.jpg" alt="Enabling Communication Parameter for Service in the Diagnostic Instance" />
+<p class="caption">Enabling Communication Parameter for Service in the Diagnostic Instance</p>
+</div>
+<ul>
+<li>With this checkbox checked, an <strong>additional page &quot;Communication Parameter&quot;</strong> is shown. The page shows the local communication parameters for each interface.</li>
+<li>Select the desired interface in the combobox on top,</li>
+<li>check a communication parameter from the list of communication parameters that are enabled for local overwriting:</li>
+</ul>
+<div class="figure">
+<img src="Images/Add%20Communication%20Parameter%20at%20Service.jpg" alt="Dialog to Add a Local Communication Parameter at a Service" />
+<p class="caption">Dialog to Add a Local Communication Parameter at a Service</p>
+</div>
+<ul>
+<li>press &quot;OK&quot;</li>
+<li>the communication parameter is available in the list in page &quot;Communication Parameter&quot;</li>
+<li>CANdelaStudio automatically inserts the value from the document-wide interfaces list (e.g. &quot;1300&quot;).</li>
+</ul>
+<div class="figure">
+<img src="Images/Edit%20Communication%20Parameter%20at%20Service.jpg" alt="Edit Local Communication Parameter in Service Property Dialog" />
+<p class="caption">Edit Local Communication Parameter in Service Property Dialog</p>
+</div>
+<ul>
+<li>adapt the value as desired</li>
+<li>press &quot;OK&quot; to leave the dialog.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Interface/Communication%20Parameters%20at%20Services%20and%20Jobs.htm">Communication Parameters at Services and Jobs (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Interface/Interface.htm">Interfaces (User Interface)</a></li>
+<li><a href="../../30%20Features/Interface/Interface.htm">Interfaces (Feature)</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Value</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="value">Value</h1>
+<p>Values for a data object must conform with the data type that the data object references.</p>
+<p>CANdelaStudio allows editing in different number formats:</p>
+<div class="figure">
+<img src="Images/ValueEditing.jpg" alt="Value Editing with Different Formats" />
+<p class="caption">Value Editing with Different Formats</p>
+</div>
+<h2 id="unsigned-and-signed-value">Unsigned and Signed Value</h2>
+<p><span id="VALUI-R020-BCD" class="rqDef">[VALUI-R020-BCD]</span> for values of encoding &quot;Unsigned&quot; and &quot;Signed...&quot;, the CANdelaStudio edit controls shall not offer the editing format &quot;BCD&quot; (CDS-38786 8.5 SP2).</p>
+<p>Note: with the addition of this restriction in 8.5 SP2, no migration of the display format is necessary, since the CANdela data model allows <a class='rqRef' href='../../30 Features\Data Type\Data Type Property Dependencies.htm#DTDEP-R120' title="">[DTDEP-R120]</a>...</p>
+<ul>
+<li>only display format &quot;decimal&quot; for encoding &quot;BCD&quot;,</li>
+<li><strong>not</strong> the display format &quot;BCD&quot; for encoding &quot;unsigned&quot; or &quot;signed&quot;</li>
+</ul>
+<h2 id="float-value">Float Value</h2>
+<p>CANdelaStudio accepts comma &quot;,&quot; and point &quot;.&quot; as a decimal point, e.g. &quot;3.1415&quot; or &quot;2,71828&quot;.</p>
+<h2 id="field-array-value">Field (Array) Value</h2>
+<p>Array values are specified by separating the elements by blank, like <code>0x01 0x02 0x03</code>. CANdelaStudio also accepts semicolon &quot;;&quot; as a separator.</p>
+<h2 id="CDS-38786">Editing of BCD Values (CDS-38786 8.5 SP2)</h2>
+<p><span id="VALUI-R050" class="rqDef" title="BCD Editing Formats">[VALUI-R050 BCD Editing Formats]</span> for values of encoding BCD (see <a class='rqRef' href='../../30 Features\Data Type\Encoding.htm#DTENC-R050' title="BCD">[DTENC-R050]</a>), CANdelaStudio edit controls shall offer the editing formats &quot;Decimal&quot; and &quot;Hex&quot;, no others.</p>
+<ul>
+<li><p><span id="VALUI-R050-Dec" class="rqDef">[VALUI-R050-Dec]</span> For editing format &quot;Decimal&quot;, the edit controls shall show and edit the data model integer value as hex digits 0..9.</p></li>
+<li><p><span id="VALUI-R050-Hex" class="rqDef">[VALUI-R050-Hex]</span> For editing &quot;Hex&quot;, dito with prefix &quot;0x&quot; (as for other encodings).</p></li>
+<li><p><span id="VALUI-R050-Invalid" class="rqDef">[VALUI-R050-Invalid]</span> For invalid BCD values, the edit control shall initially show &quot;0&quot;.</p></li>
+<li><p><span id="VALUI-R050-Digits" class="rqDef">[VALUI-R050-Digits]</span> CANdelaStudio shall limit the input to the digits 0..9.</p></li>
+<li><p><span id="VALUI-R050-Length" class="rqDef">[VALUI-R050-Length]</span> CANdelaStudio shall limit the number of digits to <code>&lt;number of bytes&gt; * 2</code>.</p></li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>For BCD integer value 0x20, the edit control shall initially show &quot;20&quot;.
+<ul>
+<li>When the user switches to editing format &quot;Hex&quot;, the control shall show &quot;0x20&quot;.</li>
+</ul></li>
+<li>For BCD integer value 0xA0 (not valid as BCD), the edit control shall initially show &quot;0&quot;.</li>
+<li>For user input &quot;20&quot;, the control shall store the integer value 0x20 = decimal 32 in data model and CDD.</li>
+</ul>
+<p>Note: unfortunately, the meaning of BCD values in CANdelaStudio before 8.5 SP2 <a href="../../30%20Features/Data%20Type/Encoding.htm#handling-bcd">has not been clear</a>.</p>
+<h3 id="editing-bcd-before-85sp2">Editing of BCD Values Before 8.5 SP2</h3>
+<p><strong>Before 8.5 SP2</strong>, CANdelaStudio provided editing of BCD Values in...</p>
+<ul>
+<li><p><strong>&quot;bcd&quot; format</strong>, e.g. the value &quot;32&quot;:</p>
+<div class="figure">
+<img src="Images/BCD%20Editing%20BCD%20Format.jpg" alt="CANdelaStudio Before 8.5 SP2: Editing of BCD Value in BCD Format" />
+<p class="caption">CANdelaStudio Before 8.5 SP2: Editing of BCD Value in BCD Format</p>
+</div></li>
+<li><p><strong>&quot;hex&quot; format</strong>, e.g. the same value &quot;0x20&quot;:</p>
+<div class="figure">
+<img src="Images/BCD%20Editing%20Hex%20Format.jpg" alt="CANdelaStudio Before 8.5 SP2: Editing of BCD Value in Hex Format" />
+<p class="caption">CANdelaStudio Before 8.5 SP2: Editing of BCD Value in Hex Format</p>
+</div></li>
+</ul>
+<p>This was irritating and resulted in the <a href="../../30%20Features/Data%20Type/Encoding.htm#handling-bcd">BCD Value Normalization in 8.5 SP2</a>.</p>
+<p>Editing of BCD Values <strong>since 8.5 SP2</strong> is described above <a class='rqRef' href='../../20%20UserInterface/Common%20Properties/Value.htm#VALUI-R050' title="BCD Editing Formats">[VALUI-R050]</a>.</p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Packet</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="packet-data-type-3.0"><span id='_index_446727979'>Packet</span> Data Type (3.0)</h1>
+<p>A Packet data type  contains data objects, like a <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram table</a> in a diagnostic instance.</p>
+<p>You can use a packet data type if you want to reuse the same set of data objects in multiple diagnostic instances.</p>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Packet.htm">dialog</a>.</p>
+<h2 id="properties">Properties</h2>
+<ul>
+<li><p>the Packet data type is handled like Identity data type as much as possible. </p></li>
+<li><p>The maximum size of the Packet is derived from the maximum size of all data objects which are in the Packet.</p></li>
+<li><p>Minimum size equals maximum size (“field fix”) always.</p></li>
+<li><p>Coded and phys value types have equal property values.</p></li>
+<li><p>a packet data type can contain data objects that again reference a packet data type (&quot;nesting&quot;; 6.0, CDS-10035), controlled by a <a href="Data%20Type%20Authorization.htm">document option</a> set in the template (in menu File | Properties | Data Type Authorization)</p></li>
+<li>data objects, gaps and bit fields are always allowed</li>
+<li>but no data objects that reference a field with minsize != maxsize (see CDS-3641/CDS-4035)</li>
+<li><p>recursion is not allowed (referencing the <em>same</em> packet data type)</p></li>
+</ul>
+<h2 id="history">History</h2>
+<p>When a document &gt;= 6.0 with nested packet data types is saved in the format of a previous version (5.5, 5.0...), the packet data types contained in a packet data type are all unpacked. This means that the data objects are copied to the uppermost packet data type when saving in that format.</p>
+<p>Until 4.0, a packet contained an optional DID number.</p>
+<p>In 5.0, DIDs were defined via a special semantics in the diagnostic class template instead (CDS-5338).</p>
+<h2 id="packet-semantics">Packet Semantics</h2>
+<p>The contents of the packet data type is not substituted tracelessly into a telegram that references the telegram. Rather, the packet data type defines an own level in the CANdela data model. Therefore, <strong>it constitutes a namespace</strong>, and <strong>the default for exports is to preserve the structure</strong> if it is supported in the target model.</p>
+<h2 id="visible-as-structure-in-diagnostic-application-odx-is-visible-cds-14214-6.5">Visible as structure in diagnostic application (ODX: IS-VISIBLE) (CDS-14214 6.5)</h2>
+<ul>
+<li>The bool property defines whether...
+<ul>
+<li>the Packet itself shall be shown in a diagnostic application,</li>
+<li>or just its contents (i.e. the packet is only meant to group / reuse data in authoring)</li>
+</ul></li>
+<li>default: true.</li>
+<li>The property corresponds with the ODX property &quot;IS-VISIBLE&quot;.</li>
+<li>the property has <em>no</em> effect on display in authoring tools</li>
+<li>RTF report could evaluate the flag = provide a test system oriented view. This seems no use-case, since the report is authoring oriented (&quot;specification&quot;) (cf. CDS-7574)</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+</ul>
+</body>
+</html>

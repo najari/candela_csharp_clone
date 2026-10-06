@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Data Exchange</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-data-exchange-ddx-cds-35886-8.2"><span id='_index_446728033'>Diagnostic Data Exchange</span> (<span id='_index_446728034'>DDx</span>) (CDS-35886 8.2)</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The DDx export is manufacturer specific (Chrysler, FIAT; see &quot;<a href="../../30%20Features/Document/Document.htm#diagnostics-based-on">Diagnostics based on</a>&quot;).</p>
+<p>The export’s central functionality is to generate DDx from the given diagnostic instance and data types in a CANdela file.</p>
+<p>The export is available in ribbon tab Data Exchange | Export | Manufacturer Specific <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R140' title="">[MENU-R140]</a>.</p>
+<h2 id="saveas-dialog">SaveAs Dialog</h2>
+<p><span id="DDX-R050" class="rqDef">[DDX-R050]</span> The SaveAs dialog...</p>
+<ul>
+<li><span id="DDX-R050-ChangeName" class="rqDef">[DDX-R050-ChangeName]</span> allows to change the default name (CDS-69602 9.1);</li>
+<li><span id="DDX-R050-DefaultName" class="rqDef">[DDX-R050-DefaultName]</span> the default name has the file name extension .ddx (CDS-69602 9.1).</li>
+</ul>
+<h2 id="skipped-elements">Skipped Elements</h2>
+<p><span id="DDX-R200" class="rqDef">[DDX-R200]</span> During check and export, diagnostic instances, data types and data objects may be encountered that are not described in the DDx Mapping Specification. These elements shall be recorded as <strong>skipped elements</strong>.</p>
+<p>From a current state of the specification, specific data types, and services not covered by the mapping specification (e.g. DIAnalyzer Services, OBD services) will appear in this list.</p>
+<p><span id="DDX-R005" class="rqDef">[DDX-R005]</span> Upon finishing the import, the list of skipped elements shall be serialized into a text file for user review. The file listing skipped elements shall be located next to the exported DDx file, having the same name but a different file name extension.</p>
+<h2 id="checker">Checker</h2>
+<p><span id="DDX-R010" class="rqDef">[DDX-R010]</span> The export and the checker shall run side-by-side to check the exported document on-the-fly.</p>
+<p><span id="DDX-R010-Start" class="rqDef">[DDX-R010-Start]</span> An export of DDx from CANdelaStudio can be started without checking the CANdelaStudio document first. Thus the checker and the export shall run side-by-side in order to detect possible issues during export.</p>
+<p><span id="DDX-R011" class="rqDef">[DDX-R011]</span> Run</p>
+<ul>
+<li>The <strong>checker</strong> shall always <strong>run to completion</strong>.
+<ul>
+<li>present all errors and warnings a document contains</li>
+</ul></li>
+<li>The <strong>export</strong> shall <strong>abort at any error</strong> encountered
+<ul>
+<li>exporting a large CANdelaStudio document may be expensive and would waste time.</li>
+</ul></li>
+</ul>
+<h2 id="versions">Versions</h2>
+<h3 id="ddx-1.0-cds-38134-8.1-sp2-p2">DDx 1.0 (CDS-38134 8.1 SP2 P2)</h3>
+<ul>
+<li>adapted use of SECURITIES</li>
+<li>schema changes</li>
+<li>new data type usages</li>
+<li>&quot;OPTIONAL&quot; attribute on DATA-ELEMENTs</li>
+</ul>
+<h3 id="ddx-1.3-cds-39501-8.2-sp2-p6">DDx 1.3 (CDS-39501 8.2 SP2 P6)</h3>
+<ul>
+<li>Allow compatiblity with non-J2012 compliant DTCs (i.e. no RootDtc/Ftb)</li>
+<li>Allow multiple identifying patterns</li>
+<li>Allow sessions that cannot be transitioned into by any service</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Document/Document.htm#diagnostics-based-on">Diagnostics based on</a></li>
+<li><a href="../../20%20UserInterface/Export/Diagnostic%20Data%20Exchange.htm">Export Dialog for Diagnostic Data Exchange</a></li>
+<li>Ribbon Tab Data Exchange | Export | Manufacturer Specific <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R140' title="">[MENU-R140]</a></li>
+</ul>
+
+</body>
+</html>

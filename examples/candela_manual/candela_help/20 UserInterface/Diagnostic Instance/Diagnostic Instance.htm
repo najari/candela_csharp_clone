@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Instance</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-instance">Diagnostic Instance</h1>
+<p>See also the <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance Feature</a>.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Diagnostic%20Instance.jpg" alt="Right Side of a Diagnostic Instance in Tree" />
+<p class="caption">Right Side of a Diagnostic Instance in Tree</p>
+</div>
+<h2 id="name">Name</h2>
+<p>You can enter the name of the diagnostic instance in the <strong>Name</strong> entry field. The name has to be unique within the diagnostic class or variant.</p>
+<h2 id="properties">Properties</h2>
+<p>The properties button <img src="../../20%20UserInterface/Images/Properties.gif" /> to the right of the &quot;Name&quot; entry field opens the properties dialog of the diagnostic instance.</p>
+<h2 id="description">Description</h2>
+<p>The <strong>Description</strong> entry field is read-only. To edit the description, open the properties dialog (see <a href="#properties">above</a>).</p>
+<h2 id="identifier-type...">Identifier, Type...</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Diagnostic%20Instance%20Identifier.jpg" alt="Diagnostic Instance Identifier" />
+<p class="caption">Diagnostic Instance Identifier</p>
+</div>
+<p>In diagnostic instances that may occur more than once, the dialog shows an entry field e.g. for the Identifier of the diagnostic instance, below the &quot;Description&quot; entry field.</p>
+<p>If all Used ProtocolServices of the diagnostic class reference the same <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#text-table">text table</a>, then the edit control allows selection by text from the text table (CDS-8032 R030).</p>
+<h3 id="name-of-the-property">Name of the Property</h3>
+<p>Actually, the name of the entry field depends on the diagnostic class as defined in the template: it may be &quot;Identifier&quot;, &quot;Address&quot;, &quot;Subfunction&quot;, &quot;Type&quot; etc. The meaning in the diagnostic protocol is different, but the role for the data model is the same: the value distinguishes multiple diagnostic instances within a diagnostic class.</p>
+<h3 id="suppress-positive-response-message-indication-bit">Suppress Positive Response Message Indication Bit</h3>
+<p>If the service supports the <a href="../../30%20Features/Protocol%20Service/Addressing.htm#SPRMIB">Suppress Positive Response Message Indication Bit (SPRMIB)</a>, the value specified is a place-holder only - its highest bit does not matter:</p>
+<ul>
+<li>you may e.g. specify 0x01 or 0x81 at <strong>authoring time</strong> in the document.</li>
+<li>when the user of a test system at <strong>runtime</strong> sends a service of the diagnostic instance, he can decide at that time to send either 0x01 or 0x81 (i.e. set the highest bit or not), independent of the value in the document.</li>
+</ul>
+<h3 id="associated-data-type">Associated Data Type</h3>
+<p>The properties button <img src="../../20%20UserInterface/Images/Properties.gif" /> to the right of the entry field opens the property dialog of the associated data type. The data type describes the allowed values of the identifier etc.</p>
+<h3 id="write-protection-for-dids">Write-Protection for DIDs</h3>
+<p>In a diagnostic instance corresponding (as of D214 in spec of CDS-37944) with a DID, CANdelaStudio shall set the Identifier write-protected (CDS-39293 8.5).</p>
+<h2 id="services">Services</h2>
+<p>Under &quot;Service&quot;:, you can create or delete services for the diagnostic instances. See the detailed description about the <a href="../../20%20UserInterface/Service/Services.htm">Services list</a>.</p>
+<h2 id="telegram-tables">Telegram Tables</h2>
+<p><span id="DIUI-R300" class="rqDef">[DIUI-R300]</span> The <a href="../../20%20UserInterface/Data%20Objects/Data%20Objects.htm">telegram tables (data object lists)</a> show and edit the data transported for the respective combined component.</p>
+<p>E.g. for a UDS Protocol Service 0x22, typically a telegram table &quot;Data (zz)&quot; defines the data to be transported in the positive response at the &quot;zz&quot; abbreviation in the response sequence <code>62 01 12 zz</code>.</p>
+<h3 id="did-on-the-telegram-table-header">&quot;DID&quot; on the Telegram Table Header</h3>
+<p><span id="DIUI-R305" class="rqDef">[DIUI-R305]</span> In...</p>
+<ul>
+<li>a DID Enabled <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001' title="">[DCL-D001]</a> diagnostic class,</li>
+<li>containing a diagnostic instance that contains a DID Data Reference as the single data object in a telegram <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001-b2' title="">[DCL-D001-b2]</a>,</li>
+<li>CANdelaStudio shows &quot;DID&quot; on the tab header of the telegram:</li>
+</ul>
+<div class="figure">
+<img src="Images/DID%20on%20Header.jpg" alt="&quot;DID&quot; on the Telegram Table Hedaer" />
+<p class="caption">&quot;DID&quot; on the Telegram Table Hedaer</p>
+</div>
+<h3 id="showing-did-contents-in-diagnostic-instance-cds-40405-cds-69423-9.1">Showing DID Contents in Diagnostic Instance (CDS-40405, CDS-69423, 9.1)</h3>
+<p><span id="DIUI-R310" class="rqDef">[DIUI-R310]</span></p>
+<ul>
+<li>In...
+<ul>
+<li>a telegram table with &quot;DID Data Reference&quot; semantics set <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R050-DIDDataReference' title="">[DID-R050-DIDDataReference]</a> (CDS-40405 9.1; = telegram header shows &quot;DID&quot;, see previous chapter),</li>
+<li>or in a diagnostic class that is DID Enabled <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001' title="">[DCL-D001]</a>, </li>
+</ul></li>
+<li>if the telegram contains a DID Data Reference <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R160' title="">[DID-R160]</a> as the single data object in a telegram <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001-b2' title="">[DCL-D001-b2]</a> (CDS-69423 9.1),</li>
+<li>CANdelaStudio...</li>
+<li><span id="DIUI-R310-content" class="rqDef">[DIUI-R310-content]</span> shows the content of the referenced DID in the telegram table</li>
+<li><span id="DIUI-R310-goto" class="rqDef">[DIUI-R310-goto]</span> shows a context menu item &quot;Goto DID&quot; (above Go To Data Type)</li>
+<li><span id="DIUI-R310-properties" class="rqDef">[DIUI-R310-properties]</span> shows a context menu item &quot;Properties of DID Data Reference&quot; (above &quot;Properties of Data Type...&quot;) to open the properties dialog of the DID Data Reference (modifiable)</li>
+<li><span id="DIUI-R310-hide" class="rqDef">[DIUI-R310-hide]</span> does not show the context menu entries:
+<ul>
+<li>New DID Data Reference</li>
+<li>New DID Reference</li>
+<li>Move to New DID</li>
+</ul></li>
+<li><span id="DIUI-R310-operations" class="rqDef">[DIUI-R310-operations]</span> applies all operations to the DID contents</li>
+<li><span id="DIUI-R310-context" class="rqDef">[DIUI-R310-context]</span> otherwise uses the context menu and behaviour/restrictions of the DID context for this telegram table</li>
+<li><span id="DIUI-R310-confirm" class="rqDef">[DIUI-R310-confirm]</span> Shows the confirmation &quot;You are about to modify a shared diagnostic instance&quot; also for a modification of the DID contents.
+<ul>
+<li>If confirmed, CANdelaStudio unshares (replaces by a copy) the diagnostic instance <strong>and</strong> the DID (CDS-70579 v10).</li>
+</ul></li>
+<li><span id="DIUI-R310-notSharedConfirm" class="rqDef">[DIUI-R310-notSharedConfirm]</span> When the diagnostic instance is not shared, but the DID is shared, CANdelaStudio prompts to unshare the DID (CDS-70579 v10).</li>
+</ul>
+<p>Note - not covered: &quot;Change DID&quot; in context menu which lets the user choose a new DID for this instance.</p>
+<h2 id="nrcs">Negative Response Codes</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Negative%20Response%20Codes%20at%20a%20Service.jpg" alt="Negative Response Codes at a Service" />
+<p class="caption">Negative Response Codes at a Service</p>
+</div>
+<p><span id="DIUI-R410" class="rqDef">[DIUI-R410]</span> The right side for a diagnostic instance lists the Negative Response Codes of each service.</p>
+<p><span id="DIUI-R420" class="rqDef">[DIUI-R420]</span> If a service is blocked <a class='rqRef' href='../../30 Features\State Dependency\State Transitions.htm#STTR-R020-no' title="">[STTR-R020-no]</a> in some state of a state group, the list automatically shows the NRC associated with that state group <a class='rqRef' href='../../30 Features\Negative Response\Negative Response.htm#NRC-R050' title="State Group NRC">[NRC-R050]</a>.</p>
+<ul>
+<li><span id="DIUI-R420-Icon" class="rqDef">[DIUI-R420-Icon]</span> The NRC is shown with a special <span id='_index_446727884' title='Icons: Negative Response Code at Service' data-term='Icons' data-text='Negative Response Code at Service'>icon</span> <img src="../../20%20UserInterface/Images/State%20Group%20Nrc.gif" />.</li>
+</ul>
+<p>You can show and hide the list of negative response codes with the buttons <code>&lt;&lt;</code> and <code>&gt;&gt;</code> at the right end of the services list, or by clicking the <code>rc</code> hyperlinks.</p>
+<p>The format of the list is the same as in the <a href="../../20%20UserInterface/Negative%20Response/Available%20Negative%20Response%20Codes.htm">Available Negative Response Codes (NRC Pool)</a> page.</p>
+<p><strong>Override</strong> the NRC <strong>description</strong>: select the description cell, then press <code>F2</code>, or click again.</p>
+<p>See the <a href="../../30%20Features/Negative%20Response/Negative%20Response.htm#service-nrcs">Negative Response Codes at a Service</a> feature.</p>
+<h2 id="buttons"><span id='_index_446727885' title='Icons: Buttons in Diagnostic Instance dialog' data-term='Icons' data-text='Buttons in Diagnostic Instance dialog'>Buttons</span></h2>
+<h3 id="showhide-services">Show/Hide Services</h3>
+<p>Using buttons beneath the telegram tables, you can toggle the display of services and telegram tables.</p>
+<ul>
+<li><img src="Images/Show%20Protocol%20Services%20and%20Tables.jpg" /> Show Protocol Services and Tables</li>
+<li><img src="Images/Show%20only%20Tables.jpg" /> Show only Tables</li>
+<li><img src="Images/DTC%20Data.jpg" /> DTC Data (only available in Fault Memory)</li>
+</ul>
+<h3 id="show-environment-data-and-statistical-data">Show Environment Data and Statistical Data</h3>
+<ul>
+<li><img src="Images/Environment%20Data.jpg" /> Show Environment Data</li>
+<li><img src="Images/Statistical%20Data.jpg" /> Show Statistical Data</li>
+</ul>
+<h3 id="show-events">Show Events</h3>
+<ul>
+<li><img src="../../20%20UserInterface/Images/Events%20Button.jpg" /> Show Events</li>
+</ul>
+<h3 id="further-mode-buttons">Further Mode Buttons</h3>
+<ul>
+<li><img src="Images/Show%20Fixed%20Data.jpg" /> Show Fixed Data</li>
+<li><img src="Images/Show%20Table%20View.jpg" /> Show Table View</li>
+<li><img src="Images/Show%20Graphical%20View.jpg" /> Show Graphical View</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Icons of a Diagnostic Instance in Tree <a class='rqRef' href='../../20%20UserInterface/Tree/Icons.htm#TREE-R400' title="Icons of a Diagnostic Instance">[TREE-R400]</a></li>
+<li><a href="../../20%20UserInterface/Service/Icons.htm">Icons of a Service</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance Feature</a></li>
+<li><a href="../../30%20Features/Negative%20Response/Negative%20Response.htm#service-nrcs">Negative Response Codes at a Service</a></li>
+</ul>
+</body>
+</html>

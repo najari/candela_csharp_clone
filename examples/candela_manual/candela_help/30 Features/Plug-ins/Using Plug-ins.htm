@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Using Plug-ins</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="using-candela-plug-ins">Using CANdela Plug-ins</h1>
+<p>CANdela Plug-ins can be started manually by the user or automatically in the cases of an occuring event. It depends on the plug-in type in which situation a plugin may be executed or not.</p>
+<h2 id="plug-in-execution-overview">Plug-in Execution Overview</h2>
+<p><span id="PLG-R050" class="rqDef">[PLG-R050]</span> Depending on the <strong>plug-in type</strong> (see next chapter), a plug-in can be executed in specific <strong>modes</strong> (see <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R110' title="">[PLG-R110]</a> below) as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Plug-in Type <code>\</code> Mode</th>
+<th align="left">Manually</th>
+<th align="left">Batch</th>
+<th>Event Triggered</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Document</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td>yes</td>
+</tr>
+<tr class="even">
+<td>Variant</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td>no</td>
+</tr>
+<tr class="odd">
+<td>Instance</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candela-plug-in-types">CANdela Plug-in Types</h2>
+<p><span id="PLG-R100" class="rqDef">[PLG-R100]</span> CANdelaStudio supports different plug-in types for different scopes of CANdela data:</p>
+<h3 id="document-plug-ins">Document Plug-ins</h3>
+<p><span id="PLG-R100-Document" class="rqDef">[PLG-R100-Document]</span> A <strong>document plug-in</strong> always runs on a <strong>complete CANdela document</strong>.</p>
+<p>You can execute this type of plug-in</p>
+<ul>
+<li>... in the ribbon tab <strong>Tools</strong>:
+<ul>
+<li>button <strong>Plug-in (Current Document)</strong> <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Tools.htm#MENU-R940' title="">[MENU-R940]</a>: plug-ins that can be executed on a currently opened document</li>
+<li><span id="PLG-R100-DocumentSave" class="rqDef">[PLG-R100-DocumentSave]</span> If the document has been modified, it must be saved before plug-in execution.</li>
+<li>button <strong>Plug-in (Batch Mode)</strong> <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Tools.htm#MENU-R945' title="">[MENU-R945]</a>: plug-ins that can be executed in batch mode</li>
+</ul></li>
+<li>... in batch mode <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R110-BatchMode' title="">[PLG-R110-BatchMode]</a></li>
+<li>... event-triggered <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R110-EventBased' title="">[PLG-R110-EventBased]</a></li>
+</ul>
+<p><span id="PLG-R100-DocPre" class="rqDef">[PLG-R100-DocPre]</span> For a document plug-in marked as preliminary <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R120' title="">[PLG-R120]</a>, CANdelaStudio shows a message box &quot;This plug-in is preliminary...&quot;.</p>
+<div class="figure">
+<img src="Images/InteractiveExecutionOfEcuDocPlugin.jpg" alt="Interactive execution of document plug-in" />
+<p class="caption">Interactive execution of document plug-in</p>
+</div>
+<h3 id="variant-plug-ins">Variant Plug-ins</h3>
+<p><span id="PLG-R100-Variant" class="rqDef">[PLG-R100-Variant]</span> A <strong>variant plug-in</strong> runs on one specific variant in the document (base variant or extended variant).</p>
+<p>You can execute this type of plug-in</p>
+<ul>
+<li>... in the <strong>context menu of the variant</strong> in the CANdela document tree <a class='rqRef' href='../../20 UserInterface\Tree\Navigation Tree.htm#TREE-R310' title="">[TREE-R310]</a>:
+<ul>
+<li>menu item <strong>Plug-in (Selected Variant)</strong> shows all installed variant plug-ins.</li>
+<li><span id="PLG-R100-VariantSave" class="rqDef">[PLG-R100-VariantSave]</span> If the document has been modified, it must be saved before plug-in execution (CDS-69104 9.1 SP1)</li>
+</ul></li>
+</ul>
+<p><span id="PLG-R100-VarPre" class="rqDef">[PLG-R100-VarPre]</span> For a variant plug-in marked as preliminary <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R120' title="">[PLG-R120]</a>, CANdelaStudio shows a message box &quot;This plug-in is preliminary...&quot; (CDS-70727 v12).</p>
+<div class="figure">
+<img src="Images/DocumentTreeExecutionOfVariantPlugin.jpg" alt="Execution of a variant plug-in" />
+<p class="caption">Execution of a variant plug-in</p>
+</div>
+<p>See the execution overview <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R050' title="">[PLG-R050]</a>.</p>
+
+<h3 id="instance-plug-ins">Instance Plug-ins</h3>
+<p><span id="PLG-R100-Instance" class="rqDef">[PLG-R100-Instance]</span> An <strong>instance plug-in</strong> runs on one specific diagnostic instance or job-container of the document.</p>
+<p>You can execute this type of plug-in</p>
+<ul>
+<li>... in the context menu of the selected diagnostic instance or job container in the CANdela document tree <a class='rqRef' href='../../20 UserInterface\Tree\Navigation Tree.htm#TREE-R320' title="">[TREE-R320]</a>:
+<ul>
+<li>menu item <strong>Plug-in (Selected Instance)</strong> shows all installed plug-ins.</li>
+<li><span id="PLG-R100-InstanceSave" class="rqDef">[PLG-R100-InstanceSave]</span> If the document has been modified, it must be saved before plug-in execution (CDS-69104 9.1 SP1)</li>
+</ul></li>
+</ul>
+<p><span id="PLG-R100-InstPre" class="rqDef">[PLG-R100-InstPre]</span> For a diagnostic instance plug-in marked as preliminary <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R120' title="">[PLG-R120]</a>, CANdelaStudio shows a message box &quot;This plug-in is preliminary...&quot; (CDS-70727 v12).</p>
+<div class="figure">
+<img src="Images/DocumentTreeExecutionOfInstancePlugin.jpg" alt="Execution of an instance plug-in" />
+<p class="caption">Execution of an instance plug-in</p>
+</div>
+<p>See the execution overview <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R050' title="">[PLG-R050]</a>.</p>
+
+<h2 id="execution-modes">Execution Modes</h2>
+<p><span id="PLG-R110" class="rqDef">[PLG-R110]</span> Plug-ins can be executed in different ways:</p>
+<h3 id="interactive-execution">Interactive Execution</h3>
+<p><span id="PLG-R110-Interactive" class="rqDef">[PLG-R110-Interactive]</span> You can interactively execute document, variant and instance plug-ins (see the chapters above).</p>
+<h3 id="batch-mode-execution-of-document-plug-ins">Batch Mode Execution of Document Plug-ins</h3>
+<p><span id="PLG-R110-BatchMode" class="rqDef">[PLG-R110-BatchMode]</span> Document plug-ins can be executed in batch mode:</p>
+<ul>
+<li>you can select multiple CANdela files in a file selection dialog,</li>
+<li>CANdelaStudio runs the plug-in on all selected files.</li>
+</ul>
+<div class="figure">
+<img src="Images/BatchModeExecutionOfEcuDocPlugin.jpg" alt="Batch Mode Execution of a document plug-in" />
+<p class="caption">Batch Mode Execution of a document plug-in</p>
+</div>
+<p>See the execution overview <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R050' title="">[PLG-R050]</a> above.</p>
+<h3 id="event-based-execution-of-document-plug-ins">Event Based Execution of Document Plug-Ins</h3>
+<p><span id="PLG-R110-EventBased" class="rqDef">[PLG-R110-EventBased]</span> CANdelaStudio can start document plugins automatically if a specific events happens.</p>
+<p>The following events are supported:</p>
+<ul>
+<li><span id="PLG-R110-Save" class="rqDef">[PLG-R110-Save]</span> before document is saved:
+<ul>
+<li>CANdelaStudio starts the plugin each time you save the current document, before the save runs</li>
+<li>plug-in capability: <code>SupportsExecutionBeforeSave</code></li>
+</ul></li>
+<li><span id="PLG-R110-ExportODX" class="rqDef">[PLG-R110-ExportODX]</span> before document is exported to ODX:
+<ul>
+<li>CANdelaStudio starts the plugin each time you export the current document to ODX, before the export runs</li>
+<li>plug-in capability: <code>SupportsExecutionBeforeOdxExport</code></li>
+</ul></li>
+</ul>
+<p>See the execution overview <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R050' title="">[PLG-R050]</a> above.</p>
+<h2 id="installing-candela-plug-ins">Installing CANdela Plug-ins</h2>
+<p>All CANdela Plugins have to be installed in the 'Plugins' subdirectory of the CANdelaStudio program directory.</p>
+<p>To check which plugins are installed in your CANdelaStudio installation, use the Module Information <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File - Product Information - Module Information.htm#MENU-R1260' title="">[MENU-R1260]</a> in Ribbon Tab File | Product Information.</p>
+<h2 id="preliminary-plugins">Preliminary Plugins</h2>
+<p><span id="PLG-R120" class="rqDef">[PLG-R120]</span> For a plug-in still <strong>being developed</strong>, the developer can set a corresponding flag.</p>
+<p>This triggers CANdelaStudio to show a hint for a...</p>
+<ul>
+<li>document plug-in <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R100-DocPre' title="">[PLG-R100-DocPre]</a></li>
+<li>variant plug-in <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R100-VarPre' title="">[PLG-R100-VarPre]</a></li>
+<li>diagnostic instance plug-in <a class='rqRef' href='../../30%20Features/Plug-ins/Using%20Plug-ins.htm#PLG-R100-InstPre' title="">[PLG-R100-InstPre]</a></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Introduction.htm">Plug-in Introduction</a></li>
+</ul>
+</body>
+</html>

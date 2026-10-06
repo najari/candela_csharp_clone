@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Native WPF shell. Zero NuGet items on purpose: no WebView2 browser
+       control, no MVVM toolkit, no JSON package (System.Text.Json ships with
+       the runtime, INotifyPropertyChanged is hand-written). -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <AssemblyName>DiagAuthor</AssemblyName>
+    <RootNamespace>DiagAuthor.Desktop</RootNamespace>
+  </PropertyGroup>
+</Project>

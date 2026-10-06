@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Find out which Diagnostic Instances Are Excluded from the Identifier Uniqueness Check</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-find-out-which-diagnostic-instances-are-excluded-from-the-identifier-uniqueness-check">How to Find out which Diagnostic Instances Are Excluded from the Identifier Uniqueness Check</h1>
+<ul>
+<li>in the CANdelaStudio tree on the ECU or on a variant node, select context menu item &quot;<a href="../../20%20UserInterface/Attributes/Attribute%20Overview.htm">Attribute Overview</a>&quot;</li>
+<li>click on the header of the first column &quot;Attribute&quot; to sort the attributes by name</li>
+<li>navigate to the attribute &quot;Diagnostic instance - Check Identifier for Uniqueness&quot;</li>
+<li>if no such attribute exists,
+<ul>
+<li>Result: no diagnostic instance is excluded from the check</li>
+</ul></li>
+<li>otherwise,
+<ul>
+<li>click button &quot;Only selected&quot;</li>
+<li>check &quot;Show overridden attributes only&quot; (at the bottom of the dialog)</li>
+<li>Result: all overridden attributes that have value &quot;no&quot; are excluded from the check.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Attributes/Attribute%20Overview.htm">Attribute Overview</a></li>
+<li><a href="../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm">Check Identifier Uniqueness</a></li>
+<li>Checkbox in Diagnostic Instances context menu <a class='rqRef' href='../../20 UserInterface\Diagnostic Instance\Diagnostic Instances.htm#DIUI-R200' title="">[DIUI-R200]</a></li>
+</ul>
+</body>
+</html>

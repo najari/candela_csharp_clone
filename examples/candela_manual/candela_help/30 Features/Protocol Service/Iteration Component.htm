@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Iteration Component</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="iteration-component"><span id='_index_446728095' title='Iteration: Component' data-term='Iteration' data-text='Component'>Iteration Component</span></h1>
+<p>To define a data element that shall be transfered multiple times in sequence, an iterative component is used. Specific types of iterative components are used depending on the end criterion.</p>
+
+<h2 id="end-of-service-iteration-component">End Of Service Iteration Component</h2>
+<p>... contains a list of iterated Components, until the end of the telegram. It has no selector.</p>
+<p>Properties:</p>
+<ul>
+<li>Mandatory
+<ul>
+<li>defaults to true</li>
+</ul></li>
+<li>Minimum number of iterations
+<ul>
+<li>defaults to 0 (i.e. at runtime, the entire data of the iteration may be omitted)</li>
+</ul></li>
+<li>It is valid to have...
+<ul>
+<li>Mandatory = false</li>
+<li>Minimum number of iterations = 0</li>
+<li>This is the default in the user interface.</li>
+</ul></li>
+<li>Maximum number of iterations
+<ul>
+<li>optional, default: not specified</li>
+</ul></li>
+</ul>
+<h2 id="numerator-iteration-component">Numerator Iteration Component</h2>
+<p>... contains a list of iterated Components. A selector denotes a Component within the same Primitive; this Component must be located <em>before</em> the Numerator Iteration Component itself.</p>
+<p>A Component which shall be used as Selector must meet the following conditions (cf. CDS-3833):</p>
+<ul>
+<li>Mandatory must be ‘true’</li>
+<li>MandatoryAtRuntime must be ‘true’</li>
+<li>Semantics must be ‘any’</li>
+<li>Fix bit length must be <code>&gt;=</code> 8 bits and <code>&lt;=</code> 32 bits</li>
+</ul>
+<p>Only Proxy Components may be used as Selector!</p>
+<h2 id="end-marker-iteration-component">End Marker Iteration Component</h2>
+<p>... contains a list of iterated Components.</p>
+<ul>
+<li>One of those is used as a Selector.</li>
+<li>If no Selector is specified explicitly, the first contained Component is used as a Selector.</li>
+<li>the End Marker Iteration Component must contain at least one Component.</li>
+<li>All Components before the Selector must have fix length.</li>
+</ul>
+<p>A Component which shall be used as a Selector must meet the following conditions (cf. CDS-3952, CDS-3827, CDS-3830, CDS-3832, CDS-3931, CDS-4134):</p>
+<ul>
+<li>Mandatory must be ‘true’</li>
+<li>MandatoryAtRuntime must be ‘true’</li>
+<li>Min bit length must be <code>&gt;=</code> 8 bits</li>
+<li>Max bit length must be <code>&gt;</code> 0 and <code>&lt;=</code> 32 bits (a max bit length of 0 means: infinite data)</li>
+<li>All Components lying before the Selector must have fix length</li>
+</ul>
+<p>Only Proxy Components may be used as Selector.</p>
+<p>The tester at runtime uses the raw value of the Component marked as Selector and compares that raw value against the value defined in the End Marker Iteration Component.</p>
+
+<p>At runtime, ...</p>
+<ul>
+<li><p>the iteration that contains the EndMarkerValue (at the Component marked as Selector) does not contain useful data for the other Components (i.e. the tester will not display the value of the other Components to the user). Rationale: otherwise there would be no way to transport &quot;0 iterations&quot; over the line.</p></li>
+<li><p>the iteration that contains the EndMarkerValue stops at the Component marked as Selector (i.e. if the EndMarkerIterComponent contains Components behind the Selector, for the last iteration there will be no data on the line that correspond with these Components). If there are top-level Components that follow the EndMarkerIterComponent, data for these Components starts immediately behind the EndMarkerValue.</p></li>
+<li><p>the CANdela EndMarkerValue (= an integer) defines a byte stream which will be compared with the byte stream representing the Selector. The EndMarkerValue integer denotes the byte stream in HighLow byte-order (HighLow by definition, independent of any byte-order used in the ProtocolService). E.g. to define that the byte sequence 0x47, 0x11 stops the iteration at runtime, use the EndMarkerValue 0x4711 (mapping 0x4711 to the sequence 0x47, 0x11 implies HighLow).</p></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Components.htm">Components</a></li>
+</ul>
+</body>
+</html>

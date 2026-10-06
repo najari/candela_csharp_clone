@@ -1,0 +1,1318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Special Attributes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="special-attributes">Special Attributes</h1>
+<h2 id="purpose">Purpose</h2>
+<p>The list below is a central register of <a href="Attributes.htm">attributes</a> used by CANdelaStudio and plug-ins.</p>
+<h2 id="attributes-not-described-here">Attributes not Described here</h2>
+<p>Some attributes may be missing below:</p>
+<ul>
+<li>customer-specific functionality</li>
+<li>ODX Import - see <code>ODXImport Options.pdf</code> (available in the <a href="../../30%20Features/Installation/Documentation.htm">CANdelaStudio documentation folder</a>)</li>
+<li><a href="../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm">Attributes for AUTOSAR Diagnostic Extract export</a></li>
+</ul>
+<h2 id="use-of-this-list">Use of this List</h2>
+<ul>
+<li>The list below enumerates <strong>key properties</strong> of all attributes.</li>
+<li>If there is a <strong>feature chapter</strong> that describes a given attribute,
+<ul>
+<li>then that chapter contains full details,</li>
+<li>the list below just contains a <strong>link</strong> to that chapter.</li>
+</ul></li>
+<li>... otherwise the <strong>list below</strong> contains full details.</li>
+<li>Other chapters have a <strong>link</strong> to the chapter which contains the <strong>full details</strong>.</li>
+</ul>
+
+<h2 id="list-of-special-attributes">List of Special Attributes</h2>
+<p>In the following list, attributes that have the class &quot;<strong>Interface</strong>&quot; are actually stored as <strong>communication parameters</strong>, since CANdela interfaces do not yet support attributes (CDS-5692).</p>
+<table style="width:99%;">
+<colgroup>
+<col width="10%" />
+<col width="20%" />
+<col width="6%" />
+<col width="6%" />
+<col width="4%" />
+<col width="51%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Class</th>
+<th align="left">Qualifier</th>
+<th align="left">Type</th>
+<th align="left">Category</th>
+<th align="left">Issue#</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(various)</td>
+<td align="left">FixedQualifier</td>
+<td align="left">Unsigned</td>
+<td align="left">Editor</td>
+<td align="left">CDS-5967</td>
+<td align="left">See <a href="../../30%20Features/Common%20Properties/Qualifier.htm#fixed-qualifier">Fixed Qualifier</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DataObject</td>
+<td align="left">A2LDidNumberMapping</td>
+<td align="left">Unsigned</td>
+<td align="left">A2L Import</td>
+<td align="left">CDS-31541</td>
+<td align="left">See <a href="../../30%20Features/Import%20Pool/A2L%20DID%20Creator.htm#A2LDidNumberMapping">DID creator</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DataObject</td>
+<td align="left">A2LPositionInMappedDidRecord</td>
+<td align="left">Unsigned</td>
+<td align="left">A2L Import</td>
+<td align="left">CDS-31541</td>
+<td align="left">See <a href="../../30%20Features/Import%20Pool/A2L%20DID%20Creator.htm#A2LPositionInMappedDidRecord">DID creator</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DataObject</td>
+<td align="left">OriginalA2LElement</td>
+<td align="left">Enum</td>
+<td align="left">A2L Import</td>
+<td align="left"> </td>
+<td align="left">Values: CHARACTERISTIC (if the data object originates in an A2L characteristic), MEASUREMENT (if the data object originates in an A2L measurement), NONE (default)</td>
+</tr>
+<tr class="odd">
+<td align="left">DataObject</td>
+<td align="left">A2LAddress</td>
+<td align="left">Unsigned</td>
+<td align="left">A2L Import</td>
+<td align="left"> </td>
+<td align="left">If generated from an A2L characteristic set to the value given in the characteristic's &quot;Address&quot; field and if generated from an A2L measurement set to the value given in the measurement's &quot;ECU_ADDRESS&quot; field.</td>
+</tr>
+<tr class="even">
+<td align="left">DataObject</td>
+<td align="left">A2LAddressExtension</td>
+<td align="left">Signed</td>
+<td align="left">A2L Import</td>
+<td align="left"> </td>
+<td align="left">If generated from an A2L characteristic or measurement set to the value of the A2L object's &quot;ECU_ADDRESS_EXTENSION&quot; field.</td>
+</tr>
+<tr class="odd">
+<td align="left">DataObject</td>
+<td align="left">A2LDisplayIdentifier</td>
+<td align="left">String</td>
+<td align="left">A2L Import</td>
+<td align="left"> </td>
+<td align="left">If generated from an A2L characteristic or measurement set to the value of the A2L object's &quot;DISPLAY_IDENTIFIER&quot; field.</td>
+</tr>
+<tr class="even">
+<td align="left">DataObject</td>
+<td align="left">ASR_SWC_DataElement_Ref</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left">CDS-39137</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R220' title="">[SWC-R220]</a> Instance ref of the originating SYS-EX data object in SWC Sync.<br />
+For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_SWC_DODataElement_Ref' title="">[ASR-D001_ASR_SWC_DODataElement_Ref]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DataObject</td>
+<td align="left">ASR_UUID</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left">CDS-71423</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_UUID' title="">[ASR-D001_ASR_UUID]</a> UUID of the synchronized AUTOSAR element</td>
+</tr>
+<tr class="even">
+<td align="left">DataObject</td>
+<td align="left">ImplementationDefault</td>
+<td align="left">String</td>
+<td align="left">SDG</td>
+<td align="left">CDS-33749</td>
+<td align="left"><span id="ImplementationDefault"/>Used in exports, see <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-D365' title="">[DO-D365]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DataObject</td>
+<td align="left">OldDtcStatusBitDataTypeQualifier</td>
+<td align="left">String</td>
+<td align="left">Editor</td>
+<td align="left">CDS-31607</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/DTC/DTC%20Status%20Bits.htm#DTCSB-D200' title="">[DTCSB-D200]</a> For Migration of DTC Status Bits 7.5 to 8.0.</td>
+</tr>
+<tr class="even">
+<td align="left">DataObject</td>
+<td align="left">RequirementsId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">CDS-11531</td>
+<td align="left"><span id="RequirementsId"/>Optionally holds <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R115' title="Requirements ID Storage">[RQ-R115]</a> the ID of the requirement associated with the object <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100' title="Associate Diagnostic Object with Requirement">[RQ-R100]</a>.<br />
+The qualifier of the attribute may vary, it must be specified in the value of the ECU attribute <a href="#SynchronizationAttribute">SynchronizationAttribute</a>.<br />
+For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DORequirementsId' title="">[ASR-D001_DORequirementsId]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DataObject</td>
+<td align="left">Systems</td>
+<td align="left">String</td>
+<td align="left">Editor</td>
+<td align="left">CDS-4250</td>
+<td align="left"><span id="Systems"/>Associates a data object with Vehicle System Groups (Optional Subsystems) <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Groups%20at%20Data%20Objects.htm#VSG-R100-DataObject' title="">[VSG-R100-DataObject]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DataObject</td>
+<td align="left">VariableForDirectAccess</td>
+<td align="left">String</td>
+<td align="left">CANdesc</td>
+<td align="left">CDS-4740</td>
+<td align="left"><span id="VariableForDirectAccess"/>Set in ASAP2 import <a class='rqRef' href='../../30%20Features/Import/Import%20from%20ASAP2.htm#IA2L-R100-DA' title="">[IA2L-R100-DA]</a>,<br />
+used in <a href="../../30%20Features/Export/Data%20Overview%20Export.htm#label">data overview export</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DataType</td>
+<td align="left">ASR_Encoding</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">CDS-39137</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R230' title="">[SWC-R230]</a> in SWC Sync.<br />
+For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_Encoding' title="">[ASR-D001_ASR_Encoding]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DataType</td>
+<td align="left">DOCREF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DTATTR-R100-DOCREF' title="">[DTATTR-R100-DOCREF]</a> original ODX-LINK (DOCREF). Creation: <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-f' title="">[PEnODX-R002-f]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">DataType</td>
+<td align="left">DOCTYPE</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DTATTR-R100-DOCTYPE' title="">[DTATTR-R100-DOCTYPE]</a> original ODX-LINK (DOCTYPE). Creation: <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-f' title="">[PEnODX-R002-f]</a></td>
+</tr>
+<tr class="even">
+<td align="left">DataType</td>
+<td align="left">EvaluateByteOrder</td>
+<td align="left">Enum</td>
+<td align="left"> </td>
+<td align="left">CDS-18374</td>
+<td align="left">Used up to 7.0 instead of ReverseBitfieldBytes (0=no, 1= yes)</td>
+</tr>
+<tr class="odd">
+<td align="left">DataType</td>
+<td align="left">Export_as_TABLE</td>
+<td align="left">Enum</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Control that Multiplexer datatypes are exported as TABLEs (Mux is not allowed in PSA ODX data) (Template Specification)<br />
+only accessible for Multiplexer-DataTypes<br />
+0 = No, 1 = dynamic, 2 = static, 3 = static with dynamic pos. response, 4 = single service with text table.</td>
+</tr>
+<tr class="even">
+<td align="left">DataType</td>
+<td align="left">FaultmemoryData</td>
+<td align="left">Enum</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"><span id="SATTR-R210" class="rqDef">[SATTR-R210]</span> Qualifier &quot;FaultmemoryData&quot;, name &quot;Faultmemory Relevance&quot;.<br />
+Used in AUTOSAR code generation <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R210' title="">[DTC-R210]</a>.<br />
+In the Vector UDS template, used in data types <a class='rqRef' href='../../40 Templates\Vector UDS\Data Types.htm#VUDS-R310' title="">[VUDS-R310]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DataType</td>
+<td align="left">ID_REF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DTATTR-R100-ID_REF' title="">[DTATTR-R100-ID_REF]</a> original ODX-LINK (IDREF). Creation: <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-f' title="">[PEnODX-R002-f]</a></td>
+</tr>
+<tr class="even">
+<td align="left">DataType</td>
+<td align="left">Is_STATIC_FIELD</td>
+<td align="left">Enum</td>
+<td align="left">ODX C</td>
+<td align="left">DS-5907</td>
+<td align="left">Info for ODX STATIC-FIELD. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-n' title="">[PEnODX-R002-n]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DataType</td>
+<td align="left">IsEmptyMinMaxLengthTypeByteField</td>
+<td align="left">Enum</td>
+<td align="left"> </td>
+<td align="left">CDS-11938</td>
+<td align="left">Specifies whether a MIN-LENGTH=0 and MAX-LENGTH=0 as 1 Byte (CDS-11938 R003.0)</td>
+</tr>
+<tr class="even">
+<td align="left">DataType</td>
+<td align="left">IsLeadingLengthInfoTypeByteField</td>
+<td align="left">Enum</td>
+<td align="left"> </td>
+<td align="left">CDS-11834</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DataType</td>
+<td align="left">ReverseBitfieldBytes</td>
+<td align="left">Enum</td>
+<td align="left"> </td>
+<td align="left">CDS-18374</td>
+<td align="left"><span id="ReverseBitFieldBytes"></span>Controls the reverse of bytes <a class='rqRef' href='../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm#POS-R110' title="">[POS-R110]</a>. Enumeration identifier 0 means “no”, any other enumeration identifier means “yes”.</td>
+</tr>
+<tr class="even">
+<td align="left">DataType</td>
+<td align="left">SelfReferencingMuxQualifier</td>
+<td align="left">String</td>
+<td align="left">Editor</td>
+<td align="left">CDS-37611</td>
+<td align="left"><span id="DTMUX-R800-Attribute" class="rqDef">[DTMUX-R800-Attribute]</span> At an identity data type, contains the qualifier of the associated Mux data type, so that both data types together specify a <a href="../../30%20Features/Data%20Type/Self-Referencing%20Mux.htm">self-referencing Mux</a>. The use of this attribute is a workaround in order to support data which has been described using a self-referencing Mux in ODX, it is not necessary and actually shall be avoided for data created in CANdelaStudio. </td>
+</tr>
+<tr class="odd">
+<td align="left">DiagClass</td>
+<td align="left">Export_as_TABLE</td>
+<td align="left">Enum</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">Specifies whether a Diagnostic class shall be specified as no, static, static with dyn response or dynamic. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-e' title="">[PEnODX-R002-e]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DiagClassServiceTemplate</td>
+<td align="left">TABLE_LONG_NAME</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">according ODX TABLE</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagClassServiceTemplate</td>
+<td align="left">TABLE_SEMANTIC</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">according ODX TABLE</td>
+</tr>
+<tr class="even">
+<td align="left">DiagClassServiceTemplate</td>
+<td align="left">TABLE_SEMANTIC</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">according ODX TABLE</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagClassServiceTemplate</td>
+<td align="left">UsePrimitiveInTableName</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left">CDS-14300</td>
+<td align="left">0 = No, 1 = Yes. The attribute shall not be visible and not modifiable in standard mode. (CDS-14300 R004.0)</td>
+</tr>
+<tr class="even">
+<td align="left">DiagClassTemplate</td>
+<td align="left">Documentation</td>
+<td align="left">Unsigned</td>
+<td align="left">Editor</td>
+<td align="left">CDS-12812</td>
+<td align="left"><a id="Documentation"></a>Overwritten value = 1 (true), default value = 0. Visibility: Standard view: no, Editable: no.<br />
+If the default attribute exists at a diagnostic class template D with value &quot;true&quot;, then D is considered to be a “documentation” class, see <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-D001' title="">[DCLT-D001]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagClassTemplate</td>
+<td align="left">SourceRequirementHeadings</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left">CDS-28568</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R536-L1' title="Attribute &quot;SourceRequirementHeadings&quot;">[RQ-R536-L1]</a></td>
+</tr>
+<tr class="even">
+<td align="left">DiagClassTemplate</td>
+<td align="left">TABLE_LONG_NAME</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">according ODX TABLE</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagClassTemplate</td>
+<td align="left">TABLE_SEMANTIC</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">according ODX TABLE</td>
+</tr>
+<tr class="even">
+<td align="left">DiagClassTemplate</td>
+<td align="left">VWODXTableShortName</td>
+<td align="left">String</td>
+<td align="left">ODXImport</td>
+<td align="left"> </td>
+<td align="left"><span id="VWODXTableShortName"/>List of ODX TABLE SHORT-NAMEs separated by semicolon.<br />
+See at <a href="../../30%20Features/Import/2_Import%20Settings.htm#VWODXTableShortName">ODX Import</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left"><code>ASR3_Legacy_Combine_DID</code></td>
+<td align="left">Unsigned</td>
+<td align="left">DEXT</td>
+<td align="left">CDS-71773</td>
+<td align="left"><span id="ASR3LegacyCombineDIDAtDiagInst"></span>Value <code>!= 0</code> lets DEXT export combine data in a DID described in a diagnostic instance, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R205' title="">[DEXT-R205]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance</td>
+<td align="left">ASR_SWC_DataElement_Ref</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">CDS-39137</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R220' title="">[SWC-R220]</a> in SWC Sync.<br />
+For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_SWC_DIDataElement_Ref' title="">[ASR-D001_ASR_SWC_DIDataElement_Ref]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left">ASR_SWC_ServiceDependency_Ref</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">CDS-39137</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R210' title="">[SWC-R210]</a> in SWC Sync.<br />
+For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_SWC_DIServiceDependency_Ref' title="">[ASR-D001_ASR_SWC_DIServiceDependency_Ref]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance</td>
+<td align="left">Check Identifier for Uniqueness</td>
+<td align="left">Enum</td>
+<td align="left"></td>
+<td align="left">CDS-68583</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#CIU-D010' title="Availability of the &quot;Check Identifier for Uniqueness&quot; Attribute">[CIU-D010]</a> in constraints check.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left">DelayTimeMs</td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left"></td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DelayTimeMs' title="">[ASR-D001_DelayTimeMs]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance</td>
+<td align="left">DelayTimeOnPowerOnMs</td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left"></td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DelayTimeOnPowerOnMs' title="">[ASR-D001_DelayTimeOnPowerOnMs]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left">DOCREF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DIATTR-R100-DOCREF' title="">[DIATTR-R100-DOCREF]</a> original ODX-LINK (DOCREF). See plug-in &quot;Enable ODX Mode&quot; <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R001' title="">[PEnODX-R001]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance</td>
+<td align="left">DOCTYPE</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DIATTR-R100-DOCTYPE' title="">[DIATTR-R100-DOCTYPE]</a> original ODX-LINK (DOCTYPE). See plug-in &quot;Enable ODX Mode&quot; <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R001' title="">[PEnODX-R001]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left">DoNotModifyPrimaryAndSecondaryPropertiesByImport</td>
+<td align="left">Enum</td>
+<td align="left">ODXImport</td>
+<td align="left">CDS-12326</td>
+<td align="left"><span id="DoNotModify"/>See at <a href="../../30%20Features/Import/2_Import%20Settings.htm#VWODXTableShortName">ODX Import</a>.<br />
+0 - No (Allow modification of properties)<br />
+1 - Yes (Don't modify properties, the instance is locked!)<br />
+Default 0</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance</td>
+<td align="left">EOPF_ShortName<br />
+EOPF_LongName<br />
+EOPF_Description</td>
+<td align="left">String</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">See <a href="#WrappingStructure">WrappingStructure_Description_PR</a> below.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left">FC_xxx</td>
+<td align="left">Enum</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Define to which FUNCT-CLASSs the DIAG-SERVICEs generated from the Diagnostic Instance will be associated (ODX configuration for document authors)<br />
+The attribute list will be adjusted according to FUNCT-CLASS present in the imported ODX-file.<br />
+0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance</td>
+<td align="left">ID_REF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DIATTR-R100-ID_REF' title="">[DIATTR-R100-ID_REF]</a> original ODX-LINK (IDREF). See plug-in &quot;Enable ODX Mode&quot; <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R001' title="">[PEnODX-R001]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left">Instance_Type</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left">CDS-39137</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R200' title="">[SWC-R200]</a> in SWC Sync.<br />
+For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_Instance_Type' title="">[ASR-D001_Instance_Type]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance</td>
+<td align="left">IsTemplateSpecificationInstance</td>
+<td align="left">Enum</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">If set to true, the diagnostic instance must be deleted on import.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left">Maturity</td>
+<td align="left">(any)</td>
+<td align="left">Editor</td>
+<td align="left">CDS-4014</td>
+<td align="left"><span id="maturity"></span>Allows to describe the <strong>editing progress state</strong> or a <strong>quality management maturity</strong>, to be displayed in the CANdelaStudio <a href="../../20%20UserInterface/Tree/Navigation%20Tree.htm#maturity">tree</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance</td>
+<td align="left">MaxAttemptsToDelay</td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left"></td>
+<td align="left">Used by <a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#security-levels">AUTOSAR Diagnostic Extract Export</a>.<br />
+For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_MaxAttemptsToDelay' title="">[ASR-D001_MaxAttemptsToDelay]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left">MaxAttemptsToLock</td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left"></td>
+<td align="left"><strong>No more used</strong> by AUTOSAR Diagnostic Extract Export, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_MaxAttemptsToLock' title="">[ASR-D001_MaxAttemptsToLock]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance</td>
+<td align="left">RequirementsId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">CDS-11531</td>
+<td align="left">See <a href="#RequirementsId">RequirementsId</a> at data object.<br />
+For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DiagInstRequirementsId' title="">[ASR-D001_DiagInstRequirementsId]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left">Segment_Number</td>
+<td align="left">Enum</td>
+<td align="left">ODX-Daimler</td>
+<td align="left">CDS-6803</td>
+<td align="left"><span id="Segment_Number"/>Controls export of <a href="../../30%20Features/Variant/Variant%20Coding%20Keys.htm">variant coding key</a> (supplement key) information to Diogenes.<br />
+Attribute at diagnostic instance in first diagnostic class with semantics &quot;varCoding&quot;.<br />
+See <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Segment%20Number.htm#SEGNUM-R100' title="">[SEGNUM-R100]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance</td>
+<td align="left">Snapshot_Record_Numeration_Type</td>
+<td align="left">Enum</td>
+<td align="left">AUTOSAR</td>
+<td align="left">CDS-70902</td>
+<td align="left">See the definition <a class='rqRef' href='../../30%20Features/Fault%20Memory/Snapshot%20Records%20Generic.htm#SR-R023' title="">[SR-R023]</a> and the use in DEXT Export <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R340' title="">[DEXT-R340]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left">WrappingStructure_Description_PR<br />
+WrappingStructure_Description_RQ<br />
+WrappingStructure_LongName_PR<br />
+WrappingStructure_LongName_RQ<br />
+WrappingStructure_ShortName_PR<br />
+WrappingStructure_ShortName_RQ</td>
+<td align="left">String</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left"><span id="WrappingStructure"></span>Stores Information about ODX SHORT/LONG-NAME/DESCRIPTION of imported ODX data which is evaluated during the ODXExport again (ODX roundtrip)<br />
+See also EOPF_ShortName above.</td>
+</tr>
+<tr class="even">
+<td align="left">DID</td>
+<td align="left"><code>ASR3_Legacy_Combine_DID</code></td>
+<td align="left">Unsigned</td>
+<td align="left">DEXT</td>
+<td align="left">CDS-69896</td>
+<td align="left"><span id="ASR3LegacyCombineDID"></span>Value <code>!= 0</code> lets DEXT export combine data in a DID, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R205' title="">[DEXT-R205]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DID</td>
+<td align="left">DOCREF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">original ODX-LINK (DOCREF). DIDs new data model: CDS-19553 in 8.1. See plug-in &quot;Enable ODX Mode&quot; <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R001' title="">[PEnODX-R001]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DID</td>
+<td align="left">DOCTYPE</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">original ODX-LINK (DOCTYPE) See plug-in &quot;Enable ODX Mode&quot; <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R001' title="">[PEnODX-R001]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DID</td>
+<td align="left">ID_REF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">original ODX-LINK (IDREF) See plug-in &quot;Enable ODX Mode&quot; <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R001' title="">[PEnODX-R001]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DID</td>
+<td align="left">RequirementsId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">See <a href="#RequirementsId">RequirementsId</a> at data object.<br />
+For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DIDRequirementsId' title="">[ASR-D001_DIDRequirementsId]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC</td>
+<td align="left">ASR_SWC_DataElement_Ref</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">CDS-39137</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R220' title="">[SWC-R220]</a> in SWC Sync.<br />
+For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_SWC_DTCDataElement_Ref' title="">[ASR-D001_ASR_SWC_DTCDataElement_Ref]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DTC</td>
+<td align="left">ASR_SWC_ServiceDependency_Ref</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left">For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_SWC_DTCServiceDependency_Ref' title="">[ASR-D001_ASR_SWC_DTCServiceDependency_Ref]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC</td>
+<td align="left">DOCREF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left">CDS-5907</td>
+<td align="left">original ODX-LINK (DOCREF). See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-i' title="">[PEnODX-R002-i]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DTC</td>
+<td align="left">DOCTYPE</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left">CDS-5907</td>
+<td align="left">original ODX-LINK (DOCTYPE). See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-i' title="">[PEnODX-R002-i]</a>.<br />
+name &quot;DOCTYPE&quot;<br />
+enumeration: 0 = CONTAINER, 1 = LAYER<br />
+default of enumeration: 0 = CONTAINER.<br />
+<a class='rqRef' href='../../20 UserInterface\Service\Services.htm#SVUI-R500-DIAG_LAYER' title="DIAG_LAYER Attribute">[SVUI-R500-DIAG_LAYER]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">DTC</td>
+<td align="left">ID_REF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left">CDS-5907</td>
+<td align="left">original ODX-LINK (IDREF). See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-i' title="">[PEnODX-R002-i]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DTC</td>
+<td align="left">MDX_DTCXXX</td>
+<td align="left">(any)</td>
+<td align="left">MDX_DTCRefs</td>
+<td align="left">CDS-12925</td>
+<td align="left">See MDX_DTCXXX at Class ECU.</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC</td>
+<td align="left">RequirementsId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">CDS-11531</td>
+<td align="left">See <a href="#RequirementsId">RequirementsId</a> at data object.<br />
+For the use in AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DTCRequirementsId' title="">[ASR-D001_DTCRequirementsId]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">DTC</td>
+<td align="left">Source_Error_Code</td>
+<td align="left">Int</td>
+<td align="left"> </td>
+<td align="left">CDS-5907</td>
+<td align="left">Original DTC value in order to detect whether a DTC number was changed. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-k1' title="">[PEnODX-R002-k1]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC</td>
+<td align="left">Source_Error_Text</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left">CDS-5907</td>
+<td align="left">Original DTC Text in order to detect whether a DTC number was changed. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-k2' title="">[PEnODX-R002-k2]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">(various)</td>
+<td align="left">(various)</td>
+<td align="left">OdxExportOption</td>
+<td align="left"></td>
+<td align="left"><span id="OdxExportOption"></span>An attribute with the qualifier equal to an <a href="../../30%20Features/CANdelaStudio%20Editor/Options.htm#ODX20Export">INI setting</a> overrides the setting of the corresponding INI entry.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">AcceptOnlyTextIDFromDictionary</td>
+<td align="left">Enum</td>
+<td align="left">Editor</td>
+<td align="left">CDS-547</td>
+<td align="left"><span id="AcceptOnlyTextIDFromDictionary"></span>not visible, 0=no, 1=yes, for <a href="../../30%20Features/Multi-Language/Dictionary.htm">dictionary</a></td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">AGL_Version</td>
+<td align="left">Unsigned</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Define the ODX AGL Version the template should fullfill. This will control specific checks and operations in the CANdelaStudio ODX Export (Template Specification)</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">Autosar_Type</td>
+<td align="left">Enum</td>
+<td align="left">Autosar</td>
+<td align="left">CDS-71295</td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_AUTOSAR_Type' title="">[ASR-D001_AUTOSAR_Type]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">AutosarVersion</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left">CDS-71295</td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_AUTOSAR_Version' title="">[ASR-D001_AUTOSAR_Version]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">BASE_VARIANT_PARENT_REF_DOCREF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">DOC-REF (odx-link) of a parent of base variant. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-d1' title="">[PEnODX-R002-d1]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">BASE_VARIANT_PARENT_REF_DOCTYPE</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">DOC-TYPE (odx-link) of a parent of base variant. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-d1' title="">[PEnODX-R002-d1]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">BASE_VARIANT_PARENT_REF_ID_REF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">DOC-IDREF (odx-link) of a parent of base variant. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-d1' title="">[PEnODX-R002-d1]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">CombineNegResponsesPerService</td>
+<td align="left">Enum</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Define specific CANdelaStudio ODXExport Options that are required for proper PSA ODX AGL support (Template Specification)<br />
+0 = No, 1 = Yes</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">CreateMatchingRequestParamForPosResponse</td>
+<td align="left">Enum</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Define specific CANdelaStudio ODXExport Options that are required for proper PSA ODX AGL support (Template Specification)<br />
+0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">DDDID_check_per_source_ID</td>
+<td align="left">Enum</td>
+<td align="left">UDS</td>
+<td align="left"> </td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DDDID_check_per_source_ID' title="">[ASR-D001_DDDID_check_per_source_ID]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">DDDID_configuration_storage</td>
+<td align="left">Enum</td>
+<td align="left">UDS</td>
+<td align="left"> </td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DDDID_configuration_storage' title="">[ASR-D001_DDDID_configuration_storage]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">DefaultLengthOfMemoryAddress</td>
+<td align="left">Int</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">Length to be used for MemoryAddress based services.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">DefaultLengthOfMemorySize</td>
+<td align="left">Int</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">Length to be used for MemoryLength based services.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">ExportTextTablesForTableKeys</td>
+<td align="left">Enum</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Define specific CANdelaStudio ODXExport Options that are required for proper PSA ODX AGL support (Template Specification)<br />
+0 = No, 1 = Yes</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">ExportVehicleInfoSpec</td>
+<td align="left">Enum</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Define specific CANdelaStudio ODXExport Options that are required for proper PSA ODX AGL support (Template Specification)<br />
+0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">FUNCTIONAL_GROUP_LONG_NAME</td>
+<td align="left">Translatable</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">LONG-NAME of a FUNCTIONAL-GROUP to be exported.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">FUNCTIONAL_GROUP_PARENT_REF_DOCREF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">DOC-REF (odx-link) of a parent functional group. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-d2' title="">[PEnODX-R002-d2]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">FUNCTIONAL_GROUP_PARENT_REF_DOCTYPE</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">DOC-TYPE (odx-link) of a parent functional group. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-d2' title="">[PEnODX-R002-d2]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">FUNCTIONAL_GROUP_PARENT_REF_ID_REF</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">DOC-IDREF (odx-link) of a parent functional group. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-d2' title="">[PEnODX-R002-d2]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">FUNCTIONAL_GROUP_SHORT_NAME</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">SHORT-NAME of a FUNCTIONAL-GROUP to be exported. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-b' title="">[PEnODX-R002-b]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">LastImportSuccessFull</td>
+<td align="left">Enum</td>
+<td align="left">PSA</td>
+<td align="left">CDS-33680</td>
+<td align="left">Documents whether the last ODX import skipped any services. Values 0=&quot;No&quot;, 1=&quot;Yes&quot;, 2=&quot;NoImportExecuted&quot; (default)</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">MaxNumberOfDynDefinedDidReferences</td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left"> </td>
+<td align="left">Number of DIDs that can be defined dynamically, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_MaxDyn' title="">[ASR-D001_MaxDyn]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">MDX_DTCCR</td>
+<td align="left">String</td>
+<td align="left">MDX_DTCRefs</td>
+<td align="left">CDS-12925</td>
+<td align="left">Name = “Control Routine” (MDX specific DTC table column), contains multiple routine qualifiers.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">MDX_DTCID</td>
+<td align="left">String</td>
+<td align="left">MDX_DTCRefs</td>
+<td align="left">CDS-14019</td>
+<td align="left">CANdelaStudio tab: &quot;Inhibiting DTCs&quot; (MDX specific DTC table column), value contains format 0x[0-9A-F]{6} and must match DTC from list of supported DTCs</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">MDX_DTCMC</td>
+<td align="left">String</td>
+<td align="left">MDX_DTCRefs</td>
+<td align="left">CDS-12925</td>
+<td align="left">Name = “Monitoring Cycle” (MDX specific DTC table column), contains a value (e.g. hexadecimal “0x01”)</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">MDX_DTCWI</td>
+<td align="left">String</td>
+<td align="left">MDX_DTCRefs</td>
+<td align="left">CDS-12925</td>
+<td align="left">Name = “Warning Indicators” (MDX specific DTC table column), contains a value.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">MDX_DTCXXX</td>
+<td align="left">(any)</td>
+<td align="left">MDX_DTCRefs</td>
+<td align="left">CDS-12925</td>
+<td align="left">For a pair of attributes with any qualifier, but existing at both ECU and DTC =: a &quot;(P, S) Tuple)&quot;:<br />
+a) the default attribute and overridden attribute located at the ECU specify a pool P of values,<br />
+b) whereas the attribute located at a DTC contains a subset S of the values stored in P<br />
+The description (in the first up-to-date language) of the P VDefaultAttribute of a (P, S) tuple shall define the maximum allowed number “n” of routines or values that may be selected in an S attribute. The format of the definition is:<br />
+maxSelect=&lt;number&gt;<br />
+If this definition is not recognized in the description, maxSelect is assumed to be 1.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">MDX_VERSION</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">CDS-14275</td>
+<td align="left">Select version of MDX format created in MDX export.<br />
+</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">MigrateExtendedDataToAUTOSARFaultMemory13</td>
+<td align="left">Unsigned</td>
+<td align="left">Editor</td>
+<td align="left">CDS-72049</td>
+<td align="left">Lets you force or suppress the migration to v13 Extended Data Records, see <a class='rqRef' href='../../30%20Features/Migrations/CANdelaStudio%2013.htm#MIGR13-D140' title="">[MIGR13-D140]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">MigrateSnapshotDataToAUTOSARFaultMemory13</td>
+<td align="left">Unsigned</td>
+<td align="left">Editor</td>
+<td align="left">CDS-72049</td>
+<td align="left">Lets you force or suppress the migration to v13 Snapshot Records, see <a class='rqRef' href='../../30%20Features/Migrations/CANdelaStudio%2013.htm#MIGR13-D130' title="">[MIGR13-D130]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">MultiECU</td>
+<td align="left">String</td>
+<td align="left">Editor</td>
+<td align="left">CDS-22808</td>
+<td align="left">Used by plug-in &quot;Manage Multi Identity ECU&quot; <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R030' title="ECU Attribute">[PMulti-R030]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">Periodic_Rate_Fast_in_ms</td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left"> </td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_Periodic_Rate_Fast_in_ms' title="">[ASR-D001_Periodic_Rate_Fast_in_ms]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">Periodic_Rate_Medium_in_ms</td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left"> </td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_Periodic_Rate_Medium_in_ms' title="">[ASR-D001_Periodic_Rate_Medium_in_ms]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">Periodic_Rate_Slow_in_ms</td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left"> </td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_Periodic_Rate_Slow_in_ms' title="">[ASR-D001_Periodic_Rate_Slow_in_ms]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">PlugInRecomputeOID</td>
+<td align="left">Enum</td>
+<td align="left">ODX Import</td>
+<td align="left">CDS-13225</td>
+<td align="left">By default set to 0. If set to any other value the Recompute OIDs plugin issues an info message when started by the ODX Import and a warning message when started manually afterwards.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">Prefer_flat_DID</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left">CDS-35161</td>
+<td align="left">Contains &quot;ALL&quot; or a comma-separated list of DIDs, e.g. &quot;F1A1;F1A2;F1A3&quot;. See <a href="../../30%20Features/Import/5_Selective%20Topics.htm#Prefer_flat_DID">ODX Import</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">ProhibitDocUpgrade</td>
+<td align="left">Enum</td>
+<td align="left"> </td>
+<td align="left">CDS-16383</td>
+<td align="left"><span id="ProhibitDocUpgrade"/>If the attribute exists and has a non-zero value, it prevents from document upgrade (message box shown) <a class='rqRef' href='../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm#DOCUP-R005' title="">[DOCUP-R005]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">PROTOCOL_LONG_NAME</td>
+<td align="left">Translatable</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">LONG-NAME of a PROTOCOL to be exported.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">PROTOCOL_SHORT_NAME</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">SHORT-NAME of a PROTOCOL to be exported. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-c' title="">[PEnODX-R002-c]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">SAECodes</td>
+<td align="left">Enum</td>
+<td align="left">DIOGENES</td>
+<td align="left">CDS-5217</td>
+<td align="left"><span id="SAECodes"/>Controls whether the Diogenes Export uses Hex (enum=0) or SAE (enum=1) for DTCs. This attribute overwrites the general <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Display.htm#dtc">CANdelaStudio display option</a> which is used by default.<br />
+Attribute creation see plugin &quot;DCSAddDiogenesAttribute&quot; (CDS-6803 5.0 SP1).</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">Superset_Libraries</td>
+<td align="left">String</td>
+<td align="left">ODXImport</td>
+<td align="left"> </td>
+<td align="left"><span id="SupersetLibraries"/>A semicolon separated list of SHORT-NAMEs representing the &quot;superset&quot; ECU-SHARED-DATAs (e.g. “VW80127V4;VW80185”). In case a deactivated diagnostic instance gets re-imported from out of one of these “superset” libraries, it remains deactivated. Default: empty string. Set at <a href="../../30%20Features/Import/2_Import%20Settings.htm#SupersetLibraries">ODX Import</a></td>
+</tr>
+<tr class="even">
+<td align="left">ECU</td>
+<td align="left">SynchronizationAttribute</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left">CDS-11531</td>
+<td align="left"><span id="SynchronizationAttribute"/>Used in Import Pool <a class='rqRef' href='../../30%20Features/Import%20Pool/Import%20Pool.htm#IP-R010' title="">[IP-R010]</a>. Default or overriding value specify the qualifier of another attribute (default: <code>RequirementsId</code>).<br />
+At several classes of CANdela objects (e.g. DTC, data object...), that attribute optionally holds the ID of the requirement associated with the object <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100' title="Associate Diagnostic Object with Requirement">[RQ-R100]</a>.<br />
+For use with AUTOSAR Diagnostic Extract, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_SynchronizationAttribute' title="">[ASR-D001_SynchronizationAttribute]</a>.<br />
+The Vector Application Note <code>AN-IDG-1-014</code> describes the mechanism in detail.</td>
+</tr>
+<tr class="odd">
+<td align="left">ECU</td>
+<td align="left">Units</td>
+<td align="left">Enum</td>
+<td align="left">Editor</td>
+<td align="left">CDS-3861</td>
+<td align="left"><span id="units"/>Units to show in the &quot;unit&quot; combo-box in the data type dialog. The combo-box contains the enums from the attribute, sorted as specified by the attribute.<br />
+On importing from ODX, the tool enhances (only add, no remove) the attribute values with units of ECU-SHARED-DATAs.<br />
+See plug-in &quot;Enable ODX Mode&quot; [PEnODX-R005.0] and at <a href="../../30%20Features/Import/2_Import%20Settings.htm#units">ODX Import</a></td>
+</tr>
+<tr class="even">
+<td align="left">Interface</td>
+<td align="left">DiagnosticConnectionRef</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DiagnosticConnectionRef' title="">[ASR-D001_DiagnosticConnectionRef]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">Interface</td>
+<td align="left">DiagnosticProtocolPriority</td>
+<td align="left">Unsigned</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DiagnosticProtocolPriority' title="">[ASR-D001_DiagnosticProtocolPriority]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">Job</td>
+<td align="left">Diagnostic_Class</td>
+<td align="left">Enum</td>
+<td align="left">ODX</td>
+<td align="left">CDS-33866</td>
+<td align="left">(see below at <a href="#Service_DiagnosticClass">Service</a>)</td>
+</tr>
+<tr class="odd">
+<td align="left">Job</td>
+<td align="left">SkipDeactivationOfJobDuringODXImport</td>
+<td align="left">Enum</td>
+<td align="left">ODXImport</td>
+<td align="left">CDS-26949</td>
+<td align="left"><span id="SkipDeact"/>See <a href="../../30%20Features/Import/2_Import%20Settings.htm#SkipDeactivationOfJobDuringODXImport">Configurable job deactivation</a>.<br />
+0 - No (Deactivate during import)<br />
+1 - Yes (keep even missing jobs activated)<br />
+Default 0.</td>
+</tr>
+<tr class="even">
+<td align="left">Library</td>
+<td align="left">IsBaseLibrary</td>
+<td align="left">Enum</td>
+<td align="left"></td>
+<td align="left">CDS-39323</td>
+<td align="left">See Base Library definition <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-D080' title="">[LIB-D080]</a>.<br />
+Controls availability of the operation &quot;Replace Copy with Reference in Base Library&quot; <a class='rqRef' href='../../20 UserInterface\Diagnostic Instance\Diagnostic Instances.htm#DIUI-R150' title="Select from Repository">[DIUI-R150]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">Packet Data Type</td>
+<td align="left">DIDName81</td>
+<td align="left">String</td>
+<td align="left">Migration</td>
+<td align="left">CDS-19553</td>
+<td align="left">DID Migration 8.1 <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-D444' title="">[DID-D444]</a></td>
+</tr>
+<tr class="even">
+<td align="left">Packet Data Type</td>
+<td align="left">DIDNumber81</td>
+<td align="left">Integer</td>
+<td align="left">Migration</td>
+<td align="left">CDS-19553</td>
+<td align="left">DID Migration 8.1 <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-D446' title="">[DID-D446]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Packet Data Type</td>
+<td align="left">DIDQualifier81</td>
+<td align="left">String</td>
+<td align="left">Migration</td>
+<td align="left">CDS-19553</td>
+<td align="left">DID Migration 8.1 <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-D447' title="">[DID-D447]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ProtocolService</td>
+<td align="left">Mnemonic</td>
+<td align="left">String</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Define the Short-Name Prefix used to calculate the ODX DIAG-SERVICE.SHORT-NAME (Template Specification)</td>
+</tr>
+<tr class="odd">
+<td align="left">ProtocolService</td>
+<td align="left">NegResponse_LONG_NAME</td>
+<td align="left">String</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">dito LONG-NAME of the STRUCTURE used for NEGRESPONSE PARAMs of the DIAG-SERVICE generated from the Protocol-Service (Template Specification)</td>
+</tr>
+<tr class="even">
+<td align="left">ProtocolService</td>
+<td align="left">WrapReqComps</td>
+<td align="left">Unsigned</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Define after which position PARAMs are moved to a STRUCTURE in REQUEST (Template Specification)</td>
+</tr>
+<tr class="odd">
+<td align="left">ProtocolService</td>
+<td align="left">WrapRespComps</td>
+<td align="left">Unsigned</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Define after which position PARAMs are moved to a STRUCTURE in RESPONSE (Template Specification)</td>
+</tr>
+<tr class="even">
+<td align="left">ProtocolService</td>
+<td align="left">WrappingStructure_LongName_PR<br />
+WrappingStructure_LongName_RQ<br />
+WrappingStructure_ShortName_PR<br />
+WrappingStructure_ShortName_RQ</td>
+<td align="left">String</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">LONG-NAME/SHORT-NAME of the respective STRUCTURE used for REQUEST/RESPONSE PARAMs of the DIAG-SERVICE generated from the Protocol-Service (ODX roundtrip)<br />
+See also NegResponse_LONG_NAME.</td>
+</tr>
+<tr class="odd">
+<td align="left">Service</td>
+<td align="left">Description</td>
+<td align="left">Translatable</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">Description of an ODX-Service</td>
+</tr>
+<tr class="even">
+<td align="left">Service</td>
+<td align="left">DIAG_LAYER</td>
+<td align="left">Enum</td>
+<td align="left"> </td>
+<td align="left">CDS-5907</td>
+<td align="left"><span id="DIAG_LAYER"/>Specifies whether a service is usually inherited in ODX by PROTOCOL, FUNCTIONAL-GROUP or not. See [PEnODX-R002-a DIAG-LAYER].</td>
+</tr>
+<tr class="odd">
+<td align="left">Service</td>
+<td align="left">DIAG_SERVICE_SHORT_NAME</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left">CDS-5907</td>
+<td align="left">ODX Short Name of service. See <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-m' title="">[PEnODX-R002-m]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">Service</td>
+<td align="left">Diagnostic_Class</td>
+<td align="left">Enum</td>
+<td align="left">ODX</td>
+<td align="left">CDS-33866</td>
+<td align="left"><span id="DiagnosticClass"/>Specifies the DIAGNOSTIC_CLASS in ODX, supported values: STARTCOMM, STOPCOMM, VARIANTIDENTIFICATION, DYN-DEF-MESSAGE, READ-DYN-DEFMESSAGE, CLEAR-DYN-DEF-MESSAGE <a id='Service_DiagnosticClass'></a>.<br />
+8.5 (CDS-33866): the additional value &quot;NONE&quot; specifies that no DIAGNOSTIC-CLASS is set for the DIAG-SERVICE.</td>
+</tr>
+<tr class="odd">
+<td align="left">Service</td>
+<td align="left">DOORS</td>
+<td align="left">String</td>
+<td align="left">Requirements</td>
+<td align="left">CDS-3940</td>
+<td align="left"><span id="DOORS"/>Optionally holds links into DOORS, like <code>R001.0=doors://database:12345/?version=1,prodID=1,dbid=42d24,container=5c06</code>.<br />
+The front part (DOORS-ID like <code>R001.0</code>) is mandatory, the link separated by <code>=</code> is optional.<br />
+Multiple such links must be put onto multiple lines.<br />
+CANoe Option DiVa (since version 2.1) uses the DOORS-IDs and links stored at the services of a CANdela document to place the link into its report view (the generated HTML output of the test results).<br />
+Note: these requirement links are different from <a href="../../30%20Features/Requirements/Requirements.htm">requirements described in the CANdela data model</a>, which are stored in a different attribute, see <a href="#SynchronizationAttribute">SynchronizationAttribute</a>.<br />
+</td>
+</tr>
+<tr class="even">
+<td align="left">Service</td>
+<td align="left">EXIGENCE_ST_AMONT<br />
+EXIGENCE_ST_MESSAGERIE</td>
+<td align="left">String</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Define requirements in CANdela (evaluated during ODXExport / Import) (ODX Roundtrip)</td>
+</tr>
+<tr class="odd">
+<td align="left">Service</td>
+<td align="left">Mode_Rule</td>
+<td align="left">Enum</td>
+<td align="left">Autosar</td>
+<td align="left">CDS-70465</td>
+<td align="left">(Customer  specific) Allows optionally assigning an AUTOSAR Mode Rule = an OR-expression over data objects (example: enum value 2 = <code>HW Mode</code>, 4 = <code>Fingerprint</code>, 6 = <code>HW Mode OR Fingerprint</code>), to be exported to .CSV and evaluated in daVinci via a customer-specific Groovy script. Workaround for pending CDS-70465.</td>
+</tr>
+<tr class="even">
+<td align="left">Service</td>
+<td align="left">secured_by_signature</td>
+<td align="left">Enum</td>
+<td align="left">SDG</td>
+<td align="left"> </td>
+<td align="left">(Customer  specific) Written into a DEXT SDG, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R610' title="">[DEXT-R610]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">SharedProxyComp</td>
+<td align="left">TABLE_LONG_NAME</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">according ODX TABLE</td>
+</tr>
+<tr class="even">
+<td align="left">SharedProxyComp</td>
+<td align="left">TABLE_SEMANTIC</td>
+<td align="left">String</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">according ODX TABLE</td>
+</tr>
+<tr class="odd">
+<td align="left">State</td>
+<td align="left">SyncWithTargetGroup</td>
+<td align="left">Unsigned/Enum</td>
+<td align="left"> </td>
+<td align="left">CDS-68998</td>
+<td align="left">For linking state and target group <a class='rqRef' href='../../30%20Features/State%20Dependency/Link%20Target%20Group%20to%20State.htm#ST-R500' title="">[ST-R500]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">StateGroup</td>
+<td align="left">Semantic</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">CDS-15441</td>
+<td align="left">CDS-15441 R001.0 (EnableOdxMode Plug-In), CDS-14724 (ODX export of state group semantics)</td>
+</tr>
+<tr class="odd">
+<td align="left">UsedProtocolService</td>
+<td align="left">GenerateTABLEPerDiagInstance</td>
+<td align="left">Enum</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Control that all Services in the diagnostic instance are combined into one ODX DIAG-SERVICE (Template Specification)<br />
+0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td align="left">UsedProtocolService</td>
+<td align="left">InterfaceExcludedForService</td>
+<td align="left">String</td>
+<td align="left">Editor</td>
+<td align="left">CDS-22520</td>
+<td align="left"><span id="InterfaceExcludedForService"></span> Stores the &quot;Services Supported for Interfaces&quot; information <a class='rqRef' href='../../30%20Features/Interface/Services%20Supported%20for%20Interfaces.htm#SSI-R100' title="">[SSI-R100]</a> in files older than 7.5, see the migration <a class='rqRef' href='../../30%20Features/Migrations/CANdelaStudio%207.5.htm#MIG75-R200' title="Down Migration">[MIG75-R200]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">UsedProtocolService</td>
+<td align="left">RelevantForODXExport</td>
+<td align="left">Enum</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">(unused, Template Specification)<br />
+0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td align="left">UsedProtocolService</td>
+<td align="left">Semantic</td>
+<td align="left">String</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">Defines the ODX SEMANTIC for a PARAM created from the Component (Template Specification)</td>
+</tr>
+<tr class="odd">
+<td align="left">UsedProtocolService</td>
+<td align="left">WrapComps</td>
+<td align="left">Enum</td>
+<td align="left">PSA</td>
+<td align="left"> </td>
+<td align="left">(unused, Template Specification)<br />
+0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td align="left">Variant</td>
+<td align="left">MaxAmountSegmentNumber</td>
+<td align="left">Enum</td>
+<td align="left">SDG</td>
+<td align="left">CDS-68973</td>
+<td align="left"><span id="MaxAmountSegmentNumber"></span>See <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Segment%20Number.htm#SEGNUM-R410' title="MaxAmountSegmentNumber">[SEGNUM-R410]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Vehicle System Group</td>
+<td align="left">RequirementsId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">CDS-11531</td>
+<td align="left">See <a href="#RequirementsId">RequirementsId</a> at data object.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes (Feature)</a></li>
+<li><a href="../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm">Attributes for AUTOSAR Diagnostic Extract export</a></li>
+<li><code>ODXImport Options.pdf</code> in the <a href="../../30%20Features/Installation/Documentation.htm">CANdelaStudio documentation folder</a>)</li>
+</ul>
+</body>
+</html>

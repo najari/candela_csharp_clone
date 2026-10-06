@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Open Page</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="open-page"><span id='_index_446727852'>Open Page</span></h1>
+<p><span id="OPEN-R010" class="rqDef">[OPEN-R010]</span> In Ribbon Tab File, the menu item &quot;Open&quot; <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R020' title="">[MENU-R020]</a> shows the Open Page in the backstage (the right side).</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Open%20Page.jpg" title="Open Page" alt="CANdelaStudio File|Open Page" />
+<p class="caption">CANdelaStudio File|Open Page</p>
+</div>
+<p>The page lets you open...</p>
+<ul>
+<li>a CANdela document (.cdd) in Standard View, Translation View or Expert View</li>
+<li>a CANdela template (.cddt) in Translation View or Expert View</li>
+</ul>
+<p>See also the document operation Open <a class='rqRef' href='../../30 Features\Document\Document Operations.htm#DOC-R610' title="Open">[DOC-R610]</a> and the CANdelaStudio <a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">Views</a>.</p>
+<p>Starting with v11 (CDS-69946),</p>
+<ul>
+<li>File|Open has been <strong>integrated in the backstage</strong>.</li>
+<li>You can still access the conventional Windows file dialog via the button &quot;...&quot; at the bottom.</li>
+</ul>
+<p>See also the notes for running CANdelaStudio with Windows admin privileges <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Startup.htm#STRT-R030' title="">[STRT-R030]</a>.</p>
+
+<h2 id="navigation">Navigation</h2>
+<div class="figure">
+<img src="Images/Open%20Page%20-%20Navigation.jpg" alt="Open Page - Navigation" />
+<p class="caption">Open Page - Navigation</p>
+</div>
+<p><span id="OPEN-R210" class="rqDef">[OPEN-R210]</span> The <strong>left arrow</strong> button navigates <strong>back</strong> through <strong>folders</strong> visited in the page.</p>
+<p><span id="OPEN-R220" class="rqDef">[OPEN-R220]</span> Similarly, the <strong>right arrow</strong> button navigates <strong>forth</strong> through the <strong>folders</strong> previously navigated back.</p>
+<p><span id="OPEN-R230" class="rqDef">[OPEN-R230]</span> The <strong>down arrow</strong> button opens a list to directly navigate to a folder previously visited in the page.</p>
+<p><span id="OPEN-R240" class="rqDef">[OPEN-R240]</span> The <strong>up arrow</strong> button navigates up to the parent folder of the currently visited folder. It stops at the root folder of the drive.</p>
+<p><span id="OPEN-R250" class="rqDef">[OPEN-R250]</span> The edit control shows the currently visited folder.</p>
+<ul>
+<li><span id="OPEN-R250-Segments" class="rqDef">[OPEN-R250-Segments]</span> It shows each <strong>folder name</strong> and a <strong>right arrow</strong> as a selectable segment <img src="Images/Open%20Page%20-%20Navigation%20-%20Segment.jpg" />.</li>
+<li><span id="OPEN-R250-Click" class="rqDef">[OPEN-R250-Click]</span> When you click onto a segment, you navigate to that folder.</li>
+<li><span id="OPEN-R250-Arrow" class="rqDef">[OPEN-R250-Arrow]</span> When you click the <strong>arrow to the right of the text</strong>, a <strong>list</strong> opens with folders <strong>under</strong> the folder shown in the segment.
+<ul>
+<li>E.g. being on drive <code>D:</code>, you want to navigate to drive <code>E:</code>.</li>
+<li>Press the arrow of the <code>Computer</code> segment <strong>left</strong> to <code>D:</code>; in the list shown, select <code>E:</code>.</li>
+</ul></li>
+<li><span id="OPEN-R250-Editing" class="rqDef">[OPEN-R250-Editing]</span> When you click into the empty background of the edit control, ...
+<ul>
+<li>the control switches to <strong>edit mode</strong> <img src="Images/Open%20Page%20-%20Navigation%20-%20Editing.jpg" /> where you can directly type or paste text.</li>
+<li>Pressing ENTER or the arrow button at the right end accepts input and navigates to that folder, if it exists.</li>
+<li><span id="OPEN-R250-EditingFolder" class="rqDef">[OPEN-R250-EditingFolder]</span> When you enter (edit or paste) a <strong>folder path</strong>, CANdelaStudio opens that folder.</li>
+<li><span id="OPEN-R250-EditingFile" class="rqDef">[OPEN-R250-EditingFile]</span> When you enter a <strong>file path</strong>, CANdelaStudio opens the folder of the file and selects the file in the Files and Folders List (described below, <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm#OPEN-R120' title="">[OPEN-R120]</a>).</li>
+<li><span id="OPEN-R250-Missing" class="rqDef">[OPEN-R250-Missing]</span> When you enter a path not existing, CANdelaStudio shows an error message and remains in the current folder.</li>
+</ul></li>
+</ul>
+<h2 id="special-folders">Special Folders</h2>
+<div class="figure">
+<img src="Images/Open%20Page%20-%20Special%20Folders.jpg" alt="Open Page - Special Folders" />
+<p class="caption">Open Page - Special Folders</p>
+</div>
+<p><span id="OPEN-R300" class="rqDef">[OPEN-R300]</span> The folders area to the left...</p>
+<ul>
+<li>contains the lists &quot;Quick Access&quot; and &quot;Recent Folders&quot;</li>
+<li>can be resized using the dotted gripper to the right.</li>
+</ul>
+<h3 id="quick-access">Quick Access</h3>
+<p><span id="OPEN-R310" class="rqDef">[OPEN-R310]</span> The Quick Access area lists important folders:</p>
+<ul>
+<li><span id="OPEN-R310-Desktop" class="rqDef">[OPEN-R310-Desktop]</span> the Windows desktop folder</li>
+<li><span id="OPEN-R310-MyDocuments" class="rqDef">[OPEN-R310-MyDocuments]</span> your personal Documents folder</li>
+<li><span id="OPEN-R310-BaseDir" class="rqDef">[OPEN-R310-BaseDir]</span> your personal Base Directory (if configured in Ribbon Tab File|Options <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20General.htm#OPT-R150' title="">[OPT-R150]</a>)</li>
+<li><span id="OPEN-R310-VectorExamples" class="rqDef">[OPEN-R310-VectorExamples]</span> the CANdelaStudio <a href="../../30%20Features/Installation/Example%20Files.htm">examples folder</a>.</li>
+</ul>
+<h3 id="recent-folders">Recent Folders</h3>
+<p><span id="Open-R340" class="rqDef">[Open-R340]</span> Recent Folders contains the <strong>folders</strong> of the <strong>files listed in File|Recent</strong> <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R340' title="">[MENU-R340]</a>.</p>
+<ul>
+<li><span id="Open-R340-Remove" class="rqDef">[Open-R340-Remove]</span> If needed, you can cleanup the folder list by cleaning up the recent files list <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R340-Remove' title="">[MENU-R340-Remove]</a>.</li>
+</ul>
+<h2 id="filter">Filter</h2>
+<div class="figure">
+<img src="Images/Open%20Page%20-%20Filter.jpg" alt="Open Page - Filter" />
+<p class="caption">Open Page - Filter</p>
+</div>
+<p><span id="OPEN-R110" class="rqDef">[OPEN-R110]</span> Provides filtering using wildcard patterns for the file name:</p>
+<ul>
+<li>CANdela Data: <code>.cdd</code> (documents)</li>
+<li>CANdela Templates: <code>.cddt</code></li>
+<li>All CANdela Files: <code>.cdd</code> and <code>.cddt</code></li>
+<li>All Files: no filter, shows all files in the folder</li>
+</ul>
+<h2 id="files-and-folders">Files and Folders</h2>
+<div class="figure">
+<img src="Images/Open%20Page%20-%20Files%20and%20Folders.jpg" alt="Open Page - Files and Folders" />
+<p class="caption">Open Page - Files and Folders</p>
+</div>
+<p><span id="OPEN-R120" class="rqDef">[OPEN-R120]</span> The list shows files and folders in the currently selected folder.</p>
+<ul>
+<li>The filters described above <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm#OPEN-R110' title="">[OPEN-R110]</a> optionally hide some files.</li>
+<li><span id="OPEN-R120-Char" class="rqDef">[OPEN-R120-Char]</span> When you <strong>type</strong> some character(s), the dialog navigates to the <strong>first name</strong> in the list that starts with these characters (&quot;incremental search&quot;).
+<ul>
+<li>The list must have focus.</li>
+</ul></li>
+<li><span id="OPEN-R120-Backspace" class="rqDef">[OPEN-R120-Backspace]</span> When you type <code>Backspace</code>, the dialog navigates to the parent folder.</li>
+<li><span id="OPEN-R120-Sort" class="rqDef">[OPEN-R120-Sort]</span> You may <strong>sort</strong> the list by clicking onto the list header.
+<ul>
+<li>Sorting combines files and folders in one list.</li>
+</ul></li>
+<li><span id="OPEN-R120-FolderDoubleClick" class="rqDef">[OPEN-R120-FolderDoubleClick]</span> <strong>Double-click</strong> on a <strong>folder</strong> navigates into the folder.</li>
+<li>To navigate to the <strong>parent folder</strong>, you may...
+<ul>
+<li>click the second last segment in the edit control on top <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm#OPEN-R250-Segments' title="">[OPEN-R250-Segments]</a>, or</li>
+<li>click the Up arrow button <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm#OPEN-R240' title="">[OPEN-R240]</a> left to that edit control.</li>
+</ul></li>
+<li><span id="OPEN-R120-FileDoubleClick" class="rqDef">[OPEN-R120-FileDoubleClick]</span> <strong>Double-click</strong> on a <strong>file</strong> opens it with the settings specified for View Type and Language (see the next chapters).</li>
+<li><span id="OPEN-R120-Admin" class="rqDef">[OPEN-R120-Admin]</span> When you started CANdelaStudio with Windows admin privileges <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Startup.htm#STRT-R030' title="">[STRT-R030]</a>, network drives are not available (this is a Windows feature).</li>
+</ul>
+
+<h2 id="view-type">View Type</h2>
+<div class="figure">
+<img src="Images/Open%20Page%20-%20View%20Type.jpg" alt="Open Page - View Type" />
+<p class="caption">Open Page - View Type</p>
+</div>
+<p><span id="OPEN-R410" class="rqDef">[OPEN-R410]</span> Specifies the <a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">View</a> for opening the file.</p>
+<ul>
+<li><span id="OPEN-R410-StandardEdition" class="rqDef">[OPEN-R410-StandardEdition]</span> View, ViewX and Standard edition do <strong>not show this pane at all</strong>, since they automatically open files in Standard View only.</li>
+<li><span id="OPEN-R410-StandardView" class="rqDef">[OPEN-R410-StandardView]</span> <strong>Standard View</strong>
+<ul>
+<li>Lets you open the file in Standard View.</li>
+<li><span id="OPEN-R410-StandardInsens" class="rqDef">[OPEN-R410-StandardInsens]</span> For CANdela <strong>templates</strong>, the button is shown insensitive (Standard View is not available for templates).</li>
+<li><span id="OPEN-R410-Keep" class="rqDef">[OPEN-R410-Keep]</span> When you select a template, the Expert View button gets selected.<br />
+When you then select a document, the Standard View button gets selected (CDS-71272 v12).</li>
+</ul></li>
+<li><span id="OPEN-R410-ExpertView" class="rqDef">[OPEN-R410-ExpertView]</span> <strong>Expert View</strong>
+<ul>
+<li>Lets you open the file in <a href="../../30%20Features/CANdelaStudio%20Editor/Expert%20View.htm">Expert View</a>.</li>
+<li><span id="OPEN-R410-ExpertViewProEdition" class="rqDef">[OPEN-R410-ExpertViewProEdition]</span> In Pro Edition, the button is shown insensitive (Expert View is not available in Pro Edition).</li>
+</ul></li>
+<li><span id="OPEN-R410-TranslationView" class="rqDef">[OPEN-R410-TranslationView]</span> <strong>Translation View</strong>
+<ul>
+<li>Lets you open the file in <a href="../../20%20UserInterface/Multi-Language/Translation%20View.htm">Translation View</a>.</li>
+</ul></li>
+<li><span id="OPEN-R410-Default" class="rqDef">[OPEN-R410-Default]</span> On entry, the dialog selects <strong>Standard View</strong> (CDS-71272 v12).</li>
+</ul>
+<p><span id="OPEN-R410-DoubleClick" class="rqDef">[OPEN-R410-DoubleClick]</span> A <strong>double-click</strong> on a button opens the file currently specified in the edit control <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm#OPEN-R130' title="">[OPEN-R130]</a>, using the view defined by the button.</p>
+<p>Dependency on CANdelaStudio <strong>Edition</strong>:</p>
+<ul>
+<li><span id="OPEN-R420-Standard" class="rqDef">[OPEN-R420-Standard]</span> In CANdelaStudio <strong>View</strong>, <strong>ViewX</strong> and <strong>Standard</strong> Edition,
+<ul>
+<li>the &quot;View Type&quot; area is <strong>not shown</strong> at all.</li>
+</ul></li>
+<li><span id="OPEN-R420-Pro" class="rqDef">[OPEN-R420-Pro]</span> In CANdelaStudio <strong>Pro</strong> Edition,
+<ul>
+<li>the &quot;Expert View&quot; button is shown insensitive.</li>
+</ul></li>
+</ul>
+<h2 id="languages">Languages</h2>
+<div class="figure">
+<img src="Images/Open%20Page%20-%20Languages.jpg" alt="Open Page - Languages" />
+<p class="caption">Open Page - Languages</p>
+</div>
+<p><span id="OPEN-R420" class="rqDef">[OPEN-R420]</span></p>
+<ul>
+<li>shows the list of languages in the CANdela file</li>
+<li>your selection determines the language of diagnostic objects to be shown in CANdelaStudio.</li>
+<li>for details, see the Language Handling <a class='rqRef' href='../../30 Features\Document\Document Operations.htm#DOC-R620' title="Save">[DOC-R620]</a> at the Open operation.</li>
+</ul>
+<p>See also the <a href="../../30%20Features/Multi-Language/Multi-Language.htm">Multi-Language Feature</a>.</p>
+<h2 id="file-name">File Name</h2>
+<div class="figure">
+<img src="Images/Open%20Page%20-%20File%20Name.jpg" alt="Open Page - File Name" />
+<p class="caption">Open Page - File Name</p>
+</div>
+<p><span id="OPEN-R130" class="rqDef">[OPEN-R130]</span> The edit control specifies the file name that will be used by the Open button. It can contain...</p>
+<ul>
+<li><span id="OPEN-R130-Filename" class="rqDef">[OPEN-R130-Filename]</span> a <strong>file name</strong>, like <code>Example.cdd</code></li>
+<li><span id="OPEN-R130-Absolute" class="rqDef">[OPEN-R130-Absolute]</span> an <strong>absolute path</strong>, like <code>D:\Example.cdd</code></li>
+<li><span id="OPEN-R130-Relative" class="rqDef">[OPEN-R130-Relative]</span> a <strong>relative path</strong>, like <code>..\2019\Example.cdd</code>
+<ul>
+<li>A relative path is evaluated relative to the current folder.</li>
+</ul></li>
+<li><span id="OPEN-R130-Edit" class="rqDef">[OPEN-R130-Edit]</span> You can edit the contents by typing and by using copy/paste.</li>
+</ul>
+<p><span id="OPEN-R130-Explorer" class="rqDef">[OPEN-R130-Explorer]</span> The &quot;...&quot; button to the right end of the control opens the Windows file dialog on the current folder, which...</p>
+<ul>
+<li>provides operations directly on the files, using the context menu.</li>
+<li>provides access to further special Windows folders (Favorites, Libraries)</li>
+<li>provides access to a list of previously opened CANdela templates or documents (managed by Windows) - press the Down button in the edit control at the bottom of the Windows file dialog.</li>
+</ul>
+<p><span id="OPEN-R150-Open" class="rqDef">[OPEN-R150-Open]</span> The &quot;Open&quot; button opens...</p>
+<ul>
+<li>the file specified in the edit control,</li>
+<li>with the settings specified for View Type and Language (see above chapters).</li>
+<li>As an alternative, you can open a file by ...
+<ul>
+<li>a double-click in the list <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm#OPEN-R120-FileDoubleClick' title="">[OPEN-R120-FileDoubleClick]</a>,</li>
+<li>a double-click on a &quot;View Type&quot; button <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm#OPEN-R410-DoubleClick' title="">[OPEN-R410-DoubleClick]</a>.</li>
+</ul></li>
+<li><span id="OPEN-R150-OpenCddt" class="rqDef">[OPEN-R150-OpenCddt]</span> When you are not using the Admin Edition:
+<ul>
+<li>if you select a CDDT file,</li>
+<li>the &quot;Open&quot; button is insensitive,</li>
+<li>since you can open a template in Expert View only.</li>
+</ul></li>
+</ul>
+<h3 id="password-protection">Passwort Protection</h3>
+<p><span id="OPEN-R140" class="rqDef">[OPEN-R140]</span> If the document or template is <a href="../../30%20Features/Document/Password%20Protection.htm">password protected</a>, CANdelaStudio <a href="Password%20Dialog.htm">prompts for the password</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Document/Document.htm">Document</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Editions.htm">Editions</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Expert%20View.htm">Expert View</a></li>
+<li>Ribbon Tab File | Open <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R020' title="">[MENU-R020]</a></li>
+<li><a href="../../30%20Features/Multi-Language/Multi-Language.htm">Multi-Language Feature</a></li>
+<li><a href="../../20%20UserInterface/Multi-Language/Translation%20View.htm">Translation View</a></li>
+<li><a href="New%20Dialog.htm">New Dialog</a></li>
+<li>Notes for running CANdelaStudio with Windows admin privileges <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Startup.htm#STRT-R030' title="">[STRT-R030]</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Loading%20a%20Document%20or%20Template.htm">Loading a Document or Template</a></li>
+</ul>
+
+</body>
+</html>

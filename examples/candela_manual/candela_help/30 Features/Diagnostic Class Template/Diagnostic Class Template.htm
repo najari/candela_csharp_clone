@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Class Template</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-class-template">Diagnostic Class Template</h1>
+<h2 id="uds-functional-units">UDS: Functional Units</h2>
+<p><strong>UDS</strong> groups services by “functional units”, like</p>
+<ul>
+<li>Diagnostic and Communication Management (services 0x10, 0x11, 0x27, 0x28…)</li>
+<li>Data Transmission (services 0x22, 0x23, …)</li>
+<li>Stored Data Transmission (services (0x14, 0x19)</li>
+<li>InputOutput Control (service 0x2F)</li>
+<li>Remove Activation of Routine (service 0x31), and</li>
+<li>Upload Download (services 0x34 .. 0x37).</li>
+</ul>
+<h2 id="diagnostic-use-case">Diagnostic Use-Case</h2>
+<p>Likewise, a CANdela <strong>diagnostic class template</strong> typically represents a <strong>diagnostic use-case</strong>, like Fault Memory, Live Data, Stored Data, ECU Reset etc.</p>
+<p>See the description of <a href="Diagnostic%20Use-Cases.htm">Diagnostic Use-Cases</a>.</p>
+<p>While from a diagnostic point of view, these use-cases are rather different, the CANdela data model handles them in a uniform, <strong>generic way</strong>.</p>
+<h2 id="object-orientation">Object Orientation</h2>
+<p>A Diagnostic Class Template combines...</p>
+<ul>
+<li>a <strong>subset of protocol services</strong> (from UDS or any other protocol) with</li>
+<li>the <strong>data</strong> for the “proxy components” (entry points for payload data) from these ProtocolServices.</li>
+</ul>
+<p>This is an instance of object orientation:</p>
+<ul>
+<li>A <strong>class</strong> is a blue-print for instances</li>
+<li>An <strong>instance</strong> combines
+<ul>
+<li><strong>methods</strong> (to be executed) with...</li>
+<li><strong>data</strong> (to be operated on by methods)</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Object Orientation</th>
+<th align="left">CANdela Data Model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Class</td>
+<td align="left">Diagnostic Class Template</td>
+</tr>
+<tr class="even">
+<td align="left">Object Instance</td>
+<td align="left">Diagnostic Instance (&quot;instance&quot; of a <strong>diagnostic class (template)</strong>)</td>
+</tr>
+<tr class="odd">
+<td align="left">Method</td>
+<td align="left">Service</td>
+</tr>
+<tr class="even">
+<td align="left">Data</td>
+<td align="left">Data Objects</td>
+</tr>
+</tbody>
+</table>
+<p>The &quot;Class&quot; (diagnostic class template) properties relate with the &quot;Object Instance&quot; (diagnostic instance) properties as follows</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Diagnostic Class Template</th>
+<th align="left">Diagnostic Instance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Used Protocol Services</strong></td>
+<td align="left">Services</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Combined Components</strong></td>
+<td align="left">Identifier, telegram tables</td>
+</tr>
+</tbody>
+</table>
+<p>See also the layer overview diagram in the <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Services</a>.</p>
+<h2 id="diagnostic-class-template-in-candela">Diagnostic Class Template in CANdela</h2>
+<p>The Diagnostic Class Template is predefined in the document template, typically by an OEM. It can be modified in <strong>Expert View</strong> only.</p>
+<p>It can require data from multiple Protocol Services to be identical (shared), typically for a read (UDS 0x22) and write (UDS 0x2E) service, see <a href="Combined%20Component.htm">Combined Component</a>.</p>
+<p>It can be configured to occur only once, see below.</p>
+<p>See also the <a href="../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm">diagnostic class</a> and <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">diagnostic instance</a> features and the <a href="../../20%20UserInterface/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Class Template Dialog</a>.</p>
+<h2 id="used-protocol-service">Used Protocol Service</h2>
+<p><span id="DCLT-R160" class="rqDef">[DCLT-R160]</span> A Diagnostic Class Template contains Used Protocol Services <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#DCLT-R305' title="">[DCLT-R305]</a>:</p>
+<ul>
+<li><span id="DCLT-R160-UsedPS" class="rqDef">[DCLT-R160-UsedPS]</span> with Class Type <code>!=</code> &quot;Jobs&quot;/&quot;Flash jobs&quot;, it must contain 1..n Used Protocol Services;</li>
+<li><span id="DCLT-R160-NoUsedPS" class="rqDef">[DCLT-R160-NoUsedPS]</span> only with Class Type &quot;Jobs&quot;/&quot;Flash jobs&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R210' title="">[DCLT-R210]</a>, it may contain <strong>no</strong> Used Protocol Service.</li>
+</ul>
+<h2 id="singleton">Occurs only once per Variant (<span id='_index_446727988'>Singleton</span>)</h2>
+<p><span id="DCLT-R150" class="rqDef">[DCLT-R150]</span> The diagnostic class template controls the <strong>number of diagnostic instances</strong> in a variant:</p>
+<ul>
+<li><span id="DCLT-R150-singleton" class="rqDef">[DCLT-R150-singleton]</span> <strong>only one</strong> diagnostic instance (&quot;singleton&quot;),
+<ul>
+<li>e.g. for Fault Memory</li>
+<li>the CANdelaStudio tree shows such a diagnostic instance directly in the chapter &quot;Supported diagnostic classes&quot; of the variant.</li>
+<li>this holds if the Used Protocol Services contain a <a href="../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm">Variable Value Component</a>.</li>
+</ul></li>
+<li><span id="DCLT-R150-multiple" class="rqDef">[DCLT-R150-multiple]</span> multiple <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">diagnostic instances</a> within a <a href="../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm">diagnostic class</a>,
+<ul>
+<li>distinguished by the <strong>Identifier</strong></li>
+<li>e.g. for Stored Data</li>
+<li>the CANdelaStudio tree shows these diagnostic instance below the diagnostic class.</li>
+</ul></li>
+</ul>
+<p>For an overview, see the <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a> page.</p>
+<h2 id="class-type">Class Type</h2>
+<p><span id="DCLT-R200" class="rqDef">[DCLT-R200]</span> A diagnostic class template has a property &quot;Class Type&quot; that specifies the type (aspect, use-case) of diagnostics handled by the services of the diagnostic class.</p>
+<p>CANdelaStudio, import/export and tools that consume CANdela data may rely on this property to handle the different diagnostic use-cases in a special way (beyond the generic transport of &quot;service + data&quot;).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Class Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Communication</td>
+<td align="left">Communication management of the ECU.</td>
+</tr>
+<tr class="even">
+<td align="left">Session</td>
+<td align="left">Session management.</td>
+</tr>
+<tr class="odd">
+<td align="left">Security</td>
+<td align="left">Control access to security-critical data of the ECU, e.g. switch the ECU into programming mode if the correct key was transmitted.</td>
+</tr>
+<tr class="even">
+<td align="left">Identification</td>
+<td align="left">Services to identify the concrete variant of the ECU.</td>
+</tr>
+<tr class="odd">
+<td align="left">Fault Memory</td>
+<td align="left">Describe DTCs, snapshot data, extended data records, Events <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020-Type' title="">[EV-R020-Type]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">Variant Coding</td>
+<td align="left">Services that modify ECU functionality.</td>
+</tr>
+<tr class="odd">
+<td align="left">Current Data</td>
+<td align="left">Read current data (live data), e.g. the data of a temperature sensor or a potentiometer.</td>
+</tr>
+<tr class="even">
+<td align="left">Stored Data</td>
+<td align="left">Read and write stored data in the ECU, e.g. the model state and serial number of the vehicle or ECU.</td>
+</tr>
+<tr class="odd">
+<td align="left">Memory</td>
+<td align="left">Directly access individual memory ranges - read or write them.</td>
+</tr>
+<tr class="even">
+<td align="left">Control</td>
+<td align="left">Input/output control (IO control) of the ECU.</td>
+</tr>
+<tr class="odd">
+<td align="left">Calibration</td>
+<td align="left">Calibrate sensors connected to the ECU.</td>
+</tr>
+<tr class="even">
+<td align="left">Routine</td>
+<td align="left">Execute routines of the ECU and read out the results of the routines.</td>
+</tr>
+<tr class="odd">
+<td align="left">Function</td>
+<td align="left">Particular functions of the ECU, e.g. reset of the ECU to the activated state (&quot;ECU Reset&quot;).</td>
+</tr>
+<tr class="even">
+<td align="left">Download</td>
+<td align="left">Read data from the ECU's flash ROM</td>
+</tr>
+<tr class="odd">
+<td align="left">Upload</td>
+<td align="left">Write data to the ECU's flash ROM.</td>
+</tr>
+<tr class="even">
+<td align="left">Jobs</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R210' title="">[DCLT-R210]</a> Job containers.</td>
+</tr>
+<tr class="odd">
+<td align="left">Flash jobs</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R210' title="">[DCLT-R210]</a> Flash job containers.</td>
+</tr>
+<tr class="even">
+<td align="left">Tester Present</td>
+<td align="left">Services to signal the presence of a test system.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="class-type-jobsflash-jobs">Class Type &quot;Jobs&quot;/&quot;Flash jobs&quot;</h3>
+<p><span id="DCLT-R210" class="rqDef">[DCLT-R210]</span> A Diagnostic Class Template with Class Type &quot;Jobs&quot; or &quot;Flash jobs&quot;...</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R160-NoUsedPS' title="">[DCLT-R160-NoUsedPS]</a> ... is allowed to have no Used ProtocolService <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#DCLT-R305' title="">[DCLT-R305]</a>,
+<ul>
+<li>therefore the associated Diagnostic Classes cannot have diagnostic instances and services <a class='rqRef' href='../../30%20Features/Job/Job.htm#JCNR-R110' title="">[JCNR-R110]</a></li>
+</ul></li>
+<li><span id="DCLT-R210-Singleton" class="rqDef">[DCLT-R210-Singleton]</span> ... must be a singleton <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R150-singleton' title="">[DCLT-R150-singleton]</a>,
+<ul>
+<li>which makes it a top-level Job Container <a class='rqRef' href='../../30%20Features/Job/Job.htm#JCNR-R110' title="">[JCNR-R110]</a></li>
+</ul></li>
+<li><span id="DCLT-R210-Jobs" class="rqDef">[DCLT-R210-Jobs]</span> ... may contain Jobs without being restricted by existing services.</li>
+<li>Note: CANdelaStudio represents an instance of the &quot;Documentation&quot; class as such a Job Container <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-D010' title="">[DCLT-D010]</a>.</li>
+</ul>
+<h3 id="fault-memory">Fault Memory</h3>
+<ul>
+<li><span id="DCLTOP-R200" class="rqDef">[DCLTOP-R200]</span> When you modify the class type from &quot;Fault Memory&quot; to another value, CANdelaStudio...
+<ul>
+<li><span id="DCLTOP-R200-Events" class="rqDef">[DCLTOP-R200-Events]</span> deletes all Events</li>
+<li><span id="DCLTOP-R200-SR" class="rqDef">[DCLTOP-R200-SR]</span> deletes all Snapshot Records in AUTOSAR Fault Memory</li>
+<li><span id="DCLTOP-R200-EDR" class="rqDef">[DCLTOP-R200-EDR]</span> deletes all Extended Data Records in AUTOSAR Fault Memory</li>
+<li>cf. the corrections on loading <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Loading%20a%20Document%20or%20Template.htm#LOAD-R200' title="">[LOAD-R200]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="order">Order of Diagnostic Class Templates</h2>
+<p>Recommendation: sort the diagnostic class templates according with the functional areas described in UDS ISO/DIS 14230-3:</p>
+<ol style="list-style-type: decimal">
+<li>Diagnostic management</li>
+<li>Data transmission</li>
+<li>Stored data transmission</li>
+<li>Input/Output control</li>
+<li>Remote activation of routine</li>
+<li>Upload/Download</li>
+</ol>
+<p>Note: you can adjust the sequence of the diagnostic class templates with the commands Edit | &quot;Move up&quot; or Edit | &quot;Move down&quot;.</p>
+<h2 id="default-target-groups">Default Target Groups (CDS-7885 6.0)</h2>
+<p>A diagnostic class template has a set of of default <a href="../../30%20Features/Target%20Groups/Target%20Groups.htm">target groups</a>.</p>
+<p>CANdelaStudio assigns this set of target groups to new diagnostic instances, services and job containers.</p>
+<h2 id="combined">Combined Components</h2>
+<p>See <a href="Combined%20Component.htm">Combined Component</a>.</p>
+<h2 id="documentation-diagnostic-class-ford-cds-12812-6.0">Documentation Diagnostic Class (Ford CDS-12812 6.0)</h2>
+<p><span id="DCLT-D001" class="rqDef">[DCLT-D001]</span>: if the following <a href="../../30%20Features/Attributes/Special%20Attributes.htm#Documentation">special attribute</a> exists at a diagnostic class template D:</p>
+<ul>
+<li>Type: unsigned, overwritten value = 1 (true), default value = 0</li>
+<li>Name, qualifier: “Documentation”</li>
+<li>Attribute category: “Editor”</li>
+<li>Visibility: Standard view: no, Editable: no, Report to specification: no</li>
+</ul>
+<p>then D is considered to be a “documentation” class. The default attribute must be added by Expert users or by a plug-in delivered separately.</p>
+<p><span id="DCLT-D010" class="rqDef">[DCLT-D010]</span> CANdelaStudio represents an instance of the &quot;Documentation&quot; class as a Job Container <a class='rqRef' href='../../30%20Features/Job/Job.htm#JCNR-R110' title="">[JCNR-R110]</a>.</p>
+
+<h2 id="requirements">Requirements Support</h2>
+<p><span id="DCLT-R300" class="rqDef">[DCLT-R300]</span> Diagnostic Class Template &quot;<strong>Supports Requirements</strong>&quot; A Diagnostic Class Template has the information whether the Diagnostic Classes based on it <strong>support <a href="../../30%20Features/Requirements/Requirements.htm">requirements</a></strong> (since 8.0, CDS-27397).</p>
+<p>The property can be <strong>edited</strong> in expert mode...</p>
+<ul>
+<li>in the <a href="../../20%20UserInterface/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template%20Property%20Page%20Specification.htm#requirements">diagnostic class template property page</a> and</li>
+<li>in the settings of the requirements dialog <a class='rqRef' href='../../20 UserInterface\Requirements\Property Page Settings.htm#RQUI-R100-DiagnosticClasses' title="">[RQUI-R100-DiagnosticClasses]</a>.</li>
+<li><p>It is also <strong>shown read-only</strong> in the diagnostic class property dialog.</p></li>
+<li><p><span id="DCLT-R300-Update" class="rqDef">[DCLT-R300-Update]</span> The property defines a <strong>&quot;weak&quot; convention for algorithms</strong>: if false, in Diagnostic Classes based on this Diagnostic Class Template, CANdelaStudio does not generate or update requirements or update diagnostic objects.</p></li>
+</ul>
+<p>But the property is <strong>not a hard condition for data</strong>: if false, diagnostic objects may still refer to requirements, and the user may interactively paste data objects (having requirements) from the import pool, without restriction.</p>
+<h2 id="relevant-for-DIDs">Diagnostic Classes Relevant for DIDs</h2>
+<p>A Diagnostic Class is relevant for DIDs if it contains a signature described in <a href="../../30%20Features/DID/DID.htm#identifiers">Identifiers in UDS and OBD Services</a>.</p>
+<p>Examples:</p>
+<ul>
+<li>diagnostic class “Stored Data” with positive response <code>0x62 &lt;2 byte ID&gt; zz</code> and <code>0x6E &lt;2 byte ID&gt; zz</code> is relevant for DIDs due to 0x22 and 0x2E.</li>
+<li>diagnostic class “Periodic Data” with positive response <code>0x62 F2 &lt;1 byte ID&gt; zz</code> and <code>0x6A 0x01 &lt;1 byte ID&gt; zz</code> is relevant for DIDs due to service 0x22.</li>
+<li>diagnostic class “PIDs” with positive response <code>0x41 &lt;1 byte ID&gt; zz</code> is relevant for DIDs due to service 0x01.</li>
+<li>diagnostic class “Memory” with positive response <code>0x63 zz</code> is not relevant for DIDs.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Class Template (User Interface)</a></li>
+<li><a href="Diagnostic%20Use-Cases.htm">Diagnostic Use-Cases</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="../../30%20Features/Requirements/Requirements.htm">Requirements</a></li>
+<li><a href="../../30%20Features/Target%20Groups/Target%20Groups.htm">Target Groups</a></li>
+</ul>
+
+</body>
+</html>

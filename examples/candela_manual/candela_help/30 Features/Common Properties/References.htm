@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>References</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="references"><span id='_index_446727935'>References</span></h1>
+<h2 id="use-case">Use-Case</h2>
+<p>In the CANdela data model, a data object references a data type. Other types of objects have similar references.</p>
+<p><strong>U001.0</strong>: the user wants to see which <strong>objects</strong> reference a given <strong>referenced object</strong>, and to navigate to the referencing object.</p>
+<h2 id="referencing-use">Referencing (Use)</h2>
+<p>Some objects have references to other elements:</p>
+<table>
+<colgroup>
+<col width="29%" />
+<col width="70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Object</th>
+<th align="left">references…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><a href="../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm">Combined Proxy Component</a></td>
+<td align="left"><a href="../../30%20Features/Protocol%20Service/Proxy%20Component.htm">Proxy Component</a> in the ProtocolService</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm">Combined Variable Component</a></td>
+<td align="left">Variable Value <a href="../../30%20Features/Protocol%20Service/Components.htm">Component</a> in the ProtocolService</td>
+</tr>
+<tr class="odd">
+<td align="left">DID Data Reference <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R160' title="">[DID-R160]</a></td>
+<td align="left"><a href="../../30%20Features/DID/DID.htm">DID</a></td>
+</tr>
+<tr class="even">
+<td align="left">DID Reference <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R180' title="">[DID-R180]</a></td>
+<td align="left"><a href="../../30%20Features/DID/DID.htm">DID</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">DTC Column</a></td>
+<td align="left">Definition of DTC Column in <a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">Data object</a></td>
+<td align="left"><a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a>. See also further <a href="../../30%20Features/Data%20Type/References.htm">Data Type References</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="../../30%20Features/DTC/Group%20of%20DTC.htm">Group of DTC Data Object</a></td>
+<td align="left">(implicitly) if &quot;supports individual DTCs&quot; is set: the <a href="../../30%20Features/DTC/DTC.htm">DTC</a> list</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="../../30%20Features/Protocol%20Service/Group%20of%20DTC%20Proxy%20Component.htm">Group of DTC Proxy Component</a></td>
+<td align="left">the &quot;master&quot; <a href="../../30%20Features/Data%20Type/Text%20Table.htm">text table</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#identifier">Identifier</a> (in diag. instance)</td>
+<td align="left"><a href="../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm">Combined Variable Component</a> in the Diagnostic Class Template</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="../../30%20Features/Job/Job.htm#function">Function</a></td>
+<td align="left"><a href="../../30%20Features/Job/Job.htm#job-file">Job File</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="../../30%20Features/Attributes/Attributes.htm#overridden">Overwritten Attribute</a></td>
+<td align="left"><a href="../../30%20Features/Attributes/Attributes.htm">Default Attribute</a></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="../../30%20Features/Service/Service.htm">Service</a></td>
+<td align="left"><a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used ProtocolService</a> in Diagnostic Class Template</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">Telegram Table</a></td>
+<td align="left"><a href="../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm">Combined Proxy Component</a> in the Diagnostic Class Template</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="../../30%20Features/Multi-Language/Multi-Language.htm">Translatable</a></td>
+<td align="left">(implicitly)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="referencing-sharing">Referencing (Sharing)</h2>
+<p>Some objects are reusable, that means they are defined in a separate pool and they are only referenced in the parent element.</p>
+<table style="width:98%;">
+<colgroup>
+<col width="23%" />
+<col width="32%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Object</th>
+<th align="left">is in…</th>
+<th align="left">reuse in…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Variant</td>
+<td align="left">ECU</td>
+<td align="left">(no)</td>
+</tr>
+<tr class="even">
+<td align="left">Diagnostic instance</td>
+<td align="left">Variant</td>
+<td align="left">Variants (1x per variant)</td>
+</tr>
+<tr class="odd">
+<td align="left">Service</td>
+<td align="left">Diagnostic instance</td>
+<td align="left">(no)</td>
+</tr>
+<tr class="even">
+<td align="left">Data object</td>
+<td align="left">Diagnostic instance or ProtocolService or complex datatype</td>
+<td align="left">(no)</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC</td>
+<td align="left">DTC Pool</td>
+<td align="left">Fault memory in variants.<br />
+DTCs can be defined locally.</td>
+</tr>
+<tr class="even">
+<td align="left">NRC</td>
+<td align="left">NRC Pool</td>
+<td align="left">Negative response in variants.<br />
+NRCs cannot be defined locally (description can be overwritten)</td>
+</tr>
+</tbody>
+</table>
+<p>A variant as a whole cannot be reused, because a CANdela file only contains one ECU (and CANdelaStudio avoids references across files).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Data%20Type/References.htm">Data Type References</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Object%20References%20Dialog.htm">Object References Dialog</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Object%20Used%20by%20Dialog.htm">Object Uses Dialog</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Sharing%20Diagnostic%20Instances.htm">Sharing Diagnostic Instances</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Compact Report</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="compact-report">Compact Report (CDS-1207)</h1>
+<h2 id="use-case">Use Case</h2>
+<p>You want a complete textual presentation of a CANdela document without redundancy between data of multiple variants.</p>
+<h2 id="specification">Specification</h2>
+<p>Compact mode is <strong>not activated</strong> if you specify <strong>only one variant for export</strong> (e.g. if the document contains just the base variant). In this case, the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Specification%20Chapters.htm#compact-representation">&quot;Compact representation&quot; option</a> is ignored.</p>
+<p>The content of all variants is merged into a <strong>single “Content” chapter</strong>.</p>
+<p>No other chapter is affected (for the handling of the variant identification and history items see below).</p>
+<p>Each sub-chapter represents a diagnostic class or singleton diagnostic instance (as in non-compact mode). The diagnostic class sub-chapter contains diagnostic instances.</p>
+<p>As the title of a subchapter, the report uses the common name of all diagnostic instances combined in the subchapter. If the diagnostic instance occurs in more than one variant, the title includes number of variants like „(5)”.</p>
+<p>Diagnostic class properties that are different in different variants are exported with a hint in which variants they occur.</p>
+<p>The <strong>diagnostic instances are merged</strong> from all variants, with a hint in which variants the diagnostic instance occurs.</p>
+<p><strong>Only referenced diagnostic instances</strong> (the same object!) are merged by the compact mode. Diagnostic instances that have the same name but are not the same object are exported several times, numbered like “4 of 5”.</p>
+<p>The <strong>title page</strong> contains a hint that the document is a compact one.</p>
+<p><strong>Variant identifications</strong> are printed in the variants overview chapter in compact mode.</p>
+<p>The diagnostic instances are <strong>sorted</strong> in the order they occur in the base variant. Diagnostic instances from other variants are merged in by identifier (i.e. behind the last diagnostic instance with the same identifier or before the first diagnostic instance with the next identifier), then by order of first variant in which they occur.</p>
+<p><strong>Job Containers</strong> are also merged.</p>
+<p><strong>R950.0 (DIDs, CDS-37944 8.5):</strong> report the DIDs of a variant before the diagnostic instances, like diagnostic instances (i.e. list the variants in which the DID occurs).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Specification%20Chapters.htm#compact-representation">&quot;Compact representation&quot; option</a></li>
+<li><a href="Report%20Generator.htm">Report Generator</a></li>
+</ul>
+</body>
+</html>

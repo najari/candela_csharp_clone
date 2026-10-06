@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Class Template</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-class-template-user-interface">Diagnostic Class Template (User Interface)</h1>
+<div class="figure">
+<img src="Images/DiagnosticClassTemplate.jpg" alt="View for Diagnostic Class Template" />
+<p class="caption">View for Diagnostic Class Template</p>
+</div>
+<p>This dialog is only available in the Expert View.</p>
+<p>See also the <a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Class Template Feature</a>.</p>
+<h2 id="name">Name</h2>
+<p>See <a href="../../30%20Features/Common%20Properties/Name.htm">names</a> in CANdela.</p>
+<p>Note: you can edit the qualifier in the associated property dialog (see next chapter).</p>
+<h2 id="properties">Properties</h2>
+<p>The Properties button <img src="../../20%20UserInterface/Images/Properties.gif" /> to the right of the &quot;Name&quot; edit field lets you open the <a href="Diagnostic%20Class%20Template%20Property%20Page%20General.htm">Property Dialog</a>.</p>
+<p>It is also available in the context menu of the tree node.</p>
+<h2 id="description">Description</h2>
+<p>See <a href="../../30%20Features/Common%20Properties/Description.htm">descriptions</a> in CANdela.</p>
+<p>To edit a larger description, use the property dialog (see previous chapter).</p>
+<h2 id="class-type">Class Type</h2>
+<p>Shows the <a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#class-type">class type</a>.</p>
+<h2 id="singleton">Occurs only once per Variant (Singleton)</h2>
+<p>See the <a href="Diagnostic%20Class%20Template%20Property%20Page%20Specification.htm#singleton">Property Page &quot;Specification&quot;</a>.</p>
+<h2 id="list-of-used-protocol-services">List of Used Protocol Services</h2>
+<p>The list of Used Protocol Services contains</p>
+<ul>
+<li><strong>Convention</strong> (combo-box),</li>
+<li><strong>name</strong> of the Used Protocol Service = name shown in diagnostic instances</li>
+<li><strong>Protocol Service name</strong> (read-only after creation; contains the name of the protocol service),</li>
+<li><strong>Request, Positive and Negative Response data</strong> (like shown in diagnostic instances). These columns include a visualization of sharing (combining) of components. (&quot;zz&quot; etc.). This is updated if the sharing is changed in the components list. Proxy components are shown descending from &quot;zz&quot;, the identifier or similar is shown as &quot;LL&quot;.</li>
+</ul>
+<p>For details, see the <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used Protocol Service Feature</a>.</p>
+<p>Using the context menu, you can open the <a href="Used%20Protocol%20Service%20Property%20Page%20General.htm">property dialog</a> for a Used Protocol Service.</p>
+<h3 id="add">Add</h3>
+<p><span id="DCTUI-R400" class="rqDef">[DCTUI-R400]</span> You can add further Protocol Services...</p>
+<ul>
+<li>using the &quot;Ins&quot; key</li>
+<li>using the line &quot;Click here to create a new element&quot; at the bottom of the list, or</li>
+<li>using the context menu item &quot;New Used Protocol Service&quot;.</li>
+</ul>
+<p>This opens the dialog &quot;New Used Protocol Service&quot;:</p>
+<ul>
+<li>the list shows Protocol Services not yet used in the Diagnostic Class Template</li>
+<li>you can sort the list by the displayed names</li>
+<li><span id="DCTUI-R400-Dbl" class="rqDef">[DCTUI-R400-Dbl]</span> you can select a Protocol Service by double click (CDS-27384 v11)</li>
+<li><span id="DCTUI-R400-Multiple" class="rqDef">[DCTUI-R400-Multiple]</span> you can select multiple Protocol Services (CDS-27384 v11) and accept with OK</li>
+</ul>
+<h3 id="delete">Delete</h3>
+<p><span id="DCTUI-R410" class="rqDef">[DCTUI-R410]</span> You can remove one or multiple Used Protocol Services...</p>
+<ul>
+<li>using the &quot;Del&quot; key</li>
+<li>using the context menu item &quot;Delete&quot;.</li>
+</ul>
+<p>After confirmation, CANdelaStudio...</p>
+<ul>
+<li>removes the selected Protocol Services from the Diagnostic Class Template,</li>
+<li>removes the respective services from all Diagnostic Instance of the Diagnostic Class Template.
+<ul>
+<li><span id="DCTUI-R410-NoService" class="rqDef">[DCTUI-R410-NoService]</span> If this would leave any Diagnostic Instance with no service at all,</li>
+<li>CANdelaStudio shows a warning once (CDS-70757 v11)</li>
+<li>and skips deletion of that Used Protocol Service.</li>
+</ul></li>
+</ul>
+<h2 id="combined">Combined Components</h2>
+<p>See also the <a href="../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm">Combined Components Feature</a>.</p>
+<h3 id="combined-components-list">Combined Components List</h3>
+<p>Each list element represents one combined component.</p>
+<p>Since negative responses are never combined, there is no need to display them in the list.</p>
+<p>Abbreviations &quot;sr&quot;, &quot;sd&quot;, &quot;er&quot; and &quot;ed&quot; represent Proxy Components with special Fault Memory semantics, see <a class='rqRef' href='../../30 Features\Protocol Service\Proxy Component.htm#PC-R100' title="Proxy Semantics">[PC-R100]</a>.</p>
+<p>For a new diagnostic class template, initially the set of all components in the list is taken from all Protocol Services which are used in the diagnostic class: from each Protocol Service's request and positive response (&quot;RQ&quot; or &quot;PR&quot;), the list contains...</p>
+<ul>
+<li>variable value components (combined), and</li>
+<li>proxy components (not combined), i.e. each line represents one component.</li>
+</ul>
+<p>The sort order of the list elements is fix, it is derived from</p>
+<ul>
+<li>the order of Used Protocol Services (first criterion),</li>
+<li>the order RQ – PR (second criterion) and</li>
+<li>the order of components within one primitive (third criterion).</li>
+</ul>
+<p>It is the same order as for the property pages in the diagnostic instance dialog.</p>
+<h3 id="visualization-of-combined-components">Visualization of Combined Components</h3>
+<p>Each list element is visualized like &quot;Read PR (LID) + Write RQ (LID)&quot;, i.e. the visualizations of the individual components are concatenated by &quot; + &quot;.</p>
+<p>An individual component is visualized by...</p>
+<ul>
+<li>the Used Protocol Service name (&quot;Write&quot;)</li>
+<li>the primitive name (&quot;RQ&quot;), and</li>
+<li>the component name (&quot;LID&quot;).</li>
+</ul>
+<p>Example: &quot;Write RQ (LID)&quot;.</p>
+<p>The <strong>&quot;semantics&quot;</strong> column represents the semantics of the component.</p>
+<p>The <strong>&quot;DID&quot;</strong> column represents the Combined Component DID Semantics <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R050' title="Combined Component DID Semantics">[DID-R050]</a>.</p>
+<h3 id="restrictions-on-combining-components">Restrictions on Combining Components</h3>
+<p>There are some restrictions on the possible combinations of components:</p>
+<ul>
+<li>only components with identical semantics may be shared.</li>
+<li>different types of components (variable value, data proxy component, multiplexer component) cannot be shared with each other.</li>
+</ul>
+<h3 id="combining">Combining</h3>
+<p>To combine some components,</p>
+<ol style="list-style-type: decimal">
+<li>select the respective lines (i.e. single components, or set of components already combined)</li>
+<li>click the &quot;Combine&quot; button</li>
+</ol>
+<p>If the selection contains components that cannot be combined, a message is displayed.</p>
+<h3 id="example">Example</h3>
+<p>Add two Protocol Services from UDS as &quot;Used Protocol Services&quot; in a diagnostic class template:</p>
+<ul>
+<li>&quot;Read&quot; (ISO 14229: 0x22 - &quot;ReadDataByIdentifier&quot;)</li>
+<li>&quot;Write&quot; (ISO 14229: 0x2E - &quot;WriteDataByIdentifier&quot;)</li>
+</ul>
+<p>Both Protocol Services have a proxy component named &quot;Data&quot;:</p>
+<ul>
+<li>&quot;Read&quot; in the Positive Response</li>
+<li>&quot;Write&quot; in Request.</li>
+</ul>
+<p>When you combine both proxy components, you'll have only one telegram table in the diagnostic instances for this Diagnostic Class Template.</p>
+<h3 id="separating-combined-components">Separating Combined Components</h3>
+<p>The opposite may be achieved by either</p>
+<ul>
+<li><p>taking one component out of a share (select the component in a popup dialog) (button &quot;Separate&quot;; for single selection only; only for lines containing more than one component), or by</p></li>
+<li><p>separating all, i.e. each combined component will afterwards have a line of its own (button &quot;Separate all&quot;; for single selection only; only for lines containing more than one component)</p></li>
+</ul>
+<h3 id="dialog-for-separate">Dialog for &quot;Separate&quot;</h3>
+<p>The dialog contains a list of the combined components participating (same representation of each component as in the components list). You must select exactly one.</p>
+<h2 id="move-up-down">Move Up / Down</h2>
+<p>Diagnostic class templates may be reordered by commands “Edit | Move Up” and “Edit | Move Down” of the main menu.</p>
+<p>CANdelaStudio also reorders existing diagnostic classes and diagnostic instances according to the order of the templates.</p>
+<p>Note the <a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#order">recommendation for the order of Diagnostic Class Templates</a>.</p>
+<h2 id="copypaste-of-diagnostic-class-templates-cds-27759-8.2-sp3">Copy/Paste of Diagnostic Class Templates (CDS-27759 8.2 SP3)</h2>
+<p>In expert view, menu items &quot;Copy&quot; and &quot;Paste&quot; are available</p>
+<ul>
+<li>in main menu Edit;</li>
+<li>in the context menu a diagnostic class template tree node under tree node &quot;Diagnostic class templates&quot;</li>
+</ul>
+<h2 id="editing-a-used-protocol-service">Editing a Used Protocol Service</h2>
+<p><span id="DCTUI-D410" class="rqDef">[DCTUI-D410]</span> Note: editing a Used Protocol Service re-computes qualifiers of Combined Proxy Components (CDS-71748).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Combined%20Component%20Property%20Page%20Extended.htm">Combined Component Property Page &quot;Extended&quot;</a></li>
+<li><a href="Diagnostic%20Class%20Template%20Property%20Page%20General.htm">Diagnostic Class Template Property Page &quot;General&quot;</a></li>
+<li><a href="Diagnostic%20Class%20Template%20Property%20Page%20Specification.htm">Diagnostic Class Template Property Page &quot;Specification&quot;</a></li>
+<li><a href="Diagnostic%20Class%20Template%20Property%20Page%20Target%20Groups.htm">Diagnostic Class Template Property Page &quot;Target Groups&quot;</a></li>
+<li><a href="Diagnostic%20Class%20Template%20Property%20Page%20Attributes.htm">Diagnostic Class Template Property Page &quot;Attributes&quot;</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Class Template (Feature)</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="Used%20Protocol%20Service%20Property%20Page%20Convention.htm">Used Protocol Service Property Page &quot;Convention&quot;</a></li>
+<li><a href="Used%20Protocol%20Service%20Property%20Page%20Extended.htm">Used Protocol Service Property Page &quot;Extended&quot;</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used Protocol Service (Feature)</a></li>
+</ul>
+</body>
+</html>

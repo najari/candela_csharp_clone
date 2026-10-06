@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Jobs in Test Systems</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="jobs-in-test-systems">Jobs in Test Systems</h1>
+<p>A job embedded in a CANdela document can be <strong>used in a tester</strong> if...</p>
+<ul>
+<li>the runtime system of the tester supports the <strong>programming language</strong> of the job, and</li>
+<li>the tester supports <strong>execution of embedded jobs</strong>. This is a feature of the tester, and the degree of comfortable integration may vary.</li>
+</ul>
+
+<h2 id="indigo">Indigo</h2>
+<p>Does not support execution of jobs embedded in a CANdela document.</p>
+
+<h2 id="vflash">vFlash</h2>
+<p>Does not support execution of jobs embedded in a CANdela document.</p>
+<h2 id="canoe">CANoe</h2>
+<p>(as of CANoe 2018-11)</p>
+<p>Does not support direct execution of jobs embedded in a CANdela document (you cannot address Jobs in CAPL).</p>
+<p>There is no possibility to access/use data stored in the CDD (except the service definitions) from the diagnostic windows in CANoe.</p>
+<p>For manual integration, see Procedure <a href="../../15%20Procedures/CANoe/How%20to%20Transport%20a%20CANoe%20Automation%20Sequence%20Macro%20as%20a%20CANdela%20Job.htm">How to Transport a CANoe Automation Sequence Macro as a CANdela Job</a>.</p>
+<h3 id="use-case">Use Case</h3>
+<ul>
+<li>Develop a script for accessing a particular sequence
+<ul>
+<li>e.g. a <strong>VIN write sequence</strong></li>
+</ul></li>
+<li>put it into a CDD file</li>
+<li>import the CDD file into <strong>CANOE</strong> or <strong>CANoe.DiVa</strong></li>
+<li>use the script <strong>for testing</strong>
+<ul>
+<li>rather than doing it manually.</li>
+</ul></li>
+</ul>
+
+<h3 id="CANoe">Overview: Automation Mechanisms in CANoe</h3>
+
+<div class="figure">
+<img src="Images/CANoe10AutomationSequences.jpg" alt="CANoe 10 Automation Sequences" />
+<p class="caption">CANoe 10 Automation Sequences</p>
+</div>
+<ul>
+<li>Automation Sequences
+<ul>
+<li>Visual Sequence</li>
+<li>Automation Sequence Macro</li>
+<li>.NET Snippet</li>
+</ul></li>
+<li>Vector Diagnostic Script
+<ul>
+<li>Diagnostic Console Macro</li>
+</ul></li>
+</ul>
+<h4 id="visual-sequence">Visual Sequence</h4>
+<ul>
+<li><strong>no support for diagnostics</strong></li>
+<li><code>.vsq</code> file</li>
+<li>Execution
+<ul>
+<li>internally converted to CAPL and compiled</li>
+<li>even during a running measurement</li>
+<li>cannot be started via CAPL</li>
+</ul></li>
+</ul>
+<h4 id="AutomationSequenceMacro">Automation Sequence Macro</h4>
+<ul>
+<li>since CANoe 5.1</li>
+<li><strong>records UDS requests</strong> (byte sequences) with time stamps</li>
+<li>Creation
+<ul>
+<li>starting services in diagnostic console and session control</li>
+<li>no programming (supports <strong>replay only</strong>)</li>
+</ul></li>
+<li>Execution
+<ul>
+<li>can be loaded and started from CAPL</li>
+<li>even during a running measurement</li>
+<li>no compile, no delay on first run</li>
+<li>usable only in CANoe, not in CANape</li>
+</ul></li>
+<li>CANoe 10 (2017-05) does not <strong>automatically use</strong> an Automation Sequence Macro embedded in a CANdela document
+<ul>
+<li>the feature is being discussed for the near future (CANoe <code>&gt;= 11.0</code>);</li>
+<li>you can use such a macro manually, see Procedure <a href="../../15%20Procedures/CANoe/How%20to%20Transport%20a%20CANoe%20Automation%20Sequence%20Macro%20as%20a%20CANdela%20Job.htm">How to Transport a CANoe Automation Sequence Macro as a CANdela Job</a>.</li>
+</ul></li>
+<li>the CANdelaStudio job file dialog provides the predefined runtime system AutomationSequenceMacro, see <a class='rqRef' href='../../30%20Features/Job/Job.htm#JOB-R410-AutomationSequenceMacro' title="">[JOB-R410-AutomationSequenceMacro]</a>.</li>
+<li>Example contents of an Automation Sequence Macro file (note the byte sequences):</li>
+</ul>
+<pre><code>date Fri Jul 7 10:58:15.732 am 2017
+base dec  timestamps relative
+internal events logged
+   0.006561 DiagRequest[DoorFL] 22 01 00
+   0.477000 DiagRequest[DoorFL] 22 F1 8C
+  0.115000 DiagRequest[DoorFL] 22 F1 89
+   0.455000 DiagRequest[DoorFL] 22 01 08
+   0.030001 DiagRequest[DoorFL] 22 01 07</code></pre>
+<h4 id="net-snippet">.NET Snippet</h4>
+<ul>
+<li>C# source code (.cs)
+<ul>
+<li>supports the full power of <strong>programming</strong>;</li>
+<li>in general not restricted to diagnostic functionality</li>
+<li>can be modified in source code (e.g. add <code>ecu.Unlock</code> in CANoe demo file &quot;Set Variant Coding USA&quot;).</li>
+</ul></li>
+<li>Creation
+<ul>
+<li>programmed manually</li>
+<li>or converted from a Diagnostic Console Macro recorded in the diagnostic console (which is internally a <strong>VectorDiagnosticScript, VDS</strong>)</li>
+</ul></li>
+<li>Execution
+<ul>
+<li>must be compiled before use;</li>
+<li>therefore some delay on first run (drawback for use in realtime)</li>
+<li>even during a running measurement</li>
+<li>not via CAPL</li>
+<li><strong>not in diagnostic console</strong>, i.e. not usable in other Vector tools that support diagnostic functionality (as of CANoe 10) </li>
+</ul></li>
+</ul>
+<h4 id="vector-diagnostic-script-vds">Vector Diagnostic Script (VDS)</h4>
+<ul>
+<li>like .NET Snippet (see previous chapter)
+<ul>
+<li>but <strong>restricted to diagnostic functionality</strong></li>
+</ul></li>
+<li>provides more functionality than a mere Automation Sequence Macro</li>
+<li>likely to be usable in other Vector tools that support diagnostic functionality</li>
+</ul>
+<h4 id="diagnostic-console-macro">Diagnostic Console Macro</h4>
+<ul>
+<li>Interactively created in the Diagnostic Console</li>
+<li>shown under &quot;[Macros]&quot; in Diagnostic Console</li>
+<li>Replay in the Diagnostic Console</li>
+<li>internally implemented as Vector Diagnostic Script (see previous chapter)</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Job.htm">Job (Feature)</a></li>
+<li>Procedure <a href="../../15%20Procedures/CANoe/How%20to%20Transport%20a%20CANoe%20Automation%20Sequence%20Macro%20as%20a%20CANdela%20Job.htm">How to Transport a CANoe Automation Sequence Macro as a CANdela Job</a></li>
+</ul>
+</body>
+</html>

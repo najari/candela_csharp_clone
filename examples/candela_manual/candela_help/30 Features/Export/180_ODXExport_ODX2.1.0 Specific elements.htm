@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>180_ODXExport_ODX2.1.0 Specific elements</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="odx210-specific-elements">ODX 2.1.0 Specific elements</h1>
+<p>With CANdela 5.5 Release, the export of ODX 2.1.0 is supported. The following section describes the additionally exported elements in ODX 2.1.0Export of CANdela State-Model to ODX 2.1.0 STATE-Model</p>
+<h3 id="odx-210-state-model">ODX 2.1.0 STATE-Model</h3>
+<div class="figure">
+<img src="Images/image53.png" alt="ODX 2.1.0 STATE-model" />
+<p class="caption">ODX 2.1.0 STATE-model</p>
+</div>
+<ul>
+<li><p>STATE-CHART matches the CANdela-StateModel</p></li>
+<li><p>STATE matches CANdela-STATE</p></li>
+<li><p>each STATE-CHART describes it Default-State by START-STATE-SNREF</p></li>
+</ul>
+<h3 id="states-at-jobs">States at Jobs</h3>
+<p>With CANdela 7.0 SP1 it is possible to define State dependencies also for Jobs.<br />
+They will also be exported as STATE-TRANSITION-REFs at the corresponding SINGLE-ECU-JOB.</p>
+<h3 id="general-modelling">General Modelling</h3>
+<ul>
+<li><p>for each CANdela-StateGroup a STATE-CHART is created.</p></li>
+<li><p>for each CANdela-State a STATE is created.</p></li>
+<li><p>for each StateTransition described at a Service, a STATE-TRANSITION is created.</p></li>
+</ul>
+<p>When this Transition is once created it is referenced by all DIAG-SERVICEs.</p>
+<h2 id="export-of-nrc-const">Export of NRC-CONST</h2>
+<p>During matching of negative responses the 3-D-Server-API currently only uses constant-components for matching of the negative-reponse-template (i.e. 7F SID). It does not check the supported negative response-codes of the specific NEG-RESPONSE. Therefore the GLOBAL-NEG-RESPONSE is pratically never used for interpretation of a negative response. In ODX 2.1.0 there exists the possibility to specify an additional NRC-CONST-PARAM.</p>
+<div class="figure">
+<img src="Images/image54.png" alt="Schema of NRC-CONST" />
+<p class="caption">Schema of NRC-CONST</p>
+</div>
+<p>At the NRC-CONST-PARAM the supported NRC-CODEs can be listed by CODED-VALUEs.</p>
+<p>The export of NRC-Const parameters can be configured by the OdxExportOption &quot;CreateNRCConst&quot;.</p>
+<h2 id="export-of-ecu-config">Export of ECU-CONFIG</h2>
+<p><span id="ODXE-R1180" class="rqDef">[ODXE-R1180]</span></p>
+<div class="figure">
+<img src="Images/image55.png" alt="Basic schema for ECU-CONFIG export" />
+<p class="caption">Basic schema for ECU-CONFIG export</p>
+</div>
+<p>The ECU-CONFIG description contains</p>
+<ul>
+<li><p>one CONFIG-DATA per Variant</p></li>
+<li><p>one CONFIG-RECORD per Diagnostc Instance (which is relevant for ECU-CONFIG)</p></li>
+<li><p>one CONFIG-ITEM per Dataobject within this Diagnostic Instance.</p></li>
+<li><p>By the ODXExportOption &quot;ExportSeparateDopsForEcuConfig&quot; it can be configured whether DATA-OBJECT-PROPs are referenced from ODX-D or duplicated to the CONFIG-DATA-DICTIONARY-SPEC. UNITs referenced from ECU-SHARED-DATAs are also copied to the ECU-CONFIG.</p></li>
+</ul>
+<h3 id="relevant-diagnostic-instances">Relevant diagnostic Instances</h3>
+<p>The Attribute &quot;Relevant for EcuConfig&quot; at Diagnostic Instances and Job Containers can be used to specify relevant Containers for ECU-CONFIG.</p>
+<h2 id="comparam-specs">COMPARAM-SPECs</h2>
+<p>Currently no standardized ODX 2.1.0 COMPARAM-SPEC is released. Therefore no COMPARAM-REFs are exported.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+</ul>
+</body>
+</html>

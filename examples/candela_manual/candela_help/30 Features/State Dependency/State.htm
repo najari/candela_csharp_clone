@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>State</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="state"><span id='_index_446728122'>State</span></h1>
+<p>For an introduction, see the <a href="State%20Dependency.htm">State Dependency</a> feature in CANdela.</p>
+<p>A State is part of a <a href="State%20Group.htm">State Group</a>.</p>
+<p>It helps to describe whether execution of a service is blocked or not.</p>
+<h2 id="state-properties">State Properties</h2>
+<p>A State <strong>contains</strong>...</p>
+<ul>
+<li><span id="ST-R010" class="rqDef">[ST-R010]</span> the common properties Name, Qualifier and Description</li>
+<li>attributes <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050' title="">[ATTR-R050]</a> since 6.0 (CDS-12713)</li>
+<li>status authorization (see below)</li>
+</ul>
+<p>A State has a <strong>relationship</strong> with a service, the <a href="State%20Transitions.htm">State Transitions</a>.</p>
+<h2 id="authorization">State Authorization</h2>
+<p>A state has the following <a href="../../30%20Features/Common%20Properties/Authorization.htm">authorization</a> properties to control editing:</p>
+<ul>
+<li><span id="ST-R050" class="rqDef" title="Modifiable">[ST-R050 Modifiable]</span> if unset, ...
+<ul>
+<li>you cannot modify properties of the state in Standard View;</li>
+<li>you cannot modify some state transitions, see <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R030' title="">[STTR-R030]</a>.</li>
+</ul></li>
+<li><span id="ST-R060" class="rqDef" title="Deletable">[ST-R060 Deletable]</span> if unset, ...
+<ul>
+<li>you cannot delete the state in Standard View.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/State%20Dependency/Dependencies.htm">State Dependencies</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="Authorization.htm">Authorization</a> (certificate-based)</li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm">Diagnostic Instance Authorization</a></li>
+<li><a href="Link%20Target%20Group%20to%20State.htm">Link Target Group to State</a></li>
+<li><a href="State%20Dependency.htm">State Dependency</a></li>
+<li><a href="State%20Group.htm">State Group</a></li>
+<li><a href="State%20Transitions.htm">State Transitions (Feature)</a></li>
+</ul>
+</body>
+</html>

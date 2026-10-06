@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>TAB Snapshot Records</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="tab-snapshot-records">TAB Snapshot Records</h1>
+<p>See also the overview of the <a href="GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a> (v13 AUTOSAR Fault Memory).</p>
+<h2 id="configured-vs.-calculated">Configured vs. Calculated</h2>
+<p><span id="SRUI-R100" class="rqDef">[SRUI-R100]</span> Depending on the <strong>Snapshot Record Numeration Type</strong>, the contents of the TAB pages varies, as described in the detail chapters:</p>
+<ul>
+<li>Configured <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/TAB%20Snapshot%20Records.htm#SRUI-R110' title="">[SRUI-R110]</a> (next chapter)</li>
+<li>Calculated <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/TAB%20Snapshot%20Records.htm#SRUI-R120' title="">[SRUI-R120]</a> (below)</li>
+</ul>
+<p>You control the Snapshot Record Numeration Type in the Diagnostic Instance Property Page &quot;AUTOSAR Fault Memory&quot; <a class='rqRef' href='../../20%20UserInterface/Fault%20Memory/Diagnostic%20Instance%20Property%20Page%20AUTOSAR%20Fault%20Memory.htm#DIUI-R350' title="">[DIUI-R350]</a>.</p>
+<h2 id="configured">Configured</h2>
+<p><span id="SRUI-R110" class="rqDef">[SRUI-R110]</span> The Snapshot Records TAB for Numeration Type <strong>Configured</strong> shows...</p>
+<ul>
+<li>a list of Snapshot Records for <strong>UDS</strong> <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R200' title="">[SRUI-R200]</a></li>
+<li>a list of Snapshot Records for <strong>OBD on UDS</strong> <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R200' title="">[SRUI-R200]</a>,
+<ul>
+<li><strong>if</strong> the document contains Snapshot Records for <strong>OBD on UDS</strong>.</li>
+<li>See <a class='rqRef' href='../../30 Features\Fault Memory\Fault Memory.htm#FM-D050' title="">[FM-D050]</a> about OBD on UDS support in CANdelaStudio 13.</li>
+</ul></li>
+<li><strong>Common Snapshot Data</strong> for all DTCs <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Data%20Common%20for%20All%20DTCs.htm#SRUI-R300' title="">[SRUI-R300]</a></li>
+<li><strong>Properties</strong> of the selected Snapshot Record <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Properties%20of%20Snapshot%20Record.htm#SRUI-R2000' title="">[SRUI-R2000]</a></li>
+</ul>
+<p>Look and operations are similar as for Numeration Type &quot;Calculated&quot; <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/TAB%20Snapshot%20Records.htm#SRUI-R120' title="">[SRUI-R120]</a> below.</p>
+<div class="figure">
+<img src="Images/SnapshotRecordsConfiguredWithOBD.png" alt="Snapshot Records Configured (with OBD on UDS Snapshot Record)" />
+<p class="caption">Snapshot Records Configured (with OBD on UDS Snapshot Record)</p>
+</div>
+<h2 id="calculated">Calculated</h2>
+<p><span id="SRUI-R120" class="rqDef">[SRUI-R120]</span> The Snapshot Records TAB for Numeration Type <strong>Calculated</strong> shows...</p>
+<ul>
+<li>a <strong>hint</strong> about UDS Snapshot Records not being configured</li>
+<li>the maximum value of <strong>calculated</strong> UDS Snapshot Records <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#DTC-R310' title="">[DTC-R310]</a></li>
+<li>a list of <strong>OBD on UDS</strong> Snapshot Records <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R200' title="">[SRUI-R200]</a> (no UDS Snapshot Records)</li>
+<li><strong>Common Snapshot Data</strong> for all DTCs <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Data%20Common%20for%20All%20DTCs.htm#SRUI-R300' title="">[SRUI-R300]</a></li>
+<li><strong>properties</strong> of the selected Snapshot Record <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Properties%20of%20Snapshot%20Record.htm#SRUI-R2000' title="">[SRUI-R2000]</a></li>
+</ul>
+<p>Look and operations are similar as for Numeration Type &quot;Configured&quot; <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/TAB%20Snapshot%20Records.htm#SRUI-R110' title="">[SRUI-R110]</a> above.</p>
+<div class="figure">
+<img src="Images/SnapshotRecordsCalculatedWithOBD.png" alt="Snapshot Records Calculated (with OBD on UDS Snapshot Record)" />
+<p class="caption">Snapshot Records Calculated (with OBD on UDS Snapshot Record)</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../20%20UserInterface/Fault%20Memory/AUTOSAR%20Fault%20Memory%20GUI.htm">GUI AUTOSAR Fault Memory</a> (overview)</li>
+<li><a href="GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a></li>
+<li><a href="TAB%20UDS%20Snapshot%20Data%20per%20DTC.htm">TAB UDS Snapshot Data per DTC</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm">Snapshot Record Data Model</a></li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Operations.htm">Snapshot Record Operations</a></li>
+</ul>
+</body>
+</html>

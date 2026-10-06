@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Overview Export</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-overview-export-cds-4348-4.0-sp4">Data Overview Export (CDS-4348 4.0 SP4)</h1>
+<p>The export stores an overview of all data objects of a CANdela document as a CSV file.</p>
+<h2 id="use-cases">Use Cases</h2>
+<ul>
+<li>Import of an <a href="../../10%20Introduction/CANdela%20Glossary.htm#a2l">A2L</a> file into a CANdela document, then export of the data objects to <a href="../../10%20Introduction/CANdela%20Glossary.htm#csv">CSV</a></li>
+<li>Export of an overview of all data objects of a variant or all variants of the CANdela document</li>
+</ul>
+<h2 id="export">Export</h2>
+<p><strong>R001.0</strong>: Add menu item &quot;Data overview&quot; (&quot;Datenübersicht&quot;) to menu “File|Export”, below &quot;Service overview&quot;.</p>
+<p><strong>R002.0</strong>: In the “Save as…” dialog, use the same elements as for “Service overview”:</p>
+<ul>
+<li>combo box “File type” with entries “Data overview (*.csv)” and “All files (*.*)”</li>
+<li>list box for target group selection below combo box “File type”</li>
+<li>the file name of the CANdela document will be used as a suggestion for the file name of the CSV file. If there is no file name, the ECU name will be used as a suggestion.</li>
+</ul>
+<p><strong>R003.0</strong>: In the CSV file, export a header containing date and time of export as well as the column titles (as in Service overview), like:</p>
+<pre><code>&lt;filepath&gt;
+2016-10-24T08:35:11+02:00
+Variant;Diagnostic class;Diagnostic instance;Service;Data object;Data type;Default value;Const value;Label</code></pre>
+<p><strong>R004.0</strong>: the CSV file top-level structure shall correspond with the following pseudo-code:</p>
+<pre><code>for all variants
+  for all diagnostic classes
+    for all activated diagnostic instances
+      for all services
+        export data objects.</code></pre>
+<p><strong>R005.0</strong>: in the CSV file, for one service, first export one line for the service using object names, like:</p>
+<pre><code>&quot;Basis-Variante&quot;;&quot;Sessions&quot;;&quot;Default&quot;;&quot;Start&quot;</code></pre>
+<p>The columns must correspond with the header specified in R003.0.</p>
+<p><strong>R006.0</strong>: In the CSV file, for one service, export one line for each data object of the service, where columns specified in R005.0 are left empty, and only data object columns are filled:</p>
+<pre><code>;;;;Data object;Data type;default value;const value;Label</code></pre>
+<p>The columns must correspond with the header specified in R003.0.</p>
+<p>Background: column order must be consistent with the CANdelaStudio user interface (telegram table).</p>
+<p><strong>R007.0</strong>: Add a Unicode Byte Order Mark (BOM) to the file.</p>
+<p><span id="DOE-R010" class="rqDef" title="DIDs">[DOE-R010 DIDs]</span> Data Overview Export shall not export a DID Data Reference <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R160' title="">[DID-R160]</a> but instead the DID Data <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R155' title="">[DID-R155]</a> (CDS-40126 8.5 SP3).</p>
+<h2 id="columns">Columns</h2>
+<p>The following columns will be created on export in the CSV file (in this order):</p>
+<ul>
+<li><strong>Variant:</strong> Name of the variant</li>
+<li><strong>Diagnostic class:</strong> Name of the diagnostic class</li>
+<li><strong>Diagnostic instance:</strong> Name of the diagnostic instance</li>
+<li><strong>Service:</strong> Name of the service to which the data object belongs</li>
+<li><strong>Data object:</strong> Name of the data object</li>
+<li><strong>Data type:</strong> Name of the data type referenced by the data object</li>
+<li><strong>Default value:</strong> Default value of the data object (if any, empty if none)</li>
+<li><strong>Const value:</strong> Constant value of the data object (if any, empty if none)</li>
+<li><strong>Label:</strong> <a href="../../10%20Introduction/CANdela%20Glossary.htm#label">Label</a> of the data object as imported from A2L, see below.</li>
+</ul>
+<p>The number format of default and const value depends on the display format defined at the data type.</p>
+<p>At the top of the table, the file name of the exported document as well as date and time of export will appear.</p>
+<p>Export will be restricted to specified target groups: if a service or its diagnostic instance is not part of a specified target group, then it will not be exported.</p>
+<p>Services and data objects of deactivated instances will not be exported.</p>
+<h2 id="label">Export of <span id='_index_446728032' title='Export of Label' data-text='Export of Label'>ASAP2</span> Labels (CDS-4740 4.0 SP2)</h2>
+<p>A2L import stores the “Label” of a data object in an attribute of the data object <a class='rqRef' href='../../30%20Features/Import/Import%20from%20ASAP2.htm#IA2L-R100-DA' title="">[IA2L-R100-DA]</a>. If this attribute is present, its contents will be added to the exported table (column “Label”, see above). The information will be used e.g. by code generation (CANdesc).</p>
+<p><strong>Note:</strong> Labels are only present in a CANdela document if it contains data objects imported from an A2L file.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm">Ribbon Tab Data Exchange</a></li>
+<li>Import from ASAP2 <a class='rqRef' href='../../30%20Features/Import/Import%20from%20ASAP2.htm#IA2L-R100' title="">[IA2L-R100]</a></li>
+</ul>
+</body>
+</html>

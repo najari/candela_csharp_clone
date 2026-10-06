@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Identity</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="identity"><span id='_index_446727968'>Identity</span></h1>
+<p>An identity data type (also called “raw values” or “hex dump”) does not actually <strong>convert</strong> a value from the ECU. The value is just...</p>
+<ul>
+<li>interpreted using a given encoding (unsigned, signed, bcd, …) and</li>
+<li>shown using a given display format (dec, hex, bin, oct…).</li>
+</ul>
+<p>The <strong>coded value type</strong> is the same as the <strong>physical value type</strong>.</p>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Raw%20Value.htm">dialog</a>.</p>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Data Type</th>
+<th align="right">Raw Value</th>
+<th align="right">Physical Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">High-resolution counter (see below)</td>
+<td align="right">0xFFF</td>
+<td align="right">4095</td>
+</tr>
+<tr class="even">
+<td align="left">Input value of I/O Control</td>
+<td align="right">0x3FF</td>
+<td align="right">0x3FF</td>
+</tr>
+<tr class="odd">
+<td align="left">Hash value</td>
+<td align="right">0xffeeddcc</td>
+<td align="right">FF EE DD CC</td>
+</tr>
+<tr class="even">
+<td align="left">Decimal hash value</td>
+<td align="right">0xffeeddcc</td>
+<td align="right">255 238 221 204</td>
+</tr>
+<tr class="odd">
+<td align="left">Info string</td>
+<td align="right">0x415D425E</td>
+<td align="right">„AaBb“</td>
+</tr>
+</tbody>
+</table>
+<p>E.g. high-resolution counter:</p>
+<ul>
+<li>Encoding: Unsigned</li>
+<li>Length: 2 bytes</li>
+<li>Display format: decimal</li>
+<li>Raw value: 0xFFF</li>
+<li>Physical value: 4095</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm#conversions">Conversions</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Specify Event Qualifiers before v12</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-specify-event-qualifiers-before-v12">How to Specify Event Qualifiers before v12</h1>
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>Since CANdelaStudio 12,
+<ul>
+<li>you can describe <a href="../../30%20Features/Event/Events%20Introduction.htm">Events</a> directy in a CANdela document.</li>
+<li>The feature is optional and must be enabled <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R010' title="">[EV-R010]</a>.</li>
+<li>The following does <strong>not</strong> apply to such documents.</li>
+</ul></li>
+<li>If...
+<ul>
+<li>the Events feature is <strong>not enabled</strong> in the document, or</li>
+<li>in a document <strong>created before CANdelaStudio 12</strong>,</li>
+<li>the export to the <a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract format</a> <strong>derives event information from DTCs</strong>.</li>
+<li>In such documents, in <strong>Expert View</strong>, you can add a <strong>DTC column</strong> that holds the <strong>Event qualifier</strong> for DEXT export.</li>
+</ul></li>
+</ul>
+<p>The following describes the procedure to</p>
+<ul>
+<li>add a DTC column for documents <strong>without</strong> Events support,</li>
+<li>and make DEXT export use this information.</li>
+</ul>
+<h2 id="create-dtc-column">Create DTC Column</h2>
+<ul>
+<li>Open a CANdela template
+<ul>
+<li>The following steps are not supported in a CANdela <strong>document</strong>.</li>
+</ul></li>
+<li>Navigate to the <a href="../../20%20UserInterface/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a>.</li>
+<li>Create a DTC Column of type Translatable <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R010-Translatable' title="">[DTCC-R010-Translatable]</a>.
+<ul>
+<li>Call it <code>Event_Name</code>.</li>
+</ul></li>
+</ul>
+<h2 id="patch-file-to-configure-dext-export-to-use-the-dtc-column"><span id='_index_446727848'>Patch File</span> to Configure DEXT Export to use the DTC Column</h2>
+<ul>
+<li>Create a &quot;Patch file&quot; (simple text file) with the contents:</li>
+</ul>
+<pre><code>Protocol &quot;UDS&quot;
+Manufacturer &quot;GENERIC&quot;
+
+
+for event [any]
+use shaper &quot;FaultMemory2&quot; :
+EXTRACT_EVENT_QUAL: call ExtractEventProp(&quot;Qualifier&quot;, &quot;DTC&quot;, &quot;Event_Name&quot;)
+end shaper</code></pre>
+<ul>
+<li>Close CANdelaStudio</li>
+<li>In the CANdelaStudio INI file, specify the path to the &quot;patch file&quot;, see <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Options.htm#INI-R352' title="">[INI-R352]</a>.</li>
+<li>Specify Event qualifiers in the DTC column &quot;Event_Name&quot;.</li>
+</ul>
+<p><strong>Note</strong>: this example...</p>
+<ul>
+<li>applies to the <code>GENERIC</code> manufacturer handling in DEXT export only,</li>
+<li>not to customer specific adaptations.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a></li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC Feature</a></li>
+<li><a href="../../20%20UserInterface/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></li>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="../../15%20Procedures/AUTOSAR/How%20to%20Configure%20the%20Diagnostic%20Basic%20Software%20of%20an%20AUTOSAR%204%20ECU.htm">How to Configure the Diagnostic Basic Software of an AUTOSAR 4 ECU</a></li>
+</ul>
+</body>
+</html>

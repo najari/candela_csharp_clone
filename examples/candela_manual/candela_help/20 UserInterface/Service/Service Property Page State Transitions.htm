@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Service Property Page State Transitions</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="service-property-page-state-transitions">Service Property Page &quot;State Transitions&quot;</h1>
+<p>The page shows one separate sub-page for each state group.</p>
+<h2 id="sub-page-for-one-state-group">Sub-Page for one State Group</h2>
+<p>Each sub-page offers two <strong>Views</strong>, which you can select by the following buttons:</p>
+<ul>
+<li><img src="../../20%20UserInterface/Images/State%20Dependency%20Editing.gif" /> Shows a table in which you can edit the transitions for the service</li>
+<li><img src="../../20%20UserInterface/Images/State%20Dependency%20State%20Diagram.gif" /> Shows a graph of the transitions for the service (see <a href="#state-diagram">below</a>)</li>
+</ul>
+<h2 id="editing-tabular">Editing (Tabular)</h2>
+<div class="figure">
+<img src="Images/Service%20Property%20Page%20State%20Transitions%20Editing.jpg" alt="Service Property Page &quot;State Transitions&quot;" />
+<p class="caption">Service Property Page &quot;State Transitions&quot;</p>
+</div>
+<h3 id="servicejob-is-relevant-for-...">Service/Job is relevant for ...</h3>
+<p>This is un-checked if all cells (transitions) read &quot;(yes)&quot;, i.e. the service is not <a href="../../30%20Features/State%20Dependency/State%20Dependency.htm#relevant">relevant</a> for the state group.</p>
+<p>As soon as you set a cell value to non &quot;(yes)&quot;, CANdelaStudio automatically check the checkbox.</p>
+<p>To reset all cells to &quot;(yes)&quot;, just un-check the checkbox.</p>
+<p>This check-box is <strong>GUI convenience</strong> only; actually the “relevance” information is <strong>derived</strong> from the state transitions, there is no separate “relevance” info.</p>
+<h4 id="impact-of-link-target-group-to-state-for-servicejob-is-relevant-for...">Impact of &quot;Link Target Group to State&quot; for &quot;Service/Job is relevant for...&quot;</h4>
+<p>With the <a href="../../30%20Features/State%20Dependency/Link%20Target%20Group%20to%20State.htm">Link Target Group to State</a> feature,</p>
+<ul>
+<li>changes to the <strong>state transitions</strong> of the service...</li>
+<li>can be coupled with changes to the <strong>relevance</strong> of the service for a <strong>target group</strong>.</li>
+<li>Note: this applies to services only, not for jobs.</li>
+</ul>
+<p><span id="SVCUI-D200" class="rqDef">[SVCUI-D200]</span> This may lead to a situation where you <strong>cannot check &quot;is relevant...&quot;</strong> because the respective modification of the target group relevance is not allowed:</p>
+<ul>
+<li>to unset &quot;is relevant&quot; for State Group &quot;Authorization&quot; means: set all state transitions to &quot;(yes)&quot;.</li>
+<li>For states linked with target groups,
+<ul>
+<li>when setting the state transitions to &quot;(yes)&quot;,</li>
+<li>CANdelaStudio must automatically set the linked target groups to be &quot;relevant&quot; (checked) at the service.</li>
+</ul></li>
+<li>But if a target group is &quot;not relevant&quot; (un-checked) <em>at the diagnostic instance</em>,
+<ul>
+<li>it must also be &quot;not relevant&quot; at the service.</li>
+<li>This is a CANdelaStudio consistency condition.</li>
+</ul></li>
+<li>Therefore, setting &quot;relevant&quot; at the service is not allowed for target groups which are &quot;not relevant&quot; at the diagnostic instance.</li>
+<li>Therefore, unsetting &quot;is relevant&quot; for the State Group is not allowed in this situation.</li>
+</ul>
+<h3 id="table">Table</h3>
+<p>Each page contains a table with one row.</p>
+<p>The second and further columns represent the states of the state group.</p>
+<p>The cells represent the behaviour of the ECU in the given state (column) when it receives a request of the given service. The values have the same meaning as in the <a href="../../20%20UserInterface/State%20Dependency/Dependencies.htm#cell-values">State Dependency chapter</a>.</p>
+<p>For <strong>write-protection</strong> of columns, see <a href="../../30%20Features/State%20Dependency/State%20Transitions.htm">Editing of State Transitions</a>.</p>
+<h2 id="state-diagram">State Diagram</h2>
+<div class="figure">
+<img src="Images/Service%20Property%20Page%20State%20Transitions%20State%20Diagram.jpg" alt="Service Property Page &quot;State Transitions&quot;" />
+<p class="caption">Service Property Page &quot;State Transitions&quot;</p>
+</div>
+<p>Only transitions for the service shown in the property dialog are shown in black. Transitions for other services are shown in light gray.</p>
+<p>The starting state is surrounded in bold.</p>
+<p>For further details of the diagram, see the similar <a href="../../20%20UserInterface/State%20Dependency/Dependencies.htm#state-diagram">State Diagram in the State Dependency chapter</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Properties.htm">Service Property Dialog</a></li>
+<li><a href="../../20%20UserInterface/State%20Dependency/States.htm">States Tree Chapter</a></li>
+<li><a href="../../30%20Features/State%20Dependency/State%20Dependency.htm">State Dependency Feature</a></li>
+</ul>
+</body>
+</html>

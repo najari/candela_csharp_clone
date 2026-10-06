@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Compare View</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="compare-view-cds-17484-7.0-sp2"><span id='_index_446727878' title='Compare' data-term='Compare'>Compare View</span> (CDS-17484 7.0 SP2)</h1>
+
+<h2 id="compare-view">Compare View</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Compare%20View.png" alt="Compare View" />
+<p class="caption">Compare View</p>
+</div>
+<h2 id="opening">Opening</h2>
+<p><span id="CMP-R001" class="rqDef">[CMP-R001]</span> You open the dialog opened with...</p>
+<ul>
+<li>two <strong>input objects</strong>: “left” and “right”, from same or different document.</li>
+<li>the mode whether <strong>data transfer</strong> is possible or not</li>
+</ul>
+<h2 id="non-modal-use">Non-Modal Use</h2>
+<p><span id="CMP-R200" class="rqDef">[CMP-R200]</span></p>
+<ul>
+<li>When you...
+<ul>
+<li>delete compared object and</li>
+<li>switch back to Compare View,</li>
+</ul></li>
+<li>then CANdelaStudio...
+<ul>
+<li>shows a message box indicating that one of the compared objects is does not exist any more,</li>
+<li>and disables the transfer and reload operations.</li>
+</ul></li>
+</ul>
+<h2 id="handling-of-references">Handling of References</h2>
+<p><span id="CMP-R005" class="rqDef">[CMP-R005]</span></p>
+<ul>
+<li>for <strong>directed references S =&gt; T</strong> in the data model,</li>
+<li>if there are differences in T,</li>
+<li>then CompareView...
+<ul>
+<li><strong>shows only one line</strong> like “Differences in referenced object” at S;</li>
+<li>it does not show difference details of T at S.</li>
+<li>it shows a special icon that indicates the difference is at a referenced object.</li>
+</ul></li>
+<li>This applies to:
+<ul>
+<li>Data Object / Bitfield =&gt; Datatype</li>
+<li>DTC =&gt; DTC in DTC Pool</li>
+<li>Container/DTC =&gt; Vehicle System Group</li>
+<li>NRC at Service</li>
+</ul></li>
+</ul>
+<p><img src="Images/OnlyOld.png" /></p>
+<p>Example:</p>
+<ul>
+<li>in Compare View for a document where only one datatype description has been changed,</li>
+<li>at each data object that references the datatype,</li>
+<li>Compare View does not show the description difference detail lines, e.g. “OLD”,</li>
+<li>but only one line for the datatype, e.g. “Bcd (2 Byte)”.</li>
+</ul>
+<p>Note: this does not apply to referenced Diagnostic Instances (these are not directed references S =&gt; T).</p>
+<p><span id="CMP-R007" class="rqDef">[CMP-R007]</span> - for <strong>directed references</strong> S =&gt; T in the data model, - if there are differences in T, - Compare View allows to <strong>navigate to the differences</strong> of T * context menu “Go to difference details”). - Note: not for NRCs.</p>
+<p><span id="CMP-R010" class="rqDef">[CMP-R010]</span>: Compare View supports <strong>filters</strong> via toolbar buttons: show/hide <strong>differences of type</strong>…</p>
+<ul>
+<li>object exists only in left side (default: show)</li>
+<li>object exists in both sides with modifications (default: show)</li>
+<li>object exists only in right side (default: show)</li>
+<li>referenced objects (default: show). Uses the icon of <a class='rqRef' href='../../20%20UserInterface/Compare/Compare%20View.htm#CMP-R005' title="">[CMP-R005]</a>.</li>
+</ul>
+<p><span id="CMP-R012" class="rqDef">[CMP-R012]</span>: Compare View support <strong>additional filters</strong> via Ribbon menu items:</p>
+<ul>
+<li>differences of record items (e.g. “Fault memory columns”) (default: show)</li>
+<li>differences of TextIDs (default: show)</li>
+<li>differences of OIDs (default: show):
+<ul>
+<li>Note: Requires activating OIDs in Options menu.</li>
+</ul></li>
+<li>differences of state transitions (default: show)</li>
+<li>differences of attribute values (default: show)</li>
+<li>differences in languages other than the shown one (default: <strong>not</strong> shows)</li>
+</ul>
+
+<p><span id="CMP-R016" class="rqDef">[CMP-R016]</span>: button &quot;Reset filter (show all)&quot; resets all filters.</p>
+<p><span id="CMP-R018" class="rqDef">[CMP-R018]</span>: for an inner node in the difference tree,</p>
+<ul>
+<li>if all its child nodes are hidden due to filters,</li>
+<li>then Compare View also <strong>hides the inner node</strong>.</li>
+<li>It applies this rule recursively up the tree.</li>
+<li>If no difference node is left at all, it displays an explanatory text, like “No differences are left to show.”</li>
+</ul>
+<p><span id="CMP-R015" class="rqDef">[CMP-R015]</span> The property filters hide a difference if all child differences are filtered out (CDS-72026 v13), even if a child difference is in a referenced object.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="22%" />
+<col width="22%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Object</th>
+<th align="left">Reference Target with Property Difference</th>
+<th align="left">Attributes</th>
+<th align="left">Description</th>
+<th align="left">OID/TemplateOID</th>
+<th align="left">TextID</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">DID</td>
+<td align="left">DataType</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance</td>
+<td align="left">DataType</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance</td>
+<td align="left">DID</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+<tr class="even">
+<td align="left">DiagInstance -&gt; DID</td>
+<td align="left">DataType</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagInstance (FaultMemory)</td>
+<td align="left">DTC</td>
+<td align="left">x</td>
+<td align="left">n/a</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+</tbody>
+</table>
+<p><span id="CMP-R020" class="rqDef">[CMP-R020]</span>: Compare View supports</p>
+<ul>
+<li><strong>expanding the entire tree</strong> and</li>
+<li><strong>collapsing the tree</strong> to:
+<ul>
+<li>Variants</li>
+<li>Variants down to Diagnostic classes</li>
+<li>Variants down to Diagnostic Instances / Job Containers</li>
+</ul></li>
+<li>with each of the above, collapses all other top-level tree nodes besides variants.</li>
+<li>On entry of the dialog, collapsing is activated down to Diagnostic Instances.</li>
+</ul>
+<p><span id="CMP-R030" class="rqDef">[CMP-R030]</span>: Compare View shows a <strong>details window for extra information</strong> about the selected tree node (on bottom of comparison view / details pane at the right which shows multi-line text also).</p>
+<p><span id="CMP-R035" class="rqDef">[CMP-R035]</span>: in the tree, Compare View show <strong>differences in other languages</strong> than the one currently shown, and lists the languages in which there are differences (terms as in File|Properties) (may also be filtered).</p>
+<p><span id="CMP-R050" class="rqDef">[CMP-R050]</span>: if the dialog has been opened in a context where data transfer is possible (cf. <a class='rqRef' href='../../20%20UserInterface/Compare/Compare%20View.htm#CMP-R001' title="">[CMP-R001]</a> above), Compare View provides a toggle &quot;Switch to Transfer Mode&quot;.</p>
+<p>a) If the button is on,</p>
+<ul>
+<li>Compare View displays a checkbox in a separate column between tree and left/right columns;</li>
+<li>Compare View preserves the checkbox value when user switches transfer mode off, then on again</li>
+<li>Compare View shows tree nodes that cannot be updated on their own (e.g. save number) in a special way (e.g. gray, or in italics, or checkbox grayed out);</li>
+<li>Compare View shows tree nodes that have the checkbox checked in a special way that improves visualization of the checked nodes (e.g. background color like selection, or strong font)</li>
+</ul>
+<p>b) If off, Compare View hides the checkbox, hides the panel, and restores standard tree display (fonts, colors etc.)</p>
+<p>c) Data transfer is not possible: in View/ViewX edition, in pre document update (cf. <a class='rqRef' href='../../20%20UserInterface/Compare/Compare%20View.htm#CMP-R140' title="">[CMP-R140]</a>).</p>
+<p>d) If transfer mode was enabled the last time the dialog was opened in a context where data transfer is possible (even across CANdelaStudio sessions), switch to transfer mode on dialog entry. Default: disabled.</p>
+<p><span id="CMP-R055" class="rqDef">[CMP-R055]</span>: <strong>After “Transfer”,</strong> Compare View restores tree expansion state and currently selected element. If the previously selected element does no more exist in the difference tree, it selects the lowest still existing ancestor element.</p>
+<p><span id="CMP-R070" class="rqDef">[CMP-R070]</span>: Compare View mentions the <strong>CDD (with revision),</strong> <strong>CDDT (with revision) and object (path) used</strong> by each document in the difference view.</p>
+<p><span id="CMP-R080" class="rqDef">[CMP-R080]</span>: Compare View explains what the <strong>colors used</strong> in the difference view mean (e.g. using a legend, or by showing the colors on a filter button).</p>
+<p><span id="CMP-R090" class="rqDef">[CMP-R090]</span>: On data object difference nodes which reference different data types (different qualifiers, or same qualifier with different properties), Compare View opens a modal difference dialog with input objects being <strong>the referenced data types</strong> (see R150), with data transfer (cf. D001) not possible.</p>
+<p><span id="CMP-R100" class="rqDef">[CMP-R100]</span>: Compare View provides a way to <strong>navigate in the document(s) compared</strong>: navigate to left object, navigate to right object. Bring the document to the front of the MDI stack. Keep difference view open.</p>
+<p>Note: this fits both for comparison of objects within one document and for comparison of two documents. For the latter case, if the user already views the documents side by side, a combined action “navigate to both objects” would be an optimization (not in 7.0).</p>
+<p><span id="CMP-R110" class="rqDef">[CMP-R110]</span>: Compare View shows the difference objects in the <strong>order</strong> shown in the <strong>document navigator tree</strong> (e.g. show variants before datatypes).</p>
+<p><span id="CMP-R120" class="rqDef">[CMP-R120]</span>*: if dialog has been opened for two documents, and it contains differences of the respective template objects, Compare View...</p>
+<p>a) provides a way to show the Template Associator dialog of CDS-11261;</p>
+<p>b) after you close the associator dialog, it re-computes the diff based on the associations, and restore tree state as in <a class='rqRef' href='../../20%20UserInterface/Compare/Compare%20View.htm#CMP-R055' title="">[CMP-R055]</a>.</p>
+<p>c) when you show the associator dialog again from within the same Compare View session, the associator dialog shows the same associations as when the user last time closed the dialog.</p>
+<p><span id="CMP-R140" class="rqDef">[CMP-R140]</span>: Compare View shows a button like <strong>“Do Update”</strong> (to leave the dialog) when called in context of pre document update.</p>
+<p><span id="CMP-R150" class="rqDef">[CMP-R150]</span>: Compare View provides <strong>context menu items</strong> for</p>
+<ul>
+<li>tree collapse/expand</li>
+<li>in transfer mode (R050): check/uncheck selection for transfer</li>
+<li>navigate in the documents (R100)</li>
+<li>difference of the referenced data types (R090)</li>
+</ul>
+<p><span id="CMP-R400-Rq" class="rqDef">[CMP-R400-Rq]</span> The compare feature does not cover requirements (see <a href="../../30%20Features/Requirements/Data%20Model.htm">Requirements Data Model</a> R080).</p>
+<h2 id="export-of-differences">Export of Differences</h2>
+<p><span id="CMP-R131-DiffExport" class="rqDef">[CMP-R131-DiffExport]</span> Compare View allows to export the computed difference in the formats</p>
+<ul>
+<li>Text,</li>
+<li>XML,</li>
+<li>XHTML.</li>
+</ul>
+<div class="figure">
+<img src="../../20%20UserInterface/Compare/Images/DiffExport.png" alt="Diff Export" />
+<p class="caption">Diff Export</p>
+</div>
+<p><span id="CMP-R131-Filters" class="rqDef">[CMP-R131-Filters]</span> Compare View does not apply GUI filters to the diff export.</p>
+<p>See also <a href="../../30%20Features/Compare/Compare%20via%20Command%20Line.htm">Compare via Command Line</a>.</p>
+<h3 id="xml-diff-export-structure">XML Diff Export Structure</h3>
+<p>There are few tags which carry general information about the diff and which exist only once in the exported XML:</p>
+<ul>
+<li><code>&lt;candeladiff&gt;</code> Encloses the whole exported diff.
+<ul>
+<li>Note: as of v12, the opening tag <candeladiff> is not exported (CDS-71858).</li>
+</ul></li>
+<li><code>&lt;sourcefile&gt;</code> Left file of comparison.</li>
+<li><code>&lt;targetfile&gt;</code> Right file of comparison.</li>
+</ul>
+<p>Each difference is represented by one of the following tags:</p>
+<ul>
+<li><code>&lt;modify&gt;</code> Objects exist in source and target, there is a differences between source and target.</li>
+<li><code>&lt;add&gt;</code> Object is missing in source, it only exists in target.</li>
+<li><code>&lt;delete&gt;</code> Object is missing in target, it only exists in source.</li>
+</ul>
+<p>Properties</p>
+<ul>
+<li>each difference has a unique id beginning with an underscore (e.g. <code>&lt;modify id='_5'&gt;</code>).</li>
+<li>Contents of <code>&lt;modify&gt;</code>:
+<ul>
+<li><code>&lt;qpath&gt;</code> The qpath to the entity in source and target, if the path is the same, else:
+<ul>
+<li><code>&lt;qpathsrc&gt;</code> The qpath to the entity in the source document, if it is different from the target one, and…</li>
+<li><code>&lt;qpathtgt&gt;</code> ... vice versa</li>
+</ul></li>
+<li><code>&lt;valuesrc&gt;</code> The value of the different object in source, and</li>
+<li><code>&lt;valuetgt&gt;</code> ... in target.</li>
+</ul></li>
+<li>Contents of <code>&lt;add&gt;</code> and <code>&lt;delete&gt;</code> differences:
+<ul>
+<li>no <code>&lt;qpath&gt;</code> but only <code>&lt;qpathtgt&gt;</code> or <code>&lt;qpathsrc&gt;</code></li>
+<li>no <code>&lt;valuesrc&gt;</code> and <code>&lt;valuetgt&gt;</code></li>
+</ul></li>
+</ul>
+<p>Example: a DID is missing in target</p>
+<pre><code>&lt;delete id=&#39;_19&#39;&gt;
+&lt;qpathsrc&gt;qpath:/Base_Variant/[DID]DID_0xF414&lt;/qpathsrc&gt;
+&lt;/delete&gt;</code></pre>
+
+<p><span id="CMP-R410-ByteOrder" class="rqDef">[CMP-R410-ByteOrder]</span> If the byte-order of a physical value type <a class='rqRef' href='../../30 Features\Data Type\Byte Order.htm#BO-R110' title="">[BO-R110]</a> is not relevant, Compare View does not show it (CDS-39492, 8.5 SP2).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../15%20Procedures/Compare/How%20to%20Compare%20Documents.htm">Procedure &quot;How to Compare Documents&quot;</a></li>
+<li><a href="../../15%20Procedures/Compare/How%20to%20Compare%20Documents%20from%20Command%20Line.htm">Procedure &quot;How to Compare Documents from Command Line&quot;</a></li>
+<li><a href="../../15%20Procedures/Compare/How%20to%20Compare%20Objects.htm">Procedure &quot;How to Compare Objects&quot;</a></li>
+<li>Ribbon Tab File | Compare File to Left Side <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R310' title="">[MENU-R310]</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Compare.htm">Options Property Page &quot;Compare&quot;</a></li>
+<li><a href="../../30%20Features/Compare/Compare%20via%20Command%20Line.htm">Compare via Command Line</a></li>
+</ul>
+</body>
+</html>

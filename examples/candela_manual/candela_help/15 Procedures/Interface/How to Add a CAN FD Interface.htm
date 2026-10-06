@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Add a CAN FD Interface</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-add-a-can-fd-interface">How to Add a CAN FD Interface</h1>
+<p>Note: this function is available in the <strong>Admin edition</strong> only. To create new interfaces in a CANdela template or document, you have to <strong>open it in Expert View</strong>.</p>
+<p>In the &quot;Supported interfaces&quot; subchapter of the chapter &quot;ECU&quot; in the template or document, you can create and edit the interfaces that the ECU supports.</p>
+<h2 id="open-the-files">Open the Files</h2>
+<ul>
+<li>open the document or template in Expert View</li>
+<li>open the ABS/ESP Example in Expert View
+<ul>
+<li>typically located in <code>C:\Users\Public\Documents\Vector\CANdelaStudio</code></li>
+<li>see <a href="../../30%20Features/Installation/Example%20Files.htm">Example Files</a></li>
+</ul></li>
+</ul>
+<h2 id="copy-the-interface">Copy the Interface</h2>
+<ul>
+<li>in the ABS/ESP Example, click on &quot;Supported interfaces&quot; in the tree</li>
+<li>in the right side, in the list entry &quot;CAN FD&quot;, click on &quot;not supported&quot;, switch to &quot;supported&quot;</li>
+<li>on the list entry &quot;CAN FD&quot;, press right mouse, select &quot;Copy&quot;</li>
+<li>switch to your document or template</li>
+<li>click on &quot;Supported interfaces&quot; in the tree</li>
+<li>in the right side, in the list, press right mouse, select &quot;Paste&quot;
+<ul>
+<li>Note: unfortunately, this copies <em>the interface only</em> (CDS-69111).</li>
+</ul></li>
+</ul>
+
+<h2 id="copy-the-communication-parameters">Copy the Communication Parameters</h2>
+<ul>
+<li>switch back to the ABS/ESP Example</li>
+<li>in the tree under &quot;Supported interfaces&quot;, click &quot;CAN FD&quot;</li>
+<li>click into the list in the right side</li>
+<li>press Ctrl-A
+<ul>
+<li>CANdelaStudio selects all entries.</li>
+</ul></li>
+<li>press right mouse, select &quot;Copy&quot;</li>
+<li>switch to your document or template</li>
+<li>in the tree under &quot;Supported interfaces&quot;, click &quot;CAN FD&quot;</li>
+<li>click into the list in the right side</li>
+<li>press Ctrl-V
+<ul>
+<li>CANdelaStudio inserts all CAN FD communication parameters.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Interface/CAN%20FD.htm">CAN FD</a></li>
+<li><a href="How%20to%20Create%20a%20New%20Interface.htm">How to Create a New Interface</a></li>
+<li><a href="../../20%20UserInterface/Interface/Interface.htm">Interfaces (User Interface)</a></li>
+<li><a href="../../30%20Features/Interface/Interface.htm">Interfaces (Feature)</a></li>
+<li><a href="../../30%20Features/Installation/Example%20Files.htm">Example Files</a></li>
+</ul>
+</body>
+</html>

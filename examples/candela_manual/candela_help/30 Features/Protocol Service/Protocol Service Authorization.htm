@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Protocol Service Authorization</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="protocol-service-authorization">Protocol Service Authorization</h1>
+<h2 id="introduction">Introduction</h2>
+<p>A Protocol Service...</p>
+<ul>
+<li>has authorization properties only for <strong>Services</strong> based on the Protocol Service:
+<ul>
+<li>for the addressing properties;</li>
+</ul></li>
+<li>has <strong>no</strong> authorization properties for editing <strong>itself</strong>:
+<ul>
+<li>it is part of the template,</li>
+<li>so you cannot modify it in Standard view, anyway.</li>
+</ul></li>
+</ul>
+<h2 id="authorization">Addressing Authorization</h2>
+<p>The following Protocol Service properties define the modifiability of the <a href="Addressing.htm">addressing properties</a> at services based on the Protocol Service:</p>
+<table style="width:98%;">
+<colgroup>
+<col width="47%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Authorization Property</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Physical request</strong></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">&quot;Test system sends physical request&quot; modifiable<br />
+</td>
+<td align="left"><span id="PS-R840" class="rqDef">[PS-R840]</span> if <code>true</code>,<br />
+and a positive response primitive exists:<br />
+the user may modify &quot;Test system sends physical request&quot; <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R740' title="">[PS-R740]</a><br />
+and &quot;The test system shall set the SPRMIB...&quot; <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R750' title="">[PS-R750]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">&quot;ECU sends a response&quot; modifiable<br />
+</td>
+<td align="left"><span id="PS-R850" class="rqDef">[PS-R850]</span> if <code>true</code>,<br />
+and a positive response primitive exists,<br />
+and &quot;Test system sends physical request&quot; is <code>true</code>:<br />
+the user may modify &quot;ECU sends a response&quot; <a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R760' title="">[PS-R760]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Functional request</strong></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">&quot;Test system sends functional request&quot; modifiable<br />
+</td>
+<td align="left"><span id="PS-R845" class="rqDef">[PS-R845]</span> (dito for a functional request)</td>
+</tr>
+<tr class="even">
+<td align="left">&quot;ECU sends a response&quot; modifiable<br />
+</td>
+<td align="left"><span id="PS-R855" class="rqDef">[PS-R855]</span> (dito for a functional request)</td>
+</tr>
+</tbody>
+</table>
+<p>Default values for the authorization properties are <code>true</code>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="../../20%20UserInterface/Protocol%20Service/Protocol%20Service%20Property%20Page%20Addressing.htm">Protocol Service Property Page &quot;Addressing&quot;</a></li>
+<li><a href="../../20%20UserInterface/Service/Service%20Property%20Page%20Addressing.htm">Service Property Page &quot;Addressing&quot;</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Authorization.htm">Authorization</a></li>
+</ul>
+</body>
+</html>

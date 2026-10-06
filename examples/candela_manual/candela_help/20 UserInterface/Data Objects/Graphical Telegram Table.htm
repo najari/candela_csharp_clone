@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Graphical Telegram Table</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="graphical-telegram-table"><span id='_index_446727879'>Graphical Telegram Table</span></h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Graphical%20Telegram%20View.jpg" alt="Graphical Telegram Table" />
+<p class="caption">Graphical Telegram Table</p>
+</div>
+<p><span id="DOUIG-R010" class="rqDef">[DOUIG-R010]</span> CANdelaStudio visualizes the positions of data objects in a graphical telegram view.</p>
+<h2 id="enabling">Enabling</h2>
+<p><span id="DOUIG-R020" class="rqDef">[DOUIG-R020]</span> You can toggle the view on/off next to the textual telegram table (CDS-16944, CDS-40680 9.0)...</p>
+<ul>
+<li>via a button in the top toolbar (DIDs), or</li>
+<li>via a button at the bottom of the textual telegram table.</li>
+</ul>
+<h2 id="display">Display</h2>
+<ul>
+<li><span id="DOUIG-R110" class="rqDef">[DOUIG-R110]</span> Complex data types and referenced DIDs are flattened</li>
+<li><span id="DOUIG-R050" class="rqDef">[DOUIG-R050]</span> The graphical view shows the real data objects.
+<ul>
+<li><span id="DOUIG-R050-Mux" class="rqDef">[DOUIG-R050-Mux]</span> For multiplexer: shows the longest alternative</li>
+<li><span id="DOUIG-R050-FixedCountIter" class="rqDef">[DOUIG-R050-FixedCountIter]</span> For a Fixed Count Iteration: shows all repetitions (CDS-33703 v11).</li>
+<li><span id="DOUIG-R050-Iter" class="rqDef">[DOUIG-R050-Iter]</span> For other iterations: shows one repetition.</li>
+</ul></li>
+</ul>
+<h2 id="string-termination">String Termination</h2>
+<p><span id="DOUIG-R130" class="rqDef">[DOUIG-R130]</span> Graphical Telegram Table considers the String Termination <a class='rqRef' href='../../30 Features\Data Type\String Termination.htm#DTST-R100' title="">[DTST-R100]</a> of the data types referenced by the data objects in the telegram.</p>
+
+<ul>
+<li><span id="DOUIG-R130-variable" class="rqDef">[DOUIG-R130-variable]</span> For data types of &quot;Field variable&quot; length, the the graphical telegram table shows the maximum number of elements.</li>
+<li><span id="DOUIG-R130-leading" class="rqDef">[DOUIG-R130-leading]</span> For data types with string termination &quot;leading size bytes&quot;, the graphical telegram table includes the leading size bytes.</li>
+<li><span id="DOUIG-R130-zeroterm" class="rqDef">[DOUIG-R130-zeroterm]</span> For data types with string termination &quot;zero terminated (no padding)&quot; or &quot;zero terminated (with padding)&quot;, the graphical telegram table includes the zero termination (1 byte for encoding ASCII, 2 bytes for encoding UNICODE)..</li>
+<li><span id="DOUIG-R130-maxlen" class="rqDef">[DOUIG-R130-maxlen]</span> For data types with string termination &quot;zero terminated (no padding) maxlen EOS&quot; or &quot;zero terminated (with padding) maxlen EOS&quot;, the graphical telegram table <strong>does not include</strong> the zero termination.
+<ul>
+<li>Motivation: if maxlen or end of service reached, the zero termination may be omitted on the line.</li>
+</ul></li>
+</ul>
+<h2 id="selection-coupling">Selection Coupling</h2>
+<p><span id="DOUIG-R120" class="rqDef">[DOUIG-R120]</span> Selection coupling:</p>
+<ul>
+<li>Select a data object in the textual telegram table - CANdelaStudio selects the bytes/bits in the graphical view</li>
+<li>Select a data object in the graphical telegram table - if that data object itself is contained in the textual table, CANdelaStudio selects the object in the textual table</li>
+</ul>
+<h2 id="byte-oder">Byte Oder</h2>
+<p><span id="DOUIG-R200" class="rqDef">[DOUIG-R200]</span> Graphical view shows the objects in the <strong>order of bytes on the line</strong>,</p>
+<ul>
+<li><span id="DOUIG-R200-LsbFirst" class="rqDef">[DOUIG-R200-LsbFirst]</span> therefore it does not reflect the document option Bit Ordering <a class='rqRef' href='../../30 Features\Document\Bit Ordering.htm#DOC-R500-LsbFirst' title="">[DOC-R500-LsbFirst]</a> (CDS-69433 9.1) which is about a display convention of bits.</li>
+</ul>
+<h2 id="leading-size-bytes-cds-70687-v11">Leading Size Bytes (CDS-70687 v11)</h2>
+<p><span id="DOUIG-R220" class="rqDef">[DOUIG-R220]</span> Graphical telegram view includes leading size bytes and zero termination <a class='rqRef' href='../../30 Features\Data Type\String Termination.htm#DTST-R100' title="">[DTST-R100]</a>.</p>
+<h2 id="shortening-cds-70858-9.1-sp1-p3-cds-70832-v11">Shortening (CDS-70858 9.1 SP1 P3, CDS-70832 v11)</h2>
+<p><span id="DOUIG-R210" class="rqDef">[DOUIG-R210]</span> Graphical telegram view shortens...</p>
+<ul>
+<li>data objects and reserved objects</li>
+<li>longer than 24 bytes</li>
+<li>on top-level (not in bitfield),</li>
+<li>showing the first 23 bytes, then the last byte,
+<ul>
+<li>with &quot;...&quot; behind the number of the 23th byte,</li>
+<li>and &quot;...&quot; before the number of the last byte.</li>
+</ul></li>
+</ul>
+<div class="figure">
+<img src="Images/GraphicalTelegramTableShortened.jpg" alt="Graphical Telegram View Shortened" />
+<p class="caption">Graphical Telegram View Shortened</p>
+</div>
+
+<h2 id="byte">Byte</h2>
+<p>Visualizes the byte position and represents compound objects (DIDs, complex data types) by lines.</p>
+<h2 id="bit7-..-bit-0">Bit7 .. Bit 0</h2>
+<p>shows the bits covered by the data objects.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm">Bit and Byte Positions</a></li>
+<li><a href="Data%20Objects.htm">Data Objects (Telegram Table)</a></li>
+</ul>
+</body>
+</html>

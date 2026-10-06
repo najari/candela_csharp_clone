@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Ribbon Tab File</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="ribbon-tab-file">Ribbon Tab &quot;File&quot;</h1>
+<p>The ribbon tab &quot;File&quot; is also called &quot;<span id='_index_446727858'>Backstage</span>&quot;.</p>
+<p>It closes automatically when you select a menu item (except for the items opening a sub-menu).</p>
+<div class="figure">
+<img src="Images/Ribbon%20Tab%20File.jpg" alt="Ribbon Tab &quot;File&quot;" />
+<p class="caption">Ribbon Tab &quot;File&quot;</p>
+</div>
+<h2 id="new">New</h2>
+<p><span id="MENU-R010" class="rqDef">[MENU-R010]</span> Lets you select a template (.cddt) and a language to create a document (.cdd) based on the template <a class='rqRef' href='../../30 Features\Document\Document Operations.htm#DOC-R600' title="New">[DOC-R600]</a>, using the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/New%20Dialog.htm">New Dialog</a>.</p>
+<p>Note: &quot;Reopen in Standard View&quot; <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Document.htm#MENU-R780-Template' title="">[MENU-R780-Template]</a> implicitly performs the same operation.</p>
+<h2 id="recent">Recent</h2>
+<p><span id="MENU-R340" class="rqDef">[MENU-R340]</span> Lists files recently opened.</p>
+<ul>
+<li><span id="MENU-R340-Number" class="rqDef">[MENU-R340-Number]</span> The number of menu entries is specified in the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20General.htm">Options Property Page &quot;General&quot;</a>.</li>
+<li><span id="MENU-R340-RemoveFile" class="rqDef">[MENU-R340-RemoveFile]</span> You can remove an individual entry via context menu &quot;Remove file from list&quot;.</li>
+<li><span id="MENU-R340-Remove" class="rqDef">[MENU-R340-Remove]</span> Rou can remove the entire list by editing the INI file <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Options.htm#INI-R340' title="">[INI-R340]</a>.</li>
+<li><span id="MENU-R340-Template" class="rqDef">[MENU-R340-Template]</span> If you click a template (CDDT) in the Admin Edition, CANdelaStudio opens it in Expert View (CDS-4695 R001, 5.0).
+<ul>
+<li>cf. drag'n drop <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Drag%20and%20Drop%20of%20Files.htm#DDF-R110' title="">[DDF-R110]</a>.</li>
+<li>This does not work in v10 (CDS-70830).</li>
+</ul></li>
+<li><span id="MENU-R340-Admin" class="rqDef">[MENU-R340-Admin]</span> When you started CANdelaStudio with Windows admin privileges <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Startup.htm#STRT-R030' title="">[STRT-R030]</a>, the file list does not contain files from network drives (CDS-71041 v11).</li>
+</ul>
+<h2 id="open">Open</h2>
+<p><span id="MENU-R020" class="rqDef">[MENU-R020]</span> Lets you open a CANdela document (.cdd) or template (.cddt) <a class='rqRef' href='../../30 Features\Document\Document Operations.htm#DOC-R610' title="Open">[DOC-R610]</a>, using the Open Page <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm#OPEN-R010' title="">[OPEN-R010]</a>.</p>
+<h2 id="properties">Properties</h2>
+<p><span id="MENU-R330" class="rqDef">[MENU-R330]</span> Opens the <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm">Property Dialog</a> for the document.</p>
+<p>The menu item is shown only if a document is loaded.</p>
+<h2 id="save">Save</h2>
+<p><span id="MENU-R040" class="rqDef">[MENU-R040]</span> Saves the current document or template <a class='rqRef' href='../../30 Features\Document\Document Operations.htm#DOC-R620' title="Save">[DOC-R620]</a>.</p>
+<p>The menu item is shown only if a document is loaded.</p>
+<h2 id="save-as">Save As</h2>
+<p><span id="MENU-R043" class="rqDef">[MENU-R043]</span> Saves the current document in a different version, using the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/SaveAs%20Dialog.htm">Save As Dialog</a>.</p>
+<p>Not available for templates.</p>
+<p>The menu item is shown only if a document is loaded.</p>
+<h2 id="save-all">Save All</h2>
+<p><span id="MENU-R045" class="rqDef">[MENU-R045]</span> Saves all documents.</p>
+<p>The menu item is shown only if a document is loaded.</p>
+<h2 id="rtf-report-specification">RTF Report (Specification)</h2>
+<p><span id="MENU-R110" class="rqDef">[MENU-R110]</span> Creates a <a href="../../30%20Features/Report/Report%20Generator.htm">Specification Report</a> in RTF format.</p>
+<p>See the Options Property Pages Specification: <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Specification%20General.htm">General</a> and <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Specification%20Chapters.htm">Chapters</a>.</p>
+<p>The menu item is shown only if a document is loaded.</p>
+<h2 id="html-report-specification">HTML Report (Specification)</h2>
+<p><span id="MENU-R115" class="rqDef">[MENU-R115]</span> Creates a <a href="../../30%20Features/Report/Report%20Generator.htm">Specification Report</a> in HTML format.</p>
+<p>See the previous chapter for details.</p>
+<h2 id="close">Close</h2>
+<p><span id="MENU-R030" class="rqDef">[MENU-R030]</span> Closes the current document or template.</p>
+<p>Asks for confirmation if there are unsaved modifications.</p>
+<p>The menu item is shown only if a document is loaded.</p>
+<h2 id="close-all">Close All</h2>
+<p><span id="MENU-R050" class="rqDef">[MENU-R050]</span> Closes all documents.</p>
+<p>Asks for confirmation if there are unsaved modifications.</p>
+<p>The menu item is shown only if a document is loaded (CDS-70300 v10).</p>
+<h2 id="select-as-left">Select as Left Side</h2>
+<p><span id="MENU-R300" class="rqDef">[MENU-R300]</span> Selects the current document as left side for the &quot;Compare&quot; operation, to be completed by &quot;Compare File to Left Side&quot; (see next chapter).</p>
+<p>The menu item is shown only if a document is loaded.</p>
+<h2 id="compare-file-to-left-side">Compare File to Left Side</h2>
+<p><span id="MENU-R310" class="rqDef">[MENU-R310]</span> Compares the current document to the document specified via &quot;Select as Left Side&quot; (see previous chapter).</p>
+<p>See <a href="../../20%20UserInterface/Compare/Compare%20View.htm">Compare View</a>.</p>
+<p>The menu item is shown only if a document is loaded.</p>
+<h2 id="options">Options</h2>
+<p><span id="MENU-R910" class="rqDef">[MENU-R910]</span> Opens the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options.htm">Options Dialog</a>.</p>
+<h2 id="vector-support-assistant">Vector Support Assistant</h2>
+<p><span id="MENU-R1256" class="rqDef">[MENU-R1256]</span> Opens the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Vector%20Support%20Assistant.htm">Vector Support Assistant</a>.</p>
+
+<h2 id="product-information">Product Information</h2>
+<p><span id="MENU-R360" class="rqDef">[MENU-R360]</span> Opens the <a href="Ribbon%20Tab%20File%20-%20Product%20Information.htm">Product Information page</a></p>
+<h2 id="help">Help</h2>
+<p><span id="MENU-R1210" class="rqDef">[MENU-R1210]</span> Opens online help.</p>
+<p>See also <a href="../../10%20Introduction/About%20this%20documentation.htm">About this documentation</a>.</p>
+
+<h2 id="exit">Exit</h2>
+<p><span id="RB-R1900" class="rqDef">[RB-R1900]</span> Closes CANdelaStudio.</p>
+<p>Asks for confirmation if there are unsaved modifications.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Document/Document.htm">Document</a></li>
+<li><a href="Drag%20and%20Drop%20of%20Files.htm">Drag and Drop of Files</a></li>
+<li><a href="Ribbon%20Introduction.htm">Ribbon Introduction</a></li>
+<li><a href="Startup.htm">Start-Up</a></li>
+<li><a href="../../10%20Introduction/Contact.htm">Contact</a></li>
+</ul>
+</body>
+</html>

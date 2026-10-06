@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>20_ODXExport_Common properties</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="common-properties">Common properties</h1>
+<h2 id="odx-short-name">ODX SHORT-NAME</h2>
+<p>Usually the ODX SHORT-NAME is generated from the Qualifier of the corresponding CANdela-Object.</p>
+<h2 id="odx-long-name">ODX LONG-NAME</h2>
+<p>Usually the ODX LONG-NAME is generated from the Name of the corresponding CANdela-Object.<br />
+With CANdela 7.1 it is possible to specify LONG-NAMEs up to 255 characters.</p>
+<h2 id="odx-descs">ODX-DESCs</h2>
+<p>In ODX-DESCs the following XHTML tags are used for formatting text: &quot;br&quot;, &quot;i&quot;, &quot;u&quot;, &quot;font&quot;, &quot;sub&quot;, &quot;sup&quot;, &quot;ul&quot;, &quot;ol&quot;, &quot;li&quot;. In ODX 2.0.1 scheme the elements &quot;u&quot; and &quot;font&quot; are not used. So they cannot be used in valid ODX 2.0.1 files.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela description</strong></th>
+<th align="left"><strong>ODX DESC</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">normal text</td>
+<td align="left">normal text</td>
+</tr>
+<tr class="even">
+<td align="left">bold text</td>
+<td align="left">text of b-tag</td>
+</tr>
+<tr class="odd">
+<td align="left">italic text</td>
+<td align="left">text of i-tag</td>
+</tr>
+<tr class="even">
+<td align="left">bullet list</td>
+<td align="left">ul-list with li-items</td>
+</tr>
+<tr class="odd">
+<td align="left">numbered list</td>
+<td align="left">ol-list with li-items</td>
+</tr>
+</tbody>
+</table>
+<p>Table 2: Mapping of CANdela description to ODX DESC</p>
+<p>Corresponding format elements for &quot;sub&quot; and &quot;sup&quot; do not exist in CANdela. Hence, they are not used by the export.</p>
+<p>In ODX2.2.0 a paragraph may not contain Lists anymore. Hence, a list (&lt;ul&gt;&lt;li&gt;) is always used as start of description.</p>
+<h2 id="id">ID</h2>
+<p><span id="ODXE-R1020-ID" class="rqDef">[ODXE-R1020-ID]</span></p>
+<p>Usually the ID of the generated elements is a consecutive number.</p>
+<p>With 5.5 Release, the possibility exists for all manufacturers. This feature is optional (see <a href="1_ODXExport_Introduction.htm#options">Options</a>).</p>
+<h3 id="hierarchical-ids">Hierarchical IDs</h3>
+<p><span id="ODXE-R1020-HierarchicalIDs" class="rqDef">[ODXE-R1020-HierarchicalIDs]</span></p>
+<p>By specifying the ODXExport-Option &quot;CreateHierarchicalIds&quot;, stable IDs<br />
+are generated. Therefore a SHORT-NAME-PATH is calculated by concatenating the SHORT-NAME of the current element to the SHORT-NAME of all elements in the hierarchy above. The individual SHORT-NAMEs are separated by a &quot;_&quot;.</p>
+<h2 id="oid">OID</h2>
+<p><span id="ODXE-R1020-OID" class="rqDef">[ODXE-R1020-OID]</span></p>
+<p>With CANdelaStudio 5.5 it is possible to export optionally OIDs for certain ODX-Objects (‎<a href="1_ODXExport_Introduction.htm#options">Configuration of Export</a>). In case where a 1:1 mapping exists between CANdela-Object and ODX-Object, the CANdela-OID is directly used for ODX. In cases where an ODX-Object is generated from more than one CANdela-Object, a concatenation of CANdela-OIDs is used as ODX-OID.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+</ul>
+</body>
+</html>

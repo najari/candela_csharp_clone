@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Setup the Template to Specify the Security Access Data Record</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-setup-the-template-to-specify-the-security-access-data-record">How to Setup the Template to Specify the Security Access Data Record</h1>
+<p>In the protocol service for &quot;Request Seed&quot;:</p>
+<ul>
+<li>The request of the protocol service must contain a proxy component with qualifier &quot;securityAccessDataRecord&quot;.</li>
+</ul>
+<p>To specify the additional properties of the security access record for code generation, the following attributes must exist on diagnostic instance level with attribute category &quot;CANdesc&quot;:</p>
+<ul>
+<li>“Failure delay time” (qualifier “FailureDelayTime”, default value: 10 [sec], type: Unsigned)</li>
+<li>“Failures to delay” (qualifier “FailuresToDelay”, default value: 3, type: Unsigned)</li>
+<li>“Delays to lock” (qualifier “DelaysToLock”, default value: 6, type: Unsigned)</li>
+</ul>
+<p>Tip: restrict the attributes to exist at diagnostic class &quot;Security Access&quot; only (do this in the &quot;Restrictions&quot; page of the attribute property dialog).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a></li>
+<li><a href="../../30%20Features/State%20Dependency/Security.htm">Security</a></li>
+</ul>
+</body>
+</html>

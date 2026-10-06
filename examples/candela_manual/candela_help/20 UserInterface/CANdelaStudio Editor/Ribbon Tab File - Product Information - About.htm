@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Ribbon Tab File - Product Information - About</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="ribbon-tab-file---product-information---about">Ribbon Tab File - Product Information - About</h1>
+<p><span id="MENU-R1270" class="rqDef">[MENU-R1270]</span> In Ribbon Tab File - Product Information, CANdelaStudio shows info about the application:</p>
+<div class="figure">
+<img src="Images/About%20Dialog.jpg" title="About Dialog" alt="CANdelaStudio About Dialog" />
+<p class="caption">CANdelaStudio About Dialog</p>
+</div>
+<h2 id="version">Version</h2>
+<p>Shows the main version (e.g. 8.1) and the Service Pack / Patch / Beta.</p>
+<h2 id="edition">Edition</h2>
+<p>Shows the <a href="../../30%20Features/CANdelaStudio%20Editor/Editions.htm">CANdelaStudio edition</a> you are running.</p>
+<p>When starting CANdelaStudio, you can pass a <a href="../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm">command line option</a> to run in a lower edition.</p>
+<p>Before CANdelaStudio 8.2, the &quot;View&quot; edition was shown as &quot;No Edition&quot; (CDS-36418).</p>
+<h2 id="all-manufacturers">All manufacturers</h2>
+<p>Your CANdelaStudio instance supports CANdela documents of all manufacturers (see the document property &quot;<a href="../../30%20Features/Document/Document.htm#diagnostics-based-on">Diagnostics Based on</a>&quot;).</p>
+
+<h2 id="serial-number-1111111111">Serial Number 1111111111</h2>
+<p><span id="ABOUT-R050" class="rqDef" title="Serial Number">[ABOUT-R050 Serial Number]</span></p>
+<ul>
+<li><span id="ABOUT-R050-PerSeat" class="rqDef">[ABOUT-R050-PerSeat]</span> For a per-seat license, the serial number is unique to your instance of CANdelaStudio (assigned in the Vector sales system). If you got CANdelaStudio on a CD, you find the serial number also on the CD.</li>
+<li><span id="ABOUT-R050-Dongle" class="rqDef">[ABOUT-R050-Dongle]</span> For a license taken from a dongle, the serial number is not shown.</li>
+<li><span id="ABOUT-R050-Pool" class="rqDef">[ABOUT-R050-Pool]</span> For a pool license, the serial number can be identical for multiple licenses.</li>
+</ul>
+
+<h2 id="patch-installer-cds-69388-9.1">Patch Installer (CDS-69388 9.1)</h2>
+<p><span id="ABOUT-D060" class="rqDef">[ABOUT-D060]</span> Patch Installer Identification File ::=</p>
+<ul>
+<li>text file in the CANdelaStudio bin folder</li>
+<li>file name <code>PatchInstaller_&lt;OEM&gt;.txt</code>, OEM = <code>Daimler</code>, <code>Porsche</code>, ...</li>
+</ul>
+<p><span id="ABOUT-D062" class="rqDef">[ABOUT-D062]</span> Patch Installer Identification ::=</p>
+<ul>
+<li>the first line of a file from <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File%20-%20Product%20Information%20-%20About.htm#ABOUT-D060' title="">[ABOUT-D060]</a> (above) contains a string that identifies the Patch Installer version</li>
+<li>Syntax: <code>&lt;CANdelaStudio main version&gt; PatchInstaller &lt;patch version&gt; (&lt;OEM&gt;) &lt;date&gt;</code></li>
+<li>e.g. <code>9.0 SP1 PatchInstaller 11 (Daimler) 2017-11-10</code></li>
+</ul>
+<p><span id="ABOUT-R060" class="rqDef" title="Patch Installer">[ABOUT-R060 Patch Installer]</span> in the dialog of menu Help|About,</p>
+<ul>
+<li>CANdelaStudio shows all Patch Installer Identifications (as of <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File%20-%20Product%20Information%20-%20About.htm#ABOUT-D062' title="">[ABOUT-D062]</a>),</li>
+<li>line by line,</li>
+<li>below the &quot;... Edition&quot; line.</li>
+</ul>
+<p>Note: the info is also shown in the Splash Screen <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Startup.htm#STRT-R060' title="">[STRT-R060]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Installation/Documentation.htm">Documentation</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Editions.htm">Editions</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Licensing.htm">Licensing</a></li>
+<li><a href="Ribbon%20Tab%20File.htm">Ribbon Tab File</a></li>
+<li><a href="Ribbon%20Tab%20File%20-%20Product%20Information.htm">Ribbon Tab File - Product Information</a></li>
+<li><a href="Ribbon%20Tab%20File%20-%20Product%20Information%20-%20Module%20Information.htm">Ribbon Tab File - Product Information - Module Information</a></li>
+</ul>
+</body>
+</html>

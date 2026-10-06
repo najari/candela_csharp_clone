@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>90_ODXExport_Jobs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="jobs">Jobs</h1>
+<p>The following section describes the mapping of CANdela-Jobs to ODX-SINGLE-ECU-JOBs.</p>
+<h2 id="export-of-jobs">Export of Jobs</h2>
+<p><span id="ODXE-R1090-Jobs" class="rqDef">[ODXE-R1090-Jobs]</span></p>
+<p>With CANdela 5.5 it is possible to optionally restrict the export of SINGLE-ECU-JOBs to Jobs that have at least one Function with syntax 'Class, jar, java'. In this case, the JAVA-function is exported as PROG-CODE. In case no JAVA-Function is defined and the option is set, the Job is skipped and a warning is emitted.</p>
+<h3 id="deactivated-jobs">Deactivated Jobs</h3>
+<p>With CANdelaStudio 7.0 SP1 it is possible to deactivate Jobs. In case a Job is deactivated it will not be exported to ODX.</p>
+<h2 id="single-ecu-jobshort-namelong-name">SINGLE-ECU-JOB.SHORT-NAME/LONG-NAME</h2>
+<p>With CANdela5.5 the new Service-Property 'JobShortCutQualifer/JobShortCutName' is used as SHORT-NAME/LONG-NAME.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>DIAG-SERVICE</strong></th>
+<th align="left"><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">SHORTNAME</td>
+<td align="left">JobShortCutQualifier</td>
+</tr>
+<tr class="even">
+<td align="left">LONGNAME</td>
+<td align="left">JobShortCutName</td>
+</tr>
+</tbody>
+</table>
+<p>Table 25: Short- and Longname of Diag-Service</p>
+<p>During migration of documents from 5.0 to 5.5 the Value is calculated by concatenating Job and DiagInstance-Qualifier/Name as done before. In case the Odx-attribute 'SINGLE-ECU-JOB.SHORT-NAME' (<a href="1_ODXExport_Introduction.htm#with-template">With Template</a>) is set, the value will be used as JobShortCutName.</p>
+<p>The TextId of the ShortCutName is used as TID in ODX.</p>
+<h3 id="single-ecu-jobshort-namelong-name-semantic">SEMANTIC</h3>
+<p>With 6.0 Release, each CANdela-Job has the property &quot;Semantic&quot;. Here the user is able to specify the SEMANTIC of the ODX SINGLE-ECU-JOB directly.</p>
+<h2 id="prog-code">PROG-CODE</h2>
+<p>For each function a PROG-CODE is exported with the following properties:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela-Function</strong></th>
+<th align="left"><strong>ODX-PROG-CODE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Filename of the CANdela-Function</td>
+<td align="left">CODE-FILE</td>
+</tr>
+<tr class="even">
+<td align="left">Syntax</td>
+<td align="left">SYNTAX</td>
+</tr>
+<tr class="odd">
+<td align="left">Version</td>
+<td align="left">REVISION</td>
+</tr>
+<tr class="even">
+<td align="left">EntryPoint</td>
+<td align="left">ENTRYPOINT</td>
+</tr>
+</tbody>
+</table>
+<p>Table 26: PROG-CODE properties</p>
+<p>The CODE-FILE is also exported to the FILE-SYSTEM.</p>
+<h2 id="input-paramoutput-param">INPUT-PARAM/OUTPUT-PARAM</h2>
+<p>For every CANdela-Input/Output-Parameter, an ODX-INPUT/OUTPUT-PARAM is generated.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>CANdela-Input/Output-Paramter</strong></th>
+<th align="left"><strong>ODX-INPUT/OUTPUT-PARAM</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Parameter.Qualifier/Name</td>
+<td align="left">PARAM.SHORT-NAME/LONG-NAME</td>
+</tr>
+<tr class="even">
+<td align="left">CANdela-Default-Value</td>
+<td align="left">PHYSICAL-DEFAULT-VALUE</td>
+</tr>
+<tr class="odd">
+<td align="left">CANdela-Const-Value</td>
+<td align="left">PHYSICAL-DEFAULT-VALUE</td>
+</tr>
+<tr class="even">
+<td align="left">DatenTyp</td>
+<td align="left">DOP-BASE-REF</td>
+</tr>
+</tbody>
+</table>
+<p>Table 27: Mapping of CANdela Input-/Output parameters to ODX</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+<li><a href="../../30%20Features/Job/Job.htm">Job</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SWC Sync Changes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="swc-sync-changes">SWC Sync Changes</h1>
+<h2 id="changes85SP3">Changes in CANdelaStudio 8.5 SP3</h2>
+<ul>
+<li>Enabled loading of multiple arxml files at once.</li>
+<li>Routine parameters only exchanged between application and DCM are ignored.</li>
+<li>Routine info byte is ignored if the synched diag instance is marked as predefining it.</li>
+<li>Text table values are correctly interpreted as decimal values.</li>
+<li>CANdela display format is set for linear data types.</li>
+<li>Implemented heuristic for computation of float display precision.</li>
+<li>Corrected warning message on unmappable io ctrl diag instance.</li>
+<li>All physical float values are set to 8 byte double.</li>
+<li>Conversions of float encoded parameters are now checked against CANdela supported bitlengths.</li>
+<li>Boolean encoded parameters are now interpreted as 1 byte sized types.</li>
+<li>Overlapping text table ranges now lead to a clear error message.</li>
+<li>Sync of DID referencing io control instances now correctly updates the DID.</li>
+<li>AUTOSAR element references shall not be specified at IO ctrl packets but at the data objects contained in those packets (SWCSYNC-44)</li>
+<li>Support ports in nested compositions and two or more context-component-ref elements (SWCSYNC-41)</li>
+<li>Discern P-, R- and PR-PORT-PROTOTYPEs in synchronized AUTOSAR target refs (SWCSYNC-38)</li>
+<li>Rebuild bitfield structures when synchronizing bit-sized objects (SWCSYNC-18)</li>
+<li>Accept identical data types defining a compu method without linear and without text table part (SWCSYNC-14)</li>
+<li>Support specification of deviating bit lengths for CANdela data types resulting from ASR data types (SWCSYNC-23)</li>
+<li>Affect only the variant selected in the requirements setting tab (SWCSYNC-17)</li>
+<li>Reflect value range restrictions of synched ASR data objects by creating separate CANdela data types (SWCSYNC-16)</li>
+<li>Store single value init values in the usual default value column (SWCSYNC-15)</li>
+</ul>
+<h2 id="changes90SP1">Changes in CANdelaStudio 9.0 SP1</h2>
+<ul>
+<li>SWCSYNC-58: Avoid qualifier postfixing and duplication of data types as far as possible</li>
+<li>SWCSYNC-47: IO ctrl elements shall not be stored inside of a packet data type but directly inside the DID's telegram table</li>
+<li>SWCSYNC-63: Avoid data object suffixes upon repeated synchronization</li>
+<li>SWCSYNC-66: Display format of identity data types shall be decimal, not hex</li>
+<li>SWCSYNC-69: Linear datatypes with non-integral scale shall have float phys encoding and display format</li>
+<li>SWCSYNC-72: Data type names shall be unique after SWC Sync</li>
+<li>SWCSYNC-75: Init values shall be written into data objects' implementation default attribute as coded values</li>
+<li>SWCSYNC-78: Heuristic to compute the display precision shall also consider init values</li>
+<li>SWCSYNC-85: Post summary list of unsynchable objects at the end of the SWC Sync log.</li>
+<li>SWCSYNC-88: In case of ranged text table entries, the SWC Sync shall use the lowest range value as inverse value for phys-to-coded computation.</li>
+<li>SWCSYNC-91: The SWC Sync shall repeat and summarize all warning, sorted by category, at the end of the SWC Sync log.</li>
+<li>SWCSYNC-94: When warning that no IO ctrl or routine instance can be found with a certain instance type, the SWC Sync shall also post the corresponding requirement id.</li>
+<li>SWCSYNC-97: For the phys side of text table entries, the SWC Sync shall prefer the AUTOSAR compu scale's short label over the symbol over the compu const vt.</li>
+<li>SWCSYNC-100: Post the full path to the synchronized arxml files in the SWC Sync log.</li>
+<li>SWCSYNC-103: The info message on missing routine components shall sound less like a warning.</li>
+<li>SWCSYNC-106: SWC Sync shall issue a warning if an object is synchronized twice in the same sync run.</li>
+<li>SWCSYNC-109: IO control enable masks shall yield all bits individually.</li>
+<li>SWCSYNC-112: Support to define an array as a struct member inside the I/O Control Data Port.</li>
+<li>SWCSYNC-119: Improve error reporting when encountering a missing reference from a RoleBasedPortAssignment to a PortPrototype.</li>
+</ul>
+<h2 id="changes-in-candelastudio-10">Changes in CANdelaStudio 10</h2>
+<ul>
+<li>SWCSYNC-3: Store objects which cannot be synchronized in the import pool.</li>
+<li>SWCSYNC-4: Extend SWC Sync with a <a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">GUI</a>.</li>
+</ul>
+<h2 id="changes-in-candelastudio-12">Changes in CANdelaStudio 12</h2>
+<ul>
+<li>SWCSYNC-163: Support setting of attribute <code>ASR3_Legacy_Combine_DID</code> for DIDs modelled with and without the CANdela DID feature <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20Combine%20Parameters.htm#SWC-R1610-DiagInst' title="">[SWC-R1610-DiagInst]</a></li>
+</ul>
+
+<h2 id="changes-in-candelastudio-13">Changes in CANdelaStudio 13</h2>
+<ul>
+<li>n/a</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../10%20Introduction/Release%20Notes.htm">Release Notes</a></li>
+<li><a href="SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a></li>
+<li><a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a></li>
+</ul>
+</body>
+</html>

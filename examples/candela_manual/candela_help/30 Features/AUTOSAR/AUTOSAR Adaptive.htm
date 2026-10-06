@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>AUTOSAR Adaptive</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="autosar-adaptive"><span id='_index_446727902' title='AUTOSAR: Adaptive' data-term='AUTOSAR' data-text='Adaptive'>AUTOSAR Adaptive</span></h1>
+<h2 id="autosar-adaptive-1">AUTOSAR Adaptive</h2>
+<p>Besides the established <strong>AUTOSAR Classic Platform</strong>, in 2016 the AUTOSAR development partnership started work on the <strong>Adaptive Platform</strong>. The first release was <strong>17-03</strong>.</p>
+<p>The Adaptive Platform targets at <strong>high-performance computing</strong> applications like autonomous driving. It <strong>dynamically links</strong> services and clients during runtime and provides <strong>service-oriented communication</strong>. This enables dynamic reloading of software components, the use of standard libraries – such as for image analysis–, self-learning of functions and an accelerated production cycle.</p>
+<p>Expected use: Adaptive will be used for <strong>few specific ECUs</strong>, not the mass market.</p>
+<h2 id="autosar-adaptive-in-candelastudio">AUTOSAR Adaptive in CANdelaStudio</h2>
+<p><span id="ARA-R100" class="rqDef">[ARA-R100]</span> CANdelaStudio 13 supports export to DEXT for AUTOSAR Adaptive (2020-02, CDS-712943).</p>
+<h3 id="restrictions">Restrictions</h3>
+<p>The CANdelaStudio dialogs...</p>
+<ul>
+<li>do not use specific terms from AUTOSAR Adaptive (&quot;Software cluster&quot;...)</li>
+<li>but just continue using terms from AUTOSAR Classic (&quot;ECU&quot;...).</li>
+<li>Adaptive supports <strong>multiple software clusters</strong> for an ECU
+<ul>
+<li>Vector daVinci does not support this (as of 2020-01).</li>
+</ul></li>
+</ul>
+<h3 id="versioning">Versioning</h3>
+<ul>
+<li>AUTOSAR Adaptive releases <strong>2x per year</strong>
+<ul>
+<li>... whereas AUTOSAR Classic releases <strong>1x per year</strong></li>
+<li>One of the Adaptive releases is <strong>together</strong> with AUTOSAR Classic.</li>
+</ul></li>
+<li>The version numbering is like &quot;<strong>19-11</strong>&quot; (year-month), for both Classic and Adaptive.
+<ul>
+<li>There is no &quot;AUTOSAR 4.5&quot;!</li>
+<li>The internal <strong>schema version</strong> is like &quot;v00049&quot;.</li>
+</ul></li>
+</ul>
+
+<h2 id="swc-sync">SWC Sync</h2>
+<ul>
+<li>Schedule:
+<ul>
+<li>no Adaptive SWC-Sync in v13</li>
+</ul></li>
+<li>Intended use of AUTOSAR Adaptive:
+<ul>
+<li>describe AUTOSAR Adaptive in PREEvision</li>
+<li>complete the diagnostics in CANdelaStudio.</li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="https://www.autosar.org/standards/adaptive-platform/">AUTOSAR Adaptive Platform (autosar.org)</a></li>
+<li><a href="https://www.vector.com/int/en/know-how/technologies/autosar/autosar-adaptive/">AUTOSAR Adaptive Platform (vector.com)</a></li>
+<li><a href="AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a></li>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> (Export)</li>
+<li><a href="Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm">Attributes for AUTOSAR Diagnostic Extract Export</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#autosar">AUTOSAR Command Line Operation Examples</a></li>
+<li><a href="../../30%20Features/Import/SWC%20Sync%20Introduction.htm">SWC Sync</a> (Import)</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Commands Menus</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="commands-menus---rules-for-ribbon-menu-items">Commands Menus - Rules For Ribbon / Menu Items</h1>
+
+<table style="width:99%;">
+<colgroup>
+<col width="27%" />
+<col width="71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">If A Command Is Not Available…</th>
+<th align="left">Then Ribbon/Menu Item…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>categorically</strong></td>
+<td align="left"><span id="CM-R100" class="rqDef">[CM-R100]</span> Hide (in ribbon: Show insensitive)</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>obviously</strong> (single selection)<br />
+<span id="obvious"/></td>
+<td align="left"><span id="CM-R110-Show" class="rqDef">[CM-R110-Show]</span> Show insensitive (in context menu also for a set of related commands like Back/Forth, Cut/Copy/Paste)<br />
+<span id="CM-R110-Hide" class="rqDef">[CM-R110-Hide]</span> Hide (in context menu, otherwise)</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>not obviously</strong> (single selection)</td>
+<td align="left"><span id="CM-R120" class="rqDef">[CM-R120]</span> Show sensitive, show info why command is not available</td>
+</tr>
+<tr class="even">
+<td align="left">for parts of <strong>multi-selection</strong></td>
+<td align="left"><span id="CM-R130" class="rqDef">[CM-R130]</span> Show sensitive, apply as far as possible, then show info</td>
+</tr>
+</tbody>
+</table>
+<h2 id="why-command-is-not-available">Why Command Is Not Available</h2>
+<table style="width:99%;">
+<colgroup>
+<col width="24%" />
+<col width="25%" />
+<col width="49%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">If it depends on…</th>
+<th align="left">… a command is not available…</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Data not possible in CANdela</td>
+<td align="left">categorically</td>
+<td align="left">„New bitfield“ within bitfield.</td>
+</tr>
+<tr class="even">
+<td align="left">Document loaded</td>
+<td align="left">categorically</td>
+<td align="left">„Save“ when no document loaded</td>
+</tr>
+<tr class="odd">
+<td align="left">Document or template</td>
+<td align="left">categorically</td>
+<td align="left">„New Variant“ when template loaded.</td>
+</tr>
+<tr class="even">
+<td align="left">CANdelaStudio edition</td>
+<td align="left">categorically</td>
+<td align="left">„Store document as template.“</td>
+</tr>
+<tr class="odd">
+<td align="left">Document opened in which view</td>
+<td align="left">categorically</td>
+<td align="left">„New Default Attribute“ in Standard View.<br />
+„Translation Memory“ in Standard View.<br />
+„Save“/exports in View Edition</td>
+</tr>
+<tr class="even">
+<td align="left">Document manufacturer</td>
+<td align="left">obviously</td>
+<td align="left">Diogenes export.<br />
+Diogenes qualifier overview.</td>
+</tr>
+<tr class="odd">
+<td align="left">Template data properties</td>
+<td align="left">obviously</td>
+<td align="left">Attribute does not exist in a diagnostic class</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">not obviously</td>
+<td align="left">Iteration Data Type forbidden.<br />
+Maximum telegram length.</td>
+</tr>
+<tr class="odd">
+<td align="left">Current pane/dialog</td>
+<td align="left">obviously</td>
+<td align="left">„New Variant“ in telegram table</td>
+</tr>
+<tr class="even">
+<td align="left">Clipboard state</td>
+<td align="left">obviously</td>
+<td align="left">„Paste“ when clipboard empty.<br />
+„Paste“ in data types, clipboard contains data object.</td>
+</tr>
+<tr class="odd">
+<td align="left">Properties of selected object(s)</td>
+<td align="left">obviously</td>
+<td align="left">„Go To DID“ on data object;<br />
+„New Variant“ in telegram table</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">not obviously</td>
+<td align="left">Delete multiple data objects, result violates minimum telegram length</td>
+</tr>
+</tbody>
+</table>
+<p>Note: One command can have different values of „not available“ for different values of „depends on“. E.g. „New bitfield“ is categorically not available within another bitfield, but could be „not obviously“ not available if the template would forbid adding bitfields.</p>
+<h2 id="classification-of-concrete-commands">Classification Of Concrete Commands</h2>
+<p>This chapter documents the decisions for some concrete commands.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">… if it depends on…</th>
+<th align="left">… it is not available…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">File | Save</td>
+<td align="left">Document loaded</td>
+<td align="left">categorically</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Lists of Objects <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Basic User Interface Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Introduction.htm">Ribbon Introduction</a></li>
+</ul>
+</body>
+</html>

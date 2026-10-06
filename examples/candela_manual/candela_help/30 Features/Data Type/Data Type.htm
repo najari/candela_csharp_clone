@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Type</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-type"><span id='_index_446727944' title='Feature' data-text='Feature'>Data Type</span></h1>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type Properties Dialog</a>.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Raw%20Value.jpg" alt="Data Type Property Dialog" />
+<p class="caption">Data Type Property Dialog</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p><span id="DT-R100" class="rqDef">[DT-R100]</span> A CANdela document contains <strong>data types</strong> on document level, for use in the template part and in all variants.</p>
+<p>A <strong>simple data type</strong> <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R200' title="">[DT-R200]</a> describes</p>
+<ul>
+<li>re-usable properties of a <a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">Data Object</a>:</li>
+<li>the <strong>length</strong> of (raw) values available in the ECU and transferred via a bus</li>
+<li>and their <strong>conversion</strong> into physical values (like temperature, angle, speed, length, etc.).</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Raw byte 0x20 received</li>
+<li>using data type &quot;Temperature (1Byte)&quot;</li>
+<li>gives physical value <code>t = 16°C</code>.</li>
+</ul>
+<p>A <strong>complex data type</strong> <a class='rqRef' href='../../30%20Features/Data%20Type/Complex%20Data%20Types%20Introduction.htm#CDT-R100' title="">[CDT-R100]</a> (packet, iteration, multiplexer...) contains multiple data objects.</p>
+<p>A <strong>text table data type</strong> (a special simple data type) is also used to determine the <strong>set of valid values</strong> for (amongst others)...</p>
+<ul>
+<li>Failure Type Bytes</li>
+<li>Failure Mode Identifiers</li>
+<li>UDS Identifiers (&quot;variable values&quot;)</li>
+</ul>
+<p>CANdelaStudio shows data types using specific <a href="../../20%20UserInterface/Data%20Type/Icons.htm">icons</a>.</p>
+<h2 id="general-properties-of-a-simple-data-type">General Properties of a Simple Data Type</h2>
+<p>A simple data type converts between</p>
+<ul>
+<li>a <strong>raw value</strong> or <strong>coded value</strong> (data transported over the line between ECU and test system), and</li>
+<li>a <strong>physical value</strong> (data as shown to or entered by the user of a test system).</li>
+</ul>
+<p>For this purpose, a <strong>simple data type</strong> has the following <strong>general properties</strong>:</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Coded value type</strong></td>
+<td align="left"><span id="DT-R110" class="rqDef">[DT-R110]</span> the type of the <strong>coded value</strong>, see <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R300' title="">[DT-R300]</a> below.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Physical value type</strong></td>
+<td align="left"><span id="DT-R120" class="rqDef">[DT-R120]</span> the type of the physical value, see <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R300' title="">[DT-R300]</a> below.</td>
+</tr>
+<tr class="odd">
+<td align="left">Conversion</td>
+<td align="left">between coded and physical values and vice versa, see <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R200' title="">[DT-R200]</a> below.</td>
+</tr>
+<tr class="even">
+<td align="left">Invalid values</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Data%20Type/Invalid%20Values.htm#DT-R400' title="">[DT-R400]</a>, defined on <strong>coded values</strong>.</td>
+</tr>
+<tr class="odd">
+<td align="left">Bitmask</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Data%20Type/Bitmask.htm#DT-R500' title="">[DT-R500]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left">Precision</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Data%20Type/Precision.htm#DT-R600' title="">[DT-R600]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">Unit</td>
+<td align="left">see <a class='rqRef' href='../../30%20Features/Data%20Type/Unit.htm#UNIT-R005' title="">[UNIT-R005]</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conversions"><span id='_index_446727945'>Conversions</span></h2>
+<p><span id="DT-R200" class="rqDef">[DT-R200]</span> A <strong>simple data type</strong> specifies a <span id="conversions">conversion</span>:</p>
+<ul>
+<li><a href="Identity.htm">Identity (Raw Values)</a></li>
+<li><a href="Text%20Table.htm">Text table</a></li>
+<li><a href="Linear.htm">Linear formula</a></li>
+<li><a href="Piecewise%20Linear.htm">Piecewise Linear</a></li>
+<li><a href="Characteristic%20Curve.htm">Characteristic Curve</a></li>
+<li><a href="Procedure.htm">Procedural Conversion</a></li>
+<li><a href="Formula.htm">Formula</a></li>
+<li>technically also a data type: <a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+</ul>
+<h2 id="value-type-properties">Value Type Properties</h2>
+<p><span id="DT-R300" class="rqDef">[DT-R300]</span> The <strong>coded value type</strong> and the <strong>physical value type</strong> of a data type (see chapter above) have the following properties:</p>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Property</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Encoding</strong></td>
+<td align="left">the type of the value / of a single element, see <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R100' title="">[DTENC-R100]</a>. See also <a href="Start%20Range%20End%20Range.htm">Start Range / End Range</a>.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Quantity</strong></td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R310' title="">[DT-R310]</a> below.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Bit Length</strong></td>
+<td align="left">The length of the value / of a single element, see <a class='rqRef' href='../../30%20Features/Data%20Type/Length.htm#DTL-R100' title="">[DTL-R100]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Minimum Size</strong><br />
+<strong>Maximum Size</strong></td>
+<td align="left">Number of elements for a field, semantics see <a class='rqRef' href='../../30%20Features/Data%20Type/Length.htm#DTL-D200' title="">[DTL-D200]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>String Termination</strong></td>
+<td align="left">For a field, describes how the number of elements can be determined (leading size info, zero termination...), see <a class='rqRef' href='../../30%20Features/Data%20Type/String%20Termination.htm#DTST-R100' title="">[DTST-R100]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Byte Order</strong></td>
+<td align="left">Defines the order of individual bytes for values <code>&gt;</code> 1 byte, see <a class='rqRef' href='../../30%20Features/Data%20Type/Byte%20Order.htm#BO-R110' title="">[BO-R110]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Display format</strong></td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/Data%20Type/Display%20Format.htm#DTDF-R100' title="">[DTDF-R100]</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Not all <strong>combinations</strong> of above properties are valid, see chapter <a href="../../30%20Features/Data%20Type/Data%20Type%20Property%20Dependencies.htm">Data Type Property Dependencies</a>.</p>
+<p><strong>Example</strong> for a Text Table:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Coded value type: Property</th>
+<th align="left">Value</th>
+<th align="right">Physical value type: Property</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Encoding</td>
+<td align="left">unsigned</td>
+<td align="right">Encoding</td>
+<td align="left">Ascii</td>
+</tr>
+<tr class="even">
+<td align="right">Quantity</td>
+<td align="left">atom</td>
+<td align="right">Quantity</td>
+<td align="left">field</td>
+</tr>
+<tr class="odd">
+<td align="right">Bit length</td>
+<td align="left">32 bits</td>
+<td align="right">Bit length</td>
+<td align="left">8 bits</td>
+</tr>
+<tr class="even">
+<td align="right">Minimum Size Size</td>
+<td align="left">n/a</td>
+<td align="right">Minimum Size</td>
+<td align="left">17</td>
+</tr>
+<tr class="odd">
+<td align="right">Maximum Size</td>
+<td align="left">n/a</td>
+<td align="right">Maximum Size</td>
+<td align="left">17</td>
+</tr>
+<tr class="even">
+<td align="right">String Termination</td>
+<td align="left">n/a</td>
+<td align="right">String Termination</td>
+<td align="left">none</td>
+</tr>
+<tr class="odd">
+<td align="right">Byte order</td>
+<td align="left">high/low</td>
+<td align="right">Byte order</td>
+<td align="left">n/a</td>
+</tr>
+<tr class="even">
+<td align="right">Display format</td>
+<td align="left">dec</td>
+<td align="right">Display format</td>
+<td align="left">text</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quantity">Quantity</h2>
+<p><span id="DT-R310" class="rqDef">[DT-R310]</span> The Quantity property of a Data Type distinguishes between...</p>
+<ul>
+<li><span id="DT-R310-atom" class="rqDef">[DT-R310-atom]</span> <strong>atom</strong> describes a <strong>single value</strong> (character, integer...)</li>
+<li><span id="DT-R310-field" class="rqDef">[DT-R310-field]</span> <strong>field</strong> describes a <strong>field</strong> (<strong>array</strong>) of values of the same size (integer array, character string).</li>
+</ul>
+<p>See chapter &quot;Raw Encoding and Bit Length&quot; <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type%20Property%20Dependencies.htm#DTDEP-R100' title="">[DTDEP-R100]</a> for possible constellations.</p>
+<h2 id="data-type-references">Data Type References</h2>
+<p>Data types are referenced by multiple other objects, see <a href="References.htm">Data Type References</a>.</p>
+<h2 id="constant-and-default-value">Constant and Default Value</h2>
+<p>A data object references a datatype.</p>
+<p><strong>Constant and default value</strong> are specified <strong>at the data object</strong>, not at the datatype, see chapter <a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">Data Objects</a>.</p>
+<h2 id="boolean"><span id='_index_446727946'>Boolean</span></h2>
+<p>CANdela (and ODX) do <strong>not</strong> support a native Boolean data type. Typically, an identity or text table data type will be used instead, with length 1 bit or 1 byte (0 = false, 1 = true).</p>
+<p>AUTOSAR supports a Boolean data type (but not arrays of Boolean, as of 2017-07).</p>
+
+<p>In order to let the <a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> Export write a true AUTOSAR Boolean data type, set the attribute &quot;AUTOSAR_Encoding&quot; <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R230' title="">[SWC-R230]</a>.</p>
+<h2 id="attributes-for-ecu-shared-data">Attributes for ECU-SHARED-DATA</h2>
+<p><span id="DTATTR-R100" class="rqDef">[DTATTR-R100]</span> A data type originates from <a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA</a> if the following three <a href="../../30%20Features/Attributes/Special%20Attributes.htm">special attributes</a> are set:</p>
+<ul>
+<li><span id="DTATTR-R100-DOCTYPE" class="rqDef">[DTATTR-R100-DOCTYPE]</span> DOCTYPE</li>
+<li><span id="DTATTR-R100-DOCREF" class="rqDef">[DTATTR-R100-DOCREF]</span> DOCREF. Updated (see <a class='rqRef' href='../../20%20UserInterface/Document/ODX%20ECU-SHARED-DATA.htm#ESD-R210-Attr' title="">[ESD-R210-Attr]</a>) when the user edits the ECU-SHARED-DATA SHORT-NAME <a class='rqRef' href='../../20%20UserInterface/Document/ODX%20ECU-SHARED-DATA.htm#ESD-R060' title="">[ESD-R060]</a>.</li>
+<li><span id="DTATTR-R100-ID_REF" class="rqDef">[DTATTR-R100-ID_REF]</span> ID_REF</li>
+</ul>
+<p>For creation of the attributes, see <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm#PEnODX-R002-f' title="">[PEnODX-R002-f]</a>.</p>
+<p>For reset of the attribute values, see <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type%20Operations.htm#DTOP-R025' title="Paste">[DTOP-R025]</a>.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Complex%20Data%20Types%20Introduction.htm">Complex Data Types Introduction</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">Data Object</a></li>
+<li><a href="Data%20Type%20Authorization.htm">Data Type Authorization</a></li>
+<li><a href="References.htm">Data Type References</a></li>
+</ul>
+
+</body>
+</html>

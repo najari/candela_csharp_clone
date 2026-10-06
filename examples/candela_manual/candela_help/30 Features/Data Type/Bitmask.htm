@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Bitmask</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="bitmask"><span id='_index_446727965'>Bitmask</span></h1>
+<p><span id="DT-R500" class="rqDef">[DT-R500]</span> A Data Type has a Bitmask.</p>
+<ul>
+<li><span id="DT-R500-Size" class="rqDef">[DT-R500-Size]</span> The data type bitmask is a 4 byte unsigned integer.</li>
+<li>A test system applies it to the raw value from the line, before it applies the byte order:
+<ul>
+<li>each 0 bit in the bitmask sets the respective bit of the raw value to 0.</li>
+</ul></li>
+</ul>
+<p>Example:</p>
+<ul>
+<li><code>0x1234</code> raw value,</li>
+<li><code>0xFFF0</code> bitmask,</li>
+<li><code>0x1230</code> resulting value.</li>
+</ul>
+<p><span id="DT-R510" class="rqDef">[DT-R510]</span> The bitmask is <strong>not supported</strong> for 64 bit integers <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R200' title="">[DTENC-R200]</a> (constraints violation, cf. CDS-26911).</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Byte%20Order.htm">Byte Order (Feature)</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+</ul>
+</body>
+</html>

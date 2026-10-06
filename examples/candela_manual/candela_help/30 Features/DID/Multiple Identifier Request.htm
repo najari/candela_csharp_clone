@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Multiple Identifier Request</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="multiple-identifier-request"><span id='_index_446728000' title='Identifier' data-term='Identifier'>Multiple Identifier Request</span><span id='_index_446728001' title='Multiple Identifier Request: Multiple Identifier Request' data-term='Multiple Identifier Request' data-text='Multiple Identifier Request'></span></h1>
+<h2 id="use-case">Use Case</h2>
+<p>UDS allows that multiple identifiers <a href="../../30%20Features/Protocol%20Service/May%20Be%20Combined.htm">may be combined</a> in one request: specify the <strong>maximum number of identifiers</strong> which can be sent within one request.</p>
+<h2 id="editing">Editing</h2>
+<p>The following properties are shown and edited in the <a href="../../20%20UserInterface/ECU/ECU%20Property%20Page%20Maximum%20Number%20of%20Identifiers.htm">ECU Property Page &quot;Maximum Number of Identifiers&quot;</a>.</p>
+<h2 id="max">Maximum Number of Identifiers</h2>
+<p>A CANdela ECU has a property <strong>Maximum Number of Identifiers</strong>, ...</p>
+<ul>
+<li>used by a <a href="../../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm#CANdesc">code generator</a> for the number of identifiers in a request message for UDS service 0x22 and 0x2A.</li>
+<li>applies only to ProtocolServices that have <a href="../../30%20Features/Protocol%20Service/May%20Be%20Combined.htm">mayBeCombined</a> set to <code>true</code></li>
+<li>default: 5</li>
+</ul>
+<h2 id="max-sched">Maximum Number of Identifiers in ECU Scheduler</h2>
+<p>A CANdela ECU has a property <strong>Maximum Number of Identifiers in ECU Scheduler</strong>, ...</p>
+<ul>
+<li>used by code generator for periodic data reading scheduler size (e.g. UDS service 0x2A)</li>
+<li>relevant for a tester and code generation</li>
+<li>need not be specified</li>
+</ul>
+<p>Note: for UDS service <strong>0x2C</strong>, <a href="../../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm#DiVa">CANoe.DiVa</a> employs a 7 byte boundary.</p>
+<p>Note: as of 2015, <strong>CANoe.DiVa</strong> uses the <strong>minimum value</strong> of the two options “Maximum number of Identifiers” and &quot;Maximum number of Identifiers in ECU Scheduler” (cf. DIVA-28661). This makes a difference to code generation in case “Maximum number of Identifiers in ECU Scheduler” &gt; “Maximum number of Identifiers”.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm#CANdesc">CANdesc Code Generator</a></li>
+<li><a href="../../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm#DiVa">CANoe.DiVa</a></li>
+<li><a href="../../30%20Features/DID/DID.htm">DID Feature</a></li>
+<li><a href="../../20%20UserInterface/ECU/ECU%20Property%20Page%20Maximum%20Number%20of%20Identifiers.htm">ECU Property Page &quot;Maximum Number of Identifiers&quot;</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/May%20Be%20Combined.htm">May Be Combined</a> property of a Protocol Service</li>
+</ul>
+</body>
+</html>

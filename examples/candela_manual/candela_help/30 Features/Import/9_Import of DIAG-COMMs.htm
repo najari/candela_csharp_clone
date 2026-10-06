@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>9_Import of DIAG-COMMs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="DIAG-COMMs">Import of DIAG-COMMs</h1>
+<table>
+<thead>
+<tr class="header">
+<th align="left">DIAG-COMM AUDIENCE</th>
+<th align="left">CANdelaStudio Audience of Service or Job Container</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">IS-SUPPLIER (default: true)</td>
+<td align="left">Supplier</td>
+</tr>
+<tr class="even">
+<td align="left">IS-DEVELOPMENT (default: true)</td>
+<td align="left">Development</td>
+</tr>
+<tr class="odd">
+<td align="left">IS-MANUFACTURING (default: true)</td>
+<td align="left">Manufacturer</td>
+</tr>
+<tr class="even">
+<td align="left">IS-AFTERSALES (default: true)</td>
+<td align="left">After-Sales</td>
+</tr>
+<tr class="odd">
+<td align="left">IS-AFTERMARKET (default: true)</td>
+<td align="left">After-Market</td>
+</tr>
+</tbody>
+</table>
+<h2 id="import-of-diag-services">Import of DIAG-SERVICEs</h2>
+<p>This section describes how DIAG-SERVICEs are imported as CANdelaStudio Services. The structural mapping (the meaning of this is described in the next chapter &quot;Mapping of DIAG-SERVICE to CANdelaStudio Service&quot;) of a DIAG-SERVICE to a CANdelaStudio Service is described in the next chapter. Restrictions for a CANdelaStudio Service which are defined by the ProtocolService on which the Service is based are always fulfilled. The Import does never change these restrictions. ProtocolServices belong to the Template definition. And data defining the Template are never changed by the Import.</p>
+<h3 id="preliminary-note">Preliminary note</h3>
+<ul>
+<li>ODX 2.0.1 supports no modeling for ECU states resp. state transitions for DiagServices. Hence, states and state transitions are not imported.</li>
+</ul>
+<h3 id="import-in-which-candelastudio-diaginstance-resp.-service">Import in which CANdelaStudio DiagInstance resp. Service ?</h3>
+<p>In CANdelaStudio a Service only exists within a DiagInstance. Therefore, the ODX Import has to determine in which DiagClass/DiagInstance a DIAG-SERVICE is imported as Service. There are several properties which are checked for the DIAG-SERVICE to make that decision.</p>
+<p>The following subsections describe alternatives in which DiagInstances a DiagService can be imported. These alternatives are ordered, i.e. the first successful alternative is decisive.</p>
+<p>If a DiagClass is a singleton the Services are imported into the DiagClass. For non-singleton DiagClasses new DiagInstances are created if necessary, e.g. if a DiagInstance with a StaticValue exists and the DIAG-SERVICE has the same value at the byte position where the CANdelaStudio StaticValue is positioned the DIAG-SERVICE is imported into the existing DiagInstance else a new DiagInstance is created in the DiagClass. The building of qualifiers and names of new DiagInstances created by the Import is described in 4.1.3.</p>
+<h4 id="determine-candelastudio-diagclass-by-funct-class">Determine CANdelaStudio DiagClass by FUNCT-CLASS</h4>
+<p>If a DIAG-SERVICE references a FUNCT-CLASS and the SHORT-NAME of the FUNCT-CLASS is equal to the QUALIFIER of a CANdelaStudio DiagClass which is not a singleton the DIAG-SERVICE is imported into a DiagInstance of the DiagClass. For DIAG-SERVICEs which have to be imported as Services into a singleton DiagClass because of the corresponding structure and values the FUNCT-CLASS-REFs are neglected.</p>
+<p><strong>Recommendation</strong>: Always use ODX data which have FUNCT-CLASS-REFs fulfilling these conditions to make the import result unique.</p>
+<h4 id="determine-candelastudio-diagclass-by-diag-service-structure">Determine CANdelaStudio DiagClass by DIAG-SERVICE structure</h4>
+<p>If the structure of a DIAG-SERVICE corresponds to the given structure of a CANdelaStudio Service within a potential DiagInstance the DIAG-SERVICE can be imported as a Service into that DiagInstance.</p>
+<h3 id="qualifier-and-name-of-new-diaginstances-created-by-the-import">Qualifier and Name of new DiagInstances created by the Import</h3>
+<p>The DIAG-SERVICEs which are imported as Services into one DiagInstance are checked for the following properties to determine qualifier and name of the new DiagInstance. The properties are checked in the following order:</p>
+<ul>
+<li><p>If a DIAG-SERVICE uses a TABLE-ROW the SHORT-NAME of the TABLE-ROW is used as qualifier of the DiagInstance and the LONG-NAME of the TABLE-ROW is used as name. If the LONG-NAME is not available the SHORT-NAME is used as name as well.</p></li>
+<li><p>If a DIAG-SERVICE specifies its SUB-FUNCTIONs within a TEXT-TABLE the SHORT-NAME of the COMPU-SCALE is used as qualifier and name of the DiagInstance.</p></li>
+<li><p><em>(Will be implemented with CDS-6794:)</em> If a DIAG-SERVICE has the following SDG structure the content of SD with SI=&quot;DiagInstanceQualifier&quot; is used as DiagInstance qualifier and the content of SD with SI=&quot;DiagInstanceName&quot; is used as DiagInstance name.</p></li>
+</ul>
+<div class="sourceCode">
+<pre class="sourceCode xml"><code class="sourceCode xml">
+<span class="sourceLine"><span class="kw">&lt;SDG&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;SDG-CAPTION</span><span class="ot"> ID=</span><span class="st">&quot;xyz&quot;<span class="kw">&gt;</span></span>
+<span class="sourceLine">    <span class="kw">&lt;SHORT-NAME&gt;</span>CANdelaServiceInformation<span class="kw">&lt;/SHORT-NAME&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;/SDG-CAPTION&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;SD</span><span class="ot"> SI=</span><span class="st">&quot;DiagInstanceQualifier&quot;</span><span class="kw">&gt;</span>Diag_Instance_Qualifier<span class="kw">&lt;/SD&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;SD</span><span class="ot"> SI=</span><span class="st">&quot;DiagInstanceName&quot;</span><span class="kw">&gt;</span>Diag Instance Name<span class="kw">&lt;/SD&gt;</span></span>
+<span class="sourceLine"><span class="kw">&lt;/SDG&gt;</span></span>
+</code></pre>
+</div>
+<ul>
+<li>Else the CANdelaStudio DiagClass qualifer is used as DiagInstance qualifier (Note: DiagInstance qualifiers are made unique afterwards). If all DIAG-SERVICEs which are imported into the DiagInstance have a common prefix in their LONG-NAMEs which has more than 10 characters this prefix is used as DiagInstance name.</li>
+</ul>
+<p>Note: In a post step all DiagInstance qualifiers within a DiagClass are made unique by adding suffixes if necessary.</p>
+<p><strong>Recommendation:</strong> Specify CANdelaStudio DiagInstance Name and Qualifier with the SDG structure at DIAG-SERVICE as it is mentioned above.</p>
+<h3 id="import-of-diag-service-properties">Import of DIAG-SERVICE Properties</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">DIAG-SERVICE property</th>
+<th align="left">CANdelaStudio Service property</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">SHORT-NAME</td>
+<td align="left">Service Attribute</td>
+</tr>
+<tr class="even">
+<td align="left">SEMANTIC</td>
+<td align="left">must be the same as the CANdelaStudio DiagClass semantic in which the DIAG-SERVICE is imported, cf. CDS-7526</td>
+</tr>
+<tr class="odd">
+<td align="left">IS-CYCLIC (default: false)</td>
+<td align="left">Supports periodic responses (ProtocolService property)</td>
+</tr>
+<tr class="even">
+<td align="left">IS-MULTIPLE (default: false)</td>
+<td align="left">Supports multiple responses (ProtocolService property)</td>
+</tr>
+<tr class="odd">
+<td align="left">ADDRESSING</td>
+<td align="left">Service Addressing Mode</td>
+</tr>
+</tbody>
+</table>
+<h4 id="import-of-semantic">Import of SEMANTIC</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">DIAG-COMM SEMANTIC</th>
+<th align="left">CANdelaStudio DiagClass Semantic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">COMMUNICATION</td>
+<td align="left">Communication</td>
+</tr>
+<tr class="even">
+<td align="left">SESSION</td>
+<td align="left">Session</td>
+</tr>
+<tr class="odd">
+<td align="left">SECURITY</td>
+<td align="left">Security</td>
+</tr>
+<tr class="even">
+<td align="left">IDENTIFICATION</td>
+<td align="left">Identification</td>
+</tr>
+<tr class="odd">
+<td align="left">FAULTREAD</td>
+<td align="left">Fault Memory</td>
+</tr>
+<tr class="even">
+<td align="left">FAULTCLEAR</td>
+<td align="left">Fault Memory</td>
+</tr>
+<tr class="odd">
+<td align="left">ENVREAD</td>
+<td align="left">Fault Memory</td>
+</tr>
+<tr class="even">
+<td align="left">VARCODING</td>
+<td align="left">Variant Coding</td>
+</tr>
+<tr class="odd">
+<td align="left">STOREDDATA</td>
+<td align="left">Stored Data</td>
+</tr>
+<tr class="even">
+<td align="left">CURRENTDATA</td>
+<td align="left">Current Data</td>
+</tr>
+<tr class="odd">
+<td align="left">MEMORY</td>
+<td align="left">Memory</td>
+</tr>
+<tr class="even">
+<td align="left">CONTROL</td>
+<td align="left">Control</td>
+</tr>
+<tr class="odd">
+<td align="left">CALIBRATION</td>
+<td align="left">Calibration</td>
+</tr>
+<tr class="even">
+<td align="left">ROUTINE</td>
+<td align="left">Routine</td>
+</tr>
+<tr class="odd">
+<td align="left">FUNCTION</td>
+<td align="left">Function</td>
+</tr>
+<tr class="even">
+<td align="left">DOWNLOAD</td>
+<td align="left">Download</td>
+</tr>
+<tr class="odd">
+<td align="left">UPLOAD</td>
+<td align="left">Upload</td>
+</tr>
+<tr class="even">
+<td align="left">FLASHJOB</td>
+<td align="left">Flash Jobs</td>
+</tr>
+<tr class="odd">
+<td align="left">TESTERPRESENT</td>
+<td align="left">Tester Present</td>
+</tr>
+<tr class="even">
+<td align="left">DEFINE-DYN-MESSAGE</td>
+<td align="left">not imported resp. checked</td>
+</tr>
+<tr class="odd">
+<td align="left">READ-DYN-DEFINED-MESSGAE</td>
+<td align="left">not imported resp. checked</td>
+</tr>
+</tbody>
+</table>
+<h4 id="import-of-addressing">Import of Addressing</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">DIAG-SERVICE ADDRESSING</th>
+<th align="left">CANdelaStudio Service Addressing Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">PHYSICAL</td>
+<td align="left">Physical</td>
+</tr>
+<tr class="even">
+<td align="left">FUNCTIONAL</td>
+<td align="left">Functional</td>
+</tr>
+<tr class="odd">
+<td align="left">FUNCTIONAL-OR- PHYSICAL</td>
+<td align="left">Physical and Functional</td>
+</tr>
+</tbody>
+</table>
+<h4 id="import-of-state-transitions">Import of State Transitions</h4>
+<p>ODX 2.0.1 provides no ECU states and state transitions. Hence, it cannot be imported.</p>
+<h2 id="import-of-single-ecu-jobs">Import of SINGLE-ECU-JOBs</h2>
+<h3 id="detecting-the-right-candelastudio-job-container">Detecting the right CANdelaStudio Job container</h3>
+<p>To detect the right CANdelaStudio job container, the SINGLE-ECU-JOBs are inspected together inside a BASE-VARIANT or ECU-VARIANT.</p>
+<h4 id="generating-groups-single-ecu-jobs">Generating groups SINGLE-ECU-JOBs</h4>
+<p>SINGLE-ECU-JOBs are subsumed if they have the following properties:</p>
+<ol style="list-style-type: decimal">
+<li>The SINGLE-ECU-JOB/SEMANTIC are equal</li>
+<li>The FUNCTIONAL-CLASS-REFs are the same.</li>
+<li>The AUDIENCEs are the same.</li>
+<li>If SDGs exist,
+<ul>
+<li>They refer to the Same JobContainer Qualifier / Name</li>
+</ul></li>
+</ol>
+<h4 id="creating-a-candelastudio-jobcontainer">Creating a CANdelaStudio JobContainer</h4>
+<p>Each group of SINGLE-ECU-JOBs is imported as a job container in CANdela. For SEMANTIC='FLASHJOB&quot; a Flash container is used.</p>
+<p>The SHORT-NAME-prefix is selected as the QUALIFIER of the SINGLE-ECU-JOB group. The LONG-NAME-prefix is selected as the Name of the SINGLE-ECU-JOB group.</p>
+<p>The CANdelaStudio names/qualifiers are taken out of SDGs as provided by the ODX export (CDS-7072), if they exist</p>
+<p>If no Prefixes could be identified, a generic algorithm selects them.</p>
+<p>Note:<br />
+No CANdelaStudio internal authoring rules are necessary to provide import of exported ODX.</p>
+<h4 id="audiences-of-job-container">Audiences of job container</h4>
+<p>As given in 4.2.1.1, all AUDIENCEs of a group of SINGLE-ECU-JOBs are the same. As a result, the target groups of the CANdelaStudio job container are set as given in CDS-6360 (Audiences of DIAG-SERVCEs)</p>
+<h4 id="jobs-in-group-of-jobs">Jobs in group of Jobs</h4>
+<p>Each member of the group of SINGLE-ECU-JOBs is imported as a job in the job container. (see 4.2.2</p>
+<h3 id="jobs-in-job-container">Jobs in job container</h3>
+<h4 id="qualifier-and-name-of-a-job">Qualifier and Name of a Job</h4>
+<ul>
+<li><p>As a result of 4.2.1.1, each SINGLE-ECU-JOB has a SHORT-NAME-suffix defining the job qualifier inside the job container. (If the SHORT-NAME-SUFFIX is empty the whole SINGLE-ECU-JOB SHORT-NAME is taken as Qualifier.)</p></li>
+<li><p>Each SINGLE-ECU-JOB has a LONG-NAME-SUFFIX defining the job name inside the job container. (If the LONG-NAME-SUFFIX is empty the whole SINGLE-ECU-JOB LONG-NAME is taken as Name.)</p></li>
+</ul>
+<p>Note:</p>
+<p>If no suffix is detected the complete SHORT-NAME of the SINGLE-ECU-JOB is taken as qualifier.</p>
+<h4 id="input-parameters">Input parameters</h4>
+<p>The sequence of SINGLE-ECU-JOB/INPUT-PARAMETERs is added to the input parameter list of the CANdelaStudio job. If a single INPUT-PARAMETER is not importable (referenced DOP is not importable), the complete job is skipped.</p>
+<h4 id="output-parameters">Output parameters</h4>
+<p>The sequence of SINGLE-ECU-JOB/OUTPUT-PARAMETERs is added to the output parameter list of the CANdelaStudio job. If a single OUTPUT-PARAMETER is not importable (referenced DOP is not importable), the complete job is skipped.</p>
+<h4 id="neg-output-params">NEG-OUTPUT-PARAMs</h4>
+<p>All NEG-OUTPUT-PARAMs are ignored. A warning will be presented.</p>
+<h3 id="functions-in-a-job">Functions in a job</h3>
+<p>Each PROG-CODE is appended to the functions of the job.</p>
+<h4 id="entrypoint">ENTRYPOINT</h4>
+<p>The PROG-CODE/ENTRYPOINT is imported as CANdelaStudio entry point.</p>
+<h4 id="syntax">SYNTAX</h4>
+<p>The PROG-CODE/SYNTAX is imported as CANdelaStudio function syntax.</p>
+<h4 id="version">VERSION</h4>
+<p>The PROG-CODE/REVISION is imported as CANdelaStudio function version.</p>
+<h4 id="encryption">ENCRYPTION</h4>
+<p>The PROG-CODE/ENCRYPTION is imported as CANdelaStudio encryption.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="ODX%20Import%20Introduction.htm">ODX Import Introduction</a></li>
+</ul>
+</body>
+</html>

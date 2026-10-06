@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Manage a Multi Identity ECU</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-manage-a-multi-identity-ecu">How to Manage a Multi Identity ECU</h1>
+<ol style="list-style-type: decimal">
+<li>Open the &quot;master&quot; ECU document that represents one &quot;identity&quot; (variation) of the ECU.
+<ul>
+<li>Example: &quot;Door Front Left&quot;</li>
+</ul></li>
+<li>Select ribbon tab Tools | Plug-Ins (Current Document) | Manage MultiIdentityECU
+<ul>
+<li>CANdelaStudio opens a dialog with an edit control</li>
+</ul></li>
+<li>Press button &quot;Insert alternative ECU&quot;
+<ul>
+<li>CANdelaStudio fills the edit control with details about an alternative ECU taken from the communication parameters of the ECU document</li>
+</ul></li>
+<li>In the first line with square parentheses, insert the qualifier of the alternative ECU
+<ul>
+<li>Example: <code>[DoorFrontRight]</code></li>
+<li>blanks or special characters are not allowed, see <a href="../../30%20Features/Common%20Properties/Qualifier.htm">Qualifier</a>.</li>
+</ul></li>
+<li>In the line starting with &quot;Name=&quot;, append the name of the alternative ECU
+<ul>
+<li>Example: <code>Name=Door Front Right</code></li>
+</ul></li>
+<li>In the line starting with &quot;Path=&quot;, append the name of an existing folder into which CANdelaStudio shall output the document for the alternative ECU.
+<ul>
+<li>Example: <code>Path=d:\temp</code></li>
+</ul></li>
+<li>In the lines below, enter values for those communication parameters that shall be different from the master document.
+<ul>
+<li>Example: <code>Diagnostic_CAN.ReqCanId=0xA2</code></li>
+<li>Note: you may leave all other lines, or delete them to increase readability.</li>
+</ul>
+<div class="figure">
+<img src="Images/Manage%20Multi%20Identity%20ECU%20Door%20Front%20Right.jpg" alt="Dialog &quot;Manage Multi Identity ECU&quot;" />
+<p class="caption">Dialog &quot;Manage Multi Identity ECU&quot;</p>
+</div></li>
+<li>Press button &quot;Check&quot;
+<ul>
+<li>the line on top should read &quot;Data ok&quot;</li>
+<li>otherwise correct the erroneous lines in the edit control, and press &quot;Check&quot; again.</li>
+</ul></li>
+<li>Press button &quot;Generate documents&quot;.
+<ul>
+<li>CANdelaStudio creates a document based on your input.</li>
+</ul></li>
+<li><p>You may inspect the output folder using Windows explorer, e.g.</p>
+<div class="figure">
+<img src="Images/Temp%20Folder%20with%20Alternative%20ECU.jpg" alt="Folder with Alternative ECU" />
+<p class="caption">Folder with Alternative ECU</p>
+</div></li>
+<li>In the dialog, press OK</li>
+<li>Save the master document.</li>
+<li>To decribe further alternative ECUs, open the dialog again, and press button &quot;Insert alternative ECU&quot; again.
+<ul>
+<li>Each time you press the button, CANdelaStudio appends settings for a further ECU in the edit control.</li>
+<li>Proceed as for the first alternative ECU.</li>
+</ul></li>
+</ol>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm">Plug-in &quot;Manage Multi Identity ECU&quot;</a></li>
+</ul>
+</body>
+</html>

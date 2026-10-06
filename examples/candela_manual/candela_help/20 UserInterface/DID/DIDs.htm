@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DIDs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dids-list-in-variant-cds-37944-8.5">DIDs (List in Variant) (CDS-37944 8.5)</h1>
+<div class="figure">
+<img src="Images/DIDs.jpg" alt="DID List in Variant" />
+<p class="caption">DID List in Variant</p>
+</div>
+<p>The DID list shows <strong>all DIDs</strong> of the variant.</p>
+<p>DIDs referenced in multiple variants (like diagnostic instances) have a <a href="../../20%20UserInterface/Tree/Icons.htm">special icon</a> (double sheet).</p>
+<p>You can conveniently <strong>create diagnostic instances</strong> to read or write the DID using the combobox in the &quot;Diagnostic Class&quot; column: selecting a diagnostic class will...</p>
+<ul>
+<li>delete the diagnostic instance from the currently specified diagnostic class (if not &quot;none&quot;), and</li>
+<li>create the DID in the selected diagnostic class, using the defaults from the diagnostic class template (note: any modifications to the existing diagnostic instance <strong>are lost</strong>).</li>
+</ul>
+<p>The <strong>filter</strong> at top right provides convenient search for a DID and data objects of a DID.</p>
+<p>For details, see below.</p>
+<h2 id="did-list">DID List</h2>
+<p><span id="DIDUI-R700" class="rqDef">[DIDUI-R700]</span> <strong>DID List</strong>: for each variant,</p>
+<ul>
+<li>the CANdelaStudio tree contains a “DIDs” node</li>
+<li>between “Identifying Features” / “Identifying Patterns” and “Diagnostic Classes”.</li>
+<li>See the <a href="../../20%20UserInterface/Tree/Navigation%20Tree.htm">Navigation tree</a>.</li>
+</ul>
+<p><span id="DIDUI-R702" class="rqDef">[DIDUI-R702]</span>: the DID list has the following columns:</p>
+<ul>
+<li><span id="DIDUI-R702-Identifier" class="rqDef">[DIDUI-R702-Identifier]</span> <strong>Identifier</strong> shows the DID Identifier,
+<ul>
+<li>see <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R025-DefaultDisplay' title="">[DID-R025-DefaultDisplay]</a></li>
+</ul></li>
+<li><span id="DIDUI-R702-Name" class="rqDef">[DIDUI-R702-Name]</span> <strong>Name</strong> shows the DID name.
+<ul>
+<li>Identifier and Name are shown in <strong>bold</strong> if the DID is required or required as Reference (CDS-71432 v12)</li>
+</ul></li>
+<li>“<strong>In Diagnostic Class</strong>”, see <a class='rqRef' href='../../20%20UserInterface/DID/DIDs.htm#DIDUI-R704' title="">[DIDUI-R704]</a> below.</li>
+<li>“<strong>Used in Fault Memory</strong>”, see <a class='rqRef' href='../../20%20UserInterface/DID/DIDs.htm#DIDUI-R706' title="">[DIDUI-R706]</a> below.</li>
+<li><strong>DID Data</strong>
+<ul>
+<li>format see <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R155-DefaultDisplay' title="">[DID-R155-DefaultDisplay]</a></li>
+<li>cf. the checkbox &quot;Show DID Data&quot; in the DID Overview <a class='rqRef' href='../../20%20UserInterface/DID/DID%20Overview.htm#DIDOV-R660' title="">[DIDOV-R660]</a></li>
+</ul></li>
+</ul>
+<p><span id="DIDUI-R704" class="rqDef">[DIDUI-R704]</span> Column “<strong>In Diagnostic Class</strong>” (CDS-39318 8.5)</p>
+<ul>
+<li>The column <strong>shows</strong>...
+<ul>
+<li>a comma + blank separated list of <strong>usage info</strong> from any diagnostic class (in document order of diagnostic classes) that contains a DID Data Reference using the DID, or</li>
+<li>“(none)” if there is no such diagnostic class.</li>
+</ul></li>
+<li>Each usage info contains the diagnostic class name.</li>
+<li>If...
+<ul>
+<li>there is <strong>more than one</strong> diagnostic instance that contains a DID Data Reference using the DID, or</li>
+<li>the diagnostic instance <strong>identifier is different</strong> from the DID identifier,</li>
+<li>the usage info contains...
+<ul>
+<li>a comma + blank separated list of the diagnostic instance identifiers,</li>
+<li>prefix “0x”,</li>
+<li>hex digits filled to the size (1 or 2 bytes) of the identifier.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>DID 0x0100 is used by diagnostic instance 0x0100 in “Stored Data”
+<ul>
+<li>usage info: “Stored Data”.</li>
+</ul></li>
+<li>DID 0x0100 is used by diagnostic instance 0x0200 in “Stored Data”
+<ul>
+<li>usage info: “Stored Data (0x0200)”</li>
+</ul></li>
+<li>DID 0x0100 is used by diagnostic instances 0x0100 and 0x0200 in “Stored Data” and 0x01 in “PIDs”
+<ul>
+<li>usage info: “Stored Data (0x0100, 0x0200), PIDs (0x01)”</li>
+</ul></li>
+</ul>
+<p><span id="DIDUI-R705" class="rqDef">[DIDUI-R705]</span> <strong>Editing in Column “In Diagnostic Class”</strong> (CDS-39318 8.5)</p>
+<ul>
+<li>CANdelaStudio does not provide edit mode…
+<ul>
+<li>if any of the variants in which the DID is referenced is <strong>read-only</strong> (not obvious)</li>
+<li>if the existing diagnostic instance shown is required or “required as reference” (not obvious)</li>
+</ul></li>
+<li>In edit mode, the column provides a <strong>combo-box</strong> containing
+<ul>
+<li>“(none)”</li>
+<li>the name of each diagnostic class (in document order)...
+<ul>
+<li>that has service 0x22, 0x2E or 0x2F, cf. <a href="../../30%20Features/DID/DID.htm#identifiers">Identifiers in UDS and OBD Services</a>, or</li>
+<li>that has the “DID Data Reference” semantics set, see <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R050-DIDDataReferences' title="">[DID-R050-DIDDataReferences]</a>.</li>
+</ul></li>
+</ul></li>
+<li>If you select…
+<ul>
+<li>… “(none)”, CANdelaStudio deletes each diagnostic instance that contains a DID Data Reference using the DID.</li>
+<li>… a <strong>diagnostic class D</strong>, CANdelaStudio...
+<ul>
+<li>deletes each diagnostic instance that contains a DID Data Reference using the DID, in any diagnostic class shown in the combo-box, except D;</li>
+<li>if it does not yet exist, creates a diagnostic instance for the DID in the diagnostic class D,</li>
+<li>as specified in Diagnostic Instance Creation from DID <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DI-R020' title="Diagnostic Instance Creation from DID">[DI-R020]</a>,</li>
+<li>referenced in all variants in which the DID is referenced.</li>
+</ul></li>
+<li>CANdelaStudio does not allow the operation if the identifier would violate the restriction from the text table at the variable value (CDS-39936 8.5).</li>
+</ul></li>
+<li><span id="DIDUI-R705-ReSort" class="rqDef">[DIDUI-R705-ReSort]</span> A modification triggers re-sort of the list (as opposed to <a class='rqRef' href='../../20%20UserInterface/DID/DIDs.htm#DIDUI-R730-NoReSort' title="">[DIDUI-R730-NoReSort]</a>).</li>
+</ul>
+<p><span id="DIDUI-R706" class="rqDef">[DIDUI-R706]</span> Column “<strong>Used in Fault Memory</strong>” (CDS-39299 8.5)</p>
+<ul>
+<li>… is read-only and contain “yes” iff. the DID is referenced…
+<ul>
+<li>from Common Snapshot Data</li>
+<li>from DTC Specific Snapshot Data in the variant</li>
+<li>by a DID Reference in fixed data in a ProtocolService with signature 0x19</li>
+<li>by a DID Reference in the variant in any diagnostic class with semantics “Fault Memory”</li>
+<li>by a DID Reference from Extended Data Records.</li>
+</ul></li>
+</ul>
+<p><span id="DIDUI-R708" class="rqDef">[DIDUI-R708]</span> <strong>Layout Persistence</strong> (CDS-39958 8.5)</p>
+<ul>
+<li><span id="DIDUI-R708-1" class="rqDef">[DIDUI-R708-1]</span>: the DID lists in the existing and newly created variants in CANdelaStudio has one common setting of column widths.</li>
+<li><span id="DIDUI-R708-2" class="rqDef">[DIDUI-R708-2]</span>: dito for splitter position in one upon the other layout.</li>
+<li><span id="DIDUI-R708-3" class="rqDef">[DIDUI-R708-3]</span>: dito for splitter position in side by side layout.</li>
+<li><span id="DIDUI-R708-4" class="rqDef">[DIDUI-R708-4]</span>: dito for layout one upon the other vs. side by side.</li>
+</ul>
+<p><span id="DIDUI-R710" class="rqDef">[DIDUI-R710]</span> <strong>New DID</strong></p>
+<ul>
+<li>via local toolbar button, “Please click here” and context menu,</li>
+<li>creates a new DID...</li>
+<li>with identifier, qualifier and name not existing in any variant,</li>
+<li>see operation <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R200' title="New">[DID-R200]</a>.</li>
+<li><span id="DIDUI-R710-Locked" class="rqDef">[DIDUI-R710-Locked]</span> The button is disabled if the current variant or library is locked (CDS-68898 9.1).</li>
+</ul>
+<p><span id="DIDUI-R712" class="rqDef">[DIDUI-R712]</span> <strong>New DID in All Variants</strong></p>
+<ul>
+<li>via local toolbar button and context menu,</li>
+<li>creates a new DID in all variants,</li>
+<li>see operation <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R202' title="New in All Variants">[DID-R202]</a>.</li>
+</ul>
+<p><span id="DIDUI-R715" class="rqDef">[DIDUI-R715]</span> <strong>Paste</strong></p>
+<ul>
+<li>performs the operation <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R205' title="New Reference">[DID-R205]</a> or <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R280' title="Paste across Documents">[DID-R280]</a>.</li>
+</ul>
+<p><span id="DIDUI-R720" class="rqDef">[DIDUI-R720]</span> <strong>Delete DID</strong></p>
+<ul>
+<li>deletes the selected DID(s) from the variant,</li>
+<li>see operation <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R220' title="Delete">[DID-R220]</a>.</li>
+<li>CANdelaStudio shows a message if deletion is not allowed.</li>
+<li>If the DID is used by a Diagnostic Instance that &quot;represents the DID&quot; (as of D001),
+<ul>
+<li>CANdelaStudio prompts
+<ul>
+<li>&quot;Do you really want to delete the selected DID from the current variant?<code>\n\n&lt;n&gt;</code> diagnostic instances that use the DID will be deleted, too!&quot;;</li>
+</ul></li>
+<li>otherwise CANdelaStudio prompts
+<ul>
+<li>&quot;Do you really want to delete the selected DID from the current variant?&quot;</li>
+</ul></li>
+</ul></li>
+<li><span id="DIDUI-R720-Rq" class="rqDef">[DIDUI-R720-Rq]</span> In Expert View, if the selection contains DIDs required in all variants “as reference” or “yes”, the prompt contains a hint like &quot;DIDs required or required as reference will be set to not required.&quot; (CDS-70802 v12).</li>
+<li><span id="DIDUI-R720-Locked" class="rqDef">[DIDUI-R720-Locked]</span> The button is disabled if the current variant or library is locked (CDS-68898 9.1).</li>
+</ul>
+<p><span id="DIDUI-R725" class="rqDef">[DIDUI-R725]</span> <strong>Select from Repository</strong> opens the <a href="../../20%20UserInterface/Import/Select%20from%20Repository.htm">Select from Repository</a> dialog to import DIDs from a repository.</p>
+<ul>
+<li><span id="DIDUI-R725-Locked" class="rqDef">[DIDUI-R725-Locked]</span> the button is disabled if the current variant or library is locked (CDS-68898 9.1).</li>
+</ul>
+<p><span id="DIDUI-R730" class="rqDef">[DIDUI-R730]</span> <strong>Modifications</strong> to DID properties...</p>
+<ul>
+<li>use the operations <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R210' title="Modify">[DID-R210]</a> / <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R230' title="Replace Reference with Copy">[DID-R230]</a> and</li>
+<li>report restrictions with a message box.</li>
+<li><span id="DIDUI-R730-NoReSort" class="rqDef">[DIDUI-R730-NoReSort]</span> CANdelaStudio keeps the modified DIDs at their position
+<ul>
+<li>i.e. no automatic re-sort.</li>
+<li>Exception: refresh of list when modifying “Diagnostic Class” <a class='rqRef' href='../../20%20UserInterface/DID/DIDs.htm#DIDUI-R705-ReSort' title="">[DIDUI-R705-ReSort]</a>.</li>
+</ul></li>
+</ul>
+<p><span id="DIDUI-R740" class="rqDef">[DIDUI-R740]</span> <strong>Show References</strong> like for diagnostic instances...</p>
+<ul>
+<li>shows variants in which the DID is referenced <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a>,</li>
+<li>provide navigation to the object.</li>
+</ul>
+<p><span id="DIDUI-R745" class="rqDef">[DIDUI-R745]</span> <strong>Show Uses</strong></p>
+<ul>
+<li>shows all objects that use <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-D001' title="DID Used">[DID-D001]</a> the DID in the current variant.</li>
+</ul>
+<p><span id="DIDUI-R750" class="rqDef">[DIDUI-R750]</span> <strong>Other operations</strong>:</p>
+<ul>
+<li>Copy</li>
+<li>Copy Path</li>
+<li>Select as Left Side…,</li>
+<li>Compare…</li>
+<li>Properties</li>
+</ul>
+<p><span id="DIDUI-R760" class="rqDef">[DIDUI-R760]</span> <strong>Replace Reference with Copy</strong></p>
+<ul>
+<li>(sensitive if DID is referenced in multiple variants)</li>
+<li>prompts and performs <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R230' title="Replace Reference with Copy">[DID-R230]</a>.</li>
+</ul>
+<p><span id="DIDUI-R765" class="rqDef">[DIDUI-R765]</span> <strong>Replace Copy with Reference in Base Variant</strong></p>
+<ul>
+<li>sensitive if DID is not referenced in multiple variants and is not in Base Variant</li>
+<li>prompts and performs <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R235' title="Replace Copy with Reference in Base Variant">[DID-R235]</a>.</li>
+</ul>
+<p><span id="DIDUI-R772" class="rqDef">[DIDUI-R772]</span> Checkbox “<strong>modifiable</strong>” in the DID property dialog:</p>
+<ul>
+<li>for the property <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R010' title="Modifiable">[DID-R010]</a></li>
+<li>see operation <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R222' title="">[DID-R222]</a></li>
+<li>Shown insensitive in Standard View.</li>
+</ul>
+<p><span id="DIDUI-R774" class="rqDef">[DIDUI-R774]</span> Combo-box “<strong>required in all variants</strong>” in the DID property dialog:</p>
+<ul>
+<li>layout like for diagnostic instances</li>
+<li>for the property <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R012' title="Required in all Variants">[DID-R012]</a></li>
+<li>see operation <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R224' title="">[DID-R224]</a>.</li>
+<li>Shown insensitive in Standard View.</li>
+<li>CANdelaStudio shows a specific message if a pre-condition in the variants is not fulfilled
+<ul>
+<li>e.g. set to “as reference”, and there is a variant in which the DID is not referenced.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>Procedures:</p>
+<ul>
+<li><a href="../../15%20Procedures/DID/How%20to%20Create%20a%20DID.htm">How to Create a DID</a></li>
+<li><a href="../../15%20Procedures/DID/How%20to%20Modify%20a%20DID%20in%20a%20New%20Variant.htm">How to Modify a DID in a New Variant</a></li>
+<li><a href="../../15%20Procedures/DID/How%20to%20Move%20Data%20from%20a%20Diagnostic%20Instance%20to%20a%20DID.htm">How to Move Data from a Diagnostic Instance to a DID</a></li>
+</ul>
+<p>User Interface:</p>
+<ul>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../20%20UserInterface/Import/Select%20from%20Repository.htm">Select from Repository</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="../../30%20Features/DID/DID.htm">DID Feature</a></li>
+<li><a href="../../30%20Features/DID/DID%20Operations.htm">DID Operations</a></li>
+<li><a href="../../30%20Features/Import/Repository%20Integration.htm">Repository Integration</a></li>
+</ul>
+</body>
+</html>

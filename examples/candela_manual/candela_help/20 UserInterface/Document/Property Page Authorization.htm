@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Property Page Authorization</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="file-properties-authorization">File | Properties | Authorization</h1>
+<div class="figure">
+<img src="Images/Property%20Page%20Authorization.jpg" alt="Menu File | Properties, page &quot;Authorization&quot;" />
+<p class="caption">Menu File | Properties, page &quot;Authorization&quot;</p>
+</div>
+<h2 id="creation-of-dtcs">Creation of DTCs</h2>
+<p><span id="DOCUI-R410" class="rqDef">[DOCUI-R410]</span> In File|Properties|Authorization, section “Creation of DTCs”, provide the selection</p>
+<ul>
+<li>In chapter &quot;Available DTCs&quot; only</li>
+<li>In chapter &quot;Available DTCs&quot; and in Fault Memory instances</li>
+</ul>
+<p>See the <a href="../../30%20Features/Document/Authorization.htm">Document Level Authorization</a> feature.</p>
+<h2 id="creation-of-dids-cds-37944-8.5">Creation of DIDs (CDS-37944 8.5)</h2>
+<p><span id="DOCUI-R420" class="rqDef">[DOCUI-R420]</span> Checkbox “<strong>Allow Duplicate DIDs</strong>”...</p>
+<ul>
+<li>controls the property of <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R008' title="Allow Duplicate DIDs">[DID-R008]</a>,</li>
+<li>see DID operation <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R182' title="">[DID-R182]</a>.</li>
+<li>The checkbox is insensitive...
+<ul>
+<li>if the checkbox of <a class='rqRef' href='../../20%20UserInterface/Document/Property%20Page%20Authorization.htm#DOCUI-R425' title="">[DOCUI-R425]</a> (below) is unchecked</li>
+<li>i.e. the property of <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R005' title="May Modify Allow Duplicate DIDs">[DID-R005]</a> is false.</li>
+</ul></li>
+</ul>
+<p><span id="DOCUI-R425" class="rqDef">[DOCUI-R425]</span> Checkbox “<strong>Option &quot;Allow Duplicate DIDs&quot; modifiable in Standard View</strong>”...</p>
+<ul>
+<li>controls the property of <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R005' title="May Modify Allow Duplicate DIDs">[DID-R005]</a>,</li>
+<li>see DID operation <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R180' title="">[DID-R180]</a>.</li>
+</ul>
+<h2 id="textid">TextID Editable (Standard view)</h2>
+<p><span id="DOCUI-R430" class="rqDef">[DOCUI-R430]</span> Defines the mode for <a href="../../30%20Features/Common%20Properties/TextID.htm">TextIDs</a> in the document.</p>
+<h2 id="variable-length">Variable length of data objects at all places in a telegram</h2>
+<p><span id="DOCUI-R440" class="rqDef">[DOCUI-R440]</span> The dialog controls the property <a class='rqRef' href='../../30 Features\Document\Authorization.htm#DLA-R060' title="">[DLA-R060]</a>, providing the selection...</p>
+<ul>
+<li>&quot;No&quot;</li>
+<li>&quot;Yes, but not in individually restricted combined compontents&quot;
+<ul>
+<li>Variable length of data objects can be restricted for individual Combined Components <a class='rqRef' href='../../30 Features\Diagnostic Class Template\Combined Component.htm#CPC-R060' title="">[CPC-R060]</a></li>
+</ul></li>
+<li>&quot;Yes, in all combined compontents&quot;</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Document/Authorization.htm">Document Level Authorization</a></li>
+<li><a href="Properties.htm">File | Properties</a></li>
+</ul>
+</body>
+</html>

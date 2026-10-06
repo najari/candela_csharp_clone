@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Service Property Page Addressing</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="service-property-page-addressing">Service Property Page &quot;Addressing&quot;</h1>
+<div class="figure">
+<img src="Images/Service%20Property%20Page%20Addressing.jpg" alt="Service Property Page &quot;Addressing&quot; (details depend on template)" />
+<p class="caption">Service Property Page &quot;Addressing&quot; (details depend on template)</p>
+</div>
+<p>This page is identical to the variations of the <a href="../../20%20UserInterface/Protocol%20Service/Protocol%20Service%20Property%20Page%20Addressing.htm">Protocol Service Property Page Addressing</a>, with the following changes:</p>
+<ul>
+<li>the check-boxes in the top part are read-only (multiple responses, periodic responses, SPRMIB – if shown)
+<ul>
+<li>... because the values <a class='rqRef' href='../../30 Features\Service\Service.htm#SVC-R710' title="">[SVC-R710]</a> etc. are taken from the Protocol Service;</li>
+</ul></li>
+<li>the second static text is: &quot;Settings for this service:&quot;</li>
+<li>in Standard view, the sensitivity of the controls is additionally restricted by the authorization settings <a class='rqRef' href='../../30 Features\Protocol Service\Protocol Service Authorization.htm#PS-R840' title="">[PS-R840]</a> etc. at the ProtocolService.</li>
+<li>for <strong>UDS</strong>, some data model properties that are fixed in UDS are not shown at all (CDS-39671 v11),
+<ul>
+<li>e.g. &quot;ECU sends a response&quot;,</li>
+<li>see the property descriptions in <a class='rqRef' href='../../30 Features\Protocol Service\Addressing.htm#PS-R760' title="">[PS-R760]</a>ff.</li>
+</ul></li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>The text “All services based on…” is also shown in the service property dialog, it is also true here.</li>
+<li>Combinations that do not make sense for the <em>adressing values</em> are allowed for the <em>addressing authorization</em>:
+<ul>
+<li>For the <em>addressing values</em> it would not make sense to have e.g.
+<ul>
+<li>un-checked “ECU supports physical request”,</li>
+<li>but checked “The test system sets the SPRMIB to...”.</li>
+</ul></li>
+<li>For the <em>addressing authorization</em>, i.e. whether the addressing value is <em>modifiable</em>, this combination is ok.</li>
+</ul></li>
+<li>In the <a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm">entry mask of the diagnostic instance</a>, CANdelaStudio shows whether a service supports physical and/or functional addressing: on the <a href="../../20%20UserInterface/Service/Icons.htm">icon for the service property dialog</a>.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Protocol%20Service/Addressing.htm">Addressing (Feature)</a></li>
+<li><a href="Properties.htm">Service Property Dialog</a></li>
+<li><a href="../../20%20UserInterface/Protocol%20Service/Protocol%20Service%20Property%20Page%20Addressing.htm">Protocol Service Property Page &quot;Addressing&quot;</a></li>
+<li>Vector UDS Template: <a href="../../40%20Templates/Vector%20UDS/Functional%20Addressing.htm">Functional Addressing</a></li>
+</ul>
+</body>
+</html>

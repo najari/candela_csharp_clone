@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Services</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="services">Services</h1>
+<p>This page describes the services list in the <a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance page</a>.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Diagnostic%20Instance.jpg" alt="Right Side of a Diagnostic Instance in Tree" />
+<p class="caption">Right Side of a Diagnostic Instance in Tree</p>
+</div>
+<p>Under &quot;Service:&quot;, you can create or delete services for the diagnostic instances.</p>
+<p>The total set of services available is predefined in the diagnostic class template and cannot be modified in the document.</p>
+<p>Each row shows from left to right:</p>
+<h2 id="checkbox">Checkbox</h2>
+<p><span id="SVUI-R400" class="rqDef">[SVUI-R400]</span> The checkbox allows to create, de-activate and delete a service.</p>
+<p><span id="SVUI-R400-Display" class="rqDef">[SVUI-R400-Display]</span> CANdelaStudio shows the checkbox...</p>
+<ul>
+<li><img src="Images/Service%20Activated.jpg" /> for an <strong>activated</strong> service: checked;</li>
+<li><img src="Images/Service%20De-Activated.jpg" /> for a <strong>de-activated</strong> service: checked, with a red cross overlay (like for a de-activated diagnostic instance);</li>
+<li><img src="Images/Service%20Deleted.jpg" /> for a <strong>deleted</strong> service: unchecked.</li>
+</ul>
+<p><span id="SVUI-R400-Activated" class="rqDef">[SVUI-R400-Activated]</span> <img src="Images/Service%20Activated.jpg" /></p>
+<ul>
+<li>if a service is <strong>activated</strong>, and you click the service existence checkbox
+<ul>
+<li>(note: this is only possible if the Used ProtocolService has convention != &quot;required&quot;),</li>
+</ul></li>
+<li>then CANdelaStudio shows a confirmation dialog that lets you
+<ul>
+<li>leave the service activated,</li>
+<li>de-activate the service or</li>
+<li>delete the service.</li>
+</ul></li>
+<li>If you select &quot;de-activate&quot;, CANdelaStudio shall set the flag <a class='rqRef' href='../../30 Features\Service\Service.htm#SVC-R300' title="Service Activated">[SVC-R300]</a> to false.</li>
+<li>If you select &quot;No&quot;, CANdelaStudio changes nothing.</li>
+<li><strong>Note</strong>: if you select to delete the service, CANdelaStudio actually
+<ul>
+<li><strong>deletes the service</strong> from the diagnostic instance,</li>
+<li>including <strong>all data objects belonging to the service</strong>.</li>
+</ul></li>
+</ul>
+<p><span id="SVUI-R400-Deactivated" class="rqDef">[SVUI-R400-Deactivated]</span> <img src="Images/Service%20De-Activated.jpg" /></p>
+<ul>
+<li>if a service is <strong>de-activated</strong>, and you click the service existence checkbox,</li>
+<li>then CANdelaStudio sets the service activated.</li>
+</ul>
+<p><span id="SVUI-R400-Deleted" class="rqDef">[SVUI-R400-Deleted]</span> <img src="Images/Service%20Deleted.jpg" /></p>
+<ul>
+<li>if a service is deleted (does not exist), and you click the service existence checkbox,</li>
+<li>then CANdelaStudio creates the service and sets it activated.</li>
+</ul>
+<h2 id="service-name">Service Name</h2>
+<p>The &quot;Service&quot; name is given in the diagnostic class template, e.g. &quot;Read&quot;, &quot;Write&quot;.</p>
+<h2 id="properties">Service Properties</h2>
+<p>The properties button <img src="../../20%20UserInterface/Images/Properties.gif" /> to the far right of the service name opens the <a href="Properties.htm">properties dialog for the service</a>.</p>
+<p>Note: the button is near the next column &quot;Protocol Service&quot;, but applies to the <em>service</em>:</p>
+<div class="figure">
+<img src="Images/Service%20and%20Protocol%20Service.jpg" alt="Service Name, Properties Button and and Protocol Service" />
+<p class="caption">Service Name, Properties Button and and Protocol Service</p>
+</div>
+<p>See also the description of the <a href="../../20%20UserInterface/Service/Icons.htm">service icons</a>.</p>
+<h2 id="protocol-service">Protocol Service</h2>
+<p>The <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a> name is shown as a hyperlink, e.g. &quot;(0x22) ReadDataByIdentifier&quot;.</p>
+<p>Clicking the hyperlink opens the property dialog for the Protocol Service. Since the Protocol Service is predefined in the template, its data cannot be modified.</p>
+<h2 id="abstract">Request, Pos.Resp. and Neg.Resp (<span id='_index_446727895'>Service Abstract</span>)</h2>
+<div class="figure">
+<img src="Images/Service%20Abstract.jpg" alt="Structure of a Protocol Service (&quot;Service Abstract&quot;)" />
+<p class="caption">Structure of a Protocol Service (&quot;Service Abstract&quot;)</p>
+</div>
+<p>The columns &quot;Request:&quot;, &quot;Pos.Resp.:&quot; and &quot;Neg.Resp:&quot; show the structure of the Protocol Service.</p>
+<p>See the <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm#signature">service signature</a> in the user interface.</p>
+<h3 id="abbreviations-zz-yy...">Abbreviations zz, yy...</h3>
+<p>The abbreviations &quot;zz&quot;, &quot;xx&quot; etc. represent the proxy components defined in the Protocol Service.</p>
+<p>Proxy components that have been combined in the diagnostic class template are shown with the same abbreviation.</p>
+<p>These &quot;Combined Components&quot; are &quot;docking points&quot; for data defined in the individual diagnostic instance, in the telegram tables shown at the bottom. The tab card of each telegram table shows the respective abbreviation.</p>
+<p>If you click on an abbreviation, the relevant telegram table is shown at the bottom.</p>
+<p>The combined components are named in <strong>descending order starting with &quot;zz&quot;</strong>. The letters themselves have <strong>no meaning</strong> except to uniquely identify the combined component within this dialog.</p>
+<h3 id="square-brackets">Square Brackets</h3>
+<p>Square brackets around the abbreviation indicate that the proxy is included in an iteration, i.e. that it occurs several times in the telegram.</p>
+<p>An asterisk &quot;*&quot; to the left of the first square bracket indicates that the data can be repeated on the line.</p>
+<h3 id="abbreviation-x">Abbreviation x</h3>
+<p>A single &quot;x&quot; represents a proxy component that has no information about the individual data object it represents (neither directly in the Protocol Service nor in the diagnostic instance). .</p>
+<h3 id="abbreviation-rc">Abbreviation rc</h3>
+<p>The abbreviation &quot;rc&quot; represents a special proxy component that contains the &quot;Negative response codes&quot; of the service.</p>
+<h3 id="abbreviation-fd">Abbreviation fd</h3>
+<p>The abbreviation &quot;fd&quot; represents a special proxy component that contains &quot;fixed data&quot;, i.e. data objects predefined in the Protocol Service. The data objects cannot be modified in the diagnostic instance.</p>
+<h3 id="tooltip">Tooltip</h3>
+<p><span id="SVUI-R500" class="rqDef" title="Tooltip">[SVUI-R500 Tooltip]</span></p>
+<p>The tooltip (mouse-over) of the &quot;Request, Pos.Resp. and Neg.Resp&quot; (&quot;Service Abstract&quot;) region informs about addressing and the possible request bytes and their responses (in the order of the following definitions):</p>
+<div class="figure">
+<img src="Images/Service%20Abstract%20with%20SPRMIB.png" alt="Service Abstract with SPRMIB" />
+<p class="caption">Service Abstract with SPRMIB</p>
+</div>
+<p><span id="SVUI-R500-SPRMIB" class="rqDef" title="Hint about SPRMIB">[SVUI-R500-SPRMIB Hint about SPRMIB]</span>:</p>
+<ul>
+<li>Conditions:
+<ul>
+<li>SPRMIB supported</li>
+</ul></li>
+</ul>
+<ol style="list-style-type: lower-alpha">
+<li>text &quot;Supports 'Suppress Positive Response Message Indication Bit' (SPRMIB)&quot; </li>
+</ol>
+<p><span id="SVUI-R500-PhysNormal" class="rqDef" title="No SPRMIB">[SVUI-R500-PhysNormal No SPRMIB]</span>:</p>
+<ul>
+<li>Example Line: <code>phys 0x22 0x40 x10 xx</code></li>
+<li>Conditions:
+<ul>
+<li>SPRMIB not supported</li>
+<li>ECU supports physical request</li>
+</ul></li>
+</ul>
+<ol style="list-style-type: lower-alpha">
+<li>prefix &quot;phys&quot;</li>
+<li><strong>request</strong> (like in services list, no italics, unmodified ID)</li>
+<li><strong>positive response</strong> (like in services list, no italics)</li>
+<li><strong>negative response</strong> (like in services list)</li>
+</ol>
+<p><span id="SVUI-R500-PhysSPRMIB0" class="rqDef" title="SPRMIB 0">[SVUI-R500-PhysSPRMIB0 SPRMIB 0]</span>:</p>
+<ul>
+<li>Example Line: <code>phys 0x22 0x40 x10 xx</code></li>
+<li>Conditions:
+<ul>
+<li>SPRMIB supported</li>
+<li>ECU supports physical request</li>
+<li>&quot;Test System Sets SPRMIB&quot; = <code>don't care</code> or <code>never</code></li>
+</ul></li>
+</ul>
+<ol style="list-style-type: lower-alpha">
+<li>prefix &quot;phys&quot;</li>
+<li><strong>request</strong>: SID, ID, ... (like in services list, no italics, but with MSB of ID <code>:= 0</code>)</li>
+<li><strong>positive response</strong> (iff. &quot;ECU answers... request&quot; = true): SID + 0x40, ID, ... (like in services list, no italics, but with MSB of ID <code>:= 0</code>)</li>
+<li><strong>negative response</strong> (like in services list)</li>
+</ol>
+<p><span id="SVUI-R500-PhysSPRMIB1" class="rqDef" title="SPRMIB 1">[SVUI-R500-PhysSPRMIB1 SPRMIB 1]</span>:</p>
+<ul>
+<li>Example Line: <code>phys 0x22 0xC0 x10 xx</code></li>
+<li>Conditions:
+<ul>
+<li>SPRMIB supported</li>
+<li>ECU supports physical request</li>
+<li>no positive response exists, or &quot;ECU answers physical request&quot; <code>= false</code></li>
+<li>&quot;Test System Sets SPRMIB&quot; = <code>always</code> or <code>don't care</code></li>
+</ul></li>
+<li>dito with MSB of ID <code>:= 1</code></li>
+</ul>
+<p><span id="SVUI-R500-DIAG_LAYER" class="rqDef" title="DIAG_LAYER Attribute">[SVUI-R500-DIAG_LAYER DIAG_LAYER Attribute]</span>:</p>
+<ul>
+<li>Example Line: <code>DIAG_LAYER: FUNCTIONAL_GROUP</code></li>
+<li>Conditions:
+<ul>
+<li>the <a href="../../30%20Features/Attributes/Special%20Attributes.htm#DIAG_LAYER">service attribute DIAG_LAYER</a> exists and has a value != “unspecified”</li>
+</ul></li>
+</ul>
+<ol style="list-style-type: lower-alpha">
+<li>prefix &quot;DIAG_LAYER: &quot;</li>
+<li>the value of the service attribute DIAG_LAYER</li>
+</ol>
+<p><span id="SVUI-R500-Func" class="rqDef" title="Dito functional addressing">[SVUI-R500-Func Dito functional addressing]</span>:</p>
+<ul>
+<li>Show the <a class='rqRef' href='../../20%20UserInterface/Service/Services.htm#SVUI-R500-PhysNormal' title="No SPRMIB">[SVUI-R500-PhysNormal]</a>, <a class='rqRef' href='../../20%20UserInterface/Service/Services.htm#SVUI-R500-PhysSPRMIB0' title="SPRMIB 0">[SVUI-R500-PhysSPRMIB0]</a> and <a class='rqRef' href='../../20%20UserInterface/Service/Services.htm#SVUI-R500-PhysSPRMIB1' title="SPRMIB 1">[SVUI-R500-PhysSPRMIB1]</a> dito for functional addressing (if supported).</li>
+</ul>
+<p><strong>Example Tooltip</strong></p>
+<p>Assume the service has the settings:</p>
+<ul>
+<li>SPRMIB supported</li>
+<li>DIAG_LAYER = “PROTOCOL_LAYER”</li>
+<li>“ECU supports physical request” = true</li>
+<li>“ECU answers physical request” = true</li>
+<li>“Test system sets SPRMIB” = user-defined</li>
+<li>“ECU supports functional request” = true</li>
+<li>“ECU answers functional request” = false</li>
+<li>“Test system sets SPRMIB” = always</li>
+</ul>
+<p>(tooltip annotated with the line types above)</p>
+<pre><code>Supports ”Suppress Positive Response Message Indication Bit (SPRMIB)“     <a class='rqRef' href='../../20%20UserInterface/Service/Services.htm#SVUI-R500-SPRMIB' title="Hint about SPRMIB">[SVUI-R500-SPRMIB]</a>
+phys 22 1D 00   62 1D 00 zz    7F 22 rc                                   <a class='rqRef' href='../../20%20UserInterface/Service/Services.htm#SVUI-R500-PhysSPRMIB0' title="SPRMIB 0">[SVUI-R500-PhysSPRMIB0]</a>
+phys 22 9D 00                  7F 22 rc                                   <a class='rqRef' href='../../20%20UserInterface/Service/Services.htm#SVUI-R500-PhysSPRMIB1' title="SPRMIB 1">[SVUI-R500-PhysSPRMIB1]</a>
+DIAG_LAYER: PROTOCOL_LAYER                                                <a class='rqRef' href='../../20%20UserInterface/Service/Services.htm#SVUI-R500-DIAG_LAYER' title="DIAG_LAYER Attribute">[SVUI-R500-DIAG_LAYER]</a>
+func 22 9D 00                  7F 22 rc                                   <a class='rqRef' href='../../20%20UserInterface/Service/Services.htm#SVUI-R500-Func' title="Dito functional addressing">[SVUI-R500-Func]</a></code></pre>
+<h2 id="button">Button &quot;&gt;&gt;&quot;</h2>
+<p>When you enter the diagnostic instance dialog, CANdelaStudio shows only the telegram tables for the &quot;Request&quot; and &quot;Positive Response&quot; (depending on an <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Edit.htm#display-NRCs">option</a>).</p>
+<p>The buttons <code>&gt;&gt;</code> / <code>&lt;&lt;</code> to the right toggle display of the negative response codes (see below).</p>
+<p>Clicking on the abbreviation &quot;rc&quot; has the same effect.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance page</a></li>
+<li><a href="../../20%20UserInterface/Service/Icons.htm">Icons of a Service</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service Feature</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Addressing.htm">Protocol Service Addressing</a></li>
+<li><a href="Properties.htm">Service Properties Dialog</a></li>
+</ul>
+</body>
+</html>

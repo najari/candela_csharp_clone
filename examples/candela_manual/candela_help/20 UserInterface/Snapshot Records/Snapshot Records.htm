@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Snapshot Records</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="snapshot-records">Snapshot Records</h1>
+<p>This chapter describes the <strong>list of Snapshot Records</strong> in the TAB Snapshot Records <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/TAB%20Snapshot%20Records.htm#SRUI-R100' title="">[SRUI-R100]</a>.</p>
+<p>See also the overview of the <a href="GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a>.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/SnapshotRecordsConfiguredNoOBD.png" alt="Snapshot Records List" />
+<p class="caption">Snapshot Records List</p>
+</div>
+<h2 id="list-of-snapshot-records">List of Snapshot Records</h2>
+<p><span id="SRUI-R200" class="rqDef">[SRUI-R200]</span> The list of Snapshot Records shows all Snapshot Records defined in the diagnostic instance <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R030' title="">[SR-R030]</a>.</p>
+<ul>
+<li><span id="SRUI-R210-Fixed" class="rqDef">[SRUI-R210-Fixed]</span> For Numeration Type Calculated, the list has fixed height: 2 rows (for 0x00, 0xF0).</li>
+<li><span id="SRUI-R210" class="rqDef">[SRUI-R210]</span> By default, the list is sorted by ascending Snapshot Record Number.
+<ul>
+<li>cf. <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R035' title="">[SR-R035]</a> The Snapshot Records have no persistent <strong>sort order</strong>.</li>
+</ul></li>
+<li><span id="SRUI-R212" class="rqDef">[SRUI-R212]</span> The list can be sorted by clicking a header.
+<ul>
+<li>CANdelaStudio remembers the sort order within the session.</li>
+</ul></li>
+<li><span id="SRUI-R214" class="rqDef">[SRUI-R214]</span> The list contains a line &quot;Click here to create a new Snapshot Record&quot;.</li>
+<li><span id="SRUI-R216" class="rqDef">[SRUI-R216]</span> The list supports multi-selection.</li>
+<li><span id="SRUI-R218" class="rqDef">[SRUI-R218]</span> The list can be filtered by a text control at top right, which applies to all texts shown (including the &quot;custom&quot; prefix <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R250-custom' title="">[SRUI-R250-custom]</a>).</li>
+</ul>
+<h2 id="toolbar">Toolbar</h2>
+<p><span id="SRUI-R205" class="rqDef">[SRUI-R205]</span> The toolbar allows to...</p>
+<ul>
+<li><span id="SRUI-R205-UDS" class="rqDef">[SRUI-R205-UDS]</span> create a UDS Snapshot Record, see action <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R270' title="">[SRUI-R270]</a> below.</li>
+<li><span id="SRUI-R205-OBD" class="rqDef">[SRUI-R205-OBD]</span> create an OBD on UDS Snapshot Record, see action <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R272' title="">[SRUI-R272]</a> below.</li>
+<li><span id="SRUI-R205-Del" class="rqDef">[SRUI-R205-Del]</span> delete the selected Snapshot Record(s), see action <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R275' title="">[SRUI-R275]</a> below.</li>
+</ul>
+<h2 id="list-columns">List columns</h2>
+<ul>
+<li><span id="SRUI-R220" class="rqDef">[SRUI-R220]</span> <strong>Number</strong>
+<ul>
+<li>shows the Snapshot Record Number <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R120' title="">[SR-R120]</a></li>
+<li>hexadecimal</li>
+<li>with leading zero, filled to 2 hex digits</li>
+<li>e.g. &quot;0x01&quot;</li>
+</ul></li>
+<li><span id="SRUI-R230" class="rqDef">[SRUI-R230]</span> <strong>Name</strong>
+<ul>
+<li>shows the name <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R110' title="">[SR-R110]</a> of the Snapshot Record</li>
+</ul></li>
+<li><span id="SRUI-R240" class="rqDef">[SRUI-R240]</span> Protocol <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R130' title="">[SR-R130]</a>
+<ul>
+<li>&quot;UDS&quot;</li>
+<li>&quot;OBD on UDS&quot;</li>
+</ul></li>
+<li><span id="SRUI-R250" class="rqDef">[SRUI-R250]</span> <strong>Storage Trigger</strong> <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R150' title="">[SR-R150]</a>
+<ul>
+<li>shows the enum value literally</li>
+<li><span id="SRUI-R250-custom" class="rqDef">[SRUI-R250-custom]</span> except for enum value <code>custom</code>:
+<ul>
+<li>the prefix &quot;(custom) &quot;,</li>
+<li>followed by the customTrigger string <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R155' title="">[SR-R155]</a></li>
+</ul></li>
+<li>See <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20Records.htm#EDUI-R250' title="">[EDUI-R250]</a> for Extended Data Records</li>
+<li>See <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Properties%20of%20Snapshot%20Record.htm#SRUI-R2150' title="">[SRUI-R2150]</a> for display in the Property Sheet.</li>
+</ul></li>
+<li><span id="SRUI-R260" class="rqDef">[SRUI-R260]</span> <strong>Updated</strong> <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R160' title="">[SR-R160]</a>: &quot;yes&quot;/&quot;no&quot;
+<ul>
+<li>same as <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20Records.htm#EDUI-R260' title="">[EDUI-R260]</a> for Extended Data Records</li>
+<li>See <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Properties%20of%20Snapshot%20Record.htm#SRUI-R2160' title="">[SRUI-R2160]</a> for display in the Property Sheet.</li>
+</ul></li>
+</ul>
+<h2 id="actions">Actions</h2>
+<ul>
+<li><span id="SRUI-R270" class="rqDef">[SRUI-R270]</span> When creating a UDS Snapshot Record
+<ul>
+<li>using toolbar <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R205-UDS' title="">[SRUI-R205-UDS]</a> or the the magic line <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R214' title="">[SRUI-R214]</a>,</li>
+<li>if all valid Snapshot Record Numbers <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R120-Range' title="">[SR-R120-Range]</a> exist, CANdelaStudio shows a hint and skips creating a new one.</li>
+<li><span id="SRUI-R270-Ref" class="rqDef">[SRUI-R270-Ref]</span> Otherwise, CANdelaStudio decides the <strong>Snapshot Record Number</strong> based on a <strong>Reference Snapshot Record R</strong>
+<ul>
+<li>as described in the Basic User Interface Rules <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-R335' title="">[UI-R335]</a></li>
+<li>object: Snapshot Record</li>
+<li>number: Snapshot Record Number</li>
+<li>valid range: <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R120-Range' title="">[SR-R120-Range]</a>, minus the OBD on UDS numbers <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-D120-OBDonUDS' title="">[SR-D120-OBDonUDS]</a>.</li>
+</ul></li>
+<li>Note: Snapshot Record Numbers are unique <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R120-Unique' title="">[SR-R120-Unique]</a>.</li>
+<li>CANdelaStudio sets the Protocol to &quot;UDS&quot;.</li>
+<li>See operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R100' title="">[SROP-R100]</a>.</li>
+</ul></li>
+<li><span id="SRUI-R272" class="rqDef">[SRUI-R272]</span> When creating a OBD on UDS Snapshot Record
+<ul>
+<li>using toolbar <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R205-OBD' title="">[SRUI-R205-OBD]</a>,</li>
+<li>if all valid Snapshot Record Numbers <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R120-Range' title="">[SR-R120-Range]</a> exist, CANdelaStudio shows a hint and skips creating a new one.</li>
+<li>If no Snapshot Record with Snapshot Record Number 0x00 exists, uses 0x00,</li>
+<li>Otherwise, dito for 0xF0.</li>
+<li>Otherwise, CANdelaStudio decides the <strong>Snapshot Record Number</strong> as for UDS <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R270-Ref' title="">[SRUI-R270-Ref]</a>.</li>
+<li>CANdelaStudio sets the Protocol to &quot;OBD on UDS&quot;.</li>
+<li>See operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R100' title="">[SROP-R100]</a>.</li>
+</ul></li>
+<li><span id="SRUI-R275" class="rqDef">[SRUI-R275]</span> When deleting Snapshot Records:
+<ul>
+<li>If the action deletes the last Snapshot Record for UDS OBD on UDS, CANdelaStudio prompts like</li>
+<li>&quot;Deleting Snapshot Record(s) will drop all Snapshot Data for OBD on UDS.<br />
+Do you really want to delete the Snapshot Record(s)?&quot;
+<ul>
+<li>If yes, it adapts the GUI according with <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Data%20Common%20for%20All%20DTCs.htm#SRUI-R300-OBDonUDS' title="">[SRUI-R300-OBDonUDS]</a>.</li>
+</ul></li>
+<li>See operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R110' title="">[SROP-R110]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a></li>
+<li><a href="Snapshot%20Data%20Common%20for%20All%20DTCs.htm">Snapshot Data Common for All DTCs</a></li>
+</ul>
+</body>
+</html>

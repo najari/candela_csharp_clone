@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Attribute Import</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="attribute-import-cds-8613-5.5">Attribute Import (CDS-8613 5.5)</h1>
+<p><span id="ATTI-R010" class="rqDef">[ATTI-R010]</span> Imports attribute values from a CSV file.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Attributes are a generic data-driven way to extend the data model implemented in CANdelaStudio.</p>
+<p>Some describe settings for code generation, or typically represent properties specific to the process of the manufacturer.</p>
+<p>It may be useful to transport these settings from a CANdela document to a related other one.</p>
+<h2 id="how-to-run-the-import">How to Run the Import</h2>
+<ul>
+<li><a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R255' title="">[MENU-R255]</a> Ribbon Tab Data Exchange | Import | Attributes</li>
+<li><a class='rqRef' href='../../20 UserInterface\Attributes\Attribute Overview.htm#ATTOV-R255' title="">[ATTOV-R255]</a> Attribute Overview, button &quot;Import&quot;</li>
+</ul>
+<h2 id="attribute-import-wizard">Attribute Import Wizard</h2>
+<p>The Attribute Import Wizard <a class='rqRef' href='../../20 UserInterface\Attributes\Attribute Import Wizard.htm#AIUI-R010' title="">[AIUI-R010]</a> prompts for import settings, then runs the import.</p>
+<h2 id="import">Import</h2>
+<p><span id="ATTI-R100" class="rqDef">[ATTI-R100]</span> Import reads attribute values from the specified CSV file:</p>
+<ul>
+<li><span id="ATTI-R110" class="rqDef">[ATTI-R110]</span> using the separator specified in the wizard <a class='rqRef' href='../../20 UserInterface\Attributes\Attribute Import Wizard.htm#AIUI-R110' title="">[AIUI-R110]</a>,</li>
+<li><span id="ATTI-R200" class="rqDef">[ATTI-R200]</span> optionally restricting affected attributes by the category specified in the wizard <a class='rqRef' href='../../20 UserInterface\Attributes\Attribute Import Wizard.htm#AIUI-R200' title="">[AIUI-R200]</a>.</li>
+</ul>
+<p><span id="ATTI-R120" class="rqDef">[ATTI-R120]</span> Import reports the <strong>result</strong> in the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm">Output Window</a> as an Info message, like</p>
+<pre><code>Import of attribute values finished, 6 attribute value(s) changed.</code></pre>
+<p><span id="ATTI-D100" class="rqDef">[ATTI-D100]</span> The import...</p>
+<ul>
+<li><strong>does not create</strong> new attributes,</li>
+<li>it just reads <strong>attribute values</strong> for attributes already defined in the CANdela document.</li>
+</ul>
+<h2 id="csv-file">CSV File</h2>
+<p>Import consumes the <strong>format</strong> written by the Attribute Export, see <a class='rqRef' href='../../30%20Features/Export/Attribute%20Export.htm#ATTE-R300' title="">[ATTE-R300]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a></li>
+<li><a href="../../30%20Features/Export/Attribute%20Export.htm">Attribute Export</a></li>
+<li>Object Paths <a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200' title="">[OBJP-R200]</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DTC Overview</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dtc-overview">DTC Overview</h1>
+<div class="figure">
+<img src="Images/DTC%20Overview.jpg" alt="DTC Overview" />
+<p class="caption">DTC Overview</p>
+</div>
+<p>The &quot;Fault Memory/Diagnostic Trouble Codes/Overview Fault memory...&quot; page contains an overview of DTCs in all variants and libraries (&quot;objects&quot;) of the document.</p>
+<p>Depending on the setup in the template, there may be one or two such pages, for DTCs of size 16 and 24 bit, respectively.</p>
+<p>The overview shows &quot;yes&quot; in the cells of all objects in which the DTC has the <strong>same properties</strong>. This may be the case...</p>
+<ul>
+<li>if the &quot;Fault Memory&quot; diagnostic instance is referenced in some of these objects,</li>
+<li>the DTC has been referenced from the DTC Pool in some of these objects,</li>
+<li>or the DTC is a local &quot;copy&quot; but just has the same properties</li>
+</ul>
+<p>Therefore, the list may contain multiple lines for the same code:</p>
+<ul>
+<li>each line represents a different set of DTC properties</li>
+<li>in a disjoint set of objects (indicated by &quot;yes&quot; in the object column)</li>
+</ul>
+<p>The DTC overview does not provide a way to <strong>edit</strong> the DTC properties - to do this, navigate to the &quot;Fault memory&quot; diagnostic instance of the respective object (using the context menu).</p>
+<h2 id="dtc-error-text">DTC, Error Text</h2>
+<p>See in the <a href="Available%20DTCs.htm#dtc">Available DTCs</a> page.</p>
+<h2 id="available-dtcs">Available DTCs</h2>
+<p>The DTC in the &quot;DTC Pool&quot; (the tree node on the same level as the overview).</p>
+<h2 id="common-diagnostics-etc.-variants-and-libraries">Common Diagnostics etc. (Variants and Libraries)</h2>
+<p>The DTC in variants and libraries.</p>
+<h2 id="show-details-of-error-codes">Show Details of Error Codes</h2>
+<p>If checked, the list contains additional columns right to the variants and libraries, with the properties of the DTC.</p>
+<h2 id="show-libraries-cds-37946-8.5-sp2">Show Libraries (CDS-37946 8.5 SP2)</h2>
+<p><span id="DTCOV-R400" class="rqDef" title="DTC Overview Show Libraries">[DTCOV-R400.0 DTC Overview Show Libraries]</span></p>
+<ul>
+<li><span id="DTCOV-R400-a" class="rqDef">[DTCOV-R400-a]</span> CANdelaStudio shall show a checkbox „Show Libraries“ right to „Show details of error codes“, default true, remembered across sessions.</li>
+<li><span id="DTCOV-R400-b" class="rqDef">[DTCOV-R400-b]</span> If on, CANdelaStudio shall show Libraries as columns between „Available DTCs“ and the base variant (see <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R060' title="Document Order">[LIB-R060]</a>).</li>
+<li><span id="DTCOV-R400-c" class="rqDef">[DTCOV-R400-c]</span> If off, CANdelaStudio shall not show Libraries.</li>
+</ul>
+<p>(new in 8.5 SP2)</p>
+<p>If checked, the list contains additional columns right to the variants, with the properties of the DTC.</p>
+<h2 id="go-to-variant-or-library...">Go To &lt;Variant or Library&gt;...</h2>
+<p><span id="DTCOV-R410" class="rqDef" title="DTC Overview Go To">[DTCOV-R410 DTC Overview Go To]</span> Navigates to the DTC in the object (variant or library).</p>
+<p><span id="DTCOV-R410-1" class="rqDef">[DTCOV-R410-1]</span> In the column of an object, the context menu shows a &quot;Go To...&quot; item only for this object.</p>
+<p><span id="DTCOV-R410-all" class="rqDef">[DTCOV-R410-all]</span> In the other columns, the context menu shows one &quot;Go To...&quot; item for each library (first) and each variant.</p>
+<h2 id="copy-to-variants">Copy to Variants</h2>
+<p>Opens a dialog to copy (not reference) the DTC into selected objects (variant or library).</p>
+<ul>
+<li><span id="DTCOV-R450" class="rqDef">[DTCOV-R450]</span> CANdelaStudio shall provide Libraries in the context menu.</li>
+</ul>
+<h2 id="reference-in-variants">Reference in Variants</h2>
+<p>Opens a dialog to reference the DTC in selected objects (variant or library).</p>
+<ul>
+<li><span id="DTCOV-R460" class="rqDef">[DTCOV-R460]</span> CANdelaStudio shall provide Libraries in the context menu.</li>
+</ul>
+<h2 id="delete">Delete</h2>
+<p>Allows to delete the DTC from selected objects (variant or library).</p>
+<ul>
+<li><span id="DTCOV-R470" class="rqDef">[DTCOV-R470]</span> CANdelaStudio shall provide Libraries in context menu „Delete“.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="DTCs.htm">DTC List</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC Feature</a></li>
+</ul>
+</body>
+</html>

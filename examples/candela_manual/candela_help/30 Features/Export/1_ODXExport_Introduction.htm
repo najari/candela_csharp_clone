@@ -1,0 +1,505 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>1_ODXExport_Introduction</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="introduction">ODX Export Introduction</h1>
+<p>See also the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20ODX%20Export.htm">Options Property Page ODX Export</a>.</p>
+
+<h2 id="supported-odx-versions">Supported ODX versions</h2>
+<ul>
+<li><strong>2.0.1</strong>
+<ul>
+<li>since CANdelaStudio 4.0</li>
+<li>uses the extension <code>.odx</code>, not <code>.odx-d</code>
+<ul>
+<li>CANdelaStudio 8.2 erroneously used <code>.odx-d</code> (CDS-39473 8.5)</li>
+</ul></li>
+</ul></li>
+<li><strong>2.1.0</strong>
+<ul>
+<li>see <a href="180_ODXExport_ODX2.1.0%20Specific%20elements.htm">ODX 2.1.0 specific elements</a></li>
+</ul></li>
+<li><strong>2.2.0</strong>
+<ul>
+<li>since CANdelaStudio 6.0</li>
+<li>see <a href="190_ODXExport_ODX2.2.0%20Specific%20elements.htm">‎ODX 2.2.0 specific elements</a></li>
+</ul></li>
+</ul>
+<p>The following chapters describe parts <strong>common to the three supported versions</strong>, except the two specific chapters noted above.</p>
+<h2 id="notation">Notation</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Element</th>
+<th align="left">Notation</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">UML class attributes</td>
+<td align="left">Dot between parent and child element</td>
+<td align="left"><code>Class.Attribute</code></td>
+</tr>
+<tr class="even">
+<td align="left">XML child elements</td>
+<td align="left">dito</td>
+<td align="left"><code>XMLelement.ChildElement</code></td>
+</tr>
+<tr class="odd">
+<td align="left">CANdelaStudio objects</td>
+<td align="left">in CamelCase</td>
+<td align="left"><code>DiagInstance</code></td>
+</tr>
+<tr class="even">
+<td align="left">ODX elements</td>
+<td align="left">as in the XML schema</td>
+<td align="left"><code>PARAM</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="creating-odx-documents-with-candelastudio">Creating ODX documents with CANdelaStudio</h2>
+<p>There are three ways to create an ODX document on from a CANdela document (CDD):</p>
+<h3 id="exporting-the-complete-candela-document-to-odx">Exporting the complete CANdela document to ODX</h3>
+<p><span id="ODXE-R100" class="rqDef">[ODXE-R100]</span> Exports to an ODX document that contains all the information of the current CANdela document.</p>
+<p>Use ribbon tab Data Exchange | ODX Export <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R120' title="">[MENU-R120]</a>.</p>
+<h3 id="export-of-dtc-list">Export of DTC list</h3>
+<div class="figure">
+<img src="Images/image2.png" alt="DTC-Export" />
+<p class="caption">DTC-Export</p>
+</div>
+<p><span id="ODXE-R110" class="rqDef">[ODXE-R110]</span> When the DTC list is displayed, the Button &quot;DTC Export&quot; can be used to create an ODX file containing only on DTC-DOP with the DTCs contained in the DTC-Table.</p>
+<h3 id="export-of-events">Export of Events</h3>
+<p><span id="ODXE-D115" class="rqDef">[ODXE-D115]</span> ODX export does not include Events.</p>
+<ul>
+<li>ODX does not provide a proper model to export the information.
+<ul>
+<li>e.g. the AUTOSAR DEXT specification puts it: &quot;ODX lacks in fault memory details&quot;.</li>
+</ul></li>
+<li>ODX Export would have to define a proprietary SDG structure.</li>
+<li>ODX is intended for tester parametrization, but most of the event information is not relevant for a tester.</li>
+</ul>
+
+<h3 id="export-of-selected-diagnostic-classes-instances-and-jobcontainers">Export of selected Diagnostic classes, Instances and JobContainers</h3>
+<p><span id="ODXE-R120" class="rqDef">[ODXE-R120]</span> In order to exchange only a subset of data, it is possible since CANdela 7.0 SP1 to perform the ODX export for selected elements only:</p>
+<ul>
+<li><span id="ODXE-R120-Var" class="rqDef">[ODXE-R120-Var]</span> Variants</li>
+<li><span id="ODXE-R120-DiagInst" class="rqDef">[ODXE-R120-DiagInst]</span> Diagnostic Instances</li>
+<li><span id="ODXE-R120-JobCnr" class="rqDef">[ODXE-R120-JobCnr]</span> Job Containers</li>
+</ul>
+<p><strong>Export includes</strong>...</p>
+<ul>
+<li>the <strong>selected elements</strong></li>
+<li><strong>elements referenced</strong> from the selected elements
+<ul>
+<li>e.g. data types</li>
+</ul></li>
+</ul>
+<p>Export does <strong>not include</strong>...</p>
+<ul>
+<li>interfaces/communication parameters (<code>odx-cs</code> files)</li>
+<li>elements not selected (other variants, diagnostic instances, job containers)</li>
+</ul>
+<p><strong>How to select the elements to be exported</strong></p>
+<ul>
+<li><p>Directly select one object <a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Class/Diagnostic%20Class.htm#DCLUI-R500' title="">[DCLUI-R500]</a>:</p>
+<div class="figure">
+<img src="Images/image3.png" alt="Selective export of one object" />
+<p class="caption">Selective export of one object</p>
+</div></li>
+<li><p>Select a list of objects:<br />
+In the diagnostic instances list, you can select multiple diagnostic instances for ODX export:</p>
+<div class="figure">
+<img src="Images/image4.png" alt="Selective export of multiple objects" />
+<p class="caption">Selective export of multiple objects</p>
+</div></li>
+</ul>
+<h2 id="output-window">Output window</h2>
+<p>Warning and error messages of the ODX-Export are numbered items in the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm">output window</a> of CANdelaStudio.</p>
+<p>A description of the warning and errors codes can be found in the files ASAM-ODX-Export-WarningCodes.htm and ASAM-ODX-Export-ErrorCodes.htm in the <a href="../../30%20Features/Installation/Documentation.htm">Documentation</a> folder.</p>
+<h3 id="treat-warnings-as-errors">Treat warnings as errors</h3>
+<p><span id="ODXE-R1001-Warnings" class="rqDef">[ODXE-R1001-Warnings]</span></p>
+<p>In case the ODXExport-Option <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page ODX Export.htm#OPT-R240' title="">[OPT-R240]</a> is activated, the ODX-Export aborts in case a warning occurred.</p>
+<h2 id="options">ODX Export Options</h2>
+<p><span id="ODXE-R200" class="rqDef">[ODXE-R200]</span> List of ODX Export Options (see the <a href="#adjust-settings">next chapter</a> for different ways to specify the options).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Option in CANdelaStudio.ini</strong></th>
+<th align="left"><strong>Option in GUI</strong></th>
+<th align="left"><strong>Description</strong></th>
+<th align="left"><strong>FeatureID, Details Chapter</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ExportUnreferencedDatatypes</td>
+<td align="left">Export only referenced data types</td>
+<td align="left">Controls whether not referenced data types are exported</td>
+<td align="left"><span id="ODXE-R310" class="rqDef">[ODXE-R310]</span></td>
+</tr>
+<tr class="even">
+<td align="left">ExportFormattedODX</td>
+<td align="left">Format the ODX file</td>
+<td align="left">Controls whether the ODX file is pretty printed</td>
+<td align="left"><span id="ODXE-R300" class="rqDef">[ODXE-R300]</span></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportBitfieldWrapperOnlyIfNecessary</td>
+<td align="left">Export two PARAMs for a CANdela bitfield only if necessary</td>
+<td align="left">Controls whether two PARAMs for a CANdela bitfield are exported. If the CANdela bitfield is used by a variant identification feature the second PARAM which uses an unstructured simple DOP is necessary. Such a PARAM can never be omitted.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/100_ODXExport_Data%20objects%20and%20bitfields.htm#ODXE-R1100-PhysBitfield' title="">[ODXE-R1100-PhysBitfield]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ExportProtocolLayer</td>
+<td align="left">PROTOCOL layer for supported interfaces</td>
+<td align="left">Controls whether a PROTOCOL layer (per used interface in CANdela) is exported</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/40_ODXExport_ECU%20Properties.htm#ODXE-R1040-ComParam' title="">[ODXE-R1040-ComParam]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportAdditionalyComParamSpec</td>
+<td align="left">COMPARAM-SPEC</td>
+<td align="left">Controls the export of an additional COMPARAM-SPEC</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/40_ODXExport_ECU%20Properties.htm#ODXE-R1040-ComParam' title="">[ODXE-R1040-ComParam]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ExportDescriptions</td>
+<td align="left">DESCRIPTION</td>
+<td align="left">Controls whether DESCRIPTIONs are exported</td>
+<td align="left"><span id="ODXE-R320" class="rqDef">[ODXE-R320]</span></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportDescriptionsFormatted</td>
+<td align="left">formatted</td>
+<td align="left">Controls whether formatted DESCRIPTIONs are exported as formatted DESCRIPTIONs or as unformatted DESCRIPTIONs.</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">ExportAdditionalDocuments</td>
+<td align="left">with attachments</td>
+<td align="left">If this option is set, embedded documents referenced in descriptions are included in the output file/directory.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportSDGsAtDTCDOP</td>
+<td align="left">SDG at DTC-DOP</td>
+<td align="left">Controls whether SDGs are exported at DTCs.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/100_ODXExport_Data%20objects%20and%20bitfields.htm#ODXE-R1100-FaultMem' title="">[ODXE-R1100-FaultMem]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ExportVehicleInfoSpec</td>
+<td align="left">VEHILCE-INFO-SPEC</td>
+<td align="left">Toggles export of VehicleInfoSpec</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/130_ODXExport_VEHICLE-INFO-SPEC.htm#ODXE-R1130' title="">[ODXE-R1130]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportCANdelaServiceInfo</td>
+<td align="left">CANdela service information</td>
+<td align="left">Toggles export of CANdelaDiagServiceInfo</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/80_ODXExport_Services%20and%20telegrams.htm#ODXE-R1080-ExportService' title="">[ODXE-R1080-ExportService]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ExportEcuSharedData</td>
+<td align="left">Contained ECU-SHARED-DATA</td>
+<td align="left">Toggles export of contained ECU-SHARED-DATA</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/120_ODXExport_ECU-SHARED-DATA.htm#ODXE-R1120' title="">[ODXE-R1120]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportCANdelaTemplateInformation</td>
+<td align="left"></td>
+<td align="left">Toggles export of CANdelaTemplateInformaton</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/30_ODXExport_Administrative%20data.htm#ODXE-R1030-Template' title="">[ODXE-R1030-Template]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ExportUniqueEcuVariantShortNames</td>
+<td align="left">Make ECU-VARIANT-SHORT-NAMEs unique</td>
+<td align="left">Generate unique ECU-VARIANT-SHORT-NAMEs</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/50_ODXExport_CANdela%20base%20variant%20and%20variants.htm#ODXE-R1050-Unique' title="">[ODXE-R1050-Unique]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportonlyJAVAJobs</td>
+<td align="left">Export only JAVA Jobs (no other ones)</td>
+<td align="left">Prevents non JAVA-Jobs from being exported</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/90_ODXExport_Jobs.htm#ODXE-R1090-Jobs' title="">[ODXE-R1090-Jobs]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ExportOIDs</td>
+<td align="left">ObjectID (OID)</td>
+<td align="left">Exports unique ObjectIdentifiers</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/20_ODXExport_Common%20properties.htm#ODXE-R1020-OID' title="">[ODXE-R1020-OID]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportOneFilePerDiagLayer</td>
+<td align="left">One separate File per DIAG-LAYER</td>
+<td align="left">Exports a separate FILE per DIAG-LAYER</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/50_ODXExport_CANdela%20base%20variant%20and%20variants.htm#ODXE-R1050-Files' title="">[ODXE-R1050-Files]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ForceLocalODXExport</td>
+<td align="left">Always use local ODX Export installation</td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/Installation/Export%20Installed%20as%20Independent%20Application.htm#DXEXE-R110' title="">[DXEXE-R110]</a>.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">SaveLogMessagesAsComment</td>
+<td align="left">Store log messages within ODX File</td>
+<td align="left">Store the warnings that occur during OdxExport in the generated file</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/30_ODXExport_Administrative%20data.htm#ODXE-R1030-Log' title="">[ODXE-R1030-Log]</a></td>
+</tr>
+<tr class="even">
+<td align="left">UsePrefixesForHierarchicalIds</td>
+<td align="left">ODX ID: Use ECU qualifiers as prefix</td>
+<td align="left">Use ECU-Qualifier as prefix for IDs</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/20_ODXExport_Common%20properties.htm#ODXE-R1020-ID' title="">[ODXE-R1020-ID]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportTmxFile</td>
+<td align="left">TMX-file (multi-language ODX)</td>
+<td align="left">In case the option is activated, a TMX file is generated from the Translations present in the document</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/Export%20Multi-Language%20ODX%20Files.htm#ODXE-R1160' title="">[ODXE-R1160]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ExportOnlyModifiedComparams</td>
+<td align="left">Only necessary COMPARAM-REFs</td>
+<td align="left">A COMPARAM-REF will be only generated if the value from CANdela differs from the COMPARAM-SPEC value.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/40_ODXExport_ECU%20Properties.htm#ODXE-R1040-ComParam' title="">[ODXE-R1040-ComParam]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportDTCPoolAsESD</td>
+<td align="left">Available DTCs as ECU-SHARED-DATA</td>
+<td align="left">The DTCs from DTC pool will be exported to an ECU-SHARED-DATA. The BASE-VARIANT and ECU-VARIANTs will reference the DTCs from ESD.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/40_ODXExport_ECU%20Properties.htm#ODXE-R1040-ComParam' title="">[ODXE-R1040-ComParam]</a></td>
+</tr>
+<tr class="even">
+<td align="left">OptimizeDTCs</td>
+<td align="left">Reuse DTCs</td>
+<td align="left">ODX-Export will generate for similar DTCs a DTC-REF.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/100_ODXExport_Data%20objects%20and%20bitfields.htm#ODXE-R1100-ReuseDTCs' title="">[ODXE-R1100-ReuseDTCs]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">TreatWarningsAsErrors</td>
+<td align="left">Abort on warnings</td>
+<td align="left">If this option is activated the ODX-Export will abort as soon as a warning occurs while generating the ODX files.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/1_ODXExport_Introduction.htm#ODXE-R1001-Warnings' title="">[ODXE-R1001-Warnings]</a></td>
+</tr>
+<tr class="even">
+<td align="left">UseIsoComparamSpecs</td>
+<td align="left">ISO-COMPARAM-SPECs</td>
+<td align="left">The ISO COMPARAM-SPEC will be exported.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/40_ODXExport_ECU%20Properties.htm#ODXE-R1040-ComParam' title="">[ODXE-R1040-ComParam]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">CreateMatchingRequestParamForPosResponse</td>
+<td align="left">Create MATCHING-REQUEST-PARAM in response</td>
+<td align="left">Creates an additional MATCHING-REQUEST-PARAM for the subfunction/local-id</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/80_ODXExport_Services%20and%20telegrams.htm#ODXE-R1080-Matching' title="">[ODXE-R1080-Matching]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ExportPosResponseSuppressable</td>
+<td align="left">Use POS-RESPONSE-SUPPRESSABLE (ODX 2.2.0)</td>
+<td align="left">Usage of POS-RESPONSE-SUPPRESSABLE in contrast to exporting two DIAG-SERVICEs</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/80_ODXExport_Services%20and%20telegrams.htm#ODXE-R1080-DiagClass' title="">[ODXE-R1080-DiagClass]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">UseSnrefs</td>
+<td align="left"></td>
+<td align="left">Toggles the usage of SNREFs to TABLEs / TABLE-ROWs</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/70_ODXExport_Mapping%20of%20CANdela%20diagnostic%20instances%20to%20ODX.htm#ODXE-R1070-SNRefs' title="">[ODXE-R1070-SNRefs]</a></td>
+</tr>
+<tr class="even">
+<td align="left">CreateHierarchicalIds</td>
+<td align="left"></td>
+<td align="left">Controls whether hierarchical IDs are used or not.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/20_ODXExport_Common%20properties.htm#ODXE-R1020-HierarchicalIDs' title="">[ODXE-R1020-HierarchicalIDs]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">CreateNRCConst</td>
+<td align="left"></td>
+<td align="left">Controls whether NRC-Const parameters are exported</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">SkipPureFunctionalServices</td>
+<td align="left"></td>
+<td align="left">Allows to skip services at BV which are only functionally addressable.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/80_ODXExport_Services%20and%20telegrams.htm#ODXE-R1080-Service' title="">[ODXE-R1080-Service]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportSeparateDopsForEcuConfig</td>
+<td align="left"></td>
+<td align="left">Defines whether DOPs are exported locally in the ECU-CONFIG</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/180_ODXExport_ODX2.1.0%20Specific%20elements.htm#ODXE-R1180' title="">[ODXE-R1180]</a></td>
+</tr>
+<tr class="even">
+<td align="left">CreateAdditionalServiceForCombinedDIDs</td>
+<td align="left"></td>
+<td align="left">Defines whether an additional service is exported to express &quot;Maybecombined&quot;</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/80_ODXExport_Services%20and%20telegrams.htm#ODXE-R1080-Combined' title="">[ODXE-R1080-Combined]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">RolloutNestedPackets</td>
+<td align="left"></td>
+<td align="left">Enforces that Packet datatypes are not exported as STRUCTURE</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#ODXE-R1110-Flat' title="">[ODXE-R1110-Flat]</a></td>
+</tr>
+<tr class="even">
+<td align="left">OptimizeEnvDatas</td>
+<td align="left">Reuse identical environment data</td>
+<td align="left">Combines ENV-DATA according to used parameters.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/100_ODXExport_Data%20objects%20and%20bitfields.htm#ODXE-R1000-EnvData' title="">[ODXE-R1000-EnvData]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">AllowSpecialCharactersInFileNames</td>
+<td align="left"></td>
+<td align="left">If this option is set to '0', only characters [a-zA-Z0-9_] are allowed for file names, any other character is removed.</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">CheckStringTerminations</td>
+<td align="left"></td>
+<td align="left">Emits a warning in case the selected string termination is not valid for ODX.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm#ODXE-R1100-Term65' title="">[ODXE-R1100-Term65]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">CombineNegResponsesPerService</td>
+<td align="left"></td>
+<td align="left">Combines the negative response of a service into one negative response.</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">CreateSeparateServiceForDuplicateTableKeys</td>
+<td align="left"></td>
+<td align="left">If an identifier is dublicate in a Diagnostic Class and the Diagnostic Class is exported as table, a separate ODX service is generated.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">DeactivateSharing</td>
+<td align="left"></td>
+<td align="left">Controls whether services that are referenced in a variant get exported.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/50_ODXExport_CANdela%20base%20variant%20and%20variants.htm#ODXE-R1050-Inherit' title="">[ODXE-R1050-Inherit]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ExportContainedJobFiles</td>
+<td align="left"></td>
+<td align="left">Controls whether job files get exported or not.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/90_ODXExport_Jobs.htm#ODXE-R1090-Jobs' title="">[ODXE-R1090-Jobs]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">ExportStructuresForBitfields</td>
+<td align="left"></td>
+<td align="left">Controls whether a STRUCTURE gets created for a BITFIELD.</td>
+<td align="left"><a class='rqRef' href='../../30%20Features/Export/100_ODXExport_Data%20objects%20and%20bitfields.htm#ODXE-R1100-Bitfields' title="">[ODXE-R1100-Bitfields]</a></td>
+</tr>
+<tr class="even">
+<td align="left">ExportTextTablesForTableKeys</td>
+<td align="left"></td>
+<td align="left">Exports Text Tables for Table Keys.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">GenerateUniqueStructureShortNames</td>
+<td align="left"></td>
+<td align="left">Enforces unique SHORT-NAMEs for STRUCTUREs.</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">MakeDiagServiceShortNamesUnique</td>
+<td align="left"></td>
+<td align="left">Ensures unique DIAG-SERVICE SHORT-NAMEs.</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">OptimizeNegResponses</td>
+<td align="left"></td>
+<td align="left">Creates global neg responses instead of local ones.</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Table 1: ODX export options</p>
+<h2 id="adjust-settings">Adjust Options</h2>
+<h3 id="with-gui">Dialog</h3>
+<p>See the CANdelaStudio <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20ODX%20Export.htm">Options Property Page ODX Export</a>.</p>
+<h3 id="with-candelastudioini">In CANdelaStudio.ini</h3>
+<p>The following extract of <a href="../../30%20Features/CANdelaStudio%20Editor/Options.htm">CANdelaStudio.ini</a> shows how you can set the options:</p>
+<pre><code>[View]
+SAECodes=1
+[ODX20Export]
+ExportFormattedODX=1
+ExportUnreferencedDatatypes=1
+ExportBitfieldWrapperOnlyIfNecessary=1
+ExportProtocolLayer=0
+ExportDescriptions=1
+ExportSDGsAtDTCDOP=1
+ExportAdditionalyComParamSpec=0
+ExportDescriptionsFormatted=1
+ExportVehicleInfoSpec=0
+ExportCANdelaServiceInfo=1
+ExportEcuSharedData=1
+ExportUniqueEcuVariantShortNames=0
+ExportonlyJAVAJobs=0
+ExportOIDs=0
+ExportOneFilePerDiagLayer=0
+SaveLogMessagesAsComment=0
+CreateUniqueIds=1
+ExportTmx=1
+OptimizeDTCs=1
+TreatWarningsAsErrors=1
+ExportIsoComparamSpecs=1
+ExportPosResponseSuppressable=1
+CreateMatchingRequestParamForPosResponse=0
+UseSnrefs=0
+CreateNRCConst=1</code></pre>
+<p><span id="SAECodes"></span><strong>Note</strong>: the INI option <code>[View]SAECodes</code> <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Display.htm#OPT-R260' title="">[OPT-R260]</a> controls whether the element DISPLAY-TROUBLE-CODE is exported for a DTC or not.</p>
+<h3 id="with-template">In Template</h3>
+<p>To predefine ODX Export Settings in the template, create an Enum Attribute in the category &quot;odxexportoption&quot; with the following properties:</p>
+<ul>
+<li>Qualifier/Name = INI file option from the list above</li>
+<li>Enum Values: 0=No, 1=Yes</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/ODX/ODX.htm">Introduction to ODX</a></li>
+<li><a href="../../30%20Features/Import/ODX%20Import%20Introduction.htm">ODX Import</a></li>
+<li><a href="../../30%20Features/Installation/Documentation.htm">Documentation</a> folder</li>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a></li>
+</ul>
+<p>ODX Export Reference:</p>
+<ul>
+<li><a href="../../30%20Features/Installation/Export%20Installed%20as%20Independent%20Application.htm">Export Installed as Independent Application</a></li>
+<li><a href="10_ODXExport_ODX%20specific%20information%20in%20CANdela%20documents.htm">ODX specific information in CANdela documents</a></li>
+<li><a href="20_ODXExport_Common%20properties.htm">Common properties</a></li>
+<li><a href="30_ODXExport_Administrative%20data.htm">Administrative data</a></li>
+<li><a href="40_ODXExport_ECU%20Properties.htm">ECU Properties</a></li>
+<li><a href="50_ODXExport_CANdela%20base%20variant%20and%20variants.htm">CANdela base variant and variants</a></li>
+<li><a href="55_ODX%20Export%20of%20Libraries.htm">ODX Export of Libraries</a></li>
+<li><a href="60_ODXExport_Mapping%20CANdela%20diagnostic%20classes%20to%20ODX%20elements.htm">Mapping CANdela diagnostic classes to ODX elements</a></li>
+<li><a href="70_ODXExport_Mapping%20of%20CANdela%20diagnostic%20instances%20to%20ODX.htm">Mapping of CANdela diagnostic instances to ODX</a></li>
+<li><a href="80_ODXExport_Services%20and%20telegrams.htm">Services and telegrams</a></li>
+<li><a href="90_ODXExport_Jobs.htm">Jobs</a></li>
+<li><a href="100_ODXExport_Data%20objects%20and%20bitfields.htm">Data objects and bitfields</a></li>
+<li><a href="110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm">CANdela data types mapped to DOPs</a></li>
+<li><a href="120_ODXExport_ECU-SHARED-DATA.htm">ECU-SHARED-DATA</a></li>
+<li><a href="130_ODXExport_VEHICLE-INFO-SPEC.htm">VEHICLE-INFO-SPEC</a></li>
+<li><a href="140_ODXExport_FUNCTIONAL-GROUP.htm">FUNCTIONAL-GROUP</a></li>
+<li><a href="150_ODXExport_PDX-Export.htm">PDX-Export</a></li>
+<li><a href="Export%20Multi-Language%20ODX%20Files.htm">Multilanguage ODX</a></li>
+<li><a href="170_ODXExport_OdxCompliance-Check.htm">OdxCompliance-Check</a></li>
+<li><a href="180_ODXExport_ODX2.1.0%20Specific%20elements.htm">ODX2.1.0 Specific elements</a></li>
+<li><a href="190_ODXExport_ODX2.2.0%20Specific%20elements.htm">ODX2.2.0 Specific elements</a></li>
+<li><a href="200_ODXExport_Appendix.htm">Appendix</a></li>
+</ul>
+</body>
+</html>

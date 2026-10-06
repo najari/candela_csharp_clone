@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>When do I Need to Combine Proxy Components</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="when-do-i-need-to-combine-proxy-components">When do I Need to Combine Proxy Components?</h1>
+<p>This function is only available in the Admin edition.</p>
+<p>You connect proxies whenever they must transmit shared data. Connected proxies are represented by a single telegram table in the entry masks for diagnostic instances.</p>
+<p><strong>Example</strong></p>
+<p>You have two &quot;Used Protocol Services&quot; in a diagnostic class template:</p>
+<ul>
+<li>to read (ISO 14229: 0x22 - &quot;ReadDataByIdentifier&quot;), and</li>
+<li>to write (ISO 14229: 0x2E - &quot;WriteDataByIdentifier&quot;)</li>
+</ul>
+<p>You now want the same data objects to be included in both services.</p>
+<p>Both protocol services have their own proxy named &quot;Data&quot;, the reading one in the Positive Response, the writing one in the Request.</p>
+<p>Here's how you combine the two proxies:</p>
+<ul>
+<li>Mark both proxies in the &quot;Combined Components&quot; table (for example &quot;zz&quot; and &quot;yy&quot;).</li>
+<li>Click the button &quot;Combine&quot;.</li>
+<li>CANdelaStudio combines the two components as one with the abbreviation &quot;zz&quot;.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm">Combined Component</a></li>
+</ul>
+</body>
+</html>

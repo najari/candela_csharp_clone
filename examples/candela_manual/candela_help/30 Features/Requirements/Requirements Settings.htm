@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Requirements Settings</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="requirements-settings-document-level">Requirements Settings (Document Level)</h1>
+<p>These settings are shown and edited in the <a href="../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm">Property Page &quot;Settings&quot;</a>.</p>
+<h2 id="id-prefix">ID Prefix</h2>
+<p><span id="RQ-R092" class="rqDef" title="ID Prefix">[RQ-R092.0 ID Prefix]</span>: the CANdela document shall have a string property used as <strong>prefix for the ID of new requirements</strong> <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R090' title="ID Creation">[RQ-R090]</a> (above).</p>
+<p>Example: prefix <code>_ID</code> gives requirements ID <code>_ID4711</code>.</p>
+<p>See the user interface <a class='rqRef' href='../../20 UserInterface\Requirements\Property Page Settings.htm#RQUI-R100-IDPrefix' title="">[RQUI-R100-IDPrefix]</a>.</p>
+<h2 id="default-data-type">Default Data Type</h2>
+<p><span id="RQ-R094" class="rqDef" title="Default Data Type">[RQ-R094.0 Default Data Type]</span>: the CANdela document shall have a default data type used to create data objects from requirements <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R544-DataType' title="">[RQ-R544-DataType]</a>.</p>
+<p>Initially, the data type may be missing, but it must be specified before creating data objects.</p>
+<p>See the user interface <a class='rqRef' href='../../20 UserInterface\Requirements\Property Page Settings.htm#RQUI-R100-DataType' title="">[RQUI-R100-DataType]</a>.</p>
+<h2 id="library-variant-cds-40445-8.5-sp2">Library / Variant (CDS-40445 8.5 SP2)</h2>
+<p><span id="RQ-R093" class="rqDef" title="Requirements - Selected Library or Variant">[RQ-R093 Requirements - Selected Library or Variant]</span>: the CANdela document defines one <strong>library</strong> or <strong>variant</strong> as the base for operations on requirements:</p>
+<ul>
+<li><a href="Equality.htm">equality</a></li>
+<li><a href="Update%20Diagnostic%20Objects.htm">update diagnostic objects</a></li>
+<li><a href="Update%20Requirements.htm">update requirements</a></li>
+</ul>
+<p>See the user interface <a class='rqRef' href='../../20 UserInterface\Requirements\Property Page Settings.htm#RQUI-R100-Variant' title="">[RQUI-R100-Variant]</a>.</p>
+<p>CANdelaStudio supports libraries for requirements since v11 (CDS-70801).</p>
+<ul>
+<li><span id="RQ-R093-SelVariantPersistent" class="rqDef">[RQ-R093-SelVariantPersistent]</span> the library or variant setting is persistent (stored in the CDD and available after loading the document again).</li>
+<li><span id="RQ-R093-SelVariantDefault" class="rqDef">[RQ-R093-SelVariantDefault]</span> Default is the base variant.</li>
+<li><span id="RQ-R093-SelVariantInitially" class="rqDef">[RQ-R093-SelVariantInitially]</span> The default applies if you have not yet selected any library or variant.</li>
+<li><span id="RQ-R093-SelVariantDelete" class="rqDef">[RQ-R093-SelVariantDelete]</span> The default applies after the selected library or variant has been deleted from the document.</li>
+<li><span id="RQ-R093-SelVariantRename" class="rqDef">[RQ-R093-SelVariantRename]</span> The default applies after the qualifier of the selected library or variant has been changed.</li>
+<li>See also the user interface <a class='rqRef' href='../../20 UserInterface\Requirements\Property Page Settings.htm#RQUI-R100-Variant' title="">[RQUI-R100-Variant]</a>.</li>
+</ul>
+
+<h2 id="update-of-diagnostic-objects-cds-41683-v11">Update of Diagnostic Objects (CDS-41683 v11)</h2>
+<p><span id="RQ-R096" class="rqDef">[RQ-R096]</span> The setting &quot;Update of Diagnostic Objects&quot; has two values:</p>
+<ul>
+<li><span id="RQ-R096-Copy" class="rqDef">[RQ-R096-Copy]</span> &quot;Replace References with Copy&quot; (new in v11)</li>
+<li><span id="RQ-R096-UpdateRefs" class="rqDef">[RQ-R096-UpdateRefs]</span> &quot;Update References&quot; (the behavior before v11)</li>
+</ul>
+<p>See the user interface <a class='rqRef' href='../../20 UserInterface\Requirements\Property Page Settings.htm#RQUI-R100-Update' title="">[RQUI-R100-Update]</a> and the effect in the operation &quot;Update Diagnostic Objects&quot; <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R520' title="">[RQ-R520]</a>.</p>
+<ul>
+<li><span id="RQ-R096-Default" class="rqDef">[RQ-R096-Default]</span> At the first run of CANdelaStudio 11, the setting is:
+<ul>
+<li>if the selected variant/library <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a> is a variant: &quot;Replace References with Copy&quot;</li>
+<li>otherwise: &quot;Update References&quot;</li>
+</ul></li>
+<li><span id="RQ-R096-Save" class="rqDef">[RQ-R096-Save]</span> The setting gets lost if you save the document with a CANdelaStudio version before 11.</li>
+</ul>
+<p>Note: the setting is independent from the tool wide option &quot;Modify Referenced Diagnostic Instance&quot; in Ribbon File|Options, page <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Confirmation.htm">Confirmations</a>.</p>
+<h2 id="diagnostic-classes-relevant-for-requirements">Diagnostic Classes Relevant for Requirements</h2>
+<p>See <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R300' title="">[DCLT-R300]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Requirements <a href="Requirements.htm">Feature</a></li>
+<li>Requirements <a href="../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm">Property Page &quot;Settings&quot;</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>State Group</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="state-group"><span id='_index_446728121'>State Group</span></h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/State%20Groups.jpg" alt="State Groups and States" />
+<p class="caption">State Groups and States</p>
+</div>
+<p>A State Group is the key element of the <a href="State%20Dependency.htm">State Dependency</a> feature in CANdela. It generalizes the concrete diagnostic uses-cases like &quot;Session&quot; and &quot;Security&quot; and can have any free-text name and qualifier.</p>
+<h2 id="state-group-properties">State Group Properties</h2>
+<p>A State Group contains...</p>
+<ul>
+<li><span id="STG-R010" class="rqDef">[STG-R010]</span> the common properties Name, Qualifier and Description</li>
+<li>attributes <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050' title="">[ATTR-R050]</a> since 6.0 (CDS-12713)</li>
+<li>semantics (see below)</li>
+<li>an associated <strong>Negative Response Code</strong> <a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R050' title="State Group NRC">[NRC-R050]</a>
+<ul>
+<li>shown at the service with a special icon <img src="../../20%20UserInterface/Images/State%20Group%20Nrc.gif" /></li>
+</ul></li>
+<li><a href="State.htm">States</a></li>
+</ul>
+<h3 id="semantics">Semantics</h3>
+<p><span id="STG-R050" class="rqDef">[STG-R050]</span> a State Group has a predefined semantics for the most frequent use-cases of the state dependency feature:</p>
+<ul>
+<li><span id="STG-R050-none" class="rqDef">[STG-R050-none]</span></li>
+<li><span id="STG-R050-Session" class="rqDef">[STG-R050-Session]</span></li>
+<li><span id="STG-R050-Security" class="rqDef">[STG-R050-Security]</span></li>
+<li><span id="STG-R050-Authorization" class="rqDef">[STG-R050-Authorization]</span> (see below)</li>
+</ul>
+<p>The predefined semantics allows to clearly detect the concrete diagnostic use-case in any tool that consumes the CANdela data, no matter how you call the State Group.</p>
+<p>It is up to you to specify the state transitions consistently, e.g. for semantics &quot;Session&quot;, the UDS service 0x10 should change the session state.</p>
+<h3 id="semantics-authorization-cdc-43749-9.1">Semantics &quot;Authorization&quot; (CDC-43749 9.1)</h3>
+<p><span id="STG-R200" class="rqDef">[STG-R200]</span> when saving a newer file to 9.0 or older, CANdelaStudio stores semantics “Authorization” as semantics “none”.</p>
+<p><span id="STG-R210" class="rqDef">[STG-R210]</span> when loading a 9.0 or older file...</p>
+<ul>
+<li>for a state group with qualifier or name “Authorization”</li>
+<li>for manufacturer <code>!= Daimler</code>,
+<ul>
+<li>CANdelaStudio sets the semantics of a State Group to “Authorization&quot;;</li>
+</ul></li>
+<li><span id="STG-R210-D" class="rqDef">[STG-R210-D]</span> for manufacturer <code>= Daimler</code>,
+<ul>
+<li>CANdelaStudio deletes the state group...</li>
+<li>with a hint to run the plug-in &quot;Update State Group Authorization&quot;.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/State%20Dependency/Dependencies.htm">State Dependencies (User Interface)</a></li>
+<li><a href="../../20%20UserInterface/State%20Dependency/State%20Groups.htm">State Groups (User Interface)</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="Authorization.htm">Authorization</a> (certificate-based)</li>
+<li>Negative Response Code at a State Group <a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R050' title="State Group NRC">[NRC-R050]</a></li>
+<li><a href="Security.htm">Security</a></li>
+<li><a href="Session%20Security%20Wizard.htm">Session Security Wizard</a></li>
+<li><a href="Session.htm">Session</a></li>
+<li><a href="State%20Dependency.htm">State Dependency</a></li>
+<li><a href="State%20Transitions.htm">State Transitions (Feature)</a></li>
+<li><a href="State.htm">State</a></li>
+</ul>
+</body>
+</html>

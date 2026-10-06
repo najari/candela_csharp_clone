@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Loading a Document or Template</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="loading-a-document-or-template"><span id='_index_446727912'>Loading a Document or Template</span></h1>
+<h2 id="automatic-migrations">Automatic Migrations</h2>
+<p>For modified or new features, CANdelaStudio may need to migrate data during loading a file in a new version. For details, see the <a href="../../30%20Features/Migrations/Migrations.htm">Migrations</a> chapter.</p>
+<h2 id="error-messages-for-a-corrupted-file">Error Messages for a <span id='_index_446727913'>Corrupted File</span></h2>
+<p>A CANdela file may be corrupted e.g. during email transmission. In support cases, we saw files just truncated in the middle, and files with non-CANdela data inserted.</p>
+<p>On loading a file, CANdelaStudio detects the corruption and writes a message like</p>
+<blockquote>
+<p>... the file has been corrupted! If it was a data transfer (via email, download from manufacturer portal ...) that corrupted the file, it may help to transfer the original CANdela file again in a zip file.</p>
+</blockquote>
+<p><strong>Please follow the advice given in this message!</strong></p>
+<p><span id="LOAD-R100" class="rqDef">[LOAD-R100]</span> Error situations detected:</p>
+<ul>
+<li>invalid token (CDC-41950 9.0)</li>
+<li>no elements (CDC-43784 9.1)</li>
+<li>unclosed token (CDC-43784 9.1)</li>
+</ul>
+<h2 id="other-error-messages">Other Error Messages</h2>
+<ul>
+<li><span id="LOAD-R210" class="rqDef">[LOAD-R210]</span> For a document containing a DID both in the Common Snapshot Data and in DTC specific snapshot data, CANdelaStudio shall write an error on loading, but not reject loading (CDS-69048 9.1; cf. CDC-43727).</li>
+</ul>
+<h2 id="automatic-corrections">Automatic Corrections</h2>
+<ul>
+<li><span id="LOAD-R200" class="rqDef">[LOAD-R200]</span> If a Diagnostic Instance of a type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R200' title="">[DCLT-R200]</a> other than &quot;Fault Memory&quot;...
+<ul>
+<li><span id="LOAD-R200-Events" class="rqDef">[LOAD-R200-Events]</span> contains Events (i.e. <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020-Type' title="">[EV-R020-Type]</a> violated),</li>
+<li><span id="LOAD-R200-SR" class="rqDef">[LOAD-R200-SR]</span> or contains AUTOSAR Snapshot Records <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R030' title="">[SR-R030]</a> (i.e. <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R030-Type' title="">[SR-R030-Type]</a> violated),</li>
+<li><span id="LOAD-R200-SD" class="rqDef">[LOAD-R200-SD]</span> or contains AUTOSAR Snapshot Data <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200' title="">[SR-R200]</a> (i.e. <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200-Type' title="">[SR-R200-Type]</a> violated),</li>
+<li><span id="LOAD-R200-EDR" class="rqDef">[LOAD-R200-EDR]</span> or contains AUTOSAR Extended Data Records <a class='rqRef' href='../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm#EDR-R030' title="">[EDR-R030]</a> (i.e. <a class='rqRef' href='../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm#EDR-R030-Type' title="">[EDR-R030-Type]</a> violated),</li>
+<li>CANdelaStudio deletes them with a status message.</li>
+<li>Cf. modification of the class type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLTOP-R200' title="">[DCLTOP-R200]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Migrations/Migrations.htm">Migrations</a></li>
+<li>Open a document or template <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File.htm#MENU-R020' title="">[MENU-R020]</a></li>
+<li><a href="Saving%20a%20document%20or%20template.htm">Saving a document or template</a></li>
+<li>Create a document based on a template <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File.htm#MENU-R010' title="">[MENU-R010]</a></li>
+<li>Run a plug-in on a CANdela file <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Tools.htm#MENU-R945' title="">[MENU-R945]</a></li>
+<li>Convert a document to a template <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Tools.htm#MENU-R960' title="">[MENU-R960]</a></li>
+</ul>
+
+</body>
+</html>

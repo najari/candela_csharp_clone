@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Job Container</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="job-container">Job Container</h1>
+<p>See also the <a href="../../30%20Features/Job/Job.htm">Jobs Feature</a>.</p>
+<div class="figure">
+<img src="Images/Job%20Container.jpg" alt="Job Container with Jobs List" />
+<p class="caption">Job Container with Jobs List</p>
+</div>
+<p>A diagnostic class template with class type &quot;Jobs&quot; or &quot;Flash jobs&quot; must not contain any Used Protocol Service. A corresponding diagnostic class cannot contain a diagnostic instance but <strong>only job containers</strong>.</p>
+<p>For a regular diagnostic class template <strong>with Used Protocol Services</strong>, the corresponding diagnostic class can contain <strong>diagnostic instances</strong> as well as <strong>job containers</strong>. In such a job container, a job can &quot;replace&quot; a service. Therefore, the job container may contain only one job for each service of the diagnostic class. Each job must have the same name and qualifier as the service it replaces. CANdelaStudio ensures this automatically.</p>
+<h2 id="name">Name</h2>
+<p>See <a href="../../30%20Features/Common%20Properties/Name.htm">Names in CANdela</a>.</p>
+<h2 id="description">Description</h2>
+<p>See <a href="../../30%20Features/Common%20Properties/Description.htm">Descriptions in CANdela</a>.</p>
+<h2 id="jobs-for-the-test-system">Jobs for the Test System</h2>
+<p>Shows the list of jobs in the job container.</p>
+<p>You can edit the job name and description directly in the list.</p>
+<p>The associated job file is specified in the property dialog for the job in page &quot;Function&quot;.</p>
+<h3 id="attributes">Attributes</h3>
+<p><span id="JCUI-R200" class="rqDef">[JCUI-R200]</span> The list shows job attributes that have the &quot;visible in separate table column&quot; flag <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R090-Job' title="">[ATTR-R090-Job]</a> set.</p>
+<h3 id="new-job">New Job</h3>
+<p>If you have <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Job%20File.htm">specified a default file for jobs</a>, CANdelaStudio automatically assigns that file to each new job.</p>
+<h2 id="job-parameters-for...">Job Parameters for...</h2>
+<p>Shows the list of input parameters and output parameters of the selected job.</p>
+<p>The parameters are edited in a <a href="../../20%20UserInterface/Data%20Objects/Data%20Objects.htm">telegram table</a>. In this context, bit-sized data objects are allowed on top-level.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Job/Job.htm">Job (Feature)</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+</ul>
+</body>
+</html>

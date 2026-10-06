@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Edit TextIDs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="edit-textids-dialog">Edit TextIDs Dialog</h1>
+<div class="figure">
+<img src="Images/Edit%20TextIDs.jpg" alt="Edit TextIDs" />
+<p class="caption">Edit TextIDs</p>
+</div>
+<p>See the <a href="../../30%20Features/Common%20Properties/TextID.htm">TextIDs Feature</a>:</p>
+<ul>
+<li>a CANdela <strong>object</strong> (e.g. a data object)</li>
+<li>has a <strong>translatable property</strong> (e.g. a name, or a description)</li>
+<li>which is assigned a <strong>TextID</strong>.</li>
+</ul>
+<h2 id="filter-textid-term">Filter (TextID, Term)</h2>
+<p>Specifies a filter on the two first columns TextID and Term.</p>
+<h2 id="textid">TextID</h2>
+<p>The TextID of the translatable property.</p>
+<h2 id="term">Term</h2>
+<p>The translatable property, e.g. a <a href="../../30%20Features/Common%20Properties/Name.htm">name</a> or a <a href="../../30%20Features/Common%20Properties/Description.htm">description</a>.</p>
+<h2 id="object-type">Object Type</h2>
+<p>The type of CANdela object that owns the translatable property, e.g. a data object.</p>
+<h2 id="path">Path</h2>
+<p>The path to the CANdela object.</p>
+<p>The suffix of the path distinguishes some translatable properties, e.g &quot;#NAME&quot; and &quot;#DESC&quot;:</p>
+<pre><code>npath://[NRC]General reject#NAME
+npath://[NRC]General reject#DESC</code></pre>
+<h2 id="edit-textids">Edit TextIDs</h2>
+<p><span id="TID-R050" class="rqDef">[TID-R050]</span> In menu Edit | TextIDs, in documents with both TextID mode &quot;completion only&quot; or &quot;edit&quot;, CANdelaStudio does not allow modification (no direct editing, no &quot;Delete all&quot; etc.) of TextIDs at</p>
+<ol style="list-style-type: lower-alpha">
+<li>datatypes imported from <a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA</a> (cf. CDS-5624);</li>
+<li>an attribute storing units from ECU-SHARED-DATA (cf. CDS-3861 &quot;Selection list for units&quot;).</li>
+</ol>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../30%20Features/Common%20Properties/TextID.htm">TextIDs Feature</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SWC Sync Data Objects</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="swc-sync-data-objects">SWC Sync Data Objects</h1>
+<h2 id="extraction-of-sys-ex-data-objects">Extraction of SYS-EX Data Objects</h2>
+<p>(for Stored Data Records, Present Value Records or Control State Records)</p>
+<p>A SYS-EX Data Object is an instance reference to a data element, with the following conditions:</p>
+<ul>
+<li>The parent SWC type belongs to the ECU-INSTANCE.</li>
+<li>The SWC type includes a SWC-SERVICE-DEPENDENCY with a ROLE-BASED-DATA-ASSIGNMENT pointing to a VARIABLE-DATA-PROTOTYPE.</li>
+<li>Note: SWC Sync does not check the role name (typically “signalBasedDiagnostics”).</li>
+<li>The SWC-SERVICE-DEPENDENCY contains a DIAGNOSTIC-VALUE-NEEDS.</li>
+</ul>
+<p>SWC Sync interpretes the SYS-EX Data Object as follows:</p>
+<ul>
+<li>Data Object of a <strong>Control State Record</strong>:
+<ul>
+<li>Condition: the DIAGNOSTIC-VALUE-NEEDS is referenced as CURRENT-VALUE-REF by a DIAGNOSTIC-IO-CONTROL-NEEDS.</li>
+<li>The requirement SDs are at the parent SENDER-RECEIVER-INTERFACE of the VARIABLE-DATA-PROTOTYPE.</li>
+</ul></li>
+<li>Data Object of a <strong>Present Value Record</strong>:
+<ul>
+<li>Condition: the parent interface of the VARIABLE-DATA-PROTOTYPE is a SENDER-RECEIVER-INTERFACE.</li>
+<li>The requirement SDs are at the VARIABLE-DATA-PROTOTYPE.</li>
+</ul></li>
+<li>Data Object of a <strong>Stored Data Record</strong>:
+<ul>
+<li>Condition: the parent interface of the VARIABLE-DATA-PROTOTYPE is an NV-DATA-INTERFACE.</li>
+<li>The requirement SDs are at the VARIABLE-DATA-PROTOTYPE.</li>
+</ul></li>
+<li>Init Values (CDS-68846 8.5 SP3 P9)
+<ul>
+<li>SWC Sync reads init values for synchronized data objects and stores them in the <a href="../../30%20Features/Attributes/Special%20Attributes.htm#ImplementationDefault">&quot;Implementation Default&quot; attribute</a>.</li>
+<li>For data objects referencing array or record data types, it separates the init values of the individual elements by a blank in the &quot;Implementation Default&quot; attribute.</li>
+</ul></li>
+</ul>
+<h2 id="data">Sync of Stored and Present Value Data Records</h2>
+<p><span id="SWC-R0610" class="rqDef">[SWC-R0610]</span>: For each data object in the stored data and present value lists extracted from the SYS-EX,...</p>
+<ul>
+<li>if there is a data object whose sync ID <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R115' title="Requirements ID Storage">[RQ-R115]</a> is equal to the requirement ID of the SYS-EX data object,</li>
+<li><span id="SWC-R0620" class="rqDef">[SWC-R0620]</span> SWC Sync replaces the data object by a new data object.</li>
+<li>Note: the data type of the replaced data object may get deleted <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20Data%20Types.htm#SWC-R1250' title="">[SWC-R1250]</a> afterwards.</li>
+<li><span id="SWC-R0630" class="rqDef">[SWC-R0630]</span>: SWC Sync takes the <strong>name</strong> of the new data object from the SYS-EX data object name (made unique if necessary).</li>
+<li><span id="SWC-R0640" class="rqDef">[SWC-R0640]</span>: SWC Sync takes the <strong>qualifier</strong> of the new data object from the SYS-EX data object short name (made unique if necessary).</li>
+<li><span id="SWC-R0650" class="rqDef">[SWC-R0650]</span>: SWC Sync sets the “ASR SWC DataElement Ref” attribute <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R220' title="">[SWC-R220]</a> of the new data object from the instance ref of the SYS-EX data object.</li>
+<li><span id="SWC-R0660" class="rqDef">[SWC-R0660]</span>: The new data object references the CANdela data type created from the data type referenced by the synced data object <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20Data%20Types.htm#SWC-R1210' title="">[SWC-R1210]</a></li>
+<li><span id="SWC-R0670" class="rqDef">[SWC-R0670]</span>: SWC Sync updates data objects even if authorization does not allow the modification manually (e.g. in case of a locked variant).</li>
+<li><span id="SWC-R0680" class="rqDef">[SWC-R0680]</span>: SWC Sync does not modify...
+<ul>
+<li>existing data objects without sync ID <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R115' title="Requirements ID Storage">[RQ-R115]</a>,</li>
+<li>data objects with sync IDs for which no corresponding data object is extracted from the SYS-EX.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">Data Object</a></li>
+<li><a href="SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a></li>
+<li><a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a></li>
+</ul>
+</body>
+</html>

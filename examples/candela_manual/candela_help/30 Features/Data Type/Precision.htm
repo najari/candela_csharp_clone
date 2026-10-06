@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Precision</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="precision"><span id='_index_446727962'>Precision</span></h1>
+<h2 id="precision---decimal-places">Precision - <span id='_index_446727963'>Decimal Places</span></h2>
+<p><span id="DT-R600" class="rqDef">[DT-R600]</span> For display format &quot;Floating Point&quot;, the optional value &quot;Precision&quot; specifies the number of <strong>decimal places</strong> (digits after the decimal point) available for values.</p>
+<p><span id="DT-R610" class="rqDef">[DT-R610]</span> Reasonable values are...</p>
+<ul>
+<li><span id="DT-R610-float" class="rqDef">[DT-R610-float]</span> between 2 and 7 decimal places for float,</li>
+<li><span id="DT-R610-double" class="rqDef">[DT-R610-double]</span> between 2 and 15 decimal places for double.</li>
+</ul>
+<p>The decimal places are evaluated e.g. in ...</p>
+<ul>
+<li>the CANdelaStudio <strong>data type dialogs</strong> where values are input e.g. for linear formula limits</li>
+<li>CANdelaStudio <strong>ODX import</strong> and <strong>ODX export</strong></li>
+<li><strong>Vector tools</strong> providing diagnostic functionality, like CANoe</li>
+</ul>
+<h2 id="limitation">Limitation</h2>
+<p>The number of significant digits that can be represented in a value at all is limited by the encoding (float or double). For background, see the Wikipedia article about <a href="https://en.wikipedia.org/wiki/IEEE_floating_point">IEEE floating point</a>.</p>
+<h2 id="decimal-places-vs.-significant-digits">Decimal Places vs. <span id='_index_446727964'>Significant Digits</span></h2>
+<p><span id="DT-D600" class="rqDef">[DT-D600]</span> Before 8.5, the dialog showed the explanation &quot;significant digits&quot; (CDS-39461 8.5), but actually the value specified the decimal places:</p>
+<ul>
+<li><strong>significant digits</strong>: the number of digits <strong>before and after</strong> the decimal point</li>
+<li><strong>decimal places</strong>: the number of digits <strong>after</strong> the decimal point</li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>create a linear data type with length 4 bytes, encoding &quot;IEEE Float (single)&quot;</li>
+<li>leave factor and divisor 1, offset 0</li>
+<li>enter &quot;Lower limit (raw)&quot; &quot;12.3456&quot;</li>
+<li>set precision to 2</li>
+<li>if precision where handled as <em>significant digits</em>, the &quot;Lower limit (phys)&quot; value would be changed to &quot;12&quot;</li>
+<li>actually, precision is handled as <em>decimal places</em>, therefore the value is changed to &quot;12.35&quot;</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+</ul>
+</body>
+</html>

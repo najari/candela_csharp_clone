@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Automatically Sort Diagnostic Instances</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-automatically-sort-diagnostic-instances-cds-71276-v13">How to Automatically Sort Diagnostic Instances (CDS-71276 v13)</h1>
+<h2 id="background">Background</h2>
+<p>A <strong>Diagnostic Class</strong> contains <strong>Diagnostic Instances</strong>.</p>
+<p>You can <strong>freely arrange</strong> the Diagnostic Instances, independent of their Identifier.</p>
+<p>You may want to keep the Diagnostic Instances <strong>sorted by Identifier</strong>.</p>
+<p>CANdelaStudio...</p>
+<ul>
+<li>does <strong>not enforce</strong> this sort order</li>
+<li>but it helps by inserting new Diagnostic Instances sorted.</li>
+</ul>
+<h2 id="solution">Solution</h2>
+<ol style="list-style-type: decimal">
+<li>In the top tree node &quot;ECU Information&quot;, select context menu &quot;Sort by Identifier&quot;.</li>
+<li>When you create a new Diagnostic Instance <a class='rqRef' href='../../20 UserInterface\Diagnostic Instance\Diagnostic Instances.htm#DIUI-R100' title="">[DIUI-R100]</a> in the Diagnostic Class, CANdelaStudio automatically inserts it sorted by Identifier (CDS-71276 v13).
+<ul>
+<li>Note: you still can change the order of the Diagnostic Instances (this is still a feature).</li>
+</ul></li>
+<li>In case you lost the desired sorting at any time, repeat step 1 once.</li>
+</ol>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instances.htm">Diagnostic Instances</a> (List)</li>
+<li>Diagnostic Instance <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance.htm#DI-D100' title="">[DI-D100]</a> (Feature)</li>
+</ul>
+</body>
+</html>

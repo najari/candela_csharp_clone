@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>3_ODX Import Bit Positioning</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="odx-import---positioning-of-bit-objects-cds-40540-8.5-sp2"><span id='_index_446728049' title='Bit' data-term='Bit'>ODX Import - Positioning of Bit Objects</span> (CDS-40540 8.5 SP2)</h1>
+<p>ODX import places <strong>ODX parameters that have no byte or bit position</strong> at a new byte (since 8.5 SP2):</p>
+<blockquote>
+<p>Sometimes, the position of a parameter cannot be determined until runtime, so the BYTE- and the BIT-POSITION shall be omitted in the ODX instance. The parameter starts then at the byte edge next to the end of the last parameter.</p>
+</blockquote>
+<blockquote>
+<p>ODX 2.2.0 spec ISO 22901-1:2008, chapter 7.3.5.4.</p>
+</blockquote>
+<p>For details about ODX Import, see the documentation in the CANdelaStudio <a href="../../30%20Features/Installation/Documentation.htm">documentation folder</a>.</p>
+
+<h2 id="positioning-bit-sized-parameter">Positioning Bit-Sized Parameter</h2>
+<p>ODX import starts each parameter in a new byte (still within the bitfield):</p>
+<div class="figure">
+<img src="Images/ODX%20Import%20Bit-Sized%20Since%2085SP2%20Telegram%20Table.jpg" alt="ODX Import of Bit-Sized Parameter (Telegram Table)" />
+<p class="caption">ODX Import of Bit-Sized Parameter (Telegram Table)</p>
+</div>
+<div class="figure">
+<img src="Images/ODX%20Import%20Bit-Sized%20Since%2085SP2%20Graphical%20Telegram%20Table.jpg" alt="ODX Import of Bit-Sized Parameter (Graphical Telegram Table)" />
+<p class="caption">ODX Import of Bit-Sized Parameter (Graphical Telegram Table)</p>
+</div>
+<h2 id="positioning-byte-sized-parameter-starting-at-bit-position">Positioning Byte-Sized Parameter Starting at Bit Position</h2>
+<p>Behind a bit-sized parameter, ODX import puts byte-sized parameters outside the bitfield:</p>
+<div class="figure">
+<img src="Images/ODX%20Import%20Byte-Sized%20Since%2085SP2%20Telegram%20Table.jpg" alt="ODX Import of Byte-Sized Parameter (Telegram Table)" />
+<p class="caption">ODX Import of Byte-Sized Parameter (Telegram Table)</p>
+</div>
+<div class="figure">
+<img src="Images/ODX%20Import%20Byte-Sized%20Since%2085SP2%20Graphical%20Telegram%20Table.jpg" alt="ODX Import of Byte-Sized Parameter (Graphical Telegram Table)" />
+<p class="caption">ODX Import of Byte-Sized Parameter (Graphical Telegram Table)</p>
+</div>
+<h2 id="positioning-before-8.5-sp2">Positioning before 8.5 SP2</h2>
+<p>Before 8.5 SP2, ODX import optimized: it put a <strong>bit-sized parameter</strong> into the same byte if possible:</p>
+<div class="figure">
+<img src="Images/ODX%20Import%20Bit-Sized%20Pre%2085SP2%20Telegram%20Table.jpg" alt="ODX Import of Bit-Sized Parameter pre 8.5 SP2 (Telegram Table)" />
+<p class="caption">ODX Import of Bit-Sized Parameter pre 8.5 SP2 (Telegram Table)</p>
+</div>
+<div class="figure">
+<img src="Images/ODX%20Import%20Bit-Sized%20Pre%2085SP2%20Graphical%20Telegram%20Table.jpg" alt="ODX Import of Bit-Sized Parameter pre 8.5 SP2 (Graphical Telegram Table)" />
+<p class="caption">ODX Import of Bit-Sized Parameter pre 8.5 SP2 (Graphical Telegram Table)</p>
+</div>
+<p>Before 8.5 SP2, behind a bit-sized object, ODX import even put <strong>byte-sized parameters</strong> into the bitfield (starting a new byte):</p>
+<div class="figure">
+<img src="Images/ODX%20Import%20Byte-Sized%20Pre%2085SP2%20Telegram%20Table.jpg" alt="ODX Import of Byte-Sized Parameter pre 8.5 SP2 (Telegram Table)" />
+<p class="caption">ODX Import of Byte-Sized Parameter pre 8.5 SP2 (Telegram Table)</p>
+</div>
+<div class="figure">
+<img src="Images/ODX%20Import%20Byte-Sized%20Pre%2085SP2%20Graphical%20Telegram%20Table.jpg" alt="ODX Import of Byte-Sized Parameter pre 8.5 SP2 (Graphical Telegram Table)" />
+<p class="caption">ODX Import of Byte-Sized Parameter pre 8.5 SP2 (Graphical Telegram Table)</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="ODX%20Import%20Introduction.htm">ODX Import Introduction</a></li>
+<li>CANdelaStudio <a href="../../30%20Features/Installation/Documentation.htm">Documentation folder</a></li>
+<li>CANdela <a href="../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm">Bit and Byte Positions</a></li>
+</ul>
+</body>
+</html>

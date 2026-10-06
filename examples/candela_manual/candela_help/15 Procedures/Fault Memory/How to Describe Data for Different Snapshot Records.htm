@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Describe Data for Different Snapshot Records</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-describe-data-for-different-snapshot-records">How to Describe Data for Different Snapshot Records</h1>
+<h2 id="situation">Situation</h2>
+<p>Note: key features of the Fault Memory are defined in the CANdela template on which the document is based.</p>
+<p>Assumptions:</p>
+<ul>
+<li>the template describes Snapshot Data in a Fault Memory diagnostic instance within the variant, ...</li>
+<li><em>not</em> in the AUTOSAR Fault Memory from CANdelaStudio 13</li>
+<li>the 0x19 0x04 Protocol Service in the template defines that you can specify Snapshot Data...
+<ul>
+<li><strong>individually for each DTC</strong>, but</li>
+<li><strong>not individually for different Snapshot Records</strong>.</li>
+</ul></li>
+</ul>
+<h3 id="example">Example</h3>
+<p>The Protocol Service:</p>
+<div class="figure">
+<img src="Images/19%2004%20Service%20Abstract%20Iteration%201%20Object.jpg" alt="0x19 0x04 Protocol Service - &quot;rr&quot; Iteration with one Object" />
+<p class="caption">0x19 0x04 Protocol Service - &quot;rr&quot; Iteration with one Object</p>
+</div>
+<ul>
+<li>&quot;rr&quot; in the positive response represents the UDS...
+<ul>
+<li>Snapshot Record Number,</li>
+<li>Number of Identifiers and</li>
+<li>Snapshot Data</li>
+</ul></li>
+<li>the &quot;rr&quot; is a Multiplexer depending on the DTC</li>
+<li>therefore in this example you cannot describe Snapshot Data to vary per Snapshot Record Number.</li>
+<li>the &quot;rr&quot; is within an iteration, so this template allows for different Snapshot Record Numbers and their Snapshot Data.</li>
+</ul>
+<div class="figure">
+<img src="Images/19%2004%20Positive%20Response%20Iteration%201%20Object.jpg" alt="0x19 0x04 Protocol Service - Positive Response Structure" />
+<p class="caption">0x19 0x04 Protocol Service - Positive Response Structure</p>
+</div>
+<p>The Diagnostic Instance:</p>
+<div class="figure">
+<img src="Images/19%2004%20Telegram%20with%20DID.jpg" alt="19 04 Telegram with DID" />
+<p class="caption">19 04 Telegram with DID</p>
+</div>
+<p>The corresponding <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram table</a> contains</p>
+<ul>
+<li>a data object for the Snapshot Record Number,</li>
+<li>a data object for the Number of Identifiers and</li>
+<li>one or multiple references to a DID.</li>
+</ul>
+<p>The telegram table is either the default for all DTCs, or a specific one for one individual DTC:</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/19%2004%20Mux%20on%20DTC.jpg" alt="Selection of Default or DTC Specific Telegram Table" />
+<p class="caption">Selection of Default or DTC Specific Telegram Table</p>
+</div>
+<h2 id="solution-sketch">Solution Sketch</h2>
+<p>In order to describe different Snapshot Data per Snapshot Record Number, ...</p>
+<ul>
+<li>insert a new second data object, called e.g. &quot;Number of Identifiers and Data&quot;</li>
+<li>assign to it a new Multiplexer data type with the same name</li>
+<li>set the Multiplexer selector to be the data type of the first data object, e.g. &quot;Hex Dump (1 Byte)&quot;</li>
+<li>in the Multiplexer, for each Snapshot Record Number, define the Number of Identifiers and the Snapshot Data.</li>
+</ul>
+<h2 id="step-by-step">Step by Step</h2>
+<ul>
+<li>right click on the second data object behind &quot;DTCSnapshotRecordNumber&quot;, select &quot;New Data Object&quot;.
+<ul>
+<li>CANdelaStudio inserts a new data object.</li>
+</ul></li>
+<li>select its &quot;Name&quot; cell, click again to rename it to &quot;Number of Identifiers and Data&quot;</li>
+<li>right click on the new data object, &quot;Assign New Data Type&quot;, &quot;Multiplexer&quot;</li>
+<li>in the combo-box on top of the &quot;Multiplexer&quot; page, select &quot;Hex Dump (1 Byte)&quot; (i.e. the data type shown in the &quot;Data Type&quot; cell of the first data object)</li>
+<li>in the &quot;General&quot; page, change the name to &quot;Number of Identifiers and Data&quot;</li>
+<li>press &quot;OK&quot;</li>
+<li>in the dialog &quot;Selector Data Object for Multiplexer&quot;, confirm using the existing first data object:</li>
+</ul>
+<div class="figure">
+<img src="Images/Selector%20Data%20Object%20for%20Multiplexer.jpg" alt="Selector Data Object for Multiplexer" />
+<p class="caption">Selector Data Object for Multiplexer</p>
+</div>
+<ul>
+<li>in the telegram table, select the third and all following data objects, click right mouse, &quot;Cut&quot;</li>
+<li>on the second data object, click right mouse, &quot;Go to Data Type&quot;,
+<ul>
+<li>CANdelaStudio navigates to the data type list and selects the data type;</li>
+</ul></li>
+<li>press the [Properties...] button</li>
+<li>press the [New] button</li>
+<li>specify the first Snapshot Record Number</li>
+<li>leave &quot;Create separate data...&quot; selected</li>
+<li>press OK</li>
+<li>in the telegram table to the right, click right mouse, &quot;Paste&quot;</li>
+<li>repeat pressing the [New] button for all Snapshot Record Numbers required, and specify their Snapshot Data.</li>
+<li>finally press OK to complete the Multiplexer data type.
+<ul>
+<li>Note: in case you did not &quot;Cut&quot; the &quot;following data objects&quot; in the step above, CANdelaStudio may complain that a data type with variable length is not allowed at the end of the telegram. If you define different Snapshot Data within the Multiplexer, the data object that refers the Multiplexer data type must be the last one in the telegram.</li>
+</ul></li>
+<li>result:</li>
+</ul>
+<div class="figure">
+<img src="Images/19%2004%20Telegram%20with%20Mux.jpg" alt="19 04 Telegram with Multiplexer" />
+<p class="caption">19 04 Telegram with Multiplexer</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Introduction to <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a></li>
+</ul>
+</body>
+</html>

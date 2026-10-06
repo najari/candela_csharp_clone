@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>String Termination</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="string-termination---values-allowed-cds-13987-6.5"><span id='_index_446727961'>String termination</span> - Values Allowed (CDS-13987 6.5)</h1>
+<p>See the <a href="Data%20Type.htm">Data Type Feature</a>.</p>
+<h2 id="possible-values">Possible Values</h2>
+<p><span id="DTST-R100" class="rqDef">[DTST-R100]</span> For a field data type, string termination describes how the number of elements can be determined at runtime:</p>
+<ul>
+<li><span id="DTST-R100-nosize" class="rqDef">[DTST-R100-nosize]</span> <strong>no size information</strong>
+<ul>
+<li>column <code>a)</code> below</li>
+<li><span id="DTST-R100-nosizeNoZero" class="rqDef">[DTST-R100-nosizeNoZero]</span> A string value of this data type may contain any byte except 0x00. Tools processing such data may...
+<ul>
+<li>treat the 0x00 as an error, or</li>
+<li>just replace 0x00 by a blank.</li>
+</ul></li>
+</ul></li>
+<li><span id="DTST-R100-leading" class="rqDef">[DTST-R100-leading]</span> 1 .. 5 <strong>leading size bytes</strong>
+<ul>
+<li>A string value of this data type starts with the declared number (1..5) of size bytes.
+<ul>
+<li>This number is coded in Motorola (high-low) <strong>byte order</strong>.</li>
+</ul></li>
+<li>After this number follows the string. It contains the number of <strong>bytes</strong> defined by the size bytes
+<ul>
+<li>... not the number of <strong>characters</strong> (which may be different for Unicode strings).</li>
+</ul></li>
+<li>Examples:
+<ul>
+<li>1 leading size byte, byte 0: 0x05, bytes 1..5: &quot;abcde&quot;.</li>
+<li>2 leading size bytes, bytes 0..1: 0x0005, bytes 2..6: &quot;abcde&quot; (Motorola byte order: byte 0 = 0x00, byte 1 = 0x05)</li>
+</ul></li>
+<li><span id="DTST-R100-leadingNoZero" class="rqDef">[DTST-R100-leadingNoZero]</span> The string has the same restriction as <a class='rqRef' href='../../30%20Features/Data%20Type/String%20Termination.htm#DTST-R100-nosizeNoZero' title="">[DTST-R100-nosizeNoZero]</a> above.</li>
+</ul></li>
+<li><span id="DTST-R100-zero" class="rqDef">[DTST-R100-zero]</span> <strong>zero terminated (no padding)</strong>
+<ul>
+<li>column <code>b)</code> below</li>
+<li>A string value of this data type must be terminated by exactly one 0x00.</li>
+</ul></li>
+<li><span id="DTST-R100-zeroMaxEOS" class="rqDef">[DTST-R100-zeroMaxEOS]</span> <strong>zero terminated (no padding; ends at maximum length or end of service)</strong>
+<ul>
+<li>column <code>c)</code> below</li>
+<li>A string value of this data type must either be terminated by exactly one 0x00,</li>
+<li>or contain non-0x00 bytes up to the declared maximum length or to the end of the service (i.e. primitive), no zero termination.</li>
+</ul></li>
+<li><span id="DTST-R100-zeroPad" class="rqDef">[DTST-R100-zeroPad]</span> <strong>zero terminated (with padding)</strong>
+<ul>
+<li>column <code>d)</code> below</li>
+<li>A string value of this data type must be terminated by one or multiple 0x00.</li>
+</ul></li>
+<li><span id="DTST-R100-zeroPadMaxEOS" class="rqDef">[DTST-R100-zeroPadMaxEOS]</span> <strong>zero terminated (with padding; ends at maximum length or end of service)</strong>
+<ul>
+<li>column <code>e)</code> below</li>
+<li>A string value of this data type may either be terminated by one or multiple 0x00,</li>
+<li>or contain non-0x00 bytes up to the declared maximum length or to the end of the service (i.e. primitive), no zero termination.</li>
+</ul></li>
+</ul>
+<p>For the representation in the Graphical Telegram Table, see <a class='rqRef' href='../../20 UserInterface\Data Objects\Graphical Telegram Table.htm#DOUIG-R130' title="">[DOUIG-R130]</a>.</p>
+<h2 id="allowed-constellations">Allowed Constellations</h2>
+<ul>
+<li>Values that are allowed are marked with “X”
+<ul>
+<li>no other values are allowed</li>
+<li>the table cells contain the reason why not</li>
+</ul></li>
+<li>“Min elements” / “Max elements” are the values you enter in the datatype dialog.</li>
+<li><code>(*)</code> For zero padding, “min elements” must equal “max elements” (CDS-13987 R003 a).</li>
+<li><code>(**)</code> If no zero termination involved, allow <code>\0</code> within the data (why not?).</li>
+</ul>
+<p><img src="Images/DataTypeFieldTerminationValuesAllowed.jpg" /></p>
+<h2 id="minimum-size-at-variable-length">Minimum Size at Variable Length</h2>
+<ul>
+<li><p><span id="DTST-D110-MinSize" class="rqDef">[DTST-D110-MinSize]</span>:</p></li>
+<li>in the CANdela data model, the <strong>minimum size</strong> of a string data type specifies the number of <strong>data characters</strong> (excluding <code>\0</code>).</li>
+<li>ODX...
+<ul>
+<li>applies the minimum size to the data <strong>plus</strong> the zero termination, and</li>
+<li>allows <strong>padding</strong> with <code>\0</code>.</li>
+</ul></li>
+<li><p>Therefore, CANoe.DiVa <strong>does not report shorter strings</strong> as an error.</p></li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>CANdela Data Type &quot;Identification&quot;,
+<ul>
+<li>minimum 12 characters,</li>
+<li>maximum 17 characters</li>
+<li>zero-terminated</li>
+</ul></li>
+<li>Const value <code>&quot;123456789*1\0&quot;</code>
+<ul>
+<li>11 data characters,</li>
+<li>plus trailing zero termination:</li>
+<li>not valid in the CANdela data model</li>
+<li>valid in ODX</li>
+<li>not an error in CANoe.DiVa</li>
+</ul></li>
+</ul>
+<h2 id="multiple-zero-padded-segments">Multiple Zero Padded Segments</h2>
+<ul>
+<li><span id="DTST-D100-Segments" class="rqDef">[DTST-D100-Segments]</span>: you cannot describe <strong>one</strong> data type consisting of <strong>multiple zero padded</strong> segments.</li>
+<li>Example: &quot;ECU Name&quot; in ISO 15031-5:2006(E), table G.10
+<ul>
+<li>Defined field assignment:
+<ul>
+<li>Data bytes 1-4, “XXXX”, contains ECU acronym, and</li>
+<li>Data byte 5, “-“, ($2D) contains delimiter, and</li>
+<li>Data bytes 6-20, “YYYYYYYYYYYYYYY”, contains text name</li>
+</ul></li>
+<li>All bytes in each field are available for use, yet any unused bytes shall be filled with $00. The use of any filler bytes shall extend to the end of each field for ECU acronym and name.</li>
+</ul></li>
+<li>For such a constellation, define <strong>multiple data objects</strong> and let each one refer a data type with zero padding.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li>Encoding <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R100' title="">[DTENC-R100]</a></li>
+<li><a href="Length.htm">Length</a></li>
+<li><a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a></li>
+<li><a href="../../20%20UserInterface/Data%20Objects/Graphical%20Telegram%20Table.htm">Graphical Telegram Table</a></li>
+</ul>
+</body>
+</html>

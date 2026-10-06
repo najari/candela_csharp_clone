@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Introduction</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="introduction-to-candelastudio-plug-ins"><span id='_index_446728079' title='Plug-in' data-term='Plug-in'>Introduction</span> to CANdelaStudio Plug-ins</h1>
+<h2 id="what-is-a-plug-in">What is a Plug-in?</h2>
+<p>In CANdelaStudio, a plug-in is a software component that adds a specific feature to the product. Plug-ins enable customization. Common examples are plug-ins used to manipulate or check a CDD document for a customer specific process.</p>
+<p>Plug-ins are implemented in the form of a DLL module that needs to provide a specified interface (the CANdela Plug-in Interface). They have to be implemented in the context of a customer project by Vector employees (Exception: Repository plug-ins can be implemented by customer or 3rd party, see <a href="#repository">below</a>).</p>
+<p>The Module Information <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File - Product Information - Module Information.htm#MENU-R1260' title="">[MENU-R1260]</a> shows installed plug-ins.</p>
+<h2 id="different-kinds-of-plug-ins">Different Kinds of Plug-ins</h2>
+<p>CANdelaStudio supports three different kinds of plug-ins:</p>
+<ol style="list-style-type: decimal">
+<li>Old style CDLPLG plug-ins (deprecated)</li>
+<li>New style CANdela plug-ins</li>
+<li>Repository plug-ins</li>
+</ol>
+<h3 id="cdlplg">CDLPLG Plug-ins</h3>
+<p>This plugin type has been the common type for CANdelaStudio versions up to 8.2. Existing plug-ins can be maintained and used with CANdelaStudio 8.5 and higher.</p>
+<p>These plug-ins have the file name extension '*.cdlplg' and reside in the 'plugins' subdirectory of the CANdelaStudio installation.</p>
+<h3 id="candela-plug-ins">CANdela Plug-ins</h3>
+<p>CANdelaStudio 8.5 SP2 introduced a new plug-in interface (CDS-37835) with more comfort and safety. This kind of plug-in replaces the old style CDLPLG plug-ins.</p>
+<p>These plug-ins have the file name extension '*.dll' and reside in the 'plugins' subdirectory of the CANdelaStudio installation.</p>
+<h3 id="repository">Repository Plug-ins</h3>
+<p>CANdelaStudio 8.1 introduced a specific plug-in approach to support the <a href="../../30%20Features/Import/Repository%20Integration.htm">repository feature</a>.</p>
+<p>Repository plug-ins have the file name extension '*.dll' and reside in the 'plugins' subdirectory of the CANdelaStudio installation.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>CANdelaStudio <a href="../../30%20Features/Installation/Installation%20Folder.htm">installation folder</a></li>
+<li>Module Information <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File - Product Information - Module Information.htm#MENU-R1260' title="">[MENU-R1260]</a></li>
+<li><a href="Using%20Plug-ins.htm">Using Plug-ins</a></li>
+<li><a href="Plug-in%20Manage%20Multi%20Identity%20ECU.htm">Plug-in &quot;Manage Multi Identity ECU&quot;</a></li>
+</ul>
+
+</body>
+</html>

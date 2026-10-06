@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Requirements and Diagnostic Objects</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="requirements-and-diagnostic-objects">Requirements and Diagnostic Objects</h1>
+<p>In this chapter, everything said about <strong>requirements includes headings</strong>.</p>
+<h2 id="current-library-or-variant">Current Library or Variant</h2>
+<p>See Requirements Settings <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a>.</p>
+<h2 id="object-association">Object Association</h2>
+<p><span id="RQ-R100" class="rqDef" title="Associate Diagnostic Object with Requirement">[RQ-R100.7 Associate Diagnostic Object with Requirement]</span>:</p>
+<p><span id="RQ-R100-a" class="rqDef">[RQ-R100-a]</span> a <strong>diagnostic object</strong> can be associated with a <strong>requirement</strong>:</p>
+<ul>
+<li><span id="RQ-R100-DI" class="rqDef">[RQ-R100-DI]</span> diagnostic instance,</li>
+<li><span id="RQ-R100-DID" class="rqDef">[RQ-R100-DID]</span> DID (CDS-39520 8.5 SP2),</li>
+<li><span id="RQ-R100-DO" class="rqDef">[RQ-R100-DO]</span> data object,</li>
+<li><span id="RQ-R100-DTC" class="rqDef">[RQ-R100-DTC]</span> DTC,</li>
+<li><span id="RQ-R100-VSG" class="rqDef">[RQ-R100-VSG]</span> Vehicle system group (8.0 CDS-26227).</li>
+</ul>
+<p>The following diagnostic objects in particular <strong>cannot</strong> be associated with a requirement:</p>
+<ul>
+<li><span id="RQ-R100-Bitfield" class="rqDef">[RQ-R100-Bitfield]</span> bit-field,</li>
+<li><span id="RQ-R100-ReservedObject" class="rqDef">[RQ-R100-ReservedObject]</span> reserved object,</li>
+<li><span id="RQ-R100-Service" class="rqDef">[RQ-R100-Service]</span> service.</li>
+</ul>
+<p>There is no restriction of the types, any type of diagnostic object listed above can be associated with any type of requirement (but see <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R105' title="Compatible Types">[RQ-R105]</a>: the GUI for mapping shall allow mapping only “compatible” types).</p>
+<p><span id="RQ-R100-b" class="rqDef">[RQ-R100-b]</span> the association is <strong>n:1</strong>, i.e.</p>
+<ul>
+<li>one diagnostic object can be associated with at most one requirement (due to R110 below);</li>
+<li>one requirement can be associated with 0..n diagnostic objects (in a library or variant, cf. <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a>).</li>
+</ul>
+<p><span id="RQ-R100-c" class="rqDef">[RQ-R100-c]</span> The association does not imply automatic property updates; e.g. a change of the data object name does not automatically change the requirement name.</p>
+<p><span id="RQ-R100-e" class="rqDef">[RQ-R100-e]</span> if a diagnostic object is associated with a requirement, and the user deletes the requirement (e.g. by an import), the <strong>diagnostic object shall still contain the info that it was associated with the given requirements ID (“dangling reference”)</strong>. If the user imports or creates a requirement with the same ID, the data object shall be automatically associated with that requirement.</p>
+<p>Note: if e.g. a diagnostic instance is referenced in multiple variants, the requirements ID is present and shown identically in all of them. This is a feature of the CANdela data model.</p>
+<h2 id="property-association">Property Association</h2>
+<div class="figure">
+<img src="Images/Property%20Association.jpg" alt="Different Constellations of Property Association" />
+<p class="caption">Different Constellations of Property Association</p>
+</div>
+<p><span id="RQ-R100-Prop" class="rqDef" title="Association with Attribute">[RQ-R100-Prop Association with Attribute]</span> (CDC-36449 8.5 SP2) A user defined property...</p>
+<ul>
+<li>that exists for <strong>all requirement types</strong> (see <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040-ForType' title="">[RQ-R040-ForType]</a>)</li>
+<li>is <strong>associated with a CANdela attribute</strong> at an object</li>
+<li>if the <strong>name</strong> of the requirement property matches the <strong>qualifier or name</strong> (in this order) of the attribute,</li>
+<li>and the attribute has <strong>usage &quot;user&quot;</strong> <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R070' title="">[ATTR-R070]</a>.</li>
+<li>See the operations:
+<ul>
+<li>Requirement and Diagnostic Object Equality: <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180-UserDefinedAll' title="">[RQ-R180-UserDefinedAll]</a></li>
+<li>Creating diagnostic objects: <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-Attribute' title="">[RQ-R560-Attribute]</a></li>
+<li>Creating requirements: <a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R580-AttributeToUserDefined' title="">[RQ-R580-AttributeToUserDefined]</a></li>
+</ul></li>
+</ul>
+<p><span id="RQ-R100-DTCProp" class="rqDef" title="Association with DTC Column">[RQ-R100-DTCProp Association with DTC Column]</span> A user defined property...</p>
+<ul>
+<li>that exists <strong>“for requirements type” DTC</strong> only (see <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040-ForType' title="">[RQ-R040-ForType]</a>)</li>
+<li>is associated with the <strong>additional column</strong> of a CANdela DTC</li>
+<li>if the <strong>name</strong> of the requirement property matches the <strong>qualifier or name</strong> (in this order) of the additional DTC column of CANdela.</li>
+<li>See the operations:
+<ul>
+<li>Requirement and Diagnostic Object Equality: <a class='rqRef' href='../../30%20Features/Requirements/Equality.htm#RQ-R180-UserDefinedDTC' title="">[RQ-R180-UserDefinedDTC]</a></li>
+<li>Creating diagnostic objects: <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-DTCUserDefined' title="">[RQ-R560-DTCUserDefined]</a></li>
+<li>Creating requirements: <a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R580-DTC' title="">[RQ-R580-DTC]</a></li>
+</ul></li>
+<li>Note: a property “for requirements type” DTC is <strong>not</strong> associated with a CANdela <strong>attribute</strong>.</li>
+</ul>
+
+<p><strong>Example</strong>:</p>
+<p>Requirements property “Setzbedingung” will be associated with a DTC Column having...</p>
+<ul>
+<li>name “Setzbedingung” (matching)</li>
+<li>qualifier “SetCondition”;</li>
+</ul>
+<p>Requirements property “ResetCondition” will be associated with a DTC Column having...</p>
+<ul>
+<li>name “Rücksetzbedingung”,</li>
+<li>qualifier “ResetCondition” (matching).</li>
+</ul>
+<blockquote>
+<p>R100 g) (deleted) (before 8.0 CDS-26227, a Vehicle System Group was associated by name/qualifier).</p>
+</blockquote>
+<h2 id="compatible-types">Compatible Types</h2>
+<p><span id="RQ-R105" class="rqDef" title="Compatible Types">[RQ-R105.3 Compatible Types]</span> the following table shows which types of headings/requirements are “<strong>compatible</strong>” with which diagnostic objects.</p>
+<p>Note: the set of diagnostic objects available here is defined in <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100' title="Associate Diagnostic Object with Requirement">[RQ-R100]</a> above.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Requirement type</th>
+<th align="left">Diagnostic object</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Data DiagInst Requirement</td>
+<td align="left">Diagnostic instance, DID</td>
+</tr>
+<tr class="even">
+<td align="left">FaultMemory DiagInst Requirement</td>
+<td align="left">Diagnostic instance</td>
+</tr>
+<tr class="odd">
+<td align="left">Routine DiagInst Requirement</td>
+<td align="left">Diagnostic instance, DID</td>
+</tr>
+<tr class="even">
+<td align="left">IOControl DiagInst Requirement</td>
+<td align="left">Diagnostic instance, DID</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC Requirement</td>
+<td align="left">DTC</td>
+</tr>
+<tr class="even">
+<td align="left">Data Requirement</td>
+<td align="left">Data object</td>
+</tr>
+<tr class="odd">
+<td align="left">VehicleSystemGroup Requirement</td>
+<td align="left">Vehicle System Group</td>
+</tr>
+</tbody>
+</table>
+<p><span id="RQ-R107" class="rqDef" title="Assignable">[RQ-R107 Assignable]</span></p>
+<ul>
+<li>a heading or a text requirement and any diagnostic object are “<strong>assignable</strong>”.</li>
+<li>Any other type of requirement and a diagnostic object are “assignable” if they are <strong>compatible</strong> (see <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R105' title="Compatible Types">[RQ-R105]</a>).</li>
+</ul>
+<h2 id="import-pool">Import Pool</h2>
+<p><span id="RQ-R110" class="rqDef" title="Requirements and Import Pool">[RQ-R110.2 Requirements and Import Pool]</span></p>
+<p>The <strong>association</strong> of a data object with a requirement <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100' title="Associate Diagnostic Object with Requirement">[RQ-R100]</a> shall use the same requirements ID as the <strong>synchronization in import pool</strong> <a class='rqRef' href='../../30%20Features/Import%20Pool/Import%20Pool.htm#IP-R030' title="Synchronize">[IP-R030]</a>. In other words, ...</p>
+<ul>
+<li>for a data object associated with a requirement,</li>
+<li>if the import pool contains a data object with the ID of that requirement,</li>
+<li>then the sync feature of the import pool shall synchronize that data object.</li>
+</ul>
+<h2 id="requirements-id-storage">Requirements ID Storage</h2>
+<p><span id="RQ-R115" class="rqDef" title="Requirements ID Storage">[RQ-R115.0 Requirements ID Storage]</span></p>
+<ul>
+<li>the requirements ID is stored in a <a href="../../30%20Features/Attributes/Special%20Attributes.htm#RequirementsId">special string attribute typically called &quot;RequirementsId&quot;</a>.</li>
+<li>Note: the qualifier may vary, it is specified in the value of the ECU string attribute <a href="../../30%20Features/Attributes/Special%20Attributes.htm#SynchronizationAttribute">SynchronizationAttribute</a>.</li>
+<li>CANdelaStudio automatically creates these special attributes as soon as you generate a diagnostic object from a requirement, or link the diagnostic object with a requirement.</li>
+</ul>
+
+<p><strong>Note: Requirements in DiVa</strong></p>
+<ul>
+<li>Requirements links used in <strong>DiVa</strong> are stored at <strong>services</strong>.</li>
+<li>They have nothing in common with the requirements described here.</li>
+<li>There is no automatic migration, no check, no conflict between these kinds of requirements.</li>
+<li>The requirements links used in DiVa are stored in a <a href="../../30%20Features/Attributes/Special%20Attributes.htm#DOORS">string attribute</a>, also described in the Vector Application Note <code>AN-IDG-1-011</code> &quot;How to use DOORS with CANdelaStudio&quot; (CDS-3940).</li>
+</ul>
+<p><strong>R120.0</strong>: (specific for attribute based implementation of <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100-e' title="">[RQ-R100-e]</a> if the attribute required to store the association of <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100' title="Associate Diagnostic Object with Requirement">[RQ-R100]</a>) does not exist when needed, the attribute shall be created at the respective diagnostic objects (see chapter 2.1 of AN-IDG-1-014, use name/qualifier “RequirementsID”, at data object only).</p>
+<p><strong>R150.1</strong>: a) for an association of <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100' title="Associate Diagnostic Object with Requirement">[RQ-R100]</a>, when the user modifies any property (except the association property) of the diagnostic object or of the requirement (except the ID), the association is not affected.</p>
+<p>b) If the user manually changes the ID of a requirement, CANdelaStudio prompts whether it should automatically update all string references of this ID at diagnostic objects.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Procedure: <a href="../../15%20Procedures/Requirements/How%20to%20Export%20all%20DTC%20Attribute%20Columns%20via%20Requirements.htm">How to Export all DTC Attribute Columns via Requirements</a></li>
+<li>Requirements <a href="Requirements.htm">Feature</a></li>
+<li>Requirements <a href="Equality.htm">Equality</a></li>
+<li>Requirements <a href="Link%20Status.htm">Link Status</a></li>
+<li><a href="Update%20Diagnostic%20Objects.htm">Update Diagnostic Objects</a></li>
+<li><a href="Update%20Requirements.htm">Update Requirements</a></li>
+<li>Requirements <a href="../../30%20Features/Export/Requirements%20Export.htm">Export</a></li>
+<li>Requirements <a href="../../30%20Features/Import/Requirements%20Import.htm">Import</a></li>
+<li>Requirements <a href="../../20%20UserInterface/Requirements/Requirements.htm">User Interface</a></li>
+<li><a href="CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm">CANdelaStudio CSV Requirements Exchange Format</a></li>
+</ul>
+</body>
+</html>

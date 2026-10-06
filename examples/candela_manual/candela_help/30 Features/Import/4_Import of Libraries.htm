@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>4_Import of Libraries</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="odx-import-of-libraries">ODX Import of Libraries</h1>
+<p>Since 8.5 SP2 (CDS-37946), CANdelaStudio supports <a href="../../30%20Features/Library/Library.htm">libraries</a>.</p>
+<div class="figure">
+<img src="Images/ODX%20Import%20of%20Libraries.jpg" alt="ODX Import Scopes with &quot;Library&quot;" />
+<p class="caption">ODX Import Scopes with &quot;Library&quot;</p>
+</div>
+<p><span id="ODXI-R500" class="rqDef">[ODXI-R500]</span> ODX Import supports libraries in the existing import scopes (the scopes are linked with the respective chapters below)...</p>
+<ul>
+<li><a href="#complete">Complete ODX ECU description</a></li>
+<li><a href="#variants">Variants with selection of services/jobs</a></li>
+<li><a href="#parts">Selected parts only</a></li>
+</ul>
+<p>... but also supports a special import scope...</p>
+<ul>
+<li><a href="#library">Library</a></li>
+</ul>
+<h2 id="general-rules">General Rules</h2>
+<p>The following general rules apply to all import scopes described below.</p>
+<ul>
+<li><span id="ODXI-R500-Origin" class="rqDef">[ODXI-R500-Origin]</span> CANdela Library information originates from ECU-SHARED-DATA in ODX.</li>
+<li>ECU-SHARED-DATA information will be stored in...
+<ul>
+<li>... <span id="ODXI-R500-ESD" class="rqDef">[ODXI-R500-ESD]</span> <a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ECU-SHARED-DATA on document level</a> (as before 8.5 SP2, for details see below)</li>
+<li>... <span id="ODXI-R500-Lib" class="rqDef">[ODXI-R500-Lib]</span> a CANdela Library (since 8.5 SP2)</li>
+</ul></li>
+<li><span id="ODXI-R560" class="rqDef" title="Conflict">[ODXI-R560 Conflict]</span> If the qualifier of an existing library is identical to the SHORT-NAME of an imported ECU-SHARED-DATA, import <strong>deletes</strong> all existing DIDs and diagnostic instances <strong>in the library</strong> and <strong>replaces them</strong> by imported ones.
+<ul>
+<li>This avoids naming conflicts between existing and imported data.</li>
+<li>Assumption: it is not a use-case to add data to an existing library via ODX import.</li>
+<li>Note: this is opposed to DIDs and diagnostic instances <strong>in a variant</strong>, which import only <strong>deactivates</strong>.</li>
+</ul></li>
+</ul>
+<h3 id="library-creation">Library Creation</h3>
+<p><span id="ODXI-R510" class="rqDef" title="Library Creation">[ODXI-R510 Library Creation]</span> Import creates a CANdela Library only if...</p>
+<ul>
+<li><p>... <span id="ODXI-R510-DS" class="rqDef">[ODXI-R510-DS]</span> the ECU-SHARED-DATA defines <strong>at least one DIAG-SERVICE</strong>,</p>
+<p>and <span id="ODXI-R510-DCL" class="rqDef">[ODXI-R510-DCL]</span> a CANdela <strong>diagnostic class</strong> can be identified for the DIAG-SERVICE.</p></li>
+<li><p>or <span id="ODXI-R510-TABLE" class="rqDef">[ODXI-R510-TABLE]</span> the ECU-SHARED-DATA contains <strong>at least one TABLE</strong>,</p>
+<p>and <span id="ODXI-R510-TABLEREF" class="rqDef">[ODXI-R510-TABLEREF]</span> the TABLE or one of its TABLE-ROWs is <strong>referenced</strong> statically or dynamically by at least one DIAG-SERVICE (inside or outside the ECU-SHARED-DATA),</p>
+<p>and <span id="ODXI-R510-DCLTABLE" class="rqDef">[ODXI-R510-DCLTABLE]</span> a CANdela <strong>diagnostic class</strong> can be identified for the DIAG-SERVICE or TABLE (see next chapter).</p></li>
+</ul>
+<p>Therefore an ECU-SHARED-DATA containing only DOPs or UNITs will not be imported as a library.</p>
+<p><span id="ODXI-R512" class="rqDef">[ODXI-R512]</span> A Library created or updated by the import will be locked <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R020' title="Property „locked“">[LIB-R020]</a> using the operation <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R120' title="Lock/Unlock">[LIB-R120]</a> (e.g. referenced data types will be write-protected).</p>
+<p>Motivation: preserve the state of the ODX data in the document, i.e. ECU-SHARED-DATA corresponds with a locked Library.</p>
+<p><span id="ODXI-R514" class="rqDef">[ODXI-R514]</span> Import stores the originating ECU-SHARED-DATA as an Embedded External File at the library <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R026' title="Embedded External File">[LIB-R026]</a>.</p>
+<h3 id="identify-diagnostic-class">Identify Diagnostic Class</h3>
+<p><span id="ODXI-R520" class="rqDef" title="Identify Diagnostic Class">[ODXI-R520 Identify Diagnostic Class]</span> In order to <strong>identify a CANdela Diagnostic Class</strong>, import does...</p>
+<ul>
+<li><span id="ODXI-R520-CONN" class="rqDef">[ODXI-R520-CONN]</span> not evaluate a <code>TABLE-DIAG-COMM-CONNECTOR</code> defined at the TABLE. Reason: the constellation is not used in practice.</li>
+<li><span id="ODXI-R520-ESD" class="rqDef">[ODXI-R520-ESD]</span> even evaluate DIAG-SERVICE or TABLE information from an ECU-SHARED-DATA which itself is not imported but in ODX is referenced with the imported ECU-SHARED-DATA.</li>
+</ul>
+<h3 id="odx-short-name-reference">ODX SHORT-NAME Reference</h3>
+<p><span id="ODXI-R530" class="rqDef" title="SHORT-NAME References">[ODXI-R530 SHORT-NAME References]</span> Import will only <strong>create a diagnostic instance</strong> in the imported <strong>library</strong> if the ODX DIAG-SERVICE or TABLE does not contain a SHORT-NAME reference (<strong>SN-REF</strong>).</p>
+<p>Background:</p>
+<p>if an ODX object in an ECU-SHARED-DATA contains an SN-REF, the SN-REF will be resolved locally in any variant that references the ODX object. This is ODX functionality. E.g. if...</p>
+<ul>
+<li>a DIAG-SERVICE contains a parameter which references a DOP via an SN-REF,</li>
+<li>and two variants contain two different DOPs with that SHORT-NAME,</li>
+<li>then within the two variants, the parameters in the DIAG-SERVICE <strong>effectively</strong> reference different DOPs.</li>
+</ul>
+<p>The CANdela data model does not provide an SN-REF mechanism but <strong>explicit references</strong> only.</p>
+<h2 id="sample-odx-model">Sample ODX Model</h2>
+<p>The following data constellation is used as an example:</p>
+<div class="figure">
+<img src="Images/Library%20Sample%20ODX%20Model.jpg" alt="Sample ODX Model" />
+<p class="caption">Sample ODX Model</p>
+</div>
+<ul>
+<li>The boxes represent DIAG-SERVICE or TABLE objects</li>
+<li>gray lines represent layer inheritance</li>
+<li>blue lines represent import references of DIAG-LAYERs</li>
+<li>dashed lines represent ODX-LINKs</li>
+</ul>
+<h3 id="complete">Import Scope: Complete ODX ECU Description</h3>
+<p>Context: you import a complete ODX BASE-VARIANT (corresponding with the CANdela ECU).</p>
+<ul>
+<li>Import creates a Library for each ECU-SHARED-DATA <a class='rqRef' href='../../30%20Features/Import/4_Import%20of%20Libraries.htm#ODXI-R500-Origin' title="">[ODXI-R500-Origin]</a> that is referenced directly or indirectly in the BASE-VARIANT</li>
+<li>Exception: <span id="ODXI-540" class="rqDef">[ODXI-540]</span> for an ECU-SHARED-DATA that contains only DOPs or UNITs <a class='rqRef' href='../../30%20Features/Import/4_Import%20of%20Libraries.htm#ODXI-R510' title="Library Creation">[ODXI-R510]</a>, Import does not create a Library but imports the ECU-SHARED-DATA into the ECU-SHARED-DATA list on document level <a class='rqRef' href='../../30%20Features/Import/4_Import%20of%20Libraries.htm#ODXI-R500-ESD' title="">[ODXI-R500-ESD]</a> (as before CANdelaStudio supported libraries).</li>
+<li><span id="ODXI-R550" class="rqDef" title="References">[ODXI-R550 References]</span> Import references Diagnostic instances between the Base variant, extended variants and Libraries.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Import libraries and variants with appropriate references:</p>
+<div class="figure">
+<img src="Images/Library%20Complete%20ODX%20ECU%20Description%20Import.jpg" alt="Library Complete ODX ECU Description Import" />
+<p class="caption">Library Complete ODX ECU Description Import</p>
+</div>
+<ul>
+<li>left part: ODX data</li>
+<li>right part: resulting CANdela data after import</li>
+<li>dotted lines in CANdela data: references between diagnostic instances</li>
+</ul>
+<h3 id="variants">Import Scope: Variants with Selection of Services/Jobs</h3>
+<p>Context: you import selected CANdela variants, based on variants of one ODX BASE-VARIANT.</p>
+<p>The import handles libraries as for import scope <a href="#complete">Complete ODX ECU description</a> above.</p>
+<p><strong>Examples</strong>:</p>
+<p>Import creates the selected variant and libraries for all directly or indirectly referenced objects - variant &quot;V1&quot;:</p>
+<div class="figure">
+<img src="Images/Library%20Variant%20Import%201.jpg" alt="Variant Import &quot;V1&quot;" />
+<p class="caption">Variant Import &quot;V1&quot;</p>
+</div>
+<p>Dito for variant &quot;V2&quot; with libraries &quot;E2&quot; and &quot;E3&quot;:</p>
+<div class="figure">
+<img src="Images/Library%20Variant%20Import%202.jpg" alt="Variant Import &quot;V2&quot;" />
+<p class="caption">Variant Import &quot;V2&quot;</p>
+</div>
+<p>Dito for both variants with all libraries:</p>
+<div class="figure">
+<img src="Images/Library%20Variant%20Import%203.jpg" alt="Library Import &quot;V1&quot; and &quot;V2&quot;" />
+<p class="caption">Library Import &quot;V1&quot; and &quot;V2&quot;</p>
+</div>
+<h3 id="parts">Import Scope: Selected Parts only</h3>
+<p>Context: you import selected parts from the ODX file.</p>
+<p>Import creates...</p>
+<ul>
+<li>from DTC-DOP/DTCs: DTCs in the selected variants (as usual; <span id="ODXI-R570" class="rqDef">[ODXI-R570]</span> libraries are not available as import target)</li>
+<li>from DOP-BASEs: data types in the data type list (as usual)</li>
+<li>from PARAMs: data objects in the import pool (as usual)</li>
+<li><span id="ODXI-R580" class="rqDef">[ODXI-R580]</span> <strong>no libraries</strong></li>
+</ul>
+<h3 id="library">Import Scope: Library</h3>
+<p>Context: you import one ECU-SHARED-DATA into a library.</p>
+<ul>
+<li>Import creates a library <a class='rqRef' href='../../30%20Features/Import/4_Import%20of%20Libraries.htm#ODXI-R500-Lib' title="">[ODXI-R500-Lib]</a> from the selected ECU-SHARED-DATA</li>
+<li>Import handles other (referenced) ECU-SHARED-DATA and conflicts with libraries already existing in CANdela as for <a href="#complete">Complete ODX ECU description</a> above.</li>
+<li><span id="ODXI-R590" class="rqDef" title="Mapping Dialog">[ODXI-R590 Mapping Dialog]</span> a dialog lets you map
+<ul>
+<li>DIAG-SERVICEs that do not use a TABLE</li>
+<li>and TABLEs <!-- force list continuation --> to a CANdela diagnostic class (which must have an appropriate Combined Component in the <a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">diagnostic class template</a>). Cf. <a class='rqRef' href='../../30%20Features/Import/4_Import%20of%20Libraries.htm#ODXI-R520' title="Identify Diagnostic Class">[ODXI-R520]</a>.</li>
+</ul></li>
+<li>Import references diagnostic instances between variants and the involved libraries if they have the same qualifier and contain identical data, like for <a href="#complete">Complete ODX ECU description</a> [ODXI-R550 References].</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<p>Import of ECU-SHARED-DATA not-inherited: results in...</p>
+<ul>
+<li>separate library,</li>
+<li>no data referenced.</li>
+</ul>
+<div class="figure">
+<img src="Images/Library%20Import%201.jpg" alt="Library Import not inherited" />
+<p class="caption">Library Import not inherited</p>
+</div>
+<p>Import of ECU-SHARED-DATA with data referenced in a not imported ODX variant: results in...</p>
+<ul>
+<li>separate library,</li>
+<li>variant not imported,</li>
+<li>no data referenced.</li>
+</ul>
+<div class="figure">
+<img src="Images/Library%20Import%202.jpg" alt="Library Import not referenced" />
+<p class="caption">Library Import not referenced</p>
+</div>
+<p>Import of ECU-SHARED-DATA with data referenced in another (not imported) ODX ECU-SHARED-DATA: results in...</p>
+<ul>
+<li>separate library,</li>
+<li>other ECU-SHARED-DATA not imported,</li>
+<li>no data referenced.</li>
+</ul>
+<div class="figure">
+<img src="Images/Library%20Import%203.jpg" alt="Library Import - other ECU-SHARED-DATA not Imported" />
+<p class="caption">Library Import - other ECU-SHARED-DATA not Imported</p>
+</div>
+<p>Import of ECU-SHARED-DATA with data referenced in another (also imported) ODX ECU-SHARED-DATA: results in...</p>
+<ul>
+<li>each ECU-SHARED-DATA imported as a library</li>
+<li>data referenced between the libraries.</li>
+</ul>
+<div class="figure">
+<img src="Images/Library%20Import%204.jpg" alt="Library Import - other ECU-SHARED-DATA Imported" />
+<p class="caption">Library Import - other ECU-SHARED-DATA Imported</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="ODX%20Import%20Introduction.htm">ODX Import Introduction</a></li>
+<li><a href="../../30%20Features/Library/Library.htm">Library Feature</a></li>
+<li><a href="../../30%20Features/ODX/ODX.htm">Introduction to ODX</a></li>
+<li><a href="../../20%20UserInterface/Import/ODX%20Import.htm">ODX Import User Interface</a></li>
+<li><a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA</a></li>
+</ul>
+</body>
+</html>

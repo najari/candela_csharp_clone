@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Document Upgrade</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="document-upgrade">Document Upgrade</h1>
+<p><span id="DOCUP-R001" class="rqDef">[DOCUP-R001]</span> Operation to transfer document data onto another template, started via ribbon tab Document | Template | Document Upgrade <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Document.htm#MENU-R560' title="">[MENU-R560]</a>.</p>
+<p>Besides this, there is the <strong>New Document Upgrade</strong> <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R600' title="">[DOCUP-R600]</a> (v11).</p>
+<h2 id="availability-cds-16383-6.5-sp2">Availability (CDS-16383 6.5 SP2)</h2>
+<p><span id="DOCUP-R005" class="rqDef">[DOCUP-R005]</span> If...</p>
+<ul>
+<li>an <a href="../../30%20Features/Attributes/Special%20Attributes.htm#ProhibitDocUpgrade">ECU attribute with qualifier &quot;ProhibitDocUpgrade&quot;</a> exists and</li>
+<li>has a non-zero value, and</li>
+<li>the user selects &quot;DocUpgrade&quot; or &quot;DocUpgrade (Template only)&quot;,</li>
+</ul>
+<p>... then CANdelaStudio...</p>
+<ul>
+<li>refuses the operation,</li>
+<li>shows a message like &quot;DocUpgrade is not allowed for this document&quot; and</li>
+<li>additionally writes a log message.</li>
+</ul>
+<h2 id="handling-of-base-variant">Handling of Base Variant</h2>
+<p><span id="DOCUP-R010-EvenBaseVariant" class="rqDef">[DOCUP-R010-EvenBaseVariant]</span> Menu item &quot;Document Upgrade&quot; takes even the contents of the <strong>base variant from the template</strong>.</p>
+<p><span id="DOCUP-R010-TemplateOnly" class="rqDef">[DOCUP-R010-TemplateOnly]</span> Menu item &quot;Document Upgrade (Template Only)&quot; <strong>preserves the base variant of the document</strong>, ignores that of the template.</p>
+<h2 id="locked-library">Locked Library</h2>
+<p><span id="DOCUP-R040" class="rqDef">[DOCUP-R040]</span> If a library in a document is locked <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R020' title="Property „locked“">[LIB-R020]</a>, document upgrade shall not modify its contents.</p>
+<h2 id="libraries">Libraries</h2>
+<p><span id="DOCUP-R050" class="rqDef">[DOCUP-R050]</span> If the library property &quot;created in template&quot; <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R022' title="Created in Template">[LIB-R022]</a> is true, CANdelaStudio shall take the library from the template, otherwise the one from the document.</p>
+<h2 id="dids">DIDs</h2>
+<p><span id="DOCUP-R070" class="rqDef" title="DID References in Document Upgrade">[DOCUP-R070 DID References in Document Upgrade]</span></p>
+<p>For a DID referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a> in the source document between diagnostic layers (variants and/or libraries), ...</p>
+<ul>
+<li>&quot;Document Upgrade&quot; and &quot;Document Upgrade (Template Only)&quot;:
+<ul>
+<li>... shall preserve the reference in all diagnostic layers in the upgraded document which have an equivalent in the source,</li>
+<li>... for DIDs reference with a library: If the library alreadys contains a DID with the same qualifier or Identifier, Document Upgrade shall break the reference and leave the original DID of the template.</li>
+</ul></li>
+</ul>
+<p><span id="DOCUP-R072" class="rqDef" title="DID Authorization in Document Upgrade">[DOCUP-R072 DID Authorization in Document Upgrade]</span></p>
+<ul>
+<li>&quot;Document Upgrade&quot; and &quot;Document Upgrade (Template Only)&quot;:
+<ul>
+<li>... shall handle DID authorization the same way container authorization properties are handled in <a class='rqRef' href='../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm#DOCUP-R300' title="">[DOCUP-R300]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="authorization-properties-of-containers-diagnostic-instances-and-job-containers">Authorization Properties of Containers (Diagnostic Instances and Job Containers)</h2>
+<p><span id="DOCUP-R300" class="rqDef">[DOCUP-R300]</span> In the upgraded document, for authorization properties of containers (as for example defined in <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R020' title="Property „required“">[DIA-R020]</a> -- <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R050' title="Secondary properties modifiable">[DIA-R050]</a> for diagnostic instances) ...:</p>
+<ul>
+<li><strong>Document Upgrade</strong> <a class='rqRef' href='../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm#DOCUP-R010-EvenBaseVariant' title="">[DOCUP-R010-EvenBaseVariant]</a>:
+<ul>
+<li>... takes over the values of the container in template,</li>
+<li>... sets the values back to default, if a container is not existing (missing) in the template.</li>
+</ul></li>
+<li><strong>Document Upgrade (Template Only)</strong> <a class='rqRef' href='../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm#DOCUP-R010-TemplateOnly' title="">[DOCUP-R010-TemplateOnly]</a>:
+<ul>
+<li>... keeps the values of the container in the document which is upgraded,</li>
+<li>... even if the corresponding container is missing in template (in contrast to DocUpgrade).</li>
+</ul></li>
+</ul>
+<p>The rules are visualized in the following figure:</p>
+<div class="figure">
+<img src="Images/DocUpgrade_ContainerAuthorization.png" alt="Container authorization properties in Document Upgrade" />
+<p class="caption">Container authorization properties in Document Upgrade</p>
+</div>
+<h2 id="activation">Activation</h2>
+<p><span id="DOCUP-R400" class="rqDef">[DOCUP-R400]</span> A diagnostic instance which is deactivated in cdd and in cddt shall still be deactivated after DocUpgrade.</p>
+<h2 id="requirements">Requirements</h2>
+<p><span id="DOCUP-R310" class="rqDef">[DOCUP-R310]</span> in document upgrade &quot;template only&quot; <a class='rqRef' href='../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm#DOCUP-R010-TemplateOnly' title="">[DOCUP-R010-TemplateOnly]</a>...</p>
+<ul>
+<li>the requirements pool of the original document shall be identically in the resulting document,</li>
+<li>the requirements pool of the template shall be dropped.</li>
+</ul>
+<p>See <a href="../../30%20Features/Requirements/Data%20Model.htm">Requirements Data Model</a> R085.</p>
+<h2 id="attributes">Attributes</h2>
+<p><span id="DOCUP-R500" class="rqDef">[DOCUP-R500]</span> in document upgrade, if...</p>
+<ul>
+<li>the document contains an overriding value (ID + symbol) for an enumeration attribute <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a>,</li>
+<li>and that numeric ID has been deleted in the target template,</li>
+<li>then CANdelaStudio shall drop the overriding attribute (CDC-41487 8.5 SP3).</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Compare/Assign%20Combined%20Components.htm">Assign Combined Components (Dialog)</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li>Ribbon Tab Document | Template | Document Upgrade <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Document.htm#MENU-R560' title="">[MENU-R560]</a></li>
+<li><a href="../../30%20Features/Attributes/Special%20Attributes.htm">Special Attributes</a></li>
+</ul>
+</body>
+</html>

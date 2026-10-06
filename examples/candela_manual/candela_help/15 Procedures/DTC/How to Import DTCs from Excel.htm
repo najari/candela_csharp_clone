@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Import DTCs from Excel</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-import-dtcs-from-excel">How to Import DTCs from Excel</h1>
+<p>Note:</p>
+<ul>
+<li>This feature needs Microsoft Excel installed on your computer.</li>
+<li>For details on the Excel/CSV format, see <a href="../../30%20Features/DTC/DTC%20Import.htm">DTC Import (Feature)</a>.</li>
+</ul>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Available%20DTCs.jpg" alt="Available DTCs" />
+<p class="caption">Available DTCs</p>
+</div>
+<ul>
+<li>navigate to the <strong>DTC list</strong> into which you want to import DTCs
+<ul>
+<li>e.g. in tree: &quot;Fault Memory&quot; - &quot;Diagnostic Trouble Codes&quot; - &quot;Available DTCs Fault Memory (24 Bit)&quot;</li>
+</ul></li>
+<li>at bottom right, press button &quot;DTC Import...&quot;</li>
+</ul>
+<div class="figure">
+<img src="Images/File%20Selection.jpg" alt="File Selection" />
+<p class="caption">File Selection</p>
+</div>
+<ul>
+<li>press &quot;...&quot; right to the edit field &quot;Import DTCs from file...&quot;</li>
+<li>select the file to import DTCs from
+<ul>
+<li>see <a href="../../30%20Features/DTC/DTC%20Import.htm">DTC Import</a> for a description of the expected table structure</li>
+</ul></li>
+<li>in the combobox &quot;Worksheet in Excel file&quot;, select the worksheet</li>
+<li>press button &quot;Next&quot;</li>
+</ul>
+<div class="figure">
+<img src="Images/Import%20Target.jpg" alt="Import Target" />
+<p class="caption">Import Target</p>
+</div>
+<ul>
+<li>in the &quot;<strong>Import Target</strong>&quot; dialog,
+<ul>
+<li>you can assign multiple DTC lists as target of the import.</li>
+<li>For assigned DTC lists, the import source (e.g. &quot;DTC table&quot;) is shown in brackets like &quot;Normal [DTC table]&quot;.</li>
+<li>since you opened the dialog in the &quot;Available DTCs&quot; list, the dialog already assigned it by default</li>
+</ul></li>
+<li>press button &quot;Next&quot;</li>
+</ul>
+<div class="figure">
+<img src="Images/Linking%20of%20Columns.jpg" alt="Linking of Columns" />
+<p class="caption">Linking of Columns</p>
+</div>
+<ul>
+<li>in the &quot;<strong>Linking of Columns</strong>&quot; dialog,
+<ul>
+<li>CANdelaStudio shows the DTC property columns from the import file vs. the target CANdela document.</li>
+<li>To change the default settings, click a cell in the second column &quot;In import target (qualifier)&quot;, then click again, or press F2.</li>
+<li>You can assign a CANdela DTC property not yet assigned so far, or decide to <code>Ignore</code> that import column.</li>
+</ul></li>
+<li>optionally, button &quot;<strong>Preview...</strong>&quot; shows the result in the CANdela document.</li>
+<li>press button &quot;Next&quot;</li>
+</ul>
+<div class="figure">
+<img src="Images/DTC%20Filter.jpg" alt="DTC Filter" />
+<p class="caption">DTC Filter</p>
+</div>
+<ul>
+<li>in the &quot;<strong>DTC filter</strong>&quot; dialog, ...
+<ul>
+<li>the dialog shows which DTCs can be imported without conflict or missing data.</li>
+<li>You can check/uncheck individual DTCs.</li>
+<li>The dialog shows DTCs that cannot be imported in red color, with an explanation available in the tooltip (hover the mouse over the table row of the DTC).</li>
+</ul></li>
+<li>press button &quot;Next&quot;.
+<ul>
+<li>If you specified multiple import targets in the &quot;Import Target&quot; dialog above, the &quot;Linking of Columns&quot; and &quot;DTC filter&quot; will be shown again for these targets.</li>
+</ul></li>
+</ul>
+<div class="figure">
+<img src="Images/Summary.jpg" alt="Summary" />
+<p class="caption">Summary</p>
+</div>
+<ul>
+<li>Finally, CANdelaStudio shows a summary of data to be imported.</li>
+<li>press button &quot;Finish&quot;</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../15%20Procedures/Excel/How%20to%20Convert%20Number%20Formats%20in%20Excel.htm">How to Convert Number Formats in Excel</a></li>
+<li><a href="../../30%20Features/DTC/DTC%20Import.htm">DTC Import (Feature)</a></li>
+<li><a href="../../30%20Features/Installation/Example%20Files.htm">Example Files</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Use%20of%20Excel.htm">Use of Excel</a></li>
+</ul>
+</body>
+</html>

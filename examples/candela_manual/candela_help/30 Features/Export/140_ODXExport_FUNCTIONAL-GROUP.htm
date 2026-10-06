@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>140_ODXExport_FUNCTIONAL-GROUP</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="functional-group">FUNCTIONAL-GROUP</h1>
+<p>In order to pack common content into a central layer, several services and their used datatypes are not exported at the BASE-VARIANT anymore but into a separate file, containing several PROTOCOL-LAYERs and one FUNCTIONAL-GROUP. This separate file shall contain all relevant parts necessary for functional communication. I.e. one could basically take this File and perform communication without having the concrete DiagnosticData for the individual ECUs.</p>
+<p>This FUNCTIONAL-GROUP holds the list of DIAG-COMMs and the DOPs required for the execution of the DIAG-COMMs. The selection which attributes are exported to the FUNCTIONAL-GROUP is done via the CANDela-Service-Attribute 'DIAG-LAYER'.</p>
+<p>In addition all FUNCT-CLASSs are exported at the FUNCTIONAL-GROUP.</p>
+<div class="figure">
+<img src="Images/image49.png" alt="Export of services into FUNCTIONAL-GROUP" />
+<p class="caption">Export of services into FUNCTIONAL-GROUP</p>
+</div>
+<div class="figure">
+<img src="Images/image50.png" alt="DIAG-LAYER attribute for services" />
+<p class="caption">DIAG-LAYER attribute for services</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+</ul>
+</body>
+</html>

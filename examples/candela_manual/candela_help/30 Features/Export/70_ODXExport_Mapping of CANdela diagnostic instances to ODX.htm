@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>70_ODXExport_Mapping of CANdela diagnostic instances to ODX</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="mapping-of-candela-diagnostic-instances-to-odx">Mapping of CANdela diagnostic instances to ODX</h1>
+<p>Usually, for each activated service within a diagnostic instance a DIAG-SERVICE is exported to ODX. Starting with CANdelaStudio 5.0 it is possible to export only one DIAG-SERVCIE per service in a diagnostic class. The telegram table of each diagnostic instance is then represented by a TABLE-ROW. The user can configure whether to export DiagnosticClasses using TABLEs by the CANdela DiagnosticClass-Attribute 'ExportAsTable'.</p>
+<p>In CANdela 6.0 this attribute is located at the DiagClassTemplate and can therefore be edited only in Expert-Mode.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Export single DIAG-SERVICEs</strong></th>
+<th align="left"><strong>Export as TABLE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="Images/image10.png" alt="Mapping of Diagnostic Instances" /></td>
+<td align="left"><img src="Images/image11.png" alt="Mapping of Diagnostic Instances" /></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Remarks</strong> on diagnostic classes exported as TABLE:</p>
+<ul>
+<li>DIAG-SERVICE-attributes such as addressing/audience, etc. are calculated from the union of the corresponding attributes of each Diagnostic Instance.</li>
+</ul>
+<h2 id="mapping-types">Mapping types</h2>
+<p>With CANdelaStudio 6.5 it is possible to export a diagnostic class with the following options:</p>
+<ul>
+<li><p><a href="#export-diagnostic-instances-as-diag-services">No</a></p></li>
+<li><p><a href="#export-diagnostic-instances-as-dynamic-table">Yes (Dynamic table)</a></p></li>
+<li><p><a href="#export-diagnostic-instances-as-static-table">Yes (Static table)</a></p></li>
+<li><p><a href="#export-diagnostic-instances-as-static-table-with-dynamic-pos-response">Yes (Static table with dynamic POS-RESPONSE)</a></p></li>
+</ul>
+<p>Therefore an attribute at the diagnostic class template is defined where it is possible to define which type of mapping is used to generate ODX data.</p>
+<p>If a diagnostic class is exported as table it is possible to define the SHORT-NAME, LONG-NAME and the SEMANTIC that is used to generate the TABLE.</p>
+<div class="figure">
+<img src="Images/image62.png" alt="ExportAsTable attribute for diagnostic class template" />
+<p class="caption">ExportAsTable attribute for diagnostic class template</p>
+</div>
+<h3 id="export-diagnostic-instances-as-diag-services">Export diagnostic instances as DIAG-SERVICEs</h3>
+<p>If the &quot;Export as Table&quot; attribute is set to &quot;no&quot; the diagnostic instances will be exported as DIAG-SERVICE.</p>
+<div class="figure">
+<img src="Images/image13.png" alt="Diagnostic instance exported as DIAG-SERVICE" />
+<p class="caption">Diagnostic instance exported as DIAG-SERVICE</p>
+</div>
+<h3 id="export-diagnostic-instances-as-dynamic-table">Export diagnostic instances as dynamic TABLE</h3>
+<p>If the option &quot;yes (dynamic TABLE)&quot; is used, a TABLE will be exported that is referenced by TABLE-REFs from REQUEST and RESPONSE.</p>
+<div class="figure">
+<img src="Images/image14.png" alt="diagnostic instance exported as dynamic TABLE" />
+<p class="caption">diagnostic instance exported as dynamic TABLE</p>
+</div>
+<h3 id="export-diagnostic-instances-as-static-table">Export diagnostic instances as static TABLE</h3>
+<p>With the option &quot;yes (static TABLE)&quot; diagnostic instances will be exported as static TABLEs. The REQUEST and RESPONSE will reference a TABLE-ROW from exported static TABLE.</p>
+<div class="figure">
+<img src="Images/image15.png" alt="diagnostic instance exported as static TABLE" />
+<p class="caption">diagnostic instance exported as static TABLE</p>
+</div>
+<h3 id="export-diagnostic-instances-as-static-table-with-dynamic-pos-response">Export diagnostic instances as static TABLE with dynamic POS-RESPONSE</h3>
+<p>If option &quot;yes (static TABLE with dynamic POS-RESPPONSE)&quot; is set the REQUEST will reference a TABLE-ROW but the POS-RESPONSE will reference the TABLE.</p>
+<div class="figure">
+<img src="Images/image16.png" alt="diagnostic instance exported as static TABLE with dynamic POS-RESPONSE" />
+<p class="caption">diagnostic instance exported as static TABLE with dynamic POS-RESPONSE</p>
+</div>
+<h3 id="usage-of-snrefs-to-tables-table-rows">Usage of SNREFs to TABLEs / TABLE-ROWs</h3>
+<p><span id="ODXE-R1070-SNRefs" class="rqDef">[ODXE-R1070-SNRefs]</span></p>
+<p>In case the ODX-Export-Option &quot;UseSnrefs&quot; is activated, the Services using TABLEs are exported only at BV / FG-LAYER. Their PARAMs do not reference the TABLEs via ODXLINK but use SNREFs instead. Thereby on the lower ECU-VARIANT levels only the TABLEs are redefined but not the DIAG-SERVICEs.</p>
+<h2 id="export-of-diagnostic-class-as-table">Export of diagnostic class as TABLE</h2>
+<p>This chapter describes the preconditions that have to be fullfilled in order to export a diagnostic class as TABLE. In addition the genenral mapping mechanism is explained, including the generation of SHORT-NAME and LONG-NAME for the resulting elements.</p>
+<h3 id="preconditions">Preconditions</h3>
+<p>The following preconditions have to be fullfilled so that a diagnostic class can be exported as TABLE:</p>
+<ul>
+<li><p>&quot;Export-As-Table&quot;-Attribute at the diagnostic class is set to 'yes'</p></li>
+<li><p>Each ProtocolService has at least one ProxyComp</p></li>
+<li><p>No CANdela-ProxyComp of an activated Service is empty</p></li>
+<li><p>Each Primitive in each Service has a StaticComp</p></li>
+<li><p>Each Primitive does not contain GroupOfDtc, StatusOfDTC or Muxs</p></li>
+<li><p>The Primitive may contain an EndOfIterComp (but it has to be the only active service in the DiagnosticClass) (new in 5.5)</p></li>
+<li><p>Each Primitive has not more than one Proxy with destiny non-any or has more that one ContentComp</p></li>
+</ul>
+<h3 id="mapping-of-information-in-candela-to-odx-tables">Mapping of information in CANdela to ODX-TABLEs</h3>
+<div class="figure">
+<img src="Images/image18.png" alt="Mapping of DiagInstances to TABLEs" />
+<p class="caption">Mapping of DiagInstances to TABLEs</p>
+</div>
+<p>Above figure shows the mapping of the telegram table onto ODX-TABLEs and STRUCTUREs.</p>
+<p>A TABLE is created for each primitive in the Services defined for the DiagnosticClass (DiagClassServiceTemplate). For each activated Service in each diagnostic instance, a TABLE-ROW is created within the TABLE created for the service (DiagClassServiceTemplate). For each ProxyComp in each diagnostic instance, a STRUCTURE is created. The content of the ProxyComp is then mapped to the STRUCTURE. When this ProxyComp is shared across multiple Services, the STRUCTURE is only generated once and referenced by the remaining TABLE-ROWs.</p>
+<h3 id="generation-of-identification">Generation of Identification</h3>
+<p>In the following chapter, the regular generation of SHORT-NAME and LONG-NAME is explained. The generation of the LONG-NAME is analogue to the generation of the SHORT-NAME.</p>
+<h4 id="generation-from-attribute-values">Generation from Attribute-values</h4>
+<p>In case the Attributes &quot;TABLE.LONG-NAME&quot;, &quot;TABLE.SHORT-NAME&quot;, &quot;TABLE.SEMANTIC&quot; are specified at the Diagnostic class Template or the Services of the DiagnosticClass-Template, these values are used to generate the SHORT-NAME, LONG-NAME and SEMANTIC of the TABLE.</p>
+<h4 id="generation-without-attributes">Generation without Attributes</h4>
+<ul>
+<li><p><strong>TABLE.SHORT-NAME</strong><br />
+As explained above a TABLE is generated for each service of the DiagnosticClass. The SHORT-NAME is built up by concatenating the DiagClass-Qualifier, Service-Qualifier and PrimitiveQualifier. This has to be done in that way as the Service might contain a SharedProxyComp in both request and response that is not shared among the primitives.</p></li>
+<li><p><strong>TABLE.SEMANTIC<br />
+</strong>The TABLE.SEMANTIC is calculated from the Specification at the CANdela-StaticComp.</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>DiagClass.Qualifier</strong></th>
+<th align="left">+<strong>Service.Qualifier</strong></th>
+<th align="left">+<strong>Primitive.Qualifier</strong></th>
+<th align="left">=<strong>TABLE.SHORT-NAME</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Identification</td>
+<td align="left">Read</td>
+<td align="left">PR</td>
+<td align="left">Identification_Read_PR</td>
+</tr>
+</tbody>
+</table>
+<p>Table 10: Example TABLE.SHORT-NAME generation</p>
+<ul>
+<li><p><strong>TABLE-ROW.SHORT-NAME</strong><br />
+The TABLE-ROW-SHORT-NAME is generated from the DiagInstance-Qualifier</p></li>
+<li><p><strong>TABLE-ROW.DESC<br />
+</strong>The DiagInstance-Description is exported as TABLE-ROW.DESC</p></li>
+<li><p><strong>STRUCUTRE.SHORT-NAME</strong><br />
+The SHORT-NAME of the STRUCTURE generated per DiagInstance is dereived from the TABLE.SHORT-NAME and the DiagInstance.Qualifier. The TABLE.SHORT-NAME cannot be ommited, as the same DiagInstance.Qualifier might occure in two different Diagnostic-Classes.</p></li>
+<li><p><strong>PARAM.SHORT-NAMEs in STRUCTUREs</strong><br />
+The PARAM.SHORT-NAME is generated from the DiagInstance.Qualifier and the DataObject.Qualifier. The DiagInstance.Qualifier has to be used as prefix to the SHORT-NAME, as the same DataObject-Qualifier might occur within another DiagInstance. Thereby the same PARAM.SHORT-NAME would occur within 2 STRUCTUREs that are referenced by the same TABLE. This would violate CHECKER-RULE 56. Therefore the DiagInstanceQualifier is used to make the PARAM.SHORT-NAME unique.<br />
+<br />
+Since <strong>CANdela 7.1</strong> no prefix is generated in the <strong>ODX220 Export</strong> anymore as the checker rule 56 was adjusted in the ODX220 specification to require unique PARAM SHORT-NAMEs only within the PARAMs wrapper</p></li>
+</ul>
+<h3 id="export-of-a-single-table-per-diagnostic-class">Export of a single TABLE per diagnostic class</h3>
+<p>In case a diagnostic class contains only one shared ProxyComp that is used by several services, since CANdelaStudio 5.0 SP2 only one TABLE is exported. This TABLE is then referenced by the primitives of the Services that contain the shared ProxyComp. The figure shows such an example. Here only one TABLE is generated for the diagnostic class 'Identification' This TABLE is then referenced by both the POS-RESPONSE of the DIAG-SERVICE 'Read' and the REQUEST of the DIAG-SERVICE 'Write'. Still only one DIAG-SERVICE is exported per DiagnosticClassServiceTemplate (Read/Write).<br />
+</p>
+<div class="figure">
+<img src="Images/image19.png" alt="Export of a Single TABLE" />
+<p class="caption">Export of a Single TABLE</p>
+</div>
+<h3 id="variantidentification-for-diag-services-using-dynamic-tables">VariantIdentification for DIAG-SERVICEs using dynamic TABLEs</h3>
+<p>An ECU-VARIANT-PATTERN contains a reference to the PARAM used for VariantIdentification and a reference to the DIAG-COMM which has to be executed in order to retrieve the value of the PARAM. Usually this is the SERVICE that is generated from the DiagInstance where the DataObject used for VI is defined. In case dynamic TABLEs are exported, there does not exist a specific DIAG-SERVICE for each DiagInstance, but only one Service for all DiagInstances. This cannot be used for VariantIdentification, as it is not clear which TABLE-ROW to use for the REQUEST. Therefore, a separate DIAG-SERVICE is exported for every DiagInstance that is used during VariantIdentification. This DIAG-SERVICE references then the appropriate TABLE-ROW directly.</p>
+<div class="figure">
+<img src="Images/image20.png" alt="VariantIdentification for DIAG-SERVICEs using dynamic TABLEs" />
+<p class="caption">VariantIdentification for DIAG-SERVICEs using dynamic TABLEs</p>
+</div>
+<h2 id="support-for-references-to-ecu-shared-data">Support for references to ECU-SHARED-DATA</h2>
+<div class="figure">
+<img src="Images/image21_2.png" alt="References to ECU-SHARED-DATA" />
+<p class="caption">References to ECU-SHARED-DATA</p>
+</div>
+<p>In case a Diagnostic instance is created from a TABLE-ROW located in an ECU-SHARED-DATA, attributes store the location in the ECU-SHARED-DATA</p>
+<div class="figure">
+<img src="Images/image22.png" alt="Attributes referencing the ECU-SHARED-DATA" />
+<p class="caption">Attributes referencing the ECU-SHARED-DATA</p>
+</div>
+<p>In addition, the label of the diagnostic instance contains the ODX symbol.</p>
+<p>On ODX-Export the TABLE-ROWs from these Diagnostic instances are not created but a TABLE-ROW-REF to the ECU-SHARED-DATA is created.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX-Export Introduction</a></li>
+</ul>
+</body>
+</html>

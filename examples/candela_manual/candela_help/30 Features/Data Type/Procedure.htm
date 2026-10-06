@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Procedure</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="procedural-conversion-procedure">Procedural Conversion (<span id='_index_446727975'>Procedure</span>)</h1>
+<p><span id="DTPROC-R010" class="rqDef">[DTPROC-R010]</span> A Procedural Conversion converts a raw value from the ECU fo a physical value, and optionally back.</p>
+<p>The procedure is interpreted by the runtime environment of the test system (e.g. Java, CANapeScript, CAPL).</p>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Procedure.htm">dialog</a>.</p>
+<h2 id="conversion-functions">Conversion Functions</h2>
+<p><span id="DTPROC-R100" class="rqDef">[DTPROC-R100]</span> A Procedure uses a <strong>mandatory</strong> <a href="../../30%20Features/Job/Job.htm#function">function</a> for converting <strong>raw to physical values</strong>.</p>
+<p><span id="DTPROC-R110" class="rqDef">[DTPROC-R110]</span> A Procedure uses an <strong>optional</strong> function for converting <strong>physical to raw values</strong> (the opposite direction).</p>
+<h2 id="function-properties">Function Properties</h2>
+<p>Each function (i.e. direction) can have job files for multiple runtime systems (e.g. one for Java, one for a manufacturer specific system).</p>
+<p><span id="DTPROC-R120" class="rqDef">[DTPROC-R120]</span> Each function is expected to have... - one <strong>input parameter</strong> and - one <strong>return value</strong>. - Their type is determined by the coded and physical value type of the Procedure Data Type.</p>
+
+<h2 id="consistency-conditions">Consistency Conditions</h2>
+<p><span id="DTPROC-R210" class="rqDef">[DTPROC-R210]</span> If the Procedure Data Type is used in a request, at least one physToCoded Function must exist.</p>
+<p><span id="DTPROC-R220" class="rqDef">[DTPROC-R220]</span> If the Procedure Data Type is used in a positive response, at least one codedToPhys Function must exist (which is required anyway).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm#conversions">Conversions</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+<li><a href="../../30%20Features/Job/Job.htm#function">Function</a></li>
+</ul>
+</body>
+</html>

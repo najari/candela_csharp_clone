@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>55_ODX Export of Libraries</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="odx-export-of-libraries">ODX Export of Libraries</h1>
+<p>Since 8.5 SP2 (CDS-37946), CANdelaStudio supports <a href="../../30%20Features/Library/Library.htm">libraries</a>.</p>
+<h2 id="standard-case">Standard Case</h2>
+<div class="figure">
+<img src="Images/Variants%20and%20Library.jpg" alt="Export of Variants and Library (left: CANdela data; right: exported ODX data)" />
+<p class="caption">Export of Variants and Library (left: CANdela data; right: exported ODX data)</p>
+</div>
+<ul>
+<li><span id="ODXE-R500" class="rqDef" title="ECU-SHARED-DATA">[ODXE-R500 ECU-SHARED-DATA]</span> Export creates an <strong>ECU-SHARED-DATA</strong> from a <strong>library</strong> and its contained diagnostic instances
+<ul>
+<li>e.g. library &quot;E1&quot;</li>
+<li>e.g. diagnostic instances &quot;E11&quot; and &quot;E12&quot;</li>
+</ul></li>
+<li><span id="ODXE-R510" class="rqDef" title="Reference to ECU-SHARED-DATA">[ODXE-R510 Reference to ECU-SHARED-DATA]</span> If a CANdela diagnostic instance in a variant is referenced in a library, export represents it as DIAG-COMM/TABLE-ROW that is inherited/referenced from the ECU-SHARED-DATA
+<ul>
+<li>e.g. diagnostic instance &quot;E11&quot; in variant &quot;V1&quot; becomes DIAG-COMM/TABLE-ROW &quot;E11&quot; in ECU-VARIANT &quot;E11&quot; in ODX</li>
+<li>... which is inherited/referenced from ESD &quot;E1&quot;</li>
+</ul></li>
+<li><span id="ODXE-R520" class="rqDef" title="Not in ECU-SHARED-DATA">[ODXE-R520 Not in ECU-SHARED-DATA]</span> If a CANdela diagnostic instance in a variant is <em>not</em> referenced in a library, export does not put it into the ECU-SHARED-DATA
+<ul>
+<li>e.g. diagnostic instance &quot;B&quot; in base variant &quot;Common Diagnostics&quot;</li>
+</ul></li>
+</ul>
+
+<h2 id="library-takes-precedence">Library Takes Precedence</h2>
+<div class="figure">
+<img src="Images/Export%20where%20Referenced%20first.jpg" alt="Export into Library not Variants" />
+<p class="caption">Export into Library not Variants</p>
+</div>
+<ul>
+<li>In ODX, exported diagnostic instances are
+<ul>
+<li><strong>contained</strong> in the ECU-SHARED-DATA and</li>
+<li>only <strong>referenced</strong> in the variants</li>
+</ul></li>
+<li>i.e. from all diagnostic instance references, the library takes precedence (note: references are not directed in CANdela)</li>
+<li>This means e.g. for diagnostic instances from the CANdela base variant:
+<ul>
+<li>they are “moved” in ODX from the base variant (BV) to the ECU-SHARED-DATA.</li>
+</ul></li>
+<li><span id="ODXE-R530" class="rqDef" title="Document Level Objects">[ODXE-R530 Document Level Objects]</span> CANdela document level objects (data types and states) referenced from the library are exported into the ECU-SHARED-DATA
+<ul>
+<li>e.g. &quot;DT2&quot; and &quot;ST1&quot; referenced by diagnostic instance &quot;E12&quot; are exported into &quot;E1&quot;</li>
+<li>e.g. &quot;DT1&quot; referenced only in the base variant is not exported into &quot;E1&quot; but into &quot;Common Diagnostics&quot;.</li>
+</ul></li>
+</ul>
+
+<h2 id="separate-ecu-shared-data-for-document-level-objects">Separate ECU-SHARED-DATA for Document Level Objects</h2>
+<div class="figure">
+<img src="Images/Separate%20ECU-SHARED-DATA.jpg" alt="ECU-SHARED-DATA for Document Level Objects" />
+<p class="caption">ECU-SHARED-DATA for Document Level Objects</p>
+</div>
+<p>In the same CANdela data constellation as in the previous chapter, <strong>as an alternative</strong>, ...</p>
+<ul>
+<li><span id="ODXE-R540" class="rqDef" title="Separate ECU-SHARED-DATA">[ODXE-R540 Separate ECU-SHARED-DATA]</span> export may put the CANdela <strong>document level objects</strong> (data types, states) into a <strong>separate ECU-SHARED-DATA</strong>.
+<ul>
+<li>e.g. &quot;DT2&quot; and &quot;ST1&quot; used by diagnostic instance &quot;E12&quot; are exported into &quot;W80222&quot; (a fictive base library for some model range)</li>
+<li>but e.g. &quot;DT1&quot; and &quot;ST2&quot; <em>not</em> used by a diagnostic instance from the library are <em>also</em> exported into &quot;W80222&quot;</li>
+</ul></li>
+<li>&quot;Common Diagnostics&quot;, ECU-VARIANTs and other ECU-SHARED-DATA all reference into this document level ECU-SHARED-DATA</li>
+</ul>
+<p>Export creates this alternative data constellation...</p>
+<ul>
+<li><span id="ODXE-R540-manufacturer" class="rqDef">[ODXE-R540-manufacturer]</span> depending on the <a href="../../30%20Features/Document/Document.htm#diagnostics-based-on">&quot;Diagnostics Based on&quot; (manufacturer) setting</a> of the document,</li>
+<li><span id="ODXE-R540-DIAG_LAYER" class="rqDef">[ODXE-R540-DIAG_LAYER]</span> or if services are designated for a PROTOCOL or FUNCTIONAL-GROUP ODX DIAG-LAYER, using a <a href="../../30%20Features/Attributes/Special%20Attributes.htm#DIAG_LAYER">special attribute &quot;DIAG_LAYER&quot;</a>.</li>
+</ul>
+<h2 id="embedded-ecu-shared-data">Embedded ECU-SHARED-DATA</h2>
+<div class="figure">
+<img src="Images/Embedded%20ECU-SHARED-DATA.jpg" alt="Export of Embedded ECU-SHARED-DATA" />
+<p class="caption">Export of Embedded ECU-SHARED-DATA</p>
+</div>
+<ul>
+<li><span id="ODXE-R550" class="rqDef">[ODXE-R550]</span> If the CANdela library contains an original ODX ECU-SHARED-DATA as an embedded external file <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R026' title="Embedded External File">[LIB-R026]</a>, export just uses this file as is
+<ul>
+<li>e.g. ESD &quot;E1&quot; with &quot;DT1&quot;, &quot;DT2&quot;, &quot;E12&quot; and &quot;E11&quot;</li>
+</ul></li>
+<li><span id="ODXE-R550-ignore" class="rqDef">[ODXE-R550-ignore]</span> export does not use the corresponding CANdela objects
+<ul>
+<li>e.g. &quot;DT1*&quot;, &quot;DT2*&quot;, &quot;E12*&quot; and &quot;E11*&quot;</li>
+</ul></li>
+<li>This is based on the <strong>assumption</strong> that the CANdela objects are identical to the objects in the embedded ODX ECU-SHARED-DATA since they are write-proteced on import <a class='rqRef' href='../../30%20Features/Import/4_Import%20of%20Libraries.htm#ODXI-R512' title="">[ODXI-R512]</a>.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX Export Introduction</a></li>
+<li><a href="../../30%20Features/Library/Library.htm">Library Feature</a></li>
+<li><a href="../../30%20Features/ODX/ODX.htm">Introduction to ODX</a></li>
+<li><a href="../../30%20Features/Import/ODX%20Import%20Introduction.htm">ODX Import Feature</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Compact View</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="compact-view-cds-4391-4.0-sp2"><span id='_index_446727900'>Compact View</span> (CDS-4391 4.0 SP2)</h1>
+<div class="figure">
+<img src="Images/Compact%20View.jpg" alt="Compact View of Variants" />
+<p class="caption">Compact View of Variants</p>
+</div>
+<p>The Compact View is opened on a first variant (using menu View or the context menu).</p>
+
+<p>The dialog...</p>
+<ul>
+<li>lets you select a second variant from a combobox</li>
+<li>and provides an overview of diagnostic instances in the first variant that are <strong>not referenced</strong> from the second variant, i.e.
+<ul>
+<li>are <strong>copies</strong></li>
+<li>or do not occur in the second variant.</li>
+</ul></li>
+</ul>
+<p>Such diagnostic instances...</p>
+<ul>
+<li>have either been modified in either variant, so that their contents is different;</li>
+<li>or have unnecessarily been created by the operation &quot;Replace Reference with Copy&quot;, without further modification. You may consider to <a href="../../15%20Procedures/Diagnostic%20Instance/How%20to%20Optimize%20Diagnostic%20Instance%20Copies%20Between%20Variants.htm">re-establish the reference</a>, which saves space and clearly indicates the intention to have identical data.</li>
+</ul>
+<p>Note: to inspect the property differences in detail, use the Compare View.</p>
+<p><span id="VARCV-R050" class="rqDef" title="Compact View and Library">[VARCV-R050 Compact View and Library]</span> CANdelaStudio shall <strong>not</strong> show Libraries in Compact View.</p>
+<h2 id="variant">Variant</h2>
+<p>Lets you select the second variant.</p>
+<p>The list contains all variants except the first one.</p>
+<h2 id="result-left-tree">Result (Left Tree)</h2>
+<p>The tree to the left displays the <strong>second</strong> variant with its diagnostic classes, diagnostic instances and job containers.</p>
+<h2 id="result-right-tree">Result (Right Tree)</h2>
+<p>The tree to the right displays those diagnostic instances and job containers of the <strong>first</strong> variant which are not referenced from the second variant.</p>
+<h2 id="trees-details">Trees Details</h2>
+<p>Properties like identifier, target groups, service addressing and maturity are shown like in the document tree, depending on the settings in the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Display.htm">options dialog</a>.</p>
+<h2 id="copy-path">Copy Path</h2>
+<p>(context menu) Copies the <a href="../../30%20Features/Common%20Properties/Object%20Paths.htm">object path</a> of the selected object to the clipboard.</p>
+<h2 id="go-to-object">Go To Object</h2>
+<p>(context menu) Navigates to the object in the CANdelaStudio application (under the Compact View dialog).</p>
+<p>(this operation had an issue in 8.0 .. 8.2 due to CDS-28807, fixed in CDS-39744 8.5)</p>
+<h2 id="ok-cancel">OK, Cancel</h2>
+<p>Close the dialog.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Compare/Compare%20View.htm">Compare View</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Document.htm">Ribbon Tab &quot;Document&quot;</a></li>
+</ul>
+</body>
+</html>

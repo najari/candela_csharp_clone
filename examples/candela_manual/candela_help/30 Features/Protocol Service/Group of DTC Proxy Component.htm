@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Group of DTC Proxy Component</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="group-of-dtc-proxy-component">Group of DTC Proxy Component</h1>
+<p>In a ProtocolService, a <strong>Group of DTC Proxy Component</strong> represents a place where a group of DTCs is specified, typically DTC values with some bits set zero, like 0x400000, 0x800000.</p>
+<ul>
+<li>the Proxy Component references a &quot;master&quot; text table
+<ul>
+<li>The length of the proxy is taken from the datatype.</li>
+</ul></li>
+<li>the text table defines the set of groups</li>
+<li>CANdelaStudio supports at most 16 groups</li>
+<li>in a diagnostic instance, a <strong>Group of DTC Data Object</strong> corresponds with the Proxy Component.</li>
+</ul>
+<p>See the overview diagram in the <a href="../../30%20Features/DTC/Group%20of%20DTC.htm">Group of DTC Data Object</a> chapter.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/Group%20of%20DTC.htm">Group of DTC Data Object</a></li>
+<li><a href="Components.htm">Protocol Service Components</a></li>
+<li><a href="Proxy%20Component.htm">Protocol Service Proxy Components</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Document Operations</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="document-operations">Document Operations</h1>
+<p>The following describes operations on the CANdela document level.</p>
+<h2 id="new">New</h2>
+<p><span id="DOC-R600" class="rqDef" title="New">[DOC-R600 New]</span> Lets you select a <a href="../../30%20Features/Document%20Template/Document%20Template.htm">document template</a>.</p>
+<p>Creates a CANdela document based on the template.</p>
+<ul>
+<li>clears the <a href="../../30%20Features/Revision%20History/Revision%20History.htm">revision history</a> of the template</li>
+<li>moves some key properties of the template into the <a href="../../30%20Features/Document/Document.htm#template">&quot;Template Info&quot; at the document</a>.</li>
+</ul>
+<p>Triggered by...</p>
+<ul>
+<li>ribbon tab File | New <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File.htm#MENU-R010' title="">[MENU-R010]</a></li>
+<li>CANdelaStudio Launcher <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R520' title="">[CDSL-R520]</a></li>
+</ul>
+<h2 id="open">Open</h2>
+<p><span id="DOC-R610" class="rqDef" title="Open">[DOC-R610 Open]</span> Opens the CANdela file (document or template) in the specified <a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">View</a>.</p>
+<p>Triggered by...</p>
+<ul>
+<li>ribbon tab File | Open <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File.htm#MENU-R020' title="">[MENU-R020]</a></li>
+<li>drag and drop onto CANdelaStudio</li>
+<li>ribbon tab File | Recent <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File.htm#MENU-R340' title="">[MENU-R340]</a></li>
+<li>CANdelaStudio Launcher <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Launcher.htm#CDSL-R520' title="">[CDSL-R520]</a></li>
+</ul>
+<h3 id="language-handling">Language Handling</h3>
+<p><span id="DOC-R615" class="rqDef">[DOC-R615]</span></p>
+<ul>
+<li>CANdelaStudio does not support switching to another language after the file has been opened.</li>
+<li>In Standard or Expert View, you cannot open the file in a language with &quot;translation incomplete&quot;.</li>
+<li>The <strong>default for the document language</strong> is the user interface language of CANdelaStudio. If a document does not support this language, the &quot;default language&quot; of the document (the first language which is up-to-date) is used.</li>
+<li>The default automatically applies if you open a template/document without further interactions (double-click, last opened data in the menu data, button “New”...).</li>
+<li>In Translation View, you can open any file. CANdelaStudio uses the language selected in the &quot;Languages&quot; list as the &quot;reference (source) language&quot; for translation. You can still switch the target language (to be translated to) in the Translation View.</li>
+</ul>
+<h3 id="open-a-renamed-template">Open a renamed Template</h3>
+<p><span id="DOC-R630" class="rqDef">[DOC-R630]</span> If you open a CANdela template <code>.cddt</code> renamed to <code>.cdd</code>, CANdelaStudio shows a hint and refuses opening (CDS-70935 v11).</p>
+<p>Use the operation &quot;Convert Document to Template&quot; <a class='rqRef' href='../../30%20Features/Document%20Template/Convert%20to%20Template.htm#DOC-R700' title="Convert to Template">[DOC-R700]</a> in Ribbon Tab &quot;Tools&quot; instead.</p>
+<h3 id="open-a-non-candela-file">Open a non-CANdela File</h3>
+<p>If you erroneously open a non-CANdela file,</p>
+<ul>
+<li>CANdelaStudio shows a message box indicating that the file has an invalid format;</li>
+<li><p>the output window shows</p>
+<pre><code>  &#39;DOCTYPE CANDELA&#39; not found in file ...</code></pre>
+<ul>
+<li>To detect a non-CANdela file, CANdelaStudio checks the <code>DOCTYPE</code> information in the CANdela XML file.</li>
+</ul></li>
+</ul>
+<h3 id="open-a-corrupted-file">Open a Corrupted File</h3>
+<p>Sometimes CANdela files get corrupted during transport via email or download from a portal. If you open such a CANdela file,</p>
+<ul>
+<li><p>the output window shows details about the corruption, like</p>
+<pre><code>  Error 4 from xml parser: not well-formed</code></pre></li>
+<li><p>if a data transfer just randomly inserted strings into the file (unfortunately, this happened), the output window shows details like</p>
+<pre><code>  E: Error 4 from xml parser: not well-formed (invalid token):
+  E: Line 11597, Columns 0..110
+  E:   valid token: &lt;QUALGENOPTIONS case=&#39;ignore&#39; minLen=&#39;1&#39; maxLen=&#39;128&#39;
+  E: Line 11597,  Column: 111
+  E:   invalid token: /NewProxyWeb/app/web10-extern/&gt;
+  E: Fatal error: the file has been corrupted! If it was a data transfer (via email, download from manufacturer portal ...) that corrupted the file, it may help to transfer the original CANdela file again in a zip file.</code></pre>
+<p>(CDC-41950 8.5 SP3)</p></li>
+</ul>
+<h2 id="save">Save</h2>
+<p><span id="DOC-R620" class="rqDef" title="Save">[DOC-R620 Save]</span> Saves the document to the path used in Open or SaveAs.</p>
+<ul>
+<li><span id="DOC-R620-SaveNumber" class="rqDef">[DOC-R620-SaveNumber]</span> Increments the Save number <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R200' title="Save Number">[DOC-R200]</a> of the document.</li>
+</ul>
+<p>Triggered by ribbon tab File | Save <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File.htm#MENU-R040' title="">[MENU-R040]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Document.htm">Document</a></li>
+<li><a href="../../30%20Features/Export/CANdela%20Target%20Group%20Oriented%20Export.htm">Export CANdela (Target Group Oriented)</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Document.htm">Ribbon Tab Document</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm">Ribbon Tab File</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Tools.htm">Ribbon Tab Tools</a></li>
+<li><a href="../../30%20Features/Multi-Language/Multi-Language.htm">Multi-Language Feature</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">Views</a></li>
+</ul>
+</body>
+</html>

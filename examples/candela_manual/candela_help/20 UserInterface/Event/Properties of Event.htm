@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Properties of Event</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="properties-of-event">Properties of Event</h1>
+<ul>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="Events.htm">Event</a> list</li>
+<li><a href="../../30%20Features/Event/Events%20Data%20Model.htm">Events Data Model</a> (detailed)</li>
+<li><a href="DTC%20Events%20Mapping.htm">DTC Events Mapping</a> page</li>
+<li><a href="Event%20Master%20Data.htm">Event Master Data</a> page</li>
+</ul>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Events.jpg" alt="Events Page" />
+<p class="caption">Events Page</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p><span id="EVUI-R2000" class="rqDef">[EVUI-R2000]</span> The <strong>property sheet</strong> to the right provides editing of the properties also shown in the Event list, plus Qualifier and Description.</p>
+<p><span id="EVUI-R2010" class="rqDef">[EVUI-R2010]</span> The property sheet supports <strong>mass editing</strong>:</p>
+<p>If you select multiple Events in the list:</p>
+<ul>
+<li>if all selected Events have the same value,
+<ul>
+<li>the control in the sheet shows that value;</li>
+<li>when you enter a different value, CANdelaStudio assigns that value to all selected Events.</li>
+</ul></li>
+<li>if the selected Events have different values,
+<ul>
+<li>the control in the sheet shows an &quot;indifferent&quot; state;</li>
+<li>when you enter a value, CANdelaStudio assigns that value to all selected Events;</li>
+<li>the control does not provide a way back to the &quot;indifferent&quot; state.</li>
+</ul></li>
+</ul>
+<p>For details, see <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-D410' title="">[UI-D410]</a> in the Basic User Interface Rules.</p>
+<h2 id="name-qualifier-description">Name, Qualifier, Description</h2>
+<p><span id="EVUI-R2100" class="rqDef">[EVUI-R2100]</span> The controls show the Event name, qualifier and description <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R100' title="">[EV-R100]</a>.</p>
+<p>See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R100' title="">[EVUI-R100]</a> for the Name column of the Event list.</p>
+<p>The description can be multi-line, but plain text only (no rich-text).</p>
+<p><span id="EVUI-R2100-Desc" class="rqDef">[EVUI-R2100-Desc]</span> The control for editing the description accepts line-breaks via key <code>ENTER</code> and <code>Ctrl-ENTER</code> (CDS-71939 v13).</p>
+<h2 id="kind">Kind</h2>
+<p><span id="EVUI-R2110" class="rqDef">[EVUI-R2110]</span> See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R110' title="">[EVUI-R110]</a>.</p>
+<h2 id="operation-cycle">Operation Cycle</h2>
+<p><span id="EVUI-R2120" class="rqDef">[EVUI-R2120]</span> See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R120' title="">[EVUI-R120]</a>.</p>
+<h2 id="debounce-algorithm">Debounce Algorithm</h2>
+<p><span id="EVUI-R2220" class="rqDef">[EVUI-R2220]</span> See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R220' title="">[EVUI-R220]</a>.</p>
+<h2 id="failure-cycle-counter-threshold">Failure Cycle Counter Threshold</h2>
+<p><span id="EVUI-R2130" class="rqDef">[EVUI-R2130]</span> See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R130' title="">[EVUI-R130]</a>.</p>
+<p><span id="EVUI-R2130-unset" class="rqDef">[EVUI-R2130-unset]</span> For un-setting the integer value, the property sheet provides a button right to the edit control.</p>
+<h2 id="enable-conditions">Enable Conditions</h2>
+<p><span id="EVUI-R2200" class="rqDef">[EVUI-R2200]</span> See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R200' title="">[EVUI-R200]</a>.</p>
+<h2 id="storage-conditions">Storage Conditions</h2>
+<p><span id="EVUI-R2210" class="rqDef">[EVUI-R2210]</span> See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R210' title="">[EVUI-R210]</a>.</p>
+<h2 id="recoverable-in-same-operation-cycle">Recoverable in Same Operation Cycle</h2>
+<p><span id="EVUI-R2190" class="rqDef">[EVUI-R2190]</span> See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R190' title="">[EVUI-R190]</a>.</p>
+<h3 id="prestore-freeze-frame-prestoragefreezeframe">Prestore Freeze Frame (&quot;prestorageFreezeFrame&quot;)</h3>
+<p><span id="EVUI-R2150" class="rqDef">[EVUI-R2150]</span> See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R150' title="">[EVUI-R150]</a>.</p>
+<h3 id="in-memory-freeze-frame-prestored-nonvolatile-prestoredfreezeframestoredinnvm">... in Memory (&quot;Freeze Frame Prestored nonvolatile&quot;, &quot;prestoredFreezeframeStoredInNvm&quot;)</h3>
+<p><span id="EVUI-R2155" class="rqDef">[EVUI-R2155]</span> See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R155' title="">[EVUI-R155]</a>.</p>
+<p>If the Freeze Frame is not prestored (see previous property), the control is insensitive.</p>
+<h3 id="clear-allowed-eventclearallowed">Clear Allowed (&quot;eventClearAllowed&quot;)</h3>
+<p><span id="EVUI-R2165" class="rqDef">[EVUI-R2165]</span> See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R165' title="">[EVUI-R165]</a>.</p>
+<h3 id="if-clear-denied-clear-behavior-cleareventbehavior">If Clear Denied (&quot;Clear Behavior&quot;, &quot;clearEventBehavior&quot;)</h3>
+<p><span id="EVUI-R2170" class="rqDef">[EVUI-R2170]</span> See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R170' title="">[EVUI-R170]</a> (Clear Behavior).</p>
+<h2 id="event-attributes">Event Attributes</h2>
+<p>Event attributes are not available in the property page.</p>
+<p>You may use the <strong>Attribute Overview</strong> on the Diagnostic Instance (e.g. via the context menu of the tree node).</p>
+<h2 id="indicator-connections">Indicator Connections</h2>
+<p>See also the representation <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R140' title="">[EVUI-R140]</a> in the Event list.</p>
+<p><span id="EVUI-R2140" class="rqDef">[EVUI-R2140]</span> The list shows and edits the Indicator Connections <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R140' title="">[EV-R140]</a> of the Event, which associates the following mandatory properties:</p>
+<ul>
+<li><span id="EVUI-R2140-Indicator" class="rqDef">[EVUI-R2140-Indicator]</span> the Indicator <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R300' title="">[EV-R300]</a>, from the list defined in the Event Master Data <a class='rqRef' href='../../20%20UserInterface/Event/Event%20Master%20Data.htm#EVMUI-R600' title="">[EVMUI-R600]</a></li>
+<li><span id="EVUI-R2140-Behavior" class="rqDef">[EVUI-R2140-Behavior]</span> a Behavior <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R310' title="">[EV-R310]</a>, predefined by AUTOSAR</li>
+<li><span id="EVUI-R2140-HealingCycle" class="rqDef">[EVUI-R2140-HealingCycle]</span> a Healing Cycle <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R320' title="">[EV-R320]</a>, from the list of Operation Cycles defined in the Event Master Data <a class='rqRef' href='../../20%20UserInterface/Event/Event%20Master%20Data.htm#EVMUI-R500' title="">[EVMUI-R500]</a></li>
+<li><span id="EVUI-R2140-Threshold" class="rqDef">[EVUI-R2140-Threshold]</span> a counter threshold <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R330' title="">[EV-R330]</a> for the Healing Cycle</li>
+<li><span id="EVUI-R2140-Sort" class="rqDef">[EVUI-R2140-Sort]</span> sorted by Indicator name</li>
+</ul>
+<p>Conditions:</p>
+<ul>
+<li><a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R140-Card' title="">[EV-R140-Card]</a> The list may be empty.</li>
+<li><a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R140-unique' title="">[EV-R140-unique]</a> A given Indicator can be used only once for the same Event.</li>
+<li><a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R140-noSort' title="">[EV-R140-noSort]</a> As a default, the list is sorted by the Indicator name.</li>
+</ul>
+<h3 id="add">Add</h3>
+<p><span id="EVUI-R2142" class="rqDef">[EVUI-R2142]</span> Button &quot;+&quot; (Add) adds a further Indicator Connection to the list.</p>
+<ul>
+<li><span id="EVUI-R2142-Insens" class="rqDef">[EVUI-R2142-Insens]</span> If all defined Indicators <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R600' title="">[EV-R600]</a> have already been used in the list, the button is <strong>insensitive</strong>.</li>
+<li><span id="EVUI-R2142-No" class="rqDef">[EVUI-R2142-No]</span> if no Indicator or no Operation Cycle has been defined, Add is insensitive.</li>
+</ul>
+<h3 id="modify">Modify</h3>
+<p><span id="EVUI-R2144" class="rqDef">[EVUI-R2144]</span> You can modify all properties directly in the list.</p>
+<ul>
+<li><span id="EVUI-R2144-Unique" class="rqDef">[EVUI-R2144-Unique]</span> &gt;the combo-box for &quot;Indicator&quot; shows only Indicators not yet used in the list,
+<ul>
+<li>since a given Indicator can be used only once for the same Event <a class='rqRef' href='../../20%20UserInterface/Event/Properties%20of%20Event.htm#EVUI-R2144-Unique' title="">[EVUI-R2144-Unique]</a>.</li>
+</ul></li>
+</ul>
+<h3 id="remove">Remove</h3>
+<p><span id="EVUI-R2146" class="rqDef">[EVUI-R2146]</span> Button &quot;x&quot; (Remove) removes the selected Indicator Connections from the list, with confirmation <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R015' title="">[EVUI-R015]</a>.</p>
+<h3 id="related-topics">Related Topics</h3>
+<ul>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> (Export)</li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="DTC%20Events%20Mapping.htm">DTC Events Mapping</a> page</li>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="Events.htm">Event</a> list</li>
+<li><a href="../../30%20Features/Event/Events%20Data%20Model.htm">Events Data Model</a></li>
+<li><a href="Event%20Master%20Data.htm">Event Master Data</a> page</li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+</ul>
+</body>
+</html>

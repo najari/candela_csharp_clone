@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Protocol Service</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="protocol-service"><span id='_index_446728090'>Protocol Service</span></h1>
+<h2 id="overview">Overview</h2>
+<p>Diagnostics is about <strong>services</strong>:</p>
+<ul>
+<li>a tester sends a <strong>request</strong> (specific byte sequence) to an ECU,</li>
+<li>the ECU sends a <strong>positive or negative response</strong>.</li>
+</ul>
+<p>There are different <strong>diagnostic protocols</strong> with different services.</p>
+<p><strong>UDS</strong> (Unified Diagnostic Services; ISO 14229) is widely spread and a recommended basis for new diagnostic projects.</p>
+<p>There are different <strong><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Use-Cases.htm">diagnostic use-cases</a></strong>: Stored Data, Routine, Fault Memory...</p>
+<h3 id="services-in-candela">Services in CANdela</h3>
+<p>CANdelaStudio does not hard-code the data structures of diagnostic protocols. The CANdela data model is <strong>generic</strong> and <strong>supports different protocols</strong>.</p>
+<p>The template defines a structure (“grammar”) which provides slots to be filled in an ECU document. This provides an <strong>abstraction</strong> for the user of CANdelaStudio Standard View. Typically,...</p>
+<ul>
+<li>the <strong>template</strong> pre-defines the <strong>details of the protocol</strong> (like the service ID);</li>
+<li>the <strong>document</strong> allows to describe only the <strong>payload data</strong> (velocity, temperature, …).</li>
+</ul>
+<p>In CANdela,...</p>
+<ul>
+<li>services from the protocol (0x22) are called <strong>Protocol Services</strong>,</li>
+<li>whereas individual &quot;services&quot; (0x22 0xF1 0x00) are called <strong>Services</strong>.</li>
+</ul>
+
+<h3 id="which-services-for-which-use-case">Which Services for which Use-Case?</h3>
+<div class="figure">
+<img src="../../30%20Features/Images/Protocol%20Services%20vs%20Diagnostic%20Use-Cases.jpg" alt="Protocol Services vs. Diagnostic Use-Cases (instances diagram)" />
+<p class="caption">Protocol Services vs. Diagnostic Use-Cases (instances diagram)</p>
+</div>
+<p>A CANdela template defines...</p>
+<ul>
+<li>the structure of the Protocol Services,</li>
+<li>the diagnostic use-cases (Diagnostic Class Templates),</li>
+<li>which Protocol Service to use for which use-case (in the Diagnostic Class Template):</li>
+</ul>
+<div class="figure">
+<img src="../../30%20Features/Images/Define%20Protocol%20Service%20vs.%20Diagnostic%20Use-Cases.jpg" alt="Define Protocol Service vs. Diagnostic Use-Cases (instances diagram)" />
+<p class="caption">Define Protocol Service vs. Diagnostic Use-Cases (instances diagram)</p>
+</div>
+<h3 id="which-data-for-which-service">Which Data for which Service?</h3>
+<p>Additionally, a Diagnostic Class Template allows to force an identical data structure e.g.</p>
+<ul>
+<li>in a request and in a positive response (e.g. Read/Write Data By Identifier)</li>
+<li>in multiple requests (e.g. DTC, DTC Status)</li>
+</ul>
+<h2 id="overview-candela-layers">Overview: CANdela Layers</h2>
+<p>The following diagram shows how the Diagnostic Class Template as a middle layer controls...</p>
+<ul>
+<li>the use of <strong>Protocol Services</strong> and</li>
+<li>the use of <strong>data</strong> (variable value, telegram table):</li>
+</ul>
+<div class="figure">
+<img src="../../30%20Features/Images/Protocol%20Services%20and%20Services%203%20Layers.jpg" alt="Protocol Services, Diagnostic Class Template and Diagnostic Instances (3 Layers)" />
+<p class="caption">Protocol Services, Diagnostic Class Template and Diagnostic Instances (3 Layers)</p>
+</div>
+<h3 id="layer-protocol-service">Layer: Protocol Service</h3>
+<p>(edited in the CANdela template) defines the structure of individual services, like</p>
+<pre><code>Read Data By Identifier:
+  0x22 &lt;identifier&gt; &lt;data&gt;</code></pre>
+<p><strong>Effect</strong>:</p>
+<ul>
+<li><strong>the Protocol Services restrict the possible byte sequences</strong>,</li>
+<li>you cannot use an arbitrary byte sequence for a request described in a CANdela document.</li>
+</ul>
+<h3 id="layer-diagnostic-class-template">Layer: Diagnostic Class Template</h3>
+<p>(edited in the CANdela template) represents a <strong>diagnostic use-case</strong> (like Identification, Variant Coding, Fault memory...).</p>
+<p>It references multiple Protocol Services, like</p>
+<pre><code>Identification:
+  use Protocol Service 0x22 &quot;Read Data by Identifier&quot;
+
+Variant Coding:
+  use Protocol Service 0x22 &quot;Read Data by Identifier&quot;
+  use Protocol Service 0x2E &quot;Write Data by Identifier&quot;</code></pre>
+<p><strong>Effect</strong>:</p>
+<ul>
+<li><strong>the diagnostic class template relates Protocol Services with diagnostic use-cases</strong>,</li>
+<li>you cannot use an arbitrary Protocol Service in a given use-case.</li>
+</ul>
+<h3 id="layer-diagnostic-instance">Layer: Diagnostic Instance</h3>
+<p>(edited in a CANdela document for a concrete ECU) conforms with the structure defined in the diagnostic class template.</p>
+<p>Typically there are multiple diagnostic instances for a diagnostic class template. A diagnostic instances contains</p>
+<ul>
+<li>the individual <strong>services</strong> based on the Protocol Services of the diagnostic class template (the &quot;methods&quot; in an object oriented view)</li>
+<li>the individual <strong>data objects</strong> filled in at the places where the Protocol Service has a Proxy Component.</li>
+</ul>
+<p><strong>Effect</strong>:</p>
+<ul>
+<li><strong>you just describe the data objects</strong> (payload) that shall be transported for a given diagnostic use-case,</li>
+<li><strong>you <em>may</em> describe service details</strong> if necessary (like support of physical and/or functional addressing),</li>
+<li>you don't need to know the protocol details.</li>
+</ul>
+
+
+<h2 id="primitives"><span id='_index_446728091'>Primitives</span></h2>
+<p><span id="PS-R100" class="rqDef">[PS-R100]</span> A <strong>Protocol Service</strong> has three primitives:</p>
+<ul>
+<li><strong>request</strong> (required)
+<ul>
+<li>can be missing exceptionally in special templates (LIN, J1939);</li>
+<li>CANdelaStudio expert view does not allow to produce this constellation (please contact Vector).</li>
+</ul></li>
+<li><strong>positive response</strong> (optional)
+<ul>
+<li>positive and negative response can be missing for some special services</li>
+<li>e.g. &quot;ControlDTCSetting - No Response Required&quot;</li>
+</ul></li>
+<li><strong><a href="Negative%20Response.htm">negative response</a></strong> (optional)</li>
+</ul>
+<p>Each primitive must have <strong>at least one Protocol Service Component</strong>.</p>
+<p>Besides primitives in Protocol Services, a CANdela ECU description contains a special primitive that defines Negative Response Codes for Unsupported Services <a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R020' title="">[NRC-R020]</a>.</p>
+<h2 id="protocol-service-components">Protocol Service Components</h2>
+<p>Each primitive (e.g. a request) contains a list of <strong>components</strong>: constant, variable, proxy, fixed data, multiplexer and iteration.</p>
+<p>See the <a href="Components.htm">Protocol Service Components</a>.</p>
+<h2 id="default-negative-response-codes">Default Negative Response Codes</h2>
+<p><a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R030' title="">[NRC-R030]</a> The ProtocolService has a special data object  that contains default negative response codes (NRCs). If you create a service, the NRCS are initialized from these defaults.</p>
+<p>See the <a href="../../30%20Features/Negative%20Response/Negative%20Response.htm">Negative Response Feature</a>.</p>
+<h2 id="signature">Service <span id='_index_446728092'>Signature</span> (Service Prefixes)</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Service%20Prefixes.png" alt="Service Signature in CANdelaStudio (red marked numbers in column Request)" />
+<p class="caption">Service Signature in CANdelaStudio (red marked numbers in column Request)</p>
+</div>
+<p>The diagnostic protocol consists of services provided by the ECU and typically requested by an external test system.</p>
+<p>Both participants must be able to:</p>
+<ul>
+<li>... from the <strong>hex sequence</strong> transported <strong>over the line</strong></li>
+<li>... unambiguously <strong>detect</strong> the indented <strong>service</strong>.</li>
+</ul>
+<p>A “Service prefix&quot; is the sequence of leading Constant Components and Variable Values (cf. CDS-844, CDS-2275, CDS-4944):</p>
+<ul>
+<li><strong>Constant Components</strong>
+<ul>
+<li>typically the Service ID like 0x19 or 0x22</li>
+<li>defined including their values in the Protocol Service</li>
+</ul></li>
+<li><strong>Variable Value Components</strong>
+<ul>
+<li>typically for the <a href="../../30%20Features/DID/DID.htm">Data Identifier (DID)</a>, routine ID etc.</li>
+<li>defined in the Protocol Service</li>
+<li>the value is defined in a diagnostic instance</li>
+</ul></li>
+<li><strong>not</strong> key properties: constant data objects
+<ul>
+<li>within a <strong>Fixed Data Component</strong></li>
+<li>or in a telegram table for a <strong>Proxy Component</strong></li>
+</ul></li>
+</ul>
+<p>Example for a service in a diagnostic instance:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Component List in Request</th>
+<th align="left">Value</th>
+<th>Value Defined in the...</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Constant Component</td>
+<td align="left">0x22</td>
+<td>Protocol Service</td>
+</tr>
+<tr class="even">
+<td align="left">Variable Value Component</td>
+<td align="left">0xF0 0x40</td>
+<td>Diagnostic instance</td>
+</tr>
+<tr class="odd">
+<td align="left">Proxy Component</td>
+<td align="left">(data objects)</td>
+<td>Diagnostic instance</td>
+</tr>
+</tbody>
+</table>
+<p>This service has the signature <span class="localId valid">22 F0 40</span>.</p>
+<p>See also</p>
+<ul>
+<li>the <a href="../../20%20UserInterface/Service/Services.htm#abstract">service abstract</a> in the user interface</li>
+<li><a href="../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm">Check Identifier Uniqueness</a></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Addressing.htm">Addressing</a> incl. Suppress Positive Response Message Indication Bit (SPRMIB)</li>
+<li><a href="Mandatory%20and%20Mandatory%20at%20Runtime.htm">Mandatory and Mandatory at Runtime</a></li>
+<li><a href="May%20be%20Combined.htm">May be Combined</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Use-Cases.htm">Diagnostic Class Template</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm">Diagnostic Use-Cases</a></li>
+</ul>
+
+</body>
+</html>

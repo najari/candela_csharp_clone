@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Use-Cases</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-use-cases">Diagnostic Use-Cases</h1>
+<p>A CANdela <strong>diagnostic class template</strong> typically represents a <strong>diagnostic use-case</strong>, like Fault Memory, Live Data, Stored Data, ECU Reset etc.</p>
+<h2 id="session">Session</h2>
+<p>While a test system communicates with an ECU, it can switch between multiple sessions. A session restricts the available ECU services. If the test system sends a request of a service not available in the current session, the ECU responds with a negative response.</p>
+<p>Examples</p>
+<div class="line-block">    Default Session, Programming Session, End-of-Line Session</div>
+<h2 id="security">Security</h2>
+<p>Some diagnostic functionality is relevant for security and may be performed only by authorized persons. Therefore this functionality is protected by access authorization. There can even be multiple levels of security.</p>
+<p>To acquire access to the protected functionality, a test system gets a “seed” value from the ECU, computes the matching key and sends it back to the ECU.</p>
+<h2 id="identification">Identification</h2>
+<p>An ECU typically contains several data objects that describe the development or equipment version of the ECU. A test system requests and evaluates these data objects to identify the ECU version.</p>
+<p>Examples</p>
+<div class="line-block">    Hardware Version, Software Version, Serial Number</div>
+<h2 id="dynamic-data">Dynamic Data</h2>
+<p>An ECU provides different kinds of data to a test system: dynamic measurements, dynamically computed values, or static information. The ECU typically provides the data in packets guided by ECU functionality or by the needs of a specific tester application.</p>
+<p>One such data packet can be seen as a “Freeze Frame” – the information is a copy of the internal ECU data at a given point in time.</p>
+<p>Examples</p>
+<div class="line-block">    Supply Voltage, Wheel Speed, Break Pressure</div>
+<h2 id="fault-memory">Fault Memory</h2>
+<p>The nonvolatile memory of the ECU records information about errors in the ECU. The ECU detects and tracks such errors without a trigger from outside (on-board diagnosis). In the ECU implementation, the errors are handled as “events”. An event is reported to the test system via a “diagnostic trouble code” (DTC).</p>
+<p>In addition to the event (diagnostic trouble code), the ECU records data from the environment. The data reflect the situation at a specific point in time of the error detection algorithm, e.g. at the first occurrence or at the last occurrence.</p>
+<p>Examples</p>
+<div class="line-block">    DTC: C003713 (0x403713) Wheel Speed Sensor – Circuit Open<br />
+    Environment data: Odometer Value, Wheel Speed</div>
+<h2 id="io-control">I/O Control</h2>
+<p>An ECU lets a test system control the connected actors or manipulate internal values. This manipulation enables a check of individual internal components.</p>
+<p>Typically, the manipulated units are combined to groups that are modified together. This avoids inconsistent values of related switches.</p>
+<p>There are different types of I/O Controls:</p>
+<table style="width:99%;">
+<colgroup>
+<col width="17%" />
+<col width="39%" />
+<col width="42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Push button (unary)</td>
+<td align="left">Pressing the button triggers an action once. The action terminates without further intervention.</td>
+<td align="left">Start the movement test of a speedometer pointer.<br />
+Control the valve of a brake system for some time span.</td>
+</tr>
+<tr class="even">
+<td align="left">Switch (binary)</td>
+<td align="left">A switch can be toggled between two states. The most frequent meaning is on/off, but there are switches with other meanings.</td>
+<td align="left">Move a window lift up and down,<br />
+Turn an air blower on and off<br />
+Open and close a valve in the brake system</td>
+</tr>
+<tr class="odd">
+<td align="left">Switch (selection)</td>
+<td align="left">Switch with more than two states.</td>
+<td align="left">Select the language for the instrument cluster<br />
+Select a stored seat position</td>
+</tr>
+<tr class="even">
+<td align="left">Setting (continuous)</td>
+<td align="left">Modify a value within a range of valid values (e.g. using a continuous control dial)</td>
+<td align="left">Set the throttle valve to a specified angle</td>
+</tr>
+</tbody>
+</table>
+<h3 id="uds-0x2f-inputoutputcontrolbyidentifier">UDS 0x2F InputOutputControlByIdentifier<span id='_index_446727989' title='controlEnableMaskRecord' data-term='controlEnableMaskRecord'></span><span id='_index_446727990' title='CEMR' data-term='CEMR'></span></h3>
+<ul>
+<li>The UDS request parameter <code>controlOptionRecord</code>...
+<ul>
+<li>defines 1..n data objects,</li>
+<li>each data object may have any length,</li>
+<li>each data object represents an individual ECU parameter to control (input or output overwrite).</li>
+</ul></li>
+<li>The optional UDS request parameter <code>controlEnableMaskRecord</code>...
+<ul>
+<li>according with UDS, shall <strong>only</strong> be supported if the <code>controlOptionRecord</code> contains <strong>more than one</strong> data object,</li>
+<li>contains <strong>1 bit</strong> for each data object in the <code>controlOptionRecord</code>.</li>
+<li>The <strong>first</strong> data object corresponds with <strong>bit 7</strong> (most significant bit) of the first byte in the <code>controlOptionRecord</code>,</li>
+<li>the second data object corresponds with bit 6, etc.</li>
+<li>E.g. the 16th data object corresponds with bit 0 in the second byte in the <code>controlOptionRecord</code>.</li>
+</ul></li>
+</ul>
+<p><strong>Caveat:</strong></p>
+<ul>
+<li>you need a <strong>bitfield</strong> to describe the individual bits of the <code>controlOptionRecord</code>.</li>
+<li>In a typical configuration,
+<ul>
+<li>CANdelaStudio shows <strong>bit 0</strong> on top,</li>
+<li>but that bit corresponds with the <strong>8th data object</strong>!</li>
+<li>Cf. option &quot;Display most Significant Bit on Top&quot; <a class='rqRef' href='../../30%20Features/Document/Bit%20Ordering.htm#DOC-R500' title="">[DOC-R500]</a></li>
+</ul></li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>For 3 data objects
+<ul>
+<li><strong><code>LED_R</code></strong></li>
+<li><code>LED_G</code></li>
+<li><code>LED_B</code></li>
+</ul></li>
+<li>... you need a 1-byte bitfield with elements like:
+<ul>
+<li>Bits 0-4: (reserved 5 bits)</li>
+<li>Bit 5: <code>LED_B_Mask</code></li>
+<li>Bit 6: <code>LED_G_Mask</code></li>
+<li>Bit 7: <strong><code>LED_R_Mask</code></strong></li>
+</ul></li>
+</ul>
+<h2 id="parameterization">Parameterization</h2>
+<p>The nonvolatile memory of the ECU stores calibration values and parameters. These are input for control systems. Some of the values can be changed over the diagnostic interface (even while driving). In development this feature is often used to investigate how different configurations impact the functionality of the ECU. Like for I/C Control, typically multiple single parameters are combined to groups to save memory.</p>
+<p>There are different types of parameters, like for I/O Control: binary switch, selection and continuous setting.</p>
+<p>Examples</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Type</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Switch (binary)</td>
+<td align="left">Turn automatic fan control on/off</td>
+</tr>
+<tr class="even">
+<td align="left">Switch (selection)</td>
+<td align="left">Activate a set of parameter values</td>
+</tr>
+<tr class="odd">
+<td align="left">Setting (continuous)</td>
+<td align="left">Adapt a calibration value of tyre pressure control</td>
+</tr>
+</tbody>
+</table>
+<h2 id="variant-coding">Variant Coding</h2>
+<p>Often an ECU is used in different model types and vehicle configurations. Typically, a diagnostic tester configures the ECU at end-of-line – it writes software switches and parameters into the nonvolatile ECU memory.</p>
+<p>Variant coding works much like Parameterization, there are the same types of parameters.</p>
+<p>Examples</p>
+<table style="width:93%;">
+<colgroup>
+<col width="31%" />
+<col width="61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Type</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Switch (binary)</td>
+<td align="left">Extra equipment „cruise control“ included?<br />
+Right-hand / left-hand driven?</td>
+</tr>
+<tr class="even">
+<td align="left">Switch (selection)</td>
+<td align="left">Country: US, Europe, Japan, ...<br />
+Mounted tire size</td>
+</tr>
+<tr class="odd">
+<td align="left">Setting (continuous)</td>
+<td align="left">Breakaway point for the speed regulation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="routine">Routine</h2>
+<p>Some ECUs allow the start of routines over the diagnostic interface. A function is a routine that returns a result; a procedure is a routine that does not return a result.</p>
+<p>There are two types of routines:</p>
+<table style="width:99%;">
+<colgroup>
+<col width="16%" />
+<col width="36%" />
+<col width="46%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">self-terminating</td>
+<td align="left">The routine terminates without external activity</td>
+<td align="left">Trigger an ECU Reset<br />
+Start calibration of the gearbox, returns the calibration value</td>
+</tr>
+<tr class="even">
+<td align="left">not self-terminating</td>
+<td align="left">The test system has to terminate the routine</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-transfer-upload-download">Data Transfer (Upload, Download)</h2>
+<p>Some ECUs allow transfer of bulk data between test system and the ECU:</p>
+<ul>
+<li>Upload: from the ECU to the test system;</li>
+<li>Download: from the test system to the ECU.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Diagnostic%20Class%20Template.htm">Diagnostic Class Template</a></li>
+</ul>
+</body>
+</html>

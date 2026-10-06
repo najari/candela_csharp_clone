@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DTC</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dtc"><span id='_index_446728013' title='Feature' data-text='Feature'>DTC</span></h1>
+<p>A DTC represents an internal error event in the ECU and transports it via a protocol to a client.</p>
+<p>See also the <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory Introduction</a> and the user interface <a href="../../20%20UserInterface/DTC/DTCs.htm">DTC List</a>.</p>
+<h2 id="dtc-lists-in-candela">DTC Lists in CANdela</h2>
+<p><span id="DTC-R001" class="rqDef">[DTC-R001]</span> A DTC in CANdela is either</p>
+<ul>
+<li>in the list of <a href="Available%20DTCs.htm">Available DTCs</a> (DTC Pool), or</li>
+<li>in a list within a <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a> (in a variant or library).</li>
+</ul>
+<p><strong>Snapshot data</strong> and <strong>extended data</strong> for a DTC...</p>
+<ul>
+<li>are not described at the DTC directly</li>
+<li>but are stored and edited in separate lists</li>
+<li>and both have a <strong>reference</strong> to their DTC.</li>
+</ul>
+<p>Therefore e.g. copying a DTC does not copy its snapshot data, since CANdela does not consider them being &quot;part&quot; of the DTC.</p>
+<h2 id="obd-dtcs">OBD DTCs</h2>
+<p>A CANdela template distinguishes <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R001' title="">[ECT-R001]</a>...</p>
+<ul>
+<li>Primary/User-Defined/WWH-OBD DTCs (3 byte)</li>
+<li>OBD-II DTCs (2 byte)</li>
+</ul>
+<p><strong>Relationship</strong> of UDS and OBD-II DTCs:</p>
+<ul>
+<li>CANdelaStudio (as of v13) does not have built-in support for this relationship</li>
+<li>See <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R220' title="">[DTC-R220]</a> below for a convention for Vector DEM code generation.</li>
+</ul>
+<h2 id="dtc-referencing">DTC Referencing</h2>
+<p><span id="DTC-D020" class="rqDef" title="DTC Referencing">[DTC-D020 DTC Referencing]</span>: Possible references (sharing) of DTC related objects:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Object</th>
+<th align="left">Sharing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Diagnostic Instance</td>
+<td align="left">yes</td>
+</tr>
+<tr class="even">
+<td align="left">DTC List as a whole</td>
+<td align="left">no</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC</td>
+<td align="left">yes (into DTC Pool only)</td>
+</tr>
+</tbody>
+</table>
+<p>See also <a class='rqRef' href='../../30%20Features/DTC/Available%20DTCs.htm#DTCP-R002-UDFM' title="">[DTCP-R002-UDFM]</a> for DTC references in User Defined Fault Memory.</p>
+<h2 id="dtc-list">DTC List</h2>
+<p><span id="DTC-R020" class="rqDef" title="DTC List">[DTC-R020 DTC List]</span>: A DTC List <strong>exists</strong> in the contexts</p>
+<ul>
+<li><span id="DTC-R020-Pool" class="rqDef">[DTC-R020-Pool]</span> in the DTC Pool or</li>
+<li><span id="DTC-R020-DiagInst" class="rqDef">[DTC-R020-DiagInst]</span> in a diagnostic instance (in a Variant or Library), see <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-D020' title="DTC Referencing">[DTC-D020]</a> above.</li>
+</ul>
+<p><span id="DTC-R020-ErrorCodeTable" class="rqDef">[DTC-R020-ErrorCodeTable]</span>: Each DTC list corresponds with an Error Code Table <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R001' title="">[ECT-R001]</a> defined in the template.</p>
+<h2 id="dtc-data-object-and-dtc-data-type">DTC Data Object and DTC Data Type</h2>
+<p>In the generic CANdela data model,</p>
+<ul>
+<li>a data object (parameter)</li>
+<li>references a data type (conversion) <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R100' title="">[DO-R100]</a>.</li>
+</ul>
+<p>This also holds for DTCs:</p>
+<div class="figure">
+<img src="Images/DTC%20Data%20Object%20and%20DTC%20Data%20Type.jpg" alt="DTC Data Object and DTC Data Type" />
+<p class="caption">DTC Data Object and DTC Data Type</p>
+</div>
+<p><span id="DTC-R021" class="rqDef" title="DTC Data Object">[DTC-R021 DTC Data Object]</span>: in a diagnostic instance, ...</p>
+<ul>
+<li>a <strong>DTC Data Object</strong> represents...
+<ul>
+<li>the <a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">data object</a> (&quot;parameter&quot;) on the line.</li>
+</ul></li>
+<li>it contains a <strong>DTC Data Type</strong> which...
+<ul>
+<li>represents the mapping between codes and error texts</li>
+<li>similar to a <a href="../../30%20Features/Data%20Type/Text%20Table.htm">Text Table</a>;</li>
+<li>the DTC Data Type contains the list of <strong>DTCs</strong>.</li>
+</ul></li>
+<li>An individual <strong>DTC</strong> in the DTC Data Type...
+<ul>
+<li>(described below) holds code, error text and the DTC specific properties</li>
+<li>similar to one entry in a text table.</li>
+</ul></li>
+</ul>
+<p>Note: the DTC Data Object is shown in a property dialog <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R021' title="">[DTCUI-R021]</a> on the DTC list and used in exports to represent the DTC &quot;parameter&quot;.</p>
+<h2 id="dtc-existence">DTC Existence</h2>
+<p><span id="DTC-R022" class="rqDef" title="Existence">[DTC-R022 Existence]</span>: A DTC <strong>exists</strong> in one or multiple DTC Lists, see <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-D020' title="DTC Referencing">[DTC-D020]</a> above.</p>
+<h2 id="dtc-code">DTC Code</h2>
+<p><span id="DTC-R025" class="rqDef" title="Code">[DTC-R025 Code]</span>: A DTC has a <strong>Code</strong> = an unsigned number</p>
+<ul>
+<li><span id="DTC-R025-Size" class="rqDef">[DTC-R025-Size]</span> the maximum Code size is controlled by the corresponding Error Code Table <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R020-ErrorCodeTable' title="">[DTC-R020-ErrorCodeTable]</a>.</li>
+<li><span id="DTC-R025-Unique" class="rqDef">[DTC-R025-Unique]</span> the Code must be <strong>unique</strong> within a DTC List (even in the DTC Pool).</li>
+<li><span id="DTC-R025-Zero" class="rqDef">[DTC-R025-Zero]</span> in UDS, the <strong>DTC 0x000000</strong> has a special meaning
+<ul>
+<li>0x19 0x02 reportDTCByStatusMask may fill a response with dummy DTCs 0x000000 for page-buffered handling when the number of DTCs decreases while creating the response.</li>
+</ul></li>
+</ul>
+<p><span id="DTC-R028" class="rqDef">[DTC-R028]</span> For display purposes (see <a href="../../20%20UserInterface/Document/Property%20Page%20Display%20of%20DTCs.htm">&quot;Display of DTCs&quot;</a>), the DTC Code may be structured into</p>
+<ul>
+<li><span id="DTC-R028-Base" class="rqDef">[DTC-R028-Base]</span> a 2 byte root part (base DTC)</li>
+<li><span id="DTC-R028-FTB" class="rqDef">[DTC-R028-FTB]</span> a 1 byte <a href="Failure%20Type%20Byte.htm">Failure Type Byte</a> or</li>
+<li><span id="DTC-R028-FMI" class="rqDef">[DTC-R028-FMI]</span> a 1 byte <a href="Failure%20Mode%20Identifier.htm">Failure Mode Identifier</a>.</li>
+</ul>
+<h2 id="dtc-identity">DTC Identity</h2>
+<ul>
+<li><span id="DTC-D210-Identity" class="rqDef">[DTC-D210-Identity]</span> DTC A in one variant and DTC B in another variant are considered “<strong>the same DTC</strong>” (DTC per se) if they have the <strong>same code</strong>.</li>
+<li><span id="DTC-D210-ModifyCode" class="rqDef">[DTC-D210-ModifyCode]</span> If you <strong>modify the DTC code</strong> in one place, the DTC becomes another “DTC per se” at this place.</li>
+</ul>
+<h2 id="dtc-error-text">DTC Error Text</h2>
+<p><span id="DTC-R030" class="rqDef" title="Error Text">[DTC-R030 Error Text]</span>: A DTC has an <strong>Error Text</strong>.</p>
+<ul>
+<li><span id="DTC-R030-MultiLang" class="rqDef">[DTC-R030-MultiLang]</span> It is multi-language.</li>
+<li><span id="DTC-R030-Empty" class="rqDef">[DTC-R030-Empty]</span> It may be empty.</li>
+<li><span id="DTC-R030-NoLineBreak" class="rqDef">[DTC-R030-NoLineBreak]</span> It must not contain line-breaks (CDC-13683 8.1 SP2).</li>
+<li><span id="DTC-R030-NotUnique" class="rqDef">[DTC-R030-NotUnique]</span> It need <strong>not</strong> be <strong>unique</strong> within a DTC List.</li>
+</ul>
+<h2 id="dtc-authorization-properties">DTC Authorization Properties</h2>
+<p>See <a href="DTC%20Authorization.htm">DTC Authorization</a>.</p>
+<h2 id="dtc-columns">DTC Columns</h2>
+<p><span id="DTC-R040" class="rqDef" title="DTC Columns">[DTC-R040 DTC Columns]</span>:</p>
+<ul>
+<li>A DTC has <a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">user-defined properties (columns)</a>, defined at the corresponding Error Code Table <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R020-ErrorCodeTable' title="">[DTC-R020-ErrorCodeTable]</a>.</li>
+<li>Each DTC has a value for each column.</li>
+<li><span id="DTC-R040-ColumnSort" class="rqDef">[DTC-R040-ColumnSort]</span>: the columns at a DTC are in the same order as the column definitions in the Error Code Table (CDS-8349 5.5).</li>
+<li>For default values of new DTCs, see <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R080' title="Default Value">[DTCC-R080]</a>.</li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<p>A DTC has <strong>attributes</strong> <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-DTC' title="">[ATTR-R050-DTC]</a>.</p>
+<h2 id="vsg">DTC and Vehicle System Groups</h2>
+<p>A DTC can be associated with <a href="../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm">Vehicle System Groups</a> <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm#VSG-R100-DTC' title="">[VSG-R100-DTC]</a>.</p>
+<h2 id="references">References</h2>
+<p>See <a class='rqRef' href='../../30%20Features/DTC/Available%20DTCs.htm#DTCP-R002' title="DTC Referencing">[DTCP-R002]</a> for references into DTC Pool.</p>
+<h2 id="dtc-byte-order">DTC Byte Order</h2>
+<p>In UDS and KWP, the <strong>DTC</strong> is described with <strong>high-low (Motorola) byte order</strong>.</p>
+<p><span id="DTC-R050" class="rqDef" title="Byte Order">[DTC-R050 Byte Order]</span> The CANdela data model (like ODX) supports a byte order at the DTC object.</p>
+<p>Note:</p>
+<ul>
+<li>CANdelaStudio displays the byte order <a class='rqRef' href='../../20 UserInterface\Document\Property Page Display of DTCs.htm#DOCUI-R620' title="">[DOCUI-R620]</a></li>
+<li>but does not provide editing.</li>
+<li>Vector test systems evaluate it correctly.</li>
+</ul>
+
+
+<h2 id="ftb-fmi">Failure Type Byte / Failure Mode Identifier</h2>
+<p>Failure Type Bytes (FTB) or Failure Mode Identifiers (FMI) must be enabled in the template in the <a href="../../20%20UserInterface/Document/Property%20Page%20Display%20of%20DTCs.htm">Document Property Page &quot;Display of DTCs&quot;</a>:</p>
+<ul>
+<li><a href="Failure%20Mode%20Identifier.htm">Failure Mode Identifier</a></li>
+<li><a href="Failure%20Type%20Byte.htm">Failure Type Byte</a></li>
+</ul>
+<h2 id="dtc-in-code-generation">DTC in Code Generation</h2>
+<p><span id="DTC-R210" class="rqDef">[DTC-R210]</span> Vector DEM needs to identify DEM internal data objects that represent e.g.</p>
+<ul>
+<li>DTC Aging Counter</li>
+<li>DTC Healing Counter</li>
+<li>...</li>
+</ul>
+<p>For this purpose, it evaluates the attribute &quot;Faultmemory Relevance&quot; <a class='rqRef' href='../../30%20Features/Attributes/Special%20Attributes.htm#SATTR-R210' title="">[SATTR-R210]</a> at a data type. See the Vector UDS Template <a class='rqRef' href='../../40 Templates\Vector UDS\Data Types.htm#VUDS-R310' title="">[VUDS-R310]</a>.</p>
+<p><span id="DTC-R220" class="rqDef">[DTC-R220]</span> In order to associate UDS and OBD-II DTCs, Vector DEM evaluates a DTC column &quot;UDS DTC Reference&quot; <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R520' title="">[ECT-R520]</a> at the OBD-II DTCs.</p>
+<ul>
+<li>See the Vector UDS Template <a class='rqRef' href='../../40 Templates\Vector UDS\OBDII DTC Columns.htm#VUDS-R480' title="">[VUDS-R480]</a>.</li>
+</ul>
+
+
+<h2 id="related-topics">Related Topics</h2>
+<p>Procedures:</p>
+<ul>
+<li><a href="../../15%20Procedures/DTC/How%20to%20Edit%20DTCs%20Efficiently.htm">How to Edit DTCs Efficiently</a></li>
+</ul>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/Document/Property%20Page%20Display%20of%20DTCs.htm">Document Property Page &quot;Display of DTCs&quot;</a></li>
+<li><a href="../../20%20UserInterface/DTC/DTC%20Overview.htm">DTC Overview</a></li>
+<li><a href="../../20%20UserInterface/DTC/DTCs.htm">DTC List</a></li>
+<li><a href="../../20%20UserInterface/DTC/DTC%20Property%20Page.htm">DTC Property Page</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory Introduction</a></li>
+<li><a href="Available%20DTCs.htm">Available DTCs (DTC Pool)</a></li>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type.htm#conversions">Conversions</a></li>
+<li><a href="DTC%20Authorization.htm">DTC Authorization</a></li>
+<li><a href="DTC%20Export.htm">DTC Export</a></li>
+<li><a href="DTC%20Import.htm">DTC Import</a></li>
+<li><a href="DTC%20Status%20Bits.htm">DTC Status Bits</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></li>
+<li><a href="Failure%20Mode%20Identifier.htm">Failure Mode Identifier</a></li>
+<li><a href="Failure%20Type%20Byte.htm">Failure Type Byte</a></li>
+<li><a href="Group%20of%20DTC.htm">Group of DTC</a></li>
+<li><a href="MDX%20DTC%20Columns.htm">MDX DTC Columns</a></li>
+<li>Multi-Language <a class='rqRef' href='../../30%20Features/Multi-Language/Multi-Language.htm#ML-R100' title="Translatables">[ML-R100]</a></li>
+</ul>
+</body>
+</html>

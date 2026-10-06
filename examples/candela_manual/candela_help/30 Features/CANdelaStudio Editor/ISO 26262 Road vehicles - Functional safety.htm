@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>ISO 26262 Road vehicles - Functional safety</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="iso-26262-road-vehicles-functional-safety"><span id='_index_446727917'>ISO 26262</span> Road vehicles – <span id='_index_446727918'>Functional safety</span><span id='_index_446727919' title='Safety' data-term='Safety'></span></h1>
+
+<p>For CANdelaStudio and ODXStudio a tool confidence level TCL1 can be determined, therefore no tool qualification according to ISO 26262 is necessary. Rationale:</p>
+<ol style="list-style-type: decimal">
+<li><p>The diagnostic protocol does not implement safety-related functionality. It can only parameterize such functionality. The application of the ECU determines to what extent these parameters influence the behavior of the ECU. The application of the ECU is responsible for ensuring that any faults that could jeopardize functional safety are properly handled. An authoring tool such as CANdelaStudio or ODXStudio takes no responsibility for this (Tool Impact TI1).</p></li>
+<li><p>The probability of detecting a diagnostic error by a simple test is very high (Tool Error Detection TD1).</p></li>
+</ol>
+<p><strong>German version</strong>:</p>
+<p>Für CANdelaStudio und ODXStudio kann ein Tool Confidence Level TCL1 ermittelt werden, daher ist keine Toolqualifizierung gemäß ISO 26262 notwendig. Begründung:</p>
+<ol style="list-style-type: decimal">
+<li><p>Das Diagnoseprotokoll implementiert keine sicherheitsrelevante Funktionalität. Es kann lediglich solche Funktionalität parametrisieren. Die Applikaton der ECU bestimmt, inwieweit diese Parameter das Verhalten der ECU beeinflussen. Die Applikation der ECU ist verantwortlich dafür, dass alle Fehler, die die funktionale Sicherheit gefährden könnten, ordnungsgemäß behandelt werden. Ein Authoring Tool wie CANdelaStudio oder ODXStudio übernimmt hierfür keine Verantwortung (Tool Impact TI1).</p></li>
+<li><p>Die Wahrscheinlichkeit, einen Diagnosefehler durch einen einfachen Test zu erkennen, ist sehr hoch (Tool Error Detection TD1).</p></li>
+</ol>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/State%20Dependency/State%20Dependency.htm">State Dependency</a></li>
+</ul>
+
+</body>
+</html>

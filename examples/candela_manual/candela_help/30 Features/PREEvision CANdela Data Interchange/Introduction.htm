@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Introduction</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="introduction-preevision-candela-data-interchange">Introduction: PREEvision CANdela Data Interchange<span id='_index_446728086' title='PREEvision: Data Exchange' data-term='PREEvision' data-text='Data Exchange'></span><span id='_index_446728087' title='PVCDI: PVCDI' data-term='PVCDI' data-text='PVCDI'></span></h1>
+<p><span id="PVCDI-D010" class="rqDef">[PVCDI-D010]</span> <strong>PREEvision CANdela Data Interchange</strong> is a Vector project started in 2019, directly related with the products <strong>PREEvision</strong> and <strong>CANdelaStudio</strong>.</p>
+<p>The abbreviation <strong>PVCDI</strong> is short for &quot;PREEvision CANdela Data Interchange&quot;.</p>
+<p>To run it in CANdelaStudio, see Ribbon Tab &quot;Data Exchange&quot;: Import <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R1010' title="">[MENU-R1010]</a> and Export <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R1020' title="">[MENU-R1020]</a>.</p>
+
+<h2 id="use-cases">Use-cases</h2>
+<ul>
+<li>Derive diagnostic objects from an existing EE model
+<ul>
+<li>A human inspects the EE model,
+<ul>
+<li>e.g. SWC connected with sensor and actor,</li>
+</ul></li>
+<li>considers possible failure: plug breaks, sensor fails
+<ul>
+<li>fault conditions that must be treated in a garage</li>
+</ul></li>
+</ul></li>
+<li>PREEvision puts focus on diagnostic info for code generation, not tester parameterization
+<ul>
+<li>e.g. session/security is not relevant (no effect on connectors, bits...)</li>
+<li>its just a <strong>configuration</strong> for <strong>daVinci</strong></li>
+</ul></li>
+</ul>
+<h2 id="diagnostics-in-preevision">Diagnostics in PREEvision</h2>
+<div class="figure">
+<img src="Images/PREEvision%20Layers.jpg" alt="PREEvision Layers" />
+<p class="caption">PREEvision Layers</p>
+</div>
+
+<h3 id="telegram-positions">Telegram Positions</h3>
+<ul>
+<li>PREEvision will not describe <strong>positions</strong> in a telegram</li>
+<li>In PREEvision, the PDU is modelled only late</li>
+<li>80% of modelled entities will be DIDs</li>
+<li>Protocol info is not in PREEvision</li>
+<li><strong>DID modelling</strong>
+<ul>
+<li>1 DID in PREEvision</li>
+<li>corresponding in CANdelaStudio: 1 diagnostic instance, one DID, one data object</li>
+</ul></li>
+<li><strong>Bit objects</strong>
+<ul>
+<li>in the current solution, a bit object of PREEvision (= a signal transported via the RTE)...</li>
+<li>becomes a byte in CANdela</li>
+</ul></li>
+</ul>
+<p>Note the <strong>difference</strong>:</p>
+<ul>
+<li><strong>signal</strong>
+<ul>
+<li>some function, maybe transported over a different network</li>
+</ul></li>
+<li><strong>diagnostic data object</strong>:
+<ul>
+<li>typically a consolidated information,</li>
+<li>maybe from multiple signals,</li>
+<li>the individual sources are no more relevant.</li>
+</ul></li>
+</ul>
+<h3 id="conversions">Conversions</h3>
+<p>PREEvision supports only...</p>
+<ul>
+<li><strong>conversions</strong>:
+<ul>
+<li>Identity</li>
+<li>Linear</li>
+<li>TextTable</li>
+</ul></li>
+<li>with <strong>properties</strong>...
+<ul>
+<li>byte-sized</li>
+<li>iterations of fixed size</li>
+</ul></li>
+</ul>
+<h2 id="pvcdi-data-model">PVCDI Data Model</h2>
+<h3 id="meta-info-for-locations">Meta Info for Locations</h3>
+<p>(to be exported from a CANdela document via DEXT to daVinci)</p>
+<ul>
+<li>Diagnostic Class</li>
+<li>Reference to AUTOSAR element</li>
+<li>UUIDs for roundtrip <a class='rqRef' href='../../30%20Features/Common%20Properties/PREEvision%20UUIDs.htm#PUID-R010' title="">[PUID-R010]</a></li>
+</ul>
+<h2 id="relation-with-the-describe-requirements-feature">Relation with the &quot;Describe Requirements&quot; Feature</h2>
+<ul>
+<li>Requirements are...
+<ul>
+<li>neither a core feature of PREEvision</li>
+<li>nor of CANdelaStudio.</li>
+</ul></li>
+<li>PREEvision is <strong>not a tool to model general requirements</strong></li>
+<li><strong>Solution in PREEvision before PVCDI</strong>:
+<ul>
+<li>describe requirements</li>
+<li>action e.g. &quot;Create a requirement for a DID&quot;</li>
+<li>includes requirements for <strong>Vehicle System Groups</strong> (VSG)</li>
+</ul></li>
+<li><strong>Solution in PREEvision with PVCDI</strong>:
+<ul>
+<li>use the new diagnostic entities, not requirements</li>
+<li>action e.g. &quot;Create a DID&quot;</li>
+<li>PREEvision still supports the export of requirements, including VSGs.</li>
+</ul></li>
+</ul>
+
+
+<h3 id="data-completeness-rules">Data Completeness Rules</h3>
+<ul>
+<li>The data model consistency conditions of one product (CANdelaStudio, PREEvision) do <strong>not</strong> guarantee the conditions of the <strong>other</strong> product.</li>
+<li>Each product is responsible to handle the conditions which its <strong>own data model</strong> imposes.</li>
+<li>As a consequence, a product may reject data on import, requiring the user to make data consistent first.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>CANdelaStudio features:</p>
+<ul>
+<li><a href="../../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a></li>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract (Export)</a></li>
+<li><a href="../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm">Attributes for AUTOSAR Diagnostic Extract Export</a></li>
+<li><a href="../../30%20Features/Common%20Properties/PREEvision%20UUIDs.htm">PREEvision UUIDs</a></li>
+<li>PREEvision UUID Repair <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Saving%20a%20Document%20or%20Template.htm#SV-R110' title="">[SV-R110]</a> on saving</li>
+<li>PREEvision UUID Migration <a class='rqRef' href='../../30%20Features/Migrations/CANdelaStudio%2013.htm#MIG13-R110' title="">[MIG13-R110]</a></li>
+<li><a href="../../30%20Features/Import/SWC%20Sync%20Introduction.htm">SWC Sync</a> (Import)</li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#autosar">AUTOSAR Command Line Operation Examples</a></li>
+<li>Command line Import <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-pvcdiImport' title="">[CLI-R100-pvcdiImport]</a> and Export <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-pvcdiExport' title="">[CLI-R100-pvcdiExport]</a></li>
+<li>Ribbon Tab &quot;Data Exchange&quot;: Import <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R1010' title="">[MENU-R1010]</a> and Export <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R1020' title="">[MENU-R1020]</a>.</li>
+</ul>
+<p>General:</p>
+<ul>
+<li><a href="../../15%20Procedures/AUTOSAR/How%20to%20Configure%20the%20Diagnostic%20Basic%20Software%20of%20an%20AUTOSAR%204%20ECU.htm">How to Configure the Diagnostic Basic Software of an AUTOSAR 4 ECU</a></li>
+<li><a href="../../30%20Features/ODX/ODX.htm">ODX</a></li>
+<li><a href="../../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></li>
+</ul>
+
+</body>
+</html>

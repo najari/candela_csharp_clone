@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Identifying Feature for Vehicle System Groups</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="identifying-feature-for-vehicle-system-group-optional-subsystem-cds-3619-4.0"><span id='_index_446728132' title='for Vehicle System Groups' data-term='for Vehicle System Groups'>Identifying Feature</span> for Vehicle System Group (<span id='_index_446728133'>Optional Subsystem</span>) (CDS-3619 4.0)</h1>
+<h2 id="introduction">Introduction</h2>
+<div class="figure">
+<img src="Images/Options.jpg" alt="ECU Options" />
+<p class="caption">ECU Options</p>
+</div>
+<ul>
+<li>An ECU software may be configured by multiple <strong>options (data values)</strong>.
+<ul>
+<li>Typically there may be dozens of these options in an engine ECU.</li>
+</ul></li>
+<li>Each combination of options is a <strong>(build) configuration</strong> of the ECU.
+<ul>
+<li>For 10 options, there are <code>2^10 = 1024</code> possible configurations.</li>
+<li>For 20 options, there are <code>2^20 =</code> over a million possible configurations.</li>
+<li>The real number of different configurations may run into the hundreds.</li>
+</ul></li>
+<li>You can use a CANdela <strong>variant</strong> to describe a configuration.
+<ul>
+<li>The contents of the variant defines the diagnostic features of the configuration.</li>
+<li>The contents is defined at the <strong>time of authoring</strong> in CANdelaStudio.</li>
+<li>This is practical for a small number of options (and configurations).</li>
+<li>For a large number of options, <strong>using variants may be impractical</strong> to define in CANdelaStudio.</li>
+<li>At runtime, a test system will detect the variant (configuration) using <a href="../../30%20Features/Variant/Variant%20Identification.htm">Identifying Features</a>.</li>
+</ul></li>
+<li>As an alternative, you can use <strong>Vehicle System Groups</strong>, also called <strong>Optional Subsystems</strong> in this context.</li>
+</ul>
+<h2 id="solution-optional-subsystems">Solution: Optional Subsystems</h2>
+<div class="figure">
+<img src="Images/Identifying%20Feature%20for%20Vehicle%20System%20Groups.jpg" alt="Identifying Feature for Vehicle System Groups" />
+<p class="caption">Identifying Feature for Vehicle System Groups</p>
+</div>
+<ul>
+<li>A <strong>data object</strong> represents the <strong>option</strong> in the ECU and on the line,
+<ul>
+<li>e.g. &quot;Fog Lamps Front&quot;.</li>
+</ul></li>
+<li>An <strong>Identifying Feature</strong> <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm#VSG-R150' title="">[VSG-R150]</a> (at Vehicle System Groups, not at <a href="../../30%20Features/Variant/Variant%20Identification.htm">variants</a>) references the data object.
+<ul>
+<li>for the <strong>variant</strong> of the data object see <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm#VSG-R150' title="">[VSG-R150]</a>.</li>
+</ul></li>
+<li>A <strong>Vehicle System Group</strong> (<strong>Optional Subsystem</strong>) specifies a value (<strong>Identifying Pattern</strong>) for the Identifying Feature,
+<ul>
+<li>e.g. &quot;Fog Lamps Front&quot; <code>== 1</code>.</li>
+</ul></li>
+<li>A <strong>diagnostic instance</strong>, e.g. &quot;Front Fog Lamp Relay&quot;, associated with the Vehicle System Group is only available in an implemented ECU if the ECU actually returns the value (Identifying Pattern) defined for the data object.</li>
+</ul>
+<h2 id="effect">Effect</h2>
+<ul>
+<li>Using Optional Subsystems is practical even for a large number of options.</li>
+<li>The contents of the configuration...
+<ul>
+<li>need not be known at authoring time in CANdelaStudio,</li>
+<li>but may be known only during a build for a specific customer order, to be detected at runtime.</li>
+</ul></li>
+<li>A single variant can support all of the build options.</li>
+<li>The feature does not allow changing the definition of any diagnostic instance within a variant.</li>
+<li>All that can change is which <strong>diagnostic instances</strong> are <strong>optionally supported</strong> by any <strong>implemented instance</strong> of a variant.</li>
+<li>The feature does not affect the mechanism of code generation.
+<ul>
+<li>The code of the diagnostic instances is present in the ECU,</li>
+<li>but is not available for communication.</li>
+</ul></li>
+</ul>
+<h2 id="semantics">Semantics</h2>
+<p>For a VSG without Identifying Feature, the <strong>semantics of associating it a e.g. with diagnostic instance</strong> is straightforward: when filtering for the VSG, the diagnostic instance either qualifies, or not.</p>
+<p>This is different for a VSG with Identifying Feature (an optional subsystem), which describes whether the services of the diagnostic instance are actually implemented:</p>
+<ul>
+<li><p>If a diagnostic instance is not associated with any optional subsystem, it is treated as <em>implemented</em></p></li>
+<li><p>If a diagnostic instance is associated with at least one optional subsystem, it is treated as implemented only iff. at least one of the optional subsystems is identified at runtime.</p></li>
+</ul>
+
+<h2 id="identifying-feature">Identifying Feature</h2>
+<p><span id="VSG-R150" class="rqDef">[VSG-R150]</span> The Identifying Feature of a Vehicle System Group may reference a data object in any variant (CDS-30215 9.1; before: base variant only).</p>
+<h2 id="consistency-condition-existence-of-specified-path">Consistency Condition: Existence of Specified Path</h2>
+<p><span id="VSG-R160" class="rqDef" title="Specified Path">[VSG-R160 Specified Path]</span></p>
+<div class="figure">
+<img src="Images/Consistency%20Existence%20of%20Specified%20Path.jpg" alt="Existence of Specified Path" />
+<p class="caption">Existence of Specified Path</p>
+</div>
+<ul>
+<li>The Identifying Feature must reference an existing service and data object.</li>
+<li>i.e. the paths of the Identifying Feature must...
+<ul>
+<li>denote an existing variant, and</li>
+<li>be resolvable in that Variant.</li>
+</ul></li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>&quot;<span id='_index_446728134'>Specified Path</span>&quot; = the path as selected in the &quot;New Feature&quot; and &quot;Change Path&quot; dialog.</li>
+<li>The Specified Path must be valid even if the Variant is not available <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm#VSG-R080' title="">[VSG-R080]</a> for any VSG.</li>
+<li>As of 9.1, when you rename the data object or delete its diagnostic instance, CANdelaStudio does not automatically update the reference at the Identifying Feature but renders it &quot;not usable&quot; so that you can control how to set the new value.</li>
+</ul>
+<h2 id="consistency-condition-existence-of-resolved-path-in-variants">Consistency Condition: Existence of Resolved Path in Variants</h2>
+<p><span id="VSG-R170" class="rqDef" title="Resolved Path">[VSG-R170 Resolved Path]</span></p>
+<div class="figure">
+<img src="Images/Consistency%20Existence%20of%20Resolved%20Path%20in%20Variants.jpg" alt="Existence of Resolved Path in Variants" />
+<p class="caption">Existence of Resolved Path in Variants</p>
+</div>
+<ul>
+<li>If any VSG is available for a variant V,</li>
+<li>then the service and data object of the Identifying Feature must exist in V.</li>
+<li>i.e. the paths of the Identifying Feature must be resolvable in V.</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>&quot;<span id='_index_446728135'>Resolved Path</span> in Variant V&quot; = path as specified by the user, with variant part replaced.</li>
+<li>It does not matter whether the VSG has an Identifying Pattern for the Identifying Feature or not.</li>
+<li>Some operations that may lead to a violation:
+<ul>
+<li>set VSG available for Variant</li>
+<li>delete diagnostic instance</li>
+<li>rename data object</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Vehicle%20System%20Group.htm">Vehicle System Group (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Vehicle%20System%20Group/Vehicle%20System%20Group.htm">Vehicle System Groups (User Interface)</a></li>
+<li><a href="../../30%20Features/Variant/Variant%20Identification.htm">Variant Identification</a></li>
+</ul>
+</body>
+</html>

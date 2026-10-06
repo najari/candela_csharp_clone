@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Dynamically Define Data Identifier</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dynamically-define-data-identifier"><span id='_index_446727999'>Dynamically Define Data Identifier</span></h1>
+<p>The UDS service 0x2C &quot;allows the client to dynamically define in a server a data identifier that can be read via the ReadDataByIdentifier service at a later time&quot; (UDS 2013 chapter 10.6.1). The service provides grouping of multiple data elements to read them in one mass operation.</p>
+
+<p>The dynamically defined DIDs share the same identifier (number) space with statically defined DIDs.</p>
+<p>The data elements in a dynamically defined DID can be specified in one or multiple requests to the server...</p>
+<ul>
+<li>by reference to another DID (0x2C 0x01),
+<ul>
+<li>even to another dynamically defined DID (not recommended by UDS)</li>
+</ul></li>
+<li>by memory address (0x2C 0x02)</li>
+<li>multiple of these, even mixed</li>
+</ul>
+<p>The server concatenates the data elements of subsequent requests for the same identifier. It keeps the definition until either</p>
+<ul>
+<li>it receives 0x2C 0x03 (Clear), or</li>
+<li>manufacturer specific: some event occurs, like a session transition.</li>
+</ul>
+<p>References to another DID denote...</p>
+<ul>
+<li>a complete DID, or</li>
+<li>even individual data objects from within the DID (UDS: &quot;composite block&quot;)</li>
+</ul>
+<p>... by giving the position (starting with 1) and the length within that DID.</p>
+<p>A dynamically defined DID can be used in the services</p>
+<ul>
+<li>ReadDataByIdentifier (0x22): identifier range <strong>0xF300 .. 0xF3FF</strong></li>
+<li>ReadDataByPeriodicDataIdentifier (0x2A); identifier range <strong>0xF200 .. 0xF2FF</strong> (this holds whether the DID is defined statically or dynamically).</li>
+</ul>
+<h2 id="use-cases">Use Cases</h2>
+<ul>
+<li>an ECU has been implemented including (static) DIDs e.g. one DID for wheel speed front left, one DID for front right etc. Manufacturing creates one combined dynamic DID to read all four wheel speed values, by referencing the objects in the existing static DIDs.
+<ul>
+<li>you may do this in a test system (if it supports creation of dynamically defined DIDs);</li>
+<li>you may also want to do this comfortably in CANdelaStudio (if the ECU software is fixed, but the CDD can still be modified)</li>
+</ul></li>
+<li>a tester user wants to optimize the bus traffic and combines multiple static DIDs into one.</li>
+<li>(not recommended) reference the same DID multiple times in a dynamically defined DID, in order to get a higher sampling rate than by periodical reading.</li>
+</ul>
+<h2 id="use-in-candela">Use in CANdela</h2>
+<p>The template must contain a Protocol Service to support the service 0x2C.</p>
+<p>The CANdela data model...</p>
+<ul>
+<li>supports references to entire DIDs using a <a href="DID.htm#did-data-reference">DID Data Reference</a> (excluding the identifier) or a <a href="DID.htm#did-reference">DID Reference</a> (including the identifier).</li>
+<li>has no special mechanism to reference individual data objects being part of a DID, but you can manually enter the details for service 0x2C.</li>
+</ul>
+<h3 id="define-dynamic-dids-in-the-document">Define Dynamic DIDs in the Document</h3>
+<p>CANdelaStudio allows definition of DIDs at <em>authoring time</em> in the CANdela document.</p>
+<ul>
+<li>to define DIDs <strong>in the document</strong>, setup a proxy component with semantics &quot;<strong>Data</strong>&quot; in the Protocol Service;</li>
+<li>the references to the existing DIDs must then be specified manually in a telegram table in a diagnostic instance.</li>
+</ul>
+<h3 id="define-dynamic-dids-in-the-test-system">Define Dynamic DIDs in the Test System</h3>
+<p>Depending on the process, it may not make sense to define <em>dynamic</em> DIDs already in the <em>static</em> CANdela document.</p>
+<ul>
+<li>to define DIDs only <strong>at runtime</strong> in the test system, setup a proxy component with semantics &quot;<strong>Any</strong>&quot; in the Protocol Service;</li>
+<li>the document then contains no further details for this component, these must be specified in the test system at runtime.</li>
+</ul>
+<p>Note: the <a href="../../30%20Features/Installation/Example%20Files.htm#productive-templates">Vector UDS Template</a> v1.5 (as of CANdelaStudio 8.5) contains ProtocolServices for 0x2C that allow to define Dynamic DIDs in the test system.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="DID.htm">DID (Feature)</a></li>
+</ul>
+</body>
+</html>

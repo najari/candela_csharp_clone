@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Options Property Page ODX Import</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="file-options-odx-import">File | Options | ODX Import</h1>
+<div class="figure">
+<img src="Images/Options%20Property%20Page%20ODX%20Import.jpg" alt="Ribbon Tab File | Options, Page &quot;ODX Import&quot;" />
+<p class="caption">Ribbon Tab File | Options, Page &quot;ODX Import&quot;</p>
+</div>
+<p>See also <a href="../../30%20Features/Import/ODX%20Import%20Introduction.htm">ODX Import</a>.</p>
+<h2 id="write-detailed-information-to-log-file">Write detailed information to log file</h2>
+<p>Check this option if you would like to have detailed information about the import (ODX DiagComm oriented) in the <a href="../../30%20Features/CANdelaStudio%20Editor/Logging.htm">log file</a>.</p>
+<h2 id="overwrite-ecu-name-qualifier-and-description-from-odx-base-variant">Overwrite ECU name, qualifier and description from ODX BASE-VARIANT</h2>
+<!--TODO-->
+<h2 id="vehicle-info-spec">VEHICLE-INFO-SPEC</h2>
+<!--TODO-->
+<h2 id="diag-service-and-negative-responses">DIAG-SERVICE and Negative Responses</h2>
+<ul>
+<li><p>with <strong>Strict</strong>, CANdelaStudio imports an ODX DIAG-SERVICE only if its negative response exists both in the import file and in the CANdela document</p></li>
+<li><p><strong>Also import NRCs which do not exist in CANdela document</strong> <!--TODO--></p></li>
+<li><p>with <strong>Prefer CANdela data</strong>, CANdelaStudio imports an ODX DIAG-SERVICE in any case; but prefers the negative response from the CANdela document if it exists</p></li>
+</ul>
+<h2 id="data-type">Data Type</h2>
+<ul>
+<li><p>with option <strong>Create new</strong> you can prevent ODX import from modifying an existing data type, but the resulting document may contain an unnecessarily huge number of data types.</p></li>
+<li><p>With <strong>Use existing</strong> you minimize the number of data types, but ODX import possibly modifies even write-protected data types - you should use this option value only after confirmation with the person responsible with the ECU.</p></li>
+<li><p>To be defensive, use option <strong>Use existing if modifiable</strong> - this prevents ODX import from modifying write-protected data types.</p></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Import/ODX%20Import%20Introduction.htm">ODX Import (Feature)</a></li>
+<li><a href="Options.htm">File | Options Dialog</a></li>
+<li>Menu for ODX Import <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm#MENU-R210' title="">[MENU-R210]</a></li>
+</ul>
+</body>
+</html>

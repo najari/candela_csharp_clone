@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>12_Import of DATA-OBJECT-PROPs, STRUCTUREs and UNITs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="DOPs">Import of DATA-OBJECT-PROPs, STRUCTUREs and UNITs</h1>
+<h2 id="import-of-data-object-props">Import of DATA-OBJECT-PROPs</h2>
+<h3 id="diag-coded-type">DIAG-CODED-TYPE</h3>
+<table>
+<thead>
+<tr class="header">
+<th>ODX DIAG-CODED-TYPE BASE-DATA-TYPE</th>
+<th>ODX DIAG-CODED-TYPE BASE-TYPE-ENCODING</th>
+<th>CANdelaStudio Encoding</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A_INT32</td>
+<td>2C</td>
+<td>Signed</td>
+</tr>
+<tr class="even">
+<td>A_UINT32</td>
+<td>NONE</td>
+<td>Unsigned</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>BCD-P</td>
+<td>BCD</td>
+</tr>
+<tr class="even">
+<td>A_FLOAT32</td>
+<td></td>
+<td>Float</td>
+</tr>
+<tr class="odd">
+<td>A_FLOAT64</td>
+<td></td>
+<td>Double</td>
+</tr>
+<tr class="even">
+<td>A_ASCIISTRING</td>
+<td>ISO-8859-1</td>
+<td>Ascii</td>
+</tr>
+<tr class="odd">
+<td>A_UNICODE2STRING</td>
+<td>UCS-2</td>
+<td>Unicode</td>
+</tr>
+<tr class="even">
+<td>A_BYTEFIELD</td>
+<td>NONE</td>
+<td>Unsigned Field</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>BCD-P</td>
+<td>BCD</td>
+</tr>
+</tbody>
+</table>
+<h4 id="standard-length-type">STANDARD-LENGTH-TYPE</h4>
+<p>DOPs using a STANDARD-LENGTH-TYPE to define its coded type are imported as data types with the defined Length (Byte:Bit) into CANdela.</p>
+<p>DOPs with DIAG-CODED-TYPE/BASE-DATA-TYPE having A_BYTEFIELD are always imported as a CANdelaStudio field data type with fix size.</p>
+<h4 id="min-max-length-type">MIN-MAX-LENGTH-TYPE</h4>
+<p>DOPs using MIN-MAX-LENGTH-TYPE are imported as CANdelaStudio field.</p>
+<p>If MIN size is equal to MAX size, it is imported as a fixed field, otherwise a field with variable length is created.</p>
+<p>If no MAX-Length is given, 65536 is taken as max value.</p>
+<table style="width:94%;">
+<colgroup>
+<col width="44%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>MIN-MAX-LENGTH-TYPE/TERMINATION</th>
+<th align="left">CANdelaStudio Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ZERO</td>
+<td align="left">Zero termination (no pad. / maxLen / EOS) (for variable fields)<br />
+<br />
+Zero termination (with pad. / maxLen / EOS) (for fixed field: MIN-LENGTH=MAX-LENGTH)</td>
+</tr>
+<tr class="even">
+<td>END-OF-PDU</td>
+<td align="left">None</td>
+</tr>
+</tbody>
+</table>
+<h4 id="leading-length-info-type">LEADING-LENGTH-INFO-TYPE</h4>
+<p>DOPs using the LEADING-LENGTH-INFO-TYPE are imported as a variable field into CANdela.</p>
+<h3 id="ascii-strings">ASCII Strings</h3>
+<p>ASCII strings have as BASE-DATA-TYPE A_ASCIISTRING.</p>
+<h4 id="standard-length-type-1">STANDARD-LENGTH-TYPE</h4>
+<p>A STANDARD-LENGTH-TYPE DATA-OBJECT-PROP with DIAG-CODED-TYPE.BASE-TYPE-ENCODING=&quot;ISO-8859-1&quot; and DIAG-CODED-TYPE.BASE-DATA-TYPE=&quot;A_ASCIISTRING&quot; having as BIT-LENGTH 24 is imported as fixed field data type with encoding &quot;ASCII&quot; and termination &quot;zero term. (with pad. / maxlen / EOS)&quot;.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image34.png" alt="StandardLengthType Ascii 24 Bit" />
+<p class="caption">StandardLengthType Ascii 24 Bit</p>
+</div>
+<h4 id="min-max-length-type-1">MIN-MAX-LENGTH-TYPE</h4>
+<h5 id="termination-end-of-pdu">TERMINATION END-OF-PDU</h5>
+<p>A MIN-MAX-LENGTH-TYPE DATA-OBJECT-PROP with DIAG-CODED-TYPE.BASE-TYPE-ENCODING=&quot;ISO-8859-1&quot; and DIAG-CODED-TYPE.BASE-DATA-TYPE=&quot;A_ASCIISTRING&quot; having a MIN-LENGTH of 10 and a MAX-LENGTH of 20 with the TERMINATION END-OF-PDU is imported as variable field <a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a> with encoding &quot;ASCII&quot; and no termination info but with the range from 10 until 20.</p>
+<p>If no MAX-LENGTH is specified in ODX the maximum length is set to 65535.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image35.png" alt="MinMaxLengthType Ascii 10-20 EndOfPdu" />
+<p class="caption">MinMaxLengthType Ascii 10-20 EndOfPdu</p>
+</div>
+<h5 id="termination-zero">TERMINATION ZERO</h5>
+<p>A MIN-MAX-LENGTH-TYPE DATA-OBJECT-PROP with DIAG-CODED-TYPE.BASE-TYPE-ENCODING=&quot;ISO-8859-1&quot; and DIAG-CODED-TYPE.BASE-DATA-TYPE=&quot;A_ASCIISTRING&quot; having a MIN-LENGTH of 10 and a MAX-LENGTH of 20 with the TERMINATION ZERO is imported as variable field <a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a> with encoding &quot;ASCII&quot; and &quot;zero term. (no pad. / maxlen / EOS)&quot; with the range from 10 until 20.</p>
+<p>If no MAX-LENGTH is specified in ODX the maximum length is set to 65535.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image36.png" alt="MinMaxLengthType Ascii 10-20 Zero" />
+<p class="caption">MinMaxLengthType Ascii 10-20 Zero</p>
+</div>
+<h5 id="termination-hex-ff">TERMINATION HEX-FF</h5>
+<p>A MIN-MAX-LENGTH-TYPE DATA-OBJECT-PROP with DIAG-CODED-TYPE.BASE-TYPE-ENCODING=&quot;ISO-8859-1&quot; and DIAG-CODED-TYPE.BASE-DATA-TYPE=&quot;A_ASCIISTRING&quot; having a MIN-LENGTH of 10 and a MAX-LENGTH of 20 with the TERMINATION HEX-FF is imported as variable field <a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a> with encoding &quot;ASCII&quot; and no termination info but with the range from 10 until 20.</p>
+<p>If no MAX-LENGTH is specified in ODX the maximum length is set to 65535.</p>
+<h4 id="leading-length-info-type-1">LEADING-LENGTH-INFO-TYPE</h4>
+<p>A LEADING-LENGTH-INFO-TYPE DATA-OBJECT-PROP with DIAG-CODED-TYPE.BASE-TYPE-ENCODING=&quot;ISO-8859-1&quot; and DIAG-CODED-TYPE.BASE-DATA-TYPE=&quot;A_ASCIISTRING&quot; having as BIT-LENGTH 8 is imported as variable field <a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a> with encoding &quot;ASCII&quot; and with the termination &quot;1 leading size byte&quot; with the range 0 until 255.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image37.png" alt="LeadingLengthInfoType Ascii 8 Bit" />
+<p class="caption">LeadingLengthInfoType Ascii 8 Bit</p>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ODX</th>
+<th align="left">CANdelaStudio</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>LEADING-LENGTH-INFO-TYPE.BIT-LENGTH</strong></td>
+<td align="left"><strong>String Termination Type</strong></td>
+<td><strong>Min</strong></td>
+<td><strong>Max</strong></td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">1 leading size byte</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr class="odd">
+<td align="left">16</td>
+<td align="left">2 leading size bytes</td>
+<td>0</td>
+<td>65534</td>
+</tr>
+<tr class="even">
+<td align="left">24</td>
+<td align="left">3 leading size bytes</td>
+<td>0</td>
+<td>65533</td>
+</tr>
+<tr class="odd">
+<td align="left">32</td>
+<td align="left">4 leading size bytes</td>
+<td>0</td>
+<td>65532</td>
+</tr>
+<tr class="even">
+<td align="left">40</td>
+<td align="left">5 leading size bytes</td>
+<td>0</td>
+<td>65531</td>
+</tr>
+</tbody>
+</table>
+<h3 id="unicode-strings">UNICODE Strings</h3>
+<h4 id="standard-length-type-2">STANDARD-LENGTH-TYPE</h4>
+<p>A STANDARD-LENGTH-TYPE DATA-OBJECT-PROP with DIAG-CODED-TYPE.BASE-TYPE-ENCODING=&quot;UCS-2&quot; and DIAG-CODED-TYPE.BASE-DATA-TYPE=&quot;A_UNICODE2STRING&quot; having as BIT-LENGTH 48 is imported as fixed field data type with encoding &quot;UNICODE&quot; and termination &quot;zero term. (with pad. / maxlen / EOS)&quot;.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image38.png" alt="StandardLengthInfoType Unicode 48 Bit" />
+<p class="caption">StandardLengthInfoType Unicode 48 Bit</p>
+</div>
+<h4 id="min-max-length-type-2">MIN-MAX-LENGTH-TYPE</h4>
+<h5 id="termination-end-of-pdu-1">TERMINATION END-OF-PDU</h5>
+<p>A MIN-MAX-LENGTH-TYPE DATA-OBJECT-PROP with DIAG-CODED-TYPE.BASE-TYPE-ENCODING=&quot;UCS-2&quot; and DIAG-CODED-TYPE.BASE-DATA-TYPE=&quot;A_UNICODE2STRING&quot; having MIN-LENGTH 10 and as MAX-LENGTH 20 and the TERMINATION END-OF-PDU is imported as variable field <a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a> with encoding &quot;UNICODE&quot; and no termination information. The field range is from 5 until 10.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image39.png" alt="MinMaxLengthType Unicode 10-20 EndOfPdu" />
+<p class="caption">MinMaxLengthType Unicode 10-20 EndOfPdu</p>
+</div>
+<h5 id="termination-zero-1">TERMINATION ZERO</h5>
+<p>A MIN-MAX-LENGTH-TYPE DATA-OBJECT-PROP with DIAG-CODED-TYPE.BASE-TYPE-ENCODING=&quot;UCS-2&quot; and DIAG-CODED-TYPE.BASE-DATA-TYPE=&quot;A_UNICODE2STRING&quot; having MIN-LENGTH 10 and as MAX-LENGTH 20 and the TERMINATION ZERO is imported as variable field data type with encoding &quot;UNICODE&quot; and &quot;zero term. (no pad. / maxlen / EOS)&quot;. The field range is from 5 until 10.</p>
+<div class="figure">
+<img src="../../30%20Features/Import/Images/image40.png" alt="inMaxLengthType Unicode 10-20 Zero" />
+<p class="caption">inMaxLengthType Unicode 10-20 Zero</p>
+</div>
+<h3 id="physical-type">PHYSICAL-TYPE</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ODX PHYSICAL-TYPE BASE-DATA-TYPE</th>
+<th align="left">ODX PHYSICAL-TYPE DISPLAY-RADIX</th>
+<th align="left">CANdelaStudio Display Format</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">any (explicit)</td>
+<td align="left">HEX</td>
+<td align="left">Hexadecimal</td>
+</tr>
+<tr class="even">
+<td align="left">any (explicit)</td>
+<td align="left">DEC</td>
+<td align="left">Decimal</td>
+</tr>
+<tr class="odd">
+<td align="left">any(explicit)</td>
+<td align="left">BIN</td>
+<td align="left">Binary</td>
+</tr>
+<tr class="even">
+<td align="left">any(explicit)</td>
+<td align="left">OCT</td>
+<td align="left">Octal</td>
+</tr>
+<tr class="odd">
+<td align="left">A_UNICODE2STRING</td>
+<td align="left">not specified</td>
+<td align="left">Text</td>
+</tr>
+</tbody>
+</table>
+<h3 id="internal-constrs">INTERNAL-CONSTRs</h3>
+<p>Range exclusion is handled similar to intervals (see chapter <a href="#Intervals">interval correction</a>). The open limits of intervals are corrected and added as additional excluded ranges. We mark them as undefined value with the description: &quot;Did not find value as a close interval limit in exclude definitions&quot;.</p>
+<p>Mapping of ODX VALID-TYPEs to CANdela:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ODX VALID-TYPE</th>
+<th align="left">CANdelaStudio invalidity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NOT-VALID</td>
+<td align="left">Invalid signal</td>
+</tr>
+<tr class="even">
+<td align="left">NOT-DEFINED</td>
+<td align="left">Undefined</td>
+</tr>
+<tr class="odd">
+<td align="left">NOT-AVAILABLE</td>
+<td align="left">No signal</td>
+</tr>
+</tbody>
+</table>
+<p>SCALE-CONSTR/SHOR-LABEL is imported &quot;assigned Text&quot; of invalid value in CANdela.</p>
+<h3 id="compu-methods">COMPU-METHODs</h3>
+<table style="width:75%;">
+<colgroup>
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">ODX COMPU-METHOD</th>
+<th align="left">CANdelaStudio Data Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">IDENTICAL</td>
+<td align="left">Identity</td>
+</tr>
+<tr class="even">
+<td align="left">TEXTTABLE</td>
+<td align="left">Text Table</td>
+</tr>
+<tr class="odd">
+<td align="left">LINEAR</td>
+<td align="left">Linear</td>
+</tr>
+<tr class="even">
+<td align="left">SCALE-LINEAR</td>
+<td align="left">Piecewise-Linear</td>
+</tr>
+<tr class="odd">
+<td align="left">TAB-INTP</td>
+<td align="left">Value Table</td>
+</tr>
+<tr class="even">
+<td align="left">COMPUCODE</td>
+<td align="left">Procedure</td>
+</tr>
+<tr class="odd">
+<td align="left">RAT-FUNC</td>
+<td align="left">Formula</td>
+</tr>
+<tr class="even">
+<td align="left">SCALE-RAT-FUNC</td>
+<td align="left">Piecewise-Linear if and only if all COMPU-SCALEs are linear.<br />
+<br />
+Linear, if and only if a single, linear COMPU-SCALE exists.<br />
+<br />
+Formula, if and only if a single NONE-Linear COMPU-SCALE exists.<br />
+<br />
+Otherwise, the SCALE-RAT-FUNC is not importable.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="compu-method-identical">COMPU-METHOD IDENTICAL</h4>
+<p>A DATA-OBJECT-PROP using COMPU-METHOD of type IDENTICAL is imported as CANdelaStudio &quot;Identity&quot; data type.</p>
+<h4 id="compu-method-texttable">COMPU-METHOD TEXTTABLE</h4>
+<p>A DATA-OBJECT-PROP using COMPU-METHOD of type TEXTTABLE is imported as CANdelaStudio &quot;Text table&quot; data type.</p>
+<p>The interval correction of its COMPU-SCALEs (e.g. usage of open limits on double values) is defined in chapter <a href="#Intervals">interval correction</a>.</p>
+<h4 id="compu-method-linear">COMPU-METHOD LINEAR</h4>
+<p>A DATA-OBJECT-PROP using COMPU-METHOD of type LINEAR is imported as CANdelaStudio &quot;Linear&quot; data type.</p>
+<p>In addition the following checks are done:</p>
+<ul>
+<li>No denominator in ODX File leads to denominator = 1 in linear function.</li>
+<li>No Numerator in ODX File causes the data object property to fail.</li>
+<li>More than one denominator (nonlinear) causes data object property to fail.</li>
+</ul>
+<h4 id="compu-method-scale-linear">COMPU-METHOD SCALE-LINEAR</h4>
+<p>A DATA-OBJECT-PROP using COMPU-METHOD of type SCALE-LINEAR is imported as CANdelaStudio &quot;Piecewise linear&quot; data type.</p>
+<p>For each COMPU-SCALE, the same checks are done as in DATA-OBJECT-PROP of type LINEAR.</p>
+<p>In Addition the <a href="#Intervals">interval correction</a> is implemented.</p>
+<h4 id="compu-method-tab-intp">COMPU-METHOD TAB-INTP</h4>
+<p>A DATA-OBJECT-PROP using COMPU-METHOD of type TAB-INTP is imported as CANdelaStudio &quot;Characteristic curve&quot; data type.</p>
+<p>In addition the following checks are done:</p>
+<ul>
+<li>COMPU-SCALE without LOWER-LIMIT causes DATA-OBJECT-PROPERTY to fail.</li>
+<li>COMPU-SCALE without closed LOWER-LIMIT causes DATA-OBJECT-PROPERTY to fail.</li>
+<li>COMPU-SCALE with UPPER-LIMIT causes DATA-OBJECT-PROPERTY to fail.</li>
+</ul>
+<h4 id="compu-method-compucode">COMPU-METHOD COMPUCODE</h4>
+<p>A DATA-OBJECT-PROP using COMPU-CODE of type PROG-CODE is imported as CANdelaStudio &quot;Procedure&quot; data type.</p>
+<p>In addition the following checks are done:</p>
+<ul>
+<li>COMPU-SCALE without closed LOWER-LIMIT causes DATA-OBJECT-PROPERTY to fail.</li>
+</ul>
+<h4 id="compu-method-rat-func">COMPU-METHOD RAT-FUNC</h4>
+<p>A DATA-OBJECT-PROP using COMPU-CODE of type RAT-FUNC is imported as CANdelaStudio &quot;Formula&quot; data type. The formula is specified in way like e.g:</p>
+<pre><code>(a1\*x\^0 + b1\*X\^1 +c1\*X\^2 + ...) / (a2\*x\^0 + b2\*X\^1 +c2\*X\^2 + ...)</code></pre>
+<h4 id="compu-method-scale-rat-func">COMPU-METHOD SCALE-RAT-FUNC</h4>
+<p>A DATA-OBJECT-PROP using COMPU-CODE of type SCALE-RAT-FUNC is imported as CANdelaStudio data type.</p>
+<h3 id="Intervals">Interval correction</h3>
+<h4 id="overview">Overview</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ODX Intervals (COMPU-SCALE, SCALE-CONSTR)</th>
+<th align="left">DOUBLE</th>
+<th align="left">INT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Interval with closed limits</td>
+<td align="left">Supported</td>
+<td align="left">Supported</td>
+</tr>
+<tr class="even">
+<td align="left">Interval with open limit (lower and/or higher limit)</td>
+<td align="left">NOT supported</td>
+<td align="left">Supported</td>
+</tr>
+<tr class="odd">
+<td align="left">Interval with infinite limits (lower and/or higher limit)</td>
+<td align="left">Supported (*)</td>
+<td align="left">Supported</td>
+</tr>
+</tbody>
+</table>
+<p>(*) Supported on 4 Byte floats, but not supported on 8 Byte doubles</p>
+<p>Supported actions are marked with additional information on stdout. Unsupported actions cause the complete data object property to fail.</p>
+<h4 id="open-limits-on-coded-type-integer">Open limits on coded type INTEGER</h4>
+<p>The interval correction works as following:</p>
+<ul>
+<li>Each open limit is handled separately.</li>
+<li><p>Check, if the open (lower/ upper) limit is also a closed (upper/lower) limit of another interval. If not so, the value is added to the range exclusion as invalid value with the description: &quot;Did not find value as a close interval limit&quot;.</p></li>
+<li><p>The limit is corrected by adding +/-1 to the according limit and closing the interval.</p></li>
+</ul>
+<h4 id="infinite-limits">Infinite limits</h4>
+<p>Each infinite limit is changed to the according min max value of the given type.</p>
+<p>The following MIN / MAX values where applied, depending on the byte size:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Byte Size</th>
+<th align="left">Minimum</th>
+<th align="left">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">UINT_8</td>
+<td align="left">0</td>
+<td align="left">255</td>
+</tr>
+<tr class="even">
+<td align="left">INT_8</td>
+<td align="left">-128</td>
+<td align="left">127</td>
+</tr>
+<tr class="odd">
+<td align="left">UINT_16</td>
+<td align="left">0</td>
+<td align="left">65535</td>
+</tr>
+<tr class="even">
+<td align="left">INT_16</td>
+<td align="left">-32768</td>
+<td align="left">32767</td>
+</tr>
+<tr class="odd">
+<td align="left">UINT_24</td>
+<td align="left">0</td>
+<td align="left">16777215</td>
+</tr>
+<tr class="even">
+<td align="left">INT_24</td>
+<td align="left">-8388608</td>
+<td align="left">8388607</td>
+</tr>
+<tr class="odd">
+<td align="left">UINT_32</td>
+<td align="left">0</td>
+<td align="left">4294967295</td>
+</tr>
+<tr class="even">
+<td align="left">INT_32</td>
+<td align="left">-2147483648</td>
+<td align="left">2147483647</td>
+</tr>
+<tr class="odd">
+<td align="left">DOUBLE_32</td>
+<td align="left">-FLT_MAX</td>
+<td align="left">FLT_MAX</td>
+</tr>
+</tbody>
+</table>
+<p>FLT_MIN and FLT_MAX are definitions in <code>&lt;float.h&gt;</code>.</p>
+<h2 id="import-of-structures">Import of STRUCTUREs</h2>
+<p>STRUCTUREs in ODX are imported into CANdelaStudio packet data types by the usage of the following restrictions:</p>
+<ul>
+<li>RESERVEDs larger than 8 Bytes inside are imported as multiple 8 Byte gaps.</li>
+<li>A STRUCUTRE containing a PARAM with a variable size will be skipped.</li>
+<li>STRCUTUREs in STRUCTUREs will be transformed to the highest level of any STRUCTURE.</li>
+<li>Bit positioned PARAMs will be stored in newly created bit fields.</li>
+<li>If several PARAMs lay on the same bit/byte position, the first possible &quot;way through&quot; is chosen.</li>
+</ul>
+<h2 id="import-of-units">Import of UNITs</h2>
+<p>The UNIT/DISPLAY-NAME, referenced by a DATA-OBJECT-PROP is imported into the unit field at the corresponding CANdelaStudio data type.</p>
+<p>Furthermore, the conversion of the unit to its SI representation is imported into the description field of the CANdelaStudio data type.</p>
+<p>In Addition, all UNITs defined in an ECU-SHARE-DATA are imported into a CANdelaStudio enum attribute &quot;Units&quot; (created by the <a href="../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm">&quot;enable ODX mode&quot; plugin</a>). For any further modifications in CANdela, these units are available inside the data type property page.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="ODX%20Import%20Introduction.htm">ODX Import Introduction</a></li>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a></li>
+</ul>
+</body>
+</html>

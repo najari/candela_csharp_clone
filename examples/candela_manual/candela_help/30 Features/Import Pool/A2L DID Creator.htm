@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>A2L DID Creator</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="a2l-did-creator-cds-31541-8.1">A2L DID Creator (CDS-31541 8.1)</h1>
+<p>The CANdelaStudio A2L Import fills the import pool with data objects from the a2l file. The plugin &quot;Import Pool DID Creator&quot; shall create diagnostic instances for the UDS 0x22/0x2E services from the import pool.</p>
+<h2 id="terms">Terms</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td>RDBI</td>
+<td align="left">Read Data By Identifier (UDS 0x22)</td>
+</tr>
+<tr class="even">
+<td>WDBI</td>
+<td align="left">Write Data By Identifier (UDS 0x2E)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="user-requirements">User Requirements</h2>
+<div class="figure">
+<img src="Images/A2L%20DID%20Creator%20Use%20Case%20View.jpg" alt="A2L DID Creator Use Case View" />
+<p class="caption">A2L DID Creator Use Case View</p>
+</div>
+<div class="figure">
+<img src="Images/A2L%20DID%20Creator%20Example%20DID.jpg" alt="A2L DID Creator Example DID" />
+<p class="caption">A2L DID Creator Example DID</p>
+</div>
+<p>U090.0 The plugin shall map A2L labels from the CANdelaStudio Import pool to new diagnostic instances for RDBI/WDBI classes.</p>
+<div class="figure">
+<img src="Images/A2L%20DID%20Creator%20Mapping%20GUI.png" alt="A2L DID Creator Mapping GUI" />
+<p class="caption">A2L DID Creator Mapping GUI</p>
+</div>
+<p>U010.0 A GUI for mapping A2L label(s) to a DID shall be provided</p>
+<p>U020.0 Provide a feature to import a mapping list (import button on GUI)</p>
+<p>U030.0 Provide a feature to export the current mapping in a file (export button on GUI)</p>
+<p>U210.0 The mapping GUI shall allow combination of multiple A2L labels to one DID. Mapped Labels share a multi-line cell.</p>
+<p>U220.0 The mapping GUI shall allow to release an A2L Label from a combined set of labels.</p>
+<p>U230.0 If used from plugin, the GUI shall allow selection of one or more target variants.</p>
+<p>U250.0 If used from plugin, the GUI shall allow selection of one target diagnostic class (only diagnostic classes with RDBI/WDBI are shown, no selection allowed if only one such class is present)</p>
+<p>U240.0 DID numbers that are already used in the current selected diagnostic class (in the document) are shown in a different color.</p>
+<h2 id="integration-into-candelastudio">Integration into CANdelaStudio</h2>
+<p>R020.0 The A2L DID creator feature shall be realized as a plugin.</p>
+
+<h2 id="basic-operation">Basic Operation</h2>
+<p>R040.0 For selected DID/Label mappings, create new DID diagnostic instances</p>
+<p>R120.0 Create the DID diagnostic instances for selected variants.</p>
+<p>R125.0 Support multiple variants, created diagnostic instances shall be shared over the variants.</p>
+<p>R130.0 Import into one selected target diagnostic class. The GUI shall propose all the diagnostic classes that are possible targets for DID creation (which have a service 0x22 or 0x2E). If only one diagnostic class is available, no selection is required, the target diagnostic class shall be shown in any case.</p>
+<p>For the use case “import of measurement and characteristics” the user has to import the DIDs in 2 steps. First, import only measurements into the import pool, apply the algorithm. Clear the import pool, import the characteristics and import the data again.</p>
+<p>R140.0 DIDs must be unique. Provide a check for duplicate assigned DIDs and do not allow the user to create them.</p>
+<p>R150.0 Apply check for duplicate DIDs while importing a mapping file. If duplicate DIDs are imported, issue a warning and leave the DID field blank for the latest imported items.</p>
+<p>R170.0 Provide a feature to automatically assign DID numbers to DIDs. Start with a provided start number and iterative assign and increase the number. The GUI shall propose a default value.</p>
+<p>R180.0 The default value (see R170.0) is calculated by the start index of the largest free interval in the current diagnostic class (rationale: DID classes are usually sparsely filled. ISO reserved DIDs are often in the range of 0xFxxx, user DIDs are usually in lower ranges. Seeking the largest free interval will provide more probably a desired start index).</p>
+<p>R100.0 If the attribute <span id="A2LDidNumberMapping">“A2LDidNumberMapping”</span> is set to a value &gt; 0, this attribute defines the mapped DID number <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R025' title="Identifier">[DID-R025]</a>. (The attribute is generated from A2L Import if the A2L label has the annotation “DidNumberMapping”.)</p>
+<p>R220.0 If the attribute <span id="A2LPositionInMappedDidRecord">“A2LPositionInMappedDidRecord”</span> is present, it defines the position of the A2L label in the <a href="../../30%20Features/DID/DID.htm#did-data">DID Data</a>. This allows to order a set of A2L labels into a DID. No duplicate values in one DID are allowed.</p>
+<p>R290.0 While creating diagnostic instances, it shall be checked for new created instance, if the DID (name or number) is already present in this diagnostic class. If this is the case, the plugin shall show a dialog telling the user about the conflict. The user can select a) skip b)overwrite c) create a copy. Furthermore a flag: &quot;Use this option for all other occurrences&quot; shall be available (like in Windows file copy operations).</p>
+<div class="figure">
+<img src="Images/A2L%20DID%20Creator%20Attributes%20from%20A2L%20Import.png" alt="A2L DID Creator Attributes from A2L Import" />
+<p class="caption">A2L DID Creator Attributes from A2L Import</p>
+</div>
+<h2 id="readwrite-services">Read/Write Services</h2>
+<p>R110.0 Create (activate) only read services for Measurements. Measurements are read-only. The write service shall be disabled.</p>
+<p>R115.0 Create and activate read and write services for Characteristics.</p>
+<h2 id="bit-gaps">Bit Gaps</h2>
+<p>A2L labels might describe only a few bits. Diagnostics is byte oriented. Read and write services for those labels will always read or write entire bytes. This fact brings up the following situations:</p>
+<div class="figure">
+<img src="Images/A2L%20DID%20Creator%20Byte%20Fully%20Specified.png" alt="Byte Fully Specified" />
+<p class="caption">Byte Fully Specified</p>
+</div>
+<div class="figure">
+<img src="Images/A2L%20DID%20Creator%20Holes%20in%20Byte.png" alt="Holes in Byte" />
+<p class="caption">Holes in Byte</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>All Bits of one or more bytes are fully described</li>
+<li>Holes in the description of one or more bytes</li>
+</ol>
+<p>R060.0 Create (activate) only read services if all bits of all the byte from the DID are described. Write services are dangerous as undescribed bits would be written with an arbitrary default value.</p>
+<h2 id="combining-multiple-labels">Combining Multiple Labels</h2>
+<p>DIDs can contain more than one A2L label. There are multiple reasons, e.g.:</p>
+<ul>
+<li>A single byte is used within two or more labels</li>
+<li>Related measurements are required in one DID (e.g. requesting the speed of all wheels in one DID)</li>
+</ul>
+<p>R070.0 Allow combination of multiple A2L Labels into one DID.</p>
+<p>R080.0 Provide possibility to assign a new name to the DID. As default, combine the names of the A2L labels (Also it is known that this is most likely not the desired name, e.g. <em>DoorFRState, DoorFLState, DoorRLState, DoortRRState</em>: shall get <em>DoorStates</em> instead of <em>DoorFRState_DoorFLState_DoorRLState_DoortRRState</em>. There is currently no simple solution for finding a reasonable default name.)</p>
+<p>R190.0 The GUI shall not allow DID names that exceed the maximum <a href="../../30%20Features/Common%20Properties/Qualifier.htm">Qualifier</a> size of the document (see <a href="../../20%20UserInterface/Document/Property%20Page%20Qualifier%20Generation%20Options.htm">document settings</a>).</p>
+<p>Each of the proposed labels can be assigned to a DID by dragging it on the grid.</p>
+<p>R010.0 The grid shall show combined A2L labels by combining the cell for the DID over the cells of the A2L.</p>
+<p>R210.0 Allow to remove an A2L label from a combined DID by right clicking on the A2L label and selecting “Separate”.</p>
+
+<h2 id="generating-diagnostic-instances">Generating Diagnostic Instances</h2>
+<h3 id="basic-operation-1">Basic Operation</h3>
+<p>This chapter describes how the data objects (A2L labels) are inserted into the DID diagnostic instance.</p>
+<p>R300.0 For each mapping, a diagnostic instance in the selected variant and diagnostic class is created</p>
+<p>R310.0 The new diagnostic instance gets the identifier set to the DID identifier of the mapping</p>
+<p>R320.0 The new diagnostic instance gets the name and qualifier of the DID name of the mapping</p>
+<p>R390.0 If used with CANdelaStudio 8.1 or higher, the plugin shall create DID objects and reference them from the diagnostic instance.</p>
+<h3 id="layout-of-the-generated-data-list">Layout Of The Generated Data List</h3>
+<p>R330.0 For each label name of the mapping, the plugin shall insert a data object into the diagnostic instance.</p>
+<p>R340.0 The order of the data objects in the diagnostic instance shall be the order of the data objects in the mapping. This is the same order as the labels appear in the mapping (CSV) file.</p>
+<p>This chapter describes how data objects are inserted into the telegram table.</p>
+<p>R340.0 Every data object whose size is byte aligned will be stored as data object on top level of the telegram table.</p>
+<p>R350.0 Every data object whose size is not byte aligned is wrapped into a bit field.</p>
+<p>R360.0 A bit field wrapper collects all consecutive data objects that are not byte aligned and of the same byte order.</p>
+<p>R370.0 The maximum length for Intel bit fields is 32 bits. Larger Intel bit fields are only supported if the <a href="../../30%20Features/Attributes/Special%20Attributes.htm#ReverseBitFieldBytes">document template supports it</a>.</p>
+<p>R380.0 If a bit field contains multiple Intel data objects, a new bit field shall be started whenever the size of 32 bit is exceeded.</p>
+<p>The following table gives an overview of the different types of supported bitfields and the quantity <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R310' title="">[DT-R310]</a> of their assigned data types.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Length (in Bits)</th>
+<th align="left">Byte order</th>
+<th align="left">Data Type</th>
+<th align="left">Supported</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">&lt;= 32</td>
+<td align="left">Intel/Motorola</td>
+<td align="left">Atom</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="even">
+<td align="left">&gt;32</td>
+<td align="left">Intel</td>
+<td align="left">Field</td>
+<td align="left">Only if the <a href="../../30%20Features/Attributes/Special%20Attributes.htm#ReverseBitFieldBytes">document template supports it</a></td>
+</tr>
+<tr class="odd">
+<td align="left">any</td>
+<td align="left">Motorola</td>
+<td align="left">Field</td>
+<td align="left">Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="persisting-the-mapping-label-did">Persisting The Mapping Label / DID</h2>
+
+<h3 id="csv-file-format"><span id='_index_446728055' title='CSV: Label/DID Mapping in DID Creator' data-term='CSV' data-text='Label/DID Mapping in DID Creator'>CSV File Format</span></h3>
+<p>R230.0 The CSV Mapping file shall have the first line with the header information:</p>
+<pre><code>DidName;DidNumber;DataObjects,DataTypes</code></pre>
+<p>R400.0 The column “DataTypes” shall be optional.</p>
+<p>R410.0 The column “DataObjects” may be also named “A2lLabels”.</p>
+
+<p>R240.0 The CSV Mapping file may have an optional line directly after the header, defining the target diagnostic class. Only the line after the header (second line) is allowed to have this information. The supported format is:</p>
+<pre><code>:TargetDiagClasses=&quot;&lt;DiagClassQualifier&gt;&quot;</code></pre>
+<p>e.g.</p>
+<pre><code>:TargetDiagClasses=&quot;DynamicData&quot;</code></pre>
+<p>R250.0 The CSV Mapping file shall contain one mapping (DID -&gt; multiple A2L Labels) per line in the following lines (after the header and optional target diagnostic class).</p>
+<p>R260.0 A mapping of a DID to A2L labels shall be (as defined by the header)</p>
+<pre><code>&lt;DidName&gt;;&lt;DidNumber&gt;;&lt;Data Object List(comma separated)&gt;,&lt;Data Type List(comma separated)&gt;</code></pre>
+<p>e.g</p>
+<pre><code>Ventil.Druck; 0x1000; Ventile_Druck_B2_BR,Ventile_Druck_B3;Pressure[mBar],Pressure[mBar]</code></pre>
+<p>R270.0 The DID number shall be in hexadecimal format only, having a leading “0x”.</p>
+
+</body>
+</html>

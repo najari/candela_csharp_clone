@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Failure Mode Identifier</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="failure-mode-identifier-fmi">Failure Mode Identifier (<span id='_index_446728018'>FMI</span>)</h1>
+<p>SAE J1939-73 Version 4 defines a list of <strong>failure mode identifiers</strong>. The list contains 5 bit values. The values describe failure of an electronic component or suspect signals that indicate abnormal operating conditions, like</p>
+<ul>
+<li>0: High - most severe (3)</li>
+<li>3: Voltage Above Normal</li>
+<li>9: Abnormal Update Rate</li>
+<li>21: Data Drifted Low</li>
+</ul>
+
+<p>A 3 byte DTC consists of</p>
+<ul>
+<li>19 bit DTC <span id='_index_446728019'>Suspect Parameter Number</span> (<span id='_index_446728020'>SPN</span>)</li>
+<li>5 bit text Failure Mode Identifier (FMI)</li>
+</ul>
+<p>The conversion of 19 bit SPN + 5 bit FMI to a 24 bit DTC value is defined in SAE J1939-73 Version 4.</p>
+<p><strong>Conversion:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">3 Byte hex DTC (Part)</th>
+<th align="right">SPN (Part)</th>
+<th align="right">FMI</th>
+<th align="right">Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td align="right">most significant byte (closer to CAN identifier)</td>
+<td align="right">lowest significant byte</td>
+<td align="right"></td>
+<td align="right"><strong>10111000</strong></td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">middle byte</td>
+<td align="right">middle byte</td>
+<td align="right"></td>
+<td align="right"><em>00000100</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="right">least significant byte, 3 most sig. bits</td>
+<td align="right">highest significant byte, 3 bits</td>
+<td align="right"></td>
+<td align="right">000</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="right">least significant byte, 5 least sig. bits</td>
+<td align="right"></td>
+<td align="right">whole FMI</td>
+<td align="right"><strong>00011</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Example values</strong></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td>Binary</td>
+<td align="right"><strong>10111000</strong> <em>00000100</em> 000 <strong>00011</strong></td>
+<td align="right">000 <em>00000100</em> <strong>10111000</strong></td>
+<td align="right"><strong>00011</strong></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td>Decimal</td>
+<td align="right">-</td>
+<td align="right">1208</td>
+<td align="right">3</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td>Hexadecimal</td>
+<td align="right">0xB80403</td>
+<td align="right">0x4B8</td>
+<td align="right">0x3</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<p>Note about <strong>sort order in CANdelaStudio</strong>:</p>
+<ul>
+<li>since the lowest significant byte of SPN corresponds with the most significant byte of a 3 byte hex DTC,
+<ul>
+<li>a DTC with a smaller 3 byte hex value may have a bigger SPN value</li>
+</ul></li>
+<li>CANdelaStudio sorts DTCs ascending by 3 byte hex value (e.g. in the view for snapshot data),
+<ul>
+<li>therefore the SPN values are typically not sorted ascending:</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>3 byte DTC (hex)</th>
+<th align="right">SPN (dec)</th>
+<th align="right">FMI (dec)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0x00F0E2</td>
+<td align="right">520192</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td>0x01E5E2</td>
+<td align="right">517377</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="fmi-in-candela">FMI in CANdela</h2>
+<p>You can setup a template <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R400' title="">[DOC-R400]</a> to take bits 0..4 of a 3 byte DTC from a list:</p>
+<p><span id="DTC-R510" class="rqDef">[DTC-R510]</span> The FMI is taken from a text table in the data type list.</p>
+<p>Each text table entry associates a <strong>5 bit value</strong> with a <strong>translatable text</strong>.</p>
+<h2 id="editing">Editing</h2>
+<p>This setup enables editing of DTCs <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R040' title="">[DTCUI-R040]</a> using</p>
+<ul>
+<li>19 bit DTC (free input, decimal format)</li>
+<li>error text (free input)</li>
+<li>5 bit <strong>Failure Mode Identifier</strong> (select from list)</li>
+</ul>
+<p>CANdelaStudio automatically shows the text associated with the FMI as a suffix of the error text.</p>
+<h2 id="example-file-cds-71836-v13">Example File (CDS-71836 v13)</h2>
+<p>See <code>FailureModeIdentifier.cdi</code> <a class='rqRef' href='../../30%20Features/Installation/Example%20Files.htm#EX-R300-FMI' title="">[EX-R300-FMI]</a>.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Document/Property%20Page%20Display%20of%20DTCs.htm">Document Property Page &quot;Display of DTCs&quot;</a></li>
+<li><a href="DTC.htm">DTC (Feature)</a></li>
+<li><a href="DTC%20Import.htm">DTC Import</a></li>
+<li>Editing Failure Mode Identifier <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R040' title="">[DTCUI-R040]</a></li>
+<li><a href="Failure%20Type%20Byte.htm">Failure Type Byte</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory Introduction</a></li>
+<li><a href="../../15%20Procedures/Fault%20Memory/How%20to%20Prepare%20a%20Document%20for%20FTB%20and%20FMI.htm">How to Prepare a Document for FTB and FMI</a></li>
+</ul>
+</body>
+</html>

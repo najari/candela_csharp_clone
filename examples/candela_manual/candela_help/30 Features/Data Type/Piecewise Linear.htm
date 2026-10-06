@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Piecewise Linear</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="piecewise-linear"><span id='_index_446727972'>Piecewise Linear</span></h1>
+<p>A list of linear formulas (factor, offset) , each restricted by <a href="Start%20Range%20End%20Range.htm">Start and/or End Range</a>.</p>
+<p>Converts raw byte <code>x</code> using sections on the x-axis in which a linear formula <code>phys = factor*raw + offset</code> applies.</p>
+<p>Special use-cases:</p>
+<ul>
+<li>approximization of a non-linear function,</li>
+<li>integer with sign bit.</li>
+</ul>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Piecewise%20Linear.htm">dialog</a>.</p>
+<p>Example</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Raw value x in value range</th>
+<th align="right">Physical value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0x00 - 0x80</td>
+<td align="right">x + b</td>
+</tr>
+<tr class="even">
+<td align="right">0x81 - 0xFF</td>
+<td align="right">-x + b (&quot;sign bit&quot;)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="start-range">Start Range</h2>
+<p>The CANdela data model stores <strong>raw</strong> Start/End values only, not the physical ones which may be computed using the linear formula.</p>
+<h2 id="inverse-values"><span id='_index_446727973' title='Piecewise Linear' data-text='Piecewise Linear'>Inverse Values</span> (CDS-4979 6.0)</h2>
+<div class="figure">
+<img src="Images/InverseValue.jpg" alt="Raw Value from Inverse Value for Formula with Factor 0" />
+<p class="caption">Raw Value from Inverse Value for Formula with Factor 0</p>
+</div>
+<p>For each linear formula with factor 0, you can optionally specify an <strong>inverse value</strong>.</p>
+<ul>
+<li>with factor 0, multiple raw <code>x</code> values have the same constant physical <code>y</code> value</li>
+<li>the inverse value specifies the raw <code>x</code> value to use when the given physical <code>y</code> value must be converted to a raw value.</li>
+</ul>
+<p>Note: it is even possible to specify an inverse value that is not in the raw range of the formula.</p>
+<p>Note: as of 2016, Vector test systems (e.g. CANalyzer 9.0) support the inverse value for text tables only.</p>
+<p>In the computation of a raw <code>x</code> value, ambiguities are resolved...</p>
+<ul>
+<li>those due to factor 0: by using the <strong>inverse value</strong> of the formula</li>
+<li>those due to multiple formulae producing the same <code>y</code> value: by using the <strong>first matching formula</strong>, in the order of their definition in the piecewise linear data type.</li>
+</ul>
+<div class="figure">
+<img src="Images/FirstMatchingFormula.jpg" alt="Raw Value from First Formula" />
+<p class="caption">Raw Value from First Formula</p>
+</div>
+<p>Example:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Range</th>
+<th align="left">Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0..9</td>
+<td align="left"><code>y = 1*x + 0</code></td>
+</tr>
+<tr class="even">
+<td align="right">10..19</td>
+<td align="left"><code>y = 1*x - 10</code></td>
+</tr>
+</tbody>
+</table>
+<p>Both <code>x = 5</code> and <code>x = 15</code> produce <code>y = 5</code>.</p>
+<p>Computing <code>x</code> for <code>y =</code>5 results in <code>x = 5</code> (not 15).</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm#conversions">Conversions</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+</ul>
+</body>
+</html>

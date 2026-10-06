@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Document Revisions Export</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="document-revisions-export-cds-5050-5.0">Document Revisions Export (CDS-5050 5.0)</h1>
+<p>Exports all revisions to an XML file.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Some commands need to process the revision history of a CANdela document.</p>
+<h2 id="solution">Solution</h2>
+<p>Note: CANdelaStudio...</p>
+<ul>
+<li>does <strong>not</strong> provide a menu item to run this export directly,</li>
+<li>instead it provides the export in the context of <strong>actions</strong></li>
+<li>so that you can automatically process the exported file in an application of your choice.</li>
+</ul>
+<p><span id="DRE-R100" class="rqDef">[DRE-R100]</span> When an action <a class='rqRef' href='../../30%20Features/Actions/Actions.htm#ACT-R100' title="">[ACT-R100]</a> uses the variable &quot;DocRevisionsTmpPath&quot;, CANdelaStudio writes the revision history to an XML file.</p>
+<p>In detail: if the variable is used in a command line, on action execution, CANdelaStudio...</p>
+<ol style="list-style-type: decimal">
+<li>computes a temporary path T</li>
+<li>in the action command line, replaces the variable by T</li>
+<li>writes properties of the latest history item into file T</li>
+<li>runs the command line</li>
+<li>deletes the file T</li>
+</ol>
+<p>This means the application run via the command line gets the temporary path as a parameter and can process the XML file.</p>
+<p><span id="DRE-R110" class="rqDef">[DRE-R110]</span> The temporary file contains the revision history in XML format, in encoding UTF-8.</p>
+<ul>
+<li>The format of the XML file is described in <code>DocRevisions.dtd</code> in the <a href="../../30%20Features/Installation/Documentation.htm">CANdelaStudio documentation folder</a>.</li>
+<li>An application that reads this format should tolerate attributes and elements that it does not know – in order to ease compatibility with potential future extensions of the format.</li>
+</ul>
+<p><span id="DRE-R120" class="rqDef">[DRE-R120]</span> If there is no history item defined,</p>
+<ul>
+<li>if the action variable is optional:
+<ul>
+<li>CANdelaStudio substitutes an empty string;</li>
+</ul></li>
+<li>otherwise
+<ul>
+<li>CANdelaStudio rejects the action.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Actions/Actions.htm">Actions</a></li>
+<li><a href="../../30%20Features/Installation/Documentation.htm">CANdelaStudio documentation folder</a></li>
+<li><a href="Document%20Version%20Export.htm">Document Version Export</a></li>
+<li><a href="../../30%20Features/Revision%20History/Revision%20History.htm">Revision History</a></li>
+</ul>
+</body>
+</html>

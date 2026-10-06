@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Error Code Table</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="error-code-table-in-template"><span id='_index_446727891' title='DTC' data-term='DTC'>Error Code Table (in Template)</span><span id='_index_446727892' title='Error Code Table' data-term='Error Code Table'></span></h1>
+<p>See also the <a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a> feature.</p>
+<p>The chapter &quot;Error code table&quot; of a CANdela template lets you edit the <a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">columns of the DTC table</a> of a fault memory (in Expert View only).</p>
+<div class="figure">
+<img src="Images/Error%20Code%20Table.jpg" alt="Error Code Table" />
+<p class="caption">Error Code Table</p>
+</div>
+<h2 id="supported-fault-memory">Supported Fault Memory</h2>
+<p>Selects the fault memory supported by the template with its bit length.</p>
+<p>For...</p>
+<ul>
+<li><strong>Normal Fault Memory</strong>, bit lengths 16 and 24 are available,</li>
+<li><strong>OBD Fault Memory</strong>, only the 16-bit length is available.</li>
+</ul>
+<p>Consistency condition: this length information must be consistent with the length of <a href="../../30%20Features/Protocol%20Service/Proxy%20Component.htm">proxy components</a> with semantics &quot;dtc&quot; in the Protocol Services.</p>
+<h2 id="columns-of-the-dtc-table-of-fault-memory">Columns of the DTC Table of Fault Memory</h2>
+<p>The combobox lets you select between two lists: DTC Colums for the Normal and for the OBD2 Fault Memory.</p>
+<p>Each list displays and provides editing of the <a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">DTC columns</a>.</p>
+<h2 id="convention">Convention</h2>
+<p>Shows and edits the Convention <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R060' title="Convention">[DTCC-R060]</a> of the DTC Column.</p>
+<h2 id="name">Name</h2>
+<p>Shows and edits the Name <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R020-Name' title="">[DTCC-R020-Name]</a> of the DTC Column.</p>
+<p><span id="ECT-R110" class="rqDef">[ECT-R110]</span> when you modify the DTC Column name within the list, CANdelaStudio shows a hint that the change may result in a change of the qualifier, with possible data loss when you transport DTCs between documents.</p>
+<h2 id="type">Type</h2>
+<p>Shows the Type <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R010' title="Types">[DTCC-R010]</a> of the DTC Column.</p>
+<p>You cannot modify the type of an existing DTC Column.</p>
+<h2 id="display">Display</h2>
+<p>Shows and edits the Display Format <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R070' title="Display Format">[DTCC-R070]</a> of the DTC Column.</p>
+<p>Note: editing is disabled if the Type allows only a single Display Format.</p>
+<h2 id="default-value">Default Value</h2>
+<p>Shows and edits the Default Value <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R080' title="Default Value">[DTCC-R080]</a> of the DTC Column.</p>
+<h2 id="value-may-be-duplicate">Value May Be Duplicate</h2>
+<p>Shows and edits the &quot;may be Duplicate&quot; <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R050' title="MayBeDuplicate">[DTCC-R050]</a> property of the DTC Column.</p>
+<p>Note: if true, the cell value...</p>
+<ul>
+<li>specifies that a given value may <strong>occur at multiple DTCs</strong>,</li>
+<li><strong>not</strong> that a single DTC can have <strong>multiple values</strong>.</li>
+</ul>
+
+<h2 id="description">Description</h2>
+<p>Shows and edits the Description <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R020' title="">[DTCC-R020]</a> of the DTC Column.</p>
+
+<h2 id="button-new">Button &quot;New&quot;</h2>
+<p>Clicking the button</p>
+<ol style="list-style-type: decimal">
+<li>shows a dialog to specify the <a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#type">type</a> of the DTC column.</li>
+<li>Then CANdelaStudio shows the &quot;Properties of column...&quot; dialog.</li>
+</ol>
+<h2 id="button-properties">Button &quot;Properties&quot;</h2>
+<p>Clicking the button shows the &quot;Properties of column...&quot; dialog.</p>
+<p>The dialog lets you edit the <a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#properties">properties of the DTC column</a>.</p>
+<p><span id="ECT-R210" class="rqDef">[ECT-R210]</span> when you modify the DTC Column qualifier within the dialog, CANdelaStudio shows a hint about possible data loss when you transport DTCs between documents (cf. <a class='rqRef' href='../../20%20UserInterface/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R110' title="">[ECT-R110]</a> for editing within the list).</p>
+<ul>
+<li>CANdelaStudio shows the hint only when you modify the qualifier (CDS-41199 9.1).</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/DTC/DTCs.htm">DTC List (User Interface)</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">Object Property Page General</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">DTC Columns</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Translation Memory</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="translation-memory"><span id='_index_446728071'>Translation Memory</span></h1>
+<h2 id="automate-your-translation-process">Automate your Translation Process</h2>
+<p>If you have translated a document, you can build up a “translation memory”. All translated item pairs will be placed in a separate translation memory file (*.tmx). You can apply this translation memory to any CANdela document. Each translatable item in the CANdela document will be translated automatically if it is already defined in the translation memory file. You can expand your translation memory with each translated CANdela document.</p>
+<h2 id="use-cases">Use cases</h2>
+<p>Translation view shall support (semi-) automatic translation. There are different use cases:</p>
+<div class="figure">
+<img src="Images/Translation%20Memory%20Use-Cases.png" alt="Translation Memory Use-Cases" />
+<p class="caption">Translation Memory Use-Cases</p>
+</div>
+<p>To support both use cases, the translation view holds an internal &quot;translation memory&quot; which can be</p>
+<ul>
+<li>filled by strings manually translated in translation view,</li>
+<li>saved and reloaded from an external file,</li>
+<li>used for automatic translation of strings.</li>
+</ul>
+<p>The file format used to store this translation memory is the open format &quot;Translation Memory eXchange&quot; (&quot;TMX&quot;, see http://www.gala-global.org/lisa-oscar-standards).</p>
+<h2 id="data-exchange-with-a-translation-system">Data Exchange with a Translation System</h2>
+<p>An external translation system must not directly translate the CDD file, since it would not correctly handle the &quot;up-to-date&quot; info.</p>
+<p>There are two ways of using the CANdelaStudio Translation Memory:</p>
+<ul>
+<li><p>Save translated terms only: save translations to a TMX file and apply them in another document.</p></li>
+<li><p>Save even non-translated terms: save all strings to a TMX file, translate the strings (e.g. using a specialized translation application), then load the the translated strings back into the Translation View and automatically translate the document.</p></li>
+</ul>
+<p>Translation view can use the translations from the TMX file to automatically translate the strings and set the &quot;up-to-date&quot; flag.</p>
+<h2 id="semi-automatic-translation">Semi-automatic translation</h2>
+<p>Strings already translated are stored in a &quot;translation memory&quot; which may be kept persistent in a TMX file. The user may apply such a translation given to the non-up-to-date strings displayed in the translation view. Applying a translation is value-based, i.e. all strings having the same value will potentially be affected.</p>
+<p>If there is exactly one translation for some value, CANdelaStudio translates it without further notice.</p>
+<p>If there are different translations for some value, CANdelaStudio offers a choice (like spell checker in Word).</p>
+<p>Care must be taken when using this feature to &quot;import&quot; a translation from an &quot;external&quot; translation system. Since translation applies to non-up-to-date strings only, external modification of up-to-date strings will not be applied – except you first mark all strings as &quot;not up-to-date&quot;.</p>
+<h2 id="learning-translation-memory">Learning Translation Memory</h2>
+<p>Translation memory contains 0..n <strong>translation units (TU)</strong>, each containing 1..n <strong>translation unit values (TUV)</strong>. Translation is always done for two languages at a time, whereas translation memory may contain n languages.</p>
+<h2 id="translation-status">Translation Status</h2>
+<p>Column &quot;Term/Translation in TM&quot;: user actions automatically change the column value for one or all TUs:</p>
+<ul>
+<li>if TM is empty, leave column empty (even in any of the cases below)</li>
+<li>if TU is not &quot;isUpToDate&quot;, leave column empty.</li>
+<li>Learning to TM and applying from TM trigger re-computation. E.g. after learning, a &quot;new&quot; pair will become &quot;checked&quot;.</li>
+<li>Editing one TU immediately checks the TUV and sets the value to the result.</li>
+<li>Re-loading TM from an external file triggers re-computation.</li>
+</ul>
+<h2 id="tmx-file">TMX File</h2>
+<p>The TMX file generated contains all translatable texts that were exported to ODX.</p>
+<p>Each text has a <strong>TextID</strong>, stored in a <strong>“prop” element</strong> at the text (“translation units” = “tu” element):</p>
+<div class="figure">
+<img src="Images/ODX%20TMX.jpg" alt="TextIDs in CANdelaStudio, ODX and TMX" />
+<p class="caption">TextIDs in CANdelaStudio, ODX and TMX</p>
+</div>
+<p>Example:</p>
+<pre><code>&lt;prop type=&#39;x-CANdela-text-id&#39;&gt;New_ECU_1_12&lt;/prop&gt;</code></pre>
+<p>The <strong>“type” attribute</strong> contains the string “x-CANdela-text-id”. Other applications can trigger on this attribute to identify the property as a TextID.</p>
+<h2 id="example-tmx-file">Example TMX file</h2>
+<pre><code>&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39; standalone=&#39;no&#39;?&gt;
+&lt;!DOCTYPE tmx SYSTEM &#39;tmx13.dtd&#39;&gt;
+&lt;tmx version=&#39;1.3&#39;&gt;
+&lt;header creationtool=&#39;CANdelaStudio&#39;
+  creationtoolversion=&#39;8.2.3001&#39;
+  segtype=&#39;phrase&#39;
+  o-tmf=&#39;TXT&#39;
+  adminlang=&#39;en-US&#39;
+  srclang=&#39;*all*&#39;
+  datatype=&#39;plaintext&#39;
+  creationdate=&#39;2016-03-02 14:35:48+01:00&#39;
+  changedate=&#39;2016-03-02 14:35:48+01:00&#39;&gt;
+&lt;/header&gt;
+&lt;body&gt;
+&lt;tu tuid=&#39;1&#39;&gt;
+&lt;tuv xml:lang=&#39;de-DE&#39;&gt;&lt;seg&gt;Diese CANdela-Vorlage basiert auf ISO 14229-1:2006.&lt;/seg&gt;&lt;/tuv&gt;
+&lt;tuv xml:lang=&#39;en-US&#39;&gt;&lt;seg&gt;This CANdela template is based on ISO 14229-1:2006.&lt;/seg&gt;&lt;/tuv&gt;
+&lt;tuv xml:lang=&#39;fr-FR&#39;&gt;&lt;seg&gt;La template CANdela est basée sur l&#39; ISO 14229-1:2006.&lt;/seg&gt;&lt;/tuv&gt;
+&lt;tuv xml:lang=&#39;ja&#39;&gt;&lt;seg&gt;ISO 14229-1:2006に基づいたCANdelaテンプレート・ファイル&lt;/seg&gt;&lt;/tuv&gt;
+&lt;/tu&gt;
+&lt;tu tuid=&#39;2&#39;&gt;
+&lt;tuv xml:lang=&#39;de-DE&#39;&gt;&lt;seg&gt;Allgemeine Verweigerung&lt;/seg&gt;&lt;/tuv&gt;
+&lt;tuv xml:lang=&#39;en-US&#39;&gt;&lt;seg&gt;General reject&lt;/seg&gt;&lt;/tuv&gt;
+&lt;tuv xml:lang=&#39;fr-FR&#39;&gt;&lt;seg&gt;Rejet général&lt;/seg&gt;&lt;/tuv&gt;
+&lt;tuv xml:lang=&#39;ja&#39;&gt;&lt;seg&gt;General reject（拒否）&lt;/seg&gt;&lt;/tuv&gt;
+&lt;/tu&gt;
+&lt;/body&gt;
+&lt;/tmx&gt;</code></pre>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Multi-Language/Multi-Language.htm">Multi-Language Feature</a></li>
+<li><a href="../../20%20UserInterface/Multi-Language/Translation%20View.htm">Translation View</a></li>
+</ul>
+</body>
+</html>

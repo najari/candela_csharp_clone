@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Invalid Values</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="invalid-values"><span id='_index_446727967'>Invalid Values</span> - Validity of range in conversion</h1>
+<p>See the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Invalid%20Values.htm#invalid-values">Data Types Dialog</a>.</p>
+<h2 id="motivation">Motivation</h2>
+<p>In some protocols, special result value bit combinations are reserved for expressing fault situations.</p>
+<h2 id="definition">Definition</h2>
+<p><span id="DT-R400" class="rqDef">[DT-R400]</span> CANdelaStudio describes special conversion result values using a set of “<strong>Invalid values</strong>” (also called &quot;range exclusions&quot;) at a data type.</p>
+<p>An invalid value is defined by...</p>
+<ul>
+<li><span id="DT-R410" class="rqDef">[DT-R410]</span> <strong>start</strong> and <strong>end of the range</strong>
+<ul>
+<li>on coded values</li>
+</ul></li>
+<li>the <strong>kind of invalidity</strong> <a class='rqRef' href='../../30%20Features/Data%20Type/Invalid%20Values.htm#DT-R420' title="">[DT-R420]</a> (below)</li>
+<li><span id="DT-R430" class="rqDef">[DT-R430]</span> an optional “assigned text”
+<ul>
+<li>1 to 64 characters, if given.</li>
+</ul></li>
+</ul>
+<h2 id="semantics">Semantics</h2>
+<p>In principle, the <strong>range of possible values for a data type</strong> depends on...</p>
+<ol style="list-style-type: decimal">
+<li>the <strong>valid range</strong> defined by the <a href="Data%20Type.htm#conversions">conversion</a> itself,
+<ul>
+<li>e.g. text table data type: coded value has <strong>no entry</strong> (start/end/assigned text);</li>
+<li>e.g. linear formula: optional <strong>lower and upper limit</strong> restricts the value range;</li>
+</ul></li>
+<li>the <strong>list of invalid values</strong>.</li>
+</ol>
+<p>For <strong>converting</strong> a coded value to a physical value (or vice versa), Vector test systems apply these ranges as follows:</p>
+<ol style="list-style-type: decimal">
+<li>if the value is <strong>outside the valid range</strong> (i.e. the <strong>conversion</strong> does not allow to compute a value): <strong>error</strong>;</li>
+<li>otherwise apply the conversion, <strong>use the result value</strong>,
+<ul>
+<li>additionally, if the <strong>coded value</strong> is in the <strong>invalid values</strong>: <strong>warning</strong>.</li>
+</ul></li>
+</ol>
+
+<h2 id="overlap">Overlap</h2>
+<p>An invalid value may <strong>overlap</strong> with values <strong>inside and outside the valid range</strong> of the conversion.</p>
+<p>In a test system, the invalid value takes effect only inside the conversion range (as described in the previous chapter).</p>
+<p>Example for a 1 byte text table:</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="17%" />
+<col width="19%" />
+<col width="47%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Coded Value</th>
+<th align="left">Assigned Text</th>
+<th align="left">Invalid Value</th>
+<th align="left">Effect in test system</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0 .. 9</td>
+<td align="left">&quot;no&quot;</td>
+<td align="left">0<br />
+5</td>
+<td align="left">Warning for coded value 0<br />
+Warning for coded value 5</td>
+</tr>
+<tr class="even">
+<td align="left">10 .. 19</td>
+<td align="left">&quot;yes&quot;</td>
+<td align="left">19</td>
+<td align="left">Warning for coded value 19</td>
+</tr>
+<tr class="odd">
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">20</td>
+<td align="left">no effect (coded values 20 .. 255 lead to an error)</td>
+</tr>
+</tbody>
+</table>
+<p>CANdelaStudio reports an overlap inside the conversion range as a warning (CDS-12057, 6.0).</p>
+<h2 id="invalid-values-vs.-conversion-result">Invalid Values vs. Conversion Result</h2>
+<ul>
+<li>in the <strong>CANdela data model</strong>, invalid values are defined on the <strong>coded value</strong>;</li>
+<li>in the <strong>ODX data model</strong>, invalid values are defined on the <strong>physical value</strong>;</li>
+<li>therefore when e.g. converting a coded to a physical value, a Vector tester...
+<ul>
+<li>based on the CANdela data model (CDD): checks invalid values on the <strong>input value</strong> of the conversion,</li>
+<li>based on the ODX data model: checks invalid values on the <strong>output (result) value</strong> of the conversion.</li>
+</ul></li>
+<li>and vice versa when converting a physical to a coded value.</li>
+</ul>
+<h2 id="invalidity">Invalidity</h2>
+<p><span id="DT-R420" class="rqDef">[DT-R420]</span> An invalid value has one of the following values for <strong>kind of invalidity</strong> (CDS-2178, 3.0):</p>
+<table style="width:98%;">
+<colgroup>
+<col width="17%" />
+<col width="66%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Invalidity</th>
+<th align="left">Description</th>
+<th>Equivalent in ODX</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Not implemented</td>
+<td align="left">1) a signal has <strong>not been implemented</strong> in the ECU, i.e. it is not available.<br />
+E.g. you use a general „static“ specification which is not completely being implemented in all ECUs.<br />
+In this case, some data may be not available in some vehicle configuration.</td>
+<td>&quot;Not available&quot;</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">2) a signal is invalid.<br />
+The internal check in the ECU found that it cannot provide a valid signal.<br />
+The reason may be one of the following:</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">Invalid signal</td>
+<td align="left">2a) the signal value is <strong>internal</strong> to the ECU, or</td>
+<td>&quot;Not valid&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">Unexpected result</td>
+<td align="left">2b) the ECU received an <strong>expected signal</strong> from another ECU with an <strong>unexpected value</strong></td>
+<td>&quot;Not available&quot;</td>
+</tr>
+<tr class="odd">
+<td align="left">No signal</td>
+<td align="left">3) the ECU did <strong>not receive</strong> a signal it expected from another ECU.</td>
+<td>&quot;Not available&quot;</td>
+</tr>
+<tr class="even">
+<td align="left">Undefined</td>
+<td align="left">4) Any situation for which none of the other signal types may be assigned.</td>
+<td>&quot;Not defined&quot;</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Invalid%20Values.htm">Data Type Property &quot;Page Invalid Values&quot;</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+</ul>
+</body>
+</html>

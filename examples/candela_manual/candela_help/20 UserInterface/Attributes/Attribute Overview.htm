@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Attribute Overview</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="attribute-overview-cds-2620-3.0.4">Attribute Overview (CDS-2620 3.0.4)</h1>
+<div class="figure">
+<img src="Images/Attribute%20Overview.jpg" alt="Attribute Overview Dialog" />
+<p class="caption">Attribute Overview Dialog</p>
+</div>
+<p><span id="ATTOV-R100" class="rqDef">[ATTOV-R100]</span> The attribute overview dialog gives you an overview of all <a href="../../30%20Features/Attributes/Attributes.htm">attributes</a> in the subtree of an object or of the entire document.</p>
+<p>It is available...</p>
+<ul>
+<li>in Ribbon Tab &quot;Document&quot; <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Document.htm#MENU-R750' title="">[MENU-R750]</a> and</li>
+<li>in the context menu of some tree nodes.</li>
+</ul>
+<p>You can use the attribute overview to override the attributes of multiple objects simultaneously with the same value.</p>
+<p>Modifying operations respect of the <a href="../../30%20Features/Common%20Properties/Authorization.htm">Authorization</a> of the objects - in Standard View, you cannot modify the attribute value of an object if the object is &quot;not modifiable&quot;.</p>
+<h2 id="context">Context</h2>
+<p>When opened on &quot;ECU Information&quot; (the root of the document tree), the dialog shows all attributes of the document (&quot;Whole document&quot;).</p>
+<p>Otherwise, you can switch between</p>
+<ul>
+<li>&quot;Whole document&quot; and</li>
+<li>the &quot;Current namespace&quot;, i.e. all attributes of the object on which you opened the dialog and its contained objects.</li>
+</ul>
+<h2 id="list">List</h2>
+<p>The list shows overridden attributes with a leading asterisk &quot;*&quot;.</p>
+<p><span id="ATTOV-R210" class="rqDef">[ATTOV-R210]</span> <strong>Referenced Diagnostic Instances</strong></p>
+<ul>
+<li>If a Diagnostic Instance is referenced in muliple variants <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D010' title="">[DI-D010]</a>,</li>
+<li>the list shows it in the first variant only.</li>
+<li>Cf. Attribute Export <a class='rqRef' href='../../30 Features\Export\Attribute Export.htm#ATTE-R210' title="">[ATTE-R210]</a>.</li>
+</ul>
+
+<h3 id="attribute">Attribute</h3>
+<p>The name of the attribute.</p>
+<h3 id="value">Value</h3>
+<ul>
+<li><p>In order to modify (override) the value of a single attribute, select the line of the attribute and press <code>F2</code>. You can enter the new value directly in the &quot;Value&quot; cell.</p></li>
+<li><p>In order to modify the value of multiple attributes at the same time, select the attributes and click the button &quot;Set Value&quot;. A dialog opens in which you can enter the new value and specify the scope of the modification.</p></li>
+</ul>
+<h3 id="type">Type</h3>
+<h3 id="category">Category</h3>
+<h3 id="path">Path</h3>
+<h3 id="context-menu-copy-path">Context menu &quot;Copy Path&quot;</h3>
+<p>Lets you copy the path shown in column &quot;Path&quot; to the clipboard.</p>
+<h3 id="context-menu-filter-by-selected-attribute-show-all-attributes">Context menu &quot;Filter by Selected Attribute&quot; / &quot;Show All Attributes&quot;</h3>
+<p>Same as <a href="#only-selected">Buttons &quot;Only Selected&quot; / &quot;All&quot;</a> below.</p>
+<h2 id="show-overridden-attributes-only">Show overridden attributes only</h2>
+<h2 id="include-template-data">Include template data</h2>
+<h2 id="only-selected">Buttons &quot;Only Selected&quot; / &quot;All&quot;</h2>
+<p>Lets you display only attribute values (rows) for the selected default attribute, or again show all attributes.</p>
+<p>The filter is helpful if you want to modify the value of multiple attributes using &quot;Set Value&quot;.</p>
+<h2 id="button-export">Button &quot;Export&quot;</h2>
+<p><span id="ATTOV-R185" class="rqDef">[ATTOV-R185]</span> Runs the Attribute Export <a class='rqRef' href='../../30 Features\Export\Attribute Export.htm#ATTE-R010' title="">[ATTE-R010]</a>.</p>
+<h2 id="button-import">Button &quot;Import&quot;</h2>
+<p><span id="ATTOV-R255" class="rqDef">[ATTOV-R255]</span> Runs the Attribute Import <a class='rqRef' href='../../30 Features\Import\Attribute Import.htm#ATTI-R010' title="">[ATTI-R010]</a>.</p>
+<h2 id="button-set-value">Button &quot;Set Value&quot;</h2>
+<p>Shows a dialog to set the value of one or multiple attributes.</p>
+<p>The dialog lets you modify...</p>
+<ul>
+<li>the selected attributes only,</li>
+<li>all attributes in the current context</li>
+<li>all attributes of the document</li>
+</ul>
+<h2 id="button-default">Button &quot;Default&quot;</h2>
+<p>Resets the value of an overridden attribute to the default value specified in the template at the attribute definition.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/Attribute%20Export.htm">Attribute Export</a></li>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attribute Feature</a></li>
+<li><a href="../../30%20Features/Import/Attribute%20Import.htm">Attribute Import</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+</ul>
+</body>
+</html>

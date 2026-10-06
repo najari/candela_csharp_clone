@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Instance Property Page AUTOSAR Fault Memory</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-instance-property-page-autosar-fault-memory-cds-71541-v13">Diagnostic Instance Property Page &quot;AUTOSAR Fault Memory&quot; (CDS-71541 v13)</h1>
+<p><img src="Images/Diagnostic%20Instance%20Property%20Page%20AUTOSAR%20Fault%20Memory.jpg" /></p>
+<p><span id="DIUI-R350" class="rqDef">[DIUI-R350]</span> For Protocol Services setup according with <strong>AUTOSAR</strong> (shown as &quot;sr&quot;, &quot;sd&quot;...):</p>
+<ul>
+<li>if a Fault Memory Diagnostic Instance has a Snapshot Records List (see <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R030' title="">[SR-R030]</a>),</li>
+<li>the diagnostic instance <a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance%20Property%20Page%20General.htm">property sheet</a>...</li>
+<li>shows an additional TAB &quot;AUTOSAR Fault Memory&quot;</li>
+</ul>
+<p><span id="DIUI-R360" class="rqDef">[DIUI-R360]</span> The TAB contains a radio group for the <strong>Snapshot Numeration Type</strong> <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#DI-R310' title="">[DI-R310]</a>:</p>
+<ul>
+<li>Values:
+<ul>
+<li>&quot;Configured&quot;</li>
+<li>&quot;Calculated&quot;</li>
+</ul></li>
+<li>The property is modifiable in Standard View.</li>
+<li>If the Snapshot Numeration Type is &quot;Configured&quot;,
+<ul>
+<li>and the Snapshot Record List <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R030' title="">[SR-R030]</a> contains an UDS Snapshot Record <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R130-UDS' title="">[SR-R130-UDS]</a>,</li>
+<li>then the radio group is insensitive,</li>
+<li>the dialog contains a static text like<br />
+&quot;(not modifiable while configured UDS Snapshot Records exist)&quot;</li>
+</ul></li>
+<li>A change triggers the operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#DIOP-R310' title="">[DIOP-R310]</a> or <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#DIOP-R350' title="">[DIOP-R350]</a>.</li>
+</ul>
+<p><span id="DIUI-R355" class="rqDef">[DIUI-R355]</span> The TAB contains an edit control for the Default Number of Calculated Snapshot Records (Numeration Type &quot;Calculated&quot;) <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#DI-R320' title="">[DI-R320]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Introduction to <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a></li>
+<li><a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance%20Property%20Page%20General.htm">Diagnostic Instance Property Page &quot;General&quot;</a></li>
+<li><a href="../../20%20UserInterface/Fault%20Memory/AUTOSAR%20Fault%20Memory%20GUI.htm">AUTOSAR Fault Memory GUI</a></li>
+</ul>
+</body>
+</html>

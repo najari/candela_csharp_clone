@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Export Installed as Independent Application</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="export-installed-as-independent-application-cds-71297-v12">Export Installed as Independent Application (CDS-71297 v12)</h1>
+<p>CANdelaStudio ships with <strong>built-in export components</strong>.</p>
+<p>On a service project basis, Vector may optionally provide an export component as an <strong>independent application</strong>.</p>
+<ul>
+<li>The application is installed into a <strong>global folder</strong>.</li>
+<li>Multiple CANdelaStudio versions (starting with v12) may <strong>use the same</strong> installed export application.</li>
+<li>As a default, CANdelaStudio uses the independent application <strong>if it is newer</strong> than the built-in export, see <a class='rqRef' href='../../30%20Features/Installation/Export%20Installed%20as%20Independent%20Application.htm#DXEXE-R110' title="">[DXEXE-R110]</a> below.</li>
+<li>The export application shall be used by CANdelaStudio only, <strong>not standalone</strong>, so it has a license protection.</li>
+</ul>
+
+<h2 id="scope">Scope</h2>
+<p>As of CANdelaStudio 12, this feature is optionally available for <strong>ODX Export</strong> only.</p>
+<h2 id="built-in-component-vs.-independent-application">Built-in Component vs. Independent Application</h2>
+<p><span id="DXEXE-R100" class="rqDef">[DXEXE-R100]</span></p>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="41%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Built-in Component</th>
+<th align="left">Independent Application</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>File Type</strong></td>
+<td align="left">DLL</td>
+<td align="left">EXE</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>File Name</strong></td>
+<td align="left">ODXExportXXX.dll</td>
+<td align="left">ODXExport.exe</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Location</strong></td>
+<td align="left">CANdelaStudio bin directory</td>
+<td align="left"><code>Program Files\Common Files\Vector ODX Export</code></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Start</strong></td>
+<td align="left">internal DLL function call</td>
+<td align="left">via command line in a separate process</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Parameters</strong></td>
+<td align="left">function parameters</td>
+<td align="left">command line parameters (internal)</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Shipping</strong></td>
+<td align="left">with CANdelaStudio</td>
+<td align="left">as patch installer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="component-selection">Component Selection</h2>
+<p><span id="DXEXE-R110" class="rqDef">[DXEXE-R110]</span> When an export is available as independent application, CANdelaStudio determines the component to run as follows:</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="27%" />
+<col width="27%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">FeatureID</th>
+<th align="left">Example</th>
+<th align="left">Application Version is...</th>
+<th align="left">Component Started</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span id="DXEXE-R110-EXE" class="rqDef">[DXEXE-R110-EXE]</span></td>
+<td align="left">Built-in v13, Application v14</td>
+<td align="left"><strong>newer</strong></td>
+<td align="left"><strong>Application</strong></td>
+</tr>
+<tr class="even">
+<td align="left"><span id="DXEXE-R110-INI" class="rqDef">[DXEXE-R110-INI]</span></td>
+<td align="left">Built-in v13, Application v14</td>
+<td align="left"><strong>newer</strong>, Option <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page ODX Export.htm#OPT-R245' title="">[OPT-R245]</a> set</td>
+<td align="left"><strong>Built-in</strong></td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="DXEXE-R110-DLL" class="rqDef">[DXEXE-R110-DLL]</span></td>
+<td align="left">Application v12, built-in v13</td>
+<td align="left"><strong>older</strong></td>
+<td align="left"><strong>Built-in</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="sequence-of-operation">Sequence of Operation</h2>
+<p><span id="DXEXE-D120" class="rqDef">[DXEXE-D120]</span> When you execute an export with the global installation, CANdelaStudio...</p>
+<ul>
+<li>stores the document to be exported as a copy in the Temp directory</li>
+<li>stores the INI file to ensure that the <code>ODXExport.exe</code> has access to your recent configuration changes</li>
+<li>determines the necessary command line parameters</li>
+<li>runs the export via command line in a separate process</li>
+<li>waits for finalization of the export process. This is required because of:
+<ul>
+<li>Feature “Show ODX Data after export” (checkbox in the dialog of <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R120' title="">[MENU-R120]</a>)</li>
+<li>Action: “ODX 2.0 export done” <a class='rqRef' href='../../30%20Features/Actions/Actions.htm#ACT-R200' title="">[ACT-R200]</a></li>
+</ul></li>
+<li>informs in the Output window about the success, the expected result and logfile</li>
+<li>finally deletes the document in the Temp directory.</li>
+</ul>
+<h2 id="logfile">Logfile</h2>
+<p><span id="DXEXE-R130" class="rqDef">[DXEXE-R130]</span> The application writes a logfile.</p>
+<ul>
+<li><span id="DXEXE-R130-Dir" class="rqDef">[DXEXE-R130-Dir]</span> Location: in the directory of the export output files.</li>
+<li><span id="DXEXE-R130-Name" class="rqDef">[DXEXE-R130-Name]</span> Name:
+<ul>
+<li>the name of the file given with command line parameter /o</li>
+<li>with the file ending <code>.log</code>.</li>
+</ul></li>
+<li><span id="DXEXE-R130-Copy" class="rqDef">[DXEXE-R130-Copy]</span> After the application terminates, CANdelaStudio copies the logfile contents to the CANdelaStudio logfile.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX Export Introduction</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20ODX%20Export.htm">File | Options | ODX Export</a></li>
+<li><a href="Bundled%20Products.htm">Bundled Products</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Integration%20of%20Tools.htm">Integration of Tools</a></li>
+</ul>
+
+</body>
+</html>

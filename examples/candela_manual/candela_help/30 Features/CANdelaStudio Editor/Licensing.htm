@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Licensing</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="licensing">Licensing</h1>
+<p>Contents:</p>
+<ul>
+<li><a href="#licensing-types">License Types</a></li>
+<li><a href="#local-flexnet-licensing">FlexNet License</a>
+<ul>
+<li><a href="#software-based-license">Software Based License</a></li>
+<li><a href="#vector-hardware-licensing">Hardware Based License</a></li>
+<li><a href="#pool">Pool License</a></li>
+<li><a href="#view-82">Up to 8.2: Hardware Based License for View Edition</a></li>
+</ul></li>
+<li><a href="#wibu">Vector License</a> (9.1)</li>
+<li><a href="#old-versions">Licensing and Old Versions</a></li>
+<li><a href="#command-line">Licensing Command Line Switches</a></li>
+<li><a href="#licenseParams">Licensing INI File Parameters</a></li>
+<li><a href="#grace-period">Grace Period</a></li>
+<li><a href="#bundling">License and Bundling</a></li>
+<li><a href="#start-without-license">Start without License</a></li>
+<li><a href="#demo">Demo Version</a></li>
+<li><a href="#remote-desktop">Use via Remote Desktop</a></li>
+<li><a href="#virtual-machine">Use in a Virtual Machine</a></li>
+</ul>
+<h2 id="licensing-types">License Types</h2>
+<p>CANdelaStudio supports several license types, due to historical reasons.</p>
+<p>The <a href="#wibu">Vector License</a> available since CANdelaStudio 9.1 is the current mechanism.</p>
+<h2 id="local-flexnet-licensing">FlexNet License</h2>
+<p>(also called &quot;<strong>Legacy License</strong>&quot;)</p>
+<h3 id="software-based-license">Software Based License</h3>
+<p>A <strong>Legacy License</strong> uses the <strong>older</strong> licensing mechanism:</p>
+<ul>
+<li>&quot;Legacy&quot; = not the current <a href="#wibu">Vector License</a> which was added with CANdelaStudio 9.1</li>
+<li>&quot;Local&quot; = the license check accesses only the <strong>local trusted storage</strong> of FlexNet</li>
+</ul>
+<p>There are three possible ways to <strong>get such a local license</strong>:</p>
+<ul>
+<li><strong>License Server</strong>: License obtained from the Vector license server or a locally installed license server with the <strong>Vector License Manager</strong> <a class='rqRef' href='../../30%20Features/Installation/Bundled%20Products.htm#IBP-R020' title="">[IBP-R020]</a> (the default mechanism)</li>
+<li><strong>ASR File</strong>: License injected by using the <code>LicenseInjector.exe</code> and an adequate ASR file. This way is still used by some customers and for the preparation of training computers.</li>
+<li><strong>Pool License</strong>: If a &quot;standard&quot; <a href="#pool">pool license</a> is checked out for three months, this license also resides in the local trusted storage.</li>
+</ul>
+<h3 id="vector-hardware-licensing">Hardware Based License</h3>
+
+<p>CANdelaStudio supports license check-out from an installed Vector network iterface (e.g. CANcase) since version 8.0 SP2, for interfaces that support more than 128 license bits:</p>
+<ul>
+<li><p><strong>Supported</strong> (CDS-30409 8.0 SP2):</p>
+<ul>
+<li>CANboardXL</li>
+<li>CANcardXL</li>
+<li>CANcaseXL</li>
+<li>Keyman Dongle (CDS-16481, since 7.5). Usage of this dongle requires the installation of the Keyman dongle drivers from the Vector Hardware Driver CD.</li>
+<li>VN16xx (CDS-32115 8.0 SP3)</li>
+<li>VN5610</li>
+<li>VN7570</li>
+<li>VN7600</li>
+<li>VN891x</li>
+</ul></li>
+<li><p><strong>Not supported</strong>:</p>
+<ul>
+<li>old blue USB-Dongle</li>
+<li>CANcardX</li>
+<li>VN2610</li>
+<li><strong>DEXT Export since R21</strong> does not accept a hardware license, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R030-HardwarePool' title="">[DEXT-R030-HardwarePool]</a>.</li>
+</ul></li>
+</ul>
+
+<h3 id="pool">Pool License (CDS-25243 8.0 SP2)</h3>
+<ul>
+<li>Pool licensing must be activated by a <a href="Options.htm#general">CANdelaStudio.ini</a> parameter (&quot;LicenseType&quot; in section &quot;General&quot;).</li>
+<li><p>In this case, a second parameter &quot;PoolLicenseEdition&quot; chooses a concrete edition to start.</p>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="21%" />
+<col width="55%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Parameter Name</th>
+<th align="left">Valid Values</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>LicenseType</strong></td>
+<td align="left"><strong>Per Seat</strong></td>
+<td align="left">Local licenses shall be used (USB, HW, local Flexnet). Default value.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong>Pool</strong></td>
+<td align="left">Pool licenses shall be used.<br />
+The customer has to run a local license server.<br />
+The parameter &quot;PoolLicenseEdition&quot; chooses a concrete edition to start.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Education License</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Student License</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Education Campus License</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">For LicenseType &quot;Pool&quot;:</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>PoolLicenseEdition</strong></td>
+<td align="left">CANdelaStudio Admin</td>
+<td align="left">Edition to be used (no default value)</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">CANdelaStudio Pro</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">CANdelaStudio Standard</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">CANdelaStudio ViewX</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">CANdelaStudio View</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>In practice IT department of the customer switches all users to pool licensing and enforces the usage of a concrete edition by setting these parameters (e.g. during rollout).</p>
+<div class="figure">
+<img src="Images/LicenseActivation.png" alt="CANdelaStudio Pool License Activation Dialog" />
+<p class="caption">CANdelaStudio Pool License Activation Dialog</p>
+</div>
+<p>If pool licensing is switched on, the user has to checkout his pool license the first time he starts CANdelaStudio. Using the Activation Dialog shown at start-up, the user can check out a &quot;standard&quot; license (and he will keep this license for 3 month) or a &quot;sporadic&quot; license that is only claimed during the time of usage.</p>
+<p>Note: <strong>DDM since R21</strong> does not accept a FlexNET Pool license, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R030-HardwarePool' title="">[DEXT-R030-HardwarePool]</a>.</p>
+<h3 id="view-82">Up to 8.2: Hardware Based License for View Edition</h3>
+<p>In version <strong>8.0, 8.1 and 8.2</strong>, CANdelaStudio checked for Vector Hardware licenses of main versions of the following products (CDS-25244 8.0, CDS-40007 8.5):</p>
+<ul>
+<li>CANoe</li>
+<li>CANape</li>
+<li>CANdito</li>
+<li>Indigo</li>
+<li>vTESTstudio (CDS-31362 8.0 SP2, also checks FlexNET license)</li>
+</ul>
+<p>It also checked for &quot;old&quot; Vector USB dongle licenses for an installed CANoe, CANape or CANdito (CDS-30942, 8.0 SP2).</p>
+<p>It checked for Keyman dongle license of</p>
+<ul>
+<li>ODXStudio (CDS-29179, 8.0)</li>
+<li>Indigo, CANoe, CANape (CDS-30309, 8.0 SP1)</li>
+</ul>
+<p>If one of these products was licensed via hardware, CANdelaStudio ran as a <strong>View Edition</strong> (&quot;Bundle View&quot;).</p>
+<p>Note: CANdelaStudio shows the edition info in Ribbon Tab File | Product Information, section &quot;About&quot;, see <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File - Product Information - About.htm#MENU-R1270' title="">[MENU-R1270]</a>.</p>
+<h2 id="wibu">Vector License  (CDS-40816, 9.1)</h2>
+
+<p>In 2017, Vector reworked the licensing terms and conditions and the licensing types:</p>
+<ul>
+<li><strong>License program</strong>:
+<ul>
+<li><strong>ELA (Enterprise License Agreement)</strong></li>
+<li><strong>EULA (End User License Agreement)</strong></li>
+</ul></li>
+<li><strong>License models</strong>:
+<ul>
+<li>Perpetual</li>
+<li>Subscription License</li>
+</ul></li>
+<li><strong>License types</strong> :
+<ul>
+<li><strong>Device License</strong> (can be activated on a PC, a Vector network interface or a dongle),</li>
+<li><strong>Named User License</strong> (can be activated on a PC, a Vector network interface or a dongle. Requires an assignment of the named user prior to activation. Enterprise only. See also <a href="#remote-desktop">Remote Desktop</a> below).</li>
+</ul></li>
+</ul>
+<p>The <strong>Vector Licensing Portal</strong> helps to...</p>
+<ul>
+<li>manage licenses and</li>
+<li>activate software.</li>
+</ul>
+<p>On the local computer, the <strong>Vector License Client</strong> <a class='rqRef' href='../../30%20Features/Installation/Bundled%20Products.htm#IBP-R040' title="">[IBP-R040]</a> manages the licenses.</p>
+<p>For details, please contact the Vector Sales team.</p>
+
+<p><span id="LIC-R600" class="rqDef">[LIC-R600]</span> CANdelaStudio always checks Vector Licenses in addition to Software/Hardware Based Licenses (there is no configuration switch).</p>
+<p>For a list of hardware <strong>supported</strong> for Vector Licenses, see the article <a href="https://kb.vector.com/entry/1109/">Hardware Compatibility With New Vector License Model</a> in the Vector Knowledge Base (link as of 2018-11).</p>
+
+<h2 id="old-versions">Licensing and Old Versions</h2>
+<p>Use-case:</p>
+<ul>
+<li>the manufacturer does not yet use the newest version of CANdelaStudio</li>
+<li>and wants suppliers to use the same version;</li>
+<li>but the supplier receives the newest version from Vector.</li>
+</ul>
+<p>Solution:</p>
+<ul>
+<li>A CANdelaStudio license includes the use of older versions.</li>
+<li>Up to version 8.1, the service packs available on the Vector download center were full versions, usable with the newer license;
+<ul>
+<li>the supplier could just download and install the service pack.</li>
+</ul></li>
+<li>Starting with version 8.2, the service packs availabale on the Vector download center are differential versions, they assume a full version has been installed already;
+<ul>
+<li>the supplier can get a full version from Vector support.</li>
+</ul></li>
+</ul>
+<h2 id="command-line">Licensing Command Line Switches</h2>
+<h3 id="edition-selection-switch-m">Edition Selection switch /m</h3>
+<p>Starts CANdelaStudio in a &quot;lower&quot; edition than the currently licensed one, see <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-edition' title="">[CLI-R100-edition]</a>.</p>
+<p><strong>Note:</strong> The comand line switches /ignoreDongle and /ignoreFlexNet are no longer available (CDS-32094, 8.5). They have been replaced by CANdelaStudio.ini parameters:</p>
+<h2 id="licenseParams">Licensing INI File Parameters</h2>
+<p><strong>R115.0:</strong> INI file switches to disable a specific license type</p>
+<p>In the CANdelaStudio.ini file in <a href="Options.htm#general">Section &quot;General&quot;</a>, parameters allow disabling the check of a specific license type.</p>
+<h2 id="grace-period">Grace Period</h2>
+<p>From 6.0 SP1 up to before 8.2, CANdelaStudio worked for 2 days without product activation, beginning at first CANdelaStudio start. This was called the &quot;grace period&quot;. It allowed instant use of CANdelaStudio after installation. It had no impact on server license versions. (CDS-11342, CDS-29069)</p>
+<h2 id="bundling">License and Bundling</h2>
+<p>The CANdelaStudio delivery contains ODXStudio as <a href="../../30%20Features/Installation/Bundled%20Products.htm">bundled product</a>, and vice versa. The bundled product runs as a View edition (but you can license it separately for a higher edition).</p>
+<p>See also Installation Blocking <a class='rqRef' href='../../30%20Features/Installation/CANdelaStudio%20MSI.htm#CDSMSI-R001' title="">[CDSMSI-R001]</a>.</p>
+
+<h2 id="start-without-license">Start without License</h2>
+<p>When run without a license, CANdelaStudio starts as View edition (CDS-40007 8.5). This holds independent of...</p>
+<ul>
+<li>running the CANdelaStudio user interface or in batch mode via <a href="Command%20Line.htm">Command Line</a>;</li>
+<li><a href="#command-line">command line parameters</a> for licensing;</li>
+<li><a href="#licenseParams">INI parameters</a> to disable a specific license type;</li>
+<li>whether using <a href="#pool">Pool licensing</a> or not.</li>
+</ul>
+
+<h2 id="demo">Demo Version</h2>
+<p>See <a href="Editions.htm#demo">Editions</a>.</p>
+<h2 id="remote-desktop">Use via <span id='_index_446727910'>Remote Desktop</span></h2>
+<p>For a <a href="#wibu">Vector License</a>:</p>
+<ul>
+<li><strong>Device License</strong>:
+<ul>
+<li>The Terms and Conditions do <strong>not permit</strong> to use the Product that is licensed with a Device License by remote connection or automated use. This means among others, that the licensed Product never may be operated on a compile server, build server or similar server types.</li>
+</ul></li>
+<li><strong>Named User License</strong>:
+<ul>
+<li>The Terms and Conditions <strong>permit</strong> to use the licensed Product by remote connection or automated use if it is used for the Named User´s own purposes.</li>
+<li>In case of use by remote connection, this means concretely that such use is only allowed if the Named User operates the Product himself via the remote connection.</li>
+</ul></li>
+</ul>
+<p><strong>Other license types</strong> do <strong>not</strong> permit use via remote desktop.</p>
+<ul>
+<li>This includes the use on an automation server for „Continuous integration“ e.g. controlled by Jenkins (https://jenkins.io).</li>
+</ul>
+
+
+<h2 id="virtual-machine">Use in a <span id='_index_446727911'>Virtual Machine</span></h2>
+<p>For a <a href="#wibu">Vector License</a>:</p>
+<ul>
+<li><strong>Device License</strong>:
+<ul>
+<li>The Terms and Conditions do <strong>not permit</strong> to virtualize the Device, to which the Product is assigned.</li>
+</ul></li>
+<li><strong>Named User License</strong>:
+<ul>
+<li>The Terms and Conditions do not explicitly mention Virtualization. It is ok for Vector to virtualize a Named User License for the Named User’s own purposes.</li>
+</ul></li>
+</ul>
+
+
+
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Editions.htm">Editions</a>
+<ul>
+<li><a href="Editions.htm#demo">Demo Version</a></li>
+</ul></li>
+<li>Bundled Product: License Manager <a class='rqRef' href='../../30%20Features/Installation/Bundled%20Products.htm#IBP-R020' title="">[IBP-R020]</a></li>
+<li>Installation Blocking <a class='rqRef' href='../../30%20Features/Installation/CANdelaStudio%20MSI.htm#CDSMSI-R001' title="">[CDSMSI-R001]</a></li>
+<li>Ribbon Tab File | Product Information | Product Activation <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File - Product Information.htm#MENU-R655' title="">[MENU-R655]</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Options.htm">Options (INI Files)</a></li>
+</ul>
+
+</body>
+</html>

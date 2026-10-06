@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<CANDELAIMPORT dtdfilevers="1.4.0">
+	<IMPORTDOC>
+		<DATATYPES>
+			<IDENTITY id="_101">
+				<QUALIFIER>AtomicIdentityDataType1</QUALIFIER>
+				<NAME>AtomicIdentityDataType (8 bit)</NAME>
+				<CODEDATOMPROPERTIES encoding="signed" bitlength="8" byteorder="intel"/>
+				<PHYSICALDISPLAYPROPERTIES displayformat="dec"/>
+			</IDENTITY>
+			<IDENTITY id="_102">
+				<QUALIFIER>AtomicIdentityDataType2</QUALIFIER>
+				<NAME>AtomicIdentityDataType (2 bit)</NAME>
+				<CODEDATOMPROPERTIES encoding="unsigned" bitlength="2" byteorder="intel"/>
+				<PHYSICALDISPLAYPROPERTIES displayformat="dec"/>
+			</IDENTITY>
+			<IDENTITY id="_201">
+				<QUALIFIER>AtomicIdentityDataType</QUALIFIER>
+				<NAME>AtomicIdentityDataType</NAME>
+				<DESCRIPTION>Description</DESCRIPTION>
+				<CODEDATOMPROPERTIES encoding="signed" bitlength="3" byteorder="intel" bitmask="2"/>
+				<PHYSICALDISPLAYPROPERTIES displayformat="dec" precision="8" unit="h"/>
+				<INVALIDITY>
+					<INVALIDRANGE invalidity="notImplemented">
+						<VALUE role="startrange" value="1"/>
+						<VALUE role="endrange" value="2"/>
+						<ASSIGNEDTEXT>assignedText</ASSIGNEDTEXT>
+					</INVALIDRANGE>
+				</INVALIDITY>
+			</IDENTITY>
+			<IDENTITY id="_202">
+				<QUALIFIER>FieldIdentityDataType</QUALIFIER>
+				<NAME>FieldIdentityDataType</NAME>
+				<DESCRIPTION>Description</DESCRIPTION>
+				<CODEDFIELDPROPERTIES minlength="1" maxlength="3" sizeinfo="leadingsizeinfo">
+					<CODEDATOMPROPERTIES encoding="unsigned" bitlength="8" byteorder="motorola" bitmask="3"/>
+				</CODEDFIELDPROPERTIES>
+				<PHYSICALDISPLAYPROPERTIES displayformat="bin"/>
+				<INVALIDITY>
+					<INVALIDRANGE invalidity="notImplemented">
+						<VALUE role="startrange">10 20 3</VALUE>
+						<VALUE role="endrange">20 30 4</VALUE>
+						<ASSIGNEDTEXT>assignedText</ASSIGNEDTEXT>
+					</INVALIDRANGE>
+				</INVALIDITY>
+			</IDENTITY>
+			<TEXTTABLE id="_203">
+				<QUALIFIER>AtomicTextTableDataType</QUALIFIER>
+				<NAME>AtomicTextTableDataType</NAME>
+				<DESCRIPTION>Description</DESCRIPTION>
+				<CODEDATOMPROPERTIES encoding="signed" bitlength="3" byteorder="intel" bitmask="2"/>
+				<TEXTTABLEROW>
+					<VALUE role="startrange" value="1"/>
+					<VALUE role="endrange" value="2"/>
+					<MAPPEDTEXT>3</MAPPEDTEXT>
+					<ADDITIONALINFO>additionalInfo</ADDITIONALINFO>
+				</TEXTTABLEROW>
+			</TEXTTABLE>
+			<TEXTTABLE id="_204">
+				<QUALIFIER>FieldIdentityDataType</QUALIFIER>
+				<NAME>FieldIdentityDataType</NAME>
+				<DESCRIPTION>Description</DESCRIPTION>
+				<CODEDFIELDPROPERTIES minlength="10" maxlength="10" sizeinfo="none">
+					<CODEDATOMPROPERTIES encoding="unsigned" bitlength="8" byteorder="intel" bitmask="2"/>
+				</CODEDFIELDPROPERTIES>
+				<TEXTTABLEROW>
+					<VALUE role="startrange">0 0 0 0 0 0 0 0 0 1</VALUE>
+					<VALUE role="endrange">0 0 0 0 0 0 0 0 0 2</VALUE>
+					<MAPPEDTEXT>mappedValue</MAPPEDTEXT>
+					<ADDITIONALINFO>additionalInfo</ADDITIONALINFO>
+				</TEXTTABLEROW>
+			</TEXTTABLE>
+			<LINEAR id="_205">
+				<QUALIFIER>LinearDataType</QUALIFIER>
+				<NAME>LinearDataType</NAME>
+				<DESCRIPTION>Description</DESCRIPTION>
+				<CODEDATOMPROPERTIES encoding="signed" bitlength="3" byteorder="intel" bitmask="2"/>
+				<PHYSICALDISPLAYPROPERTIES displayformat="float" precision="8" unit="h"/>
+				<LINEARCONVERSION startrange="1.0" endrange="2.0" factornumerator="3.0" factordenominator="4" offset="5.0"/>
+			</LINEAR>
+			<PIECEWISELINEAR id="_206">
+				<QUALIFIER>PiecewiseLinearDataType</QUALIFIER>
+				<NAME>PiecewiseLinearDataType</NAME>
+				<DESCRIPTION>Description</DESCRIPTION>
+				<CODEDATOMPROPERTIES encoding="signed" bitlength="3" byteorder="intel" bitmask="2"/>
+				<PHYSICALDISPLAYPROPERTIES displayformat="dec" precision="8" unit="h"/>
+			</PIECEWISELINEAR>
+			<VALUETABLE id="_207" isinterpolated="1">
+				<QUALIFIER>ValueTableDataType</QUALIFIER>
+				<NAME>ValueTableDataType</NAME>
+				<DESCRIPTION>Description</DESCRIPTION>
+				<CODEDATOMPROPERTIES encoding="unsigned" bitlength="3" byteorder="intel" bitmask="2"/>
+				<PHYSICALDISPLAYPROPERTIES displayformat="dec" precision="8" unit="h"/>
+				<VALUETABLEROW codedvalue="2">
+					<MAPPEDVALUE>3</MAPPEDVALUE>
+				</VALUETABLEROW>
+			</VALUETABLE>
+			<FORMULA id="_208">
+				<QUALIFIER>FormulaDataType</QUALIFIER>
+				<NAME>FormulaDataType</NAME>
+				<DESCRIPTION>Description</DESCRIPTION>
+				<CODEDATOMPROPERTIES encoding="signed" bitlength="3" byteorder="intel" bitmask="2"/>
+				<PHYSICALATOMPROPERTIES encoding="signed" bitlength="3">
+					<PHYSICALDISPLAYPROPERTIES displayformat="dec" precision="8" unit="h"/>
+				</PHYSICALATOMPROPERTIES>
+				<CODEDTOPHYSFORMULA>sin(x)</CODEDTOPHYSFORMULA>
+				<PHYSTOCODEDFORMULA>asin(x)</PHYSTOCODEDFORMULA>
+			</FORMULA>
+			<PROCEDURE id="_209">
+				<QUALIFIER>CodedAtomicPhysicalAtomicProcedureDataType</QUALIFIER>
+				<NAME>CodedAtomicPhysicalAtomicProcedureDataType</NAME>
+				<DESCRIPTION>SuccessTest: coded encoding="unsigned"; physical encoding="ascii"; displayformat="text"; bitlength="8"</DESCRIPTION>
+				<CODEDATOMPROPERTIES encoding="unsigned" bitlength="8"/>
+				<PHYSICALATOMPROPERTIES encoding="ascii" bitlength="8">
+					<PHYSICALDISPLAYPROPERTIES displayformat="text" unit="unit"/>
+				</PHYSICALATOMPROPERTIES>
+				<CODEDTOPHYSFUNCTIONS>
+					<FUNCTION syntax="java" version="1.0" entrypoint="2.0" encryption="3">
+						<SOURCEFILE>
+							<PATH>codedToPhys.java</PATH>
+						</SOURCEFILE>
+					</FUNCTION>
+				</CODEDTOPHYSFUNCTIONS>
+			</PROCEDURE>
+			<IDENTITY id="_2010">
+				<QUALIFIER>identityDT1</QUALIFIER>
+				<NAME>identityDT1</NAME>
+				<CODEDATOMPROPERTIES encoding="signed" bitlength="8" byteorder="intel"/>
+				<PHYSICALDISPLAYPROPERTIES displayformat="dec"/>
+			</IDENTITY>
+			<IDENTITY id="_2011">
+				<QUALIFIER>identityDT2</QUALIFIER>
+				<NAME>identityDT2</NAME>
+				<CODEDATOMPROPERTIES encoding="unsigned" bitlength="2" byteorder="intel"/>
+				<PHYSICALDISPLAYPROPERTIES displayformat="dec"/>
+			</IDENTITY>
+			<PACKET id="_2012">
+				<QUALIFIER>PacketDataType</QUALIFIER>
+				<NAME>PacketDataType</NAME>
+				<DESCRIPTION>Description</DESCRIPTION>
+				<DATAOBJECT datatyperef="_2010" semantics="year">
+					<QUALIFIER>DataObjectQualifier</QUALIFIER>
+					<NAME>DataObjectName</NAME>
+					<DESCRIPTION>DataObjectDescription</DESCRIPTION>
+					<VALUE role="const" value="2"/>
+				</DATAOBJECT>
+				<BITFIELD datatyperef="_2010" semantics="day">
+					<QUALIFIER>bitField</QUALIFIER>
+					<NAME>bitField</NAME>
+					<DATAOBJECT datatyperef="_2011">
+						<QUALIFIER>dataObject1</QUALIFIER>
+						<NAME>dataObject1</NAME>
+						<VALUE role="default" value="2"/>
+					</DATAOBJECT>
+					<GAPOBJECT bitlength="6">
+						<QUALIFIER>gapObject</QUALIFIER>
+						<NAME>gapObject</NAME>
+					</GAPOBJECT>
+				</BITFIELD>
+				<GAPOBJECT bitlength="8">
+					<QUALIFIER>gapObject</QUALIFIER>
+					<NAME>gapObject</NAME>
+				</GAPOBJECT>
+			</PACKET>
+		</DATATYPES>
+		<DATAOBJECTPOOL>
+			<DATAOBJECT datatyperef="_101" semantics="year">
+				<QUALIFIER>DataObject1</QUALIFIER>
+				<NAME>DataObject1</NAME>
+				<DESCRIPTION>Description</DESCRIPTION>
+				<VALUE role="const" value="2"/>
+			</DATAOBJECT>
+			<BITFIELD datatyperef="_101" semantics="day">
+				<QUALIFIER>BitField1</QUALIFIER>
+				<NAME>BitField1</NAME>
+				<DATAOBJECT datatyperef="_102">
+					<QUALIFIER>DataObject2</QUALIFIER>
+					<NAME>DataObject2</NAME>
+					<VALUE role="default" value="2"/>
+				</DATAOBJECT>
+				<GAPOBJECT bitlength="6">
+					<QUALIFIER>GapObject1</QUALIFIER>
+					<NAME>GapObject1</NAME>
+				</GAPOBJECT>
+			</BITFIELD>
+			<GAPOBJECT bitlength="8">
+				<QUALIFIER>GapObject2</QUALIFIER>
+				<NAME>GapObject2</NAME>
+			</GAPOBJECT>
+		</DATAOBJECTPOOL>
+		<DTCCOLLECTION>
+			<SERVICEMAPPING diaginstance="FaultMemory" variant="CommonDiagnostics"/>
+			<RECORDTEMPLATEMAPPING>
+				<ITEMMAPPING id="_1">SetCondition</ITEMMAPPING>
+				<ITEMMAPPING id="_2">ResetCondition</ITEMMAPPING>
+				<ITEMMAPPING id="_3">CorrectiveAction</ITEMMAPPING>
+				<ITEMMAPPING id="_4">SpecialInstruction</ITEMMAPPING>
+			</RECORDTEMPLATEMAPPING>
+			<DTCS>
+				<DTC number="1">
+					<ERRORTEXT>Spannung zu niedrig</ERRORTEXT>
+					<RECORD>
+						<RECORDITEM itemmappingref="_1">Spannung &lt; 10V, t &gt; 1s</RECORDITEM>
+						<RECORDITEM itemmappingref="_2">U_BAT (vom EZS) für t &gt; 15s; Selbstheilung nach 100 Umläufen ohne weiteres Auftreten.</RECORDITEM>
+						<RECORDITEM itemmappingref="_3">Kein Hinweis</RECORDITEM>
+					</RECORD>
+				</DTC>
+				<DTC number="2">
+					<ERRORTEXT>Spannung zu hoch</ERRORTEXT>
+					<RECORD>
+						<RECORDITEM itemmappingref="_1">Spannung &gt; 14V, t &gt; 1s</RECORDITEM>
+						<RECORDITEM itemmappingref="_2">U_BAT (vom EZS) für t &gt; 15s; Selbstheilung nach 100 Umläufen ohne weiteres Auftreten.</RECORDITEM>
+						<RECORDITEM itemmappingref="_3">Kein Hinweis</RECORDITEM>
+					</RECORD>
+				</DTC>
+				<DTC number="3">
+					<ERRORTEXT>Fehler im Türkontakt vorne links</ERRORTEXT>
+					<RECORD>
+						<RECORDITEM itemmappingref="_1">t &gt; 2s</RECORDITEM>
+						<RECORDITEM itemmappingref="_2">ECU Reset (neue Aufwachphase); Selbstheilung nach 100 Umläufen ohne weiteres Auftreten.</RECORDITEM>
+						<RECORDITEM itemmappingref="_3">Kein Hinweis</RECORDITEM>
+					</RECORD>
+				</DTC>
+				<DTC number="4">
+					<ERRORTEXT>Fehler im Türkontakt vorne rechts</ERRORTEXT>
+					<RECORD>
+						<RECORDITEM itemmappingref="_1">t &gt; 2s</RECORDITEM>
+						<RECORDITEM itemmappingref="_2">ECU Reset (neue Aufwachphase); Selbstheilung nach 100 Umläufen ohne weiteres Auftreten.</RECORDITEM>
+						<RECORDITEM itemmappingref="_3">Kein Hinweis</RECORDITEM>
+					</RECORD>
+				</DTC>
+				<DTC number="5">
+					<ERRORTEXT>Fehler im Türkontakt hinten links</ERRORTEXT>
+					<RECORD>
+						<RECORDITEM itemmappingref="_1">t &gt; 2s</RECORDITEM>
+						<RECORDITEM itemmappingref="_2">ECU Reset (neue Aufwachphase); Selbstheilung nach 100 Umläufen ohne weiteres Auftreten.</RECORDITEM>
+						<RECORDITEM itemmappingref="_3">Kein Hinweis</RECORDITEM>
+					</RECORD>
+				</DTC>
+				<DTC number="6">
+					<ERRORTEXT>Fehler im Türkontakt hinten rechts</ERRORTEXT>
+					<RECORD>
+						<RECORDITEM itemmappingref="_1">t &gt; 2s</RECORDITEM>
+						<RECORDITEM itemmappingref="_2">ECU Reset (neue Aufwachphase); Selbstheilung nach 100 Umläufen ohne weiteres Auftreten.</RECORDITEM>
+						<RECORDITEM itemmappingref="_3">Kein Hinweis</RECORDITEM>
+					</RECORD>
+				</DTC>
+			</DTCS>
+		</DTCCOLLECTION>
+	</IMPORTDOC>
+</CANDELAIMPORT>

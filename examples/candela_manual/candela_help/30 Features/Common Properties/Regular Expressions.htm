@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Regular Expressions</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="regular-expressions">Regular Expressions</h1>
+<p>Regular expressions specify restrictions for strings (in CANdela: string attributes or version numbers in revisions).</p>
+<p>A regular expression consists of</p>
+<ul>
+<li>regular characters to be found in a string,</li>
+<li>meta characters that have special meaning.</li>
+</ul>
+<h2 id="regular-characters">Regular Characters</h2>
+<p>These represent the character itself. You can use the meta character <code>\</code> to cancel the meta property of a character and use it as a regular character.</p>
+<h2 id="parentheses">Parentheses</h2>
+<p>The two meta characters <code>(</code> and <code>)</code> delimit a part of the regular expression from the rest of the expression. An expression delimited in this way is evaluated separately.</p>
+<h2 id="dot">Dot</h2>
+<p>A dot indicates that any character, without restriction, may occur in the string.</p>
+<h2 id="set-of-characters">Set of Characters</h2>
+<p>You can use the two meta characters <code>[</code> and ']' to list a set of allowed characters. The <code>[]</code>expression represents <em>one</em> character from this set. You can use the <code>-</code> (hyphen) meta character to specify a range of characters, e.g. <code>[a-z]</code> denotes one low-case alphabet character.</p>
+<p>The meta character <code>^</code> at the beginning of the selection inverts the meaning, e.g. <code>[^a-z]</code> denotes any character except the low-case alphabet characters.</p>
+<h2 id="repetition">Repetition</h2>
+<p>You can use repetigion meta characters to indicate how often the characters in the preceding expression should be repeated:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Character</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>?</strong></td>
+<td align="left">The preceding expression may occur once or not at all.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>+</strong></td>
+<td align="left">The preceding expression must occur once, but may also occur more times.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>*</strong></td>
+<td align="left">The preceding expression may occur as often as desired (including not at all) .</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>{<em>n</em>}</strong></td>
+<td align="left">The preceding expression must occur exactly <em>n</em>-times.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>{<em>min</em>,}</strong></td>
+<td align="left">The preceding expression must occur at least <em>min</em>-times.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>{0,<em>max</em>}</strong></td>
+<td align="left">The preceding expression may occur a maximum of <em>max</em>-times.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>{<em>min</em>,<em>max</em>}</strong></td>
+<td align="left">The preceding expression must occur at least <em>min</em>-times and may occur at most <em>max</em>-times.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="alternatives">Alternatives</h2>
+<p>You can use the meta character <code>|</code> to specify two expressions as alternatives.</p>
+<h2 id="examples">Examples</h2>
+<ul>
+<li>Version number consisting of main version and an optional version (single digit): [0-9](\.[0-9])?</li>
+<li>A qualifier of the programming language &quot;C&quot;: [A-Za-z_][A-Za-z0-9_]+</li>
+<li>A decimal number: [0-9]+</li>
+<li>A hexadecimal number with prefix &quot;0x&quot;: 0x[0-9A-Fa-F]+</li>
+<li>A text with all characters except special characters: [^!&quot;&amp;\?\(\)\.,;:]*</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>You will find more information and some detailed examples of regular expressions on the Internet e.g. at: <a href="http://www.regular-expressions.info/">www.regular-expressions.info</a></p>
+</body>
+</html>

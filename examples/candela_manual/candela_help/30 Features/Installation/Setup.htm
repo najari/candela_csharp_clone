@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Setup</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="setup-installation"><span id='_index_446728060'>Setup</span> (<span id='_index_446728061'>Installation</span>)</h1>
+<h2 id="setup">Starting Setup</h2>
+<ul>
+<li>If you install CANdelaStudio from a DVD, typically the setup dialog starts automatically when you insert the DVD.</li>
+<li>You can start the setup dialog manually by double-clicking the file <code>autostart.exe</code> on the DVD.</li>
+</ul>
+<div class="figure">
+<img src="images/autostart.jpg" alt="CANdelaStudio Setup" />
+<p class="caption">CANdelaStudio Setup</p>
+</div>
+<ul>
+<li>&quot;Install CANdelaStudio&quot; runs <code>setup.exe</code>.</li>
+<li>&quot;View Readme&quot; opens the <strong>Readme</strong> file <a class='rqRef' href='../../30%20Features/Installation/Start%20Menu.htm#ISTM-R030-Readme' title="">[ISTM-R030-Readme]</a> in the browser.</li>
+<li>&quot;View Release Notes&quot; opens the <strong>Release Notes</strong> in the browser.
+<ul>
+<li>You can also view these Release Notes <a href="../../10%20Introduction/Release%20Notes.htm">here in the online help</a>, where they contain hyperlinks to features.</li>
+</ul></li>
+<li>&quot;Vector Website&quot; takes you to <a href="https://vector.com" class="uri">https://vector.com</a> in the browser.</li>
+</ul>
+<h2 id="setup.exe">Setup.exe</h2>
+
+<p>When you...</p>
+<ul>
+<li>click &quot;Install CANdelaStudio&quot; on the DVD, or</li>
+<li>run a single-file installer,</li>
+</ul>
+<p>the file <code>setup.exe</code> runs.</p>
+<p>It ensures that <strong>fundamental prerequisites</strong> for the installation process are available:</p>
+<ul>
+<li><span id="ISETUP-R100" class="rqDef">[ISETUP-R100]</span> installs <strong>Windows Installer</strong> &gt;= 3.1,
+<ul>
+<li>checks the msi.dll exists, and the version of this dll <code>&gt;=</code> 3.1</li>
+</ul></li>
+<li><span id="ISETUP-R110" class="rqDef">[ISETUP-R110]</span> installs the <strong>.NET 4.x</strong> prerequisite,
+<ul>
+<li>checks the registry key <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full</code>, value name &quot;Install&quot;, value &quot;1&quot;</li>
+</ul></li>
+</ul>
+<p>... <span id="ISETUP-R120" class="rqDef">[ISETUP-R120]</span> then runs the <strong>installation wizard</strong> (file <code>MSIChainer.exe</code>).</p>
+<p><span id="ISETUP-R130" class="rqDef">[ISETUP-R130]</span> <strong>Setup.exe Logfile</strong>:</p>
+<ul>
+<li><code>Setup.exe</code> writes a logfile to <code>%TEMP%\MSIChainerSetup.log</code>,</li>
+<li>e.g. <code>D:\Temp\MSIChainerSetup.log</code></li>
+</ul>
+<h2 id="installation-wizard">Installation Wizard</h2>
+
+<div class="figure">
+<img src="images/InstallationWizard.jpg" alt="Installation Wizard" />
+<p class="caption">Installation Wizard</p>
+</div>
+
+<p>The installation wizard provides the following steps (pages):</p>
+<ul>
+<li><span id="ISETUP-R300" class="rqDef">[ISETUP-R300]</span> <strong>Welcome</strong>
+<ul>
+<li>(shown above) -<span id="ISETUP-R310" class="rqDef">[ISETUP-R310]</span> <strong>Choose Destination Folder</strong></li>
+<li>The page lets you select the “root path” under which the <strong>main product</strong> and the <strong>bundled products</strong> will be installed
+<ul>
+<li>The target folder of <strong>prerequisites</strong> is usually predefined and not affected by your selection.</li>
+</ul></li>
+<li>The default for the root path is the Windows program files folder</li>
+<li>A static text shows the installation path of the main product,</li>
+<li>... the default is <code>&lt;Program files folder&gt;\Vector CANdelaStudio &lt;Version&gt;</code></li>
+<li>If you specify a different root path, the wizard updates the installation path of the main product.</li>
+</ul></li>
+<li><span id="ISETUP-R320" class="rqDef">[ISETUP-R320]</span> <strong>Installation Settings Summary</strong>
+<ul>
+<li>displays the main product and all selected bundled products with their installation path.</li>
+<li>Button &quot;Install&quot; actually starts installation of the files on your computer.</li>
+</ul></li>
+<li><span id="ISETUP-R330" class="rqDef">[ISETUP-R330]</span> <strong>Installation Progress</strong>
+<ul>
+<li><span id="ISETUP-R330-Prog" class="rqDef">[ISETUP-R330-Prog]</span> The page shows the progress of the current product/prerequisite installation and the total progress of the installation.</li>
+<li><span id="ISETUP-R330-Cancel" class="rqDef">[ISETUP-R330-Cancel]</span> The screen allows to cancel the installation.</li>
+<li>If you cancel the installation, the wizard...
+<ul>
+<li>rolls back the installation of the product / prerequisite currently being processed,</li>
+<li>but keeps all products / prerequisites installed before the current one.</li>
+</ul></li>
+</ul></li>
+<li><span id="ISETUP-R340" class="rqDef">[ISETUP-R340]</span> <strong>Installation Complete Screen</strong>
+<ul>
+<li><span id="ISETUP-R340-Start" class="rqDef">[ISETUP-R340-Start]</span> The page allows to start the main product</li>
+<li><span id="ISETUP-R340-RN" class="rqDef">[ISETUP-R340-RN]</span> ... and to display the Release Notes (like the <a href="#setup">setup dialog above</a>).</li>
+<li><span id="ISETUP-R340-Link" class="rqDef">[ISETUP-R340-Link]</span> If an error occurs during the installation, the page displays a link to the logfiles folder. Clicking the link opens the log file folder in Windows Explorer.</li>
+<li><span id="ISETUP-R340-OKLink" class="rqDef">[ISETUP-R340-OKLink]</span> The logfiles are available even if no error occurred.</li>
+</ul></li>
+</ul>
+<p><span id="ISETUP-R350" class="rqDef">[ISETUP-R350]</span> <strong>Installation Wizard Logfile</strong>:</p>
+<ul>
+<li>the installation wizard writes a logfile to <code>%TEMP%\CANdelaStudio\Install\MSIChainer.log</code>,</li>
+<li>e.g. <code>D:\Temp\CANdelaStudio\Install\MSIChainer.log</code></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Bundled%20Products.htm">Bundled Products</a></li>
+<li><a href="CANdelaStudio%20MSI.htm">CANdelaStudio MSI</a></li>
+<li><a href="Documentation.htm">Documentation</a></li>
+<li><a href="Example%20Files.htm">Example Files</a></li>
+<li><a href="Installation%20Folder.htm">Installation Folder</a></li>
+<li><a href="Prerequisites.htm">Prerequisites (Installation)</a></li>
+<li><a href="Supported%20Platforms.htm">Supported Platforms</a></li>
+<li>Running CANdelaStudio with Admin Privileges <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Startup.htm#STRT-R030-Install' title="">[STRT-R030-Install]</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Convert Number Formats in Excel</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-convert-number-formats-in-excel"><span id='_index_446727849' title='CSV' data-term='CSV'>How to Convert Number Formats in Excel</span></h1>
+<h2 id="use-case">Use-case</h2>
+<p>You may have DTCs in Excel in the wrong format, say in hexadecimal, but need them in decimal format.</p>
+<h2 id="solution">Solution</h2>
+<h3 id="convert-a-number-using-formula-in-excel">Convert a Number Using Formula in Excel</h3>
+<ul>
+<li>assume cell A1 contains <code>0x41</code></li>
+<li>in cell B1 enter: <code>=HEXINDEC(REPLACE(A1;1;2;&quot;&quot;))</code></li>
+</ul>
+<div class="figure">
+<img src="Images/Number%20Conversion%20Formula.jpg" alt="Excel: Number Conversion Formula" />
+<p class="caption">Excel: Number Conversion Formula</p>
+</div>
+<ul>
+<li>Note: for some languages, you must use non-English function names , like:
+<ul>
+<li>German <code>HEXINDEZ</code></li>
+<li>French <code>HEXDEC</code></li>
+<li>Spanish <code>HEX.A.DEC</code></li>
+</ul></li>
+<li><code>REPLACE(A1;1;2;&quot;&quot;)</code> removes the leading <code>0x</code>,</li>
+<li><code>HEXINDEC(...)</code> converts the remaining hexadecimal number to a decimal number.</li>
+<li>When you press ENTER, Excel evaluates the formula and shows decimal <code>65</code>.</li>
+</ul>
+<h3 id="convert-an-entire-column-of-values">Convert an Entire Column of Values</h3>
+<ul>
+<li>Enter the formula in the first row, as described above;</li>
+<li>leave editing of the cell</li>
+<li>ensure the cell has focus
+<ul>
+<li>Excel shows a rectangle with a grip (dot) at bottom right</li>
+</ul></li>
+</ul>
+<div class="figure">
+<img src="Images/Number%20Conversion%20Formula%20Evaluated%20with%20Grip.jpg" alt="Excel: Number Conversion Formula Evaluated, showing Grip" />
+<p class="caption">Excel: Number Conversion Formula Evaluated, showing Grip</p>
+</div>
+<ul>
+<li>with left mouse, drag down the dot over the relevant rows</li>
+<li>Excel...
+<ul>
+<li>enters the formula in all cells, automatically adapting cell references like <code>A1</code> to <code>A2</code> in row 2,</li>
+<li>evaluates all formulas and</li>
+<li>shows the results:</li>
+</ul></li>
+</ul>
+<div class="figure">
+<img src="Images/Number%20Conversion%20Formula%20Evaluated%20Column.jpg" alt="Excel: Entire Column Converted" />
+<p class="caption">Excel: Entire Column Converted</p>
+</div>
+<h3 id="transfer-converted-values-to-the-original-column">Transfer Converted Values to the Original Column</h3>
+<ul>
+<li>select the involved cell values of column 2, copy them;</li>
+<li>set the focus into the first cell of column 1;</li>
+<li>click context menu Paste Contents, Values.</li>
+<li>You may need to delete column 2, finally.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../15%20Procedures/DTC/How%20to%20Import%20DTCs%20from%20Excel.htm">How to Import DTCs from Excel</a></li>
+<li><a href="../../30%20Features/DTC/DTC%20Import.htm">DTC Import</a></li>
+</ul>
+</body>
+</html>

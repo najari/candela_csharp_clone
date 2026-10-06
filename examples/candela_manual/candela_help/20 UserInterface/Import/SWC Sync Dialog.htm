@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SWC Sync Dialog</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="swc-sync-dialog-cds-41056-swcsync-4-v10">SWC Sync Dialog (CDS-41056 = SWCSYNC-4 v10)</h1>
+<p>See also the <a href="../../30%20Features/Import/SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a>.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/SWCSyncDialog.jpg" alt="SWC Sync Dialog" />
+<p class="caption">SWC Sync Dialog</p>
+</div>
+<p>The SWC Sync Dialog is available via...</p>
+<ul>
+<li>button <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm#MENU-R280' title="">[MENU-R280]</a> in the ribbon tab &quot;Data Exchange&quot;, or</li>
+<li>button <a class='rqRef' href='../../20%20UserInterface/Requirements/Requirements.htm#RQUI-R220' title="SWC Sync Button">[RQUI-R220]</a> in the <a href="../../20%20UserInterface/Requirements/Requirements.htm">Requirements</a> page.</li>
+</ul>
+<h2 id="filter">Filter</h2>
+<p><span id="SWCUI-U0500" class="rqDef">[SWCUI-U0500]</span>: The dialog provides a text filter (matching all displayed lists columns). If you provide a filter text, the dialog...</p>
+<ul>
+<li>hides all entries which do not match the filter text</li>
+<li>highlights the filter text matches in the list of remaining entries.</li>
+</ul>
+<p>Note: to literally find a text containing blanks, enclose it in double-quotes like <code>&quot;Present Values&quot;</code>.</p>
+<h2 id="statistics-visible-objects">Statistics: Visible Objects</h2>
+<p><span id="SWCUI-R0120" class="rqDef">[SWCUI-R0120]</span>: The dialog shows information about the effect of the filter, like</p>
+<pre><code>21 of 93 visible in view</code></pre>
+<ul>
+<li>&quot;21&quot; is the number of objects actually shown (with the filter applied) in the list (current tab)</li>
+<li>&quot;93&quot; is the total number of objects in the list (current tab)
+<ul>
+<li>i.e. the number counts only objects of the <strong>category</strong> shown in the current tab</li>
+</ul></li>
+</ul>
+<h2 id="tabs-views">Tabs (Views)</h2>
+<p><span id="SWCUI-U0200" class="rqDef">[SWCUI-U0200]</span>: The dialog provides five views on the extracted data:</p>
+<ul>
+<li>All Elements</li>
+<li>DIDs (Present Value and Stored Data Objects)</li>
+<li>Routines</li>
+<li>IO Controls</li>
+<li>DTCs</li>
+<li>Unclassified (objects potentially relevant for diagnostics, CDS-70044 v12)</li>
+</ul>
+<p>The tabs show objects of different types, therefore the lists contain different columns.</p>
+<p>The following chapters show screenshots of the tabs.</p>
+<p>For details about specific columns, see the chapters further below.</p>
+<p>For an overview of which <strong>SYS-EX data</strong> will be shown in which <strong>pages of the dialog</strong>, see <a class='rqRef' href='../../30 Features\Import\SWC Sync Introduction.htm#SWC-R1200' title="">[SWC-R1200]</a> in the Features section.</p>
+<h2 id="tab-dids">Tab &quot;DIDs&quot;</h2>
+<div class="figure">
+<img src="Images/SWCSyncDialog-TabDIDs.jpg" alt="SWC Sync Dialog - Tab DIDs" />
+<p class="caption">SWC Sync Dialog - Tab DIDs</p>
+</div>
+<h2 id="tab-routines">Tab &quot;Routines&quot;</h2>
+<div class="figure">
+<img src="Images/SWCSyncDialog-TabRoutines.jpg" alt="SWC Sync Dialog - Tab Routines" />
+<p class="caption">SWC Sync Dialog - Tab Routines</p>
+</div>
+<h2 id="tab-io-controls">Tab &quot;I/O Controls&quot;</h2>
+<div class="figure">
+<img src="Images/SWCSyncDialog-TabIOControls.jpg" alt="SWC Sync Dialog - Tab IO/Controls" />
+<p class="caption">SWC Sync Dialog - Tab IO/Controls</p>
+</div>
+<h2 id="tab-dtcs">Tab &quot;DTCs&quot;</h2>
+<div class="figure">
+<img src="Images/SWCSyncDialog-TabDTCs.jpg" alt="SWC Sync Dialog - Tab DTCs" />
+<p class="caption">SWC Sync Dialog - Tab DTCs</p>
+</div>
+<h2 id="tab-unclassified">Tab &quot;Unclassified&quot;</h2>
+<div class="figure">
+<img src="Images/SWCSyncDialog-TabUnclassified.jpg" alt="SWC Sync Dialog - Tab Unclassified" />
+<p class="caption">SWC Sync Dialog - Tab Unclassified</p>
+</div>
+<p>The dialog shows objects that are <strong>potentially relevant</strong> for diagnostics:</p>
+<ul>
+<li>they have no requirements ID</li>
+<li>they have no service dependency with a diagnostic value or service need.</li>
+</ul>
+<h2 id="column-synchronize">Column &quot;Synchronize&quot;</h2>
+<p><span id="SWCUI-U0400" class="rqDef">[SWCUI-U0400]</span>: For each object displayed, the dialog allows to decide whether the object shall be processed further.</p>
+<p><span id="SWCUI-R0160" class="rqDef">[SWCUI-R0160]</span>: Lines of objects deselected from further processing are displayed in grey.</p>
+<h2 id="column-target">Column &quot;Target&quot;</h2>
+<p><span id="SWCUI-U0300" class="rqDef">[SWCUI-U0300]</span>: For each object displayed, the dialog shows whether the object...</p>
+<ul>
+<li><strong>Target &quot;Variant/Library&quot;:</strong> can be synchronized (there is a matching requirements ID), or</li>
+<li><strong>Target &quot;not synched&quot;:</strong> can be synchronized (there is a matching requirements ID), or</li>
+<li><strong>Target &quot;Import Pool only&quot;:</strong> can only be imported into the import pool
+<ul>
+<li>(since the object is &quot;new&quot; in the system extract)</li>
+<li><span id="SWCUI-R0140" class="rqDef">[SWCUI-R0140]</span>: this info is highlighted in red.</li>
+</ul></li>
+</ul>
+<p><span id="SWCUI-R0150" class="rqDef">[SWCUI-R0150]</span>: The info whether the object can be synchronized is placed next to the user editable checkbox by default (that is: as the second most left column).</p>
+<h2 id="column-shortname">Column &quot;ShortName&quot;</h2>
+<p><span id="SWCUI-U0310" class="rqDef">[SWCUI-U0310]</span> Shows the shortname of the object from the system extract.</p>
+<p>In CANdela, this corresponds with the qualifier.</p>
+<p>For DTCs, the shortname contains the hexadecimal code.</p>
+<h2 id="column-requirements-object-name">Column &quot;Requirements Object Name&quot;</h2>
+<p><span id="SWCUI-U0320" class="rqDef">[SWCUI-U0320]</span> Shows the object name (CANdela: name) of the object from the system extract.</p>
+<h2 id="column-requirements-id">Column &quot;Requirements ID&quot;</h2>
+<p><span id="SWCUI-U0330" class="rqDef">[SWCUI-U0330]</span> Shows the requirements ID of the object from the system extract.</p>
+<p>For an object shown with target &quot;Import Pool only&quot;, the requirements ID is not present in the CANdela document.</p>
+<h2 id="column-uuid">Column &quot;UUID&quot;</h2>
+<p><span id="SWCUI-U0335" class="rqDef">[SWCUI-U0335]</span> Shows the UUID of the object from the system extract.</p>
+<p>SWC Sync will put the UUID into the attribute <a class='rqRef' href='../../30 Features\AUTOSAR\Attributes for AUTOSAR Diagnostic Extract export.htm#ASR-D001_ASR_UUID' title="">[ASR-D001_ASR_UUID]</a>.</p>
+<h2 id="column-category">Column &quot;Category&quot;</h2>
+<p><span id="SWCUI-U0340" class="rqDef">[SWCUI-U0340]</span> Describes the type of object:</p>
+<ul>
+<li>Stored Data (shown in tab &quot;DIDs&quot;)</li>
+<li>Present Value (shown in tab &quot;DIDs&quot;)</li>
+<li>Routine</li>
+<li>IO Control</li>
+<li>DTC</li>
+</ul>
+<h2 id="column-display-format">Column &quot;Display Format&quot;</h2>
+<p>For tabs &quot;DIDs&quot; and &quot;IO Controls&quot;, shows the display format (dec/hex...) of the element.</p>
+<h2 id="column-data-type-name">Column &quot;Data Type Name&quot;</h2>
+<p>For tabs &quot;DIDs&quot; and &quot;IO Controls&quot;, shows the name of the data type</p>
+<h2 id="column-data-type-category">Column &quot;Data Type Category&quot;</h2>
+<p>For tabs &quot;DIDs&quot; and &quot;IO Controls&quot;, shows the kind of data type, like</p>
+<ul>
+<li>RECORD</li>
+<li>ARRAY</li>
+<li>LINEAR</li>
+<li>TEXTTABLE</li>
+<li>SCALE_LINEAR_AND_TEXTTABLE</li>
+</ul>
+<h2 id="column-operation-summary">Column &quot;Operation Summary&quot;</h2>
+<p>For tabs &quot;Routine&quot;, shows a summary of the</p>
+<ul>
+<li>routine type (Start, Stop, RequestResults)</li>
+<li>parameters (name, in/out, data type name, data type category)</li>
+</ul>
+<h2 id="target-variantlibrary">Target Variant/Library</h2>
+<p><span id="SWCUI-R345" class="rqDef">[SWCUI-R345]</span> Selects the target for the synchronization.</p>
+<p>Note: this setting is also controlled in the Requirements Property Page Settings <a class='rqRef' href='../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm#RQUI-R100-Variant' title="">[RQUI-R100-Variant]</a>.</p>
+<h2 id="checkbox-synchronize-element-references">Checkbox &quot;Synchronize Element References&quot;</h2>
+<p><span id="SWCUI-R350" class="rqDef">[SWCUI-R350]</span></p>
+<ul>
+<li>Default: checked</li>
+<li>Un-check this setting only if the objects in the SYS-EX are mere placeholders; in this case, the objects synchronized in the CANdela document won't get Element References assigned.</li>
+<li>For details, see <a class='rqRef' href='../../30 Features\Import\SWC Sync Combine Parameters.htm#SWC-R1600' title="">[SWC-R1600]</a>.</li>
+</ul>
+<h2 id="checkbox-combine-parameters-of-synchronized-dids-in-dext-export">Checkbox &quot;Combine Parameters of Synchronized DIDs in DEXT Export&quot;</h2>
+<p><span id="SWCUI-R360" class="rqDef">[SWCUI-R360]</span></p>
+<ul>
+<li>Default: un-checked</li>
+<li>Check this only if SWC Sync shall set the attribute <code>ASR3_Legacy_Combine_DID</code>, which will trigger DEXT Export of the DID as uint8 array.</li>
+<li>For details, see <a class='rqRef' href='../../30 Features\Import\SWC Sync Combine Parameters.htm#SWC-R1600' title="">[SWC-R1600]</a>.</li>
+</ul>
+<h2 id="statistics-selection">Statistics: Selection</h2>
+<p><span id="SWCUI-R0125" class="rqDef">[SWCUI-R0125]</span>: The dialog shows information about the objects selected for synchronization, like</p>
+<pre><code>71 of 72 elements in this view are selected for synchronization</code></pre>
+<ul>
+<li>this line describes the selected / total number of elements in the current view (tab)
+<ul>
+<li>it does not matter whether the elements are visible or filtered</li>
+<li>this line is not shown for tab &quot;All Elements&quot;</li>
+</ul></li>
+</ul>
+<!-- -->
+<pre><code>92 of 93 total elements are selected for synchronization</code></pre>
+<ul>
+<li>this line describes the selected / total number of elements in tab &quot;All Elements&quot;
+<ul>
+<li>it does not matter whether the elements are visible or filtered</li>
+</ul></li>
+</ul>
+<h2 id="dialog-state">Dialog State</h2>
+<p><span id="SWCUI-R0130" class="rqDef">[SWCUI-R0130]</span>: The state of the dialog (column widths, sorting etc.) gets restored when opened the next time.</p>
+<h2 id="synchronization-progress">Synchronization Progress</h2>
+<p><span id="SWCUI-R0190" class="rqDef">[SWCUI-R0190]</span>: After closing the dialog, for large system extract files, CANdelaStudio shows the progress of the synchronization.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a></li>
+<li><a href="../../15%20Procedures/AUTOSAR/How%20to%20Configure%20the%20Diagnostic%20Basic%20Software%20of%20an%20AUTOSAR%204%20ECU.htm">How to Configure the Diagnostic Basic Software of an AUTOSAR 4 ECU</a></li>
+<li><a href="../../30%20Features/Import/SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a></li>
+</ul>
+</body>
+</html>

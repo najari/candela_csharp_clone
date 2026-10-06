@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DTC Events Mapping</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dtc-events-mapping-cds-42224-v12">DTC Events Mapping (CDS-42224 v12)</h1>
+<p>See also the <a href="Events.htm">Events List</a>, the <a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a>, the detailed <a href="../../30%20Features/Event/Events%20Data%20Model.htm">Events Data Model</a> and the <a href="../../30%20Features/Event/Event%20Operations.htm">Event Operations</a>.</p>
+<p>The <strong>DTC Events Mapping</strong> page is located in the right side of a <strong>Fault Memory</strong> diagnostic instance, opened via button <img src="../../20%20UserInterface/Images/Events%20Button.jpg" /> at the bottom.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/DTC%20Events%20Mapping.jpg" alt="DTC Events Mapping" />
+<p class="caption">DTC Events Mapping</p>
+</div>
+<p><span id="EVUI-R230" class="rqDef">[EVUI-R230]</span> The DTC Events Mapping page shows from left to right:</p>
+<ul>
+<li>Left: Unmapped DTCs (<a href="#left">below</a>)</li>
+<li>Middle: DTCs with their mapped Events (<a href="#middle">below</a>)</li>
+<li>Right: Unmapped Events (<a href="#right">below</a>)</li>
+</ul>
+
+<h2 id="conditions-for-modifying-operations">Conditions for Modifying Operations</h2>
+<p>See <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R010' title="">[EVUI-R010]</a> for Authorization.</p>
+<p><span id="EVUI-R232" class="rqDef">[EVUI-R232]</span> If the Boolean flag <strong>Supports Events</strong> <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R010' title="">[EV-R010]</a> is <strong>false</strong>, the respective operation in the DTC Events Mapping page is <strong>insensitive</strong> (as noted in details below).</p>
+<h2 id="two-list-focus">Two-List Focus</h2>
+<p><span id="EVUI-R235" class="rqDef">[EVUI-R235]</span> In order to support the mapping operation, two of the three lists have <strong>focus</strong> at any time:</p>
+<ul>
+<li><span id="EVUI-R235-DTC" class="rqDef">[EVUI-R235-DTC]</span> <strong>Either</strong> the left &quot;Unmapped DTCs&quot; <strong>or</strong> the middle &quot;Mapped DTCs + Events&quot; list</li>
+<li><span id="EVUI-R235-Event" class="rqDef">[EVUI-R235-Event]</span> The right &quot;Unmapped Events&quot; list</li>
+</ul>
+<p>Motivation:</p>
+<div class="figure">
+<img src="Images/Selection%20and%20Focus.jpg" alt="Example: Two lists with Selection and Focus" />
+<p class="caption">Example: Two lists with Selection and Focus</p>
+</div>
+<ul>
+<li><strong>Focus</strong>: usually the one list where e.g. keyboard operations apply
+<ul>
+<li>(example screenshot above: blue)</li>
+</ul></li>
+<li><strong>Selection</strong>: within any list, the selected objects
+<ul>
+<li>(example screenshot above: gray in upper list, blue in lower list)</li>
+</ul></li>
+<li>Usually, within a dialog, at most <strong>one list</strong> has focus</li>
+<li>... but the mapping operation needs <strong>two</strong> objects</li>
+<li>The dialog shall make clear which objects are affected by the mapping operation.
+<ul>
+<li>Therefore <strong>two lists</strong> must have focus.</li>
+</ul></li>
+</ul>
+<h2 id="left">Left Side: Unmapped DTCs</h2>
+<h3 id="list">List</h3>
+<p><span id="EVUI-R240" class="rqDef">[EVUI-R240]</span> The list &quot;Unmapped DTCs&quot; shows all DTCs defined in the diagnostic instance for which no Event exists that references <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R230' title="">[EV-R230]</a> the DTC.</p>
+<ul>
+<li><span id="EVUI-R240-MultiSel" class="rqDef">[EVUI-R240-MultiSel]</span> The list provides multi-selection.</li>
+<li><a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R235' title="">[EVUI-R235]</a> Either the &quot;Unmapped DTCs&quot; or the middle &quot;Mapped DTCs + Events&quot; list has focus.</li>
+</ul>
+<h3 id="map">Map</h3>
+<p><span id="EVUI-R242" class="rqDef">[EVUI-R242]</span> Button &quot;Map&quot;</p>
+<ul>
+<li>If one DTC is selected in the left &quot;Unmapped DTCs&quot; list, ...
+<ul>
+<li>lets the Events selected in the right &quot;Unmapped Events&quot; list reference <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R230' title="">[EV-R230]</a> the selected DTC.</li>
+</ul></li>
+<li>See also Authorization <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R010' title="">[EVUI-R010]</a></li>
+<li>The button is insensitive if any of the two involved lists is empty:
+<ul>
+<li>the &quot;Unmapped DTCs&quot; list,</li>
+<li>the &quot;Unmapped Events&quot; list</li>
+</ul></li>
+<li>The button is insensitive if more than one DTC is selected in the &quot;Unmapped DTCs&quot; list.</li>
+<li>As a result,
+<ul>
+<li>the DTC and Events will be shown selected in the &quot;Mapped DTCs + Events&quot; list</li>
+<li>for the resulting selection in the &quot;Unmapped Events&quot; list, see <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-R340-SelDel' title="">[UI-R340-SelDel]</a></li>
+<li>the middle list has focus (cf. two-list focus <a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R235-DTC' title="">[EVUI-R235-DTC]</a>)</li>
+</ul></li>
+<li>Tooltip: &quot;Maps selected Events to the first selected DTC in the focussed other list.&quot;</li>
+</ul>
+<h3 id="map-with-new-events">Map with new Events</h3>
+<p><span id="EVUI-R244" class="rqDef">[EVUI-R244]</span> Button &quot;Map with new Events&quot;</p>
+<ul>
+<li>for each DTC selected in the &quot;Unmapped DTCs&quot; list,</li>
+<li>if an Event exists whose name matches the DTC error text,
+<ul>
+<li>if it is unmapped: maps the existing Event to the DTC;</li>
+<li>if it is mapped: skips it;</li>
+</ul></li>
+<li>if no such Event exists: creates a new Event with the name set to the DTC error text, and maps it.</li>
+<li>For details, see Event operation <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R244' title="">[EVOP-R244]</a>.</li>
+<li>See also Authorization <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R010' title="">[EVUI-R010]</a></li>
+<li>The button is insensitive if...
+<ul>
+<li>the &quot;Unmapped DTCs&quot; list is empty, or</li>
+<li><a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R232' title="">[EVUI-R232]</a> operations are insensitive since the flag &quot;Supports Events&quot; <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R010' title="">[EV-R010]</a> is false</li>
+</ul></li>
+<li>As a result of the operation,
+<ul>
+<li>the DTCs and Events will be shown selected in the middle &quot;Mapped DTCs + Events&quot; list</li>
+<li>the middle list has focus (cf. two-list focus <a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R235-DTC' title="">[EVUI-R235-DTC]</a>)</li>
+</ul></li>
+<li>Tooltip: &quot;Maps existing Events whose name matches the DTC error text; creates and maps new Events for the remaining DTCs.&quot;</li>
+</ul>
+<h3 id="filter">Filter</h3>
+<p><span id="EVUI-R246" class="rqDef">[EVUI-R246]</span> If the filter edit control contains text, the &quot;Unmapped DTCs&quot; list shows only DTCs that match <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-R500' title="">[LIST-R500]</a> this text.</p>
+<ul>
+<li><span id="EVUI-R246-Sens" class="rqDef">[EVUI-R246-Sens]</span> The edit control is sensitive even if the list is empty.</li>
+</ul>
+<h3 id="clipboard-operations">Clipboard Operations</h3>
+<p><span id="EVUI-R247" class="rqDef">[EVUI-R247]</span> No clipboard operations available.</p>
+
+<h2 id="middle">Middle: Mapped DTCs + Events</h2>
+<h3 id="list-1">List</h3>
+<p><span id="EVUI-R260" class="rqDef">[EVUI-R260]</span> The list &quot;Mapped DTCs + Events&quot; is based on the reference from an Event to a DTC <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R230' title="">[EV-R230]</a> in the data model.</p>
+<ul>
+<li><span id="EVUI-R260-Combined" class="rqDef">[EVUI-R260-Combined]</span> For a DTC referenced by <strong>one</strong> Event, the list shows DTC and Event <strong>combined</strong> in one line.</li>
+<li><span id="EVUI-R260-Multiple" class="rqDef">[EVUI-R260-Multiple]</span> For a DTC referenced by <strong>multiple</strong> Events, the list shows...
+<ul>
+<li><span id="EVUI-R260-DTC" class="rqDef">[EVUI-R260-DTC]</span> first the DTC on a line, without Event information;</li>
+<li><span id="EVUI-R260-Event" class="rqDef">[EVUI-R260-Event]</span> then each Event on one line, without DTC information.</li>
+</ul></li>
+<li><span id="EVUI-R260-MultiSel" class="rqDef">[EVUI-R260-MultiSel]</span> The list provides multi-selection.</li>
+<li><span id="EVUI-R260-SelCombined" class="rqDef">[EVUI-R260-SelCombined]</span> When you select a <strong>DTC referenced by multiple Events</strong>, the list automatically selects all the referencing Events, and vice versa.
+<ul>
+<li>Motivation: it might be confusing to select the referenced DTC but none or only part of the Events that reference the DTC.</li>
+</ul></li>
+<li><a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R235' title="">[EVUI-R235]</a> Either the &quot;Unmapped DTCs&quot; or the middle &quot;Mapped DTCs + Events&quot; list has focus.</li>
+</ul>
+<h3 id="map-1">Map</h3>
+<p><span id="EVUI-R261" class="rqDef">[EVUI-R261]</span> Button &quot;Map&quot;</p>
+<ul>
+<li>If one DTC is selected in the middle &quot;Mapped DTCs + Events&quot; list, ...
+<ul>
+<li>lets the Events selected in the right &quot;Unmapped Events&quot; list reference <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R230' title="">[EV-R230]</a> the selected DTC.</li>
+</ul></li>
+<li>See also Authorization <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R010' title="">[EVUI-R010]</a></li>
+<li>The button is insensitive if any of the two involved lists is empty:
+<ul>
+<li>the &quot;Mapped DTCs + Events&quot; list,</li>
+<li>the &quot;Unmapped Events&quot; list</li>
+</ul></li>
+<li>The button is insensitive if more than one DTC is selected in the &quot;Mapped DTCs + Events&quot; list.</li>
+<li>As a result,
+<ul>
+<li>the mapped Event will be shown selected in the &quot;Mapped DTCs + Events&quot; list</li>
+<li>for the resulting selection in the lists, see <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-R340-SelDel' title="">[UI-R340-SelDel]</a></li>
+<li>the middle list has focus (cf. two-list focus <a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R235-DTC' title="">[EVUI-R235-DTC]</a>)</li>
+</ul></li>
+<li>Tooltip: &quot;Maps selected Events to the selected DTC.&quot;</li>
+</ul>
+<h3 id="unmap">Unmap</h3>
+<p><span id="EVUI-R262" class="rqDef">[EVUI-R262]</span> Button &quot;Unmap&quot;...</p>
+<ul>
+<li>for the Events selected <a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R260-MultiSel' title="">[EVUI-R260-MultiSel]</a> in the &quot;Mapped DTCs + Events&quot; list,</li>
+<li>resets the reference <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R230' title="">[EV-R230]</a></li>
+<li>using operation <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R240' title="">[EVOP-R240]</a>, see also Authorization <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R010' title="">[EVUI-R010]</a>.</li>
+<li>The button is insensitive if the &quot;Mapped DTCs + Events&quot; list is empty.</li>
+<li>As a result, ...
+<ul>
+<li>the Events will be shown selected in the &quot;Unmapped Events&quot; list;</li>
+<li>DTCs for which all Events have been unmapped will be shown selected in the &quot;Unmapped DTCs&quot; list.</li>
+<li>Remaining mapped Events will be shown selected,
+<ul>
+<li>combined in one line <a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R260-Combined' title="">[EVUI-R260-Combined]</a> or</li>
+<li>on separate lines <a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R260-Event' title="">[EVUI-R260-Event]</a>, as described above</li>
+</ul></li>
+</ul></li>
+<li>Tooltip: &quot;Removes the DTC reference from the selected Events.&quot;</li>
+</ul>
+<h3 id="filter-1">Filter</h3>
+<p><span id="EVUI-R266" class="rqDef">[EVUI-R266]</span> If the filter edit control contains text, the &quot;Mapped DTCs + Events&quot; list shows...</p>
+<ul>
+<li>lines where the text of the object itself (DTC or Event) matches <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-R500' title="">[LIST-R500]</a></li>
+<li><span id="EVUI-R266-DTC" class="rqDef">[EVUI-R266-DTC]</span> additionally: those DTC lines <a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R260-DTC' title="">[EVUI-R260-DTC]</a> where
+<ul>
+<li>the text of the <strong>DTC itself</strong> does not match</li>
+<li>but any of the texts of the <strong>referencing Events</strong> matches.</li>
+</ul></li>
+<li><span id="EVUI-R266-Sens" class="rqDef">[EVUI-R266-Sens]</span> The edit control is sensitive even if the list is empty.</li>
+</ul>
+<h3 id="clipboard-operations-1">Clipboard Operations</h3>
+<p>No clipboard operations available.</p>
+
+<h2 id="right">Right Side: Unmapped Events</h2>
+<h3 id="list-2">List</h3>
+<p><span id="EVUI-R280" class="rqDef">[EVUI-R280]</span> The list &quot;Unmapped Events&quot; shows all Events defined in the diagnostic instance <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R020' title="">[EV-R020]</a> which do not reference <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R230' title="">[EV-R230]</a> a DTC.</p>
+<ul>
+<li><span id="EVUI-R280-MultiSel" class="rqDef">[EVUI-R280-MultiSel]</span> The list provides multi-selection.</li>
+<li><a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R235' title="">[EVUI-R235]</a> The &quot;Unmapped Events&quot; list always has focus.</li>
+</ul>
+<h3 id="map-2">Map</h3>
+<p><span id="EVUI-R282" class="rqDef">[EVUI-R282]</span> Button &quot;Map&quot;...</p>
+<ul>
+<li>lets the Events selected in the right &quot;Unmapped Events&quot; list...</li>
+<li>reference <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R230' title="">[EV-R230]</a> the first selected DTC in...
+<ul>
+<li>the left &quot;Unmapped DTCs&quot; list, or</li>
+<li>the middle &quot;Mapped DTCs + Events&quot; list,</li>
+<li>whichever has focus, see <a class='rqRef' href='../../20%20UserInterface/Event/DTC%20Events%20Mapping.htm#EVUI-R235-DTC' title="">[EVUI-R235-DTC]</a> above.</li>
+</ul></li>
+<li>See also Authorization <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R010' title="">[EVUI-R010]</a></li>
+<li>The button is insensitive if any of the two involved lists is empty:
+<ul>
+<li>the focussed one of the &quot;Unmapped DTCs&quot; or &quot;Mapped DTCs + Events&quot; list,</li>
+<li>the &quot;Unmapped Events&quot; list.</li>
+</ul></li>
+<li>As a result,
+<ul>
+<li>the DTC and Events will be shown selected in the &quot;Mapped DTCs + Events&quot; list</li>
+<li>for the resulting selection in the other lists, see <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-R340-SelDel' title="">[UI-R340-SelDel]</a></li>
+</ul></li>
+<li>Tooltip: &quot;Maps selected Events to the first selected DTC in the focussed other list.&quot;</li>
+</ul>
+<h3 id="map-with-new-dtcs">Map with new DTCs</h3>
+<p><span id="EVUI-R284" class="rqDef">[EVUI-R284]</span> Button &quot;Map with new DTCs&quot;</p>
+<ul>
+<li>for each Event selected in the &quot;Unmapped Events&quot; list,</li>
+<li>if a DTC exists whose error text matches the Event name, maps the Event to the existing DTC;</li>
+<li>otherwise creates a new DTC with error text set to the Event name, and maps it.</li>
+<li>For details, see Event operation <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R284' title="">[EVOP-R284]</a>.</li>
+<li>See also Authorization <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R010' title="">[EVUI-R010]</a> and the conditions in <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R010' title="Create DTC">[DTCOP-R010]</a></li>
+<li>The button is insensitive if the &quot;Unmapped Events&quot; list is empty.</li>
+<li>As a result,
+<ul>
+<li>the DTCs and Events will be shown selected in the middle &quot;Mapped DTCs + Events&quot; list</li>
+<li>the middle list has focus</li>
+<li>for the resulting selection in the other lists, see <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-R340-SelDel' title="">[UI-R340-SelDel]</a>.</li>
+</ul></li>
+<li>Tooltip: &quot;Maps existing DTCs whose error text matches the Event name; creates and maps new DTCs for the remaining Events.&quot;</li>
+</ul>
+<h3 id="filter-2">Filter</h3>
+<p><span id="EVUI-R286" class="rqDef">[EVUI-R286]</span> If the filter edit control contains text, the &quot;Unmapped Events&quot; list shows only Events that match <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-R500' title="">[LIST-R500]</a> this text.</p>
+<ul>
+<li><span id="EVUI-R286-Sens" class="rqDef">[EVUI-R286-Sens]</span> The edit control is sensitive even if the list is empty.</li>
+</ul>
+<h3 id="clipboard-operations-2">Clipboard Operations</h3>
+<p>No clipboard operations available.</p>
+
+<h2 id="dtc-representation">DTC Representation</h2>
+<p><span id="EVUI-R400" class="rqDef">[EVUI-R400]</span> Depending on the DTC Format <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R400' title="">[DOC-R400]</a> specified in File | Properties | Display of DTCs <a class='rqRef' href='../../20%20UserInterface/Document/Property%20Page%20Display%20of%20DTCs.htm#DOCUI-R610' title="">[DOCUI-R610]</a>, CANdelaStudio shows DTCs in the dialog as follows:</p>
+<ul>
+<li>for ISO 14229-1
+<ul>
+<li>Error Code - depending on File | Options | Display | Format of Error Codes:
+<ul>
+<li>Hexadecimal: 3 byte hex</li>
+<li>SAE: 3 byte SAE</li>
+</ul></li>
+<li>Error Text</li>
+</ul></li>
+<li>for ISO 15031-6 / SAE J2012
+<ul>
+<li>Error Code - depending on File | Options | Display | Format of Error Codes:
+<ul>
+<li>Hexadecimal: 3 byte</li>
+<li>Hexadecimal: 2 byte hex, 1 byte hex</li>
+<li>SAE: 2 byte SAE, 1 byte hex</li>
+<li>like: &quot;0x0007, 0x01&quot;</li>
+</ul></li>
+<li>Error Text</li>
+</ul></li>
+<li>for SAE J1939-73
+<ul>
+<li>Error Code:
+<ul>
+<li>19 bit decimal, 5 bit decimal</li>
+<li>like: &quot;0x000892 (264192, 18)&quot;</li>
+</ul></li>
+<li>Error Text</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> (Export)</li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Commands%20Menus.htm">Commands Menus</a> (rules for ribbon / menu items)</li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="Events.htm">Event List</a></li>
+<li><a href="Event%20Master%20Data.htm">Event Master Data</a></li>
+<li><a href="../../30%20Features/Event/Events%20Data%20Model.htm">Events Data Model</a></li>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="../../30%20Features/DTC/Failure%20Mode%20Identifier.htm">Failure Mode Identifier (FMI)</a></li>
+<li><a href="../../30%20Features/DTC/Failure%20Type%20Byte.htm">Failure Type Byte (FTB)</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+</ul>
+</body>
+</html>

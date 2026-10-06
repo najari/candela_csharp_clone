@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Authorization</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="document-level-authorization">Document-Level Authorization</h1>
+<h2 id="creation-of-dtcs-cds-16999-7.0">Creation of DTCs (CDS-16999 7.0)</h2>
+<p><span id="DLA-R100" class="rqDef">[DLA-R100]</span> A document shall have a property &quot;Creation of DTCs&quot; with values...</p>
+<ul>
+<li><span id="DLA-R100-PoolOnly" class="rqDef">[DLA-R100-PoolOnly]</span> „in Chapter &quot;Available DTCs&quot; only“, effect:
+<ul>
+<li><span id="DLA-R100-Creation" class="rqDef">[DLA-R100-Creation]</span> creation of a DTC in a fault memory diagnostic instance in a variant is not allowed, see <a class='rqRef' href='../../30%20Features/DTC/DTC%20Operations.htm#DTCOP-R010' title="Create DTC">[DTCOP-R010]</a>;</li>
+<li>For a DTC in DTC Pool, CANdelaStudio does not enforce the authorization setting &quot;as reference&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012-ReqAsRef' title="">[DTC-R012-ReqAsRef]</a>, but the operations in the diagnostic instances allow only references to the DTC pool.</li>
+<li>any DTC in a fault memory diagnostic instance must be a reference</li>
+<li><span id="DLA-R100-Deletion" class="rqDef">[DLA-R100-Deletion]</span> on deletion of a DTC in chapter &quot;Available DTCs&quot;, a referencing DTC in a fault memory diagnostic instance must be deleted, too; see <a class='rqRef' href='../../30%20Features/DTC/DTC%20Operations.htm#DTCP-R018' title="Delete DTC in DTC Pool">[DTCP-R018]</a>.</li>
+</ul></li>
+<li><span id="DLA-R100-DiagInst" class="rqDef">[DLA-R100-DiagInst]</span> &quot;in Chapter &quot;Available DTCs&quot; and in Fault Memory instances&quot;</li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>this flag says:
+<ul>
+<li>a given DTC code may be missing in some variants;</li>
+<li>but <strong>if a DTC with the code exists</strong> in a variant, <strong>it must be a reference</strong>;</li>
+</ul></li>
+<li>&quot;required as reference&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a> at a DTC in Pool says:
+<ul>
+<li><strong>a DTC with this code</strong> must exist <strong>at each variant</strong>,</li>
+<li>and <strong>it must be a reference</strong>.</li>
+</ul></li>
+</ul>
+<h2 id="creation-of-dids-cds-37944-8.5">Creation of DIDs (CDS-37944 8.5)</h2>
+<p>See <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R005' title="May Modify Allow Duplicate DIDs">[DID-R005]</a> and DID operation <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R180' title="">[DID-R180]</a>.</p>
+<h2 id="textid">TextID Editable (Standard view)</h2>
+<p>See the <a href="../../30%20Features/Common%20Properties/TextID.htm">TextIDs</a> mode.</p>
+<h2 id="variable-length-of-data-objects-at-all-places-in-a-telegram">Variable length of data objects at all places in a telegram</h2>
+<p><span id="DLA-R060" class="rqDef">[DLA-R060]</span> A data object with variable, but deterministic length <a class='rqRef' href='../../30%20Features/Data%20Type/Length.htm#DTL-D120' title="Deterministic Variable Length">[DTL-D120]</a>...</p>
+<ul>
+<li>can in principle be used safely at all places in a telegram,
+<ul>
+<li>because the positions of objects can be computed at runtime;</li>
+</ul></li>
+<li>... but some test systems may not support the variable length.</li>
+<li>The authorization property <strong>Variable length of data objects...</strong> controls the creation / use of such deterministic length data objects.</li>
+<li>See also
+<ul>
+<li>the dialog <a class='rqRef' href='../../20 UserInterface\Document\Property Page Authorization.htm#DOCUI-R440' title="">[DOCUI-R440]</a></li>
+<li>Fixed Data Component <a class='rqRef' href='../../30%20Features/Protocol%20Service/Fixed%20Data%20Component.htm#FD-R210' title="">[FD-R210]</a></li>
+</ul></li>
+</ul>
+<p>Possible Values:</p>
+<table>
+<colgroup>
+<col width="42%" />
+<col width="57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">&quot;No&quot;</td>
+<td align="left"><strong>never</strong> create deterministic length data objects</td>
+</tr>
+<tr class="even">
+<td align="left">&quot;Yes, but not in individually restricted combined components&quot;</td>
+<td align="left">create and use deterministic length data objects, <strong>except</strong> if forbidden at the individual Combined Component <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#CPC-R060' title="">[CPC-R060]</a>, see dialog <a class='rqRef' href='../../20 UserInterface\Diagnostic Class Template\Combined Component Property Page Extended.htm#CPCUI-R060' title="">[CPCUI-R060]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left">&quot;Yes, in all combined compontents&quot;</td>
+<td align="left">create and use deterministic length data objects <strong>without restriction</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Common%20Properties/Authorization.htm">Authorization Feature</a></li>
+<li><a href="Document.htm">Document (Feature)</a></li>
+<li><a href="../../30%20Features/DID/DID.htm">DID (Feature)</a></li>
+<li><a href="../../30%20Features/DID/DID%20Operations.htm">DID Operations</a></li>
+<li><a href="../../30%20Features/DTC/DTC%20Operations.htm">DTC Operations</a></li>
+<li><a href="../../20%20UserInterface/Document/Property%20Page%20Authorization.htm">File | Properties | Property Page &quot;Authorization&quot;</a></li>
+<li><a href="../../15%20Procedures/Document/How%20to%20Protect%20a%20CANdela%20Document%20by%20Password.htm">How to Protect a CANdela Document by Password</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Password%20Dialog.htm">Password Dialog</a></li>
+</ul>
+</body>
+</html>

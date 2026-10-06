@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Convert to Template</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="convert-to-template">Convert to Template</h1>
+<p><span id="DOC-R700" class="rqDef" title="Convert to Template">[DOC-R700 Convert to Template]</span> Operation to convert a <a href="../../30%20Features/Document/Document.htm">document</a> to a <a href="Document%20Template.htm">document template</a>.</p>
+<h2 id="use-case">Use-Case</h2>
+<p>In order to add new protocol services, diagnostic class templates or attributes to a <strong>document</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>convert the document to a template,</li>
+<li>modify the template as desired,</li>
+<li>then via ribbon tab Document | Template | Document Upgrade <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Document.htm#MENU-R560' title="">[MENU-R560]</a>, perform a <a href="../../30%20Features/Document%20Upgrade/Document%20Upgrade.htm">Document Upgrade</a>.</li>
+</ol>
+<h2 id="basic-operation">Basic Operation</h2>
+<ul>
+<li>Menu Tools | Convert Document to Template shows the Windows file dialog.</li>
+<li>Select the document you wish to convert to a template.</li>
+<li>The <a href="../../20%20UserInterface/CANdelaStudio%20Editor/SaveAs%20Dialog.htm">Save as</a> file dialog appears. Enter the file name of the new template.</li>
+<li>CANdelaStudio creates a template from the document and saves it.</li>
+</ul>
+<div class="figure">
+<img src="Images/ConvertToTemplate_FileNew.png" alt="Convert to Template and File|New" />
+<p class="caption">Convert to Template and File|New</p>
+</div>
+<h2 id="specification">Specification</h2>
+<p><span id="DOC-R710" class="rqDef">[DOC-R710]</span> On &quot;Convert document to template&quot;, CANdelaStudio...</p>
+<ul>
+<li><span id="DOC-R710-Name" class="rqDef">[DOC-R710-Name]</span> ... puts the template name + qualifier into ECU name+qualifier (CDS-14160 7.0 SP1, see <a href="#details">Details</a> below)</li>
+<li><span id="DOC-R710-SaveNumber" class="rqDef">[DOC-R710-SaveNumber]</span> ... puts template save number <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R100-SaveNumber' title="">[DOC-R100-SaveNumber]</a> into ECU save number <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R200' title="Save Number">[DOC-R200]</a>, incremented by 1. (CDS-14160 7.0 SP1)</li>
+<li><span id="DOC-R710-ComParam" class="rqDef">[DOC-R710-ComParam]</span> ... drops overriding communication parameter values <a class='rqRef' href='../../30%20Features/Interface/Communication%20Parameter.htm#CP-R050-OverridingValue' title="">[CP-R050-OverridingValue]</a> (CDS-38382 8.2 SP3)</li>
+</ul>
+<h2 id="details">Details</h2>
+<p><a class='rqRef' href='../../30%20Features/Document%20Template/Convert%20to%20Template.htm#DOC-R710-Name' title="">[DOC-R710-Name]</a>, <a class='rqRef' href='../../30%20Features/Document%20Template/Convert%20to%20Template.htm#DOC-R710-SaveNumber' title="">[DOC-R710-SaveNumber]</a> in 7.0 SP1 (CDS-14160):</p>
+<div class="figure">
+<img src="Images/ConvertToTemplate_DocumentUpgrade.png" alt="Convert to Template and Document Upgrade" />
+<p class="caption">Convert to Template and Document Upgrade</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Document/Document.htm">Document</a></li>
+<li><a href="Document%20Template.htm">Document Template</a></li>
+</ul>
+</body>
+</html>

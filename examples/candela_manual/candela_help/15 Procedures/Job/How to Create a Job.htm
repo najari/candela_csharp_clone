@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Create a Job</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-create-a-job">How to Create a Job</h1>
+<h2 id="import-the-job-file">Import the Job File</h2>
+<p>You can also perform these steps later in the &quot;Create a Job&quot; chapter below.</p>
+<ul>
+<li>Ribbon tab Document | &quot;Job File Manager&quot; opens a dialog for job files</li>
+<li>Button &quot;New&quot; lets you import a job file (select a file that can be executed by the test system, e.g. a JAR or CAPL file)</li>
+<li>ensure input control &quot;Runtime system&quot; has the desired value</li>
+<li>ensure input control &quot;Version&quot; has the desired value</li>
+<li>optionally specify an encoding (if the file is encrypted)</li>
+<li>optionally specify additional files (e.g. source files from compilation)</li>
+<li>press the &quot;Close&quot; button</li>
+</ul>
+<h2 id="create-a-job">Create a Job</h2>
+<ul>
+<li>in the CANdelaStudio tree, navigate to the <a href="../../20%20UserInterface/Job%20Container/Job%20Container.htm">job container</a></li>
+<li>in the list &quot;Jobs for the Test System&quot;, click on &quot;Please click here...&quot;.</li>
+<li>the property dialog for a new job opens</li>
+<li>in the &quot;General&quot; page, set the name and qualifier</li>
+<li>navigate to the &quot;Function&quot; page</li>
+<li>press button &quot;Job Files&quot;</li>
+<li>the &quot;Job File Manager&quot; dialog opens</li>
+<li>if not yet done already, import a job (see chapter above)</li>
+<li>in the list on top, select the desired job file (e.g. the one imported in the previous chapter)</li>
+<li>press button &quot;Assign&quot; at the bottom</li>
+<li>the &quot;Function&quot; page is shown again</li>
+<li>optionally specify the &quot;Version&quot; of the job file</li>
+<li>optionally specify an &quot;Entry Point&quot; for the function, e.g. a function name like &quot;main()&quot;; this applies to job files with runtime system &quot;fm&quot;</li>
+<li>press &quot;OK&quot;</li>
+<li>the job is shown in the jobs list</li>
+</ul>
+<p>By default, the function supports one runtime system (e.g. Java interpreter) only. If it must support more than one runtime system with different job files for each runtime system, check the option &quot;Supports several runtime systems&quot; in the &quot;Function&quot; page, and assign additional job files.</p>
+<p>If you have <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Job%20File.htm">specified a default file for jobs</a>, CANdelaStudio automatically assigns that file to each new job.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Job/Job.htm">Job (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Job/Job%20File%20Manager.htm">Job File Manager</a></li>
+</ul>
+</body>
+</html>

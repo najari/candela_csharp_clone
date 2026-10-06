@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>8_Import of DIAG-LAYERs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="DIAG-LAYERS">Import of DIAG-LAYERs</h1>
+<p>For the description how DIAG-COMM details are imported, see chapter <a href="../../30%20Features/Import/9_Import%20of%20DIAG-COMMs.htm">DIAG-COMMs</a>.</p>
+<h2 id="import-of-odx-diaglayers-with-their-diagservices">Import of ODX DiagLayers with their DiagServices</h2>
+<p>In CANdelaStudio, an ODX BaseVariant with its EcuVariants can be selected as ODX ECU description. An ODX BaseVariant can be imported into a CANdelaStudio BaseVariant. All DIAG-SERVICEs which are visible in the Server-API for an ODX BASE-VARIANT (independent on which DIAG-LAYER they are defined, IMPORT-REF and DIAG-COMM-REF are provided as well) are considered to be imported. Hence, all ODX DiagServices which are executable in the ODX BaseVariant are executable in the CANdelaStudio BaseVariant as well after having done the import. The same import procedure is applied for an ODX ECU-VARIANT. Therefore, all DIAG-SERVICEs which are visible in the Server-API for an ODX ECU-VARIANT are considered to be imported.</p>
+<p>Section 3.1.1 shows in a figure a schematic example of an import of an ODX BaseVariant. Section 3.1.2 shows a schematic example for an import if an ODX EcuVariant.</p>
+<h3 id="schematic-simplified-import-of-an-odx-basevariant">Schematic simplified Import of an ODX BaseVariant</h3>
+<p>The user guidance of CANdelaStudio allows selecting which ODX BaseVariant shall be imported.</p>
+<p><img src="../../30%20Features/Import/Images/image13.png" /></p>
+<h3 id="schematic-simplified-import-of-an-odx-ecu-variant">Schematic simplified Import of an ODX ECU-VARIANT</h3>
+<p>The import of an ODX ECU-VARIANT is done automatically for all ECU-VARIANTs for a selected ODX BASE-VARIANT which shall be imported. If there is no CANdelaStudio Variant having the same qualifier as the ODX ECU-VARIANT SHORT-NAME a new CANdelaStudio Variant is created, else the data is imported into the CANdelaStudio Variant having the same qualifier as ECU-VARIANT SHORT-NAME.</p>
+<p><img src="../../30%20Features/Import/Images/image14.png" /></p>
+<h2 id="import-of-variant-identification">Import of VARIANT-IDENTIFICATION</h2>
+<p>The VARIANT-IDENTIFICATIONs found in ODX are mapped to CANdelaStudio Identifiying Features of the base variant as well as the identifying patterns of the specific ECU variant.</p>
+<p>Starting with CANdelaStudio release 8.0 ECU-VARIANT-PATTERNs referencing SINGLE-ECU-JOBs get also imported as an identification detail.</p>
+<p><img src="../../30%20Features/Import/Images/image15.jpg" /></p>
+<h2 id="import-of-ecu-shared-data">Import of ECU-SHARED-DATA</h2>
+<p>All data of <a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ECU-SHARED-DATA</a> which is visible via DIAG-SERVICEs of an imported BASE-VARIANT or ECU-VARIANT is imported. The file ECU-SHARED-DATA is imported as well.</p>
+<p>Moreover, if the following ODX objects are defined in a ECU-SHARED-DATA and used by imported ODX DIAG-SERVICEs the odx-link references to the used objects are stored in the CDD file if the <a href="../../30%20Features/Plug-ins/Plug-in%20Enable%20ODX%20Mode.htm">ODX mode is enabled</a> for the CDD file:</p>
+<ul>
+<li>DTC-DOPs</li>
+<li>DOPs which correspond to a CANdelaStudio data type</li>
+<li>UNITs</li>
+</ul>
+<p>The ODX Export will write the ECU-SHARED-DATA and the odx-link references to the used objects.</p>
+<p>Starting with CANdelaStudio 7.5 SP3 it is also possible to import one/more ECU-SHARED-DATAs without having a BASE-VARIANT. In this case CANdelaStudio internally creates an empty BASE-VARIANT which inherits from all provided ECU-SHARED-DATAs. (CDS-26063)</p>
+<p>From CANdelaStudio 8.5 SP3 onwards, ECU-SHARED-DATAs will be imported into the <a href="../../30%20Features/Library/Library.htm">Library</a> Category of CANdelaStudio. For more details, see <a href="../../30%20Features/Import/4_Import%20of%20Libraries.htm">ODX Import of Libraries</a>.</p>
+<h2 id="import-of-comparam-refs">Import of COMPARAM-REFs</h2>
+<p>The given COMPARAM values for a BASE-VARIANT defined by COMPARAM-REFs or by inheritance of the default COMPARAM-SPEC values are imported as CANdelaStudio Comparams. The COMPARM-REFs must specify a PROTOCOL (via SNREF). Then the COMPARAM-REF value is imported to the CANdelaStudio ECU interface having the same qualifier as the SHORT-NAME of the referenced PROTCOL where the prefix &quot;PR_&quot; of the SHORT-NAME is ignored.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="ODX%20Import%20Introduction.htm">ODX Import Introduction</a></li>
+</ul>
+</body>
+</html>

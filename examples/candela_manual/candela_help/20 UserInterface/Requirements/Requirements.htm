@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Requirements</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="requirements-gui">Requirements GUI</h1>
+<p>See also the <a href="../../30%20Features/Requirements/Requirements.htm">Requirements Feature</a>.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Requirements.jpg" alt="Requirements Pool" />
+<p class="caption">Requirements Pool</p>
+</div>
+<p><strong>R010.1</strong>: the top-level tree node “Requirements” (in a CANdela document and template) shows requirement data which is persistent (saved to and loaded from a document or template).</p>
+<p>The right side (requirements area) supports multiple layouts, see <a class='rqRef' href='../../20%20UserInterface/Requirements/Requirements.htm#RQUI-R012' title="">[RQUI-R012]</a> below.</p>
+<h2 id="toolbar">Toolbar</h2>
+<p><span id="RQUI-R012" class="rqDef">[RQUI-R012]</span>: toolbar buttons <img src="Images/Layout%20hor-vert-single.jpg" /> toggle the layout of the right side:</p>
+<ul>
+<li>stacked (one upon the other)</li>
+<li>side by side</li>
+<li>requirements view only</li>
+</ul>
+<p><img src="Images/ShowHideTreeStructure.jpg" /> toggle display of the tree control</p>
+<p><img src="Images/ShowAll.jpg" /> activate “(all)” in the navigation tree (even if the tree control is closed)</p>
+<p><span id="RQUI-R020" class="rqDef">[RQUI-R020]</span>: Update Diagnostic Objects</p>
+<p>Creates/updates diagnostic objects from requirements <a class='rqRef' href='../../30 Features\Requirements\Update Diagnostic Objects.htm#RQOP-R500' title="">[RQOP-R500]</a>.</p>
+<ul>
+<li>for the selected variant <a class='rqRef' href='../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm#RQUI-R100-Variant' title="">[RQUI-R100-Variant]</a></li>
+<li>using the specified default data type <a class='rqRef' href='../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm#RQUI-R100-DataType' title="">[RQUI-R100-DataType]</a></li>
+<li>in diagnostic classes configured <a class='rqRef' href='../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm#RQUI-R100-DiagnosticClasses' title="">[RQUI-R100-DiagnosticClasses]</a></li>
+</ul>
+<p><span id="RQUI-R025" class="rqDef">[RQUI-R025]</span>: Update Requirements</p>
+<p>Creates/updates requirements from diagnostic objects</p>
+<ul>
+<li>for the selected variant <a class='rqRef' href='../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm#RQUI-R100-Variant' title="">[RQUI-R100-Variant]</a></li>
+<li>in diagnostic classes configured <a class='rqRef' href='../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm#RQUI-R100-DiagnosticClasses' title="">[RQUI-R100-DiagnosticClasses]</a></li>
+</ul>
+<p><span id="RQUI-R030" class="rqDef">[RQUI-R030]</span>: CSV Import</p>
+<p>Imports requirements from a .csv file.</p>
+<p>For the file format, see <a class='rqRef' href='../../30 Features\Import\Requirements Import.htm#RQ-R800' title="">[RQ-R800]</a>.</p>
+<p><span id="RQUI-R035" class="rqDef">[RQUI-R035]</span>: CSV Export</p>
+<p>Exports requirements to a .csv file.</p>
+<p>For the file format, see <a class='rqRef' href='../../30 Features\Export\Requirements Export.htm#RQ-R700' title="">[RQ-R700]</a>.</p>
+<p><span id="RQUI-R220" class="rqDef" title="SWC Sync Button">[RQUI-R220 SWC Sync Button]</span> <img src="../../20%20UserInterface/Images/Requirements%20SWC%20Sync%20Button.jpg" /> (CDS-41025 8. SP2)</p>
+<ul>
+<li>the button opens a file dialog...</li>
+<li>with predefined filter for <code>*.arxml</code> files,</li>
+<li>optionally changeable to <code>*.*</code>,</li>
+<li>and passes the selected file to the SWC Sync operation <a class='rqRef' href='../../30 Features\Import\SWC Sync Introduction.htm#SWC-R100' title="">[SWC-R100]</a>.</li>
+</ul>
+<p><strong>Filter</strong>: text entry field, button with list (mapped equal, mapped not equal, not mapped); release filter.</p>
+<p>Depending on the selected requirement, only buttons that can be executed are sensitive.</p>
+<p>The <strong>Delete</strong> button deletes the selected requirement and its content.</p>
+<p>Note: since 9.1 (CDS-26762 9.1), creating of requirements is no more available in the toolbar but in the context menu only. For insertion details, see the operations chapter.</p>
+<h2 id="requirements">Requirements</h2>
+<p><strong>R015.5</strong>: the requirements pool shall contain a list on top-level. Each is either a terminal requirement, or a <strong>hierarchy</strong> of <strong>headings</strong> and of structured <strong>requirements</strong> of various sub-types which may contain terminal requirements (see the Requirements Element Types <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R012' title="Requirements Element Types">[RQ-R012]</a>). The pool cannot contain the same element at multiple places.</p>
+<p>For simplicity, in the following the pool list of hierarchies is called a “tree” (the pool may be handled like a tree whose root is ignored).</p>
+<p>The requirements tree (as well as the tree in the diagnostic objects pane) is optional, toggled by a toolbar button: <img src="Images/ShowHideTreeStructure.jpg" />.</p>
+<p>The trees shall support navigation only (no editing, no status info).</p>
+<p>The requirements tree shall not show terminal elements (Data, DTC, Text).</p>
+<p>It shall contain a first element <img src="Images/FirstElementAll.jpg" />. The requirements list shall show</p>
+<ul>
+<li>… for “(all)”: all requirements, as a tree view</li>
+<li>… for another selected element: the child elements of the selected element, as a list</li>
+</ul>
+<h2 id="list-view">List View</h2>
+<p>Headings and requirements are created only in the list, not in the tree.</p>
+<p><span id="RQUI-R040" class="rqDef">[RQUI-R040]</span> The column headings are <a href="#localizedPropertyNames">localized property names</a>.</p>
+<p><span id="RQUI-R050" class="rqDef">[RQUI-R050]</span> The list shall not show columns of properties that are not supported in the currently selected tree node. E.g. if the user selects a DiagInstance Requirement which is not FaultMemory, specific DTC columns <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R040-ForType' title="">[RQ-R040-ForType]</a> shall not be shown.</p>
+<p><span id="RQUI-R060" class="rqDef">[RQUI-R060]</span> For a <strong>property that does not exist</strong> at the selected requirement, i.e. ...</p>
+<ul>
+<li>either a Specific Property <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R030' title="Specific Properties">[RQ-R030]</a>,</li>
+<li>or a User-Defined Property restricted to exist at DTC Requirements <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R040-ForType' title="">[RQ-R040-ForType]</a>,</li>
+</ul>
+<p>the list shall...</p>
+<ul>
+<li>show &quot;-&quot; as a value</li>
+<li>not allow editing.</li>
+</ul>
+<p><span id="RQUI-R070" class="rqDef">[RQUI-R070]</span> The list shall provide a magic line.</p>
+<ul>
+<li><span id="RQUI-R070-Type" class="rqDef">[RQUI-R070-Type]</span> The magic line shall intelligently create one of the types Data, DTC or Text: if the current parent allows creation of the type created the last time (via menu, toolbar or magic line), then the magic line shall create an element of that type.</li>
+<li><span id="RQUI-R070-Text" class="rqDef">[RQUI-R070-Text]</span> Otherwise, it shall create a text requirement.</li>
+</ul>
+
+<h3 id="compare-state">Compare State</h3>
+<p><span id="RQUI-R080" class="rqDef">[RQUI-R080]</span> CANdelaStudio shows each requirement with a special symbol left to the requirement icon:</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Requirements%20Synchronization%20State.jpg" alt="Requirements Synchronization State" />
+<p class="caption">Requirements Synchronization State</p>
+</div>
+<ul>
+<li>green box: a diagnostic object exists and is up-to-date</li>
+<li>yellow box: no diagnostic object exists</li>
+<li>red box: a diagnostic object exists with differing properties</li>
+</ul>
+<h3 id="update-diagnostic-objects">Update Diagnostic Objects</h3>
+<p><strong>R561.0</strong>: provide update of diagnostic objects <a class='rqRef' href='../../30 Features\Requirements\Update Diagnostic Objects.htm#RQOP-R500' title="">[RQOP-R500]</a> for 1..n selected (“locally”) or for all requirements.</p>
+<p>If executed locally:</p>
+<ul>
+<li>recursively process all requirements contained in the selected ones;</li>
+<li>update any associated diagnostic objects without regard of the diagnostic object selection in the diagnostic object tree.</li>
+</ul>
+<h3 id="indentoutdent">Indent/Outdent</h3>
+<p>The list shall provide commands to move an element (with its subtree) up/down in the tree hierarchy. Cf. the commands to indent a paragraph (and vice versa) in MS Powerpoint.</p>
+<p>Move left (oudent) of a child object can only performed for the “last” Children of a node. This Object will then become the next sibling of its former parent. Moving e.g. (See Example “Not possible”) the second of 3 siblings would lead to that H1 loses its child H4, therefore allow only for “last“ children.</p>
+<table style="width:44%;">
+<colgroup>
+<col width="12%" />
+<col width="6%" />
+<col width="18%" />
+<col width="6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Possible</td>
+<td></td>
+<td>Not possible</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><pre><code>H1
+--H2
+--H3
+--H4</code></pre></td>
+<td><pre><code>H1
+--H2
+H3
+H4</code></pre></td>
+<td><pre><code>H1
+--H2
+--H3
+--H4</code></pre></td>
+<td><pre><code>H1
+--H2
+H3
+--H4</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>The Indent/Outdent operation can only performed if the list view shows the requirements in recursive mode and no filter is active. Reason: If a filter is active or only the children are displayed in the list view, the hierarchy is not visible and the changes cannot be seen.</p>
+<p>Requirements can also not be moved up to a higher hierarchy than the displayed ones.</p>
+<h3 id="properties-bar">Properties Bar</h3>
+<p>At the right side the properties of the requirement selected in the list view are displayed.</p>
+<p>All properties of the requirement are displayed in a list of properties. (Like a property grid.)</p>
+<h3 id="localizedPropertyNames">Localized Property Names (Columns)</h3>
+<p>The names of...</p>
+<ul>
+<li>general properties <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R020' title="General Properties">[RQ-R020]</a> and</li>
+<li>specific properties <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R030' title="Specific Properties">[RQ-R030]</a></li>
+</ul>
+<p>are represented by <strong>localized names</strong>...</p>
+<ul>
+<li>in the requirements list and</li>
+<li>in the Settings property page.</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>the name &quot;DiagClass&quot; from the data model</li>
+<li>is shown as &quot;Diagnostic Class&quot; (English) or &quot;Diagnoseklasse&quot; (German).</li>
+</ul>
+<p>Note: the <a href="../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm">exported CSV file</a> shows the original names from the data model.</p>
+<p>Note: user-defined properties <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a> have no localized representation.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Diagnostic%20Objects.htm">Diagnostic Objects</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="Property%20Page%20Settings.htm">Property Page Settings</a></li>
+</ul>
+</body>
+</html>

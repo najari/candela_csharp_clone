@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Update Requirements</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="update-requirements">Update Requirements</h1>
+<h2 id="variants">Variants</h2>
+<p><span id="RQOP-R580-UpdateRq" class="rqDef">[RQOP-R580-UpdateRq]</span>: the &quot;Update requirements from diagnostic objects&quot; operation shall apply to diagnostic objects in the selected library or variant <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a>.</p>
+<h2 id="create-requirements">Create Requirements</h2>
+<p><span id="RQ-R580" class="rqDef" title="Create Requirements">[RQ-R580.3 Create Requirements]</span>:</p>
+<p><span id="RQ-R580-NewRequirement" class="rqDef">[RQ-R580-NewRequirement]</span>:</p>
+<ul>
+<li>if a diagnostic object is not associated with a requirement,</li>
+<li>then the &quot;Update&quot; operation always <strong>creates a new requirement</strong> (it does not reuse existing requirements).</li>
+<li>Cf. <a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R586' title="Update Existing Requirements">[RQ-R586]</a> for diagnostic objects that <em>are</em> associated with a requirement.</li>
+</ul>
+<p><span id="RQ-R580-a" class="rqDef">[RQ-R580-a]</span> for <strong>diagnostic instances, data objects and DTCs</strong>,</p>
+<ul>
+<li>if the <strong>parent object is linked</strong> to a requirement,</li>
+<li>and they are assignable (see <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R107' title="Assignable">[RQ-R107]</a>),</li>
+<li>and the tree structure allows (see <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R015' title="Requirements Tree">[RQ-R015]</a>),</li>
+<li>then <strong>create a requirement</strong> of the corresponding type under the requirement linked to the parent object.</li>
+</ul>
+
+
+<p><span id="RQ-R580-DID" class="rqDef">[RQ-R580-DID]</span> For a <strong>DID not used by a diagnostic instance</strong>, ...</p>
+<ul>
+<li>generate a Data DiagInstance Requirement,</li>
+<li><span id="RQ-R580-DIDDiagClass" class="rqDef">[RQ-R580-DIDDiagClass]</span> set the “DiagClass” property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DiagClass' title="Requirement &quot;DiagClass&quot; Property">[RQ-R030-DiagClass]</a> to the special reserved qualifier described in <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DID' title="">[RQ-R030-DID]</a>.</li>
+<li><span id="RQ-R580-DIDIdentifier" class="rqDef">[RQ-R580-DIDIdentifier]</span>
+<ul>
+<li>If the optional property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Optional' title="Optional Specific Properties">[RQ-R030-Optional]</a> exists,</li>
+<li>then set the “Identifier” property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Identifier' title="Requirement &quot;Identifier&quot; Property">[RQ-R030-Identifier]</a> to the DID Identifier <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R025' title="Identifier">[DID-R025]</a>.</li>
+</ul></li>
+</ul>
+<p><span id="RQ-R580-a2" class="rqDef">[RQ-R580-a2]</span> If the diagnostic instance <strong>uses a DID</strong> via a DID Data Reference <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001-d' title="">[DID-D001-d]</a>, then handle the DID Data as if they were contained in the diagnostic instance (i.e. create data requirements from the data objects in the DID) (DID handling from CDC-39298 8.5)</p>
+<p><span id="RQ-R580-b" class="rqDef">[RQ-R580-b]</span> Fill optional type specific properties <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030' title="Specific Properties">[RQ-R030]</a> (for some special properties, see the following).</p>
+<p><span id="RQ-R580-AttributeToUserDefined" class="rqDef">[RQ-R580-AttributeToUserDefined]</span> Fill user-defined properties <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040' title="User-Defined Properties">[RQ-R040]</a> from an attribute of the CANdela object,</p>
+<ul>
+<li>if the property is associated as described in <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100-Prop' title="Association with Attribute">[RQ-R100-Prop]</a> (reverse of <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-Attribute' title="">[RQ-R560-Attribute]</a>);</li>
+<li>using the rules defined in <a class='rqRef' href='../../30%20Features/Common%20Properties/Value%20Conversions.htm#CONV-R010' title="Value Conversion">[CONV-R010]</a>,
+<ul>
+<li>handling an int requirement as &quot;unsigned&quot;,</li>
+<li>for &quot;default&quot; leave the property empty.</li>
+</ul></li>
+<li>Note: only fill an existing property, do not create one.</li>
+</ul>
+<p><span id="RQ-R580-DTC" class="rqDef">[RQ-R580-DTC]</span> For <strong>DTC requirements</strong>, fill a user-defined property that exists <strong>“for requirements type” DTC</strong> <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040-ForType' title="">[RQ-R040-ForType]</a>...</p>
+<ul>
+<li><span id="RQ-R580-ColumnToUserDefined" class="rqDef">[RQ-R580-ColumnToUserDefined]</span> ... from an additional column of the CANdela DTC,</li>
+<li>if the column is associated as described in <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100-DTCProp' title="Association with DTC Column">[RQ-R100-DTCProp]</a> (reverse of <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-DTCUserDefined' title="">[RQ-R560-DTCUserDefined]</a>),</li>
+<li><span id="RQ-R580-ColumnName" class="rqDef">[RQ-R580-ColumnName]</span> ... using the language-dependent <a href="../../30%20Features/Common%20Properties/Name.htm">name</a> (not the qualifier) of the DTC column.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>a string DTC attribute with value &quot;0x0a&quot; will become an int requirement value &quot;10&quot;.</li>
+<li>a string DTC attribute with value &quot;0x0aG&quot; will become an int requirement value &quot;&quot; (empty).</li>
+</ul>
+<p><span id="RQ-R580-c" class="rqDef">[RQ-R580-c]</span> For <strong>diagnostic instance requirements</strong>,</p>
+<ul>
+<li><span id="RQ-R580-cDiagClass" class="rqDef">[RQ-R580-cDiagClass]</span> set the “DiagClass” property to the qualifier of the diagnostic class template (even for a singleton diagnostic instance).</li>
+<li><span id="RQ-R580-cIdentifier" class="rqDef">[RQ-R580-cIdentifier]</span>
+<ul>
+<li>If the optional property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Optional' title="Optional Specific Properties">[RQ-R030-Optional]</a> exists,</li>
+<li>then set the “Identifier” property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Identifier' title="Requirement &quot;Identifier&quot; Property">[RQ-R030-Identifier]</a> to the diagnostic instance Identifier <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-R100' title="">[DI-R100]</a>.</li>
+</ul></li>
+</ul>
+<p><span id="RQ-R580-DTCDiagClass" class="rqDef">[RQ-R580-DTCDiagClass]</span> For a <strong>DTC requirement</strong>, ...</p>
+<ul>
+<li>if the “DiagClass” property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DiagClassDTC' title="Requirement &quot;DiagClass&quot; Property at DTC">[RQ-R030-DiagClassDTC]</a> is empty, do not modify it. Motivation: when all requirements are created anew, the DTC Requirement will be contained in a DiagInst Requirement, so the DiagClass is not necessary.</li>
+<li>if the “DiagClass” property is not empty, set it to the qualifier of the diagnostic class template.</li>
+</ul>
+<p><span id="RQ-R580-Data" class="rqDef">[RQ-R580-Data]</span> For <strong>a data requirement</strong>:</p>
+<ul>
+<li>update of requirements updates the non-empty properties (CDS-69873 v10) so that the result does not have a conflict
+<ul>
+<li>For <a href="../../30%20Features/Data%20Type/Data%20Type.htm">atom with fixed length</a>: updates <strong>bit length</strong>, otherwise removes the value.</li>
+<li>For physical value type atom with hex/dec/oct/bin, updates <strong>display format</strong>, otherwise removes the value.</li>
+</ul></li>
+<li>for a data object which references a packet data type,<br />
+if the packet data type has a fixed length <a class='rqRef' href='../../30%20Features/Data%20Type/Length.htm#DTL-D100' title="Fix Length">[DTL-D100]</a>,<br />
+CANdelaStudio shall generate a DataRequirement with bitLength = the fixed length of the packet data type.</li>
+</ul>
+
+<p><span id="RQ-R580-ServicesAtData" class="rqDef">[RQ-R580-ServicesAtData]</span> For <strong>data requirements</strong>,<br />
+if the diagnostic instance contains multiple telegram tables with semantics &quot;data&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#CPC-R100' title="">[CPC-R100]</a>,<br />
+CANdelaStudio shall set the “<strong>services</strong>” property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-ServicesAtData' title="">[RQ-R030-ServicesAtData]</a> to all service primitives in which the data object occurs (CDC-41382 9.0).</p>
+
+<p><strong>R581.1</strong>: for a <strong>Vehicle System Group</strong>, if there is no linked VehicleSystemGroup Requirement, create a new one, at the following location:</p>
+<p>a) if there is already a at least one VehicleSystemGroup Requirement in the document: under the parent of the first of them;</p>
+<p>b) otherwise, if there is a top-level Heading named “Vehicle System Groups”, “Fahrzeugsystemgruppen” or as the name of the Vehicle System Group node in the CANdelaStudio tree (= maybe localized): in that Heading</p>
+<p>c) otherwise, create a top-level Heading with the name of the Vehicle System Group node in the CANdelaStudio tree: in that Heading.</p>
+<p><strong>R582.2</strong>: for <strong>diagnostic instances, data objects and DTCs</strong>, if the <strong>parent object is not linked</strong> to a requirement, <strong>create a requirement</strong> for the diagnostic object in a <strong>subtree of headings</strong> (a top-level heading for diagnostic classes and singleton diagnostic instances, contained heading for non-singleton diagnostic instances). For the requirement name, use the name of the diagnostic object.</p>
+<p>Possible future extension: for a Heading created for a diagnostic class, link the Heading and the diagnostic class. Note: after generation, the names are equal, so the way back is unambiguous anyway. Only if the user modifies the name of the requirement, an explicit link would help.</p>
+<p><strong>R583.0</strong>: provide execution for 1..n selected (“locally”) or for all diagnostic objects.</p>
+<p>If executed locally: recursively process all diagnostic objects contained in the selected ones (even those that are not selected); generate requirements within the requirement selected in the requirements tree (within top-level for “(all)”), or inform user if this is not possible (e.g. for data object and fault memory diagnostic instance requirement selected).</p>
+<p><strong>R584.0</strong>: for <strong>all created requirements</strong> (even headings), <strong>enter the requirement ID</strong> in the diagnostic object property of <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R100' title="Associate Diagnostic Object with Requirement">[RQ-R100]</a>.</p>
+<p><strong>R585.0</strong>: the <strong>order of created requirements</strong> shall reflect the order of the diagnostic objects as far as possible.</p>
+
+<h2 id="move-requirements">Move Requirements</h2>
+<p><strong>R5852.0</strong> (new in 8.0 SP2): during update, after creating all links,</p>
+<p>if a diagnostic object DO is linked to a requirement R,</p>
+<p>and the parent of DO is linked to a requirement X that is not the parent of R,</p>
+<p>then move R to be contained in X (at the end of the child list).</p>
+<h2 id="update-existing-requirements">Update Existing Requirements</h2>
+<p><span id="RQ-R586" class="rqDef" title="Update Existing Requirements">[RQ-R586.1 Update Existing Requirements]</span>: If for any diagnostic object an associated requirement exists, and they are compatible (see R105), <strong>update the properties</strong> of the requirement properties from the diagnostic object:</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R580-b' title="">[RQ-R580-b]</a> Type specific properties, especially..</li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R580-DTC' title="">[RQ-R580-DTC]</a> <strong>DTC requirements</strong>: user-defined properties</li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R580-c' title="">[RQ-R580-c]</a> <strong>Diagnostic instance requirement</strong>: “DiagClass” <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DiagClass' title="Requirement &quot;DiagClass&quot; Property">[RQ-R030-DiagClass]</a></li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R580-cIdentifier' title="">[RQ-R580-cIdentifier]</a> <strong>Diagnostic instance requirement</strong>: “Identifier” <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Identifier' title="Requirement &quot;Identifier&quot; Property">[RQ-R030-Identifier]</a></li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R580-DTCDiagClass' title="">[RQ-R580-DTCDiagClass]</a> <strong>DTC requirement</strong>: update “DiagClass” <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-DiagClassDTC' title="Requirement &quot;DiagClass&quot; Property at DTC">[RQ-R030-DiagClassDTC]</a></li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Update%20Requirements.htm#RQ-R580-ServicesAtData' title="">[RQ-R580-ServicesAtData]</a> <strong>Data requirements</strong>: “Services” <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030-Services' title="Requirement &quot;Services&quot; Property">[RQ-R030-Services]</a></li>
+</ul>
+<p>Note: do not update properties if diagnostic object and requirement are not compatible, e.g. do not modify the name of a heading or of a text requirement.</p>
+<p><span id="RQ-R587" class="rqDef">[RQ-R587.0]</span>: provide execution for 1..n selected (“locally”) or for all diagnostic objects.</p>
+<p>If executed locally: also process all diagnostic objects contained in the selected ones (= recursive); update any associated requirements without regard of the requirement selection in the requirements tree.</p>
+<p><span id="RQ-R588" class="rqDef">[RQ-R588.0]</span>: when updating requirements, fill all requirement properties, even those that were <strong>empty</strong> (e.g. BitLen, DisplayFormat, DTC code…; as opposed to <a class='rqRef' href='../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm#RQ-R560-DataObject' title="">[RQ-R560-DataObject]</a>).</p>
+
+
+<h2 id="insert-requirement">Insert Requirement</h2>
+<p><strong>Example</strong>: “Data Requirement” is selected (“S”), the previous requirement “P” in the list is “DataDiagInstanceRequirement”.</p>
+<div class="figure">
+<img src="Images/InsertRequirementExample.png" alt="Example Data for Insert Requirement" />
+<p class="caption">Example Data for Insert Requirement</p>
+</div>
+<h3 id="basic-rules-for-insertion-of-a-new-requirement">Basic Rules for Insertion of a new Requirement</h3>
+<ul>
+<li><p>Rule 1. The new requirement must not violate the fundamental <strong>“contains” relationship</strong> for requirements (see spec “CANdela Data Model”).</p></li>
+<li><p>Rule 2. CANdelaStudio uses <strong>“insert before”</strong>, not “insert after” (the new requirement is inserted at the position of S and pushes S down one line).</p></li>
+<li><p>Rule 3. The new requirement shall be inserted <strong>at a typical level for the type of requirement,</strong> so that the user only seldom needs to move the new requirement to another level. (= CDS-26629)</p></li>
+<li><p>Rule 4. The new requirement shall <strong>not</strong> become the parent of the selected requirement, which would be irritating to the user.</p></li>
+<li><p>Rule 5.</p>
+<table style="width:97%;">
+<colgroup>
+<col width="43%" />
+<col width="54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Before</th>
+<th align="left">After</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="Images/HeadingAndData.png" /></td>
+<td align="left"><img src="Images/NewHeadingAndData.png" /></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Headings</strong> are optimally inserted as <strong>siblings of the most recent ancestor heading</strong>. Motivation: if Headings are nested, one parent Heading typically has n child Headings. Therefore, both extremes a) insertion as sibling of top-most Heading as well as b) insertion as child of bottom-most Heading would be undesired in most cases.</p></li>
+</ul>
+<h3 id="insertion-algorithm">Insertion Algorithm</h3>
+<p>For a new requirement N...:</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Condition</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>1. if <strong>no requirement exists</strong>, or</p>
+<p>2. if <strong>the first requirement is selected</strong></p></td>
+<td>insert N as first requirement on top level.</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><p>Let <strong>P := the previous requirement</strong> one line above S (if a requirement S is selected),</p>
+<p>otherwise let <strong>P := the last requirement</strong>.</p></td>
+</tr>
+<tr class="odd">
+<td>3. To insert a Heading N, …</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>3.1 if a requirement S is selected whose parent is a Heading</td>
+<td>insert N as a <strong>child</strong> of that Heading (= as previous sibling of S)</td>
+</tr>
+<tr class="odd">
+<td>3.2 otherwise</td>
+<td><p>insert N as a <strong>sibling</strong> of A := {P or the nearest ancestor of P} which</p>
+<p>a) is a <strong>Heading</strong>, and</p>
+<p>b) is not the parent of S (also e.g. if no requirement selected)</p></td>
+</tr>
+<tr class="even">
+<td>4. otherwise (= N is not a Heading)</td>
+<td><p>insert N as a <strong>child</strong> of A := {P or the nearest ancestor of P}, for that:</p>
+<p>a) N can be a child of A, and</p>
+<p>b) {no requirement S is selected, or A is at most the parent of S}</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong></p>
+<table style="width:98%;">
+<colgroup>
+<col width="6%" />
+<col width="48%" />
+<col width="43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">#</th>
+<th align="left">Before</th>
+<th align="left">After</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.</td>
+<td align="left"><img src="Images/InsertRqExample1Before.png" /><br />
+Insert TextRq</td>
+<td align="left"><img src="Images/InsertRqExample1After.png" /><br />
+</td>
+</tr>
+<tr class="even">
+<td align="left">2.</td>
+<td align="left"><img src="Images/InsertRqExample2Before.png" /><br />
+Insert TextRq</td>
+<td align="left"><img src="Images/InsertRqExample2After.png" /><br />
+</td>
+</tr>
+<tr class="odd">
+<td align="left">3.1</td>
+<td align="left"><img src="Images/InsertRqExample31Before.png" /><br />
+Insert Heading</td>
+<td align="left"><img src="Images/InsertRqExample31After.png" /><br />
+</td>
+</tr>
+<tr class="even">
+<td align="left">3.2</td>
+<td align="left"><img src="Images/InsertRqExample32Before.png" /><br />
+No selection S, insert Heading</td>
+<td align="left"><img src="Images/InsertRqExample32After.png" /><br />
+</td>
+</tr>
+<tr class="odd">
+<td align="left">3.3</td>
+<td align="left"><img src="Images/InsertRqExample33Before.png" /><br />
+With selection S, parent of S is not a Heading, insert Heading</td>
+<td align="left"><img src="Images/InsertRqExample33After.png" /><br />
+Heading [A] is not parent of S</td>
+</tr>
+<tr class="even">
+<td align="left">4.</td>
+<td align="left"><img src="Images/InsertRqExample4Before.png" /><br />
+Insert DataRq: A = P = parent of S</td>
+<td align="left"><img src="Images/InsertRqExample4After.png" /><br />
+</td>
+</tr>
+<tr class="odd">
+<td align="left">5.</td>
+<td align="left"><img src="Images/InsertRqExample5Before.png" /><br />
+Insert DtcRq</td>
+<td align="left">There is no matching A.<br />
+DtcRq can be child of Heading,<br />
+but the Heading is more than parent of S.</td>
+</tr>
+<tr class="even">
+<td align="left">6.</td>
+<td align="left"><img src="Images/InsertRqExample6Before.png" /><br />
+Insert DataRq: A = parent of P and S</td>
+<td align="left"><img src="Images/InsertRqExample6After.png" /><br />
+</td>
+</tr>
+<tr class="odd">
+<td align="left">7.</td>
+<td align="left"><img src="Images/InsertRqExample7Before.png" /><br />
+Insert DataRq: A = P</td>
+<td align="left"><img src="Images/InsertRqExample7After.png" /><br />
+</td>
+</tr>
+<tr class="even">
+<td align="left">8.</td>
+<td align="left"><img src="Images/InsertRqExample8Before.png" /><br />
+Insert DataRq: A = parent of P</td>
+<td align="left"><img src="Images/InsertRqExample8After.png" /><br />
+</td>
+</tr>
+<tr class="odd">
+<td align="left">9.</td>
+<td align="left"><img src="Images/InsertRqExample9Before.png" /><br />
+Insert DataDiagInstRq: A = grandparent of P</td>
+<td align="left"><img src="Images/InsertRqExample9After.png" /><br />
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note for #1: the magic line does “insert before” (Rule 2).</p>
+<p>Note for #2: this is the motivation of Rule 2 = using “insert before”. With “insert after”, this insertion would not be possible without an extra menu item.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Requirements <a href="Requirements.htm">Feature</a></li>
+<li>Requirements <a href="Data%20Model.htm">Data Model</a></li>
+<li>Requirements <a href="../../30%20Features/Export/Requirements%20Export.htm">Export</a></li>
+<li>Requirements <a href="../../30%20Features/Import/Requirements%20Import.htm">Import</a></li>
+</ul>
+</body>
+</html>

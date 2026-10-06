@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Variant Identification</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="variant-identification"><span id='_index_446728130'>Variant Identification</span></h1>
+<p>See also the dialog for <a href="../../20%20UserInterface/Variant/Identifying%20Features.htm">Identifying Features</a>.</p>
+<h2 id="introduction">Introduction</h2>
+<p>A diagnostic tester device in the garage needs to detect the ECU’s variant to determine e.g. its coverage of diagnostic support. The variant can be determined by analyzing the response telegrams of specific services.</p>
+<p>In development phase, ECUs are subject to permanent software releases which may produce many implementation variants. In most cases this does not affect the diagnostic part of the ECU’s implementation. From this it follows that the diagnostic variants are a subset of the real ECU variants.</p>
+<p>The “Variant Identification” feature in CANdela describes how a variant gets identified. The solution allows specifying more than one identification per variant, to take the diagnostic independent ECU variants into account.</p>
+<p>The “Variant Identification” feature enables the client to do variant identification in an automated and efficient way. The test system must send some requests and determine the variant from the response values.</p>
+<p>In the CANdela data model, the data objects evaluated are called <strong>&quot;Identifying features&quot;</strong>. Their values specific to a variant are called <strong>&quot;Identifying patterns&quot;</strong>.</p>
+<h2 id="identifying-feature"><span id='_index_446728131' title='for variant' data-text='for variant'>Identifying Feature</span></h2>
+<p>In the <strong>base variant</strong>, the <strong>Identifying Features</strong> describe which services the client shall send to the ECU, and which response data objects shall be inspected to identify the variant.</p>
+<p>Starting with 8.0, Job output parameters can be used for variant identification, too (CDS-25092).</p>
+<p>Starting with 8.1 SP1 (CDS-32113), data objects within a DID can be used for variant identification - the same objects as within a diagnostic instance (including objects in a bitfield, but not: data object referencing a complex data type, reserved data object). The implementation uses the data object path into the DID and the service path into the diagnostic instance.</p>
+<h2 id="identifying-pattern">Identifying Pattern</h2>
+<p><strong>Extended variants</strong> (all variants except the base variant) contain <strong>Identifying Patterns</strong>.</p>
+<p>An Identifying Pattern describes which concrete values of the data objects mentioned in Identifying Features identify the given variant.</p>
+<ul>
+<li><p>An Identifying Pattern defines values for a subset or all response data objects. At runtime, the client will match the ECU response against these values. The variant is detected only if all defined values match (conjunction, “AND” condition).</p></li>
+<li><p>You can specify multiple Identifying Patterns per variant. The variant is detected if either one of the patterns matches (disjunction, “OR” condition).</p></li>
+</ul>
+<h2 id="example">Example</h2>
+<p>The following example shows two variants identified by using the diagnostic instance “EcuIdentification” and the data objects “SWVersion” and “HWVersion” of the response.</p>
+<p>Variant A has two alternative Identifying Patterns: <code>(0x010000, 0xA32200)</code> and <code>(0x010100, 0xA32200)</code>. Actually, the values for the first data object (<code>0x010000</code> vs. <code>0x010100</code>) distinguish the variants, while the values for the second data object are identical (<code>0xA32200</code>).</p>
+<table style="width:98%;">
+<colgroup>
+<col width="51%" />
+<col width="16%" />
+<col width="16%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Identifying Features</th>
+<th align="left">Variant A<br />
+(Pattern 1)</th>
+<th align="left">Variant A<br />
+(Pattern 2)</th>
+<th align="left">Variant B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Data Object: EcuIdentification/SWVersion<br />
+Service: EcuIdentification/Read</td>
+<td align="left">0x010000</td>
+<td align="left">0x010100</td>
+<td align="left">0x010200</td>
+</tr>
+<tr class="even">
+<td align="left">Data Object: EcuIdentification/HWVersion<br />
+Service: EcuIdentification/Read</td>
+<td align="left">0xA32200</td>
+<td align="left">0xA32200</td>
+<td align="left">0xA32200</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mandatory">Mandatory Identifying Features and Patterns (CDS-7937 5.0)</h2>
+<p>R001.1: add flag whether an identification feature is mandatory (= pattern must be specified). Default value is false.</p>
+<p>R003.1: consistency check shall throw an error if for any mandatory Identification feature, the pattern is not set in any of the document's variants. No data export shall be possible.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Variant/Identifying%20Features.htm">Identifying Features</a> (User Interface - base variant)</li>
+<li><a href="../../20%20UserInterface/Variant/Identifying%20Patterns.htm">Identifying Patterns</a> (User Interface - non-base variant)</li>
+<li><a href="../../30%20Features/Vehicle%20System%20Group/Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm">Identifying Feature for Vehicle System Groups</a></li>
+</ul>
+</body>
+</html>

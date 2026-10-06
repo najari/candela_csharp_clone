@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>19 06 Wizard Data Model</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="wizard-data-model-cds-11966-6.5">19 06 Wizard Data Model (CDS-11966 6.5)</h1>
+<p>This chapter describes data model behind the <a href="../../20%20UserInterface/Fault%20Memory/19%2006%20Wizard.htm">19 06 Wizard</a> dialog.</p>
+<p>It applies to <strong>Extended Data</strong> defined <strong>within the service structure</strong> in a diagnostic instance (based on a <strong>Multiplexer</strong> in the Protocol Service).</p>
+<p>For the <strong>specific AUTOSAR data model</strong> available since CANdelaStudio 13, see the <a href="../../20%20UserInterface/Extended%20Data%20Records/GUI%20Extended%20Data.htm">Extended Data Records</a> (v13, AUTOSAR) page.</p>
+<h2 id="definitions">Definitions</h2>
+<p><strong>D001:</strong> let the <strong>Request</strong> primitive of protocol services <strong>0x19 0x04</strong> and <strong>0x19 0x06</strong> contain</p>
+<ul>
+<li>one <a href="../../30%20Features/Protocol%20Service/Multiplexer%20Component.htm">Multiplexer Component</a> at the end of the primitive.</li>
+</ul>
+<p><strong>D002:</strong> protocol service <strong>0x19 0x04</strong> - let the <strong>Positive Response</strong> primitive contain...</p>
+<ul>
+<li>one <a href="../../30%20Features/Protocol%20Service/Iteration%20Component.htm">End of Service Iteration Component</a> at the end of the primitive containing at the end of the iteration...
+<ul>
+<li>one <a href="../../30%20Features/Protocol%20Service/Fixed%20Data%20Component.htm">Fixed Data Component</a> and</li>
+<li>one Multiplexer Component.</li>
+</ul></li>
+</ul>
+<p><strong>D003:</strong> protocol service <strong>0x19 0x06 -</strong> let the <strong>Positive Response</strong> primitive contain...</p>
+<ul>
+<li>one End of Service Iteration Component at the end of the primitive containing at the end of the iteration...
+<ul>
+<li>one Fixed Data Component and</li>
+<li>one Multiplexer Component.</li>
+</ul></li>
+</ul>
+<p><strong>D004:</strong> let the Fixed Data Components of D002 and D003 contain at least</p>
+<ul>
+<li>a <strong>first data object referencing a <a href="../../30%20Features/Data%20Type/Text%20Table.htm">Text table data type</a></strong>, respectively,</li>
+<li>which defines the set of 19 06 record numbers.</li>
+</ul>
+<h2 id="data-storage">Data Storage</h2>
+<p>A &quot;<strong>Master data type</strong>&quot; contains the list of all available record numbers.</p>
+<p>CANdelaStudio stores the <strong>assignment of DTCs and record numbers</strong> in text table data types:</p>
+<ul>
+<li>for each combination of record numbers,</li>
+<li>it creates a new text table.</li>
+</ul>
+<p>For <strong>each DTC</strong>, CANdelaStudio...</p>
+<ul>
+<li>creates a data object in a Multiplexer case for the DTC</li>
+<li>and lets the data object reference the text table with the corresponding record number combination.</li>
+</ul>
+<p>CANdelaStudio generates the name of the text table...</p>
+<ul>
+<li>using the name of the &quot;Master data type&quot;,</li>
+<li>appending the text &quot;Group [A..Z][1..9]&quot;</li>
+<li>and the selected record numbers.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Introduction to <a href="Fault%20Memory.htm">Fault Memory</a></li>
+<li><a href="../../20%20UserInterface/Fault%20Memory/19%2006%20Wizard.htm">19 06 Wizard dialog</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Iteration%20Component.htm">End of Service Iteration Component</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Fixed%20Data%20Component.htm">Fixed Data Component</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Multiplexer%20Component.htm">Multiplexer Component</a></li>
+<li>Primitives <a class='rqRef' href='../../30%20Features/Protocol%20Service/Protocol%20Service.htm#PS-R100' title="">[PS-R100]</a></li>
+<li><a href="../../20%20UserInterface/Extended%20Data%20Records/GUI%20Extended%20Data.htm">Extended Data Records</a> (v13, AUTOSAR)</li>
+</ul>
+</body>
+</html>

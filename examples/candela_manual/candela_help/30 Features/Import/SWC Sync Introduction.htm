@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SWC Sync Introduction</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="swc-sync-cds-39137-8.5-sp2"><span id='_index_446728051'>SWC Sync</span><span id='_index_446728052' title='AUTOSAR: SWC Sync' data-term='AUTOSAR' data-text='SWC Sync'></span> (CDS-39137 8.5 SP2)</h1>
+<p>For the context of the SWC Sync, see the <a href="../../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a>:</p>
+<div class="figure">
+<img src="../../30%20Features/Images/Diagnostic%20Configuration%20Workflow.jpg" alt="Vector Tools in the AUTOSAR Workflow" />
+<p class="caption">Vector Tools in the AUTOSAR Workflow</p>
+</div>
+<p>See also the <a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a>.</p>
+<h2 id="use-cases">Use-Cases</h2>
+<ul>
+<li>Requirements-based (OEM):
+<ul>
+<li>import diagnostic requirements into CANdelaStudio at an early development stage, creating diagnostic objects from them,</li>
+<li>then develop the AUTOSAR <a href="../../10%20Introduction/CANdela%20Glossary.htm#SYS-EX">SYS-EX</a></li>
+<li>and update the diagnostic objects in CANdelaStudio based on the requirementsID,</li>
+<li>so that both the SYS-EX and a DEXT exported from CANdelaStudio can be used for Diagnostic Configuration</li>
+</ul></li>
+<li>Not requirements-based (supplier):
+<ul>
+<li>develop the AUTOSAR SYS-EX,</li>
+<li>initially create diagnostic objects in CANdelaStudio,</li>
+<li>later update these diagnostic objects based on the AUTOSAR UUID</li>
+<li>so that both the SYS-EX and a DEXT exported from CANdelaStudio can be used for Diagnostic Configuration</li>
+</ul></li>
+</ul>
+<p>Handle both SYS-EX objects that are...</p>
+<ul>
+<li><strong>under development</strong>
+<ul>
+<li>you can manually exclude them from synchronization</li>
+</ul></li>
+<li><strong>new</strong>
+<ul>
+<li>there is no matching requirementsID or UUID in the CANdela document</li>
+<li>SWC Sync puts them into the Import Pool to allow manual assignment later</li>
+</ul></li>
+</ul>
+<h2 id="example-tooling">Example Tooling</h2>
+<ul>
+<li>Vector tools such as PREEvision or DaVinci Developer,</li>
+<li>3<sup>rd</sup> party tools such as DOORS or XDIS</li>
+</ul>
+<h2 id="user-requirements">User Requirements</h2>
+<p>Context:</p>
+<ul>
+<li>an ECU specified using an AUTOSAR SYS-EX.</li>
+<li>CANdelaStudio supports to <strong>design the diagnostic communication in detail</strong>.</li>
+<li>CANdelaStudio supports exporting a <strong>diagnostic extract</strong> (DEXT).</li>
+</ul>
+<p><span id="SWC-R100" class="rqDef">[SWC-R100]</span> <strong>SWC Sync Operation</strong> The CANdelaStudio SWC Sync synchronizes objects in a CANdela document with objects in an AUTOSAR System Extract file (*.arxml).</p>
+<p><span id="SWC-U0300" class="rqDef">[SWC-U0300]</span> The exported DEXT is usable together with the original SYS-EX,</p>
+<ul>
+<li>e.g. during mapping for...
+<ul>
+<li><a href="../../10%20Introduction/CANdela%20Glossary.htm#dcm">DCM</a> and</li>
+<li><a href="../../10%20Introduction/CANdela%20Glossary.htm#dem">DEM</a> configuration.</li>
+</ul></li>
+</ul>
+<p>SWC Sync updates the CANdela document:</p>
+<ul>
+<li><span id="SWC-U0400" class="rqDef">[SWC-U0400]</span>: it links diagnostic objects with the corresponding objects in the SYS-EX,</li>
+<li><span id="SWC-U0600" class="rqDef">[SWC-U0600]</span>: it updates existing diagnostic objects if they have specific <strong>attributes</strong> set (e.g. the Sync ID <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R115' title="Requirements ID Storage">[RQ-R115]</a> or Instance Type <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20CANdela%20Attributes.htm#SWC-R200' title="">[SWC-R200]</a>)
+<ul>
+<li>overwriting any changes to the diagnostic object within CANdelaStudio</li>
+<li>only in the variant selected in the requirements setting tab (not all variants) (SWCSYNC-17)</li>
+</ul></li>
+</ul>
+<p><span id="SWC-U0800" class="rqDef">[SWC-U0800]</span>: CANdelaStudio supports <strong>repeated execution</strong> of the SWC Sync (to reflect development of the SYS-EX in the CANdela document).</p>
+<p><span id="SWC-U1000" class="rqDef">[SWC-U1000]</span>: Given a SYS-EX, the SWC Sync does not <strong>need</strong> further user interaction.</p>
+<h2 id="prerequisites-attributes">Prerequisites: Attributes</h2>
+<p>Ensure <strong>CANdela attributes for AUTOSAR</strong> have been created by the checkbox <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R500' title="">[DOCUI-R500]</a> in the dialog of menu <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm">File|Properties</a>, page &quot;Document Info&quot;.</p>
+<p>See the list <a href="SWC%20Sync%20CANdela%20Attributes.htm">SWC Sync CANdela Attributes</a>.</p>
+<h2 id="not-to-confuse-with-network-description-import">Not to Confuse with: Network Description Import</h2>
+<p><strong>SWC Sync</strong> reads a SYS-EX...</p>
+<ul>
+<li>containing <strong>software components (SWCs) with ports</strong></li>
+</ul>
+<p>... as opposed to the <a href="../../30%20Features/Import/Import%20from%20Network%20Description.htm">Import from a Network Description</a>...</p>
+<ul>
+<li>in menu item &quot;DTCs and Data&quot; | &quot;Import from an &quot;AUTOSAR (*.arxml)&quot; file&quot; <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R266' title="">[MENU-R266]</a>;</li>
+<li>which imports DTCs and data objects from a <strong>network description</strong> (<strong>not</strong> from software components).</li>
+</ul>
+<h2 id="how-to-start-swc-sync">How to Start SWC Sync</h2>
+<ul>
+<li>button <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R280' title="">[MENU-R280]</a> in the ribbon tab &quot;Data Exchange&quot;, or</li>
+<li>button <a class='rqRef' href='../../20%20UserInterface/Requirements/Requirements.htm#RQUI-R220' title="SWC Sync Button">[RQUI-R220]</a> in the <a href="../../20%20UserInterface/Requirements/Requirements.htm">Requirements</a> page.</li>
+</ul>
+<h2 id="swc-sync-operation-sequence">SWC Sync Operation Sequence</h2>
+<ul>
+<li>Start SWC Sync as described above</li>
+<li>CANdelaStudio prompts for an AUTOSAR system extract (SYS-EX)
+<ul>
+<li>maybe multiple files</li>
+<li>file dialog with multi-selection</li>
+</ul></li>
+<li>CANdelaStudio reads a SYS-EX</li>
+<li><span id="SWCUI-R0180" class="rqDef">[SWCUI-R0180]</span>: During processing of the system extract (while the dialog is not yet visible), CANdelaStudio shows a progress indicator.</li>
+<li>CANdelaStudio shows the <a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a>,</li>
+<li>... then performs the sync operation, which...
+<ul>
+<li>updates diagnostic objects based on <strong>matching requirement ID</strong> or <strong>matching AUTOSAR UUID</strong>, and</li>
+<li>puts new diagnostic objects into the import pool.</li>
+</ul></li>
+<li><span id="SWC-R0230" class="rqDef">[SWC-R0230]</span> ... finally informs you whether the sync was done successfully, with warnings or with errors.</li>
+<li><span id="SWC-R0240" class="rqDef">[SWC-R0240]</span>: The log contains:
+<ul>
+<li>warnings and errors during reading the SYS-EX,</li>
+<li>warnings and errors during the sync operation,</li>
+<li>updates to diagnostic objects.</li>
+</ul></li>
+</ul>
+<h2 id="swc-sync-data-overview">SWC Sync Data Overview</h2>
+<p><span id="SWC-R1200" class="rqDef">[SWC-R1200]</span> The following diagram shows which SYS-EX data will be shown in which pages of the dialog, depending on the fact whether the AUTOSAR object has the properties</p>
+<ul>
+<li>Requirements ID (RqID, see <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20Introduction.htm#SWC-R1350' title="">[SWC-R1350]</a> below for details) and/or</li>
+<li>Universally Unique Identifier (UUID):</li>
+</ul>
+<div class="figure">
+<img src="Images/SWC%20Sync%20Data%20Overview.jpg" alt="SWC Sync Data Overview" />
+<p class="caption">SWC Sync Data Overview</p>
+</div>
+<p>See <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20Introduction.htm#SWC-U0500' title="">[SWC-U0500]</a> below for the types (DIDs, Routines...) of imported objects.</p>
+<h2 id="ex">Extraction of CANdela Objects from SYS-EX</h2>
+<p><span id="SWC-R1310" class="rqDef">[SWC-R1310]</span> SWC Sync assumes the SYS-EX contains exactly one ECU-INSTANCE.</p>
+<p><span id="SWC-R1320" class="rqDef">[SWC-R1320]</span> SWC Sync reads data...</p>
+<ul>
+<li>from <code>ApplicationSwComponentType</code></li>
+<li>not from <code>ComplexDeviceDriverSwComponentType</code> (cf. CDS-71598)</li>
+<li><span id="SWC-R1330" class="rqDef">[SWC-R1330]</span> SWC Sync assumes a 1:1 relationship of Port Interface and Port Prototype (see <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20Routines.htm#SWC-R0810' title="">[SWC-R0810]</a>).</li>
+<li><span id="SWC-R1340" class="rqDef">[SWC-R1340]</span> SWC Sync supports only the IO control use case “IO control by Sender Receiver Interface”.</li>
+<li><span id="SWC-R1350" class="rqDef">[SWC-R1350]</span> SWC Sync expects diagnostic requirements information as <strong>SD (Special Data)</strong> at the relevant objects in the SYS-EX.</li>
+</ul>
+<p>Expected SDG structure:</p>
+<pre><code>ADMIN-DATA
+  SDGS
+    SDG
+      GID = &quot;DiagnosticReferenceInfos&quot;
+      SD
+        GID &quot;RequirementId&quot;
+        - the SD value is the requirement ID (string)
+      SD
+        GID &quot;DiagnosticObjectName&quot;
+        - the SD value is the diagnostic object name (string)
+          used during definition of the diagnostic requirements.
+        - SWC Sync does *not* require this complementary information for synchronization.</code></pre>
+
+<ul>
+<li>In SYS-EX, these SDs are optional.</li>
+<li>For SWC Sync, the requirement ID is required.</li>
+</ul>
+<p>For details about extraction, see the SWC Sync Reference chapters (find links below).</p>
+<h2 id="types-of-imported-objects">Types of Imported Objects</h2>
+<p><span id="SWC-U0500" class="rqDef">[SWC-U0500]</span> The SWC Sync extracts the following data from a SYS-EX file (each hyperlink navigates to the respective details chapter):</p>
+<ul>
+<li>a list of <a href="SWC%20Sync%20DTCs.htm">DTCs</a></li>
+<li>a list of <a href="SWC%20Sync%20Data%20Objects.htm">Data Objects</a> used in <strong>stored data records</strong></li>
+<li>dito in present value data records</li>
+<li>a list of <a href="SWC%20Sync%20Routines.htm">Routines</a>,
+<ul>
+<li>each containing up to six lists of data objects,</li>
+<li>corresponding to the optional request and response parameters of the <strong>Start</strong>, <strong>Stop</strong> and <strong>Request Routine Results</strong> subfunctions of UDS service <strong>0x31</strong></li>
+</ul></li>
+<li>a list of <a href="SWC%20Sync%20IOControls.htm">IOControls</a>,
+<ul>
+<li>each containing up to five lists of data objects,</li>
+<li>corresponding to the <strong>control state recordss</strong> of the subfunctions of UDS service <strong>0x2F</strong></li>
+</ul></li>
+<li>a list of <a href="SWC%20Sync%20Data%20Types.htm">Data Types</a> referenced by the data objects extracted</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>SWC Sync Reference:</p>
+<ul>
+<li><a href="SWC%20Sync%20DTCs.htm">SWC Sync DTCs</a></li>
+<li><a href="SWC%20Sync%20Data%20Objects.htm">SWC Sync Data Objects</a></li>
+<li><a href="SWC%20Sync%20Routines.htm">SWC Sync Routines</a></li>
+<li><a href="SWC%20Sync%20IOControls.htm">SWC Sync IOControls</a></li>
+<li><a href="SWC%20Sync%20Data%20Types.htm">SWC Sync Data Types</a></li>
+<li><a href="SWC%20Sync%20Synchronize%20Element%20References.htm">SWC Sync Synchronize Element References</a></li>
+<li><a href="SWC%20Sync%20Combine%20Parameters.htm">SWC Sync Combine Parameters</a></li>
+<li><a href="SWC%20Sync%20CANdela%20Attributes.htm">SWC Sync CANdela Attributes</a></li>
+<li><a href="SWC%20Sync%20Changes.htm">SWC Sync Changes</a></li>
+</ul>
+<p>Overview:</p>
+<ul>
+<li><a href="../../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a></li>
+<li><a href="../../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm#microsar">Vector Diagnostic Toolchain</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#autosar">AUTOSAR Command Line Operation Examples</a></li>
+<li><a href="../../30%20Features/Attributes/Special%20Attributes.htm">Special Attributes</a></li>
+</ul>
+<p>Procedures:</p>
+<ul>
+<li><a href="../../15%20Procedures/AUTOSAR/How%20to%20Configure%20the%20Diagnostic%20Basic%20Software%20of%20an%20AUTOSAR%204%20ECU.htm">How to Configure the Diagnostic Basic Software of an AUTOSAR 4 ECU</a></li>
+<li><a href="../../15%20Procedures/Help/How%20to%20Search%20for%20a%20FeatureID.htm">How to Search for a FeatureID</a></li>
+</ul>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm">Ribbon Tab Data Exchange</a></li>
+<li><a href="../../20%20UserInterface/Requirements/Requirements.htm">Requirements</a></li>
+<li><a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a></li>
+</ul>
+
+</body>
+</html>

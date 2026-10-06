@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>PREEvision UUIDs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="preevision-uuids-cdc-44285-v13">PREEvision <span id='_index_446727928'>UUIDs</span><span id='_index_446727929' title='PREEvision: UUIDs' data-term='PREEvision' data-text='UUIDs'></span> (CDC-44285 v13)</h1>
+<p>Starting with version 13, CANdelaStudio supports detailed <strong>roundtrip data exchange</strong> of diagnostic data with PREEvision.</p>
+<p>Cf. the</p>
+<ul>
+<li><a href="../../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a> and the</li>
+<li><a href="../../30%20Features/PREEvision%20CANdela%20Data%20Interchange/Introduction.htm">PREEvision CANdela Data Interchange - Introduction</a>.</li>
+</ul>
+<h2 id="uuids">UUIDs</h2>
+<p><span id="PUID-R010" class="rqDef">[PUID-R010]</span> Some CANdela objects support...</p>
+<ul>
+<li><span id="PUID-R010-CDS" class="rqDef">[PUID-R010-CDS]</span> a <strong>CANdela UUID for PREEvision</strong> (string)</li>
+<li><span id="PUID-R010-PV" class="rqDef">[PUID-R010-PV]</span> several <strong>PREEvision UUIDs</strong> (string vector).</li>
+<li><span id="PUID-R010-Number" class="rqDef">[PUID-R010-Number]</span> The number of UUIDs depends on the object type (see below).</li>
+<li><span id="PUID-R010-Empty" class="rqDef">[PUID-R010-Empty]</span> The UUID strings always exist, but may be empty.</li>
+<li><span id="PUID-R010-Hidden" class="rqDef">[PUID-R010-Hidden]</span> CANdelaStudio does not normally show these UUIDs, they are used for roundtrip internally.</li>
+</ul>
+
+<h2 id="occurrence">Occurrence</h2>
+<p><span id="PUID-R050" class="rqDef">[PUID-R050]</span> The following CANdela object types support the UUIDs of <a class='rqRef' href='../../30%20Features/Common%20Properties/PREEvision%20UUIDs.htm#PUID-R010' title="">[PUID-R010]</a>:</p>
+<p><strong>Document level</strong>:</p>
+<ul>
+<li>Variant <a class='rqRef' href='../../30%20Features/Variant/Variant.htm#VAR-R001' title="">[VAR-R001]</a> and Library <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R010' title="Library Definition">[LIB-R010]</a> (&quot;Diag Layer&quot;)</li>
+<li>Vehicle System Group <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm#VSG-R010' title="">[VSG-R010]</a></li>
+<li>Data Type <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R100' title="">[DT-R100]</a></li>
+<li>Error Code Table <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R001' title="">[ECT-R001]</a></li>
+<li>DTC Column <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R001' title="">[DTCC-R001]</a></li>
+</ul>
+<p><strong>Within Variant or Library</strong>:</p>
+<ul>
+<li>DID <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R001' title="">[DID-R001]</a></li>
+<li>Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D100' title="">[DI-D100]</a></li>
+<li>Data Object <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R010' title="">[DO-R010]</a></li>
+<li>DTC <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R001' title="">[DTC-R001]</a></li>
+<li>Event <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a></li>
+<li>Indicator Connection <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R300' title="">[EV-R300]</a></li>
+<li>Operation Cycle <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a></li>
+<li>Indicator <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R600' title="">[EV-R600]</a></li>
+<li>Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a></li>
+<li>Condition Group <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800' title="">[EV-R800]</a></li>
+</ul>
+<h2 id="usage">Usage</h2>
+<ul>
+<li><span id="PUID-R110" class="rqDef">[PUID-R110]</span> For a new object, the UUIDs are empty.</li>
+<li><span id="PUID-R120" class="rqDef">[PUID-R120]</span> CANdelaStudio does not modify UUIDs during editing operations.</li>
+<li><span id="PUID-R130" class="rqDef">[PUID-R130]</span> CANdelaStudio fills UUIDs (CDS-71795) and ensures uniqueness <a class='rqRef' href='../../30%20Features/Common%20Properties/PREEvision%20UUIDs.htm#PUID-R140' title="">[PUID-R140]</a>
+<ul>
+<li><span id="PUID-R130-Export" class="rqDef">[PUID-R130-Export]</span> before export to PREEvision,</li>
+<li><span id="PUID-R130-Import" class="rqDef">[PUID-R130-Import]</span> after import from PREEvision,</li>
+<li><span id="PUID-R130-Save" class="rqDef">[PUID-R130-Save]</span> before saving a template or document, <em>iff.</em> it has been exported to or imported from PREEvision before.</li>
+<li>Note: this is an optimization - only documents used for data exchange with PREEvision have UUIDs filled in.</li>
+</ul></li>
+<li><span id="PUID-R140" class="rqDef">[PUID-R140]</span> CANdelaStudio ensures that non-empty UUIDs are unique within a Variant/Library.
+<ul>
+<li>Note: CANdelaStudio creates <em>new</em> UUIDs as unique within any CANdela document created by any instance of CANdelaStudio on any machine.</li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/PREEvision%20CANdela%20Data%20Interchange/Introduction.htm">PREEvision CANdela Data Interchange Exchange - Introduction</a></li>
+<li>PREEvision UUID Repair <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Saving%20a%20Document%20or%20Template.htm#SV-R110' title="">[SV-R110]</a> on saving</li>
+</ul>
+</body>
+</html>

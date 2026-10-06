@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Sharing Diagnostic Instances</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="sharing-diagnostic-instances-in-variants"><span id='_index_446727993'>Sharing</span> Diagnostic Instances in Variants</h1>
+<h2 id="use-case">Use-Case</h2>
+<p><strong>U001.0</strong>: the user adds a new diagnostic instance in the base variant and wants to insert it also in some/all extended variants (as a copy or as a reference).</p>
+<p><strong>U010.0</strong>: the user wants to insert one or multiple existing diagnostic instances from the base variant in some extended variants (as a copy or as a reference).</p>
+<p><strong>U020.0</strong>: the user wants to delete one or multiple existing diagnostic instances from the base variant and also from some extended variants where they are referenced (not where there are copies).</p>
+<h2 id="specification">Specification</h2>
+<p><strong>R001.0</strong>: When the user adds a new diagnostic instance in the base variant, CANdelaStudio shall provide a convenient way to insert it also in some/all extended variants (as a copy or as a reference).</p>
+<p><strong>R010.0</strong>: CANdelaStudio shall provide a convenient way to insert one or multiple existing diagnostic instances from the base variant in some extended variants (as a copy or as a reference).</p>
+<p>a) A singleton diagnostic instance must be inserted directly into the variant. If it already exists in the target variant, CANdelaStudio must either skip it or overwrite the existing one.</p>
+<p>b) A non-singleton diagnostic instance must be inserted into the same folder as in the source variant. If it does not yet exist, CANdelaStudio must create the folder in the target variant.</p>
+<p>c) Conflicts (name or identifier already exists) shall be handled in a convenient way even when multiple diagnostic instances are processed.</p>
+<p><strong>R020.0</strong>: When the user deletes one or multiple existing diagnostic instances from the base variant, CANdelaStudio shall provide a convenient way to delete them also from extended variants where they are referenced.</p>
+<p><strong>R100.0</strong>: CANdelaStudio shall provide a user option to prompt for R001/R010, or to process the base variant only.</p>
+<p><strong>R120.0</strong>: CANdelaStudio shall provide a user option to prompt for R020, or to process the base variant only.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Diagnostic%20Instance.htm">Diagnostic Instance (Feature)</a></li>
+<li><a href="../../30%20Features/Common%20Properties/References.htm">References</a></li>
+</ul>
+</body>
+</html>

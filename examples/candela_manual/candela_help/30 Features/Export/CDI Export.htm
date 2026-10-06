@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CDI Export</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="cdi-export"><span id='_index_446728030' title='Export to' data-text='Export to'>CDI</span> Export</h1>
+<h2 id="cdi-introduction">CDI Introduction</h2>
+<ul>
+<li>CDI = &quot;<strong>CANdela Data Import</strong>&quot;</li>
+<li>The main purpose of the format is to provide a simple XML format for <strong>import</strong> of...
+<ul>
+<li><strong>DTCs</strong></li>
+<li><strong>data types</strong> and</li>
+<li><strong>data objects</strong>.</li>
+<li>See <a href="../../30%20Features/Import/Import%20from%20CDI.htm">Import from CDI</a>.</li>
+</ul></li>
+<li>For details about the format, see the description in the <a href="../../30%20Features/Installation/Documentation.htm">Documentation</a> folder of the CANdelaStudio installation.</li>
+</ul>
+<h2 id="export-overview">Export Overview</h2>
+<p><span id="CDI-R200" class="rqDef">[CDI-R200]</span> Export to the <strong>CANdela Data Import</strong> (CDI) format...</p>
+<ul>
+<li>is available for <strong>DTCs</strong> only.
+<ul>
+<li>The original use-case was to configure the <strong>FRFM</strong> CANdesc code generation module</li>
+</ul></li>
+<li>It is available as a &quot;File type&quot; in the &quot;Save As&quot; of DTC Export in Fault Memory</li>
+<li>... in two variations:
+<ul>
+<li>&quot;<strong>CDI</strong>&quot;:
+<ul>
+<li>uses the newer XML format 1.5.0</li>
+<li>which distinguishes DTC Attributes by an XML attribute <code>type=&quot;A&quot;</code></li>
+</ul></li>
+<li>&quot;<strong>CDI for FRFM</strong>&quot;:
+<ul>
+<li>uses the XML format 1.4.1</li>
+<li>for compatibility with the CANdesc code generator for the FRFM module</li>
+</ul></li>
+</ul></li>
+<li>It can be <strong>filtered by Vehicle System Groups</strong>, using button &quot;More filters...&quot; in the &quot;Save As&quot; dialog.</li>
+<li>Export includes
+<ul>
+<li><strong>DTC Columns</strong> <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R040' title="DTC Columns">[DTC-R040]</a> and</li>
+<li><strong>Attributes</strong> <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-DTC' title="">[ATTR-R050-DTC]</a> (CDS-6817 5.0).</li>
+</ul></li>
+<li>In case a DTC column and an Attribute have the same qualifier, export...
+<ul>
+<li>includes the DTC Column,</li>
+<li>skips the Attribute with a warning.</li>
+</ul></li>
+</ul>
+<h2 id="cdi-for-frfm"><span id='_index_446728031' title='for FRFM' data-text='for FRFM'>CDI</span> for FRFM</h2>
+<p>The <strong>FRFM</strong> CANdesc code generation module needs the CDI XML format version 1.4.1, activated by the file type entry &quot;<strong>CDI for FRFM</strong>&quot; in the DTC &quot;Save As&quot; dialog.</p>
+<p>FRFM Configuration Parameters, stored in DTC Attributes:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Parameter</th>
+<th align="center">Attribute Hidden</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>DTC_OCCURRENCE_FLAG</code></td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left"><code>DTC_WARNING_INDICATOR_FLAG</code></td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>DTC_SUPPRESSED_FLAG</code></td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="left"><code>DTC_PRIORITY_VALUE</code></td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>DTC_SELF_HEALING_COUNTER</code></td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="left"><code>DATA_RECORD_NUMBER_FIRST_CONFIRMED</code></td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>DATA_RECORD_SIZE_FIRST_CONFIRMED</code></td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="left"><code>DATA_RECORD_NUMBER_MOST_RECENT</code></td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>DATA_RECORD_SIZE_MOST_RECENT</code></td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="left"><code>DTC_READINESS_GROUP_VALUE</code></td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>DTC_ENABLE_CONDITION_GROUP_VALUE</code></td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="left"><code>DTC_DEBOUNCE_MATURE_STEP_SIZE</code></td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>DTC_DEBOUNCE_DEMATURE_STEP_SIZE</code></td>
+<td align="center">x</td>
+</tr>
+<tr class="even">
+<td align="left"><code>DTC_MUTUAL_EXCLUSION_LIST</code></td>
+<td align="center">x</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC%20Export.htm">DTC Export</a> (Excel)</li>
+<li><a href="../../20%20UserInterface/DTC/DTCs.htm">DTC List</a></li>
+<li><a href="../../30%20Features/Installation/Documentation.htm">Documentation</a></li>
+<li><a href="../../30%20Features/Import%20Pool/Import%20Pool.htm">Import Pool</a></li>
+<li><a href="../../30%20Features/Import/Import%20from%20CDI.htm">Import from CDI</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm">Ribbon Tab Data Exchange</a></li>
+</ul>
+</body>
+</html>

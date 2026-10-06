@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SWC Sync Combine Parameters</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="swc-sync-combine-parameters">SWC Sync Combine Parameters</h1>
+<p><span id="SWC-R1600" class="rqDef">[SWC-R1600]</span> The checkbox &quot;Combine Parameters of Synchronized DIDs in DEXT Export&quot; <a class='rqRef' href='../../20 UserInterface\Import\SWC Sync Dialog.htm#SWCUI-R360' title="">[SWCUI-R360]</a> in the SWC Sync Dialog...</p>
+<ul>
+<li>controls whether SWC Sync sets the attribute <a href="../../30%20Features/Attributes/Special%20Attributes.htm#ASR3LegacyCombineDID">ASR3LegacyCombineDID</a> at imported DIDs</li>
+<li>... which will trigger DEXT Export of the DIDs as uint8 array, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R205' title="">[DEXT-R205]</a> and <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R207' title="">[DEXT-R207]</a>.</li>
+</ul>
+<p>While the default is to export DIDs as individual parameters, export of an uint8 array may be useful if...</p>
+<ul>
+<li>the SYS-EX uses not recommended model structures which daVinci Configurator does not handle (as of 2019), or</li>
+<li>a DID contains a large number of data objects which would be high effort to map interactively in daVinci Configurator.</li>
+</ul>
+<h2 id="combine-parameters...-off">Combine Parameters... off</h2>
+<p><span id="SWC-R1600-Off" class="rqDef">[SWC-R1600-Off]</span></p>
+<div class="figure">
+<img src="Images/SWC%20Sync%20Combine%20Parameters%20off.jpg" alt="&quot;Combine Parameters...&quot; off" />
+<p class="caption">&quot;Combine Parameters...&quot; off</p>
+</div>
+<ul>
+<li>attribute value <code>= 0</code></li>
+<li>the generated callback receives a <code>struct</code></li>
+<li>ports for the data objects must be mapped</li>
+</ul>
+<h2 id="combine-parameters...-on">Combine Parameters... on</h2>
+<p><span id="SWC-R1600-On" class="rqDef">[SWC-R1600-On]</span></p>
+<div class="figure">
+<img src="Images/SWC%20Sync%20Combine%20Parameters%20on.jpg" alt="&quot;Combine Parameters...&quot; on" />
+<p class="caption">&quot;Combine Parameters...&quot; on</p>
+</div>
+<ul>
+<li>attribute value <code>!= 0</code></li>
+<li>the generated callback receives an <code>uint8</code> array</li>
+<li>the callback must handle the placement of the individual data objects within the array</li>
+</ul>
+<h2 id="dids-vs.-diagnostic-instances">DIDs vs. Diagnostic Instances</h2>
+<p><span id="SWC-R1610" class="rqDef">[SWC-R1610]</span></p>
+<ul>
+<li><span id="SWC-R1610-DID" class="rqDef">[SWC-R1610-DID]</span> SWC Sync sets the attribute <code>ASR3LegacyCombineDID</code> at DIDs.</li>
+<li><span id="SWC-R1610-DiagInst" class="rqDef">[SWC-R1610-DiagInst]</span> SWC Sync sets the attribute <code>ASR3LegacyCombineDID</code> at a diagnostic instance that describes a UDS DID (SWCSYNC-163 v12).</li>
+</ul>
+<p>Background:</p>
+<ul>
+<li>CANdelaStudio allows to describe <a href="../../30%20Features/DID/DID.htm">DIDs</a> (data only) in a tree node separate from the Diagnostic Classes.</li>
+<li>The use of these separate DIDs can be enforced by setting <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050' title="Combined Component DID Semantics">[DID-R050]</a> in the Diagnostic Class Template.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance</a></li>
+<li><a href="SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a></li>
+<li><a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a></li>
+</ul>
+</body>
+</html>

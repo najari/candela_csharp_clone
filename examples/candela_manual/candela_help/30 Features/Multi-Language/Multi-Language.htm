@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Multi-Language</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="multi-language-candela-documents">Multi-Language CANdela Documents</h1>
+<h2 id="languages">Languages</h2>
+<p>A CANdela document stores a set of languages <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R300' title="Languages">[DOC-R300]</a>.</p>
+<h2 id="multi-language-document-parts">Multi-Language Document Parts</h2>
+<p><span id="ML-R100" class="rqDef" title="Translatables">[ML-R100 Translatables]</span> A CANdela document contains language-dependent strings (“<strong>translatables</strong>”):</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Common%20Properties/Name.htm#NAME-R010' title="">[NAME-R010]</a> name,</li>
+<li><a class='rqRef' href='../../30%20Features/Common%20Properties/Description.htm#DESC-R010' title="">[DESC-R010]</a> description,</li>
+<li><a class='rqRef' href='../../30%20Features/Data%20Type/Text%20Table.htm#TT-R110-ML' title="">[TT-R110-ML]</a> text table: Assigned Text (e.g. “on”, “off”), Additional Info</li>
+<li><a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R030-MultiLang' title="">[DTC-R030-MultiLang]</a> error text,</li>
+<li><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a> Symbol of enumeration attributes (e.g. release state of a variant)</li>
+<li><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-text' title="">[ATTR-R020-text]</a> Values of text attributes</li>
+<li><a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R010-Symbol' title="">[DTCC-R010-Symbol]</a> Values of enumeration DTC Columns</li>
+<li><a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm#DTCC-R010-Translatable' title="">[DTCC-R010-Translatable]</a> Values of text DTC Columns like “Set Condition”</li>
+</ul>
+<p><strong>Not translatable</strong> are:</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Common%20Properties/Qualifier.htm#QUAL-R110' title="">[QUAL-R110]</a> Qualifiers (intentionally language independent)</li>
+<li><a class='rqRef' href='../../30%20Features/Revision%20History/Revision%20History.htm#REV-R010-ModLang' title="">[REV-R010-ModLang]</a> Revision entries</li>
+<li><a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R070' title="">[RQ-R070]</a> Requirement properties.</li>
+</ul>
+<p><span id="ML-R110" class="rqDef">[ML-R110]</span> Each multi-language string is stored as one string instance for each language <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R300' title="Languages">[DOC-R300]</a> of the document. Each instance has...</p>
+<ul>
+<li><span id="ML-R110-Lang" class="rqDef">[ML-R110-Lang]</span> an indication of the language/country,</li>
+<li><span id="ML-R110-Uptodate" class="rqDef">[ML-R110-Uptodate]</span> the info whether the string contents is <strong>up-to-date</strong>.
+<ul>
+<li>When you edit a multi-language string in one language, CANdelaStudio sets the instances for other languages to &quot;not up-to-date&quot;.</li>
+<li>In Translation View <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Views.htm#VIEW-R200' title="">[VIEW-R200]</a>, you can translate these instances and set them up-to-date.</li>
+<li>See <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R300-Uptodate' title="">[DOC-R300-Uptodate]</a> for the effect on the <strong>document</strong>.</li>
+</ul></li>
+</ul>
+<h2 id="creating-a-multi-language-document">Creating a Multi-Language Document</h2>
+<p>If you create a CANdela document using Ribbon File | New <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab File.htm#MENU-R010' title="">[MENU-R010]</a>, CANdelaStudio lets you select...</p>
+<ul>
+<li>the document template file (.cddt) and</li>
+<li>the language</li>
+</ul>
+<p>... for your document.</p>
+<p>Your editing in the document will apply to the selected language only, so that the document will no longer be up-to-date for other languages <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R300' title="Languages">[DOC-R300]</a> contained in the document.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Dictionary.htm">Dictionary Feature</a></li>
+<li><a href="../../15%20Procedures/Multi-Language/How%20to%20Add%20a%20Language%20to%20a%20CANdela%20File.htm">How to Add a Language to a CANdela File</a></li>
+<li><a href="../../15%20Procedures/Common%20Properties/How%20to%20Prepare%20a%20CANdela%20Document%20for%20TextIDs.htm">How to Prepare a CANdela Document for TextIDs</a></li>
+<li><a href="Romanization.htm">Romanization</a></li>
+<li><a href="Translation%20Memory.htm">Translation Memory</a></li>
+<li><a href="../../20%20UserInterface/Multi-Language/Translation%20View.htm">Translation View</a></li>
+<li>Command Line parameter <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-language' title="">[CLI-R100-language]</a> for opening a document in a specific language</li>
+</ul>
+
+</body>
+</html>

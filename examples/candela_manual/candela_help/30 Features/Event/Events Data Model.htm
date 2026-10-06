@@ -1,0 +1,1113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Events Data Model</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="events-data-model-cds-42224-v12">Events Data Model (CDS-42224 v12)</h1>
+<p>See also the <a href="Events%20Introduction.htm">Events Introduction</a> and the <a href="Event%20Operations.htm">Event Operations</a>.</p>
+<h2 id="events-data-model-in-candela">Events Data Model in CANdela</h2>
+<p>The following specifies the <strong>details of the Events data model</strong> in a CANdela document or template.</p>
+<p>The initial CANdela Events data model in v12 corresponds with the Events data model in AUTOSAR 4.4 DEXT, with minor deviations <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D100' title="">[EV-D100]</a> (below).</p>
+<p>For the meaning of the &quot;Cardinality&quot; information, see <a href="#Cardinality">chapter &quot;Legend: Cardinality&quot;</a> below.</p>
+<p><strong>Contents</strong>:</p>
+<ul>
+<li>Supports Events <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a></li>
+<li>Event List <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a></li>
+<li>Event Properties <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R100' title="">[EV-R100]</a>
+<ul>
+<li>Indicator Connection <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R300' title="">[EV-R300]</a></li>
+</ul></li>
+<li>Event Master Data <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D040' title="">[EV-D040]</a>
+<ul>
+<li>Operation Cycle <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a></li>
+<li>Indicator <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R600' title="">[EV-R600]</a></li>
+<li>Conditions <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D700' title="">[EV-D700]</a>
+<ul>
+<li>Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a></li>
+<li>Condition Group <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800' title="">[EV-R800]</a></li>
+</ul></li>
+<li>Debounce Algorithm <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1100' title="">[EV-R1100]</a>
+<ul>
+<li>Counter-Based Debounce Algorithm <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1200' title="">[EV-R1200]</a></li>
+<li>Time-Based Debounce Algorithm <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1300' title="">[EV-R1300]</a></li>
+</ul></li>
+</ul></li>
+<li>Event and DTC <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a></li>
+<li>Consistency Conditions <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D100' title="">[EV-D100]</a></li>
+<li>Migration <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R250' title="">[EV-R250]</a></li>
+<li>Deviations to AUTOSAR Terms <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D200' title="">[EV-D200]</a></li>
+<li><a href="#Cardinality">Legend: Cardinality</a></li>
+</ul>
+<h2 id="supports-events">Supports Events</h2>
+<p><span id="EV-R010" class="rqDef">[EV-R010]</span> A CANdela document has a Boolean flag <strong>Supports Events</strong>.</p>
+<ul>
+<li>Boolean</li>
+<li>mandatory</li>
+<li><span id="EV-R010-Default" class="rqDef">[EV-R010-Default]</span> default: false.
+<ul>
+<li>This is the value set after loading a file with version <code>&lt;</code> 12 <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R250-Supp' title="">[EV-R250-Supp]</a>.</li>
+</ul></li>
+<li>If <strong>false</strong>:
+<ul>
+<li>CANdelaStudio shows all Event dialogs.
+<ul>
+<li>Motivation: you may explore the feature.</li>
+</ul></li>
+<li>But you cannot <strong>create</strong> Events.</li>
+<li>You may create Event Master Data <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D040' title="">[EV-D040]</a>.</li>
+<li><strong>Data oriented exports</strong>, mainly DEXT Export <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R308' title="">[DEXT-R308]</a>, still use <strong>DTC properties</strong> for Events.</li>
+<li>CANdelaStudio shows a hint above the Event list <a class='rqRef' href='../../20 UserInterface\Event\Events.htm#EVUI-R030' title="">[EVUI-R030]</a>.</li>
+<li><span id="EV-R010-NonEmpty" class="rqDef">[EV-R010-NonEmpty]</span> If the flag is false, the Event lists <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a> must be empty.</li>
+</ul></li>
+<li>If <strong>true</strong>:
+<ul>
+<li>You may create Events.</li>
+<li>Data oriented exports do <strong>not</strong> use <strong>DTC properties</strong>, they use the Event list (even if it is empty).</li>
+</ul></li>
+<li>You can modify the flag...
+<ul>
+<li>in File | Properties | Document Info <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R600' title="">[DOCUI-R600]</a></li>
+<li>in Expert view only <a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R010' title="">[EVOP-R010]</a></li>
+<li>based on the operation <a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R010' title="">[EVOP-R010]</a></li>
+</ul></li>
+<li>See also
+<ul>
+<li>Paste <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R010-Events' title="">[DIOP-R010-Events]</a> of a Diagnostic Instance eventually skips Events</li>
+<li>Paste as Reference <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D030-Events' title="">[DIOP-D030-Events]</a> of a Diagnostic Instance: dito.</li>
+<li><a class='rqRef' href='../../20 UserInterface\Event\DTC Events Mapping.htm#EVUI-R232' title="">[EVUI-R232]</a> Modifying Operations in the DTC Events Mapping page are insensitive:
+<ul>
+<li><a class='rqRef' href='../../20 UserInterface\Event\DTC Events Mapping.htm#EVUI-R244' title="">[EVUI-R244]</a> &quot;Create / Map Events&quot;</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="event-list">Event List</h2>
+<p><span id="EV-R020" class="rqDef">[EV-R020]</span> A Fault Memory Diagnostic Instance contains 0..n Events.</p>
+<ul>
+<li><span id="EV-R020-Card" class="rqDef">[EV-R020-Card]</span> Cardinality: Diagnostic Instance 1..1 -- 0..n Events</li>
+<li><span id="EV-R020-Type" class="rqDef">[EV-R020-Type]</span> Events are <strong>not allowed</strong> in a Diagnostic Instance of a <strong>type</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R200' title="">[DCLT-R200]</a> other than &quot;Fault Memory&quot;.
+<ul>
+<li>cf. modification of the class type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLTOP-R200-Events' title="">[DCLTOP-R200-Events]</a> and the correction on loading <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Loading%20a%20Document%20or%20Template.htm#LOAD-R200-Events' title="">[LOAD-R200-Events]</a>.</li>
+</ul></li>
+<li><span id="EV-R020-OBDII" class="rqDef">[EV-R020-OBDII]</span> Events are <strong>not allowed</strong> in an <strong>OBDII</strong> Fault Memory Diagnostic Instance.
+<ul>
+<li>An <strong>OBDII DTC</strong> is associated with one or multiple <strong>UDS DTCs</strong>, <strong>not directly with Events</strong>.</li>
+<li>See <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230-OBDII' title="">[EV-R230-OBDII]</a> for the Event to DTC reference.</li>
+</ul></li>
+<li><span id="EV-R020-Protocol" class="rqDef">[EV-R020-Protocol]</span> Events are <strong>allowed</strong> without restriction by the <strong>Protocol Standard</strong> <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R120' title="">[DOCUI-R120]</a>
+<ul>
+<li>except for OBDII DTCs (see previous item)</li>
+<li>as noted in the <a href="Events%20Introduction.htm#protocol">introduction</a></li>
+<li>Note: export to DEXT supports only J1939, UDS, UDS/WWH-OBD (not OBDII, KWP2000, other).</li>
+</ul></li>
+<li><span id="EV-R020-UserDef" class="rqDef">[EV-R020-UserDef]</span> Events are <strong>allowed</strong> in a Fault Memory diagnostic instance of any Fault Memory Type: <strong>Primary</strong> or <strong>User Defined Memory</strong> <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D100' title="">[UDFM-D100]</a>.</li>
+</ul>
+<p><span id="EV-R030" class="rqDef">[EV-R030]</span> The Events have no persistent sort order.</p>
+<ul>
+<li>Assumption: the user interface sorts them ascending by Name.</li>
+<li>Accepted consequence: if an ECU implementation accesses Events by a numeric index, and you define a new Event, the numeric index of existing Events may change.</li>
+</ul>
+<h2 id="event-properties">Event Properties</h2>
+<p>This chapter describes all <strong>properties</strong> (e.g. &quot;Kind&quot;) and <strong>relationships</strong> (e.g. &quot;references Operation Cycle&quot;) of an Event. Details for the related objects themselves (e.g. an Operation Cycle) are described in the following chapters.</p>
+<p><span id="EV-R100" class="rqDef">[EV-R100]</span> An Event has Name, Qualifier, Description.</p>
+<ul>
+<li><span id="EV-R100-Qualified" class="rqDef">[EV-R100-Qualified]</span> Name and Qualifier must be unique in the list <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a>.</li>
+</ul>
+<p><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-Event' title="">[ATTR-R050-Event]</a> An Event has Default Attributes.</p>
+<p><span id="EV-R110" class="rqDef">[EV-R110]</span> <strong>Kind</strong> The Event kind describes which object <strong>triggers</strong> the Event:</p>
+<ul>
+<li><strong>Software Component</strong> (SWC) in the application</li>
+<li><strong>Basis Software</strong> (BSW)</li>
+<li>Default: &quot;Software Component&quot;</li>
+<li>Both kinds of Events can reference a DTC, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230-Kind' title="">[EV-R230-Kind]</a>.</li>
+</ul>
+<p><span id="EV-R120" class="rqDef">[EV-R120]</span> <strong>Operation Cycle</strong></p>
+<ul>
+<li>defines the Operation Cycle used for <strong>qualifying</strong> of the Event</li>
+<li>optional reference to an Operation Cycle <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a></li>
+<li>Cardinality: Events 0..n -- 0..1 Operation Cycle</li>
+<li>Default: none</li>
+<li>The Event and the referenced Operation Cycle must both exist within the same diagnostic instance.</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>[TPS_DEXT_01086]</code> <code>DiagnosticEventToOperationCycleMapping</code></li>
+<li>DEXT: <code>[TPS_DEXT_01087]</code> Qualifying</li>
+<li>DEXT Export: <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R3120' title="">[DEXT-R3120]</a></li>
+</ul></li>
+</ul>
+<p><span id="EV-R130" class="rqDef">[EV-R130]</span> <strong>Failure Cycle Counter Threshold</strong></p>
+<ul>
+<li>also called...
+<ul>
+<li>&quot;<strong>Trip Counter</strong>&quot;</li>
+<li>&quot;Number of Trips - Active&quot; (in the Vector UDS Template before v2.5.0)</li>
+</ul></li>
+<li>The <strong>threshold</strong> defines...
+<ul>
+<li>the <strong>number of Operation Cycles</strong> (as specified by <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R120' title="">[EV-R120]</a> above) having failures,</li>
+<li>needed to confirm the DTC (i.e. needed to set UDS status bit 3 &quot;ConfirmedDTC&quot;, turning MIL on)</li>
+</ul></li>
+<li>Value 0:
+<ul>
+<li>the standard UDS behavior for confirming an Event</li>
+<li>UDS status bit ConfirmedDTC will be set with the first qualified FAILED Event status</li>
+</ul></li>
+<li>Value 1:
+<ul>
+<li>UDS status bit ConfirmedDTC will be set when the Event fails again in the <strong>next</strong> Operation Cycle.</li>
+</ul></li>
+<li>Larger values <code>n</code> specify setting ConfirmedDTC in the <code>n</code>-th next Operation Cycle.</li>
+<li>optional property</li>
+<li>typical values: 0 (UDS), 2 or 3 (OBD)</li>
+<li>unsigned integer (32 bit),
+<ul>
+<li>value range: <code>&lt;=</code> 255</li>
+<li>intentionally no constraint in CANdela, since in the future, bigger values may be required</li>
+</ul></li>
+<li>Default: 0</li>
+<li>Related:
+<ul>
+<li>in DEM, this is a mandatory property</li>
+<li>DEXT: <code>[TPS_DEXT_01083]</code> <code>eventFailureCycleCounterThreshold</code></li>
+<li>DEM: <code>[SWS_Dem_00391]</code> status bit transition for UDS status bit 3 <code>ConfirmedDTC</code></li>
+<li>DEM: <code>[SWS_Dem_00773]</code> increment counter when Operation Cycle ends</li>
+<li>German: &quot;Schwellwert Fehler-Betriebszyklen&quot;</li>
+</ul></li>
+</ul>
+<p><span id="EV-R140" class="rqDef">[EV-R140]</span> <strong>Indicator Connections</strong>: An Event in status &quot;failed&quot; may optionally be indicated to the driver, using one or more connected <strong>Indicators</strong> (like the MIL).</p>
+<ul>
+<li>In the data model, an Event has a list of <strong>Indicator Connections</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R300' title="">[EV-R300]</a>.
+<ul>
+<li><span id="EV-R140-noSort" class="rqDef">[EV-R140-noSort]</span> the list has no persistent sort order (the user interface should sort it by the Indicator name).</li>
+</ul></li>
+<li>One <strong>Indicator Connection</strong> associates...
+<ul>
+<li>an <strong>Indicator</strong> and</li>
+<li>an <strong>Operation Cycle</strong></li>
+<li>with the <strong>Event</strong>.</li>
+</ul></li>
+<li><span id="EV-R140-unique" class="rqDef">[EV-R140-unique]</span> A given Indicator can be used only once for the same Event (&quot;primary key&quot;). </li>
+<li><span id="EV-R140-Card" class="rqDef">[EV-R140-Card]</span> Cardinality: Events 1 -- 0..n Indicator Connection</li>
+<li>Default: none</li>
+<li>Having no Indicator connected means the Event will not be visible to the driver.</li>
+<li>Related:
+<ul>
+<li>DEXT Export: <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R3140' title="">[DEXT-R3140]</a></li>
+</ul></li>
+</ul>
+<p><span id="EV-R150" class="rqDef">[EV-R150]</span> <strong>Freeze Frame Prestored</strong> (&quot;Prestore Freeze Frame&quot;)</p>
+<ul>
+<li>defines whether the Event uses a prestored freeze frame
+<ul>
+<li>(using the operations <code>PrestoreFreezeFrame</code> and <code>ClearPrestoredFreezeFrame</code>),</li>
+<li>and in which memory the freeze frame shall be pre-stored.</li>
+</ul></li>
+<li>Boolean
+<ul>
+<li><strong>false</strong> The Freeze Frame shall <strong>not</strong> be prestored for the Event.</li>
+<li><strong>true</strong> The Freeze Frame <strong>shall be</strong> prestored for the Event, see the next property <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R155' title="">[EV-R155]</a> for the type of memory.</li>
+</ul></li>
+<li>mandatory</li>
+<li>Default: false</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>[TPS_DEXT_03011]</code> <code>prestorageFreezeFrame</code>.</li>
+</ul></li>
+</ul>
+<p><span id="EV-R155" class="rqDef">[EV-R155]</span> <strong>Freeze Frame Prestored nonvolatile</strong> (&quot;... in Memory&quot;):</p>
+<ul>
+<li>If the Freeze Frame is prestored <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R150' title="">[EV-R150]</a>, this property defines the type of memory:</li>
+<li>Boolean
+<ul>
+<li><strong>undefined</strong> The Freeze Frame...
+<ul>
+<li>shall not be prestored, or</li>
+<li>shall be prestored, either in volatile or nonvolatile memory, but the author in CANdelaStudio does not yet decide in which one.</li>
+</ul></li>
+<li><strong>false</strong> The Freeze Frame shall be prestored in <strong>volatile</strong> memory, can be lost at shutdown.</li>
+<li><strong>true</strong> The Freeze Frame shall be prestored in <strong>nonvolatile</strong> memory, preserved at shutdown.</li>
+</ul></li>
+<li>mandatory</li>
+<li><span id="EV-D155" class="rqDef">[EV-D155]</span> Note: if the Freeze Frame is <strong>not</strong> prestored <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R150' title="">[EV-R150]</a>, this property should be <strong>undefined</strong>. The data model does not enforce this - a consuming client must first check the &quot;Freeze Frame Prestored&quot; property, anyway.</li>
+<li>Default &quot;undefined&quot;</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>[TPS_DEXT_03011]</code> <code>prestoredFreezeframeStoredInNvm</code> (added in AUTOSAR 4.4).</li>
+</ul></li>
+</ul>
+<p><span id="EV-R165" class="rqDef">[EV-R165]</span> <strong>Clear Allowed</strong></p>
+<ul>
+<li>The Event can trigger <strong>clearing the Fault Memory</strong>,
+<ul>
+<li>i.e. deleting snapshot data and extended data and resetting the status byte (UDS: service 0x14, OBDII: service 0x04).</li>
+</ul></li>
+<li>enumeration</li>
+<li>mandatory</li>
+<li>Default: always</li>
+<li>defines how a clearing request for the Event will be handled (DEXT enum in parentheses):
+<ul>
+<li><strong>always</strong> (<code>always</code>): a clearing request for the Event will be executed unconditionally.</li>
+<li><strong>requires callback execution</strong> (<code>requiresCallbackExecution</code>): a clearing request for an Event calls a callback to an <code>SWC</code> in order to allow or prohibit clearing, i.e. the developer of the SWC decides.</li>
+<li>Note: AUTOSAR 4.2 had the value <strong>never</strong> (clearing is intentionally not possible for the Event), but later AUTOSAR versions no more support this value; CANdela doesn't support it, either.</li>
+</ul></li>
+<li>Related:
+<ul>
+<li>DEXT: <code>[TPS_DEXT_03011]</code> <code>eventClearAllowed</code>, table 6.5 (as of AUTOSAR 4.4)</li>
+</ul></li>
+</ul>
+<p><span id="EV-R170" class="rqDef">[EV-R170]</span> <strong>Clear Behavior</strong> (&quot;If Clear Denied&quot;)</p>
+<ul>
+<li>In case the callback for a clearing request (see &quot;Clear Allowed&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R165' title="">[EV-R165]</a> above) <strong>prohibits clearing</strong>, nevertheless the UDS DTC Status Byte can be adapted.</li>
+<li>Enumeration predefined by AUTOSAR (DEXT enum in parentheses):
+<ul>
+<li><strong>undefined</strong> (maybe Clear Allowed is false)</li>
+<li><strong>no status byte change</strong> (<code>noStatusByteChange</code>)</li>
+<li><strong>reset operation cycle and readiness</strong> (<code>onlyThisCycleAndReadiness</code>): the Operation Cycle and Readiness bits of the Status Byte are reset (bits 1/4-6), cf. UDS DTC Status Byte <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm#FMUDS-D050' title="">[FMUDS-D050]</a>.</li>
+</ul></li>
+<li>mandatory</li>
+<li>Default: &quot;undefined&quot;</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>[TPS_DEXT_03011]</code> <code>clearEventBehavior</code>, table 6.6 (as of AUTOSAR 4.4)</li>
+<li>DEM: <code>[SWS_Dem_00669]</code> <code>DemClearEventAllowed</code> <code>DEM_ONLY_THIS_CYCLE_AND_READINESS</code></li>
+<li>Spelling: CANdela prefers the American English spelling &quot;behavior&quot; (also used in the DEXT spec) over the British English spelling &quot;behaviour&quot;.</li>
+</ul></li>
+</ul>
+<p><span id="EV-R190" class="rqDef">[EV-R190]</span> <strong>Recoverable in Same Operation Cycle</strong></p>
+<ul>
+<li>If the Event is reported as &quot;passed&quot;,
+<ul>
+<li>it may <strong>reset the indication of a failed test</strong> in the current operation cycle</li>
+<li>(before clearing the Fault Memory would do it, anyway).</li>
+</ul></li>
+<li>Boolean
+<ul>
+<li><strong>undefined</strong></li>
+<li><strong>false</strong> Event &quot;passed&quot; is ignored, does not reset the failed test (&quot;DTC ledge&quot; - the Event remains failed)</li>
+<li><strong>true</strong> Event &quot;passed&quot; resets the failed test</li>
+</ul></li>
+<li>optional</li>
+<li>Default: undefined</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>[TPS_DEXT_03011]</code> <code>recoverableInSameOperationCycle</code></li>
+</ul></li>
+</ul>
+<p><span id="EV-R200" class="rqDef">[EV-R200]</span> <strong>Enable Conditions</strong> An Event may depend on Enable Conditions:</p>
+<ul>
+<li>as long as the Enable Conditions are <strong>not fulfilled</strong>, ...
+<ul>
+<li>the monitor is still running and reporting Events as passed or failed,</li>
+<li>but the Diagnostic Event Manager does not consider the Event being valid</li>
+<li>and therefore does <strong>not accept</strong> it (i.e. ignores it, does not store data)</li>
+</ul></li>
+<li>each Enable Condition...
+<ul>
+<li>represents a state of the ECU,</li>
+<li>available as a <strong>port</strong> (using the Qualifier of the Enable Condition).</li>
+</ul></li>
+<li><span id="EV-D210" class="rqDef">[EV-D210]</span> Note: do not mix an <strong>Enable Condition</strong> with the typical DTC property &quot;<strong>Set Condition</strong>&quot;:
+<ul>
+<li>an <strong>Enable Condition</strong> is a formal precondition in the ECU implementation for accepting an Event;
+<ul>
+<li>E.g. &quot;Speed &gt; 0 km/h&quot;</li>
+</ul></li>
+<li>a <strong>Set Condition</strong> is an informal description of the system conditions of a DTC (for a service technician);
+<ul>
+<li>E.g. &quot;Current consumption of window lift motor is &gt;10A for more than 2 seconds&quot;.</li>
+</ul></li>
+</ul></li>
+<li>Data model: optional reference...
+<ul>
+<li>to a <strong>Condition</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a></li>
+<li>or to a <strong>Condition Group</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800' title="">[EV-R800]</a> <img src="../../20%20UserInterface/Images/Condition%20Group%20Symbol.jpg" /></li>
+</ul></li>
+<li>Having no Enable Condition means the Event will always be <strong>accepted</strong>.</li>
+<li>Default: reference not set.</li>
+<li>Cardinality: Events 0..n -- 0..1 (Enable Condition or Enable Condition Group)</li>
+<li>The Event and the referenced Enable Condition or Enable Condition Group must both exist within the same diagnostic instance.</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>[TPS_DEXT_03001]</code>, <code>[TPS_DEXT_03015]</code></li>
+<li>DEXT Export: <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R3200' title="">[DEXT-R3200]</a></li>
+<li>German: &quot;Aktivierungsbedingungen&quot;</li>
+</ul></li>
+</ul>
+<p><span id="EV-R210" class="rqDef">[EV-R210]</span> <strong>Storage Conditions</strong> An Event may depend on Storage Conditions:</p>
+<ul>
+<li>as long as the Storage Conditions are not fulfilled, the event...
+<ul>
+<li>may be <strong>accepted</strong></li>
+<li>but is <strong>not stored</strong> in the event memory.</li>
+</ul></li>
+<li>An Event that has not been accepted cannot be stored.</li>
+<li>Data model: optional reference...
+<ul>
+<li>to a <strong>Condition</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a></li>
+<li>or to a <strong>Condition Group</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800' title="">[EV-R800]</a> <img src="../../20%20UserInterface/Images/Condition%20Group%20Symbol.jpg" /></li>
+</ul></li>
+<li>Having no Storage Condition means the Event - if accepted - will be <strong>stored</strong> in any case.</li>
+<li>Default: reference not set.</li>
+<li>The Event and the referenced Storage Condition or Storage Condition Group must both exist within the same diagnostic instance.</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>[TPS_DEXT_03001]</code></li>
+<li>German: &quot;Speicherbedingungen&quot;</li>
+</ul></li>
+</ul>
+<p><span id="EV-R215" class="rqDef">[EV-R215]</span> CANdelaStudio does not restrict references from a given Event to a given Condition:</p>
+<ul>
+<li>a Condition may be referenced as Enable Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R200' title="">[EV-R200]</a>, Storage Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R210' title="">[EV-R210]</a>, or even both.
+<ul>
+<li>Typically, within a CANdela document, <strong>either</strong> Enable Conditions <strong>or</strong> Storage Conditions will be used.</li>
+</ul></li>
+<li>a Condition may be referenced either directly, or indirectly via a Condition Group <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800' title="">[EV-R800]</a>.</li>
+</ul>
+<p><span id="EV-R220" class="rqDef">[EV-R220]</span> <strong>Debounce Algorithm</strong></p>
+<ul>
+<li>Reaching the &quot;failed&quot; and &quot;passed&quot; state of the Event may be <strong>debounced</strong> by DEM.</li>
+<li>optional <strong>reference</strong> to a <strong>Debounce Algorithm</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1100' title="">[EV-R1100]</a></li>
+<li>If <strong>no reference</strong> specified, ...
+<ul>
+<li>the <strong>DEM</strong> does <strong>not</strong> provide debouncing for the Event,</li>
+<li>so the application may manage debouncing itself (<strong>Monitor internal debouncing</strong>),</li>
+<li>or the Event is not debounced at all.</li>
+</ul></li>
+<li>Default: reference not specified</li>
+<li>Cardinality: Events 0..n -- 0..1 Debounce Algorithm</li>
+<li>The Event and the referenced Debounce Algorithm must both exist within the same diagnostic instance.</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>[TPS_DEXT_03004]</code> <code>DiagnosticEventToDebounceAlgorithmMapping</code></li>
+<li>DEXT Export: <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R3220' title="">[DEXT-R3220]</a></li>
+</ul></li>
+</ul>
+<p>An Event <strong>may reference a DTC</strong>, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a> below.</p>
+<h3 id="indicator-connection">Indicator Connection</h3>
+<ul>
+<li>An Event in status &quot;failed&quot; may optionally be indicated to the driver,
+<ul>
+<li>using one or more connected <strong>Indicators</strong> (like the MIL).</li>
+</ul></li>
+<li>For each of the connected Indicators,
+<ul>
+<li>an Operation Cycle defines the <strong>switching off</strong> (<strong>healing</strong>) of the Indicator.</li>
+</ul></li>
+<li>The further properties described in this chapter specific for the <strong>connection</strong>:
+<ul>
+<li>if two Events reference the same Operation Cycle,</li>
+<li>the properties may vary between one Event and the other.</li>
+</ul></li>
+</ul>
+<p><span id="EV-R300" class="rqDef">[EV-R300]</span> An <strong>Indicator Connection</strong> (defined <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R140' title="">[EV-R140]</a> at an Event) contains the following references and properties.</p>
+<p><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-IndConn' title="">[ATTR-R050-IndConn]</a> An Indicator Connection has Default Attributes (CDS-71547 v13).</p>
+<p><span id="EV-R305" class="rqDef">[EV-R305]</span> <strong>Indicator</strong> An Indicator Connection references an Indicator <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R600' title="">[EV-R600]</a>.</p>
+<ul>
+<li>The reference is mandatory</li>
+<li>The Event and the referenced Indicator must both exist within the same diagnostic instance.</li>
+<li>Cardinality:
+<ul>
+<li>Indicator Connection 1 -- 1 Indicator;</li>
+<li>(indirectly) Event 0..n -- 0..n Indicator, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R140-unique' title="">[EV-R140-unique]</a>.</li>
+</ul></li>
+</ul>
+<p><span id="EV-R310" class="rqDef">[EV-R310]</span> <strong>Behavior</strong></p>
+<ul>
+<li>An Indicator Connection has a Behavior.
+<ul>
+<li>It describes the behavior of the Indicator when the Event has status &quot;failed&quot;.</li>
+</ul></li>
+<li>Enumeration predefined by AUTOSAR (DEXT enum in parentheses):
+<ul>
+<li><strong>undefined</strong></li>
+<li><strong>Continuous On Mode</strong> (<code>continuousOnMode</code>): Indicator is active</li>
+<li><strong>Blink Mode</strong> (<code>blinkMode</code>): Indicator blinks</li>
+<li><strong>Blink or Continuous On Mode</strong> (<code>blinkOrContinuousOnMode</code>): Indicator is active and blinks</li>
+<li><strong>Slow Flashing Mode</strong> (<code>slowFlashingMode</code>): for a Flash Indicator Lamp: &quot;Slow Flash&quot;</li>
+<li><strong>Fast Flashing Mode</strong> (<code>fastFlashingMode</code>): for a Flash Indicator Lamp: &quot;Fast Flash&quot;</li>
+</ul></li>
+<li>Default: &quot;Continuous On Mode&quot;</li>
+<li>The behavior is mandatory.</li>
+<li>Related:
+<ul>
+<li>DEXT: table 6.8 (as of AUTOSAR 4.4)</li>
+</ul></li>
+</ul>
+<p><span id="EV-R320" class="rqDef">[EV-R320]</span> <strong>Healing Cycle</strong></p>
+<ul>
+<li>An Indicator Connection references a Healing Cycle,
+<ul>
+<li>i.e. the Operation Cycle <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a> in which the Indicator will be <strong>switched off</strong>.</li>
+</ul></li>
+<li>When this Operation Cycle has been entered the number of times defined by the Healing Cycle Counter Threshold <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R330' title="">[EV-R330]</a>, ...
+<ul>
+<li>the Event will be &quot;healed&quot;,</li>
+<li>so the Indicator will be de-activated (switched off).</li>
+<li>Example:
+<ul>
+<li>turn on the MIL during fault confirmation,</li>
+<li>turn off the MIL after 3 OBD driving cycles without test failed (healing)</li>
+</ul></li>
+</ul></li>
+<li>Data model: the Indicator Connection has a reference to an <strong>Operation Cycle</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a>.</li>
+<li>The reference is mandatory.</li>
+<li>Cardinality: Indicator Connection 0..n -- 1 Operation Cycle;</li>
+<li>The Event and the referenced Operation Cycle must both exist within the same diagnostic instance.</li>
+<li><span id="EV-R320-OpCycle" class="rqDef">[EV-R320-OpCycle]</span> The Healing Cycle is not related with the Operation Cycle <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R120' title="">[EV-R120]</a> of the Event.</li>
+<li>Related:
+<ul>
+<li>German: &quot;Rücksetzen-Betriebszyklus&quot;</li>
+</ul></li>
+</ul>
+<p><span id="EV-R330" class="rqDef">[EV-R330]</span> <strong>Healing Cycle Counter Threshold</strong></p>
+<ul>
+<li>An Indicator Connection has a Counter Threshold:
+<ul>
+<li>the number of Healing Cycles (Operation Cycles without failure) before the Indicator will be de-activated.</li>
+<li>E.g. value 0 means the Indicator will be de-activated directly in the next occurrence of the referenced Operation Cycle.</li>
+</ul></li>
+<li>unsigned integer</li>
+<li>The threshold is mandatory.</li>
+<li>Default: 0</li>
+<li>Related:
+<ul>
+<li>DEXT describes the threshold as <code>healingCycleCounterThreshold</code> directly at the <code>DiagnosticIndicator</code> <code>[TPS_DEXT_03022]</code>, which means the threshold would be the same for all Events.</li>
+<li>German: &quot;Schwellwert für Rücksetzen&quot;</li>
+</ul></li>
+</ul>
+<p>Related to Indicator Connection:</p>
+<ul>
+<li>DEXT describes the Indicator Connection as attribute <code>connectedIndicator</code> of type <code>DiagnosticConnectedIndicator</code>.</li>
+</ul>
+<h2 id="event-master-data">Event Master Data</h2>
+<p><span id="EV-D040" class="rqDef">[EV-D040]</span> <strong>Event Master Data</strong> are lists of objects contained in a diagnostic instance, <strong>referenced from Events</strong> (and in versions after v12 maybe also by DTCs).</p>
+<p><span id="EV-R050" class="rqDef">[EV-R050]</span> Consistency Condition:</p>
+<ul>
+<li>If a Diagnostic Instance contains an Event,</li>
+<li>and the Event references <strong>Event Master Data</strong>,
+<ul>
+<li>Operation Cycle <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R120' title="">[EV-R120]</a></li>
+<li>Enable Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R200' title="">[EV-R200]</a></li>
+<li>Storage Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R210' title="">[EV-R210]</a></li>
+<li>Debounce Algorithm <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R220' title="">[EV-R220]</a></li>
+<li>Indicator Connections <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R140' title="">[EV-R140]</a></li>
+</ul></li>
+<li>the Event Master Data must also be contained in the Diagnostic Instance.</li>
+</ul>
+<h2 id="operation-cycle"><span id='_index_446728036'>Operation Cycle</span></h2>
+<ul>
+<li>Operation Cycles provide a basis for time-related activities.</li>
+<li>The DEM manages the state of an Operation Cycle: started / ended.</li>
+<li>This information can also be modified by DEM API calls.</li>
+</ul>
+<p><span id="EV-R500" class="rqDef">[EV-R500]</span> A Fault Memory Diagnostic Instance contains 0..n <strong>Operation Cycles</strong>.</p>
+<ul>
+<li><span id="EV-R500-Card" class="rqDef">[EV-R500-Card]</span> Cardinality: Diagnostic Instance 1..1 -- 0..n Operation Cycle</li>
+</ul>
+<p><span id="EV-R505" class="rqDef">[EV-R505]</span> These Operation Cycles have no persistent sort order.</p>
+<p>An Operation Cycle is <strong>referenced</strong> by an Event...</p>
+<ul>
+<li>as <strong>Operation Cycle</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R120' title="">[EV-R120]</a>, or as</li>
+<li>as <strong>Healing Cycle</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R320' title="">[EV-R320]</a>.</li>
+</ul>
+<p><span id="EV-R510" class="rqDef">[EV-R510]</span> An Operation Cycle has Name, Qualifier, Description.</p>
+<ul>
+<li><p><span id="EV-R510-Qualified" class="rqDef">[EV-R510-Qualified]</span> Name and Qualifier must be unique in the list <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a>.</p></li>
+<li>Example Operation Cycles (from AUTOSAR 4.4 chapter 7.6):
+<ul>
+<li>Ignition on/off cycle</li>
+<li>Power up/power down cycle</li>
+<li>OBD driving cycle</li>
+<li>Engine warm up cycle</li>
+<li>Operation active/passive cycle</li>
+<li>Accumulated operating time</li>
+</ul></li>
+</ul>
+<p><span id="EV-R520" class="rqDef">[EV-R520]</span> <strong>Type</strong></p>
+<ul>
+<li><span id="EV-R520-Types" class="rqDef">[EV-R520-Types]</span> AUTOSAR defines the following Types (further types can be specified as part of a DEM delivery; German term in parentheses):
+<ul>
+<li><strong>undefined</strong></li>
+<li><strong>Ignition</strong>: power ON / OFF cycle (&quot;Zündung&quot;)</li>
+<li><strong>Warmup</strong>: OBD warm-up cycle (&quot;Warmlauf&quot;)</li>
+<li><strong>Power</strong> (&quot;Betrieb&quot;)</li>
+<li><strong>Time</strong>: a time-based operation cycle</li>
+<li><strong>OBD Driving Cycle</strong> (&quot;OBD-Fahrzyklus&quot;)</li>
+<li><strong>Other</strong></li>
+</ul></li>
+<li>the Type is mandatory</li>
+<li>Default: &quot;undefined&quot;</li>
+</ul>
+<p><span id="EV-R530" class="rqDef">[EV-R530]</span> <strong>Automatic Start</strong> (Autostart)</p>
+<ul>
+<li>defines whether...
+<ul>
+<li>the DEM automatically considers the Operation Cycle (re-) started during <code>Dem_PreInit</code>.</li>
+<li>If yes, BSW modules can report related Events even before <code>Dem_Init</code>.</li>
+</ul></li>
+<li>Boolean</li>
+<li>mandatory</li>
+<li>Default: true</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>[TPS_DEXT_01087]</code> <code>cycleAutostart</code></li>
+<li>DEM: <code>[SWS_Dem_00180]</code></li>
+</ul></li>
+</ul>
+<p><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-OpCyc' title="">[ATTR-R050-OpCyc]</a> An Operation Cycle has Default Attributes (CDS-71547 v13).</p>
+<p>Related to Operation Cycle:</p>
+<ul>
+<li>DEXT: <code>[TPS_DEXT_01087]</code> <code>DiagnosticOperationCycle</code></li>
+<li>DEXT Export: <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R3120' title="">[DEXT-R3120]</a></li>
+<li>German: &quot;Betriebszyklus&quot;</li>
+</ul>
+
+<h2 id="indicator"><span id='_index_446728037'>Indicator</span></h2>
+<p>An Indicator describes a visible means to inform the driver vehicle about a failure, like the Malfunction Indicator Lamp (MIL), or a specific text message.</p>
+<p><span id="EV-R600" class="rqDef">[EV-R600]</span> A Fault Memory Diagnostic Instance contains 0..n <strong>Event Indicators</strong>.</p>
+<ul>
+<li><span id="EV-R600-Card" class="rqDef">[EV-R600-Card]</span> Cardinality: Diagnostic Instance 1..1 -- 0..n Event Indicator</li>
+</ul>
+<p><span id="EV-R605" class="rqDef">[EV-R605]</span> These Indicators have no persistent sort order.</p>
+<p>An Indicator is referenced by an <strong>Indicator Connection</strong>, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R305' title="">[EV-R305]</a>.</p>
+<p><span id="EV-R610" class="rqDef">[EV-R610]</span> An Indicator has Name, Qualifier, Description.</p>
+<ul>
+<li><span id="EV-R610-Qualified" class="rqDef">[EV-R610-Qualified]</span> Name and Qualifier must be unique in the list <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R600' title="">[EV-R600]</a>.</li>
+</ul>
+<p><span id="EV-R620" class="rqDef">[EV-R620]</span> An Indicator has a <strong>Type</strong>.</p>
+<ul>
+<li><span id="EV-R620-Types" class="rqDef">[EV-R620-Types]</span> AUTOSAR defines the following Types (DEXT enum and German term in parentheses):
+<ul>
+<li><strong>undefined</strong>: the Type is <strong>not yet</strong> known, or none of the Types defined in AUTOSAR appropriately describes the Indicator.</li>
+<li><strong>Protect Lamp</strong> (<code>protectLamp</code>, &quot;Funktionsschutzlampe&quot;)</li>
+<li><strong>Warning</strong> (<code>warning</code>)</li>
+<li><strong>Amber Warning Lamp</strong> (<code>amberWarning</code>, &quot;Orange Warnlampe&quot;)</li>
+<li><strong>Malfunction Indicator Lamp</strong> (<code>malfunction</code>, &quot;Funktionsstörung&quot;)</li>
+<li><strong>Red Stop Lamp</strong> (<code>redStopLamp</code>, &quot;Rote Stoplampe&quot;)</li>
+</ul></li>
+<li>Default: &quot;undefined&quot;</li>
+</ul>
+<p><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-Ind' title="">[ATTR-R050-Ind]</a> An Indicator has Default Attributes (CDS-71547 v13).</p>
+<p>Related to Indicator:</p>
+<ul>
+<li>DEXT: <code>[TPS_DEXT_03022]</code> <code>DiagnosticIndicator</code>, Table 6.57 (as of AUTOSAR 4.4). In CANdela, the property <code>healingCycleCounterThreshold</code> is at the Indicator Connection <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R330' title="">[EV-R330]</a>, not at the Indicator.</li>
+<li>DEXT Export: <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R3140' title="">[DEXT-R3140]</a></li>
+<li>German: &quot;Indikator&quot;</li>
+</ul>
+
+<h2 id="conditions">Conditions (Condition / Condition Group)</h2>
+<p><span id="EV-D700" class="rqDef">[EV-D700]</span> A Condition or Condition Group defines checks (e.g. correct voltage range) before a <strong>reported</strong> event actually gets...</p>
+<ul>
+<li><strong>accepted</strong> (Enable Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R200' title="">[EV-R200]</a>) or</li>
+<li><strong>stored</strong> (Storage Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R210' title="">[EV-R210]</a>).</li>
+</ul>
+<h3 id="condition"><span id='_index_446728038'>Condition</span></h3>
+<p>For an Enable Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R200' title="">[EV-R200]</a> that is <strong>false</strong>,</p>
+<ul>
+<li>the monitor is running, but</li>
+<li>the Diagnostic Event Manager <strong>discards</strong> the Events reported by the monitor.</li>
+</ul>
+<p>In the AUTOSAR <strong>implementation</strong>, a Condition (see <code>[SWS_Dem_01038]</code>) is represented by...</p>
+<ul>
+<li>a Boolean <strong>state</strong></li>
+<li>a <strong>port</strong> with the Condition qualifier in the port name.</li>
+</ul>
+<p><span id="EV-R700" class="rqDef">[EV-R700]</span> A Fault Memory Diagnostic Instance contains 0..n <strong>Conditions</strong>.</p>
+<ul>
+<li><span id="EV-R700-Card" class="rqDef">[EV-R700-Card]</span> Cardinality: Diagnostic Instance 1..1 -- 0..n Condition</li>
+</ul>
+<p><span id="EV-R705" class="rqDef">[EV-R705]</span> These Conditions have no persistent sort order.</p>
+<p>A Condition is <strong>referenced</strong>...</p>
+<ul>
+<li>by an <strong>Event</strong> as <strong>Enable Condition</strong>, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R200' title="">[EV-R200]</a>,</li>
+<li>by an <strong>Event</strong> as <strong>Storage Condition</strong>, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R210' title="">[EV-R210]</a>, or</li>
+<li>by a <strong>Condition Group</strong>, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R830' title="">[EV-R830]</a>.</li>
+<li>See <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R215' title="">[EV-R215]</a> for more on possible references from Events.</li>
+</ul>
+<p><span id="EV-R710" class="rqDef">[EV-R710]</span> A Condition has Name, Qualifier, Description.</p>
+<ul>
+<li><span id="EV-R720-Qualified" class="rqDef">[EV-R720-Qualified]</span> Name and Qualifier must be <strong>unique</strong> for Conditions and Condition Groups together, i.e. in the combined lists of <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a> and <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800' title="">[EV-R800]</a> (neither another Condition nor another Condition Group may have the same name or qualifier than a given Condition or Condition Group).</li>
+</ul>
+<p><span id="EV-R720" class="rqDef">[EV-R720]</span> <strong>Initially Enabled</strong>: defines the <strong>initial status</strong> after power up (before the condition is reported for the first time) for acceptance or storage of an Event.</p>
+<ul>
+<li>Boolean
+<ul>
+<li><strong>true</strong>: acceptance or storage is initially enabled</li>
+<li><strong>false</strong>: acceptance or storage is initially disabled.</li>
+</ul></li>
+<li>Mandatory</li>
+<li>Default: false (i.e. Condition is initially disabled)</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>initValue</code></li>
+<li>German: &quot;anfangs aktiv&quot;</li>
+</ul></li>
+</ul>
+<p><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-EvCond' title="">[ATTR-R050-EvCond]</a> A Condition has Default Attributes (CDS-71547 v13).</p>
+<p>Related to Condition:</p>
+<ul>
+<li>DEXT: <code>DiagnosticCondition</code></li>
+<li>DEXT Export: <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R3200' title="">[DEXT-R3200]</a>
+<ul>
+<li><span id="EV-R720-Use" class="rqDef">[EV-R720-Use]</span> DEXT distinguishes enable vs. storage conditions by type <code>[TPS_DEXT_03001]</code>, CANdela leaves this distinction to the <strong>use</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R200' title="">[EV-R200]</a> and <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R210' title="">[EV-R210]</a> of a condition at an Event.</li>
+<li><span id="EV-R720-Condition" class="rqDef">[EV-R720-Condition]</span> In DEXT, the Event references a Condition Group, not a Condition; see the following chapter.</li>
+</ul></li>
+<li>German: &quot;Bedingung&quot;</li>
+</ul>
+<h3 id="condition-group"><span id='_index_446728039'>Condition Group</span> <img src="../../20%20UserInterface/Images/Condition%20Group%20Symbol.jpg" /></h3>
+<p>Conditions may be <strong>grouped</strong>.</p>
+<p>Example: Condition Group &quot;Driving&quot; with the Conditions</p>
+<ul>
+<li>Speed &gt; 0 km/h</li>
+<li>Door 1 closed</li>
+<li>Door 2 closed</li>
+<li>Door 3 closed</li>
+<li>Door 4 closed</li>
+</ul>
+<p><span id="EV-R800" class="rqDef">[EV-R800]</span> A Fault Memory Diagnostic Instance contains 0..n <strong>Condition Groups</strong>.</p>
+<ul>
+<li><span id="EV-R800-Card" class="rqDef">[EV-R800-Card]</span> Cardinality: Diagnostic Instance 1..1 -- 0..n Condition Group</li>
+</ul>
+<p><span id="EV-R805" class="rqDef">[EV-R805]</span> These Condition Groups have no persistent sort order.</p>
+<p>A Condition Group is <strong>referenced</strong>...</p>
+<ul>
+<li>by an <strong>Event</strong> as <strong>Enable Condition</strong>, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R200' title="">[EV-R200]</a>,</li>
+<li>by an <strong>Event</strong> as <strong>Storage Condition</strong>, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R210' title="">[EV-R210]</a>;</li>
+<li>not by a Condition Group - there is no hierarchy.</li>
+<li>See <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R215' title="">[EV-R215]</a> for more on possible references from Events.</li>
+</ul>
+<p><span id="EV-R810" class="rqDef">[EV-R810]</span> A Condition Group has Name, Qualifier, Description.</p>
+<ul>
+<li>Name and Qualifier must be <strong>unique</strong> for Conditions and Condition Groups together, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R720-Qualified' title="">[EV-R720-Qualified]</a> above.</li>
+</ul>
+<p><span id="EV-R830" class="rqDef">[EV-R830]</span> A Condition Group references 1..n Conditions <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a>.</p>
+<ul>
+<li>Cardinality: Condition Group 0..n -- 1..n Condition, i.e.</li>
+<li><span id="EV-R830-nonEmpty" class="rqDef">[EV-R830-nonEmpty]</span> A Condition Group must contain at least one Condition. CANdelaStudio ensures this via the consistency check only, not in the dialogs (avoid user interface complexity; it is an edge case, anyway).</li>
+<li><span id="EV-D830" class="rqDef">[EV-D830]</span> <strong>Semantics</strong>:
+<ul>
+<li>a Condition Group is fulfilled iff.</li>
+<li>all its Conditions are fulfilled (<strong>conjunction</strong>).</li>
+</ul></li>
+<li><span id="EV-R830-multiple" class="rqDef">[EV-R830-multiple]</span> Multiple Condition Groups may reference the same Condition.</li>
+<li><span id="EV-R830-unique" class="rqDef">[EV-R830-unique]</span> One Condition Group may reference a given Condition only once.</li>
+<li>A Condition Group cannot reference a Condition Group (there is no hierarchy).</li>
+</ul>
+<p>In <strong>DEXT</strong>, ...</p>
+<ul>
+<li>an Event references...
+<ul>
+<li>0 or 1 <strong>Enable Condition Groups</strong>, and</li>
+<li>0 or 1 <strong>Storage Condition Groups</strong>,</li>
+<li><strong>not</strong> multiple ones <code>[constr_1361]</code>,</li>
+<li><strong>not</strong> an individual Condition <code>[TPS_DEXT_03015]</code>;</li>
+</ul></li>
+<li>the Condition Group is either...
+<ul>
+<li>a <code>DiagnosticEnableConditionGroup</code> or</li>
+<li>a <code>DiagnosticStorageConditionGroup</code>,</li>
+<li>such a group is a shorthand for referencing each individual Condition of the Condition Group.</li>
+</ul></li>
+</ul>
+<p>In the <strong>CANdela</strong> data model, a <strong>Condition Group</strong>...</p>
+<ul>
+<li>is a separate entity which references multiple Conditions</li>
+<li>helps the diagnostic author to...
+<ul>
+<li>conveniently <strong>assign</strong> multiple Conditions to an Event at once</li>
+<li>easily <strong>understand</strong> which conditions are assigned to an Event</li>
+</ul></li>
+<li>can be used for Enable Conditions as well as for Storage Conditions.</li>
+</ul>
+<p>Related to Condition Group:</p>
+<ul>
+<li>DEXT Export: <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R3200' title="">[DEXT-R3200]</a></li>
+<li>German: &quot;Bedingungsgruppe&quot;</li>
+</ul>
+<h2 id="debounce-algorithm"><span id='_index_446728040'>Debounce Algorithm</span></h2>
+<p><span id="EV-R1100" class="rqDef">[EV-R1100]</span> A Fault Memory Diagnostic Instance contains 0..n <strong>Debounce Algorithms</strong>.</p>
+<ul>
+<li><span id="EV-R1100-Card" class="rqDef">[EV-R1100-Card]</span> Cardinality: Diagnostic Instance 1..1 -- 0..n Debounce Algorithm</li>
+</ul>
+<p><span id="EV-R1105" class="rqDef">[EV-R1105]</span> These Debounce Algorithms have no persistent sort order.</p>
+<p><span id="EV-R1110" class="rqDef">[EV-R1110]</span> A Debounce Algorithm is either Counter-Based <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1200' title="">[EV-R1200]</a> or Time-Based <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1300' title="">[EV-R1300]</a> (described below).</p>
+<p>A Debounce Algorithm is <strong>referenced</strong> by an Event, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R220' title="">[EV-R220]</a>.</p>
+<p><span id="EV-R1120" class="rqDef">[EV-R1120]</span> A Debounce Algorithm has Name, Qualifier, Description.</p>
+<ul>
+<li><span id="EV-R1110-Qualified" class="rqDef">[EV-R1110-Qualified]</span> Name and Qualifier must be unique in the list <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1100' title="">[EV-R1100]</a>.</li>
+<li>Note about algorithms in DEM:
+<ul>
+<li>an algorithm is internal to DEM, not available to the application</li>
+<li>therefore in DEM, an algorithm is not a referenced, re-used object,</li>
+<li>... but the algorithm properties are located at the Event directly</li>
+<li>In DEXT, algorithms are refenced.</li>
+<li>So algorithm Name and Qualifier are helpful for authoring and DEXT, not used in DEM.</li>
+</ul></li>
+</ul>
+<p><span id="EV-R1130" class="rqDef">[EV-R1130]</span> <strong>Behavior</strong> (if Event disabled): this property...</p>
+<ul>
+<li>specifies handling of the internal counter while...
+<ul>
+<li>a referenced Enable Condition is not fulfilled,</li>
+<li>or ControlDTCSetting of the Event is disabled.</li>
+<li>After all Enable Conditions are fulfilled, and ControlDTCSetting is enabled, Event qualification will continue with the next valid Event report.</li>
+</ul></li>
+<li><span id="EV-R1130-Types" class="rqDef">[EV-R1130-Types]</span> AUTOSAR defines the following behavior types:
+<ul>
+<li><strong>undefined</strong>: the behavior has not yet been defined</li>
+<li><strong>Freeze</strong>: the counter value is frozen (i.e. the counter will continue with that value);</li>
+<li><strong>Reset</strong>: the counter value is reset to the initial value (i.e. the counter will be restarted)</li>
+</ul></li>
+<li>The Behavior property is <strong>mandatory</strong>.</li>
+<li>Default: undefined</li>
+<li>Related:
+<ul>
+<li>German: &quot;Verhalten&quot;</li>
+</ul></li>
+</ul>
+<p><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-Deb' title="">[ATTR-R050-Deb]</a> A Debounce Algorithm has Default Attributes (CDS-71547 v13).</p>
+<p>Related to Debounce Algorithm:</p>
+<ul>
+<li>DEXT: <code>[TPS_DEXT_03004]</code> <code>debounceBehavior</code></li>
+<li>DEXT Export: <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R3220' title="">[DEXT-R3220]</a></li>
+<li>German: &quot;Entprell-Algorithmus&quot;</li>
+</ul>
+<h3 id="counter-based-debounce-algorithm">Counter-Based Debounce Algorithm</h3>
+<div class="figure">
+<img src="Images/Counter-Based%20Debounce%20Algorithm%20Properties.jpg" alt="Counter-Based Debounce Algorithm Properties (with sample values)" />
+<p class="caption">Counter-Based Debounce Algorithm Properties (with sample values)</p>
+</div>
+<p><span id="EV-R1200" class="rqDef">[EV-R1200]</span> A Counter-Based Debounce Algorithm...</p>
+<ul>
+<li>has the general properties of a Debounce Algorithm <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1100' title="">[EV-R1100]</a> (above),</li>
+<li>has an internal <strong>signed integer</strong> counter value (16 bit in AUTOSAR as of 4.4),
+<ul>
+<li>Note: UDS service 0x19 0x14 reports this value as one byte (scaled from the internal range).</li>
+</ul></li>
+<li>has an (upper) <strong>failed threshold</strong>...</li>
+<li>and a (lower) <strong>passed threshold</strong>.</li>
+<li>When the value goes up and reaches the <strong>failed threshold</strong>, the Event gets classified as <strong>failed</strong>.</li>
+<li>When the value goes down and reaches the <strong>passed threshold</strong>, the Event gets classified as <strong>passed</strong></li>
+<li>The difference between failed and passed threshould defines the <strong>debouncing</strong> effect.</li>
+<li>When the Event has state <strong>failed</strong>,
+<ul>
+<li>if <strong>Jump Up Allowed</strong> is activated,</li>
+<li>and the Event had state <strong>&quot;passed&quot; previously</strong>
+<ul>
+<li>(the counting direction changes from decrementing to incrementing),</li>
+</ul></li>
+<li>the counter &quot;jumps&quot; to the <strong>Jump Up Value</strong> (typically 0),</li>
+<li>otherwise it gets incremented by the <strong>increment step size</strong>,</li>
+</ul></li>
+<li>When the Event has state <strong>passed</strong>, ...
+<ul>
+<li>if <strong>Jump Down Allowed</strong> is activated,</li>
+<li>and the Event had state <strong>&quot;failed&quot; previously</strong>
+<ul>
+<li>(the counting direction changes from incrementing to decrementing),</li>
+</ul></li>
+<li>the counter &quot;jumps&quot; to the <strong>Jump Down Value</strong> (typically 0),</li>
+<li>otherwise it gets decremented by the <strong>decrement step size</strong>,</li>
+</ul></li>
+</ul>
+<p>In detail, a Counter-Based Debounce Algorithm has the following properties (in addition to those for a Debounce Algorithm in general, see above):</p>
+<p><span id="EV-R1210" class="rqDef">[EV-R1210]</span> <strong>Increment Step Size</strong></p>
+<ul>
+<li>Value used to increment the internal debounce counter.</li>
+<li>Unsigned integer <code>&gt;</code> 0; not checked by CANdelaStudio.</li>
+<li>Mandatory</li>
+<li>Default: 1</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>counterIncrementStepSize</code></li>
+</ul></li>
+</ul>
+<p><span id="EV-R1220" class="rqDef">[EV-R1220]</span> <strong>Decrement Step Size</strong></p>
+<ul>
+<li>Value used to decrement the internal debounce counter.</li>
+<li>Unsigned integer <code>&gt;</code> 0; not checked by CANdelaStudio.</li>
+<li>Mandatory</li>
+<li>Default: 1</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>counterDecrementStepSize</code></li>
+</ul></li>
+</ul>
+<p><span id="EV-R1230" class="rqDef">[EV-R1230]</span> <strong>Failed Threshold</strong></p>
+<ul>
+<li>Upper threshold for the internal debounce counter that indicates the Event &quot;failed&quot; status.</li>
+<li>Unsigned integer <code>&gt;</code> 0; not checked by CANdelaStudio.
+<ul>
+<li>typically <code>&lt;</code> 32K, but limit may vary across AUTOSAR versions, not checked by CANdelaStudio.</li>
+</ul></li>
+<li>Mandatory</li>
+<li>Default: +127</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>counterFailedThreshold</code></li>
+</ul></li>
+</ul>
+<p><span id="EV-R1240" class="rqDef">[EV-R1240]</span> <strong>Passed Threshold</strong></p>
+<ul>
+<li>Lower threshold for the internal debounce counter that indicates the Event &quot;passed&quot; status.</li>
+<li>Signed integer, always <code>&lt;</code> 0; not checked by CANdelaStudio.</li>
+<li>Mandatory</li>
+<li>Default: -128</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>counterPassedThreshold</code></li>
+</ul></li>
+</ul>
+<p><span id="EV-R1250" class="rqDef">[EV-R1250]</span> <strong>FDC Storage Threshold</strong> When the Fault Detection Counter (FDC) reaches this threshold, memory will be allocated, and the <strong>Freeze Frame</strong> (Snapshot Data, Environment Data) will be <strong>stored</strong>.</p>
+<ul>
+<li>Unsigned integer</li>
+<li>Specific values:
+<ul>
+<li>Value 0: DEM stores the Freeze Frame at once when the Event occurs
+<ul>
+<li>... but the Event gets visible only when Failed Threshold has been reached.</li>
+</ul></li>
+<li>Value same as Failed Threshold: DEM stores the Freeze Frame later, when the testFailed bit gets set.
+<ul>
+<li>The Freeze Frame data may have changed since the Event occurred.</li>
+</ul></li>
+</ul></li>
+<li>optional</li>
+<li>Default: undefined</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>counterBasedFdcThresholdStorageValue</code></li>
+</ul></li>
+</ul>
+<p><span id="EV-R1260" class="rqDef">[EV-R1260]</span> <strong>Jump Up Allowed</strong></p>
+<ul>
+<li>Boolean
+<ul>
+<li><strong>true</strong>: the internal debounce counter may be set to the Jump Up Value, when the counting direction changes towards &quot;failed&quot;</li>
+<li><strong>false</strong>: the internal debounce counter may be incremented only by the regular Increment Step Size.</li>
+</ul></li>
+<li>Mandatory</li>
+<li>Default: true</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>counterJumpUp</code></li>
+</ul></li>
+</ul>
+<p><span id="EV-R1265" class="rqDef">[EV-R1265]</span> <strong>Jump Up Value</strong></p>
+<ul>
+<li>Value for the internal debounce counter if a &quot;jump up&quot; is triggered</li>
+<li>To be used only if &quot;Jump Up Allowed&quot; is true</li>
+<li>Mandatory (cf. CDS-71597)</li>
+<li>Signed integer</li>
+<li>Default: 1</li>
+<li><span id="EV-D1265" class="rqDef">[EV-D1265]</span>Note: if &quot;Jump Up Allowed&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1260' title="">[EV-R1260]</a> is false, this property should be <strong>undefined</strong>.
+<ul>
+<li>The v12 data model does not allow &quot;undefined&quot;.</li>
+<li>A consuming client must first check the &quot;Jump Up Allowed&quot; property, anyway.</li>
+</ul></li>
+<li>CANdelaStudio does not check the numeric value.</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>counterJumpUpValue</code></li>
+</ul></li>
+</ul>
+
+<p><span id="EV-R1270" class="rqDef">[EV-R1270]</span> <strong>Jump Down Allowed</strong></p>
+<ul>
+<li>Boolean
+<ul>
+<li><strong>true</strong>: the internal debounce counter may be set to the Jump Down Value, when the counting direction changes towards &quot;passed&quot;</li>
+<li><strong>false</strong>: the internal debounce counter may be decremented only by the regular Decrement Step Size.</li>
+</ul></li>
+<li>Mandatory</li>
+<li>Default: false</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>counterJumpDown</code></li>
+</ul></li>
+</ul>
+<p><span id="EV-R1275" class="rqDef">[EV-R1275]</span> <strong>Jump Down Value</strong></p>
+<ul>
+<li>Value for the internal debounce counter if a &quot;jump down&quot; is triggered</li>
+<li>To be used only if &quot;Jump Down Allowed&quot; is true</li>
+<li>Optional</li>
+<li>Signed integer</li>
+<li>Default: undefined</li>
+<li><span id="EV-D1275" class="rqDef">[EV-D1275]</span> Note: if &quot;Jump Down Allowed&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1270' title="">[EV-R1270]</a> is false, this property should be <strong>undefined</strong>.
+<ul>
+<li>The data model does not enforce this;</li>
+<li>a consuming client must first check the &quot;Jump Up Allowed&quot; property, anyway.</li>
+</ul></li>
+<li>CANdelaStudio does not check the numeric value.</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>counterJumpDownValue</code></li>
+</ul></li>
+</ul>
+<p><span id="EV-R1280" class="rqDef">[EV-R1280]</span> <strong>Counter Stored Nonvolatile</strong></p>
+<ul>
+<li>Boolean
+<ul>
+<li><strong>undefined</strong></li>
+<li><strong>false</strong>: debounce counter value stored <strong>volatile</strong> (non-persistent)</li>
+<li><strong>true</strong>: debounce counter value stored <strong>nonvolatile</strong> (persistent)</li>
+</ul></li>
+<li>optional</li>
+<li>Default: undefined</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>debounceCounterStorage</code> is a property at the <code>DiagnosticDebounceAlgorithmProps</code> base class, with the constraint <code>[constr_1359]</code> &quot;the attribute... shall only exist if ... CounterBased&quot;. Therefore, the CANdela data model defines this property directly at the Counter-Based Debounce Algorithm.</li>
+</ul></li>
+</ul>
+<p>Related to Counter-Based Debounce Algorithm:</p>
+<ul>
+<li>DEXT: Table 6.41</li>
+<li>German: &quot;zählerbasierter Entprell-Algorithmus&quot;</li>
+</ul>
+
+<h3 id="time-based-debounce-algorithm">Time-Based Debounce Algorithm</h3>
+<p><span id="EV-R1300" class="rqDef">[EV-R1300]</span> A Time-Based Debounce Algorithm debounces based on time spans since the most recent occurrence of an Event.</p>
+<ul>
+<li>AUTOSAR uses a dedicated type for time spans (double, in seconds)</li>
+<li>CANdela uses a 32 bit <strong>unsigned integer</strong> that denotes <strong>milliseconds</strong></li>
+</ul>
+<p>In addition to the properties for a Debounce Algorithm in general <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1100' title="">[EV-R1100]</a> (above), a Time-Based Debounce Algorithm has the following properties:</p>
+<p><span id="EV-R1310" class="rqDef">[EV-R1310]</span> <strong>FDC Storage Threshold</strong> Threshold for the Fault Detection Counter (FDC). When reached, event memory will be allocated, and the <strong>Freeze Frame</strong> will be <strong>stored</strong>.</p>
+<ul>
+<li>Unsigned integer (milliseconds)</li>
+<li>optional</li>
+<li>Default: undefined</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>timeBasedFdcThresholdStorageValue</code></li>
+</ul></li>
+</ul>
+<p><span id="EV-R1320" class="rqDef">[EV-R1320]</span> <strong>Failed Threshold</strong></p>
+<ul>
+<li>Delay leading to the Event &quot;failed&quot; status</li>
+<li>Unsigned integer (milliseconds)</li>
+<li>Mandatory</li>
+<li>Default: 0</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>timeFailedThreshold</code></li>
+</ul></li>
+</ul>
+<p><span id="EV-R1330" class="rqDef">[EV-R1330]</span> <strong>Passed Threshold</strong></p>
+<ul>
+<li>Delay leading to the Event &quot;passed&quot; status</li>
+<li>Unsigned integer (milliseconds)</li>
+<li>Mandatory</li>
+<li>Default: 0</li>
+<li>Related:
+<ul>
+<li>DEXT: <code>timePassedThreshold</code></li>
+</ul></li>
+</ul>
+<p>Related to Time-Based Debounce Algorithm:</p>
+<ul>
+<li>DEXT: Table 6.42</li>
+<li>German: &quot;zeitbasierter Entprell-Algorithmus&quot;</li>
+</ul>
+<h2 id="event-and-dtc">Event and DTC</h2>
+<p><span id="EV-R230" class="rqDef">[EV-R230]</span> An Event optionally references a <strong>UDS DTC</strong>.</p>
+<ul>
+<li><span id="EV-R230-OBDII" class="rqDef">[EV-R230-OBDII]</span> An Event cannot reference an OBDII DTC.
+<ul>
+<li>Instead, an OBDII DTC optionally references UDS DTCs (in the Vector UDS Template: <a class='rqRef' href='../../40 Templates\Vector UDS\OBDII DTC Columns.htm#VUDS-R480' title="">[VUDS-R480]</a>)</li>
+<li>See <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020-OBDII' title="">[EV-R020-OBDII]</a> for the Events list.</li>
+<li>See <a class='rqRef' href='../../20 UserInterface\Event\Events.htm#EVUI-R005-OBDII' title="">[EVUI-R005-OBDII]</a> for the user interface.</li>
+</ul></li>
+<li><span id="EV-R230-Kind" class="rqDef">[EV-R230-Kind]</span> This holds for Events of Kind <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R110' title="">[EV-R110]</a> SWC as well as BSW.</li>
+<li><span id="EV-R230-Internal" class="rqDef">[EV-R230-Internal]</span> The reference is optional.
+<ul>
+<li>If the Event does not reference a DTC, the Event is called <strong>internal</strong> (used for DEM configuration only).</li>
+</ul></li>
+<li><span id="EV-R230-Combination" class="rqDef">[EV-R230-Combination]</span> <span id='_index_446728041' title='Event Combination' data-term='Event Combination'></span>A DTC may be referenced by multiple Events.
+<ul>
+<li>This is called <strong>Event combination</strong>.</li>
+<li>The DTC is a <strong>Combined DTC</strong>.</li>
+<li>For restrictions on references to SWCs, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D050-Combination' title="">[ASR-D050-Combination]</a>.</li>
+<li>Purpose: adapt different monitor results to one fault evaluable in a service station.</li>
+</ul></li>
+<li><span id="EV-R230-None" class="rqDef">[EV-R230-None]</span> A DTC may be referenced by no Event.</li>
+<li>Default: reference not set</li>
+<li>Cardinality: Events 0..n -- 0..1 DTC</li>
+<li>Cf. Operations <a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R230' title="">[EVOP-R230]</a> (add reference) and <a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R240' title="">[EVOP-R240]</a> (remove reference).</li>
+</ul>
+<p><span id="EV-R240" class="rqDef">[EV-R240]</span> The Event and the referenced DTC must both exist within the same diagnostic instance.</p>
+<p>Related to Event and DTC:</p>
+<ul>
+<li>DEXT: <code>[TPS_DEXT_03003]</code> <code>DiagnosticEventToTroubleCodeUdsMapping</code></li>
+</ul>
+<h2 id="object-paths-for-events">Object Paths for Events</h2>
+<p>Events and Event Master Data have objects paths (under their diagnostic instance):</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200-Event' title="">[OBJP-R200-Event]</a> Event</li>
+<li><a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200-OpCycle' title="">[OBJP-R200-OpCycle]</a> Operation Cycle</li>
+<li><a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200-Ind' title="">[OBJP-R200-Ind]</a> Indicator</li>
+<li><a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200-Cond' title="">[OBJP-R200-Cond]</a> Condition and Condition Group</li>
+<li><a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200-DebAlg' title="">[OBJP-R200-DebAlg]</a> Debounce Algorithm (Counter-Based and Time-Based)</li>
+</ul>
+<p>Examples:</p>
+<pre><code>qpath:/BaseVariant/FaultMemory/[EVENT]Left_Front_Wheel_Speed_Sensor_circuit_open
+qpath:/BaseVariant/FaultMemory/[OPERATIONCYCLE]OBD_Driving_Cycle
+qpath:/BaseVariant/FaultMemory/[INDICATOR]Break_Warning
+qpath:/BaseVariant/FaultMemory/[CONDITION]Engine_Cranking
+qpath:/BaseVariant/FaultMemory/[DEBOUNCEALGORITHM]Aging</code></pre>
+<h2 id="consistency">Consistency Conditions</h2>
+<p><span id="EV-D100" class="rqDef">[EV-D100]</span> See the overview <a class='rqRef' href='../../30%20Features/Consistency%20Check/Consistency%20Check.htm#CCEV-D100' title="">[CCEV-D100]</a> in the chapter Consistency Check, which mainly references conditions specified directly in the data model above.</p>
+<h3 id="migration">Migration</h3>
+<p><span id="EV-R250" class="rqDef">[EV-R250]</span> Migrations for &quot;Supports Events&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a>, Events <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a> and Event Master Data <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D040' title="">[EV-D040]</a>:</p>
+<p>When <strong>loading</strong> a file with version <code>&lt;</code> 12 (forward migration), ...</p>
+<ul>
+<li><span id="EV-R250-Supp" class="rqDef">[EV-R250-Supp]</span> &quot;Supports Events&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a> is false,</li>
+<li><span id="EV-R250-No" class="rqDef">[EV-R250-No]</span> the document contains no Events and no Event Master Data.</li>
+<li><span id="EV-R250-DTC" class="rqDef">[EV-R250-DTC]</span> CANdelaStudio does <strong>not</strong> automatically move values from existing DTC columns to Event properties.</li>
+</ul>
+<p>When <strong>saving</strong> to a file with version <code>&lt;</code> 12 (backward migration), ...</p>
+<ul>
+<li><span id="EV-R250-Drop" class="rqDef">[EV-R250-Drop]</span> CANdelaStudio drops &quot;Supports Events&quot;, the Events and the Event Master Data.</li>
+</ul>
+<h2 id="deviations-to-autosar-terms">Deviations to AUTOSAR Terms</h2>
+<p><span id="EV-D200" class="rqDef">[EV-D200]</span> The CANdela data model intentionally uses some other terms than the DEXT specification:</p>
+<ul>
+<li>it removes <strong>redundancy</strong>
+<ul>
+<li>e.g. omits the class name used as prefix (e.g. <code>counter</code> in <code>counterJumpUp</code>, <code>counterJumpDown</code> etc.)</li>
+</ul></li>
+<li>it strives for <strong>consistent</strong> and <strong>clear</strong> wording
+<ul>
+<li>e.g. <code>counterJumpUp</code> becomes <code>Jump Up Allowed</code></li>
+<li>e.g. Boolean <code>prestorageFreezeFrame</code> becomes &quot;Freeze Frame Prestored&quot;</li>
+<li>e.g. <code>counterJumpUp</code> and <code>counterJumpUpValue</code> become <code>Jump Up Allowed</code> and <code>Jump Up Value</code></li>
+</ul></li>
+<li>it declares properties as <strong>mandatory</strong>, except where the process demands omitting the property in CANdela to define it later.</li>
+<li>it <strong>moves</strong> a property to a subclass where AUTOSAR defines a textual constraint for this purpose: <code>[constr_1359]</code></li>
+</ul>
+<h2 id="Cardinality">Legend: Cardinality</h2>
+<p>The &quot;Cardinality&quot; info above describes the <strong>cardinality</strong> of the relationship between two types of objects in terms of the Unified Modelling Language (UML).</p>
+<p>Example: &quot;Events 0..n -- 0..1 Operation Cycle&quot; means:</p>
+<ul>
+<li>a given Event optionally (&quot;0..1&quot;) references an Operation Cycle</li>
+<li>a given Operation Cycle may be referenced by no Event (&quot;0&quot;), or by multiple Events (&quot;n&quot;)</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="Event%20Operations.htm">Event Operations</a></li>
+<li>AUTOSAR: Specification of Diagnostic Extract</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Identifying Features</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="identifying-features">Identifying Features</h1>
+<p>See also the dialog for <a href="Identifying%20Patterns.htm">Identifying Patterns</a> in extended variants and the <a href="../../30%20Features/Variant/Variant%20Identification.htm">Variant Identification Feature</a>.</p>
+<div class="figure">
+<img src="Images/Identifying%20Features.jpg" alt="Dialog &quot;Identifying Features&quot;" />
+<p class="caption">Dialog &quot;Identifying Features&quot;</p>
+</div>
+<h2 id="list-of-identifying-features">List of Identifying Features</h2>
+<p>The chapter “Identifying Features” of the Base Variant contains a list of identifying features, i.e. data objects and services, to be used in automatic detection of a variant at runtime.</p>
+<p>None of the columns can be sorted. Instead, the lines can be reordered by menu items <strong>Edit | Move up</strong> and <strong>Edit | Move down</strong> – exactly like data objects.</p>
+<h2 id="diagnostic-instancejob-container">Diagnostic Instance/Job Container</h2>
+<p>Contains the name of the diagnostic instance or job container to which the data object (see next item) belongs to. For bold font, see <a href="#mandatory">mandatory</a> below.</p>
+<h2 id="data-object">Data Object</h2>
+<p>Contains the data object used for identifying a variant. For bold font, see <a href="#mandatory">mandatory</a> below.</p>
+<h2 id="mandatory">Mandatory</h2>
+<p>Describes whether the identifying feature is mandatory (see <a href="#mandatory">below</a>).</p>
+<p>Only column &quot;Mandatory&quot; can be edited directly.</p>
+<h2 id="status">Status</h2>
+<p>Describes the status of the data object. Since the data object is referenced by a <a href="../../30%20Features/Common%20Properties/Object%20Paths.htm">path</a> to a data object, the path can be invalid. This will be indicated by this column:</p>
+<ul>
+<li>“Usable”</li>
+<li>“Invalid path”</li>
+<li>“Invalid diagnostic instance”</li>
+</ul>
+<h2 id="path">Path</h2>
+<p>Contains the path to the data object. Paths for identifying features are always qualifier paths. If a path is invalid, it will be shown in red.</p>
+<h2 id="new-feature">New Feature</h2>
+<p>A click on <strong>[New Feature…]</strong> or the magic line opens the dialog <a href="Identifying%20Feature.htm">Identifying Feature</a> which allows create a new identifying feature using a data object.</p>
+<h2 id="change-path">Change Path</h2>
+<p>A click on <strong>[Change Path…]</strong> opens the same dialog <a href="Identifying%20Feature.htm">Identifying Feature</a> which allows select a different data object. This is necessary e.g. if the previously selected data object has been deleted.</p>
+<h2 id="delete">Delete</h2>
+<p>Identifying features can be deleted by clicking on the appropriate icon in the tool bar or by selecting command <strong>Edit | Delete</strong> from the main menu or context menu.</p>
+<p>See <a href="#mandatory">mandatory</a> below for restrictions.</p>
+<h2 id="go-to-data-object">Go To Data Object</h2>
+<p>Navigates to the referenced data object (if the path is valid).</p>
+<h2 id="copy-path">Copy Path</h2>
+<p>Copies the path to the referenced data object to the clipboard.</p>
+<h2 id="properties-of-data-type">Properties of Data Type</h2>
+<p>If the path to the referenced data object is valid, opens its referenced data type.</p>
+<h2 id="mandatory">Mandatory Identifying Features and Patterns (CDS-7937 5.0)</h2>
+<p>Each identifying feature has a <a href="../../30%20Features/Variant/Variant%20Identification.htm#mandatory">flag</a> whether it is mandatory.</p>
+<ul>
+<li><p>R010.1: allow toggling the flag in expert mode (= on CDDT and on CDD).</p></li>
+<li><p>R011.0: in each variant, in the list of identifying patterns, display the columns &quot;Diagnostic Instance/Job Container&quot; and &quot;Data Object&quot; in bold font iff. the identifying feature is mandatory.</p></li>
+<li><p>R012.0: deleting an identifying feature marked mandatory is only allowed in expert view.</p></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Identifying%20Patterns.htm">Identifying Patterns</a> (User Interface - non-base variant)</li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../30%20Features/Variant/Variant%20Identification.htm">Variant Identification</a> (Feature)</li>
+</ul>
+</body>
+</html>

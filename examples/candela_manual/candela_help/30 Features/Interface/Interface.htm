@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Interface</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="interface">Interface</h1>
+<p>See also the <a href="../../20%20UserInterface/Interface/Interface.htm">Interfaces User Interface</a>.</p>
+<p>The <strong>interfaces</strong> in a CANdela document define how a test system can communicate with the ECU, like &quot;Diagnostic CAN&quot; or &quot;Comfort CAN&quot;. An ECU may support multiple interfaces.</p>
+<p>Each interface contains <a href="Communication%20Parameter.htm">Communication Parameters</a> that specify communication details on different levels, e.g. &quot;Bus type&quot; or &quot;P2 Client&quot; time. While there is a set of standardized communication parameters, a document may also contain communication parameters for specific test systems.</p>
+<h2 id="data-transport---bus-level-vs.-application-level">Data Transport - Bus Level vs. Application Level</h2>
+<p>Interfaces enable the communication on bus level. On <strong>bus level</strong>, data packets have limited <strong>frame size</strong>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Frame Size</th>
+<th align="center">Bus</th>
+<th align="center">Standard</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>8 bytes</td>
+<td align="center">“Classic” CAN</td>
+<td align="center">ISO 11898-1</td>
+</tr>
+<tr class="even">
+<td>64 bytes</td>
+<td align="center">“FD” CAN</td>
+<td align="center">ISO 11898-1</td>
+</tr>
+<tr class="odd">
+<td>254 bytes</td>
+<td align="center">FlexRay</td>
+<td align="center">ISO 17458-2</td>
+</tr>
+<tr class="even">
+<td>4 GB</td>
+<td align="center">DoIP</td>
+<td align="center">ISO 13400-2</td>
+</tr>
+</tbody>
+</table>
+<p>On the <strong>application level</strong>, UDS (ISO 14229-1:2013 “Unified Diagnostic Services” §6.4.1.7) describes 4 GB for transport during a single diagnostic service.</p>
+<div class="figure">
+<img src="Images/Bus%20and%20Application%20Level%20in%20CANoe.jpg" alt="Bus and Application Level in Vector CANoe" />
+<p class="caption">Bus and Application Level in Vector CANoe</p>
+</div>
+<h2 id="interfaces-in-candela">Interfaces in CANdela</h2>
+<p>Interfaces are defined in the CANdela template in the Expert View.</p>
+<p>At least one interface must be activated (CDS-1891 2.0).</p>
+<p>Deleting an interface means also that all communication parameters (i.e. default attributes belonging to the interface) are deleted.</p>
+<p>Command “paste” only pastes the interface but not the communication parameters belonging to the interface.</p>
+<p><strong>Note:</strong> many existing CANdela documents already have a set of interfaces, which are evaluated by other Vector tools, for example for automatic code generation. These interfaces contain communication parameters that you cannot edit or delete. You should not <strong>delete</strong> interfaces containing such parameters from the template. Otherwise some of the tools might not work as expected.</p>
+<h2 id="data-storage-based-on-attributes">Data Storage Based on Attributes</h2>
+<p>CANdelaStudio stores communication parameters and their interfaces using <a href="../../30%20Features/Attributes/Attributes.htm">Default Attributes</a>.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Addressing%20Schemes.htm">Addressing Schemes</a></li>
+<li><a href="../../30%20Features/Interface/Communication%20Parameter.htm">Communication Parameter</a></li>
+<li><a href="../../30%20Features/Interface/Communication%20Parameters%20at%20Services%20and%20Jobs.htm">Communication Parameters at Services and Jobs</a></li>
+<li><a href="Dynamic%20Addressing.htm">Dynamic Addressing</a></li>
+<li><a href="../../20%20UserInterface/Interface/Interface.htm">Interfaces (User Interface)</a></li>
+<li><a href="Services%20Supported%20for%20Interfaces.htm">Services Supported for Interfaces</a></li>
+<li>User interface for <a href="../../20%20UserInterface/Interface/Services%20Supported%20for%20Interfaces.htm">Services Supported for Interfaces</a></li>
+</ul>
+</body>
+</html>

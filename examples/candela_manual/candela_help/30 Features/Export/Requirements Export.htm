@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Requirements Export</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="requirements-export">Requirements Export</h1>
+<h2 id="requirements-export-to-.csv">Requirements Export to .csv</h2>
+<p><span id="RQ-R700" class="rqDef">[RQ-R700]</span>: writes the entire data to a .csv file</p>
+<ul>
+<li>file format as described in the <a href="../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm">CANdelaStudio CSV Requirements Exchange Format</a>.</li>
+</ul>
+<p><span id="RQ-R705" class="rqDef">[RQ-R705]</span>: writes the following properties of the CANdela document as <strong>meta properties</strong> (see R645):</p>
+<ul>
+<li>Save number,</li>
+<li>version string of the last revision (if any),</li>
+<li>data of the last revision (if any),</li>
+<li>version of CANdelaStudio,</li>
+<li>version of .csv export component,</li>
+<li>date of export.</li>
+</ul>
+<p>Note: more maybe added in the future.</p>
+<p><span id="RQ-R710" class="rqDef">[RQ-R710]</span> (cf. <a class='rqRef' href='../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm#RQ-R680' title="">[RQ-R680]</a>) the VehicleSystemGroups are exported as VSG names.</p>
+<p><span id="RQ-R780" class="rqDef">[RQ-R780]</span> For a <strong>property that does not exist</strong> at the requirement, i.e. ...</p>
+<ul>
+<li>either a Specific Property <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R030' title="Specific Properties">[RQ-R030]</a>,</li>
+<li>or a User-Defined Property restricted to exist at DTC Requirements <a class='rqRef' href='../../30%20Features/Requirements/Data%20Model.htm#RQ-R040-ForType' title="">[RQ-R040-ForType]</a>,</li>
+</ul>
+<p>export <strong>leaves the value empty</strong>.</p>
+<h2 id="action-variable-rqcsvexporttmppath-cds-24780-7.5-sp2.">Action Variable RqCSVExportTmpPath (CDS-24780 7.5 SP2).</h2>
+<p><span id="RQ-R795" class="rqDef">[RQ-R795]</span> The <a href="../../30%20Features/Actions/Actions.htm">Action</a> variable <code>RqCSVExportTmpPath</code> <strong>automates postprocessing of exported requirements</strong> by an external command.</p>
+<p>In detail: if an action contains the variable in a command line, on action execution, CANdelaStudio...</p>
+<ol style="list-style-type: decimal">
+<li>computes a temporary file path T</li>
+<li><strong>exports requirements in .csv format</strong> to T (same contents as after interactive export from requirements view, described above)</li>
+<li>in the action command line, replaces the action variable by T</li>
+<li>executes the command line (runs your external command)</li>
+<li>deletes the file T</li>
+</ol>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Procedure: <a href="../../15%20Procedures/Requirements/How%20to%20Export%20all%20DTC%20Attribute%20Columns%20via%20Requirements.htm">How to Export all DTC Attribute Columns via Requirements</a></li>
+<li>Procedure: <a href="../../15%20Procedures/Requirements/How%20to%20Import%20Identifiers%20via%20Requirements.htm">How to Import Identifiers via Requirements</a></li>
+<li>Procedure: <a href="../../15%20Procedures/Excel/How%20to%20Open%20a%20CSV%20File%20in%20Excel.htm">How to Open CSV in Excel</a></li>
+<li><a href="../../30%20Features/Actions/Actions.htm">Actions</a></li>
+<li>Requirements <a href="../../30%20Features/Requirements/Requirements.htm">Feature</a></li>
+<li>Requirements <a href="../../30%20Features/Requirements/Data%20Model.htm">Data Model</a></li>
+<li>Requirements <a href="../../30%20Features/Import/Requirements%20Import.htm">Import</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#autosar">AUTOSAR Command Line Operation Examples</a></li>
+<li><a href="../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm">CANdelaStudio CSV Requirements Exchange Format</a></li>
+<li><a href="../../30%20Features/Installation/Documentation.htm">CANdelaStudio documentation folder</a></li>
+</ul>
+</body>
+</html>

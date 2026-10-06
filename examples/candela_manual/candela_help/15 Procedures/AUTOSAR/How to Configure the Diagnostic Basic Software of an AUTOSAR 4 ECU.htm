@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Configure the Diagnostic Basic Software of an AUTOSAR 4 ECU</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-configure-the-diagnostic-basic-software-of-an-autosar-4-ecu"><span id='_index_446727846' title='AUTOSAR: How to Configure' data-term='AUTOSAR' data-text='How to Configure'>How to Configure the Diagnostic Basic Software of an AUTOSAR 4 ECU</span></h1>
+<p>The following decribes the configuration of an AUTOSAR 4 ECU <strong>in CANdelaStudio</strong>.</p>
+<p>For the <a href="../../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">complete AUTOSAR workflow</a> with <strong>PREEvision</strong> and <strong>MICROSAR4</strong>, see the Vector Application Note &quot;How to Configure the Diagnostic BSW of an AUTOSAR 4 ECU&quot; (see <a href="#relatedTopics">Related Topics</a> below).</p>
+<p>An item like <code>[RQ-R093]</code> refers to a <a href="../../10%20Introduction/About%20this%20Documentation.htm#featureID">FeatureID</a> of CANdelaStudio (in this documentation; you may <a href="../../15%20Procedures/Help/How%20to%20Search%20for%20a%20FeatureID.htm">search</a> for it).</p>
+<p>Contents:</p>
+<ul>
+<li><a href="#requirementsImport">Requirements Import</a></li>
+<li><a href="#swc-sync">SYS-EX Synchronization (SWC Sync)</a></li>
+<li><a href="#configuration">Configuration of UDS Services</a></li>
+<li><a href="#dext">Diagnostic ECU Extract (DEXT) Export</a></li>
+</ul>
+<h2 id="requirementsImport">Requirements Import</h2>
+<p>A CANdela document may contain textual <a href="../../30%20Features/Requirements/Requirements.htm">Requirements</a> for an ECU.</p>
+<p>CANdelaStudio shows these requirements in the <a href="../../20%20UserInterface/Tree/Navigation%20Tree.htm">tree node</a> &quot;Requirements&quot; at the bottom of the navigation tree:</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Requirements.jpg" alt="Requirements in CANdelaStudio" />
+<p class="caption">Requirements in CANdelaStudio</p>
+</div>
+<h3 id="import">Import</h3>
+<p>To import requirements into the CANdela document, ...</p>
+<ul>
+<li>navigate to the &quot;Requirements&quot; tree node</li>
+<li>delete all existing requirements:
+<ul>
+<li>click into the Requirements area</li>
+<li>press Ctrl-A to select all requirements</li>
+<li>press DEL to delete them.</li>
+</ul></li>
+<li>press the &quot;Import&quot; button <img src="Images/Requirements%20Import%20Button.jpg" /> in the Requirements toolbar</li>
+<li>in the File dialog, select the .CSV file exported from PREEvision
+<ul>
+<li>the .CSV file must follow the <a href="../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm">format</a> conventions defined by CANdelaStudio</li>
+</ul></li>
+<li>open the file.</li>
+</ul>
+<p>CANdelaStudio shows the imported requirements in the Requirements area.</p>
+<h3 id="setup-requirements-synchronization">Setup Requirements Synchronization</h3>
+<p>In the Requirements area, <a href="../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm">property page &quot;Settings&quot;</a>, ...</p>
+<ul>
+<li>select the <strong>variant</strong> or <strong>library</strong> <a class='rqRef' href='../../30 Features\Requirements\Requirements Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a> with which you want to relate and synchronize the requirements,</li>
+<li>select the <strong>data type</strong> <a class='rqRef' href='../../30 Features\Requirements\Requirements Settings.htm#RQ-R094' title="Default Data Type">[RQ-R094]</a> to be used for data objects created during synchronization.
+<ul>
+<li>Tipp: in the data types list, create a special data type e.g. &quot;Undefined&quot; and select it here. Later, this will help you to review the data objects that need assignment of a more specific data type.</li>
+</ul></li>
+</ul>
+<h3 id="compare-requirements-with-existing-diagnostic-objects">Compare Requirements with Existing Diagnostic Objects</h3>
+<p>CANdelaStudio shows each requirement with a special <strong>symbol</strong> <a class='rqRef' href='../../20 UserInterface\Requirements\Requirements.htm#RQUI-R080' title="">[RQUI-R080]</a> left to the requirement icon, indicating the <strong>synchronization state</strong> of the requirement - whether a diagnostic object exists and is up-to-date:</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Requirements%20Synchronization%20State.jpg" alt="Requirements Synchronization State" />
+<p class="caption">Requirements Synchronization State</p>
+</div>
+<p>To <strong>inspect</strong> the synchronization state in detail, ...</p>
+<ul>
+<li>press the <strong>Show Differences</strong> toolbar button <img src="Images/Show%20Differences%20Button.jpg" /> and...
+<ul>
+<li>move the mouse over a requirement.</li>
+<li>CANdelaStudio shows a tooltip with details, like the name and value of differing properties.</li>
+</ul></li>
+<li>ensure the &quot;Diagnostic Objects&quot; list is shown (use the toolbar toggles <a class='rqRef' href='../../20 UserInterface\Requirements\Requirements.htm#RQUI-R012' title="">[RQUI-R012]</a>) and...
+<ul>
+<li>inspect linked diagnostic objects;</li>
+</ul></li>
+<li>filter the requirements by their synchronization state:</li>
+</ul>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Requirements%20Synchronization%20State%20Filter.jpg" alt="Requirements Synchronization State Filter" />
+<p class="caption">Requirements Synchronization State Filter</p>
+</div>
+<h3 id="synchronize-diagnostic-objects-from-requirements">Synchronize Diagnostic Objects from Requirements</h3>
+<ul>
+<li>press the <strong>Update Diagnostic Objects</strong> toolbar button <img src="Images/Update%20Diagnostic%20Objects%20Button.jpg" /></li>
+<li>inspect the eventually modified <strong>synchronization state</strong>, as described in the previous chapter</li>
+<li>inspect the <strong>column &quot;ToDo&quot;</strong> which marks new data objects, these will typically need assignment of a specific data type (as described in <a href="#configuration">chapter &quot;Configuration of UDS Services&quot;</a> below).</li>
+</ul>
+<h3 id="special-procedure-for-requirements-import-from-daimler-doors">Special Procedure for Requirements Import from Daimler DOORS</h3>
+<ul>
+<li>navigate to the &quot;Requirements&quot; tree node in CANdelaStudio</li>
+<li>delete all existing requirements:
+<ul>
+<li>click into the Requirements area</li>
+<li>press Ctrl-A to select all requirements</li>
+<li>press DEL to delete them.</li>
+</ul></li>
+<li>select menu Tools | Doors Requirement Import</li>
+<li>select the two .CSV files exported from DOORS (for data “DIP…” and DTCs)</li>
+</ul>
+<p>This special procedure...</p>
+<ul>
+<li>is necessary to convert the specific .CSV format exported from the Daimler DOORS customization to the .CSV format accepted by CANdelaStudio.
+<ul>
+<li>You cannot import the DOORS .CSV files directly into CANdelaStudio!</li>
+</ul></li>
+<li>uses an <a href="../../30%20Features/Actions/Actions.htm">action</a> which runs the converter.</li>
+</ul>
+<h2 id="swc-sync">SYS-EX Synchronization (SWC Sync)</h2>
+<p>For AUTOSAR software generation, the diagnostic objects in the CANdela document need links to the corresponding objects in the SYS-EX (System Extract of System Description).</p>
+<p>To this purpose, CANdelaStudio provides the <a href="../../30%20Features/Import/SWC%20Sync%20Introduction.htm">SWC Sync</a> Import.</p>
+<h3 id="setup">Setup</h3>
+<p>The CANdela document must contain <a href="../../30%20Features/Attributes/Attributes.htm">attributes</a> to store the links to the SYS-EX objects:</p>
+<ul>
+<li>open ribbon tab File|Properties</li>
+<li>select the &quot;Document Info&quot; page</li>
+<li>ensure the checkbox &quot;Attributes for AUTOSAR Diagnostic Extract export&quot; <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R500' title="">[DOCUI-R500]</a> is checked.</li>
+</ul>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Property%20Page%20Document%20Info.jpg" alt="Ribbon tab File | Properties, page &quot;Document Info&quot;" />
+<p class="caption">Ribbon tab File | Properties, page &quot;Document Info&quot;</p>
+</div>
+<h3 id="synchronization">Synchronization</h3>
+<ul>
+<li>in ribbon tab &quot;Data Exchange&quot;, press the &quot;SWC Sync&quot; Button <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R280' title="">[MENU-R280]</a></li>
+<li>select the SYS-EX <code>.arxml</code> file</li>
+<li>open the file.</li>
+</ul>
+<h3 id="swc-sync-dialog">SWC Sync Dialog</h3>
+<ul>
+<li>in the &quot;Target&quot; column, note the objects with value &quot;Import Pool only&quot;.
+<ul>
+<li>The requirements ID of these objects is not yet contained in the CANdela document.</li>
+<li>SWC Sync will put them into the import pool.</li>
+<li>After synchronization, you may move them manualy into the desired variant(s).</li>
+</ul></li>
+<li>in the <a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a> shown, optionally exclude objects being still under development from synchronization</li>
+<li>start the synchronization with &quot;OK&quot;</li>
+</ul>
+<h3 id="inspect">Inspect</h3>
+<p>Now you may inspect import details:</p>
+<ul>
+<li>move objects from the import pool into the desired variant;</li>
+<li>if the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm">Output Window</a> is not shown (typically at the bottom of the CANdelaStudio window), ...
+<ul>
+<li>in the ribbon tab Window, press the button Output Window <img src="../../20%20UserInterface/Images/Operation%20OutputWindow.png" /> <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab View.htm#MENU-R610' title="">[MENU-R610]</a> to enable the output window</li>
+</ul></li>
+<li>inspect the import details shown in the window.</li>
+</ul>
+<p>To inspect the imported diagnostic objects, ...</p>
+<ul>
+<li>either inspect them in the &quot;Diagnostic Objects&quot; list in the Requirements area, which shows...
+<ul>
+<li>only diagnostic objects of diagnostic classes relevant for requirements <a class='rqRef' href='../../30 Features\Diagnostic Class Template\Diagnostic Class Template.htm#DCLT-R300' title="">[DCLT-R300]</a></li>
+<li>the synchronization state;</li>
+</ul></li>
+<li>... or inspect them in the context of the variant in the CANdelaStudio tree.
+<ul>
+<li>CANdelaStudio shows the references for a data object in the <a href="../../20%20UserInterface/Common%20Properties/Attributes.htm">property page &quot;Attributes&quot;</a>, or in the <a href="../../20%20UserInterface/Attributes/Attribute%20Overview.htm">Attributes Overview</a>.</li>
+</ul></li>
+</ul>
+<h2 id="configuration">Configuration of UDS Services</h2>
+<p>So far you have...</p>
+<ul>
+<li>imported requirements,</li>
+<li>generated or updated diagnostic objects from the requirements, and</li>
+<li>added references to SYS-EX objects in the diagnostic objects.</li>
+</ul>
+<h3 id="complete-the-diagnostic-objects-for-code-generation">Complete the Diagnostic Objects for Code Generation</h3>
+<ul>
+<li>navigate to the variant in the CANdelaStudio tree;</li>
+<li>in the &quot;Supported Diagnostic Classes&quot; section, inspect the diagnostic instances;</li>
+<li>create or delete additional <strong>services</strong> as needed:
+<ul>
+<li>info about services <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R030-Services' title="Requirement &quot;Services&quot; Property">[RQ-R030-Services]</a> is optional in Requirements,</li>
+<li>it is synchronized <a class='rqRef' href='../../30 Features\Requirements\Update Diagnostic Objects.htm#RQ-R560-Services' title="">[RQ-R560-Services]</a> only if the service names or qualifiers match.</li>
+<li>The service names in the CANdela document depend on the CANdela template used.</li>
+</ul></li>
+<li>specify session and security, i.e. the <a href="../../30%20Features/State%20Dependency/State%20Dependency.htm">state dependency</a></li>
+<li>if the diagnostic instance contains multiple <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram tables</a>, ensure the new data objects <a class='rqRef' href='../../30 Features\Requirements\Update Diagnostic Objects.htm#RQ-R544-ServicesAtData' title="">[RQ-R544-ServicesAtData]</a> are in the correct one.</li>
+<li>assign specific <strong>data types</strong>.</li>
+</ul>
+<h3 id="complete-the-diagnostic-objects-for-use-in-a-tester">Complete the Diagnostic Objects for Use in a Tester</h3>
+<p>Additionaly you may want to...</p>
+<ul>
+<li>set <a href="../../30%20Features/Service/Service.htm">service</a> properties, like physical vs. functional addressing</li>
+<li>specify <a href="../../30%20Features/Negative%20Response/Negative%20Response.htm">negative response codes</a></li>
+<li>specify <a href="../../30%20Features/Variant/Variant%20Identification.htm">Variant Identification</a></li>
+<li>... and more details.</li>
+</ul>
+<h2 id="dext">Diagnostic ECU Extract (DEXT) Export</h2>
+<h3 id="setup-1">Setup</h3>
+<p>See <a class='rqRef' href='../../30 Features\Export\AUTOSAR Diagnostic Extract.htm#DEXT-R050' title="AUTOSAR Version">[DEXT-R050]</a> for...</p>
+<ul>
+<li>the AUTOSAR version(s) supported by your version of CANdelaStudio, and</li>
+<li>selecting the exported AUTOSAR version via an entry in CANdelaStudio.ini.</li>
+</ul>
+<h3 id="export">Export</h3>
+<ul>
+<li>use ribbon tab Data Exchange|DEXT Export <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R130' title="">[MENU-R130]</a></li>
+<li>in the File dialog, select the desired variant, confirm with &quot;Save&quot;</li>
+</ul>
+<h2 id="relatedTopics">Related Topics</h2>
+<p>Procedures:</p>
+<ul>
+<li><a href="../../15%20Procedures/Event/How%20to%20Specify%20Event%20Qualifiers%20before%20v12.htm">How to Specify Event Qualifiers before v12</a></li>
+</ul>
+<p>Operations:</p>
+<ul>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> (Export)</li>
+<li><a href="../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm">Attributes for AUTOSAR Diagnostic Extract Export</a></li>
+<li><a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a></li>
+<li><a href="../../30%20Features/Import/SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a> (Import)</li>
+</ul>
+<p>General:</p>
+<ul>
+<li><a href="../../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Workflow</a></li>
+<li><a href="../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm">CANdelaStudio CSV Requirements Exchange Format</a></li>
+<li><a href="../../30%20Features/Requirements/Requirements.htm">Requirements (Feature)</a></li>
+<li><a href="../../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>ODX Import Introduction</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="odx-import---introduction"><span id='_index_446728048' title='ODX: Import' data-term='ODX' data-text='Import'>ODX Import</span> - Introduction</h1>
+<p>See also the <a href="../../20%20UserInterface/Import/ODX%20Import.htm">ODX Import User Interface</a> and the menu for ODX Import <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R210' title="">[MENU-R210]</a>.</p>
+<h2 id="Template">Overview</h2>
+<p>ODX Import imports an ODX file into a CANdela <a href="../../30%20Features/Document/Document.htm">Document</a>.</p>
+<p><img src="../../30%20Features/Import/Images/image1.jpg" /></p>
+<p>You can create such a document by instantiating a <a href="../../30%20Features/Document%20Template/Document%20Template.htm">Document Template</a>.</p>
+<p>A Document Template captures the diagnostic specification of an OEM. It restricts the possible structure of diagnostic <strong>services</strong>.</p>
+<p><strong>ODX Import respects these template restrictions</strong>, so that...</p>
+<ul>
+<li>imported (or exported) data always <strong>fulfills the template restrictions</strong>,</li>
+<li>therefore ODX data exchange with CANdelaStudio always <strong>fulfills the specification of the OEM</strong>, implemented in the template.</li>
+</ul>
+<h2 id="OdxVersions">Supported ODX Versions</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">CANdelaStudio Version</th>
+<th align="left">ODX 2.0.1</th>
+<th align="left">ODX 2.2.0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Since 4.0</td>
+<td align="left">x</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">Since 6.0 SP1</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+</tbody>
+</table>
+<h2 id="import-settings">Import Settings</h2>
+<p>ODX Import offers different <strong>modes</strong> for different <strong>use-cases</strong>.</p>
+<ul>
+<li><a href="../../30%20Features/Import/1_Workflow.htm#FullEcu">Import of a complete ECU description</a></li>
+<li><a href="../../30%20Features/Import/1_Workflow.htm#VariantSelect">Import of variants with service selection</a></li>
+<li><a href="../../30%20Features/Import/1_Workflow.htm#SelectedParts">Import of specific small parts (DOPs, DTCs, ...)</a></li>
+<li><a href="../../30%20Features/Import/4_Import%20of%20Libraries.htm">Import of Libraries</a></li>
+</ul>
+<p>There are <a href="../../30%20Features/Import/2_Import%20Settings.htm#Options">options</a> to parameterize the Import.</p>
+<h2 id="autosar-fault-memory-cds-71541-v13">AUTOSAR Fault Memory (CDS-71541 v13)</h2>
+<p><span id="ODXI-R300" class="rqDef">[ODXI-R300]</span> No Support for &quot;Checkbox Feature&quot;</p>
+<ul>
+<li>in the <strong>generic data model</strong> and in <strong>ODX</strong>, suppressing storage of individual Snapshot Records per DTC <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R300' title="">[SR-R300]</a> is represented by multiple text tables.</li>
+<li><strong>ODX Import</strong> of v13 Release <strong>does not yet import that complex data structure</strong>.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/ODX/ODX.htm">Introduction to ODX</a></li>
+<li>Menu for ODX Import <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R210' title="">[MENU-R210]</a></li>
+<li><a href="../../20%20UserInterface/Import/ODX%20Import.htm">ODX Import User Interface</a></li>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX Export Introduction</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20ODX%20Import.htm">Options Property Page &quot;ODX Import&quot;</a></li>
+</ul>
+<p>ODX Import Reference:</p>
+<ul>
+<li><a href="1_Workflow.htm">Workflow</a></li>
+<li><a href="3_ODX%20Import%20Bit%20Positioning.htm">ODX Import Bit Positioning</a></li>
+<li><a href="4_Import%20of%20Libraries.htm">Import of Libraries</a></li>
+<li><a href="5_Selective%20Topics.htm">Selective Topics</a></li>
+<li><a href="6_Handling%20of%20specific%20ODX%20elements.htm">Handling of specific ODX elements</a></li>
+<li><a href="7_Import%20of%20Common%20Data.htm">Import of Common Data</a></li>
+<li><a href="8_Import%20of%20DIAG-LAYERs.htm">Import of DIAG-LAYERs</a></li>
+<li><a href="9_Import%20of%20DIAG-COMMs.htm">Import of DIAG-COMMs</a></li>
+<li><a href="10_Mapping%20of%20DIAG-SERVICEs%20and%20COMPLEX-DOPs.htm">Mapping of DIAG-SERVICEs and COMPLEX-DOPs</a></li>
+<li><a href="11_Import%20of%20PARAMs.htm">Import of PARAMs</a></li>
+<li><a href="12_Import%20of%20DATA-OBJECT-PROPs,%20STRUCTUREs%20and%20UNITs.htm">Import of DATA-OBJECT-PROPs, STRUCTUREs and UNITs</a></li>
+<li><a href="13_Import%20of%20SUB-COMPONENTs.htm">Import of SUB-COMPONENTs</a></li>
+</ul>
+</body>
+</html>

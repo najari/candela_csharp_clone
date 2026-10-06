@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DTCs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dtcs-dtc-list">DTCs (DTC <span id='_index_446727889' title='DTC' data-term='DTC'>List</span>)</h1>
+<p>See also the <a href="../../30%20Features/DTC/DTC.htm">DTC Feature</a>.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Available%20DTCs.jpg" alt="DTC List" />
+<p class="caption">DTC List</p>
+</div>
+<h2 id="places">Places</h2>
+<p>CANdelaStudio shows DTCs in a DTC list in the contexts <a class='rqRef' href='../../30 Features\DTC\DTC.htm#DTC-R020' title="DTC List">[DTC-R020]</a>...</p>
+<ul>
+<li><a href="Available%20DTCs.htm">Available DTCs</a> list(s) on document level (also called &quot;DTC Pool&quot;);</li>
+<li><a href="../../20%20UserInterface/Fault%20Memory/Diagnostic%20Instance.htm">Fault Memory diagnostic instance</a></li>
+</ul>
+<h2 id="template">Template</h2>
+<p>The template controls...</p>
+<ul>
+<li>the number of columns in the DTC list (see next chapter),</li>
+<li>the DTC Format <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R400' title="">[DOC-R400]</a>, which triggers DTC editing...
+<ul>
+<li>hexadecimal,</li>
+<li>using FTB <a class='rqRef' href='../../20%20UserInterface/DTC/DTCs.htm#DTCUI-R030' title="">[DTCUI-R030]</a> (below), or</li>
+<li>using FMI <a class='rqRef' href='../../20%20UserInterface/DTC/DTCs.htm#DTCUI-R040' title="">[DTCUI-R040]</a> (below).</li>
+</ul></li>
+</ul>
+<h2 id="columns">Columns</h2>
+<p><span id="DTCUI-R050" class="rqDef" title="DTC Columns">[DTCUI-R050 DTC Columns]</span> CANdelaStudio shows DTC columns in this order:</p>
+<ul>
+<li>error code (DTC) <a class='rqRef' href='../../30 Features\DTC\DTC.htm#DTC-R025' title="Code">[DTC-R025]</a></li>
+<li>(optional) error code in other formats</li>
+<li>error text <a class='rqRef' href='../../30 Features\DTC\DTC.htm#DTC-R030' title="Error Text">[DTC-R030]</a></li>
+<li>(optional) FTB/FMI text</li>
+<li>DTC Columns <a class='rqRef' href='../../30 Features\DTC\DTC.htm#DTC-R040' title="DTC Columns">[DTC-R040]</a> defined in the <a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">template</a></li>
+<li>Associated Vehicle System Groups <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm#VSG-R100-DTC' title="">[VSG-R100-DTC]</a></li>
+<li>Attributes, see below <a class='rqRef' href='../../20%20UserInterface/DTC/DTCs.htm#DTCUI-R050-Attributes' title="">[DTCUI-R050-Attributes]</a>.o</li>
+</ul>
+<h2 id="editing">Editing</h2>
+<p>You can modify DTC properties</p>
+<ul>
+<li>directly in the list (press F2)</li>
+<li>or in the <a href="DTC%20Property%20Page.htm">properties dialog for the DTC</a>.</li>
+</ul>
+<p>For a translatable DTC column with a <strong>selection list</strong>, see <a class='rqRef' href='../../20%20UserInterface/DTC/DTC%20Property%20Page%20General.htm#DTCUI-R095' title="">[DTCUI-R095]</a> below.</p>
+<h2 id="operations">Operations</h2>
+<p>The following operations are available as buttons or in the context menu of the DTC list.</p>
+<h3 id="new-dtc-code">New DTC Code</h3>
+<p>Creates a new DTC <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R010' title="Create DTC">[DTCOP-R010]</a>.</p>
+<h3 id="other-value">Other Value</h3>
+<p><span id="DTCUI-R090" class="rqDef">[DTCUI-R090]</span> For a translatable DTC column with a <strong>selection list</strong> <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R095' title="Selection List">[DTCC-R095]</a>, the context menu contains an item &quot;Other Value...&quot;.</p>
+<p>The item opens the property dialog in &quot;Show details&quot; mode <a class='rqRef' href='../../20%20UserInterface/DTC/DTC%20Property%20Page%20General.htm#DTCUI-R095' title="">[DTCUI-R095]</a>.</p>
+<h3 id="copy-from-available-dtcs">Copy from Available DTCs</h3>
+<p>Shows a selection list of DTCs in the DTC Pool which do not yet exist in the DTC list.</p>
+<p>Inserts the selected DTC(s) as a copy, see <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R020' title="Copy from Available DTCs">[DTCOP-R020]</a>.</p>
+<h3 id="reference-from-available-dtcs">Reference from Available DTCs</h3>
+<p>Shows a selection list of DTCs in the DTC Pool which do not yet exist in the DTC list.</p>
+<p>Inserts the selected DTC(s) as a reference into DTC Pool, see <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R030' title="Reference from Available DTCs">[DTCOP-R030]</a>.</p>
+<h3 id="full-screen">Full Screen</h3>
+<p>Switches the DTC list to be shown full screen (go back by pressing the <code>ESC</code> key).</p>
+<h3 id="copy-value-into-selected-dtcs-cds-6149-5.0-sp1">Copy Value into Selected DTCs (CDS-6149 5.0 SP1)</h3>
+<p><span id="DTCUI-R035" class="rqDef">[DTCUI-R035]</span> Copies <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R035' title="Copy Value into Selected DTCs">[DTCOP-R035]</a>...</p>
+<ul>
+<li>the cell value of the selected DTC column</li>
+<li>from the DTC selected last</li>
+<li>to other selected DTCs</li>
+</ul>
+<p>See also &quot;How to Edit DTCs Efficiently&quot; <a class='rqRef' href='../../15 Procedures\DTC\How to Edit DTCs Efficiently.htm#PRDTC-R035' title="">[PRDTC-R035]</a>.</p>
+<p>Only sensitive if...</p>
+<ul>
+<li>multiple DTCs are selected</li>
+<li>a <a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">user defined DTC column</a> is selected (e.g. not the DTC code or error text)</li>
+<li>the DTC column allows duplicates <a class='rqRef' href='../../30 Features\Fault Memory (Template)\DTC Columns.htm#DTCC-R050' title="MayBeDuplicate">[DTCC-R050]</a></li>
+</ul>
+<h3 id="cut">Cut</h3>
+<p>Moves the selected DTC(s) to the clipboard.</p>
+<h3 id="copy">Copy</h3>
+<p>Copies the selected DTC(s) to the clipboard.</p>
+<h3 id="paste">Paste</h3>
+<p>Pastes DTCs from the clipboard (if it contains DTCs), see <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R040' title="">[DTCOP-R040]</a>.</p>
+<h3 id="paste-contents">Paste Contents</h3>
+<p>Pastes DTCs from the clipboard (if it contains DTCs), see <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R045' title="Paste Contents">[DTCOP-R045]</a>.</p>
+<h3 id="delete">Delete</h3>
+<p>Deletes the selected DTC(s), see <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R018' title="Delete DTC Outside DTC Pool">[DTCOP-R018]</a>.</p>
+<h3 id="paste-as-reference">Paste as Reference</h3>
+<p>Pastes DTCs that have been copied from the DTC Pool to the clipboard, see <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R048' title="Paste as Reference">[DTCOP-R048]</a>.</p>
+<h3 id="replace-reference-with-copy">Replace Reference with Copy</h3>
+<p>Replaces DTCs referencing into DTC Pool with copies, see <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R050' title="Replace Reference with Copy">[DTCOP-R050]</a>.</p>
+<h3 id="replace-copy-with-reference">Replace Copy with Reference</h3>
+<p>Replaces DTCs not referencing into DTC Pool with references into DTC Pool, see <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R060' title="Replace Copy with Reference">[DTCOP-R060]</a>.</p>
+<h3 id="properties-of-data-object-of-dtc-table">Properties of Data Object of DTC Table</h3>
+<p><span id="DTCUI-R021" class="rqDef">[DTCUI-R021]</span> Shows the properties dialog for the DTC Data Object <a class='rqRef' href='../../30 Features\DTC\DTC.htm#DTC-R021' title="DTC Data Object">[DTC-R021]</a>.</p>
+<h3 id="properties">Properties</h3>
+<p>Shows the <a href="DTC%20Property%20Page.htm">properties dialog for the DTC</a>.</p>
+<h2 id="editing-failure-type-byte">Editing Failure Type Byte</h2>
+<div class="figure">
+<img src="Images/FTB.jpg" alt="DTC Editing Using the Special FTB Functionality" />
+<p class="caption">DTC Editing Using the Special FTB Functionality</p>
+</div>
+<p><span id="DTCUI-R030" class="rqDef">[DTCUI-R030]</span> When setup in the template <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R400' title="">[DOC-R400]</a>, the DTC table of the &quot;Fault memory&quot; diagnostic instance shows...</p>
+<ul>
+<li>a column &quot;Failure Type&quot; to the left of the &quot;Error Text&quot; column. In this column, you specify the numeric value. Using the button left to the edit field, you can select the byte value based on the texts from the attached text table.</li>
+<li>a column &quot;Failure Type Text&quot; to the right of the &quot;Error Text&quot; column. This column shows the text corresponding with the numeric value entered in the &quot;Failure Type&quot; column. The text is taken from the text table, you cannot modify it directly.</li>
+</ul>
+<p>See <a href="../../30%20Features/DTC/Failure%20Type%20Byte.htm">Failure Type Byte (FTB)</a>.</p>
+<h2 id="editing-failure-mode-identifier">Editing Failure Mode Identifier</h2>
+<div class="figure">
+<img src="Images/FMI.jpg" alt="DTC Editing Using the Special FMI Functionality" />
+<p class="caption">DTC Editing Using the Special FMI Functionality</p>
+</div>
+<p><span id="DTCUI-R040" class="rqDef">[DTCUI-R040]</span> When setup in the template <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R400' title="">[DOC-R400]</a>, the DTC table of the &quot;Fault memory&quot; diagnostic instance shows...</p>
+<ul>
+<li>columns &quot;SPN (Suspect Parameter Number)&quot; and &quot;FMI (Failure Mode Identifier)&quot; to the left of the &quot;Error Text&quot; column. In these columns, you specify the numeric value.</li>
+<li>using the button left to the FMI edit field, you can select the byte value based on the texts from the attached text table.</li>
+<li>a column &quot;Failure Mode Identifier&quot; to the right of the &quot;Error Text&quot; column. This column shows the text corresponding with the numeric value entered in the &quot;FMI (Failure Mode Identifier)&quot; column. The text is taken from the text table, you cannot modify it directly.</li>
+</ul>
+<p>See <a href="../../30%20Features/DTC/Failure%20Mode%20Identifier.htm">Failure Mode Identifier (FMI)</a>.</p>
+<h3 id="from-repository">From Repository</h3>
+<p><span id="DTCUI-R410" class="rqDef" title="From Repository">[DTCUI-R410 From Repository]</span> The button opens the <a href="../../20%20UserInterface/Import/Select%20from%20Repository.htm">Select from Repository</a> dialog to import DTCs from a repository.</p>
+<h2 id="attributes-shown-in-dtc-table">Attributes Shown in DTC Table</h2>
+<p><span id="DTCUI-R050-Attributes" class="rqDef">[DTCUI-R050-Attributes]</span> CANdelaStudio shows attributes with “visible in separate table column” set <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R090-DTC' title="">[ATTR-R090-DTC]</a> directly in the DTC table.</p>
+<p><span id="DTCUI-R050-AttributesEditing" class="rqDef">[DTCUI-R050-AttributesEditing]</span> When editing an attribute value in the DTC list, CANdelaStudio shows the message about a format violation like in the property dialog (CDS-29237 8.2 SP3).</p>
+<h2 id="related-topics">Related Topics</h2>
+<p>Procedures:</p>
+<ul>
+<li><a href="../../15%20Procedures/DTC/How%20to%20Edit%20DTCs%20Efficiently.htm">How to Edit DTCs Efficiently</a></li>
+</ul>
+<p>User Interface:</p>
+<ul>
+<li><a href="Available%20DTCs.htm">Available DTCs</a></li>
+<li><a href="DTC%20Property%20Page.htm">DTC Property Page</a></li>
+<li><a href="../../20%20UserInterface/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></li>
+<li><a href="../../20%20UserInterface/Import/Select%20from%20Repository.htm">Select from Repository</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC (Feature)</a></li>
+<li><a href="../../30%20Features/DTC/DTC%20Export.htm">DTC Export</a></li>
+<li><a href="../../30%20Features/DTC/DTC%20Import.htm">DTC Import</a></li>
+<li><a href="../../30%20Features/DTC/Failure%20Type%20Byte.htm">Failure Type Byte</a></li>
+<li><a href="../../30%20Features/DTC/Failure%20Mode%20Identifier.htm">Failure Mode Identifier</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a></li>
+<li><a href="../../30%20Features/Import/Repository%20Integration.htm">Repository Integration</a></li>
+</ul>
+</body>
+</html>

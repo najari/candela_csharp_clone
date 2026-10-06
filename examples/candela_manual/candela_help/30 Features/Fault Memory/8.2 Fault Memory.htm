@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>8.2 Fault Memory</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="fault-memory">8.2 Fault Memory</h1>
+<p>See also the introduction to <a href="Fault%20Memory.htm">Fault Memory</a>, <a href="Fault%20Memory%20in%20UDS.htm">Fault Memory in UDS</a> and <a href="Fault%20Memory%20in%20CANdela.htm">Fault Memory in CANdela</a>.</p>
+<p><strong>In v13, the 8.2 Fault Memory has been replaced by the <a href="AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory</a>.</strong></p>
+<p>The 8.2 Fault Memory introduced a new way to describe</p>
+<ul>
+<li><strong>snapshot data</strong> and</li>
+<li><strong>extended data</strong></li>
+</ul>
+<p>in the CANdela data model.</p>
+<h2 id="before-candelastudio-8.2-service-context">Before CANdelaStudio 8.2: Service Context</h2>
+<p>Before CANdelaStudio 8.2, the CANdela data model described <strong>snapshot data</strong> and <strong>extended data</strong> only in the context of the <strong>services</strong> (in the diagnostic instances) where they are transported over the line. This typically includes <strong>multiplexers</strong>.</p>
+<h2 id="candelastudio-8.2-..-12-just-the-data">CANdelaStudio 8.2 .. 12: Just the Data</h2>
+<p>CANdelaStudio since 8.2 .. 12 still supported the description in the service context, but provided an alternative, &quot;domain oriented&quot; description: <strong>just the data</strong>, <strong>outside the services</strong>.</p>
+<p><strong>Notes</strong>:</p>
+<ul>
+<li>All the data were <strong>only available</strong> in an ECU document if the <strong>new 8.2 data model had been enabled</strong>.</li>
+<li>ODX Import did not support import into the new data model (former ODXI-R410).</li>
+<li>A test system like CANoe still needs the data structure in a communication oriented way. CANdelaStudio 8.2 .. 12 defined &quot;Communication View&quot; for this purpose.</li>
+</ul>
+<h2 id="snapshot-records-in-a-candela-document-8.2-..-12">Snapshot Records in a CANdela Document (8.2 .. 12)</h2>
+<ul>
+<li>Snapshot Record came in two variations:
+<ul>
+<li>Specific Snapshot Record, identified by a <strong>number</strong> 0..0xFE (UDS: 0x00 = “legislated purposes”, in the request 0xFF = “all records”)</li>
+<li>General Snapshot Record, had no <strong>number</strong>, just in case details were not known.</li>
+</ul></li>
+<li>Snapshot Data came in different variations:
+<ul>
+<li>Common Snapshot Data: DIDs stored for all DTCs</li>
+<li>Any Snapshot Data: allowed not only DIDs, but any kind of data (e.g. data objects, or references to DIDs including the DID Number). The objects were defined <strong>locally within</strong> the Any Snapshot Data.</li>
+<li>DID Snapshot Data could <strong>contain only DIDs</strong>;</li>
+<li>Semantics on the line (= for communication oriented clients): it is a “DID Reference” =
+<ul>
+<li>DID Number, size 2 byte</li>
+<li>DID Data (contents of DID)</li>
+<li>The <strong>order</strong> of the DIDs on the line was <strong>not defined</strong></li>
+<li>For consistent behavior, without loss of generality, CANdelaStudio always presented the DIDs in <strong>ascending order of DID numbers</strong> (as specified in UDS).</li>
+</ul></li>
+<li>DTC Specific Snapshot Data
+<ul>
+<li>specified for a given <strong>CommonSnapshotData</strong> and an individual <strong>DTC</strong> in a <strong>diagnostic instance</strong> (not in DTC Pool).</li>
+</ul></li>
+<li>Relation of Common Snapshot Data and DTC Specific Snapshot Data
+<ul>
+<li>For <strong>Any Snapshot Data</strong> and <strong>DID Snapshot Data</strong> , DTC specific SnapshotData is placed in the telegram <strong>behind the Common</strong> <strong>SnapshotData</strong>.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="extended-data-records-in-a-candela-document-8.2-..-12">Extended Data Records in a CANdela Document (8.2 .. 12)</h2>
+<p>See also the introduction to <a href="Fault%20Memory.htm#ed">Fault Memory</a>.</p>
+<p>“Extended Data Record” is part of the <strong>UDS service 0x19 0x06</strong> and others. Such data is also called “<strong>Statistical Data</strong>”. It provides data for the <strong>point in time of the request</strong> (not of an event in the past).</p>
+<p>Details:</p>
+<ul>
+<li>the Extended Data Record Number: in the range 0..0xFD (UDS reserves 0xFE = “all OBD records” and 0xFF = “all records” in the request)</li>
+<li><strong>«is stored for DTC»</strong> specified in a diagnostic instance whether the ECU stores data of an <strong>ExtendedDataRecord</strong> for a given <strong>DTC</strong>. If not, a test system shall not provide the EDRN in the 0x19 0x06 request.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Introduction to <a href="Fault%20Memory.htm">Fault Memory</a></li>
+<li><a href="AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a> (v13)</li>
+<li><a href="../../20%20UserInterface/Protocol%20Service/Protocol%20Services.htm">Protocol Services (List)</a></li>
+<li><a href="../../15%20Procedures/Protocol%20Service/How%20to%20Create%20a%20New%20UDS%20Protocol%20Service.htm">How to create new UDS Protocol Service</a></li>
+</ul>
+</body>
+</html>

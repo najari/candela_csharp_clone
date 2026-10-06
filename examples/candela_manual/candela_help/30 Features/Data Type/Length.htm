@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Length</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-type-length"><span id='_index_446727950'>Data Type Length</span></h1>
+<p>See the <a href="Data%20Type.htm">Data Type Feature</a>.</p>
+<h2 id="bit-length">Bit Length</h2>
+<p><span id="DTL-R100" class="rqDef">[DTL-R100]</span> The <strong>Bit Length</strong> of a data type specifies the space it consumes on the line.</p>
+<h2 id="atom"><span id='_index_446727951'>Atom</span></h2>
+<p><span id="DTL-R110" class="rqDef">[DTL-R110]</span> For quantity “<strong>atom</strong>” <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R310-atom' title="">[DT-R310-atom]</a>, the encoding <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R100' title="">[DTENC-R100]</a> defines the allowed data type length.</p>
+<h2 id="field-array"><span id='_index_446727952'>Field</span> (<span id='_index_446727953'>Array</span>)</h2>
+<p><span id="DTL-R120" class="rqDef">[DTL-R120]</span> For quantity “<strong>field</strong>” <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R310-field' title="">[DT-R310-field]</a>, ...</p>
+<ul>
+<li>only field <strong>elements</strong> of
+<ul>
+<li><strong>1 byte size</strong> (unsigned, BCD, Ascii) or</li>
+<li><strong>2 byte size</strong> (for encoding Unicode) are supported.</li>
+<li>See chapter &quot;Raw Encoding and Bit Length&quot; <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type%20Property%20Dependencies.htm#DTDEP-R100' title="">[DTDEP-R100]</a>.</li>
+</ul></li>
+<li>The maximum supported length is 65536 bytes (CDS-5184).</li>
+<li>The maximum possible <strong>number of field elements</strong> is derived from that byte limit.</li>
+<li>E.g. for a field with 2-byte Unicode characters, no leading or terminating size info, the maximum number of elements is <code>65536 bytes / 2 =   32768</code> elements.</li>
+</ul>
+<h2 id="fix-and-variable-length">Fix and <span id='_index_446727954'>Variable Length</span></h2>
+<p>Tools that process diagnostic messages may have restrictions with respect to variable length data objects, especially if such an object occurs in the middle of a message.</p>
+<p>The length (number of bytes on the line at runtime) of a data type can be...</p>
+<p><span id="DTL-D100" class="rqDef" title="Fix Length">[DTL-D100 Fix Length]</span>:</p>
+<ul>
+<li>length <strong>known at authoring time</strong></li>
+</ul>
+<p><span id="DTL-D110" class="rqDef" title="Variable Length">[DTL-D110 Variable Length]</span>:</p>
+<ul>
+<li><p>length <strong>not known at authoring time</strong>. There are two variations:</p></li>
+<li><span id="DTL-D120" class="rqDef" title="Deterministic Variable Length">[DTL-D120 Deterministic Variable Length]</span>:
+<ul>
+<li>length at runtime can be <strong>computed from data</strong> on the line
+<ul>
+<li>e.g. using a leading size byte, see <a class='rqRef' href='../../30%20Features/Data%20Type/String%20Termination.htm#DTST-R100' title="">[DTST-R100]</a>.</li>
+</ul></li>
+<li>Being deterministic is relevant e.g. for a data object in the middle of a telegram, to determine where the next data object starts.</li>
+<li>Note: a communication library must take special steps to interprete such a data object, therefore some libraries possibly do not support this constellation. To support this case, such data types can be <a href="../../20%20UserInterface/Document/Property%20Page%20Authorization.htm#variable-length">forbidden in the CANdela document</a></li>
+</ul></li>
+<li><span id="DTL-D130" class="rqDef" title="Non-deterministic Variable Length">[DTL-D130 Non-deterministic Variable Length]</span>:
+<ul>
+<li>length at runtime <strong>cannot be computed from data</strong> on the line.</li>
+<li>A data object that references a non-deterministic data type can occur only at the end of the telegram.</li>
+</ul></li>
+</ul>
+<h3 id="simple-data-type">Simple Data Type</h3>
+<table>
+<colgroup>
+<col width="72%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Data Type Constellation</th>
+<th align="left">Length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">“Bit length/field size” = “Length”…</td>
+<td align="left">fix</td>
+</tr>
+<tr class="even">
+<td align="left">“Bit length/field size” = “Field fix”</td>
+<td align="left">fix</td>
+</tr>
+<tr class="odd">
+<td align="left">“Bit length/field size” = “Field variable”<br />
+... with min=max</td>
+<td align="left">fix</td>
+</tr>
+<tr class="even">
+<td align="left">... with min!= max</td>
+<td align="left">variable</td>
+</tr>
+<tr class="odd">
+<td align="left">... leading size bytes</td>
+<td align="left">deterministic variable</td>
+</tr>
+<tr class="even">
+<td align="left">... termination (both “zero term. no padding” and “zero term. no padding / maxLen / EOS”)</td>
+<td align="left">deterministic variable</td>
+</tr>
+<tr class="odd">
+<td align="left">... other, e.g. min != max, without length information</td>
+<td align="left">non-deterministic variable</td>
+</tr>
+</tbody>
+</table>
+<h3 id="complex-data-type">Complex Data Type</h3>
+<table>
+<colgroup>
+<col width="72%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Data Type Constellation</th>
+<th align="left">Length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">has fix length due to its type (i.e. not Mux, Iterator),<br />
+and contains only fix length data types</td>
+<td align="left">fix</td>
+</tr>
+<tr class="even">
+<td align="left">Mux with all cases of same fix length</td>
+<td align="left">fix</td>
+</tr>
+<tr class="odd">
+<td align="left">Iterator with constant number of iterations<br />
+and contains only fix length data types</td>
+<td align="left">fix</td>
+</tr>
+<tr class="even">
+<td align="left">contains a variable length datatype</td>
+<td align="left">variable</td>
+</tr>
+<tr class="odd">
+<td align="left">... fix length or deterministic variable length datatype only,<br />
+<strong>and</strong> not one of the End-of-service Iteration cases below</td>
+<td align="left">deterministic variable</td>
+</tr>
+<tr class="even">
+<td align="left">... including a non-deterministic variable length datatype</td>
+<td align="left">non-deterministic variable</td>
+</tr>
+<tr class="odd">
+<td align="left">End-of-service Iteration with min or max not set</td>
+<td align="left">non-deterministic variable</td>
+</tr>
+<tr class="even">
+<td align="left">End-of-service Iteration with min and max set, min != max</td>
+<td align="left">non-deterministic variable</td>
+</tr>
+</tbody>
+</table>
+<p>(*) Note: an End-of-service Iteration is allowed only at the end of the service (that’s its name!), even if it has deterministic length!</p>
+<h2 id="sizes">Sizes</h2>
+<p><span id="DTL-R200" class="rqDef">[DTL-R200]</span> The Minimum Size and Maximum Size properties of a Data Type define</p>
+<ul>
+<li>... for a data type with Quantity <strong>field</strong> <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type.htm#DT-R310-field' title="">[DT-R310-field]</a></li>
+<li>... the minimum/maximum number of elements.</li>
+<li>Sometimes the properties are also called &quot;Min elements&quot;, &quot;Max elements&quot;.</li>
+</ul>
+<p><span id="DTL-D200" class="rqDef">[DTL-D200]</span> <strong>Semantics of Minimum Size / Maximum Size</strong></p>
+<ul>
+<li><strong>consumption</strong> for string termination by <strong>max length</strong>
+<ul>
+<li>See String Termination cases <a class='rqRef' href='../../30%20Features/Data%20Type/String%20Termination.htm#DTST-R100-zeroMaxEOS' title="">[DTST-R100-zeroMaxEOS]</a> and <a class='rqRef' href='../../30%20Features/Data%20Type/String%20Termination.htm#DTST-R100-zeroPadMaxEOS' title="">[DTST-R100-zeroPadMaxEOS]</a></li>
+<li>E.g. Maximum Size = 2:
+<ul>
+<li><code>a\0</code> allowed</li>
+<li><code>ab</code> allowed</li>
+<li><code>ab\0</code> <strong>not</strong> allowed</li>
+</ul></li>
+</ul></li>
+<li><strong>capacity</strong> for the <strong>other terminations</strong>.
+<ul>
+<li>E.g. Maximum Size = 2 allows:
+<ul>
+<li><code>ab\0</code> allowed e.g. for case <a class='rqRef' href='../../30%20Features/Data%20Type/String%20Termination.htm#DTST-R100-zero' title="">[DTST-R100-zero]</a> of String Termination</li>
+</ul></li>
+</ul></li>
+<li>cf. CDS-13987 &quot;New values for field datatype termination&quot; in 6.5</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../30%20Features/Data%20Type/Iteration%20Data%20Types.htm">Iteration Data Types</a></li>
+</ul>
+</body>
+</html>

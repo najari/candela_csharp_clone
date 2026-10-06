@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Bit Ordering</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="bit-ordering-cds-3035-4.0"><span id='_index_446728009'>Bit Ordering</span> (CDS-3035 4.0)</h1>
+<p><span id="DOC-R500" class="rqDef">[DOC-R500]</span> A document has an option &quot;Display most Significant Bit on Top&quot;.</p>
+<p>The options controls whether <a href="../../30%20Features/Data%20Objects/Bit%20Field.htm">bit fields</a> are shown...</p>
+<ul>
+<li><span id="DOC-R500-LsbFirst" class="rqDef">[DOC-R500-LsbFirst]</span> with bit 0 on top (default), or</li>
+<li><span id="DOC-R500-MsbFirst" class="rqDef">[DOC-R500-MsbFirst]</span> with highest bit on top.</li>
+</ul>
+
+<h2 id="user-interface">User Interface</h2>
+<p>The option is edited in the File | Properties <a href="../../20%20UserInterface/Document/Property%20Page%20Options%20for%20Bit%20Fields.htm">Property Page &quot;Options for Bit Fields&quot;</a>.</p>
+<h2 id="availability-for-manufacturers">Availability for Manufacturers</h2>
+<p><span id="DOC-R500-Manufacturers" class="rqDef">[DOC-R500-Manufacturers]</span> The second option is available only for selected values of the <a href="Document.htm#diagnostics-based-on">&quot;Diagnostics Based on&quot;</a> (formerly &quot;manufacturers&quot;) property:</p>
+<div class="figure">
+<img src="Images/ActivateForManufacturers.jpg" alt="Diagnostics Based on - in File | Properties Dialog" />
+<p class="caption">Diagnostics Based on - in File | Properties Dialog</p>
+</div>
+
+<h2 id="effect">Effect</h2>
+<p>See the <a href="../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm#bitfield-display-variation">Bitfield Display Variations</a>.</p>
+<p>For &quot;highest bit on top&quot;, in bit fields, CANdelaStudio always creates implicit gaps <a class='rqRef' href='../../30%20Features/Data%20Objects/Bit%20Field.htm#BF-R200' title="">[BF-R200]</a>.</p>
+<h2 id="example">Example</h2>
+<h3 id="for-bit-0-on-top-as-always-in-candelastudio-4.0">For bit 0 on top (as always in CANdelaStudio <code>&lt;</code> 4.0)</h3>
+<ul>
+<li>Data model (in this order, note there is no explicit position):
+<ul>
+<li>Data object1 (1 bit)</li>
+<li>Data object2 (7 bit)</li>
+</ul></li>
+<li>Display in the user interface, export in RTF:
+<ul>
+<li>0 - Data object1 (1 bit)</li>
+<li>1 - Data object2 (7 bit)</li>
+</ul></li>
+<li>Export in ODX, MDX and any other exports:
+<ul>
+<li>BitPos 0, Data object1 (1 bit)</li>
+<li>BitPos 1, Data object2 (7 bit)</li>
+</ul></li>
+</ul>
+<h3 id="for-highest-bit-on-top-starting-with-candelastudio-4.0-available-for-some-manufacturers-only">For highest bit on top (starting with CANdelaStudio 4.0, available for some manufacturers only):</h3>
+<ul>
+<li>Data model (in this order, note there is no explicit position):
+<ul>
+<li>Data object1 (1 bit)</li>
+<li>Data object2 (7 bit)</li>
+</ul></li>
+<li>Display in the user interface, export in RTF:
+<ul>
+<li>7 - Data object1 (1 bit)</li>
+<li>6 - Data object2 (7 bit)</li>
+</ul></li>
+<li>Export in ODX, MDX is (objects in this order, note the explicit position):
+<ul>
+<li>BitPos 7, Data object1 (1 bit)</li>
+<li>BitPos 6, Data object2 (7 bit)</li>
+</ul></li>
+<li>Export in any other exports is (same as with bit 0 on top, i.e. ignores the flag):
+<ul>
+<li>BitPos 0, Data object1 (1 bit)</li>
+<li>BitPos 1, Data object2 (7 bit)</li>
+</ul></li>
+</ul>
+<h2 id="restrictions">Restrictions</h2>
+<p>Copy/paste between documents with different settings for this option transfers bit objects in the order <strong>displayed</strong> (it does not preserve the order on the line).</p>
+<h2 id="operations">Operations</h2>
+<p><span id="DOC-R505" class="rqDef">[DOC-R505]</span> (Expert view) If you change the option <a class='rqRef' href='../../30%20Features/Document/Bit%20Ordering.htm#DOC-R500' title="">[DOC-R500]</a>, for each bit field CANdelaStudio...</p>
+<ol style="list-style-type: decimal">
+<li>adds a trailing reserved data object, if the data objects in the bit field do not cover the entire capacity,</li>
+<li>then reverses the data object list in the bit field.</li>
+</ol>
+<p>The reserved data object is needed so that the position of the existing data objects is preserved.</p>
+<p><span id="DOC-R510" class="rqDef">[DOC-R510]</span> (Expert view)</p>
+<ul>
+<li>A document provides the operation to Reverse Bit Fields
+<ul>
+<li>context menu on ECU in tree <a class='rqRef' href='../../20 UserInterface\Tree\Navigation Tree.htm#TREE-R020' title="">[TREE-R020]</a>.</li>
+</ul></li>
+<li>This reverses all bitfield elements in the document.</li>
+<li>Motivation: if for some reason the order of bitfield elements on the line is wrong.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm">Bit and Byte Positions</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Bit%20Field.htm">Bit Field (Feature)</a></li>
+<li><a href="Document.htm">Document</a></li>
+</ul>
+</body>
+</html>

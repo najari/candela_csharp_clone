@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Job</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="jobs-cds-590-1.4">Jobs (CDS-590 1.4)</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="idea-of-jobs">Idea of Jobs</h3>
+<ul>
+<li><strong>Scripting diagnostic operations</strong> executed by a diagnostic tester</li>
+<li>Typically, there will be...
+<ul>
+<li>one job for <strong>reading</strong> and</li>
+<li>one for <strong>writing/control</strong>,</li>
+<li>potentially one for <strong>flashing</strong>.</li>
+</ul></li>
+<li>The typical <strong>size</strong> of a job file is few KB.</li>
+</ul>
+<h3 id="idea-of-embedding-files">Idea of Embedding Files</h3>
+<ul>
+<li><strong>embed</strong> files of any format in a CANdela document
+<ul>
+<li>maybe &quot;executables&quot; (proprietary and standardized)</li>
+<li>especially &quot;job&quot; scripts</li>
+</ul></li>
+<li><strong>transport</strong> them with the file:
+<ul>
+<li>originally with the CANdela file,</li>
+<li>also in an exported ODX or Diogenes file</li>
+</ul></li>
+<li><strong>extract</strong> a job to provide it to a specific runtime environment.</li>
+</ul>
+<h3 id="main-use">Main Use</h3>
+<p>The idea of <strong>embedding job files</strong> has mainly been used...</p>
+<ul>
+<li>with <strong>manufacturer specific</strong> testers and job files (.fm files, Diogenes Export)</li>
+<li>with <strong>Java jobs</strong> in ODX files for an <strong>ASAM MCD 3D</strong> conforming tester
+<ul>
+<li>the use of standard Java is appealing but also has drawbacks (how to protect a script that contains sensitive information?)</li>
+</ul></li>
+</ul>
+<h3 id="vector-tools">Vector Tools</h3>
+<ul>
+<li>... support rich <strong>scripting</strong> features,</li>
+<li>but in general <strong>do not seamlessly extract embedded script files</strong> from the diagnostic description.
+<ul>
+<li>This means you <strong>can</strong> transport a script in a CDD file as a Job,</li>
+<li>but a Vector tester will not in general provide the script in its user interface.</li>
+<li>As a tester user, you can always use CANdelaStudio to manually <strong>export</strong> the script from the CDD file, and integrate it in the tester.</li>
+</ul></li>
+</ul>
+<p>For details, see <a href="Jobs%20in%20Test%20Systems.htm">Jobs in Test Systems</a>.</p>
+<h2 id="services-vs.-jobs">Services vs. Jobs</h2>
+<p>A test system allows the execution of...</p>
+<ul>
+<li>a <strong>service</strong>
+<ul>
+<li>to access functionality of the <strong>ECU</strong></li>
+<li>e.g. UDS service 0x27 &quot;Security Access&quot;.</li>
+</ul></li>
+<li>a <strong>job</strong> used <strong>like a service</strong>:
+<ul>
+<li>for functionality of the <strong>tester</strong> or the tester library</li>
+<li>e.g. a complex key algorithm.</li>
+<li>Jobs are <strong>not</strong> executed by the ECU.</li>
+</ul></li>
+<li>a <strong>job</strong> used for <strong>value conversion</strong>.</li>
+</ul>
+<h2 id="jobs-in-candela">Jobs in CANdela</h2>
+<h3 id="overview-of-job-related-objects-in-candela">Overview of Job-related Objects in CANdela</h3>
+<ul>
+<li><p><strong>Job container</strong> <a class='rqRef' href='../../30%20Features/Job/Job.htm#JCNR-R110' title="">[JCNR-R110]</a>:</p>
+<ul>
+<li>a list of <strong>jobs</strong></li>
+<li>it is handled <strong>like a diagnostic instance</strong>
+<ul>
+<li>you can reference a job container in multiple variants</li>
+<li>it has has attributes, activation, audience (same range as for diagnostic instances) and authorization.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Job</strong> <a class='rqRef' href='../../30%20Features/Job/Job.htm#JOB-R200' title="">[JOB-R200]</a>:</p>
+<ul>
+<li>defined in a job container within a diagnostic class</li>
+<li>includes
+<ul>
+<li><strong>input and output parameters</strong> (data objects) and</li>
+<li>one or multiple <strong>functions</strong> (multiple functions: for different runtime systems)</li>
+</ul></li>
+<li>has some properties in common with a <strong>service</strong>.</li>
+</ul></li>
+<li><p><strong>Function</strong> <a class='rqRef' href='../../30%20Features/Job/Job.htm#JOB-R300' title="">[JOB-R300]</a>:</p>
+<ul>
+<li>references a <strong>job file</strong></li>
+<li>optionally specifies an <strong>entry point</strong> in the job file</li>
+</ul></li>
+<li><p><strong>Job file</strong> <a class='rqRef' href='../../30%20Features/Job/Job.htm#JOB-R400' title="">[JOB-R400]</a>:</p>
+<ul>
+<li>file (program, macro, sequence) to be executed by a tester (runtime system)</li>
+<li>embedded in the CANdela document</li>
+<li>written in a specific <strong>programming language</strong> (e.g. Java, CANapeScript, CAPL...), and therefore...</li>
+<li>specific to a <strong>runtime system</strong> (ODX 3-D Server, Vector CANape, Vector CANoe...)</li>
+<li>CANdela stores job files on the <strong>document level</strong>, which allows <strong>reuse</strong> of a job file (reducing the overall size of the document).</li>
+</ul></li>
+<li><p><strong>Procedure Data Type</strong> <a class='rqRef' href='../../30%20Features/Data%20Type/Procedure.htm#DTPROC-R010' title="">[DTPROC-R010]</a>:</p>
+<ul>
+<li>a CANdela data type</li>
+<li>includes
+<ul>
+<li>one <strong>input parameter</strong>,</li>
+<li>one <strong>result value</strong> and</li>
+<li>a <strong>function</strong></li>
+</ul></li>
+<li>a tester may use the function and its job file embedded in the CANdela document to convert a raw value to a physical value, or vice versa.</li>
+</ul></li>
+</ul>
+<h3 id="containers-for-jobs">Containers for Jobs</h3>
+<ul>
+<li><span id="JOB-R100" class="rqDef">[JOB-R100]</span> A Job can be contained in a <strong>Diagnostic Class</strong> with diagnostic instances and services,
+<ul>
+<li>i.e. in a Diagnostic Class...</li>
+<li>based on a Diagnostic Class Template...</li>
+<li>that contains at least one Used ProtocolService <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#DCLT-R305' title="">[DCLT-R305]</a>.</li>
+<li><span id="JOB-R110" class="rqDef">[JOB-R110]</span> In such a diagnostic instance,
+<ul>
+<li>each Job must have the same name and qualifier as a Used ProtocolService.</li>
+<li>I.e. there will be Jobs like &quot;Read&quot;, &quot;Write&quot; etc.</li>
+<li>The Job Container must contain <strong>at most one Job</strong> for a given Used ProtocolService.</li>
+</ul></li>
+</ul></li>
+<li><span id="JCNR-R110" class="rqDef">[JCNR-R110]</span> A Job can be contained in a top-level <strong>Job container</strong>...
+<ul>
+<li>that cannot contain diagnostic instances and services, see <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R210' title="">[DCLT-R210]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="job">Job</h2>
+<p><span id="JOB-R200" class="rqDef">[JOB-R200]</span> A job has one or multiple <strong>functions</strong> (see below).</p>
+<p>In the GUI, the check box “Supports several runtime systems” allows toggling between single function mode and multiple functions mode:</p>
+<ul>
+<li><strong>Single function</strong> mode provides a combo box where users can select a job file for exactly one function. This is the 80% use case.</li>
+<li><strong>Multiple functions</strong> mode provides a table where users can create several Functions, each with another job file and runtime system.</li>
+</ul>
+
+<p><span id="JOB-R210" class="rqDef">[JOB-R210]</span> A job has <strong>input parameters</strong> and <strong>output parameters</strong>.</p>
+<ul>
+<li>These are data objects or gaps (but no bit fields).</li>
+<li>There is no restriction for the datatypes of such a data object (bits are allowed, byte order is not significant).</li>
+</ul>
+<p>The handling of bit data objects as parameters depends on the test system for which the job is destined:</p>
+<ul>
+<li>one test system may support passing individual bit data objects without padding</li>
+<li>another test system may require padding bit data objects (i.e. user must add a 7-bit gap behind a 1-bit data object)</li>
+<li>another test system may implicitly pad bit data objects (which we assume e.g. for Java – a test system may dynamically build a parameter list containing individual bits, the memory layout of those parameters is hidden by the virtual machine. Assumedly.)</li>
+</ul>
+<p>A job has <strong>attributes</strong> <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050' title="">[ATTR-R050]</a>.</p>
+<p>The authorization flags of the Job Container take effect on the Job.</p>
+<p>A job can have <strong>state transitions</strong> <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R020' title="">[STTR-R020]</a>.</p>
+<p>A job can be <strong>de-activated</strong> (CDS-17293 7.0).</p>
+<h2 id="function">Function</h2>
+<p><span id="JOB-R300" class="rqDef">[JOB-R300]</span> A function references a <strong>job file</strong>.</p>
+<p><span id="JOB-R320" class="rqDef">[JOB-R320]</span> A function has an <strong>entry point</strong>. For compatibility, it is required for syntax “fm”, optional otherwise.</p>
+
+<h2 id="job-file">Job File (CDS-6307 5.5)</h2>
+<p>CANdelaStudio cannot create a job file from scratch. A job file comes from an existing external file always, which CANdelaStudio just provides for use by the respective application.</p>
+<p><span id="JOB-R400" class="rqDef">[JOB-R400]</span> A job file has a <strong>version string</strong>.</p>
+<ul>
+<li><span id="JOB-R400-Check" class="rqDef">[JOB-R400-Check]</span> CANdelaStudio does not check the format of the version string.</li>
+<li><span id="JOB-R400-Required" class="rqDef">[JOB-R400-Required]</span> For compatibility, the version string is required for syntax “fm”, optional otherwise.</li>
+</ul>
+
+<p><span id="JOB-R410" class="rqDef">[JOB-R410]</span> A job file has a free-text <strong>runtime system</strong> (also called <strong>syntax</strong>).</p>
+<p>CANdelaStudio provides predefined runtime systems:</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="84%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Runtime system</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AutomationSequenceMacro</td>
+<td align="left"><span id="JOB-R410-AutomationSequenceMacro" class="rqDef">[JOB-R410-AutomationSequenceMacro]</span>, see <a href="Jobs%20in%20Test%20Systems.htm#AutomationSequenceMacro">Jobs in Test Systems</a> (CDS-69204 9.1)</td>
+</tr>
+<tr class="even">
+<td align="left">CANapeScript</td>
+<td align="left">for Vector CANape</td>
+</tr>
+<tr class="odd">
+<td align="left">CAPL</td>
+<td align="left">for the Vector CANoe Communication Access Programming Language</td>
+</tr>
+<tr class="even">
+<td align="left">class</td>
+<td align="left">compiled Java</td>
+</tr>
+<tr class="odd">
+<td align="left">dll</td>
+<td align="left">Windows library</td>
+</tr>
+<tr class="even">
+<td align="left">fm</td>
+<td align="left"><span id="JOB-R410-fm" class="rqDef">[JOB-R410-fm]</span> OEM specific</td>
+</tr>
+<tr class="odd">
+<td align="left">jar</td>
+<td align="left">Java archive</td>
+</tr>
+<tr class="even">
+<td align="left">java</td>
+<td align="left">source Java</td>
+</tr>
+<tr class="odd">
+<td align="left">OTX</td>
+<td align="left">Open Test sequence eXchange</td>
+</tr>
+<tr class="even">
+<td align="left">VectorDiagnosticScript</td>
+<td align="left">also called &quot;VDS&quot;, for use in Vector diagnostic test systems</td>
+</tr>
+</tbody>
+</table>
+<p><span id="JOB-R420" class="rqDef">[JOB-R420]</span> A job file optionally has “additional files” (CDS-2251 3.0).</p>
+<p><span id="JOB-R430" class="rqDef">[JOB-R430]</span> Job files are stored on the <strong>document level</strong> and must be unique.</p>
+<p><span id="JOB-R440" class="rqDef">[JOB-R440]</span> Equality of job files is defined by comparison of the properties “Version”, “Syntax” and a binary comparison of the file contents: two job files x and y are equal, iff.</p>
+<pre><code>     x.version == y.version
+ AND x.syntax  == y.syntax
+ AND (
+       (file_size &gt; 0  AND binary_equal(x.file_content, y.file_content))
+     OR
+       (file_size == 0 AND x.file_name == y.file_name)
+     )</code></pre>
+<p>(for file size 0, see the next chapter)</p>
+<h2 id="external-references-late-binding">External References (Late Binding)</h2>
+<p><span id="JOB-R450" class="rqDef">[JOB-R450]</span> For a job file with <strong>size 0</strong>, ODX Export references a dummy file.</p>
+<p>Semantics: the dummy file is to be replaced later (after the ODX export) by a real file (&quot;late binding&quot;).</p>
+<p>For this reason, the job file comparison <a class='rqRef' href='../../30%20Features/Job/Job.htm#JOB-R440' title="">[JOB-R440]</a> (above) checks the name for job files of size 0.</p>
+<h2 id="procedure-data-type">Procedure Data Type</h2>
+<p>A <a href="../../30%20Features/Data%20Type/Procedure.htm">Procedure Data Type</a> (Procedural Conversion) is like a job: it has several <strong>functions</strong> attached.</p>
+<h2 id="selection-list-for-entry-points-cds-8276-7.0-sp1">Selection List for Entry Points (CDS-8276 7.0 SP1)</h2>
+<p><span id="JOB-R460" class="rqDef">[JOB-R460]</span> For a <code>.jar</code> file, CANdelaStudio lists the class names in the &quot;Entry points&quot; list in the Job property dialog.</p>
+<p>These are the <strong>real</strong> entry points listed in the JAR manifest, behind the parameter <code>Job-Entry-Points</code> (CDS-22803 8.0 SP2).</p>
+<p>Special handling for <strong>entry point longer than 72 bytes</strong> (CDS-36869 8.2 SP3):</p>
+<ul>
+<li>If...
+<ul>
+<li>the class name including the package name extends a line length of <strong>72 bytes</strong>,</li>
+<li>the name contains a <strong>line break</strong>.</li>
+</ul></li>
+<li>This is a restriction of the MANIFEST.MF file;</li>
+<li>see the JAR File Specification at <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/jar/jar.html#Notes%20on%20Manifest%20and%20Signature%20Files">http://docs.oracle.com/javase/6/docs/technotes/guides/jar/jar.html#Notes%20on%20Manifest%20and%20Signature%20Files</a> (as of 2017-02):</li>
+</ul>
+<blockquote>
+<p>No line may be longer than 72 bytes (not characters), in its UTF8-encoded form. If a value would make the initial line longer than this, it should be continued on extra lines (each starting with a single SPACE).</p>
+</blockquote>
+
+<h2 id="reading-version-cds-8276-7.0-sp1">Reading Version (CDS-8276 7.0 SP1)</h2>
+<p><span id="JOB-R470" class="rqDef">[JOB-R470]</span> For an <code>.fm</code> file, CANdelaStudio reads the version and enters it as a default in the Job File Manager dialog.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Procedure <a href="../../15%20Procedures/CANoe/How%20to%20Transport%20a%20CANoe%20Automation%20Sequence%20Macro%20as%20a%20CANdela%20Job.htm">How to Transport a CANoe Automation Sequence Macro as a CANdela Job</a></li>
+<li><a href="Job%20Authorization.htm">Job Authorization</a></li>
+<li><a href="../../20%20UserInterface/Job%20Container/Job%20Container.htm">Job Container</a></li>
+<li><a href="../../20%20UserInterface/Job/Job%20File%20Manager.htm">Job File Manager</a></li>
+<li><a href="Jobs%20in%20Test%20Systems.htm">Jobs in Test Systems</a></li>
+<li><a href="../../30%20Features/Data%20Type/Procedure.htm">Procedure Data Type</a></li>
+</ul>
+</body>
+</html>

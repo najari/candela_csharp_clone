@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Instance Operations</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-instance-operations">Diagnostic Instance Operations</h1>
+<h2 id="new">Diagnostic Instance Creation</h2>
+<p>The identifier of the diagnostic instance must be a valid raw value in the <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#text-table">text table at the Used ProtocolService</a> (CDS-18874). If set, the assigned text from the text table is used as name of the diagnostic instance.</p>
+<p>As a default, the diagnostic instance gets the next valid identifier.</p>
+<p><span id="DI-R010" class="rqDef" title="Diagnostic Instance Creation">[DI-R010 Diagnostic Instance Creation]</span>:</p>
+<ul>
+<li>in the DTC list of a variant, for a DTC in DTC pool that has authorization...
+<ul>
+<li><span id="DI-R010-VarDtcReq" class="rqDef">[DI-R010-VarDtcReq]</span> required=&quot;yes&quot;, CANdelaStudio shall insert a reference to the DTC;</li>
+<li><span id="DI-R010-VarDtcReqAsRef" class="rqDef">[DI-R010-VarDtcReqAsRef]</span> required=&quot;as Reference&quot;, CANdelaStudio shall insert a copy of the DTC.</li>
+</ul></li>
+<li><span id="DI-R010-LibDtcReq" class="rqDef">[DI-R010-LibDtcReq]</span>: in the DTC list of a <strong>library</strong>, CANdelaStudio shall <strong>not</strong> insert references to DTCs in DTC pool.</li>
+<li><span id="DI-R010-UDFMDtcReq" class="rqDef">[DI-R010-UDFMDtcReq]</span>: in a DTC List for <strong>User-Defined Fault Memory only</strong> <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D105' title="">[UDFM-D105]</a>, CANdelaStudio shall <strong>not</strong> insert references to DTCs in DTC pool.</li>
+<li><span id="DI-R010-SegNum" class="rqDef">[DI-R010-SegNum]</span>: for a new diagnostic instance for which the SegNum&gt;99 behaviour <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Segment%20Number.htm#SEGNUM-R410' title="MaxAmountSegmentNumber">[SEGNUM-R410]</a> has been configured, CANdelaStudio does not overwrite the SegNum attribute but leaves the default <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R140' title="">[ATTR-R140]</a> (CDC-44027 v10)</li>
+</ul>
+<h2 id="position-of-a-new-diagnostic-instance-cds-71276-v13">Position of a New Diagnostic Instance (CDS-71276 v13)</h2>
+<ul>
+<li><span id="DI-R010-Sorted" class="rqDef">[DI-R010-Sorted]</span> CANdelaStudio inserts a diagnostic instance <strong>sorted</strong>:
+<ul>
+<li>behind the first diagnostic instance whose identifier is <code>&lt;</code> the new identifier (CDS-71276 v13).</li>
+<li>Rationale:
+<ul>
+<li>if the list is sorted, CANdelaStudio inserts sorted;</li>
+<li>if the list is not sorted, CANdelaStudio insert so that at least the beginning of the list is sorted up to the new diagnostic instance.</li>
+</ul></li>
+<li>Example:
+<ul>
+<li>existing Identifiers 10, 20, 30, 05;</li>
+<li>you create the new Identifier 15</li>
+<li>resulting Identifiers 10, 15, 20, 30, 05.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2 id="diagnostic-instance-creation-from-did-cds-39296">Diagnostic Instance Creation from DID (CDS-39296)</h2>
+<p><span id="DI-R020" class="rqDef" title="Diagnostic Instance Creation from DID">[DI-R020 Diagnostic Instance Creation from DID]</span></p>
+<p>CANdelaStudio shall...</p>
+<ul>
+<li><span id="DI-R020-PerDID" class="rqDef">[DI-R020-PerDID]</span> create <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DI-R010' title="Diagnostic Instance Creation">[DI-R010]</a> one diagnostic instance for each selected DID,</li>
+<li><span id="DI-R020-DIDProperties" class="rqDef">[DI-R020-DIDProperties]</span> ... using name, qualifier and identifier from the DID for the respective properties of the new diagnostic instance;</li>
+<li><p><span id="DI-R020-DIDIdentifier" class="rqDef">[DI-R020-DIDIdentifier]</span> If the variable value of the <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used Procotol Service</a> has length 1 byte, then CANdelaStudio shall use the lowest byte from the DID number for the diagnostic instance identifier (CDS-40554 8.5 SP2).</p></li>
+<li><span id="DI-R020-DIDDataReference" class="rqDef">[DI-R020-DIDDataReference]</span> create a DID Data Reference that refers the DID,
+<ul>
+<li>in the telegram table for the combined component that holds the DID semantics <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001-a' title="">[DCL-D001-a]</a>, or</li>
+<li>for the first combined component of the positive response <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001-b2' title="">[DCL-D001-b2]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="paste">Paste</h2>
+<p><span id="DIOP-R025" class="rqDef">[DIOP-R025]</span> Creates a new diagnostic instance based on an existing one.</p>
+<ul>
+<li><span id="DIOP-R025-ReqAsRef" class="rqDef">[DIOP-R025-ReqAsRef]</span> The new diagnostic instance has &quot;required as reference&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R020-reqAsRef' title="">[DIA-R020-reqAsRef]</a> = &quot;no&quot; (CDS-70996 v11, CDS-72195 v13).</li>
+<li>If you paste into the same diagnostic class, the copy gets a new name and qualifier, for uniqueness.</li>
+<li><span id="DIOP-R025-CloneDID" class="rqDef">[DIOP-R025-CloneDID]</span> If you...
+<ul>
+<li>paste into the same diagnostic class,</li>
+<li>and the Diagnostic Instance references a DID using a DID Data Reference as the single data object in a telegram
+<ul>
+<li>cf. <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001-b2' title="">[DCL-D001-b2]</a>;</li>
+<li>even if &quot;DID semantics&quot; <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050-DIDDataReference' title="">[DID-R050-DIDDataReference]</a> is not set;</li>
+</ul></li>
+<li>then CANdelaStudio also pastes (= clones) the referenced DID, using the same name and Identifier (CDS-71907 v13)</li>
+<li>Effect: let diagnostic instance and DID behave as a single object.</li>
+</ul></li>
+<li><span id="DIOP-D025-OtherVar" class="rqDef">[DIOP-D025-OtherVar]</span> <strong>Known limitation</strong>: if you <strong>paste into another variant</strong> in the same document, the operation erroneously replaces the existing reference with a copy (like operation &quot;Replace Reference with Copy&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R040' title="Replace Reference with Copy">[DIOP-R040]</a> below).</li>
+<li><span id="DIOP-R025-OtherDoc" class="rqDef">[DIOP-R025-OtherDoc]</span> If you paste a diagnostic instance <strong>into another document</strong>,
+<ul>
+<li>... and the DiagInstance in the source document uses a DID,</li>
+<li>... and the target variant already contains a DID with the <strong>same qualifier</strong>,</li>
+<li>then CANdelaStudio pastes the diagnostic instance and lets it use the DID from the target variant (CDS-39865 13.0).</li>
+<li>Cf. DID Operation <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R276' title="">[DID-R276]</a>.</li>
+</ul></li>
+<li><span id="DIOP-R010-Events" class="rqDef">[DIOP-R010-Events]</span>: if the target document does not support Events <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a>, the operation neither transfers Events nor Event Master Data.</li>
+<li><span id="DIOP-R010-EventRef" class="rqDef">[DIOP-R010-EventRef]</span>: for DTCs referenced by Events in the source, and Events get transferred, ...
+<ul>
+<li>if the operation pastes the DTC <a class='rqRef' href='../../30%20Features/DTC/DTC%20Operations.htm#DTCOP-R040' title="">[DTCOP-R040]</a>, it lets the resulting Event reference the resulting DTC.</li>
+<li>if the operation cannot paste a DTC <a class='rqRef' href='../../30%20Features/DTC/DTC%20Operations.htm#DTCOP-R040' title="">[DTCOP-R040]</a>, it lets the resulting Event in the target diagnostic instance reference the existing DTC that has the same code.</li>
+</ul></li>
+</ul>
+<p>Handling of Services:</p>
+<ul>
+<li>To transport the properties of services in the diagnostic instance, CANdelaStudio tries to associate source and target <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used Protocol Services</a> based on their qualifiers.</li>
+<li><span id="DIOP-R025-ProtocolService" class="rqDef" title="Paste">[DIOP-R025-ProtocolService Paste]</span> If the source and target diagnostic class template contains a single Used Protocol Service with different qualifiers, CANdelaStudio associates them based on the qualifiers of their Protocol Service (CDS-26145 9.1).</li>
+<li>If CANdelaStudio cannot associate a Used Protocol Service, the service properties from the source are lost, and a <strong>new service</strong> based on the target document may be created.</li>
+</ul>
+<p>Handling of Attributes:</p>
+<ul>
+<li>See CDS-71837 for resetting the attributes on copy.</li>
+</ul>
+<h2 id="paste-as-reference">Paste as Reference</h2>
+<p><span id="DIOP-R030" class="rqDef" title="Paste as Reference">[DIOP-R030 Paste as Reference]</span></p>
+<p>Inserts the diagnostic instance as a reference.</p>
+<p>This is possible only within the same document.</p>
+<p>As a result, the diagnostic instance is shared <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D010' title="">[DI-D010]</a> with the source diagnostic instance, so that modifications take effect in both locations.</p>
+<ul>
+<li><span id="DIOP-D030-Events" class="rqDef">[DIOP-D030-Events]</span> the Boolean flag <strong>Supports Events</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a> does not matter here since the flag cannot vary within the same document.</li>
+</ul>
+<h2 id="replace-reference-with-copy">Replace Reference with Copy</h2>
+<p><span id="DIOP-R040" class="rqDef" title="Replace Reference with Copy">[DIOP-R040 Replace Reference with Copy]</span></p>
+<p>For a diagnostic instance referenced (shared) in multiple variants <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D010' title="">[DI-D010]</a>, breaks the reference so that...</p>
+<ul>
+<li>the diagnostic instance in the current variant is a copy (has no relationship to other variants)</li>
+<li>the references of the diagnostic instance in all other variants are unchanged.</li>
+</ul>
+<p>Note: this operation may also happen automatically when replacing a DID with a copy <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R230' title="Replace Reference with Copy">[DID-R230]</a>.</p>
+<ul>
+<li><span id="DIOP-R040-ReqAsRef" class="rqDef">[DIOP-R040-ReqAsRef]</span> A diagnostic instance that is &quot;required as reference&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R020-reqAsRef' title="">[DIA-R020-reqAsRef]</a> cannot be replaced with a copy.</li>
+<li><span id="DIOP-R040-Library" class="rqDef">[DIOP-R040-Library]</span> In a Library, CANdelaStudio allows to replace a diagnostic instance reference by a copy even if the authorization property is set to &quot;required as reference&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R020-reqAsRef' title="">[DIA-R020-reqAsRef]</a> (CDS-41289 v10).</li>
+<li><span id="DIOP-R040-Events" class="rqDef">[DIOP-R040-Events]</span> creates a copy of the Events <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a> and Event Master Data <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D040' title="">[EV-D040]</a> contained in the Diagnostic Instance.</li>
+</ul>
+<h2 id="replace-copy-with-reference-in-base-variant">Replace Copy with Reference in Base Variant</h2>
+<p><span id="DIOP-R050" class="rqDef">[DIOP-R050]</span></p>
+<p>In an extended variant or library, replaces an object not referenced with the base variant by a reference to the object in the base variant with the same qualifier.</p>
+<ul>
+<li><span id="DIOP-R050-DID" class="rqDef">[DIOP-R050-DID]</span> for a diagnostic instance that references a DID, first references the DID with the base variant (due to consistency rule <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D020' title="Consistency Rule for References">[DID-D020]</a>).</li>
+<li><span id="DIOP-R050-Events" class="rqDef">[DIOP-R050-Events]</span> with the not referenced Diagnostic Instance, deletes the Events <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a> and Event Master Data <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D040' title="">[EV-D040]</a> contained in the Diagnostic Instance.</li>
+</ul>
+<h2 id="reference-identical">Reference Identical Diagnostic Instances and Job Containers</h2>
+<p><span id="DIOP-R060" class="rqDef">[DIOP-R060]</span></p>
+<p>Compares diagnostic instances and job containers...</p>
+<ul>
+<li>that have the same qualifier</li>
+<li>in all variants</li>
+<li>not in libraries;</li>
+<li>ignores <strong>OID differences</strong></li>
+<li>ignores <strong>TextID differences</strong> in mode “Completion only” (respects them in mode “Edit”)</li>
+</ul>
+<p>For those that are identical, ...</p>
+<ul>
+<li>if the diagnostic instance uses a DID,
+<ul>
+<li><span id="DIOP-R060-DID" class="rqDef">[DIOP-R060-DID]</span> first references that DID in variants where it is identical (CDS-41379 v12)</li>
+<li>then continues for the diagnostic instance only with those variants where the DID is referenced
+<ul>
+<li>(respecting the Onion Rule <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D020' title="Consistency Rule for References">[DID-D020]</a>)</li>
+</ul></li>
+</ul></li>
+<li>keeps the diagnostic instance in the first involved variant,</li>
+<li>replaces the ones in the later variants by a reference with the first one.</li>
+<li><span id="DIOP-D060-Events" class="rqDef">[DIOP-D060-Events]</span> with the Diagnostic Instance, deletes the Events <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a> and Event Master Data <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D040' title="">[EV-D040]</a> contained in the Diagnostic Instance.</li>
+</ul>
+<h2 id="modify-name">Modify Name</h2>
+<p><span id="DIOP-R100" class="rqDef">[DIOP-R100]</span> When you...</p>
+<ul>
+<li>modify the name of a Diagnostic Instance,</li>
+<li>and the Diagnostic Instance references a DID that has the same name</li>
+<li>using a DID Data Reference as the single data object in a telegram (cf. <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001-b2' title="">[DCL-D001-b2]</a>),</li>
+<li>even if &quot;DID semantics&quot; <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050-DIDDataReference' title="">[DID-R050-DIDDataReference]</a> is not set,</li>
+<li>then CANdelaStudio assigns the new name also to the DID (CDS-71909 v13).</li>
+</ul>
+<h2 id="modify-identifier">Modify Identifier</h2>
+<p><span id="DIOP-R110" class="rqDef">[DIOP-R110]</span> When you...</p>
+<ul>
+<li>modify the Identifier of a Diagnostic Instance</li>
+<li>and the Diagnostic Instance references a DID using a DID Data Reference as the single data object in a telegram (cf. <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001-b2' title="">[DCL-D001-b2]</a>),</li>
+<li>even if &quot;DID semantics&quot; <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050-DIDDataReference' title="">[DID-R050-DIDDataReference]</a> is not set,</li>
+<li>then CANdelaStudio accordingly modifies the DID Number (CDS-71910 v13).</li>
+</ul>
+<h2 id="move-data-to-new-did-cds-36881-8.2-sp2">Move Data to New DID (CDS-36881 8.2 SP2)</h2>
+<p><span id="DIOP-R070" class="rqDef">[DIOP-R070]</span> Move to New DID</p>
+<p>Conditions:</p>
+<ul>
+<li><span id="DIOP-R070-Data" class="rqDef">[DIOP-R070-Data]</span> if the diagnostic class template contains at least 1 combined component with semantics &quot;data&quot;<a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#CPC-R100' title="">[CPC-R100]</a>
+<ul>
+<li>(cf. <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DOOP-R110-Data' title="">[DOOP-R110-Data]</a> for the operation on data objects)</li>
+<li>otherwise CANdelaStudio does not show the menu item</li>
+<li>Note: when you select multiple diagnostic instances, the number of data telegram tables <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DOOP-R110-Data' title="">[DOOP-R110-Data]</a> can vary from one diagnostic instance to the other. Therefore the menu item sensitivity is controlled by the number of combined components only.</li>
+</ul></li>
+</ul>
+<p>Operation:</p>
+<ul>
+<li><span id="DIOP-R070-DiagInst" class="rqDef">[DIOP-R070-DiagInst]</span> for each diagnostic instance, CANdelaStudio performs the operation <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DOOP-R110' title="">[DOOP-R110]</a> for all data in the first data telegram table <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DOOP-R110-Data' title="">[DOOP-R110-Data]</a>.
+<ul>
+<li>Note: in case the diagnostic instance contains more than one data telegram table, CANdelaStudio does not take special action or message (this is a rare situation, the default makes sense, and the result can be inspected easily).</li>
+<li>Ditto in case the diagnostic instance contains no data telegram table.</li>
+</ul></li>
+<li><span id="DIOP-R070-Conflict" class="rqDef">[DIOP-R070-Conflict]</span> In case there is a conflict (a condition is not met) for some diagnostic instance
+<ul>
+<li>e.g. data contains DID Reference <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DOOP-R110-DIDRef' title="">[DOOP-R110-DIDRef]</a></li>
+<li>CANdelaStudio skips the diagnostic instance;</li>
+<li>writes one info message per diagnostic instance into the output window, like</li>
+<li>&quot;Skipping diagnostic instance <code>&lt;diagnostic instance name&gt;</code>, its data contains a DID Reference&quot;.</li>
+</ul></li>
+<li><span id="DIOP-R070-Message" class="rqDef">[DIOP-R070-Message]</span> In case there is no conflict for a given diagnostic instance, CANdelaStudio writes one info message for the diagnostic instance into the output window, like
+<ul>
+<li>&quot;Created DID <code>&lt;identifier e.g. 0x0001&gt;</code> <code>&lt;name&gt;</code> from diagnostic instance <code>&lt;diagnostic instance name&gt;</code>.&quot;</li>
+</ul></li>
+</ul>
+<p>For the user interface, see the diagnostic instances list <a class='rqRef' href='../../20 UserInterface\Diagnostic Instance\Diagnostic Instances.htm#DIUI-R070' title="">[DIUI-R070]</a>.</p>
+<p>See the related operation <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DOOP-R110' title="">[DOOP-R110]</a> for data objects.</p>
+<h2 id="conditions-for-modifying-operations-within-a-diagnostic-instance">Conditions for Modifying Operations within a Diagnostic Instance</h2>
+<p><span id="DIOP-D010" class="rqDef">[DIOP-D010]</span></p>
+<ul>
+<li><span id="DIOP-D010-LockedVar" class="rqDef">[DIOP-D010-LockedVar]</span> A modifying operation is not allowed in a locked variant <a class='rqRef' href='../../30%20Features/Variant/Lock%20Variant.htm#VAR-R010' title="isLocked">[VAR-R010]</a> (even in Expert View)
+<ul>
+<li>Motivation: the variant lock may not be obvious, therefore CANdelaStudio prevents even the Expert View user from modifications. In Expert View, you can unlock the variant to enable modifications. </li>
+</ul></li>
+<li><span id="DIOP-R010-DiagInstRO" class="rqDef">[DIOP-R010-DiagInstRO]</span> In Standard View, operations on the respective individual properties are forbidden in a diagnostic instance which has...
+<ul>
+<li>activation not modifiable <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R030' title="Activation modifiable">[DIA-R030]</a></li>
+<li>primary properties not modifiable <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R040' title="Primary properties modifiable">[DIA-R040]</a></li>
+<li>secondary properties not modifiable <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R050' title="Secondary properties modifiable">[DIA-R050]</a></li>
+<li>No restriction in Expert View. </li>
+</ul></li>
+<li><span id="DIOP-R010-FixedQual" class="rqDef">[DIOP-R010-FixedQual]</span> For any view, operations on the respective individual properties are forbidden in a diagnostic instance which has...
+<ul>
+<li>Fixed Qualifier <a class='rqRef' href='../../30%20Features/Common%20Properties/Qualifier.htm#QUAL-R300' title="">[QUAL-R300]</a></li>
+</ul></li>
+<li>Note for Events:
+<ul>
+<li>some Event operations respect the flag &quot;Supports Events&quot; <a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R010' title="">[EVOP-R010]</a>, as noted in detail at the respective operations.</li>
+<li>See also &quot;Event Operations in Document Context&quot; <a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R500' title="">[EVOP-R500]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Diagnostic%20Instance.htm">Diagnostic Instance</a></li>
+<li><a href="../../15%20Procedures/Diagnostic%20Instance/How%20to%20Automatically%20Sort%20Diagnostic%20Instances.htm">How to Automatically Sort Diagnostic Instances</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm">Ribbon Tab Home</a></li>
+</ul>
+</body>
+</html>

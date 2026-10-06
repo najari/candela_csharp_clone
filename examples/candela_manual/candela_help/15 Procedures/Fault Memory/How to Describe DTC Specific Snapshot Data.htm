@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Describe DTC Specific Snapshot Data</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-describe-dtc-specific-snapshot-data">How to Describe DTC Specific Snapshot Data</h1>
+<p>There are <strong>two ways</strong>, depending on the template on which your document is based.</p>
+<ol style="list-style-type: decimal">
+<li>using a <strong>Multiplexer within the service structure</strong> (see <a href="#mux">below</a>);</li>
+<li>since <strong>CANdelaStudio 13</strong> using a special data structure for Snapshot Records (see <a href="#fm13">below</a>).</li>
+</ol>
+<p>Consider doing &quot;<strong>Replace Reference with Copy</strong>&quot; first (see next chapter):</p>
+<ul>
+<li>in case the Fault Memory diagnostic instance is referenced in multiple variants,</li>
+<li>but you want the changes to apply only to one variant.</li>
+</ul>
+<h2 id="referenced">&quot;Replace Reference with Copy&quot; for Diagnostic Instance in Multiple Variants</h2>
+<ul>
+<li>Snapshot Data is defined in a <strong>diagnostic instance</strong></li>
+<li>A diagnostic instance may be referenced in <strong>multiple variants</strong>
+<ul>
+<li>see the description of tree <a href="../../20%20UserInterface/Tree/Icons.htm">Icons</a></li>
+</ul></li>
+<li>if you want to apply the changes to <em>one variant only</em>:
+<ul>
+<li>first execute the <strong>menu item &quot;Replace Reference with Copy&quot;</strong> <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Home.htm#MENU-R440' title="">[MENU-R440]</a> on the diagnostic instance in the tree (in ribbon tab &quot;Home&quot;, under &quot;Replace&quot;; also in context menu)</li>
+</ul></li>
+</ul>
+<h2 id="mux">Fault Memory within Service (Using Multiplexer)</h2>
+<ul>
+<li><p>in the CANdelaStudio tree in the respective variant, select the node &quot;Fault Memory&quot; or &quot;DTCs&quot; (the name is defined in the template)</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Fault%20Memory%20Diagnostic%20Instance.jpg" alt="Fault Memory Diagnostic Instance" />
+<p class="caption">Fault Memory Diagnostic Instance</p>
+</div></li>
+<li>consider to &quot;Replace Reference with Copy&quot; first, see <a href="#referenced">above</a>.</li>
+<li>Under &quot;Service:&quot;, in the line &quot;Read - snapshot record&quot;, click the &quot;rr&quot; behind &quot;59 04&quot;</li>
+<li>at the bottom, the area for editing snapshot records is shown (Multiplexer based)</li>
+<li>select a DTC in the list to the left</li>
+<li><p>describe the snapshot data in the list to the right</p></li>
+</ul>
+<p>See the <a href="../../20%20UserInterface/Fault%20Memory/Snapshot%20Data.htm">description of the dialog</a>.</p>
+<h2 id="fm13">AUTOSAR Fault Memory (v13)</h2>
+<h3 id="preconditions">Preconditions</h3>
+<p>The following is based on the simplified description of Snapshot Records since <strong>CANdelaStudio 13</strong>, which must be enabled by specific Protocol Service components in the template, see the <a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">Introduction</a>.</p>
+<h3 id="steps">Steps</h3>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/DTC%20Specific%20Snapshot%20Data.jpg" alt="DTC Specific Snapshot Data" />
+<p class="caption">DTC Specific Snapshot Data</p>
+</div>
+<ul>
+<li>in the CANdelaStudio tree in the respective variant, select the node &quot;Fault Memory&quot; or &quot;DTCs&quot; (the name is defined in the template)</li>
+<li>consider to &quot;Replace Reference with Copy&quot; first, see <a href="#referenced">above</a>.</li>
+<li>At the bottom of the dialog, click the button for snapshot records <img src="../../20%20UserInterface/Images/Snapshot%20Records%20Button.jpg" />.</li>
+<li>select TAB &quot;UDS Snapshot Data per DTC&quot;</li>
+<li>select a DTC in the list to the left</li>
+<li>describe the snapshot data in the list to the bottom right: click the line &quot;Add DIDs...&quot; and select DIDs.</li>
+</ul>
+<h3 id="did-groups">DID Groups</h3>
+<p>You may want to assign <strong>the same set of DIDs</strong> to multiple DTCs.</p>
+<p>This is sometimes called &quot;DID Groups&quot;.</p>
+<p>The CANdela data model does not support a &quot;DID Group&quot;. Instead, you can select multiple DTCs in the list and assign DIDs to all of them.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Introduction to <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a></li>
+</ul>
+</body>
+</html>

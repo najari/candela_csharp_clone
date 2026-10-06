@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>OID</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="oids-cds-3862-in-5.5">OIDs (CDS-3862 in 5.5)</h1>
+<p>Database systems typically identify an object using a <em>unique identifier</em> (ID). An ID distinguishes even objects that otherwise have identical properties. To support data exchange with such systems, each CANdela object has an <strong>ObjectID</strong> (<strong>OID</strong>). This ID is also supported as an optional property by the ODX standard. OIDs may also be called &quot;UUID&quot; or &quot;GUID&quot;.</p>
+<h2 id="objectid-in-candela">ObjectID in CANdela</h2>
+<p>The CANdela data model describes diagnostic objects in templates and documents. Therefore, each diagnostic object has two string properties:</p>
+<ol style="list-style-type: decimal">
+<li>the OID of the <strong>diagnostic object</strong> (in a template or in a document; “<strong>OID</strong>” = document OID).</li>
+<li>the OID of the <strong>template object</strong> on which an object in a document is based (“<strong>TemplateOID</strong>” = original OID):
+<ul>
+<li>it is empty in a template,</li>
+<li>it is empty for objects created in a document,</li>
+<li>it is only defined for objects in a document based on an object in a template</li>
+</ul></li>
+</ol>
+<h2 id="operations">Operations</h2>
+<p>When CANdelaStudio <strong>creates a document from a template</strong> (&quot;instantiate&quot;), it moves the OID of template objects into the TemplateOID property.</p>
+<p>For OID handling in the <strong>operation &quot;Reference Identical Diagnostic Instances and Job Containers&quot;</strong>, see at the <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#reference-identical">Diagnostic Instance Operations</a>.</p>
+<h2 id="limitations">Limitations</h2>
+<p>OIDs give &quot;identity&quot; to a diagnostic object - they allow to identify the object even after a long sequence of modifications. This may seem desirable.</p>
+<p>But CANdelaStudio does not bother the user with OIDs: it does not visualize or otherwise provide control over OIDs. Operations in CANdelaStudio preserve the <strong>values</strong> of diagnostic objects, not the object <strong>identity</strong>.</p>
+<p>Therefore e.g. in operations that create copies of objects, it may be ambiguous which of the objects is the &quot;original object&quot; (= taking the original OID).</p>
+
+</body>
+</html>

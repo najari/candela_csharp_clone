@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Vehicle System Group</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="vehicle-system-group-system-view-cds-1436">Vehicle System Group (&quot;System view&quot;) (CDS-1436)</h1>
+<h2 id="use-case">Use-case</h2>
+<p>Garage technicians using diagnostic test tools want to see a single view containing all diagnostic features associated with a specific vehicle system.</p>
+<h2 id="introduction">Introduction</h2>
+<div class="figure">
+<img src="Images/Vehicle%20System%20Group.jpg" alt="Vehicle System Group" />
+<p class="caption">Vehicle System Group</p>
+</div>
+<p><span id="VSG-R010" class="rqDef">[VSG-R010]</span> A CANdela document contains 0..n Vehicle System Groups (VSG).</p>
+<ul>
+<li>A Vehicle System Group defines a specific &quot;view&quot; onto the data of the ECU.</li>
+<li>Additionally, it may describe a function (&quot;system&quot;) that has been implemented in multiple ECUs.</li>
+<li>A Vehicle System Group can be associated with diagnostic objects.</li>
+<li>If associated with an Identifying Feature, a Vehicle System Group describes an <a href="Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm">optional subsystem</a>.</li>
+</ul>
+
+<h2 id="free-text-semantics">Free-text Semantics</h2>
+<div class="figure">
+<img src="Images/Vehicle%20System%20Group%20Semantics.png" alt="Vehicle System Group Semantics" />
+<p class="caption">Vehicle System Group Semantics</p>
+</div>
+<p>The &quot;semantics&quot; of a Vehicle System Group can be used to mark it as the definition of a LIN Master or a LIN Slave (CDS-7907 6.0).</p>
+<p>Predefined values in the user interface are &quot;Slave&quot; and &quot;Function&quot;.</p>
+<h2 id="associated-objects">Associated Objects</h2>
+<p><span id="VSG-R100" class="rqDef" title="Association">[VSG-R100 Association]</span> A Vehicle System Group can be associated with...</p>
+<ul>
+<li><span id="VSG-R100-DiagInst" class="rqDef">[VSG-R100-DiagInst]</span> diagnostic instances,</li>
+<li><span id="VSG-R100-JobCnr" class="rqDef">[VSG-R100-JobCnr]</span> job containers,</li>
+<li><span id="VSG-R100-DTC" class="rqDef">[VSG-R100-DTC]</span> DTCs and</li>
+<li><a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Groups%20at%20Data%20Objects.htm#VSG-R100-DataObject' title="">[VSG-R100-DataObject]</a> data objects (after configuration in the template, <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Groups%20at%20Data%20Objects.htm#VSG-R110-AttributeSystems' title="">[VSG-R110-AttributeSystems]</a>)</li>
+</ul>
+<p><span id="VSG-R100-Cardinality" class="rqDef">[VSG-R100-Cardinality]</span> The association is n:m, i.e.</p>
+<ul>
+<li>0..n VSGs associated with a DTC</li>
+<li>0..n DTCs associated with a VSG</li>
+</ul>
+<p><span id="VSG-R100-Direction" class="rqDef">[VSG-R100-Direction]</span> The association is not directed, it can be accessed both from the VSG and the DTC (the GUI shows it at both objects).</p>
+<p><span id="VSG-R050" class="rqDef" title="VSG and Library">[VSG-R050 VSG and Library]</span>: objects in a library (even data objects) can be associated with a <strong>Vehicle System Group</strong>. Motivation: like ESD in ODX.</p>
+<h2 id="available-in-variant">Available in Variant (CDS-13682 7.0 SP1)</h2>
+<h3 id="use-case-1">Use-case</h3>
+<div class="figure">
+<img src="Images/Vehicle%20System%20Group%20Available%20for%20Variant.jpg" alt="Vehicle System Group Available for Variant" />
+<p class="caption">Vehicle System Group Available for Variant</p>
+</div>
+<ul>
+<li>a Vehicle System Group &quot;Control Folding Top (LIN)&quot; is assigned to diagnostic instances and DTCs relevant for folding top functionality</li>
+<li>some variants include a folding top, some don't</li>
+<li>for variants that do not include a folding top, it should not be possible to erroneously assign the Vehicle System Group &quot;Control Folding Top (LIN)&quot;</li>
+</ul>
+<h3 id="data-model">Data Model</h3>
+<ul>
+<li><span id="VSG-R080" class="rqDef">[VSG-R080]</span> CANdelaStudio allows to define that a VSG is not available for a (base or extended) variant (&quot;variant exclusion&quot;).</li>
+<li><span id="VSG-R085" class="rqDef">[VSG-R085]</span> If a variant gets copied, the copy has the same exlusion settings (except if the VSG is missing in the target).</li>
+</ul>
+<p>Note: this is a relationship between the two entities &quot;variant&quot; and &quot;VSG&quot;, which may be seen from both sides:</p>
+<ul>
+<li>exclude a variant from a VSG</li>
+<li>exclude a VSG from a variant.</li>
+</ul>
+<p>Exclusion can be defined for existing variants only (there is no way e.g. to pre-define exclusion for future variants in the template).</p>
+<p><span id="VSG-R200" class="rqDef" title="Library and Availability for Variants">[VSG-R200 Library and Availability for Variants]</span>: a library is not relevant for the VSG „<strong>Availability for Variants</strong>“. Motivation: a test system will never identify the Library, <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-D010' title="Library Authoring">[LIB-D010]</a>.</p>
+<p>Semantics:</p>
+<p>Assume variant V has been excluded from a VSG.</p>
+<p>a) the GUI will try to avoid association of objects in V with that VSG. But it is not considered an error if such an object (e.g. a diagnostic instance) is associated with the VSG, and there may be operations that lead to such an association.</p>
+
+<p>b) if the VSG has identification (= is an &quot;optional subsystem&quot;), then after a test system has detected V, it shall skip (not send) the identification services of this VSG</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm">Identifying Feature for Vehicle System Groups</a></li>
+<li><a href="../../30%20Features/Variant/Variant%20Identification.htm">Variant Identification</a></li>
+<li><a href="../../30%20Features/Export/Vehicle%20System%20Groups%20Export.htm">Vehicle System Group Export</a></li>
+<li><a href="../../20%20UserInterface/Vehicle%20System%20Group/Vehicle%20System%20Group.htm">Vehicle System Groups (User Interface)</a></li>
+<li><a href="Vehicle%20System%20Groups%20at%20Data%20Objects.htm">Vehicle System Groups at Data Objects</a></li>
+</ul>
+</body>
+</html>

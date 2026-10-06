@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Version Numbering</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="version-numbering"><span id='_index_446727916'>Version Numbering</span></h1>
+<p>Semantic Versioning <a href="https://semver.org" class="uri">https://semver.org</a> emerges as a best practice for using version numbers.</p>
+<p>The following describes the use of Semantic Versioning for various entities in the context of CANdelaStudio.</p>
+<p>The structure of a typical version number is: <code>MAJOR</code>.<code>MINOR</code>.<code>PATCH</code></p>
+<h2 id="candelastudio">CANdelaStudio</h2>
+<p><span id="VER-R100" class="rqDef">[VER-R100]</span> CANdelaStudio versions just distinguish the product releases (no further semantics).</p>
+<ul>
+<li>They have a single number,</li>
+<li>incremented by 1 in each release.</li>
+<li>This holds since version 10.</li>
+<li>Version 9.1 used the old version numbering.</li>
+<li>Recommended: when written without context, use &quot;v11&quot; instead of &quot;11&quot;.</li>
+</ul>
+
+<h2 id="candela-file-format">CANdela File Format</h2>
+<p><span id="VER-R200" class="rqDef">[VER-R200]</span> File format versions define whether a file can be loaded without the Persistors (converter add-on)</p>
+<ul>
+<li>The file format versions have 3 numbers</li>
+<li><code>MAJOR</code> number: incremented to the current CANdelaStudio version for <strong>breaking changes</strong> or <strong>compatible additions</strong>
+<ul>
+<li>a breaking change prevents from direct loading</li>
+<li>even a &quot;compatible addition&quot; (from the data model point of view) prevents from loading, since it (typically) adds a new XML element.</li>
+<li>The <code>MAJOR</code> version is <code>&lt;=</code> the CANdelaStudio version.</li>
+</ul></li>
+<li><code>MINOR</code> number: 0
+<ul>
+<li>Motivation:
+<ul>
+<li>the Persistors must support old CANdelaStudio versions;</li>
+<li>old CANdelaStudio versions handle changes in <code>MAJOR</code> and <code>MINOR</code> as breaking, which triggers external conversion.</li>
+<li>Therefore the Persistors cannot use <code>MINOR</code> in the way semantic versioning does.</li>
+</ul></li>
+</ul></li>
+<li><code>PATCH</code> number: incremented by 1 for addition of XML attributes
+<ul>
+<li>does not prevent from direct loading,</li>
+<li>added XML attributes will be lost in roundtrip.</li>
+</ul></li>
+<li>This rule holds since v13.</li>
+<li>Multiple CANdelaStudio versions can have the same file format.</li>
+<li>Advantages:
+<ul>
+<li>file format may be unchanged over multiple CANdelaStudio versions</li>
+<li>no need to run the Persistors migration in these cases</li>
+</ul></li>
+<li>Disadvantages:
+<ul>
+<li>given a CANdelaStudio version, you cannot directly tell the file format version, and vice versa.</li>
+</ul></li>
+</ul>
+<h2 id="vector-uds-template">Vector UDS Template</h2>
+<p><span id="VER-R300" class="rqDef">[VER-R300]</span> The version of the Vector UDS Template describes whether a modified template version can be used in the existing process of a customer without loss of functionality.</p>
+<ul>
+<li><code>MAJOR</code> number
+<ul>
+<li>incremented to the current CANdelaStudio version for breaking changes</li>
+<li><code>&lt;=</code> the CANdelaStudio version.</li>
+<li>E.g. adding Events: breaking change, since DTC properties must be removed, which are then missing in older CANdelaStudio versions that do not support Events.</li>
+</ul></li>
+<li><code>MINOR</code> number
+<ul>
+<li>incremented for compatible changes</li>
+<li>E.g. Adding/removing an AUTOSAR attribute (the process will still work)</li>
+</ul></li>
+</ul>
+
+<h2 id="example-versions">Example Versions</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Description</th>
+<th align="right">File Format</th>
+<th align="right">CANdelaStudio</th>
+<th align="right">Vector UDS Template</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Using former versioning schemes</td>
+<td align="right">12</td>
+<td align="right">12</td>
+<td align="right">2.5.0</td>
+</tr>
+<tr class="even">
+<td align="left">Breaking feature: AUTOSAR Fault Memory</td>
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="left">(hypothetical as of 2019-08):</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Some compatible addition…</td>
+<td align="right">13</td>
+<td align="right">14</td>
+<td align="right">13.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Some breaking feature X</td>
+<td align="right">15</td>
+<td align="right">15</td>
+<td align="right">15</td>
+</tr>
+</tbody>
+</table>
+<h1 id="related-topics">Related Topics</h1>
+<ul>
+<li><a href="../../10%20Introduction/Release%20Notes.htm">Release Notes</a></li>
+<li><a href="Version%20Compatibility.htm">Version Compatibility</a></li>
+<li>Semantic Versioning <a href="https://semver.org" class="uri">https://semver.org</a></li>
+</ul>
+
+</body>
+</html>

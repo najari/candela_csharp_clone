@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Consistency Check</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="consistency-check"><span id='_index_446727938'>Consistency Check</span></h1>
+<p>You can run the consistency check via ribbon tab Home <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Home.htm#MENU-R950' title="">[MENU-R950]</a>.</p>
+
+<h2 id="uniqueness">Uniqueness</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R012-a' title="">[LIB-R012-a]</a> The qualifier shall be unique in the library list.</li>
+<li><a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R012-b' title="">[LIB-R012-b]</a> The name shall be unique in the library list.</li>
+</ul>
+<h2 id="proxy-component-dtc">Proxy Component &quot;dtc&quot;</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-dtcErrorCodeTable' title="">[PC-R050-dtcErrorCodeTable]</a> for a Proxy Component with semantics &quot;dtc&quot; of a given byte size, an Error Code Table of the same byte size must exist.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sdMux' title="">[PC-R050-sdMux]</a> At most one of (<code>sd</code> proxy component, Multiplexer component) can be used in a Primitive.</li>
+</ul>
+<h2 id="fault-memory-proxy-components">Fault Memory Proxy Components</h2>
+<h3 id="snapshot-records">Snapshot Records</h3>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-srUnique' title="">[PC-R050-srUnique]</a> A Primitive may contain at most one <code>sr</code> proxy component.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sdUnique' title="">[PC-R050-sdUnique]</a> A Primitive may contain at most one <code>sd</code> proxy component.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-D050-sdsrUse' title="">[PC-D050-sdsrUse]</a> If a Primitive contains an <code>sd</code> proxy component, it must also contain an <code>sr</code> proxy component.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sdMux' title="">[PC-R050-sdMux]</a> A Primitive must not contain both an <code>sd</code> proxy component and a Multiplexer component.</li>
+</ul>
+<h3 id="extended-data-records">Extended Data Records</h3>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-edrUnique' title="">[PC-R050-edrUnique]</a> A Primitive may contain at most one <code>edr</code> proxy component.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-edUnique' title="">[PC-R050-edUnique]</a> A Primitive may contain at most one <code>ed</code> proxy component.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-D050-ededrUse' title="">[PC-D050-ededrUse]</a> If a Primitive contains an <code>ed</code> proxy component, it must also contain an <code>edr</code> proxy component.</li>
+</ul>
+<h2 id="diagnostic-class-template">Diagnostic Class Template</h2>
+<h3 id="class-type-jobsflash-jobs">Class Type &quot;Jobs&quot;/&quot;Flash Jobs&quot;</h3>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R160-NoUsedPS' title="">[DCLT-R160-NoUsedPS]</a> Only a Diagnostic Class Template with Class Type &quot;Jobs&quot;/&quot;Flash Jobs&quot; is allowed to have no Used ProtocolService <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#DCLT-R305' title="">[DCLT-R305]</a>.</li>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R210-Jobs' title="">[DCLT-R210-Jobs]</a> A Diagnostic Class Template with Class Type &quot;Jobs&quot;/&quot;Flash Jobs&quot; may contain Jobs without being restricted by existing services.</li>
+</ul>
+<h2 id="combined-proxy-component-and-mandatory-at-runtime">Combined Proxy Component and &quot;mandatory at runtime&quot;</h2>
+<ul>
+<li>See <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#CPC-R120' title="">[CPC-R120]</a>.</li>
+</ul>
+<h2 id="check-identifier-uniqueness">Check Identifier Uniqueness</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#CIU-R020' title="">[CIU-R020]</a> CANdelaStudio checks a diagnostic instance for uniqueness within the variant / library.</li>
+</ul>
+<h2 id="dtc-pool">DTC Pool</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/DTC/Available%20DTCs.htm#DTCP-R001' title="DTC Pool">[DTCP-R001]</a> the DTC Pool must exist for each Error Code Table of matching size (e.g. 3 byte).</li>
+<li><a class='rqRef' href='../../30%20Features/DTC/Available%20DTCs.htm#DTCP-R001-unique' title="">[DTCP-R001-unique]</a> the code must be unique.</li>
+</ul>
+<h2 id="dtc-required">DTC Required</h2>
+<p><span id="CCDTCA-R020" class="rqDef">[CCDTCA-R020]</span></p>
+<ul>
+<li>required=&quot;Yes&quot;:
+<ul>
+<li><a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-req' title="Required &quot;Yes&quot;">[DTCA-R020-req]</a> code must exist in all variants</li>
+<li><a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-reqLIB' title="">[DTCA-R020-reqLIB]</a> but not in a library (CDS-40659)</li>
+<li><a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-reqDel' title="">[DTCA-R020-reqDel]</a> the Fault Memory diagInstance may be missing</li>
+</ul></li>
+<li>required=&quot;as reference&quot;:
+<ul>
+<li><a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-reqAsRef' title="&quot;Required as reference&quot;">[DTCA-R020-reqAsRef]</a> code must exist in all variants</li>
+<li><a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-reqAsRefLIB' title="">[DTCA-R020-reqAsRefLIB]</a> but not in a library</li>
+<li><a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-reqDel' title="">[DTCA-R020-reqDel]</a> the Fault Memory diagInstance may be missing</li>
+</ul></li>
+<li>DTC in a library, not referenced from Pool:
+<ul>
+<li><a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-LIB' title="">[DTCA-R020-LIB]</a> must have required=&quot;No&quot;</li>
+</ul></li>
+<li>DTC in DTC List for User Defined Fault Memory only <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D105' title="">[UDFM-D105]</a>:
+<ul>
+<li><a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTCA-R020-UDFM' title="">[DTCA-R020-UDFM]</a> must not be referenced from the DTC Pool, shall have required = &quot;No&quot;</li>
+</ul></li>
+</ul>
+<p>See <a href="../../30%20Features/DTC/DTC%20Authorization.htm">DTC Authorization</a>: Properties of a DTC in DTC Pool.</p>
+<h2 id="diagnostic-instance">Diagnostic Instance</h2>
+<h3 id="segment-number">Segment Number</h3>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Segment%20Number.htm#SEGNUM-R310' title="">[SEGNUM-R310]</a> range of MaxAmountSegmentNumber enum id</li>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Segment%20Number.htm#SEGNUM-R320' title="">[SEGNUM-R320]</a> range of Segment Number</li>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Segment%20Number.htm#SEGNUM-R330' title="">[SEGNUM-R330]</a> uniqueness of Segment Number</li>
+<li><a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Segment%20Number.htm#SEGNUM-R340' title="">[SEGNUM-R340]</a> amount of segment numbers</li>
+</ul>
+<h2 id="service">Service</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Service/Service.htm#SVC-R350' title="">[SVC-R350]</a>De-activated service and required &quot;Used ProtocolService&quot;</li>
+<li><a class='rqRef' href='../../30%20Features/Service/Service.htm#SVC-R360' title="">[SVC-R360]</a> De-activated service and variant identification feature</li>
+<li><a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R200' title="">[STTR-R200]</a> service blocked in all states</li>
+<li><a class='rqRef' href='../../30%20Features/State%20Dependency/Link%20Target%20Group%20to%20State.htm#ST-R600' title="Link Target Group to State">[ST-R600]</a> Target Group linked to State</li>
+</ul>
+<h3 id="shortcuts">Shortcut Qualifier and Shortcut Name</h3>
+<p>The CANdelaStudio constraints check reports as an error that prevents from exports...</p>
+<ul>
+<li>shortcut qualifiers that are duplicate within a variant <a class='rqRef' href='../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm#SHC-R410' title="Shortcut Qualifier Uniqueness">[SHC-R410]</a>
+<ul>
+<li>Note: The CANdelaStudio constraints check does not check shortcut names for uniqueness within a variant.</li>
+</ul></li>
+<li>inconsistent shortcut qualifier characters <a class='rqRef' href='../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm#SHC-R420' title="Shortcut Qualifier Characters">[SHC-R420]</a></li>
+<li>inconsistent shortcut name characters <a class='rqRef' href='../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm#SHC-R430' title="Shortcut Name Characters">[SHC-R430]</a></li>
+</ul>
+<h3 id="functional-request-on-can-cds-16347-6.5-sp2">Functional Request on CAN (CDS-16347 6.5 SP2)</h3>
+<p><span id="CCSVC-D010" class="rqDef">[CCSVC-D010]</span> &quot;document supports CAN&quot; :=</p>
+<ul>
+<li>there is at least one activated interface...</li>
+<li>which contains a ComParam with (normalized) qualifier &quot;BusType&quot; set to value &quot;CAN&quot;,</li>
+<li>or &quot;BusType&quot; is not defined at all.</li>
+</ul>
+<p><span id="CCSVC-D020" class="rqDef">[CCSVC-D020]</span> &quot;supports extended or mixed addressing&quot; :=</p>
+<ul>
+<li>there is at least one activated interface...</li>
+<li>which contains a ComParam with (normalized) qualifier &quot;AddressingSchemeFunc&quot; which is set to &quot;Extended&quot; or &quot;Mixed&quot;,</li>
+<li>or which does not contain this ComParam but a ComParam &quot;AddressingScheme&quot; exists with these values.</li>
+</ul>
+<p><span id="CCSVC-R010" class="rqDef">[CCSVC-R010]</span> The constraints check shows a warning for a service (allows exports and loading in tools) if...</p>
+<ul>
+<li>the document property &quot;Diagnostics based on&quot; <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R110' title="">[DOC-R110]</a> is &quot;Daimler&quot; (CDS-21248 7.1),</li>
+<li>the &quot;document supports CAN&quot; <a class='rqRef' href='../../30%20Features/Consistency%20Check/Consistency%20Check.htm#CCSVC-D010' title="">[CCSVC-D010]</a>,</li>
+<li>and the service supports a functional request,</li>
+<li>and...
+<ul>
+<li>the request length of the service is <code>&gt;</code> 7 bytes;</li>
+<li>or: at least one activated interface &quot;supports functional extended or mixed addressing&quot; <a class='rqRef' href='../../30%20Features/Consistency%20Check/Consistency%20Check.htm#CCSVC-D020' title="">[CCSVC-D020]</a>,</li>
+<li>... and the request length of the service is <code>&gt;</code> 6 bytes.</li>
+</ul></li>
+<li>and the existing data, i.e. the minimum size of the request, actually break the limit (CDS-19984 7.0 SP2),
+<ul>
+<li>e.g. no warning if a proxy component in the template has unlimited <em>maximum</em> size, which <em>potentially allows</em> a violation of the length limit, but does not violate it in itself;</li>
+<li>e.g. no warning if an iteration data type allows zero repetions but <em>potentially exceeds</em> the limit with one repetition.</li>
+</ul></li>
+</ul>
+<h4 id="discussion">Discussion</h4>
+<p>This check has been discussed controversially, because it restricts the application layer (UDS) based on a specific network layer (CAN):</p>
+<ul>
+<li>ISO diagnostic specifications are based upon the OSI 7 layer model</li>
+<li>ISO 14229 (UDS) requires the <strong>application layer</strong>, if the ECU supports functional addressing, to support functional addressing for <strong>all services</strong>;</li>
+<li><strong>lower layers</strong> may prevent a request greater than a certain length to be passed up to the application
+<ul>
+<li>e.g. ISO 15765-2 network layer - UDS on CAN</li>
+</ul></li>
+</ul>
+<p>Example: service 0x34 (requestDownload)</p>
+<ul>
+<li>an <strong>application</strong> may support the service regardless of whether the request is addressed physically or functionally;
+<ul>
+<li>a request valid for the <strong>application</strong> may e.g. be 11 bytes;</li>
+</ul></li>
+<li>but the <strong>CAN network layer</strong> allows only 7 bytes;</li>
+<li>therefore an 11 byte request...
+<ul>
+<li><strong>cannot be sent</strong> functionally on the CAN network layer,</li>
+<li>but is <strong>valid</strong> for the application;</li>
+</ul></li>
+<li>... but a 1 byte request...
+<ul>
+<li><strong>can be sent</strong> functionally on the CAN network layer</li>
+<li>... and will be processed by the application and handled as <strong>invalid</strong> (NRC 0x13 - invalid length).</li>
+</ul></li>
+<li>... but after moving...
+<ul>
+<li>to a different physical layer,</li>
+<li>that application might allow functional requests greater than 10 bytes.</li>
+</ul></li>
+</ul>
+<p>Benefit of omitting the check:</p>
+<ul>
+<li>keep the restriction of the network layer out of the CANdela (UDS application) description, i.e. describe the service being sent functionally, anyway;</li>
+<li>check the network layer details e.g. in CANoe.DiVa.;</li>
+<li>by this, avoid a conflict describing an ECU that supports diagnostics on multiple connections where...
+<ul>
+<li>the service can be sent functionally on the one (e.g. DoIP)</li>
+<li>... but not on the other (e.g. CAN).</li>
+</ul></li>
+</ul>
+<h2 id="services-supported-for-interfaces">Services Supported for Interfaces</h2>
+<p><a class='rqRef' href='../../30%20Features/Interface/Communication%20Parameters%20at%20Services%20and%20Jobs.htm#LCP-R200' title="">[LCP-R200]</a> If a “Used Protocol Service” is not supported <a class='rqRef' href='../../30%20Features/Interface/Services%20Supported%20for%20Interfaces.htm#SSI-R100' title="">[SSI-R100]</a> for an Interface, you cannot specify communication parameters of the Interface locally at a Service based on the “Used Protocol Service”.</p>
+<h2 id="bit-field">Bit Field</h2>
+<p><span id="CCDTCA-R150" class="rqDef">[CCDTCA-R150]</span></p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Data%20Objects/Bit%20Field.htm#BF-R100-Simple' title="">[BF-R100-Simple]</a> The data type for the entire range of a bit field must be a simple data type.</li>
+<li><a class='rqRef' href='../../30%20Features/Data%20Objects/Bit%20Field.htm#BF-R150-Simple' title="">[BF-R150-Simple]</a> The data type for the data objects within a bit field must be a simple data type.</li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>These restrictions hold,</li>
+<li>but <strong>consistency check does not report them</strong>, so far.</li>
+<li>Reason: the data object property page enforces them <a class='rqRef' href='../../20 UserInterface\Data Objects\Data Object Property Page Data.htm#DOUI-R910' title="">[DOUI-R910]</a>, as well as the combo-box in the telegram table, but not &quot;Assign New Data Type&quot; in the telegram table up to v11, CDS-71213.</li>
+</ul>
+<h2 id="autosar-fault-memory-v13">AUTOSAR Fault Memory (v13)</h2>
+<h3 id="snapshot-records-1">Snapshot Records</h3>
+<p>See <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D500' title="">[SR-D500]</a>.</p>
+<h2 id="events">Events</h2>
+<p><span id="CCEV-D100" class="rqDef">[CCEV-D100]</span> Consistency Checks for Events</p>
+<h3 id="event-existence">Event Existence</h3>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010-NonEmpty' title="">[EV-R010-NonEmpty]</a> If the flag &quot;Supports Events&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a> is false, the Event lists <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a> must be empty.</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020-OBDII' title="">[EV-R020-OBDII]</a> Events are not allowed in an OBDII Fault Memory Diagnostic Instance.</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020-Type' title="">[EV-R020-Type]</a> Events are not allowed in a Diagnostic Instance of a type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R200' title="">[DCLT-R200]</a> other than &quot;Fault Memory&quot;.</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020-Card' title="">[EV-R020-Card]</a> An Event is contained in 1 Diagnostic Instance.</li>
+</ul>
+<h3 id="event-properties">Event Properties</h3>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R100-Qualified' title="">[EV-R100-Qualified]</a> Event Name and Qualifier must be unique in the list <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a></li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R140-unique' title="">[EV-R140-unique]</a> Indicator Connections: a given Indicator can be used only once for the same Event</li>
+</ul>
+<h3 id="event-master-data">Event Master Data</h3>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R050' title="">[EV-R050]</a> Event and Event Master Data must be in the same Diagnostic Instance</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500-Card' title="">[EV-R500-Card]</a> An Operation Cycle is contained in 1 Diagnostic Instance
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R510-Qualified' title="">[EV-R510-Qualified]</a> Operation Cycle Name and Qualifier must be unique in the list <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a></li>
+</ul></li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R600-Card' title="">[EV-R600-Card]</a> An Indicator is contained in 1 Diagnostic Instance
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R610-Qualified' title="">[EV-R610-Qualified]</a> Indicator Name and Qualifier must be unique in the list <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R600' title="">[EV-R600]</a></li>
+</ul></li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700-Card' title="">[EV-R700-Card]</a> A Condition is contained in 1 Diagnostic Instance
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R720-Qualified' title="">[EV-R720-Qualified]</a> Name and Qualifier must be unique for Conditions and Condition Groups together, i.e. in the combined lists of <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a> and <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800' title="">[EV-R800]</a>.</li>
+</ul></li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800-Card' title="">[EV-R800-Card]</a> A Condition Group is contained in 1 Diagnostic Instance
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R830' title="">[EV-R830]</a> A Condition Group references 1..n Conditions <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a>, i.e. at least one <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R830-nonEmpty' title="">[EV-R830-nonEmpty]</a>.</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R830-unique' title="">[EV-R830-unique]</a> One Condition Group may reference a given Condition only once.</li>
+</ul></li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1100-Card' title="">[EV-R1100-Card]</a> A Debounce Algorithm is contained in 1 Diagnostic Instance
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1110-Qualified' title="">[EV-R1110-Qualified]</a> Debounce Algorithm Name and Qualifier must be unique in the list <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1100' title="">[EV-R1100]</a></li>
+</ul></li>
+</ul>
+<h3 id="event-and-dtc">Event and DTC</h3>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R240' title="">[EV-R240]</a> The Event and the referenced DTC must both exist within the same diagnostic instance.</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230-OBDII' title="">[EV-R230-OBDII]</a> An Event cannot reference an OBDII DTC.</li>
+</ul>
+<h3 id="same-diagnostic-instance">Same Diagnostic Instance</h3>
+<p><span id="CCEV-R100" class="rqDef">[CCEV-R100]</span> For violations of the condition &quot;must be in the same diagnostic instance&quot;, ...</p>
+<ul>
+<li>consistency check writes an error</li>
+<li>... and leaves the data unchanged (it is a read-only check)</li>
+<li>The next loading will reset the reference with an error message.</li>
+<li>By construction, the inconsistency should never occur.</li>
+</ul>
+<h2 id="negative-response-code">Negative Response Code</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Negative%20Response/Negative%20Response.htm#NRC-R100' title="">[NRC-R100]</a> Warning for bit length <code>!= 8</code></li>
+</ul>
+<h2 id="vehicle-system-groups">Vehicle System Groups</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm#VSG-R160' title="Specified Path">[VSG-R160]</a> Existence of Specified Path</li>
+<li><a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Identifying%20Feature%20for%20Vehicle%20System%20Groups.htm#VSG-R170' title="Resolved Path">[VSG-R170]</a> Existence of Resolved Path in Variants</li>
+</ul>
+<h2 id="data-types">Data Types</h2>
+<p>See <a href="../../30%20Features/Data%20Type/Iteration%20Data%20Type%20Constraints.htm">Iteration Data Type Constraints</a>.</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Data%20Type/Procedure.htm#DTPROC-R210' title="">[DTPROC-R210]</a> Procedure Data Type in request</li>
+<li><a class='rqRef' href='../../30%20Features/Data%20Type/Procedure.htm#DTPROC-R220' title="">[DTPROC-R220]</a> Procedure Data Type in positive response</li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R150-Value' title="">[ATTR-R150-Value]</a> For the value of a string attribute, consistency check reports a mismatch</li>
+</ul>
+<h2 id="values">Values</h2>
+<h3 id="bcd">BCD</h3>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R058' title="BCD Consistency Check">[DTENC-R058]</a> for a data type with encoding BCD, report a value with a nibble <code>&gt; 9</code>.</li>
+</ul>
+<h2 id="protocol-services">Protocol Services</h2>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Addressing.htm#PS-R715' title="">[PS-R715]</a> Constraints for SPRMIB Usage</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Check%20Identifier%20Uniqueness.htm">Check Identifier Uniqueness</a></li>
+<li><a href="../../30%20Features/DTC/DTC%20Authorization.htm">DTC Authorization</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Proxy%20Component.htm">Proxy Component</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Negative%20Response.htm#constraints">Negative Response</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Addressing.htm#constraints">Suppress Positive Response Message Indication Bit (Protocol Service)</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Addressing.htm#combinations">Valid Combinations of Addressing Properties (Protocol Service)</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Multiplexer%20Component.htm">Multiplexer Component</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#consistency-conditions">Combined Component Consistency Conditions</a></li>
+<li><p><a href="../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm">Shortcut Qualifier and Shortcut Name</a></p></li>
+<li><p><a href="../../30%20Features/State%20Dependency/State%20Transitions.htm#consistency-conditions">State Transitions</a></p></li>
+<li><a href="../../30%20Features/Data%20Type/Iteration%20Data%20Type%20Constraints.htm">Iteration Data Type Constraints</a></li>
+<li><a href="../../30%20Features/Data%20Type/Mux.htm#constraints">Multiplexer Data Type Constraints</a></li>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type%20Property%20Dependencies.htm">Data Type Property Dependencies</a></li>
+<li><p><a href="../../30%20Features/Data%20Type/String%20Termination.htm">String Termination</a></p></li>
+</ul>
+
+</body>
+</html>

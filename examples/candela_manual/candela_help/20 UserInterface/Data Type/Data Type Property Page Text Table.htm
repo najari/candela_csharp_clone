@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Type Property Page Text Table</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-type-property-page-text-table">Data Type Property Page &quot;Text Table&quot;</h1>
+<div class="figure">
+<img src="Images/Data%20Type%20Property%20Page%20Text%20Table.jpg" alt="Data Type Property Page &quot;Text Table&quot;" />
+<p class="caption">Data Type Property Page &quot;Text Table&quot;</p>
+</div>
+<p>For more information about data type properties, see the <a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Types Feature</a>.</p>
+<h2 id="general-data-type-properties">General Data Type Properties</h2>
+<p>See the <a href="Data%20Type.htm">Data Type Properties Dialog</a>.</p>
+<h2 id="bit-length-field-size">Bit Length / Field Size</h2>
+<p>Variable length is not allowed.</p>
+<h2 id="discrete-values">Discrete Values</h2>
+<p><span id="TTUI-R110" class="rqDef">[TTUI-R110]</span> If this option is checked, the text table contains only discrete values, no ranges <a class='rqRef' href='../../30 Features\Data Type\Text Table.htm#TT-R100-Range' title="">[TT-R100-Range]</a>.</p>
+<p>Note: the checkbox setting is <strong>not part of the data model</strong> - if you un-check it, but use only identical values for Start and End, the checkbox will be checked again when you re-enter the dialog.</p>
+<h2 id="use-inverse-values">Use Inverse Values</h2>
+<p>If this option is checked, you can specify an <a href="../../30%20Features/Data%20Type/Text%20Table.htm#inverse-values">inverse value</a> for each line (start/end value) in the table. The inverse value is used for conversion from a physical to a raw value.</p>
+<h2 id="start">Start</h2>
+<p>The raw value for the conversion.</p>
+<p>If &quot;Discrete Values&quot; is checked, this is the start of a range of values (inclusively).</p>
+<p>Optionally uses a <a href="../../30%20Features/Multi-Language/Dictionary.htm">dictionary</a> <a class='rqRef' href='../../30 Features\Multi-Language\Dictionary.htm#DICT-R020-a3' title="">[DICT-R020-a3]</a>.</p>
+<h2 id="end">End</h2>
+<p>If &quot;Discrete Values&quot; is un-checked, this is the end of a range of values (inclusively).</p>
+<h2 id="assigned-text-mapped-text">Assigned Text (&quot;Mapped Text&quot;)</h2>
+<p>The physical value for the Start value or Start..End range.</p>
+<h2 id="additional-information">Additional Information</h2>
+<p>Optional additional information.</p>
+<h2 id="inverse-value">Inverse Value</h2>
+<p>Enabled by the option &quot;Use Inverse Values&quot;.</p>
+<h2 id="import">Import</h2>
+<p>Opens the <a href="../../20%20UserInterface/Import/Text%20Table%20CSV%20Import%20Wizard.htm">Text Table CSV Import Wizard</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm">Data Type Properties Dialog</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../20%20UserInterface/Import/Text%20Table%20CSV%20Import%20Wizard.htm">Text Table CSV Import Wizard</a></li>
+<li><a href="../../30%20Features/Data%20Type/Text%20Table.htm">Text Table (Feature)</a></li>
+</ul>
+</body>
+</html>

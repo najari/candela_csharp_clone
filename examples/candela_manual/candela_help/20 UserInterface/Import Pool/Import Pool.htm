@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Import Pool</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="import-pool">Import Pool</h1>
+<p>This chapter describes the User Interface of the <a href="../../30%20Features/Import%20Pool/Import%20Pool.htm">Import Pool Feature</a>.</p>
+<p>Use the <strong>Import Assistant</strong> to <strong>fill</strong> the import pool, opened via menu File <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm#MENU-R210' title="">[MENU-R210]</a> or a button at the bottom of the list.</p>
+<h2 id="data-types">Data Types</h2>
+<div class="figure">
+<img src="Images/Import%20Pool%20Data%20Types.jpg" alt="Import Pool - Data Types" />
+<p class="caption">Import Pool - Data Types</p>
+</div>
+<p>CANdelaStudio allows to inspect the data type properties using the data type property page.</p>
+
+<h2 id="data-objects">Data Objects</h2>
+<div class="figure">
+<img src="Images/Import%20Pool%20Data%20Objects.jpg" alt="Import Pool - Data Objects" />
+<p class="caption">Import Pool - Data Objects</p>
+</div>
+<p><span id="IPUI-R200" class="rqDef">[IPUI-R200]</span> The list provides a filter for the displayed texts (CDS-33052 9.1).</p>
+<p><strong>R020.0</strong>: CANdelaStudio allows to view attribute values of data objects via the attribute property page (for data types this property page already exists in the import pool).</p>
+<p>Note, that the attributes of import pool objects are not visible via the attribute overview, as the import pool does not belong to the document.</p>
+<p><strong>R021.1</strong>: If synchronization is available (R010.0), CANdelaStudio shows a button “Synchronize” at the bottom of the import pool of data objects (at the left of the “Import data objects” button).</p>
+<p><strong>R022.0</strong>: If the attribute of R010.0 is available, CANdelaStudio shows an additional column for the value of the identifying attribute.</p>
+<p><strong>R023.0</strong>: If the attribute of R010.0 is available, CANdelaStudio shows an additional column “Synchronization State” representing the synchronization constellation of the data object in the Import Pool.</p>
+<p>Allowed states are:</p>
+<ul>
+<li><p>“In Use (up to date)”: The document contains at least one data object with the same identifying attribute value and the data object(s) in use match the one in the import pool (~responsible constellation “A”). Add a tooltip to the entries of the table column “The document contains data objects with the same identifying attribute value. All occurrences of the data object are up to date in regard to the one in the import pool.”</p></li>
+<li><p>“In Use (not up to date)”: The document contains at least one data object with the same identifying attribute value and at least one of these data objects differs from the one in the import pool by its properties (~responsible constellation “A”). Add a tooltip to the entries of the table column “The document contains data objects with the same identifying attribute value but with different properties than the one in the import pool.”</p></li>
+<li><p>“Not used”: The document does not contain a data object with the same identifying attribute value (~responsible constellation “B”) Add a tooltip to the entries of the table column “The document does not contain any data object which matches the identifying attribute value of the data object.”</p></li>
+<li><p>(cell empty): The data object in the import pool does not have a value for the identifying attribute.</p></li>
+</ul>
+<p><span id="IPUI-R024" class="rqDef" title="Sync Dialog with Checkbox">[IPUI-R024.0 Sync Dialog with Checkbox]</span> When clicking the “Synchronize” button of R021, a pop up dialog shall inform the user about the consequence of the action, like</p>
+<blockquote>
+<p>“This action will update data objects of the document according to the properties of the ones in the import pool. The data objects of the document and the import pool will be associated by the value of the identifying attribute “&lt;ATTR-NAME&gt;”. Identifying attribute values of data objects in use can be reset optionally if they are not contained in the import pool by activating the check box below. Do you want to continue?“</p>
+</blockquote>
+<p>At the bottom, there are two buttons “OK” and “Cancel”. Above the two buttons add a check box “Reset identifying attribute value for data objects missing in the import pool”. The check box is unchecked by default.</p>
+<p>A further dialog provides selection of the variants to synchronize.</p>
+<div class="figure">
+<img src="Images/Synchronization%20Variants%20Selection.jpg" alt="Import Pool Synchronization: Variants Selection" />
+<p class="caption">Import Pool Synchronization: Variants Selection</p>
+</div>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../30%20Features/Import%20Pool/Import%20Pool.htm">Import Pool Feature</a></li>
+</ul>
+</body>
+</html>

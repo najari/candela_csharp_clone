@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Qualifier Overview</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="qualifier-overview">Qualifier Overview</h1>
+<div class="figure">
+<img src="Images/Qualifier%20Overview.jpg" alt="Qualifier Overview Dialog" />
+<p class="caption">Qualifier Overview Dialog</p>
+</div>
+<p>The Qualifier Overview dialog (menu &quot;View&quot;) gives you an overview of all <a href="../../30%20Features/Common%20Properties/Qualifier.htm">qualifiers</a> of the object on which the dialog was opened, including all contained objects.</p>
+<p>You can modify individual qualifiers, or recompute the qualifiers from the respective object names - e.g. in order to shorten the qualifiers to fit the restrictions of a test system.</p>
+<p>Modifying operations respect of the <a href="../../30%20Features/Common%20Properties/Authorization.htm">Authorization</a> of the objects - in Standard View, you cannot modify the qualifier of an object if the object is &quot;not modifiable&quot;. These are e.g. protocol services, diagnostic classes, diagnostic class templates and default attributes.</p>
+<h2 id="context">Context</h2>
+<p>When opened on &quot;ECU Information&quot; (the root of the document tree), the dialog shows all qualifiers of the document (&quot;Whole document&quot;).</p>
+<p>Otherwise, you can switch between</p>
+<ul>
+<li>&quot;Whole document&quot; and</li>
+<li>the &quot;Current namespace&quot;, i.e. all qualifiers of the object on which you opened the dialog and its contained objects.</li>
+</ul>
+<h2 id="list">List</h2>
+<p>Shows all qualifiers of the specified namespace or the whole document (including all non-modifiable qualifiers), depending on the selection made in the &quot;Context&quot; combobox.</p>
+<p>The list can be sorted by any of the three columns. Furthermore, it allows multiple selection of rows. This gives you the ability to exclude qualifier from being re-computed, e.g. if they have been modified otherwise.</p>
+
+<h3 id="qualifier">Qualifier</h3>
+<p>The qualifier of the object. You can edit this column if the qualifier may be edited.</p>
+<h3 id="name">Name</h3>
+<p>The name of the object. You cannot edit this column.</p>
+<h3 id="object-type">Object Type</h3>
+<p>The type of the object, i.e. diagnostic instance, service etc. You cannot edit this column.</p>
+<h3 id="fixed">Fixed</h3>
+<p>This column is shown only if <a href="../../30%20Features/Common%20Properties/Qualifier.htm#fixed-qualifier">Fixed Qualifiers</a> have been setup for the document.</p>
+<ul>
+<li>yes: qualifier is fixed</li>
+<li>no: qualifier is not fixed</li>
+<li>&quot;--&quot;: qualifier cannot be modified, anyway</li>
+</ul>
+<h3 id="path">Path</h3>
+<p>The path to the object with the given qualifier. You cannot edit this column. The path also indicates the namespace of the object.</p>
+<h2 id="hide-qualifier-generated-from-names">Hide qualifier generated from names</h2>
+<p>Allows to hide all qualifier in the list that have been generated from the names of the corresponding objects. This check box is unchecked by default.</p>
+<h2 id="show-qualifiers-of-subordinate-objects">Show qualifiers of subordinate objects</h2>
+<p>If the dialog is opened on an object that has a qualifier, the checkbox is enabled. It allows to recursively show the qualifiers of the object and its contained objects.</p>
+<h2 id="include-template-data">Include template data</h2>
+<h2 id="buttons-only-selected-all">Buttons &quot;Only Selected&quot; / &quot;All&quot;</h2>
+<h2 id="button-recreate">Button &quot;Recreate&quot;</h2>
+<p><a href="Recreate%20Qualifier.htm">Shows a dialog</a> in which you can set options for the computation of the qualifiers.</p>
+<h2 id="button-reset">Button &quot;Reset&quot;</h2>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Diogenes%20Qualifier%20Overview.htm">Diogenes Qualifier Overview</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Qualifier.htm">Qualifier Feature</a></li>
+<li><a href="Recreate%20Qualifier.htm">Recreate Qualifier Dialog</a></li>
+</ul>
+</body>
+</html>

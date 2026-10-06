@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Auto Save</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="auto-save-cds-274-7.0">Auto Save (CDS-274, 7.0)</h1>
+<p>CANdelaStudio enables automatically saving the currently active modified document at the next opportunity, based on a user-defined time interval.</p>
+<p>It does not matter at which point in time the document has been first or last modified.</p>
+<h2 id="requirements">Requirements</h2>
+<p><strong>R001.1 (Frontend)</strong>: in Ribbon Tab <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20General.htm">File | Options | General</a>, provide checkbox “Auto-save” (“Automatisches Speichern”), with spin-button (like for maximum path length, sensitive if checkbox is on) for 1..60 minutes. Add explanation like “Saves the current document to a temporary file with extension (not e.g. during editing in a modal dialog”)</p>
+
+<p>CANdelaStudio shall not trigger the action “Save current version done”.</p>
+<p>CANdelaStudio shall not show the prompt for revision history.</p>
+<p><strong>R030.2 (Frontend)</strong>: on opening a document via File menu or drag’n drop (not e.g. when opening a file for a batch plug-in), if there is an “Auto-Save” file that is newer than the document to open, CANdelaStudio shall prompt the user whether the auto-save file should be used.</p>
+<p>If yes, move it onto the document (e.g. delete document, rename auto-save file to document) and open the resulting document. If the auto-save file cannot be opened (e.g. corrupt file), show a message and fall back to open the document.</p>
+<p>If no, drop the auto-save file and open the original document.</p>
+
+<p>See also <a href="Backup.htm">Backup</a>.</p>
+</body>
+</html>

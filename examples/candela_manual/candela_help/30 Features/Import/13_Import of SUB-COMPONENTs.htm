@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>13_Import of SUB-COMPONENTs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="import-of-sub-components">Import of SUB-COMPONENTs</h1>
+<p>Each SUB-COMPONENT from ODX is imported as an individual VehicleSystemGroup in CANdelaStudio.</p>
+<p>In ODX, the SHORT-NAMEs of SUB-COMPONENTs are unique inside the BASE-/ECU-VARIANT. This differs to CANdela, where all Vehicle Systems Groups are stored in one container - hence the names/qualifiers of the according vehicle system need to be globally unique (inside the CDD) by prefixing the corresponding DIAG-LAYER SHORT-NAME.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ODX SUB-COMPONENT</th>
+<th align="left">CANdelaStudio VehicleSystemGroup</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">SEMANTIC</td>
+<td align="left">Semantic</td>
+</tr>
+<tr class="even">
+<td align="left">SUB-COMPONENT-PARAM-CONNECTOR</td>
+<td align="left">Assigned Diagnostic Instances and Job Containers</td>
+</tr>
+<tr class="odd">
+<td align="left">DTC-CONNECTOR</td>
+<td align="left">Assigned DTCs</td>
+</tr>
+<tr class="even">
+<td align="left">DIAG-LAYER (parent)</td>
+<td align="left">Availability for Variants</td>
+</tr>
+<tr class="odd">
+<td align="left">SUB-COMPONENT-PATTERN</td>
+<td align="left">Identifying Patterns</td>
+</tr>
+<tr class="even">
+<td align="left">ENV-DATA-CONNECTOR</td>
+<td align="left"><em>not mappable</em></td>
+</tr>
+<tr class="odd">
+<td align="left">TABLE-ROW-CONNECTOR</td>
+<td align="left"><em>not mappable</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="ODX%20Import%20Introduction.htm">ODX Import Introduction</a></li>
+<li><a href="../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm">Vehicle System Group</a></li>
+</ul>
+</body>
+</html>

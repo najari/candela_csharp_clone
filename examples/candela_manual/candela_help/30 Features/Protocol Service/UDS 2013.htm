@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>UDS 2013</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="uds-2013"><span id='_index_446728105' title='UDS' data-term='UDS'>UDS 2013</span></h1>
+<p>UDS 2013 (<em>ISO 14229-1 2013(E)</em>) has few differences in ProtocolServices compared with UDS 2005 (<em>ISO 14229-1 2005(E)</em>):</p>
+<ul>
+<li>service <strong>0x10</strong>: P2 timing record mandatory and only as a P2 record allowed (bus system independent);</li>
+<li>service <strong>0x19</strong>: subfunctions 0x16..0x19 and 0x42 added;</li>
+<li>service <strong>0x22</strong> and <strong>0x2A</strong>: NRC 0x31 only sent when <strong>none of the requested DIDs</strong> is supported in the active session, not when a single DID is not supported (which is simply skipped);</li>
+<li>service <strong>0x23</strong> and <strong>0x3D</strong>: NRC 0x31 on zero &quot;BlockSize&quot; parameter length;</li>
+<li>service <strong>0x28</strong>: subfunctions 0x04 and 0x05 are valid;</li>
+<li>service <strong>0x2A</strong> was also allowed as USDT (single frame only) in UDS 2005, now it is allowed on UUDT only. This may require an additional communication parameter for UUDT in the template;</li>
+<li>service <strong>0x31</strong>: NRC flow chart detailed;</li>
+<li>new service <strong>0x38 Request File Transfer</strong>;</li>
+<li>addressing method <strong>functional/physical</strong>: a server shall execute any supported diagnostic service independently on the request addressing type;</li>
+<li>on <strong>functional request</strong>, besides NRCs 0x11, 0x12, 0x31, also NRC 0x7E and 0x7F not suppressed;</li>
+<li><strong>concurrent client request handling</strong> defined.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../40%20Templates/Vector%20UDS/Introduction.htm">Vector UDS Template</a></li>
+<li><a href="LIN.htm">LIN</a></li>
+<li><a href="UDS%202019.htm">UDS 2019</a></li>
+</ul>
+
+</body>
+</html>

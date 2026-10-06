@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>MDX DTC Columns</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="mdx-dtc-columns"><span id='_index_446728022' title='DTC' data-term='DTC'>MDX DTC Columns</span><span id='_index_446728023' title='MDX: MDX DTC Columns' data-term='MDX' data-text='MDX DTC Columns'></span></h1>
+<p>Feature since CANdelaStudio 6.0 (CDS-12925), extended in 6.5 by CDS-14019 (see D003), available for <a href="../../30%20Features/Document/Document.htm#diagnostics-based-on">&quot;Diagnostics Based on&quot; (manufacturer)</a> Ford.</p>
+<p><strong>D001</strong>: let the following attribute category exist in a template:</p>
+<ul>
+<li>Qualifier “MDX_DTCRefs”</li>
+<li>Usage “system”</li>
+</ul>
+<p>Attributes assigned to this category are considered to store DTC specific data needed by MDX export (started via ribbon tab Data Exchange <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R160' title="">[MENU-R160]</a>).</p>
+<p><strong>D002</strong>: if two default attributes with the same name and qualifier, both referencing the attribute category of D001, exist at the DaMe objects <strong>ECU</strong> and <strong>DTC</strong>, and an overridden attribute with the same name and qualifier exists at the ECU, then these attributes constitute a so-called <strong>(Pool, Subset) = (P, S) tuple</strong>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>the default attribute and overridden attribute located at the <strong>ECU</strong> specify a <strong>pool P</strong> of values,</li>
+<li>whereas the attribute located at a <strong>DTC</strong> contains a <strong>subset S</strong> of the values stored in P.</li>
+</ol>
+<blockquote>
+<p>Note: A migration moves the default attribute.defaultValue (as of &lt; 6.5 SP 1) to the overridden attribute.value (as of &gt;= 6.5 SP 1). No back migration is done.</p>
+</blockquote>
+<p><strong>D003</strong>: to support MDX specific DTC table columns, the template shall contain the following (P, S) tuples (pairs of <strong>non-translatable string attributes</strong>):</p>
+<ol style="list-style-type: decimal">
+<li>Name = “Control Routine”, qualifier = “MDX_DTCCR”</li>
+<li>Name = “Monitoring Cycle”, qualifier = “MDX_DTCMC”</li>
+<li>Name = “Warning Indicators”, qualifier = “MDX_DTCWI”</li>
+<li>Name = Qualifier = &quot;MDX_DTCID&quot; (added with CDS-14019 in 6.5)</li>
+</ol>
+<p>None of the attributes must be reported to specification, and none must be visible in Standard view.</p>
+<p><strong>D004</strong>: the attributes specified by D003 shall contain as <strong>value of the overridden attribute</strong> a list of strings separated by new-line characters. Depending on the qualifier of the attribute, the following <strong>value types</strong> shall be stored in the strings:</p>
+<ol style="list-style-type: decimal">
+<li>MDX_DTCCR: routine (qualifier)</li>
+<li>MDX_DTCMC: value (e.g. hexadecimal “0x01”)</li>
+<li>MDX_DTCWI: value</li>
+<li>MDX_DTCID: inhibiting (hexadecimal) DTC values</li>
+</ol>
+<p><strong>D005</strong>: the <strong>description</strong> (in the first up-to-date language) of the P default attribute of a (P, S) tuple shall define the <strong>maximum allowed number</strong> “n” of routines or values that may be selected in an S attribute. The format of the definition is:</p>
+<pre><code>maxSelect=&lt;number&gt;</code></pre>
+<p>If this definition is not recognized in the description, maxSelect is assumed to be 1.</p>
+<p><strong>Semantics:</strong></p>
+<p>Each S attribute of a (P, S) tuple defines a column in the DTC table.</p>
+<p>The pool P defines the available values for the column.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC Feature</a></li>
+<li>Manufacturer specific export (Ford) <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R160' title="">[MENU-R160]</a></li>
+</ul>
+</body>
+</html>

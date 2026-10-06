@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Variant Wizard</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="variant-wizard">Variant Wizard</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Variant wizard, a special dialog in CANdelaStudio, allows creation of new ECU variants. It uses a variant already existing and allows copying or referencing objects from an existing variant into a new variant.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Variant%20Wizard.jpg" alt="Variant Wizard" />
+<p class="caption">Variant Wizard</p>
+</div>
+<h2 id="name">Name</h2>
+<p>See <a href="../../30%20Features/Common%20Properties/Name.htm">Names in CANdela</a>.</p>
+<h2 id="create-cds-68705-v12">Create (CDS-68705 v12)</h2>
+<p><span id="VW-R040" class="rqDef">[VW-R040]</span> The radio buttons control how the wizard handles objects of the variant specified in the combobox &quot;on basis of&quot;:</p>
+<ul>
+<li><span id="VW-R040-Ref" class="rqDef">[VW-R040-Ref]</span> &quot;Variant with References&quot;...
+<ul>
+<li>creates all diagnostic instances and job containers as <strong>references</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D010' title="">[DI-D010]</a></li>
+</ul></li>
+<li><span id="VW-R040-Copy" class="rqDef">[VW-R040-Copy]</span> &quot;Variant with Copies&quot;...
+<ul>
+<li>creates all diagnostic instances and job containers as <strong>copies</strong>,</li>
+<li><strong>except</strong> those that are &quot;required as reference&quot; <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Authorization.htm#DIA-R020-reqAsRef' title="">[DIA-R020-reqAsRef]</a>.</li>
+<li><span id="VW-R040-CopyInsens" class="rqDef">[VW-R040-CopyInsens]</span> The radio button is insensitive, depending on the option in Ribbon Tab File | Options | Edit | &quot;Variant Wizard allows to copy all diagnostic instances&quot;.</li>
+</ul></li>
+<li><span id="VW-R040-Empty" class="rqDef">[VW-R040-Empty]</span> &quot;Empty Variant&quot;...
+<ul>
+<li>creates <strong>only</strong> diagnostic instances and job containers that are &quot;required as reference&quot; <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Authorization.htm#DIA-R020-reqAsRef' title="">[DIA-R020-reqAsRef]</a>.</li>
+</ul></li>
+<li><span id="VW-R040-Default" class="rqDef">[VW-R040-Default]</span> The default selection is &quot;Variant with References&quot;.</li>
+</ul>
+
+<h2 id="on-basis-of">on Basis of</h2>
+<p><span id="VW-R050" class="rqDef">[VW-R050]</span> The combobox &quot;on basis of&quot; determines the <strong>variant</strong> used for the radio buttons under &quot;Create&quot; <a class='rqRef' href='../../20%20UserInterface/Variant/Variant%20Wizard.htm#VW-R040' title="">[VW-R040]</a>:</p>
+<ul>
+<li><span id="VW-R050-Lib" class="rqDef">[VW-R050-Lib]</span> The combobox contains the <strong>libraries</strong> of the document, above the variants.</li>
+<li><span id="VW-R050-Var" class="rqDef">[VW-R050-Var]</span> The combobox contains the <strong>variants</strong> of the document.</li>
+<li><span id="VW-R050-Default" class="rqDef">[VW-R050-Default]</span> The base variant is selected as default.</li>
+<li><span id="VW-R050-Sens" class="rqDef">[VW-R050-Sens]</span> The combobox is sensitive only for &quot;Create&quot;... &quot;Variant with References&quot; and &quot;Variant with Copies&quot;.</li>
+</ul>
+<h2 id="action-for-all-instances">Action for All Instances</h2>
+<h3 id="actions">Actions</h3>
+<p>An <strong>action</strong> describes the state of the respective object in the variant to be created:</p>
+<ul>
+<li>&quot;unused&quot;: object not created</li>
+<li>&quot;copy&quot;: copy created</li>
+<li>&quot;reference&quot;: reference created</li>
+</ul>
+<p>For objects that contain other objects (variant, diagnostic class), the action may also be</p>
+<ul>
+<li>&quot;(mixed)&quot;: the contained objects have <strong>different actions</strong>.</li>
+</ul>
+<h3 id="folders">Folders</h3>
+<p>The &quot;Create&quot; radio buttons <a class='rqRef' href='../../20%20UserInterface/Variant/Variant%20Wizard.htm#VW-R040' title="">[VW-R040]</a> (above) determine the default action for the entire <strong>new variant</strong>.</p>
+<p>Additionally, you can modify the actions...</p>
+<ul>
+<li>for <strong>diagnostic classes</strong> (shown as folders) and</li>
+<li>for individual <strong>diagnostic instances</strong>.</li>
+</ul>
+<p>Hence the action combobox for variant and diagnostic classes serves two purposes:</p>
+<ul>
+<li>Modify the actions of all contained objects.</li>
+<li>Summary of the actions of all contained objects</li>
+</ul>
+<h3 id="change-propagation">Change Propagation</h3>
+<ul>
+<li>If you change the action of a folder,
+<ul>
+<li>the wizard updates the actions of the contained objects.</li>
+</ul></li>
+<li>If you change the action of a contained object,
+<ul>
+<li>the wizard updates the resulting action of the folder, maybe to &quot;(mixed)&quot;.</li>
+</ul></li>
+<li>Initially, all contained objects have action &quot;reference&quot;</li>
+<li>You cannot set the action of a folder to &quot;(mixed)&quot; directly.
+<ul>
+<li>This value is displayed as a summary for the actions of the contained objects, it is not shown in the combobox.</li>
+</ul></li>
+<li>If all contained objects have the same action, the containing object automatically gets this action, too.</li>
+<li>For &quot;required&quot; objects, the wizard does not allow action &quot;unused&quot;.</li>
+</ul>
+
+<h2 id="tree-left">Tree (left)</h2>
+<p><span id="VW-R100" class="rqDef">[VW-R100]</span> The wizard shows the tree like the CANdelaStudio tree (including the <a href="../../20%20UserInterface/Tree/Icons.htm">icons</a>).</p>
+<p><span id="VW-R110" class="rqDef">[VW-R110]</span> The tree contains the variant from &quot;on basis of&quot; with its diagnostic classes, job containers and diagnostic instances.</p>
+<h2 id="list-right">List (right)</h2>
+<p><span id="VW-R200" class="rqDef">[VW-R200]</span> The list to the right displays the contents of the currently selected tree element.</p>
+<ul>
+<li>For leaf elements of the tree (job containers and diagnostic instances), the list contains just this element.</li>
+<li>The list contains...
+<ul>
+<li>the name of the object,</li>
+<li>the action to be performed for it (see below),</li>
+<li>and an indication whether the element is &quot;required&quot;.</li>
+</ul></li>
+</ul>
+<h2 id="actions-1">Actions</h2>
+<h2 id="action-visualization">Action Visualization</h2>
+<p>Folders (diagnostic classes) have two icons only:</p>
+<ul>
+<li>one for the selected,</li>
+<li>one for the de-selected state.</li>
+</ul>
+<p>The icon of a diagnostic instance reflects its action: unused, copy, reference.</p>
+<p><strong>Note</strong>: the icons...</p>
+<ul>
+<li>do not reflect the copying/sharing state of the variant selected in &quot;is based on&quot;,</li>
+<li>they rather reflect the state of the <em>new variant</em>!</li>
+</ul>
+<h2 id="action-reference-for-diagnostic-classes">Action &quot;Reference&quot; for Diagnostic Classes</h2>
+<p>The wizard provides the <strong>action &quot;reference&quot;</strong> for a <strong>diagnostic class</strong>.</p>
+<p>Its effect is just that <strong>all its diagnostic instances</strong> will be referenced.</p>
+<p>Background: the CANdela data model supports...</p>
+<ul>
+<li><strong>copying</strong> and <strong>referencing</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D010' title="">[DI-D010]</a> of diagnostic <strong>instances</strong>,</li>
+<li>but only <strong>copying</strong> of diagnostic <strong>classes</strong> (no references!).</li>
+</ul>
+<h2 id="ok">OK</h2>
+<p><span id="VW-R500" class="rqDef">[VW-R500]</span> On OK, CANdelaStudio creates a new variant <a class='rqRef' href='../../30 Features\Variant\Variant Operations.htm#VAR-R100' title="Create from Other Variant in Document">[VAR-R100]</a> with the specified name.</p>
+<p><span id="VW-R510" class="rqDef">[VW-R510]</span> Copy Variant Attributes (CDS-41769 8.5 SP3)</p>
+<ul>
+<li>If &quot;Action for All Instances&quot; is &quot;Reference&quot; or &quot;Copy&quot; (not &quot;Unused&quot; or &quot;Mixed&quot;),</li>
+<li>then CANdelaStudio <strong>copies all variant attributes</strong> <a class='rqRef' href='../../30 Features\Variant\Variant Operations.htm#VAR-R100-Attributes' title="Copy Variant Attributes">[VAR-R100-Attributes]</a> to the new variant.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Variant.htm">Variant (Right Side)</a></li>
+<li><a href="Variants.htm">Variants (List)</a></li>
+<li><a href="../../30%20Features/Variant/Variant.htm">Variants (Feature)</a></li>
+</ul>
+</body>
+</html>

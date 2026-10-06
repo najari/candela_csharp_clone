@@ -1,0 +1,687 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Attributes for AUTOSAR Diagnostic Extract export</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="attributes-for-autosar-diagnostic-extract-export-cds-41055-9.0">Attributes for AUTOSAR Diagnostic Extract export (CDS-41055 9.0)</h1>
+<h2 id="list-of-attributes">List of Attributes</h2>
+<p><span id="ASR-D001" class="rqDef">[ASR-D001]</span> List of attributes,</p>
+<ul>
+<li>created using the checkbox <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R500' title="">[DOCUI-R500]</a>,</li>
+<li>used by the <a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a>.</li>
+</ul>
+<table>
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Object Type</th>
+<th align="left">Name (+ Qualifier, if different)</th>
+<th align="left">Type</th>
+<th align="left">Existing Category</th>
+<th align="left">Display</th>
+<th align="left">Enum Values</th>
+<th align="left">Default Value</th>
+<th align="left">Visible in separate table column</th>
+<th align="left">Description (+ Type restrictions, if any)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>ECU</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">AUTOSAR Type (<code>Autosar_Type</code>)</td>
+<td align="left">Enum</td>
+<td align="left">Autosar</td>
+<td align="left">Sort by Id</td>
+<td align="left">&quot;None&quot; 0 , &quot;Classic&quot; 1, &quot;Adaptive&quot; 2</td>
+<td align="left">0</td>
+<td align="left">n/a</td>
+<td align="left"><span id="ASR-D001_AUTOSAR_Type" class="rqDef">[ASR-D001_AUTOSAR_Type]</span> Controlled by checkbox &quot;Supports AUTOSAR&quot; <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R500' title="">[DOCUI-R500]</a> and the radio buttons <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R530' title="">[DOCUI-R530]</a>. See details at the Document, <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R530' title="">[DOC-R530]</a>. (CDS-71296 v13)</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">AUTOSAR Version (<code>Autosar_Version</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">n/a</td>
+<td align="left"><span id="ASR-D001_AUTOSAR_Version" class="rqDef">[ASR-D001_AUTOSAR_Version]</span> Controlled by the AUTOSAR &quot;Version&quot; <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R540' title="">[DOCUI-R540]</a> (CDS-71296 v13). See details at the Document, <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R540' title="">[DOC-R540]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><code>MaxNumberOfDynDefinedDidReferences</code></td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left">Decimal</td>
+<td align="left"></td>
+<td align="left">5</td>
+<td align="left">n/a</td>
+<td align="left"><span id="ASR-D001_MaxDyn" class="rqDef">[ASR-D001_MaxDyn]</span> Number of DIDs that can be defined dynamically, see <a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#dddi-0x2c">AUTOSAR Diagnostic Extract Export</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Periodic Rate (Slow) in ms (<code>Periodic_Rate_Slow_in_ms</code>)</td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left">Decimal</td>
+<td align="left"></td>
+<td align="left">1000</td>
+<td align="left">n/a</td>
+<td align="left"><span id="ASR-D001_Periodic_Rate_Slow_in_ms" class="rqDef">[ASR-D001_Periodic_Rate_Slow_in_ms]</span> Only exported if Service 0x2A with transmissionMode 0x01 (sendAtSlowRate) is supported. See <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R505' title="">[DEXT-R505]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Periodic Rate (Medium) in ms (<code>Periodic_Rate_Medium_in_ms</code>)</td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left">Decimal</td>
+<td align="left"></td>
+<td align="left">100</td>
+<td align="left">n/a</td>
+<td align="left"><span id="ASR-D001_Periodic_Rate_Medium_in_ms" class="rqDef">[ASR-D001_Periodic_Rate_Medium_in_ms]</span> Only exported if Service 0x2A with transmissionMode 0x02 (sendAtMediumRate) is supported. See <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R505' title="">[DEXT-R505]</a>.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Periodic Rate (Fast) in ms (<code>Periodic_Rate_Fast_in_ms</code>)</td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left">Decimal</td>
+<td align="left"></td>
+<td align="left">20</td>
+<td align="left">n/a</td>
+<td align="left"><span id="ASR-D001_Periodic_Rate_Fast_in_ms" class="rqDef">[ASR-D001_Periodic_Rate_Fast_in_ms]</span> Only exported if Service 0x2A with transmissionMode 0x03 (sendAtFastRate) is supported. See <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R505' title="">[DEXT-R505]</a>.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">DDDID check per source ID (<code>DDDID_check_per_source_ID</code>)</td>
+<td align="left">Enum</td>
+<td align="left">UDS</td>
+<td align="left">Sort by ID</td>
+<td align="left">false 0, true 1</td>
+<td align="left">false</td>
+<td align="left">n/a</td>
+<td align="left"><span id="ASR-D001_DDDID_check_per_source_ID" class="rqDef">[ASR-D001_DDDID_check_per_source_ID]</span> Perform checks for session, security and mode dependencies per source DID (in DID range 0xF200 to 0xF3FF), while reading DDDIDs via UDS service 0x22 or 0x2A. <strong>Only relevant</strong> for DEXT export if the document uses <strong>UDS 0x2C</strong>.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">DDDID configuration storage (<code>DDDID_configuration_storage</code>)</td>
+<td align="left">Enum</td>
+<td align="left">UDS</td>
+<td align="left">Sort by ID</td>
+<td align="left">volatile 0, non volatile 1</td>
+<td align="left">volatile</td>
+<td align="left">n/a</td>
+<td align="left"><span id="ASR-D001_DDDID_configuration_storage" class="rqDef">[ASR-D001_DDDID_configuration_storage]</span> Defines whether DDDID definition is handled as nonvolatile information. <strong>Only relevant</strong> for DEXT export if the document uses <strong>UDS 0x2C</strong>.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><code>SynchronizationAttribute</code></td>
+<td align="left">String</td>
+<td align="left">ODX</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">RequirementsId (use &quot;SYNCHELEMENT&quot; if no &quot;RequirementsId&quot; attribute exists but a &quot;SYNCHELEMENT&quot; attribute exists)</td>
+<td align="left">n/a</td>
+<td align="left"><span id="ASR-D001_SynchronizationAttribute" class="rqDef">[ASR-D001_SynchronizationAttribute]</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Interface</strong></td>
+<td align="left">(from CDS-40957 Star3 ComParam)</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><code>DiagnosticConnectionRef</code></td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">n/a</td>
+<td align="left"><span id="ASR-D001_DiagnosticConnectionRef" class="rqDef">[ASR-D001_DiagnosticConnectionRef]</span> In the DEXT, specifies which TP Connection DCM uses, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R260' title="">[DEXT-R260]</a>. Since v13 (CDS-72002) .</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><code>DiagnosticProtocolPriority</code></td>
+<td align="left">Unsigned</td>
+<td align="left">Autosar</td>
+<td align="left">Decimal</td>
+<td align="left"></td>
+<td align="left">4</td>
+<td align="left">n/a</td>
+<td align="left"><span id="ASR-D001_DiagnosticProtocolPriority" class="rqDef">[ASR-D001_DiagnosticProtocolPriority]</span> In the DEXT, specifies the priority of the diagnostic tester, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R260' title="">[DEXT-R260]</a>. Since v13 (CDS-72002). Before v13, exported to DEXT depending on the value of the document property &quot;Diagnostics Based on&quot; <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R110' title="">[DOC-R110]</a> .</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>DIDs</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><code>RequirementsId</code></td>
+<td align="left">String</td>
+<td align="left">Editor</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><span id="ASR-D001_DIDRequirementsId" class="rqDef">[ASR-D001_DIDRequirementsId]</span> <strong>(1)</strong> Imported via requirements CSV (e.g. from PREEvision) and evaluated in SWC-Sync, not used by DEXT Export.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Diagnostic Instance</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">ASR UUID (<code>ASR_UUID</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_DiagInstUUID" class="rqDef">[ASR-D001_ASR_DiagInstUUID]</span> UUID of the synchronized AUTOSAR element which corresponds to the diagnostic object, used by requirement-less SWC-Sync (CDS-71926 v13).</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Instance Type (<code>Instance_Type</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">1</td>
+<td align="left"><span id="ASR-D001_Instance_Type" class="rqDef">[ASR-D001_Instance_Type]</span>. Only at IO Control, Routine Control (detected by UDS ServiceID 0x2F (IOControl) / 0x31 (Routine). Usage: see (1) above.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><code>MaxAttemptsToDelay</code></td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left">Decimal</td>
+<td align="left"></td>
+<td align="left">3</td>
+<td align="left"></td>
+<td align="left"><span id="ASR-D001_MaxAttemptsToDelay" class="rqDef">[ASR-D001_MaxAttemptsToDelay]</span> Used for DIAGNOSTIC-SECURITY-LEVEL in in AUTOSAR Diagnostic Extract Export, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R420' title="">[DEXT-R420]</a>. Only at Security Access (detected by UDS Service ID 0x27).</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><strong>Obsoleted</strong>: <code>MaxAttemptsToLock</code></td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left">Decimal</td>
+<td align="left"></td>
+<td align="left">3</td>
+<td align="left"></td>
+<td align="left"><span id="ASR-D001_MaxAttemptsToLock" class="rqDef">[ASR-D001_MaxAttemptsToLock]</span>. Only at Security Access (detected by UDS Service ID 0x27). <strong>No more used</strong> in recent DEXT Export; <strong>no more created</strong> by checkbox &quot;Attributes for AUTOSAR Diagnostic Extract export&quot; in dialog File | Properties | Document Info <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R500' title="">[DOCUI-R500]</a> (CDS-70966 v11). For use with CANdelaStudio versions before v11, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D090' title="">[ASR-D090]</a> below.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><code>DelayTimeMs</code></td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left">Decimal</td>
+<td align="left"></td>
+<td align="left">10000</td>
+<td align="left"></td>
+<td align="left"><span id="ASR-D001_DelayTimeMs" class="rqDef">[ASR-D001_DelayTimeMs]</span> Used for DIAGNOSTIC-SECURITY-LEVEL in in AUTOSAR Diagnostic Extract Export, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R425' title="">[DEXT-R425]</a>. Only at Security Access (detected by UDS Service ID 0x27).</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><code>DelayTimeOnPowerOnMs</code></td>
+<td align="left">Unsigned</td>
+<td align="left">UDS</td>
+<td align="left">Decimal</td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"></td>
+<td align="left"><span id="ASR-D001_DelayTimeOnPowerOnMs" class="rqDef">[ASR-D001_DelayTimeOnPowerOnMs]</span> Used for DIAGNOSTIC-SECURITY-LEVEL in in AUTOSAR Diagnostic Extract Export, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R250' title="">[DEXT-R250]</a>. Only at Security Access (detected by UDS Service ID 0x27).</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><code>RequirementsId</code></td>
+<td align="left">String</td>
+<td align="left">Editor</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><span id="ASR-D001_DiagInstRequirementsId" class="rqDef">[ASR-D001_DiagInstRequirementsId]</span> Usage: see (1) above.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">ASR SWC ServiceDependency Ref (<code>ASR_SWC_ServiceDependency_Ref</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_SWC_DIServiceDependency_Ref" class="rqDef">[ASR-D001_ASR_SWC_DIServiceDependency_Ref]</span> See details <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D030' title="">[ASR-D030]</a> below.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong>Obsoleted</strong> at diagnostic instance: ASR SWC DataElement Ref (<code>ASR_SWC_DataElement_Ref</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_SWC_DIDataElement_Ref" class="rqDef">[ASR-D001_ASR_SWC_DIDataElement_Ref]</span> Not used in DEXT export, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D090' title="">[ASR-D090]</a> below.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Data Object / Bitfield</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">ASR SWC ServiceDependency Ref (<code>ASR_SWC_ServiceDependency_Ref</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_SWC_DOServiceDependency_Ref" class="rqDef">[ASR-D001_ASR_SWC_DOServiceDependency_Ref]</span> The attribute holds info about a Client/Server DID port (CDS-72028 v13). See attribute details <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D030' title="">[ASR-D030]</a> below.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">ASR SWC DataElement Ref (<code>ASR_SWC_DataElement_Ref</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_SWC_DODataElement_Ref" class="rqDef">[ASR-D001_ASR_SWC_DODataElement_Ref]</span> See details <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D040' title="">[ASR-D040]</a> below.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">ASR UUID (<code>ASR_UUID</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_UUID" class="rqDef">[ASR-D001_ASR_UUID]</span> UUID of the synchronized AUTOSAR element which corresponds to the diagnostic object, used by requirement-less SWC-Sync (CDS-71423 v12).</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><code>RequirementsId</code></td>
+<td align="left">String</td>
+<td align="left">Editor</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><span id="ASR-D001_DORequirementsId" class="rqDef">[ASR-D001_DORequirementsId]</span> Usage: see (1) above.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>DTC</strong></td>
+<td align="left">See Mapping SWC with DTC vs. Event <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D050' title="">[ASR-D050]</a></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">ASR SWC ServiceDependency Ref (<code>ASR_SWC_ServiceDependency_Ref</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_SWC_DTCServiceDependency_Ref" class="rqDef">[ASR-D001_ASR_SWC_DTCServiceDependency_Ref]</span> See details <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D030' title="">[ASR-D030]</a> below.</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><strong>Obsoleted</strong> at DTC: ASR SWC DataElement Ref (<code>ASR_SWC_DataElement_Ref</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_SWC_DTCDataElement_Ref" class="rqDef">[ASR-D001_ASR_SWC_DTCDataElement_Ref]</span> Not used in DEXT export, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D090' title="">[ASR-D090]</a> below.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><code>RequirementsId</code></td>
+<td align="left">String</td>
+<td align="left">Editor</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><span id="ASR-D001_DTCRequirementsId" class="rqDef">[ASR-D001_DTCRequirementsId]</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Event</strong></td>
+<td align="left">See Mapping SWC with DTC vs. Event <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D050' title="">[ASR-D050]</a></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Event see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">ASR SWC ServiceDependency Ref (<code>ASR_SWC_ServiceDependency_Ref</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_SWC_EvServiceDependency_Ref" class="rqDef">[ASR-D001_ASR_SWC_EvServiceDependency_Ref]</span> See details <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D030' title="">[ASR-D030]</a> below. (CDS-71544 v13)</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Operation Cycle</strong></td>
+<td align="left">See Mapping SWC with DTC vs. Event <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D050' title="">[ASR-D050]</a></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Operation Cycle see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">ASR SWC ServiceDependency Ref (<code>ASR_SWC_ServiceDependency_Ref</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_SWC_OpcServiceDependency_Ref" class="rqDef">[ASR-D001_ASR_SWC_OpcServiceDependency_Ref]</span> See details <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D030' title="">[ASR-D030]</a> below. (CDS-71544 v13)</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Indicator</strong></td>
+<td align="left">See Mapping SWC with DTC vs. Event <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D050' title="">[ASR-D050]</a></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Indicator see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R600' title="">[EV-R600]</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">ASR SWC ServiceDependency Ref (<code>ASR_SWC_ServiceDependency_Ref</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_SWC_IndServiceDependency_Ref" class="rqDef">[ASR-D001_ASR_SWC_IndServiceDependency_Ref]</span> See details <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D030' title="">[ASR-D030]</a> below. (CDS-71936 v13)</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Condition</strong></td>
+<td align="left">See Mapping SWC with DTC vs. Event <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D050' title="">[ASR-D050]</a></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Condition see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">ASR SWC ServiceDependency Ref (<code>ASR_SWC_ServiceDependency_Ref</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"><span id="ASR-D001_ASR_SWC_CondServiceDependency_Ref" class="rqDef">[ASR-D001_ASR_SWC_CondServiceDependency_Ref]</span> See details <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D030' title="">[ASR-D030]</a> below. Note: the attribute is used only for Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a>, not for Condition Group <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800' title="">[EV-R800]</a>, since PREEvision supports service dependency references only for <strong>Conditions</strong>. (CDS-71544 v13)</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Data Type</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">ASR Encoding (<code>ASR_Encoding</code>)</td>
+<td align="left">String</td>
+<td align="left">Autosar</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><span id="ASR-D001_ASR_Encoding" class="rqDef">[ASR-D001_ASR_Encoding]</span> &quot;BOOLEAN&quot; or empty. Used in AUTOSAR Diagnostic Extract export to set AUTOSAR encoding to BOOLEAN which is not available in CANdela. Only at &quot;raw value&quot; and &quot;text table&quot; data type. &quot;BOOLEAN&quot; or <empty string> (set regular expression)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="attribute-existence">Attribute Existence</h2>
+<p><span id="ASR-D010" class="rqDef">[ASR-D010]</span> Attributes Exist :=</p>
+<ul>
+<li>all attributes of <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001' title="">[ASR-D001]</a> exist...
+<ul>
+<li>at the respective object type</li>
+<li>with the specified qualifier.</li>
+</ul></li>
+<li>no further details (type of attribute, default, restrictions...) shall be considered.</li>
+<li>Especially the &quot;indirection&quot; attribute <a href="../../30%20Features/Attributes/Special%20Attributes.htm#SynchronizationAttribute">SynchronizationAttribute</a>
+<ul>
+<li>may have any value (denoting a qualifier)</li>
+<li>attributes with that qualifier must exist (instead of attributes with qualifier &quot;RequirementsId&quot;)</li>
+</ul></li>
+</ul>
+<p><span id="ASR-D020" class="rqDef">[ASR-D020]</span> special qualifiers:</p>
+<ul>
+<li>&quot;DiagnosticConnectionRef&quot; see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DiagnosticConnectionRef' title="">[ASR-D001_DiagnosticConnectionRef]</a> above</li>
+<li>&quot;DiagnosticConnectionPriority&quot; see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DiagnosticProtocolPriority' title="">[ASR-D001_DiagnosticProtocolPriority]</a> above</li>
+</ul>
+
+<h2 id="attribute-details">Attribute Details</h2>
+<p><span id="ASR-D030" class="rqDef">[ASR-D030]</span> <strong>ASR SWC ServiceDependency Ref</strong></p>
+<ul>
+<li>The attribute value contains an AUTOSAR instance reference to a <strong>service dependency</strong> within the SYS-EX.</li>
+<li>See <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D050' title="">[ASR-D050]</a> below for mapping an SWC with a DTC or with an Event.</li>
+<li>At a data object, the attribute holds info about a Client/Server DID port (CDS-72028 v13).</li>
+</ul>
+<p>The instance reference is coded using the following syntax:</p>
+<pre><code>Value ::=
+  &quot;RCR:&quot;&lt;value of ROOT-CONTEXT-REF&gt;&lt;blank&gt;
+  [
+    &quot;CSCPR:&quot;&lt;value of CONTEXT-SW-COMPONENT-PROTOTYPE-REF&gt;[,&lt;value of CONTEXT-SW-COMPONENT-PROTOTYPE-REF&gt;]*&lt;blank&gt;
+  | [&quot;CSCPR:&quot;&lt;value of CONTEXT-SW-COMPONENT-PROTOTYPE-REF&gt;&lt;blank&gt;]*
+  ]
+  &quot;TSSDR:&quot;&lt;value of TARGET-SWC-SERVICE-DEPENDENCY-REF&gt;</code></pre>
+<p>Example (single blank replaced by a line-break for readability):</p>
+<pre><code>RCR:/SYSTEM/Systems/RootSoftwareComposition
+CSCPR:/SwComponentTypes/COP/ECU_Composition/KBiCSCPR:/SwComponentTypes/COP/KB/SWC_DIAG_A6
+TSSDR:/SwComponentTypes/COP/SWC_DIAG_A6/XDIS_curfy7xyg/SD_S_DRS_RoutineName1</code></pre>
+<p>Note:</p>
+<ul>
+<li>A <code>&lt;blank&gt;</code> is required <em>before</em> and <em>behind</em> the entire <code>CSCPR:</code> list, but <em>not within</em>.</li>
+<li>A reference may contain alphanumeric characters, underscore '_', slash '/' and comma ',' but not ':'</li>
+<li>Therefore in the example above, the substring <code>KBiCSCPR:</code> is not ambiguous, since the keyword <code>CSCPR:</code> cannot be part of the preceding reference.</li>
+</ul>
+
+<h3 id="servicedependency-ref-at-dtc-vs.-event">ServiceDependency Ref at DTC vs. Event</h3>
+<p><span id="ASR-D050" class="rqDef">[ASR-D050]</span> Mapping an SWC with a DTC or with an Event</p>
+<ul>
+<li>AUTOSAR maps a <strong>SWC</strong> with an <strong>Event</strong></li>
+<li>CANdelaStudio before v12 supported DTCs only</li>
+<li>CANdelaStudio since v12 supports Events</li>
+<li><strong>SWC Sync</strong> <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20DTCs.htm#SWC-R0420' title="">[SWC-R0420]</a>:
+<ul>
+<li>... sets the attribute value for <strong>Routine Diagnostic Instances</strong> and <strong>DTCs</strong>
+<ul>
+<li>in the table above: <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_SWC_DIServiceDependency_Ref' title="">[ASR-D001_ASR_SWC_DIServiceDependency_Ref]</a> and <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_SWC_DTCServiceDependency_Ref' title="">[ASR-D001_ASR_SWC_DTCServiceDependency_Ref]</a>;</li>
+</ul></li>
+<li>it does <strong>not</strong> use Events.</li>
+</ul></li>
+<li><strong>PREEvision data exchange</strong>:
+<ul>
+<li>If the CANdela document <strong>Supports Events</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a>,</li>
+<li>PREEvision data exchange sets/reads the attribute value <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_SWC_EvServiceDependency_Ref' title="">[ASR-D001_ASR_SWC_EvServiceDependency_Ref]</a> <strong>at Events</strong>;</li>
+<li>otherwise, it does <strong>not</strong> set/read a corresponding info <strong>at DTCs</strong>.</li>
+</ul></li>
+<li><strong>DEXT Export</strong> evaluates the attribute value <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R710' title="">[DEXT-R710]</a>...
+<ul>
+<li>if the CANdela document <strong>Supports Events</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a>:
+<ul>
+<li>at Events,</li>
+<li>otherwise at DTCs.</li>
+</ul></li>
+</ul></li>
+<li><span id="ASR-D050-Combination" class="rqDef">[ASR-D050-Combination]</span> Therefore, you can use <strong>Event Combination</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230-Combination' title="">[EV-R230-Combination]</a> with PREEvision data exchange and DEXT Export.</li>
+<li>See also <a href="../../30%20Features/Event/Events%20Introduction.htm#toolchain">Events in the Vector Toolchain</a>.</li>
+</ul>
+<p><strong>Document Supports Events:</strong></p>
+<div class="figure">
+<img src="Images/EventInfoInAutosarWorkflowDtcBased.jpg" alt="Event ServiceDependency Ref with DTC Based Document" />
+<p class="caption">Event ServiceDependency Ref with DTC Based Document</p>
+</div>
+<p><strong>Document Does not Support Events:</strong></p>
+<div class="figure">
+<img src="Images/EventInfoInAutosarWorkflowEventBased.jpg" alt="Event ServiceDependency Ref with Event Based Document" />
+<p class="caption">Event ServiceDependency Ref with Event Based Document</p>
+</div>
+
+<p><span id="ASR-D040" class="rqDef">[ASR-D040]</span> <strong>ASR SWC DataElement Ref</strong></p>
+<ul>
+<li>SWC Sync sets it for data objects in DIDs
+<ul>
+<li>in the table above: <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_SWC_DODataElement_Ref' title="">[ASR-D001_ASR_SWC_DODataElement_Ref]</a></li>
+</ul></li>
+<li>The attribute value contains an AUTOSAR instance reference to a <strong>data element</strong> within the SYS-EX.</li>
+<li>AUTOSAR Diagnostic Extract export evaluates it <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R710' title="">[DEXT-R710]</a>.</li>
+</ul>
+<p>The instance reference is coded in the following syntax:</p>
+<pre><code>Value ::=
+  &quot;CRCR:&quot;&lt;value of CONTEXT-ROOT-COMPOSITION-REF&gt;&lt;blank&gt;
+  [&quot;CCR:&quot;&lt;value of CONTEXT-COMPONENT-REF&gt;]*&lt;blank&gt;
+  &quot;CPR:&quot;&lt;value of CONTEXT-PORT-REF&gt;&lt;blank&gt;
+  &quot;TDPR:&quot;&lt;value of TARGET-DATA-PROTOTYPE-REF&gt;</code></pre>
+<blockquote>
+<p>(note the <code>&lt;blank&gt;</code> <em>outside</em> the repetition)</p>
+</blockquote>
+<p>Example (line-breaks inserted for readability):</p>
+<pre><code>CRCR:/SYSTEM/Systems/RootSoftwareComposition
+CCR:/SwComponentTypes/COP/ECU_Composition/KBi
+CCR:/SwComponentTypes/COP/KB/SWC_Diag_A6
+CPR:/SwComponentTypes/COP/SWC_Diag_A6/P_DiagDisplayables
+TDPR:/PortInterfaces/COP/IP_diagnostic_disps_SWC_A6/DiagDisplayable1</code></pre>
+
+<h2 id="obsoleted-attributes">Obsoleted Attributes</h2>
+<p><span id="ASR-D090" class="rqDef">[ASR-D090]</span> <strong>Obsoleted attributes</strong> (former <span id="DOCUI-D500" class="rqDef">[DOCUI-D500]</span>)</p>
+<h3 id="effect-of-obsoleting-attributes">Effect of Obsoleting Attributes</h3>
+<ul>
+<li>A new version of CANdelaStudio may <strong>obsolete</strong> one of the attributes described above.</li>
+<li>Checking the GUI checkbox <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R500' title="">[DOCUI-R500]</a> in the <strong>new</strong> CANdelaStudio version will no more create the attribute,</li>
+<li>but <strong>older</strong> CANdelaStudio versions will show the checkbox as <strong>unchecked</strong>,</li>
+<li>and will <strong>create the attribute</strong> when you check the checkbox.</li>
+</ul>
+<h3 id="list-of-obsoleted-attributes">List of Obsoleted Attributes</h3>
+<ul>
+<li>obsoleted in CANdelaStudio 11:
+<ul>
+<li><span id="ASR-D090-Max" class="rqDef">[ASR-D090-Max]</span> attribute <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_MaxAttemptsToLock' title="">[ASR-D001_MaxAttemptsToLock]</a> (CDS-70966).</li>
+<li>also removed from the Vector UDS Template 2.4.0 <a class='rqRef' href='../../40 Templates\Vector UDS\Special Attributes.htm#VUDS-R910-MaxAttemptsToLock' title="">[VUDS-R910-MaxAttemptsToLock]</a></li>
+</ul></li>
+<li>obsoleted in CANdelaStudio 12:
+<ul>
+<li><span id="ASR-D090-Data" class="rqDef">[ASR-D090-Data]</span> at Diagnostic Instance and DTC: ASR SWC DataElement Ref (<code>ASR_SWC_DataElement_Ref</code>)</li>
+<li>SWC Sync does not fill the attribute</li>
+<li>DEXT Export does not use the attribute</li>
+<li>So far the checkbox <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R500' title="">[DOCUI-R500]</a> still creates it (CDS-71413).</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Dialog <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm">File | Properties | Document Info</a> (checkbox &quot;Attributes for AUTOSAR Diagnostic Extract export&quot;)</li>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a> feature</li>
+<li>Export to <a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a></li>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="../../30%20Features/PREEvision%20CANdela%20Data%20Interchange/Introduction.htm">PREEvision CANdela Data Interchange Introduction</a></li>
+<li><a href="../../30%20Features/Attributes/Special%20Attributes.htm">Special Attributes</a></li>
+<li><a href="../../30%20Features/Import/SWC%20Sync%20Introduction.htm">SWC Sync</a></li>
+</ul>
+</body>
+</html>

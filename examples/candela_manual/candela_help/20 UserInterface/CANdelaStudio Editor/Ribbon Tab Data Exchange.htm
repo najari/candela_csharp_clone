@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Ribbon Tab Data Exchange</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="ribbon-tab-data-exchange">Ribbon Tab &quot;Data Exchange&quot;</h1>
+<p>See also RTF Report <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R110' title="">[MENU-R110]</a> and HTML Report <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20File.htm#MENU-R115' title="">[MENU-R115]</a> in the ribbon tab &quot;File&quot;.</p>
+<div class="figure">
+<img src="Images/Ribbon%20Tab%20Data%20Exchange.jpg" alt="Ribbon Tab Data Exchange" />
+<p class="caption">Ribbon Tab Data Exchange</p>
+</div>
+<h2 id="odx-process">ODX Process <img src="Images/Operation%20ExportODX.png" /></h2>
+<h3 id="import-odx">ODX Import</h3>
+<p><span id="MENU-R210" class="rqDef">[MENU-R210]</span> <a href="../../20%20UserInterface/Import/ODX%20Import.htm">Imports from ODX</a>.</p>
+<p>Shows the <a href="../../20%20UserInterface/Import/ODX%20Import.htm">ODX import wizard</a> to configure the import.</p>
+<p>For command line, see <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Command Line.htm#CLI-R100-import' title="">[CLI-R100-import]</a>.</p>
+<p>See the sample import file <a class='rqRef' href='../../30 Features\Installation\Example Files.htm#EX-R300-PDX' title="">[EX-R300-PDX]</a>.</p>
+<h3 id="odx-export">ODX Export</h3>
+<p><span id="MENU-R120" class="rqDef">[MENU-R120]</span> <a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">Exports to ODX</a>, with selection of the...</p>
+<ul>
+<li>version: 2.0.1, 2.1.0, 2.2.0</li>
+<li>format: ODX (XML files), PDX (XML files in a zip container)</li>
+<li>variants</li>
+<li>audience (target groups)</li>
+</ul>
+<p><span id="MENU-R120-Document" class="rqDef">[MENU-R120-Document]</span> only allowed in a document, not in a template (CDS-69685 9.1).</p>
+<p>For command line, see <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Command Line.htm#CLI-R100-odx' title="">[CLI-R100-odx]</a>.</p>
+<p>Note: <span id="MENU-R120-ASAMBasic" class="rqDef">[MENU-R120-ASAMBasic]</span> CANdelaStudio since 9.0 (CDS-42708, CDS-42709) no longer supports the export to <span id='_index_446727861'>ASAM MCD-2D Basic</span> = ODX 1.1.4 or 1.1.5.</p>
+<h3 id="ecu-shared-data">ECU Shared Data</h3>
+<p><span id="MENU-R150" class="rqDef" title="ODX ECU Shared Data">[MENU-R150.1 ODX ECU Shared Data]</span></p>
+<ul>
+<li><span id="MENU-R150-Sens" class="rqDef">[MENU-R150-Sens]</span> always sensitive (CDS-40769 8.5 SP2)</li>
+<li><span id="MENU-R150-Template" class="rqDef">[MENU-R150-Template]</span> shown in template, too (CDS-17167 7.0 SP1)</li>
+</ul>
+<p>It opens a <a href="../../20%20UserInterface/Document/ODX%20ECU-SHARED-DATA.htm">dialog</a> showing all <a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA</a> imported into the document as an embedded file.</p>
+<h3 id="recompute-oids">Recompute OIDs</h3>
+<p><span id="MENU-R580" class="rqDef">[MENU-R580]</span> Recomputes the <a href="../../30%20Features/Common%20Properties/OID.htm">OIDs</a> (object IDs) in the document.</p>
+<h3 id="check-consistency">Check Consistency</h3>
+<p>Note: <span id="MENU-R955" class="rqDef">[MENU-R955]</span> CANdelaStudio since v11 (CDS-70853) <strong>no longer provides separate ODX consistency checks</strong>. Just <strong>run the ODX Export</strong> to get up-to-date checker results.</p>
+<h2 id="autosar-process">AUTOSAR Process</h2>
+<p>This ribbon group contains operation related with a single ECU in AUTOSAR (<strong>ECU Extract of System Description</strong>, <strong>System Extract</strong>) containing software components (SWCs) with ports.</p>
+<h3 id="preevision-import">PREEvision Import</h3>
+<p><span id="MENU-R1010" class="rqDef">[MENU-R1010]</span> Imports a PVCDI file into a CANdela Document <a class='rqRef' href='../../30 Features\PREEvision CANdela Data Interchange\Import.htm#IPV-R100' title="">[IPV-R100]</a>.</p>
+<p>CANdelaStudio 13 shows the menu item if enabled in the INI file, see <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Options.htm#INI-R330' title="">[INI-R330]</a>.</p>
+<p>See also:</p>
+<ul>
+<li>Introduction <a class='rqRef' href='../../30 Features\PREEvision CANdela Data Interchange\Introduction.htm#PVCDI-D010' title="">[PVCDI-D010]</a></li>
+<li>Command line operation <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Command Line.htm#CLI-R100-pvcdiImport' title="">[CLI-R100-pvcdiImport]</a></li>
+</ul>
+<h3 id="preevision-export">PREEvision Export</h3>
+<p><span id="MENU-R1020" class="rqDef">[MENU-R1020]</span> Exports a CANdela Document into a PVCDI file <a class='rqRef' href='../../30 Features\PREEvision CANdela Data Interchange\Export.htm#EPV-R100' title="">[EPV-R100]</a>.</p>
+<p>CANdelaStudio 13 shows the menu item if enabled in the INI file, see <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Options.htm#INI-R330' title="">[INI-R330]</a>.</p>
+<p>See also:</p>
+<ul>
+<li>Introduction <a class='rqRef' href='../../30 Features\PREEvision CANdela Data Interchange\Introduction.htm#PVCDI-D010' title="">[PVCDI-D010]</a></li>
+<li>Command line operation <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Command Line.htm#CLI-R100-pvcdiExport' title="">[CLI-R100-pvcdiExport]</a></li>
+</ul>
+<h3 id="requirements-import">Requirements Import</h3>
+<p><span id="MENU-R270" class="rqDef">[MENU-R270]</span> Combined operation:</p>
+<ul>
+<li><strong>Imports requirements</strong> from a .csv file
+<ul>
+<li>see <a class='rqRef' href='../../30 Features\Import\Requirements Import.htm#RQ-R800' title="">[RQ-R800]</a></li>
+<li>also available via the toolbar button <a class='rqRef' href='../../20%20UserInterface/Requirements/Requirements.htm#RQUI-R030' title="">[RQUI-R030]</a></li>
+</ul></li>
+<li>... and <strong>updates diagnostic objects</strong> from the requirements <a class='rqRef' href='../../30 Features\Requirements\Update Diagnostic Objects.htm#RQOP-R500' title="">[RQOP-R500]</a>
+<ul>
+<li>for the selected the variant or library <a class='rqRef' href='../../30 Features\Requirements\Requirements Settings.htm#RQ-R093' title="Requirements - Selected Library or Variant">[RQ-R093]</a> in the Requirements settings <a class='rqRef' href='../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm#RQUI-R100-Variant' title="">[RQUI-R100-Variant]</a></li>
+</ul></li>
+</ul>
+<p>See the sample import file <a class='rqRef' href='../../30 Features\Installation\Example Files.htm#EX-R300-Rq' title="">[EX-R300-Rq]</a>.</p>
+<h3 id="swc-sync">SWC Sync</h3>
+<p><span id="MENU-R280" class="rqDef">[MENU-R280]</span> performs the SWC Sync operation <a class='rqRef' href='../../30 Features\Import\SWC Sync Introduction.htm#SWC-R100' title="">[SWC-R100]</a>.</p>
+<p>The operation is also available via the toolbar button <a class='rqRef' href='../../20%20UserInterface/Requirements/Requirements.htm#RQUI-R220' title="SWC Sync Button">[RQUI-R220]</a>.</p>
+<h3 id="dext-export">DEXT Export</h3>
+<p><span id="MENU-R130" class="rqDef">[MENU-R130]</span> Exports the document to the <a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a>.</p>
+<h2 id="import">Import</h2>
+<h3 id="dtcs-and-data">DTCs and Data</h3>
+<h4 id="candela-data-import-cdi">CANdela Data Import (CDI)</h4>
+<p><span id="MENU-R220" class="rqDef">[MENU-R220]</span> Imports from the CANdela import format <a class='rqRef' href='../../30 Features\Import\Import from CDI.htm#CDI-R010' title="">[CDI-R010]</a>.</p>
+<p>See the sample import file <a class='rqRef' href='../../30 Features\Installation\Example Files.htm#EX-R300-CDI' title="">[EX-R300-CDI]</a> and others in the CANdelaStudio installation.</p>
+<h4 id="autosar-.arxml"><span id='_index_446727862' title='AUTOSAR: Import data objects + DTCs' data-term='AUTOSAR' data-text='Import data objects + DTCs'>AUTOSAR</span> (*.arxml)</h4>
+<p><span id="MENU-R266" class="rqDef">[MENU-R266]</span> Imports DTCs and data objects from a <strong>network description</strong> (not from software components) in an AUTOSAR *.arxml file.</p>
+<p>See <a class='rqRef' href='../../30 Features\Import\Import from Network Description.htm#IND-R100' title="">[IND-R100]</a>.</p>
+<p>See the sample import file <a class='rqRef' href='../../30 Features\Installation\Example Files.htm#EX-R300-Sys' title="">[EX-R300-Sys]</a>.</p>
+<h4 id="fibex-xml">FIBEX (XML)</h4>
+<p><span id="MENU-R263" class="rqDef">[MENU-R263]</span> Imports DTCs and data objects from a FIBEX <strong>network description</strong> file.</p>
+<p>See <a class='rqRef' href='../../30 Features\Import\Import from Network Description.htm#IND-R100' title="">[IND-R100]</a>.</p>
+<p>See the sample import file <a class='rqRef' href='../../30 Features\Installation\Example Files.htm#EX-R300-FIBEX' title="">[EX-R300-FIBEX]</a>.</p>
+<h4 id="asap2-language-a2l">ASAP2 Language (A2L)</h4>
+<p><span id="MENU-R230" class="rqDef">[MENU-R230]</span> Imports data objects from an ASAP2 file.</p>
+<p>See <a class='rqRef' href='../../30 Features\Import\Import from ASAP2.htm#IA2L-R100' title="">[IA2L-R100]</a>.</p>
+<p>See the sample import files <a class='rqRef' href='../../30 Features\Installation\Example Files.htm#EX-R300-MC' title="">[EX-R300-MC]</a> and <a class='rqRef' href='../../30 Features\Installation\Example Files.htm#EX-R300-XCP' title="">[EX-R300-XCP]</a>.</p>
+<h4 id="candb-dbc">CANdb (DBC)</h4>
+<p><span id="MENU-R260" class="rqDef">[MENU-R260]</span> Imports DTCs and data objects from a CANdb <strong>network description</strong> file.</p>
+<p>See <a class='rqRef' href='../../30 Features\Import\Import from Network Description.htm#IND-R100' title="">[IND-R100]</a>.</p>
+<p>See the sample import file <a class='rqRef' href='../../30 Features\Installation\Example Files.htm#EX-R300-motbus' title="">[EX-R300-motbus]</a>.</p>
+<h3 id="dtcs-only">DTCs only</h3>
+<h4 id="microsoft-excel-xls">Microsoft Excel (XLS)</h4>
+<p><span id="MENU-R240" class="rqDef">[MENU-R240]</span></p>
+<p>See the sample import file <a class='rqRef' href='../../30 Features\Installation\Example Files.htm#EX-R300-DTCxls' title="">[EX-R300-DTCxls]</a>.</p>
+<h4 id="comma-separated-values-csv">Comma Separated Values (CSV)</h4>
+<p><span id="MENU-R250" class="rqDef">[MENU-R250]</span></p>
+<h3 id="attributes">Attributes</h3>
+<p><span id="MENU-R255" class="rqDef">[MENU-R255]</span> Runs the Attribute Import <a class='rqRef' href='../../30 Features\Import\Attribute Import.htm#ATTI-R010' title="">[ATTI-R010]</a>.</p>
+<h2 id="export">Export</h2>
+
+<h3 id="target-group-oriented">CANdela (Target Group Oriented)</h3>
+<p><span id="MENU-R170" class="rqDef">[MENU-R170]</span> Shows the <a href="../../20%20UserInterface/Export/SaveAs%20CANdela%20Target%20Group%20Oriented%20Export.htm">SaveAs Dialog</a> to configure the <a href="../../30%20Features/Export/CANdela%20Target%20Group%20Oriented%20Export.htm">Export CANdela (Target Group Oriented)</a>.</p>
+<h3 id="manufacturer-specific">Manufacturer Specific</h3>
+<p><span id="MENU-R125" class="rqDef">[MENU-R125]</span> The ribbon contains a button for manufacturer specific exports and checks.</p>
+<p><span id="MENU-R125-None" class="rqDef">[MENU-R125-None]</span></p>
+<ul>
+<li>If no manufacturer specific export or check is available for the current document,</li>
+<li>the button reads &quot;<strong>Manufacturer specific</strong>&quot;</li>
+<li>and is <strong>insensitive</strong>.</li>
+</ul>
+<p><span id="MENU-R125-First" class="rqDef">[MENU-R125-First]</span></p>
+<ul>
+<li>If a manufacturer specific export is available for the current document,</li>
+<li>the button shows the name of the <strong>first available item in the submenu</strong> (e.g. &quot;Diogenes&quot;)</li>
+<li>and is <strong>sensitive</strong>.</li>
+</ul>
+<h4 id="ddx">Diagnostic Data Exchange (DDx)</h4>
+<p><span id="MENU-R140" class="rqDef">[MENU-R140]</span> Manufacturer specific <a href="../../30%20Features/Export/Diagnostic%20Data%20Exchange.htm">export</a> (Chrysler, FIAT, FCA).</p>
+<p><span id="MENU-R140-Default" class="rqDef">[MENU-R140-Default]</span> For documents of manufacturer <a class='rqRef' href='../../30 Features\Document\Document.htm#DOC-R110' title="">[DOC-R110]</a> &quot;Chrysler&quot;, &quot;FIAT&quot; or &quot;Standard (FCA)&quot; the menu item &quot;DDx Export&quot; is the default for the ribbon button &quot;Manufacturer specific&quot; (CDS-70324 v10).</p>
+<p>The menu item is only active if a working DDx export module is present.</p>
+<p>It opens the SaveAs Dialog <a class='rqRef' href='../../30%20Features/Export/Diagnostic%20Data%20Exchange.htm#DDX-R050' title="">[DDX-R050]</a>.</p>
+<p>See the <a href="../../20%20UserInterface/Export/Diagnostic%20Data%20Exchange.htm">Diagnostic Data Exchange</a> export.</p>
+
+<h4 id="diogenes">Diogenes</h4>
+<p><span id="MENU-R145" class="rqDef">[MENU-R145]</span> Manufacturer specific <a href="../../30%20Features/Export/Diogenes%20Export.htm">export</a> (Daimler).</p>
+<p>Disabled for Chrysler (CDS-40040 9.0).</p>
+<p>For command line, see <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Command Line.htm#CLI-R100-diogenes' title="">[CLI-R100-diogenes]</a>.</p>
+<h4 id="odxe">ODX-E (MB Car)</h4>
+<p><span id="MENU-R148" class="rqDef">[MENU-R148]</span> Manufacturer specific (Daimler).</p>
+<p>Disabled for Chrysler (CDS-40040 9.0).</p>
+<h4 id="mdx"><span id='_index_446727863' title='MDX: MDX Export' data-term='MDX' data-text='MDX Export'>Multiplex Diagnostic Exchange (MDX)</span></h4>
+<p><span id="MENU-R160" class="rqDef">[MENU-R160]</span> Manufacturer specific export (Ford) to MDX 4.0 (CDS-27180 7.5 SP3).</p>
+<p><span id="MENU-R160-Default" class="rqDef">[MENU-R160-Default]</span> For documents of manufacturer &quot;Ford&quot;, the menu item &quot;Multiplex Diagnostic Exchange&quot; is the default for the ribbon button &quot;Manufacturer specific&quot;.</p>
+<ul>
+<li>Export to MDX 2.0 was available up to CANdelaStudio 8.2 (CDS-37887 8.5).</li>
+<li>Export to MDX 3.0 was available up to CANdelaStudio 9.1 (CDS-69347 v10).</li>
+</ul>
+<p>For MDX export via command line, see <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Command Line.htm#CLI-R100-mdx' title="">[CLI-R100-mdx]</a>.</p>
+<p>For MDX specific DTC Columns, see <a href="../../30%20Features/DTC/MDX%20DTC%20Columns.htm">MDX DTC Columns</a>.</p>
+<p>MDX Export does not support Events.</p>
+<p>The MDX XML Schema has been developed by Ford - please contact Ford for further information.</p>
+<h4 id="check-ddx-consistency-cds-36221-8.2">Check DDx Consistency (CDS-36221 8.2)</h4>
+<p><span id="MENU-R952" class="rqDef">[MENU-R952]</span> The <a href="../../30%20Features/Export/Diagnostic%20Data%20Exchange.htm">DDx Export</a> (Diagnostic Data Exchange) performs checks without exporting DDx from CANdelaStudio.</p>
+<h3 id="service-overview">Service Overview</h3>
+<p><span id="MENU-R180" class="rqDef">[MENU-R180]</span> Writes services to a .csv file, see <a href="../../30%20Features/Export/Service%20Overview%20Export.htm">Service Overview Export</a>.</p>
+<h3 id="data-overview">Data Overview</h3>
+<p><span id="MENU-R183" class="rqDef">[MENU-R183]</span> Writes data objects to a .csv file, see <a href="../../30%20Features/Export/Data%20Overview%20Export.htm">Data Overview Export</a>.</p>
+<h3 id="vehicle-system-groups">Vehicle System Groups</h3>
+<p><span id="MENU-R188" class="rqDef">[MENU-R188]</span> Writes vehicle system groups to an .xml file, see <a href="../../30%20Features/Export/Vehicle%20System%20Groups%20Export.htm">Vehicle System Groups Export</a>.</p>
+<h3 id="attributes-1">Attributes</h3>
+<p><span id="MENU-R185" class="rqDef">[MENU-R185]</span> Runs the Attribute Export <a class='rqRef' href='../../30 Features\Export\Attribute Export.htm#ATTE-R010' title="">[ATTE-R010]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li><a href="Ribbon%20Introduction.htm">Ribbon Introduction</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="../../30%20Features/Document/Document.htm">Document</a></li>
+<li><a href="../../30%20Features/ODX/ODX.htm">Introduction to ODX</a></li>
+<li><a href="../../30%20Features/DTC/MDX%20DTC%20Columns.htm">MDX DTC Columns</a></li>
+</ul>
+</body>
+</html>

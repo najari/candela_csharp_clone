@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Diagnostic Instance Authorization</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="diagnostic-instance-authorization-cds-248-1.3">Diagnostic Instance Authorization (CDS-248, 1.3)</h1>
+<p>Some diagnostic instances and services predefined in the base variant may be protected so that they cannot be changed or deleted by the standard edition user. The author of the document template predefines these access rights (they are not modifiable in Standard View).</p>
+<p>The following applies to diagnostic instances as well as to job containers (summarized as &quot;containers&quot;).</p>
+<p><span id="DIA-R020" class="rqDef" title="Property „required“">[DIA-R020.0 Property „required“]</span> with the following possible values:</p>
+<ul>
+<li><span id="DIA-R020-notReq" class="rqDef">[DIA-R020-notReq]</span>: &quot;No&quot;,
+<ul>
+<li>the diagnostic instance is not required,</li>
+<li>it can be deleted in Standard View.</li>
+</ul></li>
+<li><span id="DIA-R020-req" class="rqDef">[DIA-R020-req]</span>: &quot;Yes&quot;,
+<ul>
+<li>the diagnostic instance in diagnostic class C is required: a diagnostic instance with the given qualifier must exist in all variants in the diagnostic class C</li>
+<li>you cannot delete the diagnostic instance;</li>
+<li>you cannot delete its diagnostic class C;</li>
+<li>you cannot de-select it in variant wizard.</li>
+<li><span id="DIA-R020-reqLIB" class="rqDef">[DIA-R020-reqLIB]</span> This does not apply in Libraries: a library need not contain a diagnostic instance with the given qualifier (but it may contain it as a copy or reference). See also <a href="../../30%20Features/Library/Library.htm#library-document-context">Libraries in Document Context</a>.</li>
+</ul></li>
+<li><span id="DIA-R020-reqAsRef" class="rqDef">[DIA-R020-reqAsRef]</span>: &quot;Required as reference&quot; (CDS-10209 6.0),
+<ul>
+<li>the diagnostic instance is required: like &quot;Yes&quot;, but the diagnostic instance from the base variant must be <strong>referenced</strong> in all variants.</li>
+<li>this corresponds with the ODX property “IS-FINAL”</li>
+<li><span id="DIA-R020-reqAsRefLIB" class="rqDef">[DIA-R020-reqAsRefLIB]</span> same as <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R020-reqLIB' title="">[DIA-R020-reqLIB]</a>.</li>
+</ul></li>
+<li><span id="DIA-R020-LIB" class="rqDef">[DIA-R020-LIB]</span>: a diagnostic instance in a library that is not referenced in the base variant shall not have required = &quot;Yes&quot; or &quot;required as reference&quot;.</li>
+</ul>
+
+<p><span id="DIA-R030" class="rqDef" title="Activation modifiable">[DIA-R030 Activation modifiable]</span>: specifies whether the diagnostic instance or the job container can be <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#activation">activated or deactivated</a> <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-R150' title="">[DI-R150]</a>.</p>
+<p><span id="DIA-R040" class="rqDef" title="Primary properties modifiable">[DIA-R040 Primary properties modifiable]</span>: specifies whether you can...</p>
+<p>... <strong>create</strong> or <strong>delete</strong> objects:</p>
+<ul>
+<li>Services</li>
+<li>data objects (telegram table)</li>
+<li>DTCs</li>
+<li><span id="DIA-R040-Events" class="rqDef">[DIA-R040-Events]</span> Events <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a></li>
+<li><span id="DIA-R040-Master" class="rqDef">[DIA-R040-Master]</span> Event Master Data <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D040' title="">[EV-D040]</a></li>
+</ul>
+<p>... <strong>modify</strong> properties (also of contained objects)...</p>
+<ul>
+<li>Name</li>
+<li>Qualifier</li>
+<li>Identifier/Subfunction...</li>
+<li>Reference to data type</li>
+<li>(not yet applied to DTC Code, CDS-42626)</li>
+<li><p>DTC Error Text <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R030' title="Error Text">[DTC-R030]</a></p></li>
+<li>AUTOSAR Fault Memory v13:
+<ul>
+<li><span id="DIA-R040-NumerationType" class="rqDef">[DIA-R040-NumerationType]</span> Snapshot Record Numeration Type <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#DI-R310' title="">[DI-R310]</a></li>
+<li><span id="DIA-R040-SnapshotRecord" class="rqDef">[DIA-R040-SnapshotRecord]</span> Snapshot Records <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R030' title="">[SR-R030]</a></li>
+<li><span id="DIA-R040-SnapshotData" class="rqDef">[DIA-R040-SnapshotData]</span> <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200' title="">[SR-R200]</a></li>
+<li><span id="DIA-R040-ExtendedDataRecord" class="rqDef">[DIA-R040-ExtendedDataRecord]</span> Extended Data Records <a class='rqRef' href='../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm#EDR-R030' title="">[EDR-R030]</a></li>
+<li><span id="DIA-R040-ExtendedData" class="rqDef">[DIA-R040-ExtendedData]</span> <a class='rqRef' href='../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm#EDR-R200' title="">[EDR-R200]</a></li>
+</ul></li>
+<li><span id="DIA-R040-ModEvents" class="rqDef">[DIA-R040-ModEvents]</span> Events <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a>
+<ul>
+<li>incl. the mapping with DTCs <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a></li>
+</ul></li>
+<li><span id="DIA-R040-ModMaster" class="rqDef">[DIA-R040-ModMaster]</span> Event Master Data <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D040' title="">[EV-D040]</a></li>
+<li>state transitions (additionally depends on the State Authorization <a class='rqRef' href='../../30%20Features/State%20Dependency/State.htm#ST-R050' title="Modifiable">[ST-R050]</a>, CDS-38199 8.5)
+<ul>
+<li>including modification of linked target groups <a class='rqRef' href='../../30%20Features/State%20Dependency/Link%20Target%20Group%20to%20State.htm#ST-R510-StateAuth' title="">[ST-R510-StateAuth]</a></li>
+</ul></li>
+<li>attributes (not yet applied to DTCs, CDS-42626)</li>
+<li>Negative Response Codes</li>
+<li><a href="../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm">service shortcut qualifier and name</a> (CDS-10624 6.0)</li>
+<li><p>(at a job container): job qualifier, name, all Function properties</p></li>
+</ul>
+<p><span id="DIA-R050" class="rqDef" title="Secondary properties modifiable">[DIA-R050 Secondary properties modifiable]</span>: specifies whether you can...</p>
+<p>... edit properties (also of contained objects)...</p>
+<ul>
+<li>Description</li>
+<li><span id="DIA-R050-TargetGroups" class="rqDef">[DIA-R050-TargetGroups]</span> Target Groups (since 8.0)</li>
+<li>association with Vehicle System Groups (not applied to DTCs, CDS-42626)</li>
+<li>IS-EXECUTABLE flag at services</li>
+<li>default/const value and semantics of contained data objects</li>
+<li>(not yet applied to User-Defined DTC columns, CDS-42626)</li>
+<li>AUTOSAR Fault Memory v13:
+<ul>
+<li><span id="DIA-R050-SnapshotRecord" class="rqDef">[DIA-R050-SnapshotRecord]</span> Snapshot Record Properties, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Operations.htm#SROP-R130' title="">[SROP-R130]</a></li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Common%20Properties/Authorization.htm">Authorization Feature</a></li>
+</ul>
+</body>
+</html>

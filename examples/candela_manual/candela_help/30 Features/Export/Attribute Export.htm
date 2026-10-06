@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Attribute Export</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="attribute-export-cds-8613-5.5">Attribute Export (CDS-8613 5.5)</h1>
+<p><span id="ATTE-R010" class="rqDef">[ATTE-R010]</span> Exports attribute values to a CSV file.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Attributes are a generic data-driven way to extend the data model implemented in CANdelaStudio.</p>
+<p>Some describe settings for code generation, or typically represent properties specific to the process of the manufacturer.</p>
+<p>It may be useful to transport these settings from a CANdela document to a related other one.</p>
+<h2 id="how-to-run-the-export">How to Run the Export</h2>
+<ul>
+<li><a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R185' title="">[MENU-R185]</a> Ribbon Tab Data Exchange | Export | Attributes</li>
+<li><a class='rqRef' href='../../20 UserInterface\Attributes\Attribute Overview.htm#ATTOV-R185' title="">[ATTOV-R185]</a> Attribute Overview, button &quot;Export&quot;</li>
+</ul>
+<h2 id="attribute-export-wizard">Attribute Export Wizard</h2>
+<p>The Attribute Export Wizard <a class='rqRef' href='../../20 UserInterface\Attributes\Attribute Export Wizard.htm#AEUI-R010' title="">[AEUI-R010]</a> prompts for export settings, then writes the attribute values to a CSV file.</p>
+<h2 id="export">Export</h2>
+<p><span id="ATTE-R100" class="rqDef">[ATTE-R100]</span> Export writes attribute values to the specified CSV file:</p>
+<ul>
+<li><span id="ATTE-R110" class="rqDef">[ATTE-R110]</span> Default Attributes (the attribute definition)
+<ul>
+<li>This includes the definitions of Communication Parameters <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-D010' title="">[ATTR-D010]</a>.</li>
+</ul></li>
+<li><span id="ATTE-R120" class="rqDef">[ATTE-R120]</span> Overridden Attributes at CANdela objects.
+<ul>
+<li>If an attribute is not overridden at a CANdela object, it is not included in the export.</li>
+<li><span id="ATTE-R120-Same" class="rqDef">[ATTE-R120-Same]</span> Attribute Export exports Overridden Attributes even if the value is the same as the default value (CDS-32336 v13).</li>
+</ul></li>
+</ul>
+<p><span id="ATTE-R200" class="rqDef">[ATTE-R200]</span> <strong>Template Data</strong></p>
+<ul>
+<li>If you check the option to &quot;include attributes from template data&quot; <a class='rqRef' href='../../20 UserInterface\Attributes\Attribute Export Wizard.htm#AEUI-R210' title="">[AEUI-R210]</a> in the wizard,</li>
+<li>then Attribute Export also exports attributes of Template Data <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-Template' title="">[ATTR-R050-Template]</a> (CDS-32336 v13).</li>
+</ul>
+<p><span id="ATTE-R210" class="rqDef">[ATTE-R210]</span> <strong>Referenced Diagnostic Instances</strong></p>
+<ul>
+<li>If a Diagnostic Instance is referenced in multiple variants <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D010' title="">[DI-D010]</a>,</li>
+<li>export writes it in each variant.</li>
+<li>Cf. Attribute Overview <a class='rqRef' href='../../20 UserInterface\Attributes\Attribute Overview.htm#ATTOV-R210' title="">[ATTOV-R210]</a>.</li>
+</ul>
+<p><span id="ATTE-D220" class="rqDef">[ATTE-D220]</span> Note for <strong>data types</strong>:</p>
+<ul>
+<li>as of v12, export does not include the path of data types;</li>
+<li>therefore the values of data type attributes values are lost on import (CDS-71866).</li>
+</ul>
+<p><span id="ATTE-R130" class="rqDef">[ATTE-R130]</span> Export reports a <strong>summary</strong> in the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm">Output Window</a> as an Info message, like</p>
+<pre><code>Export of attribute values finished. 364 Attributes exported.</code></pre>
+<h2 id="csv-file">CSV File</h2>
+<p><span id="ATTE-R300" class="rqDef">[ATTE-R300]</span> CSV file format exported:</p>
+<ul>
+<li><span id="ATTE-R310" class="rqDef">[ATTE-R310]</span> <strong>Lexical Syntax</strong>:
+<ul>
+<li>Lines are separated by a line-break.</li>
+<li>Cell values are separated by the separator specified in the Wizard <a class='rqRef' href='../../20 UserInterface\Attributes\Attribute Export Wizard.htm#AEUI-R110' title="">[AEUI-R110]</a>.</li>
+<li>Cell values are enclosed in double-quotes <code>&quot;</code>.
+<ul>
+<li>A double-quote within the cell contents (attribute value) is written as two double-quotes.</li>
+<li>Since an enclosing double-quote is followed by a separator line-break, it is well-defined that the first double-quote does not end the cell value.</li>
+</ul></li>
+<li><span id="ATTE-R310-Multi" class="rqDef">[ATTE-R310-Multi]</span> Multi-line column values produce multiple lines in the CSV file.
+<ul>
+<li>Since each cell value is enclosed in double-quotes, it is well-defined that the line-break does not start a new attribute.</li>
+</ul></li>
+</ul></li>
+<li><span id="ATTE-R330" class="rqDef">[ATTE-R330]</span> <strong>Lines</strong>:
+<ul>
+<li>there is no header line</li>
+<li>each attribute value is in one line on its own,
+<ul>
+<li>or even multiple lines for a multi-line column value <a class='rqRef' href='../../30%20Features/Export/Attribute%20Export.htm#ATTE-R310-Multi' title="">[ATTE-R310-Multi]</a>.</li>
+</ul></li>
+</ul></li>
+<li><span id="ATTE-R340" class="rqDef">[ATTE-R340]</span> <strong>Columns</strong>:
+<ul>
+<li><span id="ATTE-R340-Qual" class="rqDef">[ATTE-R340-Qual]</span> Attribute qualifier <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R010-Qual' title="">[ATTR-R010-Qual]</a></li>
+<li><span id="ATTE-R340-Category" class="rqDef">[ATTE-R340-Category]</span> Category <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R100' title="">[ATTR-R100]</a></li>
+<li><span id="ATTE-R340-Default" class="rqDef">[ATTE-R340-Default]</span> Default value <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R040' title="">[ATTR-R040]</a></li>
+<li><span id="ATTE-R340-Effective" class="rqDef">[ATTE-R340-Effective]</span> Effective value <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-D140' title="">[ATTR-D140]</a>
+<ul>
+<li>in lines for Default Attributes, this repeats the Default value.</li>
+</ul></li>
+<li><span id="ATTE-R340-Path" class="rqDef">[ATTE-R340-Path]</span> Path to the Default Attribute / CANdela object <a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200' title="">[OBJP-R200]</a>
+<ul>
+<li>Note: path to ECU, State Group, State and Date Type since v13 (CDS-71866)</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="example">Example</h2>
+<pre><code>&quot;Maturity&quot;;&quot;Editor&quot;;&quot;in progress&quot;;&quot;in progress&quot;;&quot;qpath://[ECUDEFATTR]Maturity&quot;
+&quot;MaxNumberOfDynDefinedDidReferences&quot;;&quot;UDS&quot;;&quot;5&quot;;&quot;5&quot;;&quot;qpath://[ECUDEFATTR]MaxNumberOfDynDefinedDidReferences&quot;
+&quot;CAN&quot;;&quot;COM.INTERFACES&quot;;&quot;supported&quot;;&quot;supported&quot;;&quot;qpath://[ECUDEFATTR]CAN&quot;
+&quot;IoSignalDescriptor&quot;;&quot;CANdesc&quot;;&quot;Line1
+Line2&quot;;&quot;&quot;;&quot;qpath:/DID_0x0200_ID/[OVRATTR]IoSignalDescriptor&quot;</code></pre>
+<p>Note the two lines for attribute <code>IoSignalDescriptor</code>, due to the multi-line string value.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a></li>
+<li><a href="../../30%20Features/Import/Attribute%20Import.htm">Attribute Import</a></li>
+<li><a href="../../20%20UserInterface/Attributes/Attribute%20Overview.htm">Attribute Overview</a></li>
+<li>Object Paths <a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200' title="">[OBJP-R200]</a></li>
+</ul>
+</body>
+</html>

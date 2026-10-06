@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Protocol Services</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="protocol-services">Protocol Services</h1>
+<div class="figure">
+<img src="Images/UDS%20Protocol%20Services.jpg" alt="List of UDS Protocol Services in Expert View" />
+<p class="caption">List of UDS Protocol Services in Expert View</p>
+</div>
+<ul>
+<li>In standard view, the chapter &quot;Protocol services&quot; is read-only.</li>
+<li>In Expert View, you can edit directly in the list, and create new and edit existing Protocol Services.</li>
+</ul>
+
+<h2 id="name">Name</h2>
+<p>The <a href="../../30%20Features/Common%20Properties/Name.htm">name</a> of the Protocol Service.</p>
+<h2 id="request">Request</h2>
+<p>Shows an overview of the Protocol Service components, like in the <a href="../../20%20UserInterface/Service/Services.htm#abstract">services list</a> in a diagnostic instance.</p>
+<h2 id="pos.-resp.">Pos. Resp.</h2>
+<p>Ditto for the positive response.</p>
+<h2 id="neg.-resp.">Neg. Resp.</h2>
+<p>Ditto for the negative response.</p>
+<h2 id="used">Used</h2>
+<p>&quot;yes&quot; indicates that the Protocol Service is referenced in a Diagnostic Class Template by a <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used Protocol Service</a>.</p>
+<h2 id="required-cds-4995-5.0-cds-4994-5.5-for-report-densotoyota-requirements-2005">Required (CDS-4995 5.0; CDS-4994 5.5 for Report)</h2>
+<p>This is not a Protocol Service property but derived information.</p>
+<p>&quot;yes&quot; indicates that...</p>
+<ul>
+<li>the ProtocolService is referenced by...
+<ul>
+<li>at least one service</li>
+<li>that is within a required, activated diagnostic instance</li>
+<li>within base variant,</li>
+</ul></li>
+<li>and...
+<ul>
+<li>the Used Protocol Service is required, OR</li>
+<li>the Service is required</li>
+</ul></li>
+</ul>
+
+<h2 id="new">New</h2>
+<p>Opens the <a href="Editing%20Protocol%20Services.htm">Editing Protocol Services</a> dialog to create any Protocol Service, by specifying details for each Protocol Service component.</p>
+<h2 id="copypaste-of-protocol-service-cds-9731-6.5">Copy/Paste of Protocol Service (CDS-9731 6.5)</h2>
+<p>This function is only available in the Admin edition.</p>
+<p><span id="PSUI-R300" class="rqDef">[PSUI-R300]</span> In the list of protocol services, you can copy/paste a protocol service using the ribbon tab &quot;Home&quot; <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R413' title="">[MENU-R413]</a>/ <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R415' title="">[MENU-R415]</a> or the context menu.</p>
+<p>You can use this feature to copy protocol services from the Vector UDS Template to your specific template (see procedure <a href="../../15%20Procedures/Protocol%20Service/How%20to%20create%20a%20New%20UDS%20Protocol%20Service.htm">How to create a New UDS Protocol Service</a>).</p>
+<h3 id="document-inconsistencies-after-creation-of-protocol-services">Document Inconsistencies after Creation of Protocol Services</h3>
+<ul>
+<li>in the CANdela data model, there are some implicit <strong>dependencies</strong> between special protocol services (especially for fault memory) and other parts of the template.</li>
+<li>Therefore after a paste operation, you may need to <strong>manually decide and resolve</strong> about such other parts of the template.</li>
+<li>The following subchapters describe typical document inconsistencies after creation of protocol services and how they can be fixed.</li>
+</ul>
+
+<h3 id="multiplexer-forbidden">Multiplexer Forbidden</h3>
+<pre><code>Error: Invalid data type &#39;Memory Address and Size&#39; found.
+       Document settings forbid usage of multiplexer data types.
+   </code></pre>
+<p><strong>Meaning:</strong> A protocol service that uses multiplexer data types has been created but the document template <strong>forbids multiplexer data types</strong>.</p>
+<p><strong>Corrective Action:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Allow the usage of multiplexer data types in the template settings (menu File | Properties | <a href="../../20%20UserInterface/Document/Property%20Page%20Data%20Type%20Authorization.htm">Data Type Authorization</a>).</p></li>
+<li><p>Or: remove the created protocol service and the referenced multiplexer data types from the template.</p></li>
+</ol>
+<h3 id="data-type-nesting-forbidden">Data Type Nesting Forbidden</h3>
+<pre><code>Error: Illegal nesting detected.
+       multiplexer data type &#39;SnapshotRecord DTC P000002 contains data object &#39;DID_DATA_0&#39; which references a packet data type.
+       The document settings do not allow any form of data type nesting</code></pre>
+<p><strong>Meaning:</strong> A protocol service that uses <a href="../../30%20Features/Data%20Type/Complex%20Data%20Types%20Introduction.htm#nesting">nested data types</a> has been created but the document template <strong>forbids that level of data type nesting</strong>.</p>
+<p><strong>Corrective Action:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Allow the neccessary level of data type nesting in the template settings (menu File | Properties | <a href="../../20%20UserInterface/Document/Property%20Page%20Data%20Type%20Authorization.htm">Data Type Authorization</a>).</p></li>
+<li><p>Or: remove the created protocol service and the referenced data types from the template.</p></li>
+</ol>
+<h3 id="invalid-data-type-for-dtc-status">Invalid Data Type for DTC Status</h3>
+<pre><code>Variant: &#39;Basis Variante Diagnostic instance: &#39;Event And Fault Memory Management Content: &#39;DTCStatusMask&#39;: 
+Proxy component &#39;DTCStatusMask shared in shared proxy component &#39;DTCStatusMask&#39;:
+Fatal: dtc status bit group &#39;TestFailed&#39;: bad data type &#39;TestFailed (Availability Mask)&#39; found. Expected data type: &#39;Test Failed&#39;</code></pre>
+<p><strong>Meaning:</strong> the <strong>DTC Status data type</strong> in the template is not compatible with the data type needed for the new Protocol Service (see <a href="../../30%20Features/DTC/DTC%20Status%20Bits.htm">DTC Status Bits</a>).</p>
+<p><strong>Corrective Action:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Drop existing Protocol Services and the incompatible data type.</p></li>
+<li><p>Or: remove the created protocol service and the referenced data types from the template.</p></li>
+</ol>
+<h3 id="obd-error-code-table-missing">OBD Error Code Table Missing</h3>
+<pre><code>Fatal error: simple proxy comp with semantics &#39;obdDtc&#39; detected, but record template of type &#39;obd fault memory&#39; is missing.</code></pre>
+<p><strong>Meaning:</strong> A protocol service has been added for ODB fault memory but a <strong>OBD fault memory error table</strong> is not activated for the template.</p>
+<p><strong>Corrective Action:</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Activate the OBD2 error table in the document tree node &quot;<a href="../../20%20UserInterface/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a>&quot;.</p></li>
+<li><p>Or: remove the created protocol service.</p></li>
+</ol>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC%20Status%20Bits.htm">DTC Status Bits</a></li>
+<li><a href="Editing%20Protocol%20Services.htm">Editing Protocol Services</a></li>
+<li><a href="../../20%20UserInterface/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Services (Feature)</a></li>
+<li><a href="Protocol%20Service%20Property%20Dialog.htm">Protocol Service Property Dialog</a></li>
+<li><a href="Protocol%20Service%20Property%20Page%20Addressing.htm">Protocol Service Property Page &quot;Addressing&quot;</a></li>
+<li><a href="Protocol%20Service%20Property%20Page%20Extended.htm">Protocol Service Property Page &quot;Extended&quot;</a></li>
+<li>Procedure <a href="../../15%20Procedures/Protocol%20Service/How%20to%20create%20a%20New%20UDS%20Protocol%20Service.htm">How to create a New UDS Protocol Service</a>)</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Bit Field</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="bit-field"><span id='_index_446727943'>Bit Field</span></h1>
+<div class="figure">
+<img src="Images/Bitfield.png" alt="CANdelaStudio Bitfield" />
+<p class="caption">CANdelaStudio Bitfield</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>Bit objects in a telegram must be stored in a <strong>bit field</strong>, not on top-level.</p>
+<p><strong>Exception:</strong> bit objects are allowed on top-level in the job parameter lists and in import pool.</p>
+<p>The <strong>bit field</strong> is used only for wrapping bit objects.</p>
+<h2 id="data-model">Data Model</h2>
+<p>The bit field is like a struct in the <code>C</code> programming language: it contains in parallel</p>
+<ul>
+<li><span id="BF-R010" class="rqDef">[BF-R010]</span> a <strong>data object</strong> describing the entire range,</li>
+<li><span id="BF-R020" class="rqDef">[BF-R020]</span> a <strong>list of data objects</strong> describing the bit objects.</li>
+</ul>
+
+<h3 id="entire-range">Entire Range</h3>
+<p><span id="BF-R100" class="rqDef">[BF-R100]</span> The data object describing the entire range has a <strong>data type</strong> (as usual).</p>
+<ul>
+<li><span id="BF-R100-Length" class="rqDef">[BF-R100-Length]</span> The data type defines the <strong>length</strong> of the bit field</li>
+<li><span id="BF-R100-ByteOrder" class="rqDef">[BF-R100-ByteOrder]</span> ... and the <strong>byte order</strong> of the bit field, see <a href="#byteOrder">below</a>.</li>
+<li><span id="BF-R100-Simple" class="rqDef">[BF-R100-Simple]</span> Only simple data types are allowed (CDS-71213 v12).</li>
+</ul>
+<h3 id="list-of-data-objects">List of Data Objects</h3>
+<p><span id="BF-R150" class="rqDef">[BF-R150]</span> The <strong>list of data objects</strong> may contain:</p>
+<ul>
+<li><span id="BF-R150-DataObject" class="rqDef">[BF-R150-DataObject]</span> normal data objects <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R100' title="">[DO-R100]</a>
+<ul>
+<li><span id="BF-R150-Simple" class="rqDef">[BF-R150-Simple]</span> The data objects may only reference simple data types (CDS-71213 v12).</li>
+</ul></li>
+<li><span id="BF-R150-Reserved" class="rqDef">[BF-R150-Reserved]</span> reserved data objects <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R200' title="Reserved">[DO-R200]</a></li>
+<li><span id="BF-R150-Bitfield" class="rqDef">[BF-R150-Bitfield]</span> no other bit fields!</li>
+</ul>
+
+<h2 id="implicit-gap">Implicit Gap</h2>
+<ul>
+<li>a bit field need not be filled completely
+<ul>
+<li>i.e. the sum of the lengths of the individual bit objects may be smaller than the length of the parallel &quot;entire length&quot; data object.</li>
+</ul></li>
+<li>the bits not <strong>explicitly</strong> filled behave like <strong>implicit gaps</strong>
+<ul>
+<li>i.e. being filled with reserved data objects.</li>
+</ul></li>
+<li><span id="BF-R200" class="rqDef">[BF-R200]</span> With the document setting &quot;Display most Significant Bit on Top&quot; <a class='rqRef' href='../../30%20Features/Document/Bit%20Ordering.htm#DOC-R500-LsbFirst' title="">[DOC-R500-LsbFirst]</a>, CANdelaStudio always creates the implicit gaps.</li>
+</ul>
+<h2 id="byteOrder">Byte Order</h2>
+<div class="figure">
+<img src="Images/BitfieldByteOrder.jpg" alt="Byte Order in Bitfield" />
+<p class="caption">Byte Order in Bitfield</p>
+</div>
+<p>If the <strong>data type assigned to the bit field</strong> has <a href="../../30%20Features/Data%20Type/Length.htm">quantity atom</a>, ...</p>
+<ul>
+<li>its <a href="../../30%20Features/Data%20Type/Byte%20Order.htm">byte order</a> defines the <strong>byte order</strong> used for the bit objects in the bit field.</li>
+<li>This is the data type referenced by the data object <a class='rqRef' href='../../30%20Features/Data%20Objects/Bit%20Field.htm#BF-R010' title="">[BF-R010]</a> describing the entire range.</li>
+<li>The byte order at the data type of the <strong>individual bit objects</strong> does <strong>not</strong> take effect!</li>
+</ul>
+<p>If the data type has <a href="../../30%20Features/Data%20Type/Length.htm">quantity field</a>, ...</p>
+<ul>
+<li>the byte order of the data object <a class='rqRef' href='../../30%20Features/Data%20Objects/Bit%20Field.htm#BF-R010' title="">[BF-R010]</a> is <strong>not relevant</strong>.</li>
+<li>The optional <a href="../../30%20Features/Attributes/Special%20Attributes.htm#ReverseBitFieldBytes">attribute &quot;ReverseBitFieldBytes&quot;</a> may be used instead, see reverse of bytes <a class='rqRef' href='../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm#POS-R110' title="">[POS-R110]</a>.</li>
+</ul>
+
+<h2 id="display-variation">Display Variation</h2>
+<p>See the document option <a href="../../30%20Features/Document/Bit%20Ordering.htm">Bit Ordering</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Objects.htm">Data Objects</a></li>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type</a></li>
+<li><a href="../../30%20Features/Document/Document.htm">Document</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm">Bit and Byte Positions</a></li>
+<li>Document Option <a href="../../30%20Features/Document/Bit%20Ordering.htm">Bit Ordering</a></li>
+</ul>
+</body>
+</html>

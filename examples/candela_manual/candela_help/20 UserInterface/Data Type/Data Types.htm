@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Types</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-types"><span id='_index_446727881' title='Data Type: List' data-term='Data Type' data-text='List'>Data Types</span></h1>
+<div class="figure">
+<img src="Images/Data%20Types.jpg" alt="Data Types List" />
+<p class="caption">Data Types List</p>
+</div>
+<p>You can edit the data type name and description directly in the list (press <code>F2</code> in the cell).</p>
+<p>The columns show properties of the data type, see the <a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type Feature</a>.</p>
+<h2 id="new...">New...</h2>
+<p>Shows the <a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">New Data Type</a> dialog.</p>
+<h2 id="unit-from-ecu-shared-data-cds-34835-8.2-sp2">Unit from ECU-SHARED-DATA (CDS-34835 8.2 SP2)</h2>
+<p><span id="DTLIST-R200" class="rqDef">[DTLIST-R200]</span> The data types list shall provide a <strong>column</strong> with the information whether a <strong>unit</strong> used by a data type originates from an integrated <a href="../../30%20Features/Document/ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA</a>.</p>
+<ul>
+<li><span id="DTUI-R200-Attr" class="rqDef">[DTUI-R200-Attr]</span> CANdelaStudio shall show the additional column only if the <a href="../../30%20Features/Attributes/Special%20Attributes.htm#units">Units</a> attribute ECU exists at the ECU.</li>
+<li>caption of the column: &quot;Unit in Library&quot;, &quot;Einheit in Bibliothek&quot;.</li>
+<li>&quot;yes&quot; if the unit of the data type is contained in the list of the ECU attribute &quot;Units&quot; (that means a part of the ECU-SHARED-DATA)</li>
+<li>&quot;no&quot; it the unit of the data type is <em>not</em> in the list of the ECU attribute &quot;Units&quot;</li>
+<li>&quot;&quot; (empty string) if the data type does not support units, or no unit is set</li>
+<li>CANdelaStudio shall allow sorting by the column.</li>
+</ul>
+<h2 id="special-function">Special Function</h2>
+<p>Shows whether the data type is used as</p>
+<ul>
+<li>Bit Field Default Entry</li>
+<li><a href="../../30%20Features/DTC/Failure%20Type%20Byte.htm">Failure Type Byte</a></li>
+<li><a href="../../30%20Features/DTC/Failure%20Mode%20Identifier.htm">Failure Mode Identifier</a></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type (Feature)</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="Replace%20Data%20Type.htm">&quot;Replace Data Type&quot; Dialog</a></li>
+<li><a href="../../30%20Features/Data%20Type/Replace%20Data%20Type.htm">&quot;Replace Data Type&quot; Feature</a></li>
+</ul>
+</body>
+</html>

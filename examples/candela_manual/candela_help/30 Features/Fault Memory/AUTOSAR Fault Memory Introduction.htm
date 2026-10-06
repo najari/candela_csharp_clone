@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>AUTOSAR Fault Memory Introduction</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="autosar-fault-memory-introduction-cds-71541-v13">AUTOSAR Fault Memory Introduction (CDS-71541 v13)</h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Generic%20Fault%20Memory%20Multiplexer.jpg" alt="Generic Fault Memory Multiplexer" />
+<p class="caption">Generic Fault Memory Multiplexer</p>
+</div>
+<p>Traditionally, CANdelaStudio represents the contents of the Fault Memory within a <strong>generic Request and Response communication structure</strong>.</p>
+<ul>
+<li>e.g. for Snapshot Data specific per DTC, a Multiplexer is used.</li>
+</ul>
+<p>This generic data structure is not well suited to configure the Fault Memory code generation.</p>
+<p><strong>CANdelaStudio 8.2</strong> (2015) provided a specific data structure, but that data structure...</p>
+<ul>
+<li>did not cover detailed AUTOSAR properties, and</li>
+<li>allowed complex constellations not covered by AUTOSAR
+<ul>
+<li>e.g. Snapshot Data (DIDs) being different in Snapshot Records &quot;First Occurrence&quot; and &quot;Most Recent Occurrence&quot;.</li>
+</ul></li>
+</ul>
+<p>CANdelaStudio 13 introduces a <strong>specific data structure</strong> for <strong>Snapshot Records</strong> and <strong>Extended Data Records</strong>, conforming with the <strong>AUTOSAR Standard</strong>.</p>
+<p>The <strong>user interface</strong> provides...</p>
+<ul>
+<li>editing of details in a non-modal embedded property sheet to the right, with</li>
+<li>mass-editing for multiple selected list elements.</li>
+</ul>
+<h2 id="fault-memory-8.2-constellations-not-conforming-with-by-autosar">Fault Memory 8.2 Constellations not Conforming with by AUTOSAR</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/8.2%20Fault%20Memory%20in%20Tree.jpg" alt="8.2 Fault Memory in Tree" />
+<p class="caption">8.2 Fault Memory in Tree</p>
+</div>
+<p>CANdelaStudio 13 no more supports the specific 8.2 Fault Memory modelling of Snapshot Records and Extended Data Records.</p>
+<p>For 8.2 Fault Memory constellations not conforming with AUTOSAR, CANdelaStudio 13 provides an automatic migration to the generic Fault Memory (Multiplexer based).</p>
+<h2 id="migration-of-constellations-conforming-with-autosar">Migration of Constellations Conforming with AUTOSAR</h2>
+<p>CANdelaStudio 13 migrates any Fault Memory constellations of Snapshot Records and Extended Data Records that <strong>conform with AUTOSAR</strong> to the <strong>new v13 modelling</strong>:</p>
+<ul>
+<li>the generic modelling (using Multiplexer)</li>
+<li>as well as the 8.2 Fault Memory</li>
+</ul>
+<h2 id="drawbacks-of-v13-autosar-fault-memory">Drawbacks of v13 AUTOSAR Fault Memory</h2>
+<ul>
+<li>Snapshot Record Numbers are defined and modifiable in a Diagnostic Instance
+<ul>
+<li>You cannot fix them document-wide</li>
+<li>... which was possible by defining them in Fixed Data in the Protocol Service.</li>
+</ul></li>
+<li>You cannot forbid individual Snapshot Record Numbers
+<ul>
+<li>... which was possible by defining Invalid Values at a Text Table that described Snapshot Records.</li>
+</ul></li>
+<li>For constellations not compatible with AUTOSAR, the comfortable GUI of 8.2 is no more available</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/Extended%20Data%20Records/GUI%20Extended%20Data.htm">GUI Extended Data</a></li>
+<li><a href="../../20%20UserInterface/Snapshot%20Records/GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm">Extended Data Record Data Model</a></li>
+<li><a href="../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Operations.htm">Extended Data Record Operations</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm">Fault Memory in UDS</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20CANdela.htm">Fault Memory in CANdela</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm">Snapshot Record Data Model</a></li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Operations.htm">Snapshot Record Operations</a></li>
+<li><a href="Snapshot%20Records%20Generic.htm">Snapshot Records Generic</a></li>
+</ul>
+</body>
+</html>

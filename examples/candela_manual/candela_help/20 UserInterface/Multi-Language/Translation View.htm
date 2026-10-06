@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Translation View</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="translation-view">Translation View</h1>
+<p>See also CANdelaStudio <a href="../../30%20Features/CANdelaStudio%20Editor/Editions.htm">Editions</a> and <a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">Views</a>.</p>
+<div class="figure">
+<img src="Images/Translation%20View.jpg" alt="Translation View" />
+<p class="caption">Translation View</p>
+</div>
+<h2 id="languages-and-translatable-items">Languages and Translatable Items</h2>
+<p>Translation View processes two languages:</p>
+<ul>
+<li><p>A <strong>reference language</strong> (the language in which the document has been opened, the document must be up-to-date with respect to this language)</p></li>
+<li><p>A <strong>target language</strong> (the document may be up-to-date with respect to this language or not)</p></li>
+</ul>
+<p>Translation View offers a selection of the target language. The selection contains pretty representations of the internally used language codes.</p>
+<p>Translation view shows every applicable language string, with the properties:</p>
+<ul>
+<li>language string of reference language (read-only)</li>
+<li>isUpToDate of target language (can be toggled manually)</li>
+<li>language string of target language,</li>
+<li>is the string rich-text (&quot;structured&quot;) or plan-text (&quot;simple&quot;)</li>
+<li>the status of the string with respect to the internal Translation Memory</li>
+<li>the object type (e.g. &quot;data object&quot;)</li>
+<li>the path to the translatable (read-only).</li>
+</ul>
+<p>If a language string has been changed in editing, CANdelaStudio automatically sets it up-to-date.</p>
+<p>Consistency conditions (e.g. that a name must be unique within a given list) must be respected in each up-to-date language.</p>
+<p>There is no unification of language strings that are identical in the reference language. For convenience, there is an &quot;apply to all identical strings in reference language&quot; action (depending on an option in menu <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Translation.htm">Tools|Options|Translation</a>).</p>
+<h3 id="reference-language">Reference Language</h3>
+<p>An up-to-date language.</p>
+<h3 id="target-language">Target Language</h3>
+<p>Any language of the document, this one will be translated.</p>
+<h3 id="update">Update</h3>
+<p>Updates the list and and re-applies filters.</p>
+<p>When CANdelaStudio sets a term translated, and &quot;Show translated terms too&quot; is off, it does not remove the term from the visible list (avoid flickering) but still shows the term with &quot;Translated?&quot; = yes. Only after you press &quot;Update&quot; will CANdelaStudio re-apply the filter and hide translated terms.</p>
+<h3 id="restrict-to-variantlibrary">Restrict to Variant/Library</h3>
+<p><span id="TRV-R200" class="rqDef">[TRV-R200]</span> The list provides an optional filter for a variant/library (CDS-36280 9.1): it shows in a combo-box...</p>
+<ul>
+<li>the default entry &quot;(Whole document)&quot;</li>
+<li>each variant</li>
+<li>each library</li>
+</ul>
+<p><span id="TRV-R210" class="rqDef">[TRV-R210]</span> Effect:</p>
+<ul>
+<li>With the filter applied, the list contains translatable terms of:<br />
+
+<ul>
+<li>objects defined in the variant, e.g. data objects in a telegram table,</li>
+<li><span id="TRV-R210-DataTypes" class="rqDef">[TRV-R210-DataTypes]</span> data types referenced from objects within the variant, or transitively referenced from such data types (CDS-71772 v11 P4, v13)</li>
+</ul></li>
+<li>The default entry shows terms from all variants, but also from outside variants.</li>
+<li>Other filters like &quot;Show translated terms too&quot; take effect independently.</li>
+</ul>
+<h2 id="translation-memory-edit">Translation Memory: Edit</h2>
+<p>Opens a dialog to inspect and edit the translated terms.</p>
+<h2 id="translations">Translations</h2>
+<p>Shows the number of terms in the translation memory.</p>
+<h2 id="learn-translation">Learn Translation</h2>
+<p>Extracts the translated terms from the CANdela document and puts them into the separate translation memory.</p>
+<h2 id="translate-document">Translate Document</h2>
+<p>Processes terms in the CANdela document not yet translated - if a matching term with is found in translation memory, CANdelaStudio takes its translations from the translation memory.</p>
+<h2 id="find">Find</h2>
+<p>Via menu <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Translation.htm#MENU-R1590' title="">[MENU-R1590]</a>, you open the <a href="Translation%20View%20Search%20Dialog.htm">search dialog</a> for translation view.</p>
+<h2 id="menus">Menus</h2>
+<ul>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Tools.htm#MENU-R940-TrView' title="">[MENU-R940-TrView]</a> Menu item &quot;Plugins (Document)&quot; is not available in Translation View.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>Procedures:</p>
+<ul>
+<li><a href="../../15%20Procedures/Multi-Language/How%20to%20Add%20a%20Language%20to%20a%20CANdela%20File.htm">How to Add a Language to a CANdela File</a></li>
+<li><a href="../../15%20Procedures/Common%20Properties/How%20to%20Prepare%20a%20CANdela%20Document%20for%20TextIDs.htm">How to Prepare a CANdela Document for TextIDs</a></li>
+</ul>
+<p>User Interface:</p>
+<ul>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Translation.htm">Options Property Page &quot;Translation&quot;</a></li>
+<li><a href="Translation%20View%20Search%20Dialog.htm">Search Dialog</a> for Translation View</li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Search.htm">Search Dialog</a> for Standard/Expert View</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="../../30%20Features/Multi-Language/Multi-Language.htm">Multi-Language Feature</a></li>
+<li><a href="../../30%20Features/Multi-Language/Translation%20Memory.htm">Translation Memory</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">Views</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Security</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="security"><span id='_index_446728118'>Security</span></h1>
+<h2 id="security-level-in-candela">Security Level in CANdela</h2>
+<p>In CANdela documents based on the KWP or UDS protocol, a security level has <strong>two aspects</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Communication</strong>:
+<ul>
+<li>two <strong>diagnostic instances</strong> in diagnostic class &quot;Security Access&quot;</li>
+<li>The first of the two diagnostic instances requests a random <strong>seed</strong> value for creating a key (&quot;Request Seed&quot;),</li>
+<li>whereas the second diagnostic instance transmits the created <strong>key</strong> back to the ECU (&quot;Send Key&quot;), to unlock it.</li>
+<li>Both diagnostic instances use the same UDS protocol service (0x27 - SecurityAccess),</li>
+<li>... but have different identifiers (Access types).</li>
+</ul></li>
+<li><strong>Service Blocking / State Transition</strong>:
+<ul>
+<li>a <strong>state</strong> in state group &quot;Security Access&quot;</li>
+</ul></li>
+</ol>
+<p>You can create the diagnostic instances and the state comfortably by using the <strong>Security level wizard</strong>.</p>
+<h2 id="security-access-data-record">Security Access Data Record</h2>
+<p>According to UDS, you can optionally send data (&quot;Security Access Data Record&quot;) in the &quot;Request Seed&quot; to the ECU. Whether this is supported is specified in the template in the protocol service.</p>
+<h2 id="autosar">AUTOSAR</h2>
+<p>See the restriction <a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R028' title="">[STTR-R028]</a> for a service having a transition in state &quot;Locked&quot; of state group &quot;Security Access&quot;.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance (Feature)</a></li>
+<li><a href="Authorization.htm">Authorization</a> (certificate-based)</li>
+<li><a href="Session.htm">Session</a></li>
+<li><a href="Session%20Security%20Wizard.htm">Session Security Wizard</a></li>
+<li><a href="../../20%20UserInterface/State%20Dependency/States.htm">State Dependency (User Interface)</a></li>
+<li><a href="State%20Dependency.htm">State Dependency (Feature)</a></li>
+<li><a href="../../15%20Procedures/State%20Dependency/How%20to%20Setup%20the%20Template%20to%20Specify%20the%20Security%20Access%20Data%20Record.htm">How to Setup the Template to Specify the Security Access Data Record</a></li>
+</ul>
+</body>
+</html>

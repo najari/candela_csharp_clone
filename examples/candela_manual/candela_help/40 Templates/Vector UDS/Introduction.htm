@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Introduction</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="vector-uds-template---introduction"><span id='_index_446728138' title='UDS' data-term='UDS'>Vector UDS Template</span> - Introduction</h1>
+<p>&quot;Road vehicles - Unified diagnostic services (UDS)&quot; was released in a second edition 2013-05-15 as <code>ISO 14229-1 2013(E)</code>.</p>
+<p>Use this CANdela template to describe an UDS based ECU.</p>
+<p>You can conveniently access the template via the CANdelaStudio <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Open%20Page.htm">File|Open Page</a>.</p>
+<p>The template <a href="../../30%20Features/Installation/Example%20Files.htm">ships with CANdelaStudio</a> since CANdelaStudio version 8.5.</p>
+<p>Some older version of the template is also shipped in a CANdesc package.</p>
+<h2 id="version-numbering">Version Numbering</h2>
+<p>With CANdelaStudio 13, the template version advanced from <strong>2.5.0</strong> to <strong>13.0</strong> (CDS-72043 v13).</p>
+<p>For background info, see <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Version Numbering.htm#VER-R300' title="">[VER-R300]</a>.</p>
+<h2 id="use-for-candesc-code-generation">Use for CANdesc Code Generation</h2>
+<p>For CANdesc code generation, ...</p>
+<ul>
+<li>use the CANdela template <strong>shipped with your CANdesc package</strong>, or</li>
+<li>use <code>Vector_UDS_1.5.cddt</code> (<a href="../../10%20Introduction/Contact.htm">contact Vector</a>), or</li>
+<li>use the current Vector template, then <strong>configure some values in GENy</strong>, independent from the values in the CANdela document.</li>
+</ul>
+
+<h3 id="background">Background</h3>
+<p><span id="VUDS-R050" class="rqDef">[VUDS-R050]</span> Starting with Vector UDS template version 2.0 (8.5 SP2), some <strong>code generation attributes</strong> have been moved from the attribute category <strong>CANdesc</strong> to the attribute categories <strong>Autosar</strong> and <strong>UDS</strong>:</p>
+<p>MaxAttemptsToDelay, MaxAttemptsToLock (but see <a class='rqRef' href='../../40%20Templates/Vector%20UDS/Special%20Attributes.htm#VUDS-R910-MaxAttemptsToLock' title="">[VUDS-R910-MaxAttemptsToLock]</a>), DelayTimeMs, DelayTimeOnPowerOnMs, Faultmemory Relevance (data type), IoHwAbManaged, NvmBlockDescriptor... (see the list <a href="../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm">Attributes for AUTOSAR Diagnostic Extract export</a>).</p>
+<p><strong>Motivation</strong>: clarify which properties are actually defined by UDS, and which are specific to AUTOSAR.</p>
+<p><strong>Effect</strong>: the CANdesc (not AUTOSAR) code generator GENy has not been adapted, it still looks for the <strong>CANdesc</strong> attribute category. The migration from 8.5 to 8.2 (CDC-41386 8.5 <a class='rqRef' href='../../30 Features\Migrations\CANdelaStudio 8.5.htm#MIG85-R001' title="">[MIG85-R001]</a> for ECU level; CDC-44051 planned for diagnostic instance level) changes the attribute category back from &quot;UDS&quot; to &quot;CANdesc&quot;.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm">Attributes for AUTOSAR Diagnostic Extract export</a></li>
+<li><a href="../../30%20Features/Installation/Example%20Files.htm">Installation - Example Files</a></li>
+<li><a href="Interface.htm">Vector UDS Template - Interface</a></li>
+<li><a href="DIDs.htm">Vector UDS Template - DIDs</a></li>
+<li><a href="Data%20Types.htm">Vector UDS Template - Data Types</a></li>
+<li><a href="DTC%20Columns.htm">Vector UDS Template - DTC Columns</a></li>
+<li><a href="Diagnostic%20Class%20Templates.htm">Vector UDS Template - Diagnostic Class Templates</a></li>
+<li><a href="Protocol%20Services.htm">Vector UDS Template - Protocol Services</a></li>
+<li><a href="Functional%20Addressing.htm">Vector UDS Template - Functional Addressing</a></li>
+<li><a href="Special%20Attributes.htm">Vector UDS Template - Special Attributes</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/UDS%202013.htm">UDS 2013</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Check Identifier Uniqueness</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="check-identifier-uniqueness"><span id='_index_446727939'>Check Identifier Uniqueness</span></h1>
+<h2 id="use-cases">Use-Cases</h2>
+<p><strong>Checking the Entire ECU</strong></p>
+<ul>
+<li>Context: after loading a document, or running Tools | Check Document Consistency <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Home.htm#MENU-R950' title="">[MENU-R950]</a>.</li>
+<li>CANdelaStudio checks all variants and logs conflicts</li>
+</ul>
+<p><strong>Adding A Diagnostic Instance</strong></p>
+<ul>
+<li>Context: creating a new diagnostic instance, or pasting a diagnostic instance into a variant.</li>
+<li>CANdelaStudio checks the service prefixes of the new diagnostic instance within the affected variants</li>
+</ul>
+<p><strong>Adding A Service</strong></p>
+<ul>
+<li>Context: creating or activating <a class='rqRef' href='../../30%20Features/Service/Service.htm#SVC-R300' title="Service Activated">[SVC-R300]</a> a service in a diagnostic instance</li>
+<li>CANdelaStudio checks the service prefixes of the added service within the affected variants</li>
+</ul>
+<h2 id="identifier-and-service-prefixes">Identifier and Service Prefixes</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Service%20Prefixes.png" alt="Service Prefixes" />
+<p class="caption">Service Prefixes</p>
+</div>
+<p>Actually CANdelaStudio checks the <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm#signature">service prefixes</a> (also called &quot;service signature&quot;) for <strong>uniqueness</strong>.</p>
+<p>The Service Prefix includes the Identifier.</p>
+<h2 id="scope">Scope</h2>
+<p><span id="CIU-R010" class="rqDef">[CIU-R010]</span> Service prefixes must be unique within a <strong>variant</strong>.</p>
+<ul>
+<li><span id="CIU-R010-Exception1" class="rqDef">[CIU-R010-Exception1]</span> <strong>Identical Request</strong>:
+<ul>
+<li>a request may be <strong>used in different diagnostic instances</strong> if it...
+<ul>
+<li>does not contain any Variable Value Component and</li>
+<li>does not contain any Proxy Component that has non-“any” destiny</li>
+<li>(it is considered identical)</li>
+</ul></li>
+</ul></li>
+<li><span id="CIU-R010-Exception2" class="rqDef">[CIU-R010-Exception2]</span> <strong>Local Scope</strong>:
+<ul>
+<li>Service prefixes may be non-unique <strong>within a diagnostic instance</strong>.</li>
+<li>Assumption: within this narrow scope, the duplicate is by intention, e.g. for handling security access.</li>
+</ul></li>
+</ul>
+<p>See the <a href="#examples">Examples</a> below.</p>
+<h2 id="rules-for-checking-identifier-uniqueness-cds-68583">Rules for Checking Identifier Uniqueness (CDS-68583)</h2>
+<ul>
+<li><span id="CIU-R020" class="rqDef">[CIU-R020]</span> CANdelaStudio checks a diagnostic instance for uniqueness within the variant / library (as described above <a class='rqRef' href='../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#CIU-R010' title="">[CIU-R010]</a>) if...
+<ul>
+<li>a diagnostic instance enum attribute with the qualifier described in <a class='rqRef' href='../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#CIU-D010' title="Availability of the &quot;Check Identifier for Uniqueness&quot; Attribute">[CIU-D010]</a> does not exist at the diagnostic instance,</li>
+<li>or the attribute has an effective (default or overriden) value != 0.</li>
+<li>Consequence: to <strong>exclude</strong> a diagnostic instance from the check, <strong>set the attribute to 0</strong>.</li>
+<li>You can do this conveniently <strong>in the context menu</strong> <a class='rqRef' href='../../20 UserInterface\Diagnostic Instance\Diagnostic Instances.htm#DIUI-R200' title="">[DIUI-R200]</a> of the diagnostic instance.</li>
+</ul></li>
+<li><span id="CIU-R030" class="rqDef">[CIU-R030]</span> CANdelaStudio reports each skipped diagnostic instance with a status message.</li>
+<li><span id="CIU-R040" class="rqDef">[CIU-R040]</span> CANdelaStudio reports each violation as an error that prevents from exports.</li>
+<li><span id="CIU-R050" class="rqDef">[CIU-R050]</span> CANdelaStudio compares...
+<ul>
+<li>the constant value of a <a href="../../30%20Features/Protocol%20Service/Constant%20Component.htm">constant component</a></li>
+<li>the value given in the diagnostic instance for a <a href="../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm">variable value</a></li>
+<li>for e.g. <a href="../../30%20Features/Protocol%20Service/Proxy%20Component.htm">proxy component</a>, just the position, not the contents.</li>
+</ul></li>
+<li><span id="CIU-R070" class="rqDef">[CIU-R070]</span> If a diagnostic instance has multiple services, CANdelaStudio checks the prefixes of each service, e.g. <code>22 70 40</code> (see also <a class='rqRef' href='../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#CIU-R010' title="">[CIU-R010]</a> above)</li>
+<li><span id="CIU-R080" class="rqDef">[CIU-R080]</span> CANdelaStudio also checks de-activated services <a class='rqRef' href='../../30%20Features/Service/Service.htm#SVC-R300' title="Service Activated">[SVC-R300]</a> (but not deleted ones).</li>
+<li><span id="CIU-R090" class="rqDef">[CIU-R090]</span> if the Protocol Service has the <a href="../../30%20Features/Protocol%20Service/Addressing.htm#SPRMIB">Suppress Positive Response Message Indication Bit (SPRMIB)</a> set, each service of a diagnostic instance actually provides two service prefixes, e.g.
+<ul>
+<li><code>22 70 40</code> (not suppressing a response)</li>
+<li><code>22 F0 40</code> (suppressing a response)</li>
+</ul></li>
+</ul>
+<p><strong>Tip:</strong> CANdelaStudio shows the service abstracts in a tooltip <a class='rqRef' href='../../20 UserInterface\Service\Services.htm#SVUI-R500' title="Tooltip">[SVUI-R500]</a>.</p>
+<p><strong>Note:</strong> The <strong>SPRMIB</strong> option is available at each protocol service, so within one diagnostic instance, ...</p>
+<ul>
+<li>there may be some services that support SPRMIB,</li>
+<li>there may be other services that do not support the SPRMIB.</li>
+</ul>
+<h2 id="customization-via-attribute">Customization via Attribute</h2>
+<p><span id="CIU-D010" class="rqDef" title="Availability of the &quot;Check Identifier for Uniqueness&quot; Attribute">[CIU-D010 Availability of the &quot;Check Identifier for Uniqueness&quot; Attribute]</span></p>
+<p>The attribute is available iff. ...</p>
+<ul>
+<li>a diagnostic instances attribute with qualifier &quot;CheckIdentifierForUniqueness&quot; exists</li>
+<li>with type enum <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a></li>
+<li>and enum IDs 0 and 1
+<ul>
+<li>the enum symbol does not matter.</li>
+</ul></li>
+</ul>
+<p><span id="CIU-D030" class="rqDef" title="Creation Properties">[CIU-D030 Creation Properties]</span> When CANdelaStudio automatically creates <a class='rqRef' href='../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#CIU-R200' title="Migration to 9.0">[CIU-R200]</a> the attribute, it assigns the following properties (these are not relevant for the check whether the attribute is available):</p>
+<ul>
+<li>name:
+<ul>
+<li>&quot;Check Identifier for Uniqueness&quot;</li>
+<li>in all languages (not only the up-to-date ones)</li>
+</ul></li>
+<li>enum symbols:
+<ul>
+<li>0 = &quot;no&quot;</li>
+<li>1 = &quot;yes&quot;</li>
+<li>in all languages</li>
+</ul></li>
+<li>category &quot;Editor&quot;
+<ul>
+<li>CANdelaStudio creates the category if it does not exist</li>
+<li>in all languages</li>
+</ul></li>
+<li>all authorization properties true:
+<ul>
+<li>visible</li>
+<li>modifiable</li>
+<li>export to specification</li>
+</ul></li>
+<li>default value
+<ul>
+<li>ID 1</li>
+</ul></li>
+<li>If...
+<ul>
+<li>the attribute qualifier exists with another type,</li>
+<li>or enum IDs are missing,</li>
+<li>then CANdelaStudio ensures the attribute has the required type and properties.</li>
+</ul></li>
+</ul>
+<p>Note: you can modify the attribute value...</p>
+<ul>
+<li>in the <a href="../../20%20UserInterface/Attributes/Attribute%20Value.htm">attributes list</a> of a diagnostic instance, or</li>
+<li>directly in the diagnostic instance context menu <a class='rqRef' href='../../20 UserInterface\Diagnostic Instance\Diagnostic Instances.htm#DIUI-R200' title="">[DIUI-R200]</a></li>
+</ul>
+<p><span id="CIU-D040" class="rqDef" title="Check Required">[CIU-D040 Check Required]</span> The attribute specifies that a diagnostic instance <strong>must be checked</strong> iff. the effective ID value (default or overridden) is <code>!= 0</code>.</p>
+<p><span id="CIU-D050" class="rqDef" title="Modification">[CIU-D050 Modification]</span> In order to specify that a diagnostic instance...</p>
+<ul>
+<li>... shall not be checked, CANdelaStudio sets the value to enum ID 0;</li>
+<li>... shall be checked, CANdelaStudio sets the value to the first enum ID <code>!= 0</code>.</li>
+<li>In both cases, if the new value and the default value are both 0 or <code>!= 0</code>, CANdelaStudio resets the overriding value.</li>
+<li>If the attribute does not yet exist, then CANdelaStudio <strong>creates or modifies the attribute</strong> as described in <a class='rqRef' href='../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#CIU-D030' title="Creation Properties">[CIU-D030]</a> (in each CANdelaStudio View).</li>
+</ul>
+<p><span id="CIU-R200" class="rqDef" title="Migration to 9.0">[CIU-R200 Migration to 9.0]</span> on loading a document <code>&lt;</code> 9.0,</p>
+<ul>
+<li>CANdelaStudio initially checks the document for consistency
+<ul>
+<li>(even if the &quot;cached&quot; property says the document is consistent).</li>
+</ul></li>
+<li>If within a variant/library there are a diagnostic instances that have the <strong>same identifier</strong>,
+<ul>
+<li>and <strong>the attribute is not available</strong> <a class='rqRef' href='../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#CIU-D010' title="Availability of the &quot;Check Identifier for Uniqueness&quot; Attribute">[CIU-D010]</a></li>
+<li>then CANdelaStudio <strong>creates or modifies the attribute</strong> as described in <a class='rqRef' href='../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#CIU-D030' title="Creation Properties">[CIU-D030]</a>.</li>
+</ul></li>
+<li>Then for each diagnostic instance that has the <strong>same identifier</strong> as another diagnostic instance in the variant/library,
+<ul>
+<li>CANdelaStudio <strong>overrides the attribute with ID 0</strong>,</li>
+<li>and <strong>reports</strong> these diagnostic instances <strong>as an info</strong>.</li>
+</ul></li>
+</ul>
+<p>Note: by intention, this affects...</p>
+<ul>
+<li>not only the second and later diagnostic instances of a given identifier,</li>
+<li>but also the first one.</li>
+<li>Motivation: CANdelaStudio does not guess which of the duplicates is the &quot;good one&quot;.</li>
+</ul>
+
+<p><span id="CIU-R210" class="rqDef">[CIU-R210]</span> on loading a document <code>&gt;=</code> 9.0, CANdelaStudio loads the document even if a diagnostic instance that must be checked <a class='rqRef' href='../../30%20Features/Consistency%20Check/Check%20Identifier%20Uniqueness.htm#CIU-R040' title="">[CIU-R040]</a> has a duplicate identifier.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="ok-same-identifier-in-two-variants">OK: Same Identifier in two Variants</h3>
+<p><em>Common-Diagnostics</em></p>
+<ul>
+<li>Dynamic Data
+<ul>
+<li>010A Wheel Speed <span class="localId valid">[22 01 0A]</span></li>
+</ul></li>
+</ul>
+<p><em>Variant A</em></p>
+<ul>
+<li>Dynamic Data
+<ul>
+<li>010A Wheel Speed <span class="localId valid">[22 01 0A]</span></li>
+</ul></li>
+</ul>
+<h3 id="ok-different-identifiers">OK: Different Identifiers</h3>
+<p><em>Common-Diagnostics</em></p>
+<ul>
+<li>Dynamic Data
+<ul>
+<li>010A Wheel Speed <span class="localId valid">[22 01 0A]</span></li>
+<li>010B Acceleration Sensor <span class="localId valid">[22 01 0B]</span></li>
+</ul></li>
+</ul>
+<h3 id="ok-identifiers-differing-in-msb-only-sprmib-disabled">OK: Identifiers Differing in MSB only (SPRMIB Disabled)</h3>
+<p><em>Common-Diagnostics</em></p>
+<ul>
+<li>Sessions
+<ul>
+<li>01 Default Session <span class="localId valid">[10 01]</span></li>
+<li>81 Special Session <span class="localId valid">[10 81]</span></li>
+</ul></li>
+</ul>
+<h3 id="ok-constants-only-exception-1">OK: Constants only (Exception 1)</h3>
+<p><em>Common-Diagnostics</em></p>
+<ul>
+<li>Sessions
+<ul>
+<li>11 Special Session1 <span class="localId valid">[10 11]</span>
+<ul>
+<li>10 Constant</li>
+<li>11 Constant</li>
+</ul></li>
+<li>11 Special Session2 <span class="localId valid">[10 11]</span>
+<ul>
+<li>10 Constant</li>
+<li>11 Constant</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="ok-constants-and-proxy-any-only-exception-1">OK: Constants and Proxy &quot;any&quot; only (Exception 1)</h3>
+<p><em>Common-Diagnostics</em></p>
+<ul>
+<li>Sessions
+<ul>
+<li>11 Special Session1 <span class="localId valid">[10 11]</span>
+<ul>
+<li>10 Constant</li>
+<li>11 Constant</li>
+</ul></li>
+<li>11 Special Session2 <span class="localId valid">[10 11]</span>
+<ul>
+<li>10 Constant</li>
+<li>11 Constant</li>
+<li>x Proxy &quot;any&quot;</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="ok-constants-and-proxy-non-any-in-same-diagnostic-instance-exception-2">OK: Constants and Proxy non-&quot;any&quot; in same Diagnostic Instance (Exception 2)</h3>
+<p><em>Common-Diagnostics</em></p>
+<ul>
+<li>Sessions
+<ul>
+<li>33 Request Seed <span class="localId valid">[27 33]</span>
+<ul>
+<li>Service 1:
+<ul>
+<li>27 Constant</li>
+<li>33 Access Type (Variable Value)</li>
+</ul></li>
+<li>Service 2:
+<ul>
+<li>27 Constant</li>
+<li>33 Access Type (Variable Value)</li>
+<li>xx Proxy &quot;data&quot;</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="ok-constant-and-variable-value-in-same-diagnostic-instance-exception-2">OK: Constant and Variable Value in same Diagnostic Instance (Exception 2)</h3>
+<p><em>Common-Diagnostics</em></p>
+<ul>
+<li>Sessions
+<ul>
+<li>33 Request Seed <span class="localId valid">[27 33]</span>
+<ul>
+<li>Service 1:
+<ul>
+<li>27 Constant</li>
+<li>33 Constant</li>
+</ul></li>
+<li>Service 2:
+<ul>
+<li>27 Constant</li>
+<li>33 Access Type (i.e. a Variable Value)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="conflict-same-identifier-in-different-diagnostic-instances">Conflict: Same Identifier in different Diagnostic Instances</h3>
+<p><em>Common-Diagnostics</em></p>
+<ul>
+<li>Dynamic Data
+<ul>
+<li>010A Wheel Speed <span class="localId conflict">[22 01 0A]</span>
+<ul>
+<li>22 Constant</li>
+<li>01 0A Identifier (i.e. a Variable Value)</li>
+</ul></li>
+</ul></li>
+<li>Stored Data
+<ul>
+<li>010A Maximum Speed <span class="localId conflict">[22 01 0A]</span>
+<ul>
+<li>22 Constant</li>
+<li>01 0A Identifier</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>(Diagnostic Class does not matter)</p>
+<h3 id="conflict-constant-vs.-identifier-in-different-diagnostic-instances">Conflict: Constant vs. Identifier in different Diagnostic Instances</h3>
+<p><em>Common-Diagnostics</em></p>
+<ul>
+<li>Dynamic Data
+<ul>
+<li>010A Wheel Speed <span class="localId conflict">[22 01 0A]</span>
+<ul>
+<li>22 Constant</li>
+<li>01 0A <strong>Constant</strong> (hypothetical)</li>
+</ul></li>
+</ul></li>
+<li>Stored Data
+<ul>
+<li>010A Maximum Speed <span class="localId conflict">[22 01 0A]</span>
+<ul>
+<li>22 Constant</li>
+<li>01 0A Identifier</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="conflict-same-identifiers-in-same-diagnostic-class-since-sprmib-enabled">Conflict: Same Identifiers in same Diagnostic Class (since SPRMIB Enabled)</h3>
+<p><em>Common-Diagnostics</em></p>
+<ul>
+<li>Sessions
+<ul>
+<li>01 Default Session <span class="localId conflict">[10 01], [10 81]</span></li>
+<li>81 Special Session <span class="localId conflict">[10 81], [10 01]</span></li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Attributes/Attribute%20Overview.htm">Attribute Overview</a></li>
+<li><a href="Consistency%20Check.htm">Consistency Check</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Addressing.htm">Protocol Service Addressing</a></li>
+<li>Diagnostic Instance context menu <a class='rqRef' href='../../20 UserInterface\Diagnostic Instance\Diagnostic Instances.htm#DIUI-R200' title="">[DIUI-R200]</a></li>
+<li><a href="../../15%20Procedures/Diagnostic%20Instance/How%20to%20Exclude%20a%20Diagnostic%20Instance%20from%20the%20Identifier%20Uniqueness%20Check.htm">How to Exclude a Diagnostic Instance from the Identifier Uniqueness Check</a></li>
+<li><a href="../../15%20Procedures/Diagnostic%20Instance/How%20to%20Find%20out%20which%20Diagnostic%20Instances%20Are%20Excluded%20from%20the%20Identifier%20Uniqueness%20Check.htm">How to Find out which Diagnostic Instances Are Excluded from the Identifier Uniqueness Check</a></li>
+<li>Property Page &quot;<a href="../../20%20UserInterface/Attributes/Attribute%20Value.htm">Attributes</a>&quot;</li>
+<li><a href="../../30%20Features/Protocol%20Service/Proxy%20Component.htm">Proxy Component</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Variable%20Value%20Component.htm">Variable Value Component</a></li>
+</ul>
+
+</body>
+</html>

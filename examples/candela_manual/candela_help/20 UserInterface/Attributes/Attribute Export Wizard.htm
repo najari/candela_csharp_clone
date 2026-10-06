@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Attribute Export Wizard</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="attribute-export-wizard">Attribute Export Wizard</h1>
+<p><span id="AEUI-R010" class="rqDef">[AEUI-R010]</span> The Attribute Export Wizard lets you specify settings to export <a class='rqRef' href='../../30 Features\Export\Attribute Export.htm#ATTE-R100' title="">[ATTE-R100]</a> attribute values to a CSV file.</p>
+<h2 id="step-1-file-and-separator">Step 1: File and Separator</h2>
+<div class="figure">
+<img src="Images/Attribute%20Export%20Wizard%20Step%201.jpg" alt="Attribute Export Wizard Step 1" />
+<p class="caption">Attribute Export Wizard Step 1</p>
+</div>
+<p>The &quot;Step 1&quot; wizard page lets you specify</p>
+<p><span id="AEUI-R100" class="rqDef">[AEUI-R100]</span> ... a <strong>file path</strong> to which export will write the CSV file.</p>
+<ul>
+<li>you can enter the path directly in the edit control,</li>
+<li>or specify a path using the Windows file dialog.</li>
+<li>Default: empty.</li>
+</ul>
+<p><span id="AEUI-R110" class="rqDef">[AEUI-R110]</span> ... the <strong>separator</strong> for the CSV file entries.</p>
+<ul>
+<li>For details, see the Export format description <a class='rqRef' href='../../30 Features\Export\Attribute Export.htm#ATTE-R300' title="">[ATTE-R300]</a>.</li>
+<li>Default: semicolon &quot;<code>;</code>&quot;.</li>
+</ul>
+<p>Supported separators (also in Import <a class='rqRef' href='../../20%20UserInterface/Attributes/Attribute%20Import%20Wizard.htm#AIUI-R110' title="">[AIUI-R110]</a>):</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Separator</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>;</code></td>
+<td align="left">Semicolon</td>
+</tr>
+<tr class="even">
+<td align="right"><code>|</code></td>
+<td align="left">Pipe</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>:</code></td>
+<td align="left">Colon</td>
+</tr>
+<tr class="even">
+<td align="right"><code>#</code></td>
+<td align="left">Number sign</td>
+</tr>
+<tr class="odd">
+<td align="right"><code>\t</code></td>
+<td align="left">Tabulator</td>
+</tr>
+</tbody>
+</table>
+<h2 id="step-2-which-data">Step 2: Which Data</h2>
+<div class="figure">
+<img src="Images/Attribute%20Export%20Wizard%20Step%202.jpg" alt="Attribute Export Wizard Step 2" />
+<p class="caption">Attribute Export Wizard Step 2</p>
+</div>
+<p>The &quot;Step 2&quot; wizard page lets you specify</p>
+<p><span id="AEUI-R200" class="rqDef">[AEUI-R200]</span> ... the <strong>categories</strong> <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R100' title="">[ATTR-R100]</a> to export:</p>
+<ul>
+<li>Either export all attributes without respect for the category,</li>
+<li>or from the combobox, select one category to restrict export to attributes having this category.</li>
+<li>Default: all categories.</li>
+</ul>
+<p><span id="AEUI-R210" class="rqDef">[AEUI-R210]</span> ... whether export shall include attributes from <strong>template data</strong>.</p>
+<ul>
+<li>Template data includes Protocol Service, Primitive, Diagnostic Class Template etc.</li>
+<li>See attribute occurrence <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R050-Template' title="">[ATTR-R050-Template]</a>.</li>
+<li>Default: yes.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a> (Feature)</li>
+<li><a href="../../30%20Features/Export/Attribute%20Export.htm">Attribute Export</a></li>
+<li><a href="Attribute%20Import%20Wizard.htm">Attribute Import Wizard</a></li>
+</ul>
+</body>
+</html>

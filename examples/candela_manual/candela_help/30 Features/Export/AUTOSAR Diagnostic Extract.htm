@@ -1,0 +1,1607 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>AUTOSAR Diagnostic Extract</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="autosar-diagnostic-extract-dext-export"><span id='_index_446728027' title='AUTOSAR' data-term='AUTOSAR'>AUTOSAR Diagnostic Extract</span> (<span id='_index_446728028'>DEXT Export</span>)</h1>
+<p>See also the <a href="../../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a>.</p>
+<p>Note: the application computing the AUTOSAR Diagnostic Extract <a class='rqRef' href='../../30%20Features/Installation/Bundled%20Products.htm#IBP-R050' title="">[IBP-R050]</a> is also called &quot;Diagnostic Data Modifier&quot;.</p>
+<p>Note: in order to transport AUTOSAR properties in the CANdela document, please <strong>create CANdela attributes for AUTOSAR</strong> in the dialog of menu <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm">File|Properties</a> in page &quot;Document Info&quot;.</p>
+<h2 id="the-standard">The Standard</h2>
+<p>The AUTOSAR Diagnostic Extract (since AUTOSAR 4.2.1) configures the Basic Software Modules DCM and DEM. It may be used to transfer diagnostic demands between an OEM and tier-1 suppliers. For this purpose, ODX or ECU-C have been used in the past, but are not well suited:</p>
+<ul>
+<li>ODX does not have the necessary details in the Fault Memory description;</li>
+<li>ECU-C is very generic, therefore it cannot be integrated automatically into an existing configuration.</li>
+</ul>
+<p>The Diagnostic Extract format takes a similar role for the configuration of diagnostics which the System Description takes for the configuration of communication.</p>
+<p>You can download the standard documents from <a href="https://www.autosar.org" class="uri">https://www.autosar.org</a>.</p>
+
+<h2 id="export-availability">Export Availability</h2>
+<p><span id="DEXT-R010" class="rqDef">[DEXT-R010]</span> CANdelaStudio supports an export to the AUTOSAR Diagnostic Extract.</p>
+<ul>
+<li>it ships with CANdelaStudio as Bundled Product <a class='rqRef' href='../../30%20Features/Installation/Bundled%20Products.htm#IBP-R050' title="">[IBP-R050]</a></li>
+<li>since <strong>8.5 SP2</strong> (CDS-37687)</li>
+<li>it has been available on individual request since 8.2 SP2.</li>
+</ul>
+<p><span id="DEXT-R010-Windows10" class="rqDef">[DEXT-R010-Windows10]</span> Windows 10 Compatibility (relevant before CANdelaStudio 9.1):</p>
+<ul>
+<li>Export in R19 <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R050' title="AUTOSAR Version">[DEXT-R050]</a> requires .NET 3.5.</li>
+<li>A Windows 10 standard installation contains .NET 4.0, not 3.5.</li>
+<li>Therefore the export in R19 runs in Windows 10 <strong>only</strong> if .NET 3.5 has been installed additionally.</li>
+</ul>
+<p>English press release: <a href="https://vector.com/portal/medien/cmc/press/PDG/AUTOSAR_DEXT_PressRelease_201702_EN.pdf">AUTOSAR-compliant diagnostic configuration at the press of a button</a> (vector.com Download Center last accessed 2017-12-21)</p>
+<p>German press release: <a href="https://vector.com/portal/medien/cmc/press/PDG/AUTOSAR_DEXT_PressRelease_201702_DE.pdf">AUTOSAR-konforme Diagnosebedatung auf Knopfdruck</a> (vector.com Download Center last accessed 2017-12-21)</p>
+<h2 id="installation-folder">Installation Folder</h2>
+<p>See <a class='rqRef' href='../../30%20Features/Installation/Installation%20Folder.htm#IFLD-R050' title="">[IFLD-R050]</a>.</p>
+<h2 id="export-license-cds-69979-v11-feat-3563-ddm-14.0.0">Export License (CDS-69979 v11, Feat-3563 DDM 14.0.0)</h2>
+<p><span id="DEXT-R030" class="rqDef">[DEXT-R030]</span> DEXT export checks for a valid Vector tool license before running.</p>
+<ul>
+<li><span id="DEXT-R030-HardwarePool" class="rqDef">[DEXT-R030-HardwarePool]</span> Note for <strong>CANdelaStudio 10 or older</strong>: DDM R21 or newer will not run with a hardware or FlexNet Pool license (see <a href="../../30%20Features/CANdelaStudio%20Editor/Licensing.htm">Licensing</a>).</li>
+</ul>
+
+
+
+
+<h2 id="export-preparation">Export Preparation</h2>
+<ul>
+<li>CANdelaStudio passes a CANdela document on disk to the export module.</li>
+<li><span id="DEXT-R040" class="rqDef">[DEXT-R040]</span> Therefore, if you changed the document but did not save it, CANdelaStudio prompts you to save the document before running the export (CDS-70343 v10).</li>
+<li><span id="DEXT-R130-Warn" class="rqDef">[DEXT-R130-Warn]</span> When you export a document that has the &quot;Support Autosar&quot; flag <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R530' title="">[DOC-R530]</a> <strong>not set</strong>, CANdelaStudio writes a warning.</li>
+</ul>
+<h2 id="autosar-versions">AUTOSAR Versions</h2>
+<p><span id="DEXT-D050" class="rqDef">[DEXT-D050]</span> Relevant AUTOSAR Versions, with correspondence between Classic and Adaptive:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Classic</th>
+<th align="left">corresponds to</th>
+<th align="left">Adaptive</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">v4.2.2</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">v4.3.0</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">v4.3.1</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">-</td>
+<td align="left">18-03</td>
+<td align="left">v00045</td>
+</tr>
+<tr class="odd">
+<td align="left">v4.4.0</td>
+<td align="left">18-10</td>
+<td align="left">v00046</td>
+</tr>
+<tr class="even">
+<td align="left">-</td>
+<td align="left">19-03</td>
+<td align="left">v00047</td>
+</tr>
+<tr class="odd">
+<td align="left">(v4.5.0)</td>
+<td align="left">19-11</td>
+<td align="left">v00048</td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul>
+<li>the leading &quot;v&quot; is required for controlling the export version!</li>
+<li>AUTOSAR Classic &quot;4.5&quot; never existed, the corresponding version in the new numbering scheme is &quot;19-11&quot;.</li>
+</ul>
+
+<h2 id="supported-autosar-versions">Supported AUTOSAR Versions</h2>
+<p><span id="DEXT-R050" class="rqDef" title="AUTOSAR Version">[DEXT-R050 AUTOSAR Version]</span> The following table lists...</p>
+<ul>
+<li>the <strong>CANdelaStudio version</strong> with its release date</li>
+<li>... shipping which <strong>export</strong> version
+<ul>
+<li>the version of the file <code>DiagnosticDataModifier.msi</code> (see Bundled Products <a class='rqRef' href='../../30%20Features/Installation/Bundled%20Products.htm#IBP-R050' title="">[IBP-R050]</a>)</li>
+<li>shown in the Windows Control Panel in &quot;Add or Remove Programs&quot;</li>
+</ul></li>
+<li>... exporting which <strong>AUTOSAR</strong> version.</li>
+<li>As an additional info: the <strong>MICROSAR Release</strong> that also contains the export.</li>
+<li>You can control the AUTOSAR version of a CANdela document <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R540' title="">[DOC-R540]</a> in Ribbon Tab File | Properties | Document Info <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R500' title="">[DOCUI-R500]</a>.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>CANdelaStudio</th>
+<th align="left">Release Date</th>
+<th align="left">Export</th>
+<th align="left">AUTOSAR</th>
+<th>MICROSAR Release</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>8.5 SP2</td>
+<td align="left">2016-12</td>
+<td align="left">10</td>
+<td align="left">4.2.1</td>
+<td>R17</td>
+</tr>
+<tr class="even">
+<td>8.5 SP3</td>
+<td align="left">2017-03</td>
+<td align="left">11</td>
+<td align="left">4.2.2 / 4.3.0</td>
+<td>R18</td>
+</tr>
+<tr class="odd">
+<td>9.0</td>
+<td align="left">2017-06</td>
+<td align="left">11.0.1</td>
+<td align="left">4.2.2 / 4.3.0</td>
+<td>R18</td>
+</tr>
+<tr class="even">
+<td>9.0 SP1</td>
+<td align="left">2017-10</td>
+<td align="left">12.2.1</td>
+<td align="left">4.2.2 / 4.3.0</td>
+<td>R19 (see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R010-Windows10' title="">[DEXT-R010-Windows10]</a> for R19 under Windows 10)</td>
+</tr>
+<tr class="odd">
+<td>9.1</td>
+<td align="left">2018-01</td>
+<td align="left">12.2.2</td>
+<td align="left">4.2.2 / 4.3.0</td>
+<td>R19 SP2</td>
+</tr>
+<tr class="even">
+<td>9.1 SP1</td>
+<td align="left">2018-04</td>
+<td align="left">13.0.1</td>
+<td align="left">4.2.2 / 4.3.0</td>
+<td>R20</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td align="left">2018-07</td>
+<td align="left">13.0.3</td>
+<td align="left">4.2.2 / 4.3.0</td>
+<td>R20</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td align="left">2019-01</td>
+<td align="left">14.0.0</td>
+<td align="left">4.2.2 / 4.3.0</td>
+<td>R21</td>
+</tr>
+<tr class="odd">
+<td>11 P1</td>
+<td align="left">2019-04</td>
+<td align="left">15.0.0</td>
+<td align="left">4.2.2 / 4.3.0 / 4.3.1 / 4.4.0</td>
+<td>R22</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td align="left">2019-07</td>
+<td align="left">16.0.0</td>
+<td align="left">4.2.2 / 4.3.0 / 4.3.1 / 4.4.0</td>
+<td>R23</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td align="left">2020-02</td>
+<td align="left">17.0.0</td>
+<td align="left">4.2.2 / 4.3.0 / 4.3.1 / 4.4.0, 19-03, v00047</td>
+<td>R24</td>
+</tr>
+<tr class="even">
+<td>13 SP1</td>
+<td align="left">2020-05</td>
+<td align="left">17.2.0</td>
+<td align="left">4.2.2 / 4.3.0 / 4.3.1 / 4.4.0, 19-03, v00047</td>
+<td>R24</td>
+</tr>
+</tbody>
+</table>
+
+<p>Vector recommends to <strong>use the newest export version</strong> even with an older CANdelaStudio version, e.g. use the export of MICROSAR R18 with CANdelaStudio 8.5 SP2 or even with 8.2 SP2.</p>
+<h3 id="default-autosar-version">Default AUTOSAR Version</h3>
+<p><span id="DEXT-R050-Default" class="rqDef">[DEXT-R050-Default]</span></p>
+<ul>
+<li>If the AUTOSAR version <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R540' title="">[DOC-R540]</a> of the document has <strong>not</strong> been specified,</li>
+<li>CANdelaStudio by default exports to <strong>AUTOSAR 4.4.0</strong>.</li>
+<li>In order to export to a different of the above listed versions, or use an optional configuration file provided by Vector, you can set parameters in the <a href="../../30%20Features/CANdelaStudio%20Editor/Options.htm#autosar">CANdelaStudio.ini</a>.</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>The above applies to v11 P1 (CDS-71323) and later, with the export of MICROSAR R22 or later installed.</li>
+<li>In 8.5 SP3 (CDS-42181) and later, if the export of MICROSAR R18 was installed, CANdelaStudio by default exported to AUTOSAR 4.3.0.</li>
+<li>Since v13, you can specify the &quot;AUTOSAR Version&quot; <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R540' title="">[DOC-R540]</a> of the document in Ribbon Tab File - Properties <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R540' title="">[DOCUI-R540]</a>.</li>
+</ul>
+
+<h2 id="manufacturer-handling">Manufacturer Handling</h2>
+<p><span id="DEXT-R060" class="rqDef" title="Manufacturer">[DEXT-R060 Manufacturer]</span></p>
+<ul>
+<li>CANdelaStudio passes 14 specific OEM values to the DEXT export (dated: 2017-11).</li>
+<li>It passes all other OEM values as <code>GENERIC</code>, so that DEXT performs a generic export.</li>
+<li>If the OEM passed differs from the manufacturer <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R110' title="">[DOC-R110]</a> in the CDD, the export writes a warning to the logfile.</li>
+<li><span id="DEXT-R060-Events" class="rqDef">[DEXT-R060-Events]</span> If the DEXT export is <strong>not</strong> based on <strong>v12 Events</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a>, ...
+<ul>
+<li>DEXT export derives <strong>Event</strong> information (see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R308' title="">[DEXT-R308]</a>) from <strong>DTC Columns</strong>, based on conventions.</li>
+<li>The OEM value controls the convention used.
+<ul>
+<li>The conventions are not described here.</li>
+</ul></li>
+<li>For a given OEM value, the implementation contains a complete definition for <strong>all</strong> DTC Columns,</li>
+<li>there is no fallback to the <code>GENERIC</code> handling for individual DTC Columns.</li>
+</ul></li>
+</ul>
+
+<h2 id="export-identification">Export Identification</h2>
+<p><span id="DEXT-R070" class="rqDef">[DEXT-R070]</span> (CDS-69072 9.1) the export includes info about</p>
+<ul>
+<li>the CANdelaStudio version and</li>
+<li><span id="DEXT-R070-Original" class="rqDef">[DEXT-R070-Original]</span> the document file name (CDS-70025 9.1 SP1)</li>
+<li>the document template</li>
+</ul>
+<p>like</p>
+<blockquote>
+<p>This AUTOSAR Diagnostic Extract was created by CANdelaStudio 10 (Vector Informatik GmbH - www.vector.com). Original diagnostic database: ABS_ESP-Example.cdd based on: UDS DiagnosticsOnCAN. Exported variant: BaseVariant. Used DDM export V13.0.1 (RELEASE)</p>
+</blockquote>
+
+<h2 id="logfile">Logfile</h2>
+<p><span id="DEXT-R075" class="rqDef">[DEXT-R075]</span> DEXT Export writes a logfile, ...</p>
+<ul>
+<li><span id="DEXT-R075-Name" class="rqDef">[DEXT-R075-Name]</span> ... named like the CANdela document, with extension <code>.log</code>,</li>
+<li><span id="DEXT-R075-Level" class="rqDef">[DEXT-R075-Level]</span> ... using the log level <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Logging.htm#LOG-R100' title="">[LOG-R100]</a> specified in CANdelaStudio <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Logfile.htm#OPT-R610' title="">[OPT-R610]</a> (CDS-38705 v11).
+<ul>
+<li>The CANdelaStudio <code>Info</code> level corresponds with the DEXT Export levels <code>INFO</code> and <code>NOTE</code>,
+<ul>
+<li>the other levels correspond 1:1.</li>
+</ul></li>
+<li>Note: this uses the CANdelaStudio level for the <strong>logfile</strong> <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Logfile.htm#OPT-R610' title="">[OPT-R610]</a> specified in the <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Logfile.htm">Options Dialog</a>,
+<ul>
+<li><strong>not</strong> the level <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Output Window.htm#OW-R320' title="">[OW-R320]</a> specified for the <strong>output window</strong>.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="fundamental-rules">Fundamental Rules</h2>
+<p>The export maps <strong>CANdela objects</strong> to the <strong>AUTOSAR Diagnostic Extract format</strong>.</p>
+<ul>
+<li>CANdela supports <strong>various diagnostic protocols</strong>
+<ul>
+<li>The diagnostic protocol is represented mainly by the <strong>template</strong>.</li>
+<li>The template also contains decisions specific for an <strong>OEM (process)</strong>.</li>
+</ul></li>
+<li>AUTOSAR is based on <strong>UDS</strong>.</li>
+</ul>
+<p>Therefore the export tries to <strong>map</strong>...</p>
+<ul>
+<li>the <strong>generic information</strong> from the CANdela template and document</li>
+<li>to the <strong>specific AUTOSAR data structure</strong>.</li>
+</ul>
+<p>If the CANdela document <strong>violates fundamental assumptions</strong> of the export, the export will <strong>stop</strong>.</p>
+
+<h3 id="obdii">OBDII</h3>
+<p><span id="DEXT-R080" class="rqDef">[DEXT-R080]</span> The export includes OBDII services if they are in the document (CDS-69897 9.1 SP1, Feat-2460)</p>
+
+<p>Note:</p>
+<ul>
+<li>AUTOSAR 3 does not support OBDII</li>
+<li>AUTOSAR 4.3.0 supports OBDII</li>
+</ul>
+<p>See also Request Onboard Monitoring Test Result (0x06) <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R510' title="">[DEXT-R510]</a> below.</p>
+<h2 id="autosar-structure">AUTOSAR Structure</h2>
+<p><span id="DEXT-R110" class="rqDef">[DEXT-R110]</span> A generated AUTOSAR file contains the packages</p>
+<ul>
+<li>Diagnostics
+<ul>
+<li>Common (see the following chapter)</li>
+<li><a href="#dem">Dem (see below)</a></li>
+<li><a href="#dcm">Dcm (see below)</a></li>
+</ul></li>
+</ul>
+<p><span id="DEXT-R110-ShortName" class="rqDef">[DEXT-R110-ShortName]</span> For the root <code>AR-PACKAGE</code> element, export uses the constant <code>SHORT-NAME</code> &quot;Diagnostics&quot;, you cannot influence it.</p>
+<h2 id="common">Package &quot;Common&quot;</h2>
+<h3 id="overview">Overview</h3>
+<p><span id="DEXT-R120" class="rqDef">[DEXT-R120]</span> Export generates the &quot;Common&quot; substructure only if the exported file contains data types not available on the platform (e.g. <code>sint24</code>).</p>
+<p><span id="DEXT-R120-ShortName" class="rqDef">[DEXT-R120-ShortName]</span> For the <code>AR-PACKAGE</code> element, export uses the constant <code>SHORT-NAME</code> &quot;Common&quot;, you cannot influence it.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Package</th>
+<th align="left">Substructure</th>
+<th align="left">Element</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Common</td>
+<td align="left"></td>
+<td align="left"><a href="#dcm-contribution-set">Diagnostic DCM Contribution Set</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left"></td>
+<td align="left">ECU Instance</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left"></td>
+<td align="left"><a href="#data-identifiers">Diagnostic Data Identifiers</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left">BaseTypes</td>
+<td align="left">Software Basic Data Types</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">DataConstraints</td>
+<td align="left">Software Data Type Constraints</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left">ImplementationDataTypes</td>
+<td align="left">Software Implementation Data Types</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dcm-contribution-set">Diagnostic DCM Contribution Set</h3>
+<p><span id="DEXT-R240" class="rqDef">[DEXT-R240]</span> Each contribution sets references an ECU instance properties element (Escan-98192 9.1 SP1).</p>
+<h3 id="diagnostic-protocols">Diagnostic Protocols</h3>
+<p><span id="DEXT-R260" class="rqDef">[DEXT-R260]</span> Export writes <code>DIAGNOSTIC-PROTOCOL</code> with <code>DIAGNOSTIC-CONNECTIONS</code> from the contents of special attributes (since v13 DDM 17.0.0 for all OEMs):</p>
+<ul>
+<li>&quot;DiagnosticConnectionRef&quot; see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DiagnosticConnectionRef' title="">[ASR-D001_DiagnosticConnectionRef]</a></li>
+<li>&quot;DiagnosticConnectionPriority&quot; see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_DiagnosticProtocolPriority' title="">[ASR-D001_DiagnosticProtocolPriority]</a></li>
+</ul>
+<h3 id="data-identifiers">Diagnostic Data Identifiers</h3>
+<p><span id="DEXT-R200" class="rqDef">[DEXT-R200]</span> Filled from CANdela Protocol Services with 0x22, 0x2A, 0x2E and 0x2F, using...</p>
+<ul>
+<li>name</li>
+<li>identifier</li>
+<li>data objects (as Diagnostic Parameter).</li>
+</ul>
+<p><span id="DEXT-R202" class="rqDef">[DEXT-R202]</span> for service 0x2F InputOutputControlByIdentifier, ...</p>
+<ul>
+<li>the Control Enable Mask Record (CEMR) is not part of the data identifier,</li>
+<li>therefore not exported into a <code>DIAGNOSTIC-DATA-IDENTIFIER</code> element.</li>
+<li>According with UDS, use of the Control Enable Mask Record is conditional.</li>
+<li>DEXT can store the Control Enable Mask Record only since version 19-11 (former AUTOSAR 4.5)
+<ul>
+<li>addressed by RFC 73351</li>
+<li>cf. a future CANdelaStudio improvement: &quot;Simplify Input of IO Control &quot;Control Enable Mask Record&quot; (CEMR)&quot; (CDS-71757)</li>
+</ul></li>
+</ul>
+
+<p><span id="DEXT-R230" class="rqDef">[DEXT-R230]</span> (Escan-99657 DDM 14.0.0) For data identifiers...</p>
+<ul>
+<li><strong>without a read service 0x22</strong></li>
+<li>but with a <strong>periodic read service 0x2A</strong>,</li>
+<li>the export uses read access from service 0x2A.</li>
+</ul>
+<h3 id="clientserver-ports-for-dids-cds-71880-v13">Client/Server Ports for DIDs (CDS-71880 v13)</h3>
+<p><span id="DEXT-R2310" class="rqDef">[DEXT-R2310]</span> DEXT Export supports Client/Server Ports for DIDs.</p>
+<p>Benefit of using <strong>Client/Server ports</strong> (functions) over <strong>Sender/Receiver ports</strong> (variables):</p>
+<ul>
+<li><strong>Save ECU memory</strong>
+<ul>
+<li>global memory for S/R port</li>
+<li>gets allocated even for information that is not needed frequently</li>
+</ul></li>
+<li><strong>Save processor utilization</strong>
+<ul>
+<li>use-case: the software component collects Freeze Frame data for many DTCs frequently in a float variable</li>
+<li>DCM accepts uint16</li>
+<li>with an S/R port, the software component has to convert the value each time it collects the data.</li>
+</ul></li>
+</ul>
+
+<h3 id="data-objects-in-a-did">Data Objects in a DID</h3>
+<ul>
+<li>AUTOSAR 3 represented a whole DID as one Diagnostic Parameter.</li>
+<li>AUTOSAR 4 supports Diagnostic Parameters for individual CANdela data objects.</li>
+<li>In R19 (cf. <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R050' title="AUTOSAR Version">[DEXT-R050]</a>)...
+<ul>
+<li>in general each data object is represented by <strong>one</strong> Diagnostic Parameter of possibly multiple bytes.</li>
+<li>some data constellations, e.g. a bitfield with LowHigh (Intel) byte order, are still represented by a single Diagnostic Parameter.</li>
+</ul></li>
+<li>The CANdela data type is represented by a byte array (<code>uint8</code>) of the appropriate length.</li>
+</ul>
+
+<h3 id="bit-integers-cds-70147-v11-feat-3897-ddm-14.0.0">64-Bit Integers (CDS-70147 v11, Feat-3897 DDM 14.0.0)</h3>
+<p><span id="DEXT-R203" class="rqDef">[DEXT-R203]</span> DEXT Export converts an integer datatype having a byte length of 8 <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R200' title="">[DTENC-R200]</a> into a byte array with 8 bytes, in ...</p>
+<ul>
+<li>DID parameters,</li>
+<li><a href="#routines">routine signals</a> and</li>
+<li><a href="#edr">extended data records</a>.</li>
+</ul>
+
+<h3 id="dids">DIDs</h3>
+<p>Use-case: for a DID that contains many data objects, avoid manual mapping of the corresponding ports in daVinci.</p>
+<p><span id="DEXT-R205" class="rqDef">[DEXT-R205]</span> (9.1 SP1, Feat-3212) If the document...</p>
+<ul>
+<li>contains the DID attribute <a href="../../30%20Features/Attributes/Special%20Attributes.htm#ASR3LegacyCombineDID"><code>ASR3_Legacy_Combine_DID</code></a></li>
+<li>type Unsigned <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-uns' title="">[ATTR-R020-uns]</a>,</li>
+<li>category <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R100' title="">[ATTR-R100]</a> does not matter,</li>
+<li>which at a DID D has a value != 0,</li>
+<li>then DEXT export creates <strong>one combined data element</strong> for the complete DID D, instead of individual elements. The data type of the combined data element is a byte array.</li>
+<li>See <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20Combine%20Parameters.htm#SWC-R1600' title="">[SWC-R1600]</a> for setting this attribute during SWC Sync.</li>
+</ul>
+<p><span id="DEXT-R207" class="rqDef">[DEXT-R207]</span> (CDS-71773 v12) If...</p>
+<ul>
+<li>the document contains DID data described directly within the Diagnostic Instance (not in a &quot;data only&quot; DID),</li>
+<li>and the document contains the Diagnostic Instance attribute <a href="../../30%20Features/Attributes/Special%20Attributes.htm#ASR3LegacyCombineDIDAtDiagInst"><code>ASR3_Legacy_Combine_DID</code></a>,</li>
+<li>then DEXT export creates one combined data element for the complete DID, as described for &quot;data only&quot; DIDs in the previous topic <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R205' title="">[DEXT-R205]</a>.</li>
+<li>See <a class='rqRef' href='../../30%20Features/Import/SWC%20Sync%20Combine%20Parameters.htm#SWC-R1600' title="">[SWC-R1600]</a> for setting this attribute during SWC Sync.</li>
+</ul>
+
+<p><span id="DEXT-R220" class="rqDef">[DEXT-R220]</span> Export includes DID 0xF402 (9.1 SP1; before, it was skipped).</p>
+<h3 id="bitfields">Bitfields</h3>
+<p><span id="DEXT-R215" class="rqDef">[DEXT-R215]</span> Export represents a <strong>bitfield</strong>...</p>
+<div class="figure">
+<img src="Images/Bitfield_1bit_1reserved.jpg" alt="Bitfield with 1 bit text table, 1 reserved" />
+<p class="caption">Bitfield with 1 bit text table, 1 reserved</p>
+</div>
+<ul>
+<li>with <strong>1 byte</strong> size</li>
+<li>containing only any of
+<ul>
+<li>a <strong>data object</strong> with <strong>1..7 bits size</strong>, referring a <strong>text table</strong>,
+<ul>
+<li>Note: more than 1 bit supported since DDM 15 (CDS-70664 v11 P1, Feat-4168)</li>
+</ul></li>
+<li>a <strong>reserved object</strong>,</li>
+<li>a bit not covered by an object (i.e. implicitly undefined)</li>
+</ul></li>
+</ul>
+<p>as...</p>
+<ul>
+<li>a <code>DIAGNOSTIC-DATA-ELEMENT</code></li>
+<li>that refers to a <code>COMPU-METHOD</code> with category <code>BITFIELD-TEXTTABLE</code>,</li>
+<li>i.e. as individual bit data objects.</li>
+</ul>
+<p><span id="DEXT-R218" class="rqDef">[DEXT-R218]</span> Otherwise, export represents the bitfield as...</p>
+<ul>
+<li>a <code>DIAGNOSTIC-DATA-ELEMENT</code></li>
+<li>that refers to a <code>COMPU-METHOD</code> with category <code>IDENTICAL</code>, <code>uint8</code>,</li>
+<li>which represents the entire bitfield.</li>
+</ul>
+
+<h3 id="reserved-data-objects">Reserved Data Objects</h3>
+<p><span id="DEXT-R210" class="rqDef">[DEXT-R210]</span> The DEXT specification 4.3.0 does not support <span id='_index_446728029' title='Reserved Data Object: in DEXT' data-term='Reserved Data Object' data-text='in DEXT'>reserved data objects</span> <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R200' title="Reserved">[DO-R200]</a> at the end of a DID.</p>
+
+<h3 id="error-too-many-compu-scales-in-linear">Error: too many COMPU-SCALES in LINEAR</h3>
+<p><strong>Issue:</strong> Import in a third party tool fails with an error:</p>
+<blockquote>
+<p>The COMPU-METHOD ... of category LINEAR contains too much COMPU-SCALEs. The COMPU-INTERNAL-TO-PHYS or COMPU-PHYS-TO-INTERNAL must contain exactly one COMPU-SCALE. ... [constr_1375]</p>
+</blockquote>
+<p><strong>Reason:</strong> DEXT Export before R23 exports LINEAR instead of SCALE_LINEAR.</p>
+<p><strong>Workaround:</strong> manually replace LINEAR by SCALE_LINEAR in the exported file.</p>
+<p><strong>Solution:</strong> fix in DEXT Export scheduled for R23 (CANdelaStudio 12).</p>
+
+<h3 id="end-of-service-iteration-data-type">End-of-Service Iteration Data Type</h3>
+<p><span id="DEXT-R225" class="rqDef">[DEXT-R225]</span> For an End-of-Service Iteration Data Type <a class='rqRef' href='../../30%20Features/Data%20Type/End-of-Service%20Iteration.htm#EOS-R100' title="">[EOS-R100]</a>, DEXT Export...</p>
+<ul>
+<li>creates a <code>DIAGNOSTIC-DATA-IDENTIFIER</code> of variable array size,</li>
+<li>with base type <code>uint8_opaq</code>,</li>
+<li>including <code>MAX-NUMBER-OF-ELEMENTS</code> if the data type has a maximum Number of Iterations <a class='rqRef' href='../../30%20Features/Data%20Type/End-of-Service%20Iteration.htm#EOS-R130' title="">[EOS-R130]</a>.</li>
+</ul>
+
+<h2 id="dem">Package &quot;DEM&quot; (Diagnostic Event Manager)</h2>
+<h3 id="overview-1">Overview</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Package</th>
+<th align="left">Substructure</th>
+<th align="left">Element</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dem</td>
+<td align="left"></td>
+<td align="left">Diagnostic DEM Contribution Set</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left"></td>
+<td align="left">Diagnostic Memory Destinations (see <a href="#memory-destinations">next chapter</a>)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">Events</td>
+<td align="left"><a href="#events">Diagnostic Events</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left">Dtcs</td>
+<td align="left">Diagnostic Trouble Codes</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">Mappings</td>
+<td align="left">Event-to-Debounce-Properties-Mapping</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left"></td>
+<td align="left">Event-to-Enable-Condition-Group-Mapping</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left"></td>
+<td align="left">Event-to-Operation-Cycle-Mapping</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left"></td>
+<td align="left">Event-to-Trouble-Code-UDS-Mapping</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left"></td>
+<td align="left">DEM-Provided-Data-Mapping</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left"></td>
+<td align="left"><a href="#event-port-mappings">DiagnosticEventPortMappings</a> (9.1 SP1, Feat-2514)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">DtcProperties</td>
+<td align="left">Diagnostic Trouble Code Properties</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left">- Agings</td>
+<td align="left"><a href="#aging">Aging</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">ExtendedDataRecords</td>
+<td align="left"><a href="#edr">Extended Data Records</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left">FreezeFrames</td>
+<td align="left"><a href="#sr">Snapshots</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">DidSets</td>
+<td align="left">Data Identifiers of Snapshots</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left">OperationCycles</td>
+<td align="left"><a href="#operation-cycles">Operation Cycles (Healing Cycles)</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">EnableConditions</td>
+<td align="left"><a href="#enable-conditions">Enable Condition Groups</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left"></td>
+<td align="left">Enable Conditions</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">Indicators</td>
+<td align="left"><a href="#indicators">Warning Indicators</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="memory-destinations">Diagnostic-Memory-Destinations</h3>
+<p>Filled from CANdela Protocol Services 0x19, with the subfunctions...</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">AUTOSAR Extract</th>
+<th align="left">CANdela</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">DiagnosticMemoryDestinationPrimary</td>
+<td align="left">0x02</td>
+</tr>
+<tr class="even">
+<td align="left">DiagnosticMemoryDestinationMirror</td>
+<td align="left">0x0F</td>
+</tr>
+<tr class="odd">
+<td align="left">DiagnosticMemoryDestinationUserDefined</td>
+<td align="left">0x17 (using &quot;MemorySelection&quot; to set <code>memoryId</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-port-mappings">Diagnostic Event Port Mappings</h3>
+<p><span id="DEXT-R305" class="rqDef">[DEXT-R305]</span> Export includes Diagnostic-Event-Port-Mappings for DTCs (9.1 SP1, Feat-2514).</p>
+<h3 id="events">Events</h3>
+<p><span id="DEXT-R308" class="rqDef">[DEXT-R308]</span> Data source for <strong>AUTOSAR Events</strong> in the CANdela document:</p>
+<ul>
+<li>the Boolean flag &quot;Supports Events&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a> decides whether DEXT Export uses DTCs or Events:</li>
+<li><span id="DEXT-R308-DTC" class="rqDef">[DEXT-R308-DTC]</span> if the flag is <strong>false</strong>, DEXT Export uses <strong>DTCs</strong> (UDS and OBDII, not J1939),
+<ul>
+<li>manufacturer dependent <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R060-Events' title="">[DEXT-R060-Events]</a></li>
+<li>DTC Columns and Default Attributes used for exported Event properties are defined in the CANdela template</li>
+<li>Export applies heuristics to add missing information (e.g. operation cycle)</li>
+<li>see next chapter</li>
+</ul></li>
+<li><span id="DEXT-R308-Events" class="rqDef">[DEXT-R308-Events]</span> if the flag is <strong>true</strong>, DEXT Export uses <strong>Events</strong> (CDS-42224 v12) from the CANdela document.
+<ul>
+<li>Event properties as defined by AUTOSAR are hard-coded in the CANdela data model,
+<ul>
+<li>there are no Default Attributes to define for this purpose.</li>
+</ul></li>
+<li>Export applies heuristics to add information which is set <strong>undefined</strong> in the CANdela Events (e.g. operation cycle)</li>
+</ul></li>
+<li>Note: after loading a file with version <code>&lt;</code> 12, the flag is <strong>false</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R250-Supp' title="">[EV-R250-Supp]</a>.</li>
+</ul>
+<h3 id="using-candela-dtcs-for-autosar-events">Using CANdela DTCs for AUTOSAR Events</h3>
+<p>The following applies when the Boolean flag &quot;Supports Events&quot; is <strong>false</strong> (see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R308-DTC' title="">[DEXT-R308-DTC]</a> above).</p>
+<p>For a CANdela DTC, export creates...</p>
+<ul>
+<li>a DTC
+<ul>
+<li>independent of the <a href="../../20%20UserInterface/Document/Property%20Page%20Display%20of%20DTCs.htm">DTC format configured</a> in the document, export uses the numeric UDS DTC value;</li>
+<li>even if DTC format &quot;SAE J2012&quot; <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R400-J2012' title="">[DOC-R400-J2012]</a> has been configured for the document, export does <strong>not</strong> concatenate the text from the FTB text table to the error text.</li>
+</ul></li>
+<li>a DTC-Property</li>
+<li>an Event
+<ul>
+<li>with qualifier derived from the DTC, e.g. <code>DTC_0x001314_Event</code>.</li>
+</ul></li>
+</ul>
+<p>The DTC references</p>
+<ul>
+<li>the DTC-Property,</li>
+<li>the Event via an Event-to-DTC-Mapping.</li>
+</ul>
+<p>A DTC can have one or multiple Memory-Destinations (based on the 0x19 ProtocolServices).</p>
+<h3 id="specific-name-rule-for-dtcs-cds-70015-v10-feat-3364-ddm-13.0.3">Specific name rule for DTCs (CDS-70015 v10, Feat-3364 DDM 13.0.3)</h3>
+<p><span id="DEXT-R045" class="rqDef">[DEXT-R045]</span> Manufacturer specific: DEXT Export creates DTC names in DiagnosticTroubleCode derived meta classes (e.g. <code>DiagnosticTroubleCodeUds</code>) like</p>
+<pre><code>DTC_&lt;3 byte hex DTC code&gt;&lt;DTC error text&gt;&lt;FMI text&gt;</code></pre>
+<p>Blanks in <code>&lt;DTC error text&gt;</code> and <code>&lt;FMI text&gt;</code> get replaced by underscores.</p>
+<p>Example:</p>
+<ul>
+<li>DTC: 0x1234</li>
+<li>Name “Some Description”</li>
+<li>FMI 0x20 “Data Drifted High”</li>
+<li>Resulting DTC name: <code>DTC_0x123420_Some_Description_Data_Drifted_High</code></li>
+</ul>
+<h3 id="j1939-dtc-attributes-v11-p1-feat-2460-ddm-15.0.0">J1939 DTC Attributes (v11 P1, Feat-2460 DDM 15.0.0)</h3>
+<p><span id="DEXT-R350" class="rqDef">[DEXT-R350]</span> Manufacturer specific (John Deere):</p>
+<ul>
+<li>DEXT Export writes the J1939 DTC attributes <code>SPN</code> and <code>FMI</code></li>
+<li>if the &quot;<strong>DTCFormatIdentifier</strong>&quot; byte in the response has the constant value &quot;0x02&quot; = <code>SAE_J1939-73_DTCFormat</code>.</li>
+</ul>
+
+<h3 id="latch-test-failed-ddm-16">Latch Test Failed (DDM 16)</h3>
+<p><span id="DEXT-R352" class="rqDef">[DEXT-R352]</span> DDM since version 16 exports...</p>
+<ul>
+<li>a DTC property <code>Latch_Test_Failed</code></li>
+<li>values &quot;True&quot;/&quot;False&quot;</li>
+</ul>
+
+<h3 id="invalid-dtc-0xffffff-9.1-sp1">Invalid DTC 0xFFFFFF (9.1 SP1)</h3>
+<ul>
+<li>A DTC with code 0xFFFFFF is not valid.</li>
+<li><span id="DEXT-R310" class="rqDef">[DEXT-R310]</span> Export ignores that DTC, except if it is the <strong>only DTC defined</strong>.
+<ul>
+<li>Motivation: some customers use DTC 0xFFFFFF as a dummy DTC in order to define extended data records, etc.</li>
+</ul></li>
+</ul>
+<h3 id="property-overview">Property Overview</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">AUTOSAR Extract</th>
+<th align="left">CANdela</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">agingAllowed</td>
+<td align="left">Aging</td>
+</tr>
+<tr class="even">
+<td align="left">Connected-Indicator</td>
+<td align="left"><strong>v12</strong>: Event property &quot;Connected Indicators&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R140' title="">[EV-R140]</a>; <strong>otherwise</strong> not directly - see <a href="#indicators">Warning Indicator</a></td>
+</tr>
+<tr class="odd">
+<td align="left">udsDtcValue (without DTC Group)</td>
+<td align="left">DTC</td>
+</tr>
+<tr class="even">
+<td align="left">severity</td>
+<td align="left">DTC Severity</td>
+</tr>
+<tr class="odd">
+<td align="left">functionalUnit</td>
+<td align="left">(not transferred: Functional Unit)</td>
+</tr>
+<tr class="even">
+<td align="left">priority</td>
+<td align="left">DTC Priority</td>
+</tr>
+<tr class="odd">
+<td align="left">significance</td>
+<td align="left"><a href="#sig">DTC Significance</a></td>
+</tr>
+<tr class="even">
+<td align="left">maxNumberOfFreezeFrames (not set)</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">fdcThresholdStorageValue</td>
+<td align="left">DTC Storage Threshold, converted to FDC (see next chapter)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sig">DEM Event Significance (v11 P1, DDM 15.0.0)</h3>
+<p><span id="DEXT-R360" class="rqDef">[DEXT-R360]</span> If the DTC Type (Fault vs. Occurrence) <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R510' title="">[ECT-R510]</a> is set in the CANdela document, DEXT Export stores it in the DEM property <code>DemEventSignificance</code>.</p>
+<p>Detection in CANdela: DTC column qualifier</p>
+<ul>
+<li><code>DTC_OCCURRENCE_FLAG</code> with values <code>Fault</code>/<code>Occurrence</code></li>
+<li><code>DTC_Significance</code></li>
+</ul>
+<h3 id="fdc">Fault Detection Counter</h3>
+<p><code>fdc</code> = Fault Detection Counter, a value in the range 0..127.</p>
+<h3 id="aging">Aging</h3>
+<p>If the DEXT export is based on <strong>v12 Events</strong>: see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R3120' title="">[DEXT-R3120]</a>.</p>
+<p>In AUTOSAR, the information is located at the DTC-Property, not at the DTC.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">AUTOSAR Extract</th>
+<th align="left">CANdela</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Reference to Operation Cycle</td>
+<td align="left">Aging Cycle</td>
+</tr>
+<tr class="even">
+<td align="left">threshold</td>
+<td align="left">Aging Cycles</td>
+</tr>
+</tbody>
+</table>
+<h3 id="debounce-algorithm">Debounce Algorithm</h3>
+<p><span id="DEXT-R3220" class="rqDef">[DEXT-R3220]</span> If the DEXT export is based on <strong>v12 Events</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a>, ...</p>
+<ul>
+<li>export uses the Event property &quot;Debounce Algorithm&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R220' title="">[EV-R220]</a></li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a> describes Operation Cycles in the v12 Events data model.</li>
+</ul>
+<p><strong>Otherwise</strong>:</p>
+<ul>
+<li>you must select a debounce algorithm for each DTC.</li>
+<li>There are <strong>counter based</strong> and <strong>time based</strong> debounce algorithms.
+<ul>
+<li>For details about debounce algorithms, see the v12 Events documentation <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1100' title="">[EV-R1100]</a>.</li>
+</ul></li>
+<li>For manufacturer <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R110' title="">[DOC-R110]</a> &quot;Vector&quot;, export maps any value besides &quot;Counter based&quot; und &quot;Time based&quot; to &quot;Monitor Internal&quot;.</li>
+</ul>
+<p>In AUTOSAR, the information is located at the Event, not at the DTC, via the Event-To-Debounce-Algorithm-Mapping.</p>
+<p>Exported at: Dem - Diagnostic-Contribution-Set - Common-Properties</p>
+<h4 id="counter-based-debounce-algorithms">Counter-Based Debounce Algorithms</h4>
+<p>Note: <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1200' title="">[EV-R1200]</a> describes Counter-Based Debounce Algorithms in the v12 Events data model.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">AUTOSAR Extract</th>
+<th align="left">CANdela</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Pre-Debounce Algorithm = &quot;Counter based&quot;</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">CounterIncrementStepSize</td>
+<td align="left">Count-In step size</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">CounterDecrementStepSize</td>
+<td align="left">Count-out step size</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">CounterJumpUp</td>
+<td align="left">Use Jump-Up</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">CounterJumpDown</td>
+<td align="left">Use Jump-Down</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">CounterPassedThreshold</td>
+<td align="left">DTC Passed Threshold</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">CounterFailedThreshold</td>
+<td align="left">DTC Failed Threshold</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">ThresholdStorage</td>
+<td align="left">DTC Storage Threshold</td>
+<td align="left">Also stored in AdminData; here converted to <a href="#fdc">FDC</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="time-based-debounce-algorithms">Time-Based Debounce Algorithms</h4>
+<p>Note: <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1300' title="">[EV-R1300]</a> describes Time-Based Debounce Algorithms in the v12 Events data model.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">AUTOSAR Extract</th>
+<th align="left">CANdela</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Pre-Debounce Algorithm = &quot;Time based&quot;</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">TimeFailedThreshold</td>
+<td align="left">DTC Debounce Failed Time</td>
+<td align="left">Converted from ms to s</td>
+</tr>
+<tr class="odd">
+<td align="left">TimePassedThreshold</td>
+<td align="left">DTC Debounce Passed Time</td>
+<td align="left">dito</td>
+</tr>
+<tr class="even">
+<td align="left">ThresholdStorage</td>
+<td align="left">DTC Storage Threshold</td>
+<td align="left">Also stored in AdminData; here converted to <a href="#fdc">FDC</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="edr">Extended Data Records</h3>
+<ul>
+<li>export creates Extended Data Records only if service 19 06 &quot;Read Extended Record&quot; is activated</li>
+<li>export uses the number and the qualifier</li>
+<li>an Extended Data Record must have at least one data object</li>
+<li>for each data object, export considers the qualifier and the data type (converted to a byte array)
+<ul>
+<li>for 64-bit, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R203' title="">[DEXT-R203]</a>.</li>
+</ul></li>
+<li>the data is stored at the AUTOSAR DTC Property</li>
+</ul>
+<h3 id="sr">Freeze Frames</h3>
+<ul>
+<li>export creates Freeze Frames only if...
+<ul>
+<li>service 19 04 &quot;Read Snapshot Record&quot; is activated, and</li>
+<li>at least one DTC contains a DID.</li>
+</ul></li>
+<li><span id="DEXT-R335" class="rqDef">[DEXT-R335]</span> Each DID must be specified either...
+<ul>
+<li>by a <strong>DID Reference</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R180' title="">[DID-R180]</a> (created in the telegram table using the context menu)</li>
+<li>or by <strong>two data objects</strong> in sequence:
+<ul>
+<li>1 data object for the <strong>DID Identifier</strong>, with the Identifier specified in the column &quot;Default&quot;;</li>
+<li>1 data object as <strong>DID Data</strong>.</li>
+<li>In order to specify DID Data consisting of <strong>multiple</strong> data objects, either define them in a Packet Data Type, or use a DID Reference (see above).</li>
+<li>If the data objects are not defined pair-wise, DEXT Export will skip them!</li>
+</ul></li>
+</ul></li>
+<li>Export uses the number and generates the name using the pattern <code>SnapshotRec_&lt;number&gt;</code></li>
+<li><span id="DEXT-R330" class="rqDef">[DEXT-R330]</span> Export includes <strong>time series snapshot parameters</strong> (9.1 SP1, Feat-2808).
+<ul>
+<li>Note: these are not part of the AUTOSAR standard 4.3.0.</li>
+<li>Export transports them in SDGs which Vector daVinci Configurator processes on import.</li>
+</ul></li>
+<li><span id="DEXT-R340" class="rqDef">[DEXT-R340]</span> (CDS-70959 v11 P1, Feat-4959)
+<ul>
+<li>If a CANdela diagnostic instance in Primary Fault Memory</li>
+<li>contains the service 0x19 0x04</li>
+<li>and the attribute &quot;Snapshot Record Numeration Type&quot; <a class='rqRef' href='../../30%20Features/Fault%20Memory/Snapshot%20Records%20Generic.htm#SR-R023' title="">[SR-R023]</a>,</li>
+<li>then Export derives the value of the DEM property <code>DemTypeOfFreezeFrameRecordNumeration</code> (arxml <code>TYPE-OF-FREEZE-FRAME-RECORD-NUMERATION</code>) from the attribute value:
+<ul>
+<li>&quot;Calculated&quot;: <code>DEM_FF_RECNUM_CALCULATED</code> (arxml: <code>CALCULATED</code>)</li>
+<li>&quot;Configured&quot;: <code>DEM_FF_RECNUM_CONFIGURED</code> (arxml: <code>CONFIGURED</code>)</li>
+<li>Note that export checks the multi-language enumeration <strong>symbol</strong> <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a>, not the numeric ID.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Note:</p>
+<p><span id="DEXT-D330" class="rqDef">[DEXT-D330]</span> Vector MICROSAR DEM does <strong>not</strong> support different <strong>DID lists per Snapshot Record</strong>.</p>
+<ul>
+<li>Example: if the template contains 4 Protocol Services,
+<ul>
+<li>one Protocol Service for Snapshot Record 0x10, 0x11, 0x12 and 0x13 respectively,</li>
+<li>and in a specific variant, you add a DID for Snapshot Record 0x10 only,</li>
+<li>the DEM configuration in daVinci Configurator will be invalid.</li>
+</ul></li>
+<li>Workaround:
+<ul>
+<li>keep the Snapshot Records identical in CANdelaStudio,</li>
+<li>export DEXT from CANdelaStudio,</li>
+<li>import into Configurator,</li>
+<li>in the desired variants, for the respective DTC, manually add individual DIDs in the freeze frame layout (<code>DemFreezeFrameClass</code>).</li>
+</ul></li>
+</ul>
+
+<h3 id="did-set">DID Set</h3>
+<ul>
+<li>a &quot;DID Set&quot; is the set of DIDs specified for a given DTC</li>
+<li>export creates a DID Set for a DTC if at least one DID has been specified for the DTC</li>
+<li>the data is stored at the AUTOSAR DTC Property</li>
+</ul>
+<h3 id="operation-cycles">Operation Cycles</h3>
+<p><span id="DEXT-R3120" class="rqDef">[DEXT-R3120]</span> If the DEXT export is based on <strong>v12 Events</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a>, ...</p>
+<ul>
+<li>export uses the Event property &quot;Operation Cycle&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R120' title="">[EV-R120]</a>.</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a> describes Operation Cycles in the v12 Events data model.</li>
+</ul>
+<p><strong>Otherwise</strong>:</p>
+<ul>
+<li>each DTC must have an Operation-Cycle and an Aging-Cycle</li>
+<li>operation cycle:
+<ul>
+<li>export creates the association to an operation cycle only if the property &quot;Set WarningIndicatorBit at Fault&quot; is set</li>
+<li>the operation cycle data is stored at the AUTOSAR Event at the Healing Cycle</li>
+</ul></li>
+<li>aging cycle:
+<ul>
+<li>export creates the association to an aging cycle only if &quot;Aging&quot; is set</li>
+<li>the aging cycle data is stored at the AUTOSAR Aging</li>
+</ul></li>
+<li>the following names are allowed:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">DEM_IGNITION</td>
+<td align="left">Ignition ON / OFF cycle</td>
+</tr>
+<tr class="even">
+<td align="left">DEM_OBD_DCY</td>
+<td align="left">OBD Driving Cycle</td>
+</tr>
+<tr class="odd">
+<td align="left">DEM_WARMUP</td>
+<td align="left">OBD Warmup cycle</td>
+</tr>
+<tr class="even">
+<td align="left">DEM_POWER</td>
+<td align="left">Power ON / OFF cycle</td>
+</tr>
+<tr class="odd">
+<td align="left">DEM_TIME</td>
+<td align="left">Time based operation cycle</td>
+</tr>
+<tr class="even">
+<td align="left">DEM_OTHER</td>
+<td align="left">further operation cycle</td>
+</tr>
+</tbody>
+</table>
+<p><span id="DEXT-R3125" class="rqDef">[DEXT-R3125]</span> DEXT export does not export unused Operation Cycles (v11 P1, DDM 15.0.0).</p>
+<ul>
+<li>This holds for DTC based and Event based export.</li>
+</ul>
+<h3 id="enable-conditions">Enable Conditions</h3>
+<p><span id="DEXT-R3200" class="rqDef">[DEXT-R3200]</span> If the DEXT export is based on <strong>v12 Events</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a>, ...</p>
+<ul>
+<li>export uses the Event properties &quot;Enable Conditions&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R200' title="">[EV-R200]</a> and &quot;Storage Conditions&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R210' title="">[EV-R210]</a>.</li>
+<li><a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a> describes Conditions, <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800' title="">[EV-R800]</a> describes Condition Groups in the v12 Events data model.</li>
+</ul>
+<p><strong>Otherwise</strong>:</p>
+<ul>
+<li>a CANdela DTC can have multiple enable conditions</li>
+<li>AUTOSAR stores these as Enable-Condition-Groups</li>
+<li>the data is stored at the AUTOSAR Event, via an Event-To-Enable-Condition-Group-Mapping</li>
+<li>each Event can have at most one Enable-Condition-Group</li>
+<li><span id="DEXT-R320" class="rqDef">[DEXT-R320]</span> Export merges multiple identical enable condition groups into a single one (9.1 SP1)
+<ul>
+<li>An enable condition group containing only one enable condition uses the shortname of the contained enable condition.</li>
+</ul></li>
+</ul>
+<h3 id="indicators">Indicators</h3>
+<p><span id="DEXT-R3140" class="rqDef">[DEXT-R3140]</span> If the DEXT export is based on <strong>v12 Events</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a>, ...</p>
+<ul>
+<li>export uses the Event property &quot;Connected Indicators&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R140' title="">[EV-R140]</a></li>
+<li>which references an Indicator Connection <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R300' title="">[EV-R300]</a>,</li>
+<li>combining references to an Indicator and to a Healing Cycle.</li>
+</ul>
+<p><strong>Otherwise</strong>:</p>
+<ul>
+<li>export does not use the CANdela warning indicator information</li>
+<li><span id="DEXT-R3140-J1939" class="rqDef">[DEXT-R3140-J1939]</span> Manufacturer specific (John Deere) for J1939:
+<ul>
+<li>if the DTC property &quot;DM1 Lamp Behaviour&quot; exists,</li>
+<li>then DEXT Export uses it for Indicator behavior (v11 P1, Feat-2460 DDM 15.0.0)</li>
+<li>Note that export checks the multi-language property <strong>name</strong>, not the qualifier.</li>
+</ul></li>
+<li>if the property &quot;Set WarningIndicatorBit at Fault&quot; is set, the AUTOSAR warning indicator gets the fixed name &quot;WarningIndicator&quot; and the AUTOSAR indicator type &quot;warning&quot;.</li>
+<li>the data is stored at the AUTOSAR Event</li>
+<li>if all DTCs that have &quot;Set WarningIndicatorBit at Fault&quot; set also have the same value in column &quot;Healing Cycles&quot;, then the export uses this for the AUTOSAR property <code>healingCycleCounterThreshold</code>:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">AUTOSAR Extract</th>
+<th align="left">CANdela</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">healingCycleCounterThreshold</td>
+<td align="left">Healing Cycles</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dcm">Package &quot;DCM&quot; (Diagnostic Communication Manager)</h2>
+<h3 id="overview-2">Overview</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Package</th>
+<th align="left">Substructure</th>
+<th align="left">Element</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dcm</td>
+<td align="left"></td>
+<td align="left"><a href="#routines">Diagnostic Routines</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left"></td>
+<td align="left"><a href="#diagnostic-service-table">Diagnostic Service Table</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left"></td>
+<td align="left"><a href="#diagnostic-access-permissions">Access Permissions</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left">DiagnosticSessions</td>
+<td align="left">Diagnostic Sessions (see next chapter)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">SecurityLevels</td>
+<td align="left"><a href="#security-levels">Security Levels</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left">ServiceClasses</td>
+<td align="left"><a href="#diagnostic-service-classes">Diagnostic Service Classes</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">ServiceInstances</td>
+<td align="left"><a href="#diagnostic-service-instances">Diagnostic Service Instances</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left">- DynamicallyDefinedDids</td>
+<td align="left"><a href="#dddi">Dynamically Defined Data Identifiers</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagnostic-sessions">Diagnostic Sessions</h3>
+<ul>
+<li>AUTOSAR export for sessions requires a CANdela state group &quot;Session&quot; with semantics &quot;session&quot;.</li>
+<li>it uses the diagnostic instances for Protocol Service 0x10.</li>
+<li>export associates a session with a diagnostic instance if...
+<ul>
+<li>the session is the target state for at least one state transition</li>
+<li>no other session is used as a target state.</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">AUTOSAR Extract</th>
+<th align="left">CANdela</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">p2ServerMax</td>
+<td align="left">Data object P2</td>
+<td align="left">Constant value from the data object, default 50ms</td>
+</tr>
+<tr class="even">
+<td align="left">p2StarServerMax</td>
+<td align="left">Data object P2Ex</td>
+<td align="left">dito, default 5000ms</td>
+</tr>
+</tbody>
+</table>
+<h3 id="security-levels">Security Levels</h3>
+<ul>
+<li>AUTOSAR export for security levels requires a CANdela state group &quot;Security&quot; with semantics &quot;security&quot;.</li>
+<li>it uses the pairs of diagnostic instances for Protocol Service <a href="#diagnostic-security-access">0x27</a>: &quot;Request Seed&quot; and &quot;Send Key&quot;.</li>
+<li>export associates a security level with a diagnostic instance &quot;Send Key&quot; if...
+<ul>
+<li>the security level is the target state for at least one state transition</li>
+<li>no other security level is used as a target state.</li>
+</ul></li>
+<li>export suppresses (does not write) the first (default) security level</li>
+<li>see also <a href="#diagnostic-security-access">Diagnostic-Security-Access (0x27)</a>.</li>
+</ul>
+<p><strong>AUTOSAR: Service Executable in State &quot;Locked&quot;</strong>:</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/State%20Dependency/State%20Transitions.htm#STTR-R028' title="">[STTR-R028]</a> If a service has a transition in state &quot;Locked&quot; of state group &quot;Security Access&quot;, then it must not be blocked in any other state.</li>
+<li>Motivation: in AUTOSAR, the other security levels...
+<ul>
+<li>must allow execution of <strong>more services</strong> than the first one,</li>
+<li>i.e. they <strong>add functionality</strong>.</li>
+</ul></li>
+<li>Note: use <strong>Sessions</strong> in order to...
+<ul>
+<li>allow execution of <strong>fewer services</strong>,</li>
+<li>i.e. to <strong>restrict functionality</strong>,</li>
+</ul></li>
+<li><span id="DEXT-R410" class="rqDef">[DEXT-R410]</span> DEXT Export Behavior:
+<ul>
+<li>if a service is executable in the state &quot;Locked&quot;, but not in another level, then DEXT Export...</li>
+<li>before R21:
+<ul>
+<li>writes the service as <strong>not executable</strong> in the state &quot;Locked&quot;, either;</li>
+</ul></li>
+<li>in R21 or newer:
+<ul>
+<li>writes the service as <strong>executable in all levels</strong>.</li>
+</ul></li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Data</th>
+<th align="left">Level 1</th>
+<th align="left">Level 2</th>
+<th align="left">Level 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CANdela document</td>
+<td align="left">yes</td>
+<td align="left"><strong>no</strong></td>
+<td align="left">yes</td>
+</tr>
+<tr class="even">
+<td align="left">DEXT (before R21)</td>
+<td align="left"><strong>no</strong></td>
+<td align="left"><strong>no</strong></td>
+<td align="left">yes</td>
+</tr>
+<tr class="odd">
+<td align="left">DEXT (in R21)</td>
+<td align="left"><strong>yes</strong></td>
+<td align="left"><strong>yes</strong></td>
+<td align="left">yes</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Properties set from data objects</strong>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">AUTOSAR Extract</th>
+<th align="left">Subfunction</th>
+<th align="left">CANdela data object</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ACCESS-DATA-RECORD-SIZE</td>
+<td align="left">Seed-Request</td>
+<td align="left">securityAccessDataRecord</td>
+</tr>
+<tr class="even">
+<td align="left">KEY-SIZE</td>
+<td align="left">Send-Key</td>
+<td align="left">securityKey</td>
+</tr>
+<tr class="odd">
+<td align="left">SEED-SIZ</td>
+<td align="left">Seed-Request</td>
+<td align="left">securitySeed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Properties set from attributes of the &quot;Send Key&quot; diagnostic instance</strong>:</p>
+<p>Element DIAGNOSTIC-SECURITY-LEVEL:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">AUTOSAR Extract</th>
+<th align="left">Subfunction</th>
+<th>CANdela diagnostic instance attribute</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NUM-FAILED-SECURITY-ACCESS</td>
+<td align="left">Send-Key</td>
+<td><span id="DEXT-R420" class="rqDef">[DEXT-R420]</span> MaxAttemptsToDelay</td>
+</tr>
+<tr class="even">
+<td align="left">SECURITY-DELAY</td>
+<td align="left">Send-Key</td>
+<td><span id="DEXT-R425" class="rqDef">[DEXT-R425]</span> DelayTimeMs</td>
+</tr>
+<tr class="odd">
+<td align="left">SECURITY-DELAY-TIME-ON-BOOT (*)</td>
+<td align="left">Send-Key</td>
+<td><span id="DEXT-R250" class="rqDef">[DEXT-R250]</span> DelayTimeOnPowerOnMs (Escan-98902 DDM 14.0.0)</td>
+</tr>
+</tbody>
+</table>
+<p>(*) This is a global parameter in DEXT, therefore it must be set identically in all &quot;Send key&quot; diagnostic instances.</p>
+
+<h3 id="dddi">Dynamically-Defined-Data-Identifiers</h3>
+<ul>
+<li>In CANdela, a diagnostic instance contains diagnostic instances for Protocol Service 0x2C that refer to the same data identier.</li>
+<li>export creates a Diagnostic-Dynamic-Data-Identifier for each such data identifier,</li>
+<li>it uses the name and the DID identifier.</li>
+<li><span id="DEXT-R520" class="rqDef">[DEXT-R520]</span> For dynamically defined data identifiers <strong>without a read service</strong> (0x22), export does not set read-access automatically, but logs a warning. (Escan-99659 DDM 14.0.0)</li>
+<li><span id="DEXT-R530" class="rqDef">[DEXT-R530]</span> Export skips dynamically defined data identifiers used in DEM (Escan-99656 DDM 14.0.0)
+<ul>
+<li>These are identifiers that have a service 0x2C.</li>
+<li>Reason: the DEM cannot handle dynamically defined data identifiers.</li>
+</ul></li>
+<li><span id="DEXT-R540" class="rqDef">[DEXT-R540]</span> Export skips IO control functionality for dynamically defined data identifiers (Escan-100180 DDM 14.0.0)
+<ul>
+<li>The DCM module issues warnings or errors if IO control functionality is defined for dynamically defined DIDs.</li>
+<li>Reason: dynamically defined DIDs must not have IO-control functionality.</li>
+</ul></li>
+</ul>
+<h3 id="routines">Routines</h3>
+<ul>
+<li>Diagnostic routines instances for Protocol Service 0x31 have three services Start, Stop, Request Routine Results.</li>
+<li>Export uses the combined name of the diagnostic instance and the service.</li>
+<li>routine parameters (data objects) are represented as Diagnostic-Parameter, the names get an indication of the direction (input/output parameter)</li>
+<li>the data type is preserved (e.g. <code>uint32</code>) and not converted to a byte array.
+<ul>
+<li>for 64-bit, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R203' title="">[DEXT-R203]</a>.</li>
+</ul></li>
+</ul>
+<h3 id="diagnostic-service-table">Diagnostic-Service-Table</h3>
+<ul>
+<li>Export fills the table from all services of the extract.</li>
+</ul>
+<h3 id="diagnostic-access-permissions">Diagnostic-Access-Permissions</h3>
+<ul>
+<li>CANdela state transitions control whether a service can be executed in a given (e.g. session or security) state.</li>
+<li>export creates a Diagnostic-Access-Permission for each combination of CANdela state transitions,</li>
+<li>... and additional one named <code>AP_ALL</code> which represents &quot;no access restriction&quot;.</li>
+</ul>
+<h2 id="diagnostic-service-classes">Diagnostic Service Classes</h2>
+<p>Export creates a service class (e.g. Diagnostic-Session-Control-Class 0x10) if at least one corresponding CANdela diagnostic instance exists.</p>
+<p>Export applies the following special rules:</p>
+<h3 id="diagnostic-control-dtc-setting-class-0x85">Diagnostic-Control-DTC-Setting-Class (0x85)</h3>
+<ul>
+<li>Export sets <code>controlOptionRecordPresent</code> if the request contains a DTCSettingControlOptionRecord.</li>
+</ul>
+<h3 id="diagnostic-read-data-by-identifier-class-0x22">Diagnostic-Read-Data-By-Identifier-Class (0x22)</h3>
+<ul>
+<li>if the respective Protocol Service has the property <a href="../../30%20Features/Protocol%20Service/May%20Be%20Combined.htm">may be combined</a> set,</li>
+<li>export sets <code>maxDidToRead</code> to the value specified at <a href="../../30%20Features/DID/Multiple%20Identifier%20Request.htm#max">Maximum Number of Identifiers</a>,</li>
+<li>otherwise to 1.</li>
+</ul>
+<p>See also <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R207' title="">[DEXT-R207]</a> for combining DID data.</p>
+<h3 id="diagnostic-read-data-by-periodic-id-class-0x2a">Diagnostic-Read-Data-By-Periodic-Id-Class (0x2A)</h3>
+<ul>
+<li>if the respective Protocol Service has the property <a href="../../30%20Features/Protocol%20Service/May%20Be%20Combined.htm">may be combined</a> set,</li>
+<li>export sets <code>maxPeriodicDidToRead</code> to the value specified at <a href="../../30%20Features/DID/Multiple%20Identifier%20Request.htm#max">Maximum Number of Identifiers</a>,</li>
+<li>otherwise to 1.</li>
+<li>export sets <code>schedulerMaxNumber</code> to the value specified at <a href="../../30%20Features/DID/Multiple%20Identifier%20Request.htm#max-sched">Maximum Number of Identifiers in ECU Scheduler</a>.</li>
+<li><span id="DEXT-R505" class="rqDef">[DEXT-R505]</span> export creates a Diagnostic-Periodic-Rate for each used transmission rate (slow, medium, fast),</li>
+<li>it uses the timing from the ECU attributes, e.g. the value <code>PERIODIC_RATE_SLOW</code>:</li>
+<li>the attributes are:
+<ul>
+<li>&quot;Periodic Rate (Slow) in ms&quot; <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_Periodic_Rate_Slow_in_ms' title="">[ASR-D001_Periodic_Rate_Slow_in_ms]</a></li>
+<li>&quot;Periodic Rate (Medium) in ms&quot; <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_Periodic_Rate_Medium_in_ms' title="">[ASR-D001_Periodic_Rate_Medium_in_ms]</a></li>
+<li>&quot;Periodic Rate (Fast) in ms&quot; <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_Periodic_Rate_Fast_in_ms' title="">[ASR-D001_Periodic_Rate_Fast_in_ms]</a></li>
+</ul></li>
+</ul>
+<h3 id="diagnostic-dynamically-define-data-identifier-class-0x2c">Diagnostic-Dynamically-Define-Data-Identifier-Class (0x2C)</h3>
+<ul>
+<li>Export sets <code>configurationHandling</code> fixed to <code>volatile</code>.</li>
+</ul>
+<h2 id="diagnostic-service-instances">Diagnostic Service Instances</h2>
+<p>In general, ...</p>
+<ul>
+<li>export uses name and description of the diagnostic instance</li>
+<li>and the state transitions.</li>
+</ul>
+<p>The following describes special data constellations.</p>
+<h3 id="request-onboard-monitoring-test-result-0x06">Request Onboard Monitoring Test Result (0x06)</h3>
+<p><span id="DEXT-R510" class="rqDef">[DEXT-R510]</span> Export creates a diagnostic service instance (0x06) for each referenced test result.</p>
+<p>Note:</p>
+<ul>
+<li>AUTOSAR 4.3 incorrectly allows diagnostic service 0x06 to reference only <strong>one</strong> test result.</li>
+<li>Therefore export duplicates the 0x06 diagnostic service instances for each referenced test result.</li>
+<li>AUTOSAR 4.4 plans to allow 0x06 to reference multiple test results.</li>
+</ul>
+<h4 id="constant-values">Constant Values</h4>
+<p>Export can only include the service 0x06 if the data elements have a <strong>constant value</strong>, otherwise it skips the service.</p>
+<p>Example:</p>
+<ul>
+<li>Diagnostic Instance &quot;Misfire Cylinder 1 Data&quot;
+<ul>
+<li>Data byte 1: &quot;Measured O2 ratio...&quot;, HexDump (1 Byte), constant value <strong>0x85</strong></li>
+<li>Data byte 2: &quot;Unit and Scaling TID 85&quot;, Unit and Scaling OBDMID, constant value <strong>0x36</strong> (= decimal 54)</li>
+<li>Data byte 3+4: &quot;Test Value TID 85&quot;, Test Value OBDMID (2 Byte), no constant value</li>
+</ul></li>
+</ul>
+<p>Resulting DEXT:</p>
+<pre><code>DIAGNOSTIC-TEST-RESULT
+  Misfire_Cylinder_1_Data_Tid_0x85
+    MONITORED_IDENTIFIER_REF ...
+    TEST-IDENTIFIER
+      ID 133
+      UAS-ID 54
+    REF-BY DIAGNOSTIC-CONTRIBUTION-SET ...</code></pre>
+
+<h3 id="diagnostic-session-control-0x10">Diagnostic Session Control (0x10)</h3>
+<ul>
+<li>for DiagnosticSessionType 1, 2 and 3, AUTOSAR export uses fixed names &quot;Default&quot;, &quot;Programming&quot; and &quot;Extended&quot;.</li>
+</ul>
+<h3 id="diagnostic-ecu-reset-0x11">Diagnostic-ECU-Reset (0x11)</h3>
+<ul>
+<li>Export uses the category e.g. <code>HARD_RESET</code></li>
+<li>if the diagnostic instance is OEM spefic, export sets the <code>customSubFunctionNumber</code></li>
+</ul>
+<h3 id="diagnostic-clear-diagnostic-information-0x14">Diagnostic-Clear-Diagnostic-Information (0x14)</h3>
+<ul>
+<li>There must be only one Protocol Service 0x14.</li>
+</ul>
+<h3 id="diagnostic-read-dtc-information-0x19">Diagnostic-Read-DTC-Information (0x19)</h3>
+<ul>
+<li>Export uses the category e.g. <code>REPORT_DTC_EXT_DATA_RECORD_BY_DTC_NUMBER</code>.</li>
+<li>Export transports only Protocol Services defined in the target AUTOSAR version.</li>
+</ul>
+<h3 id="diagnostic-read-data-by-identifier-0x22">Diagnostic-Read-Data-By-Identifier (0x22)</h3>
+<ul>
+<li>Export uses the reference to the Diagnostic-Data-Identifier.</li>
+</ul>
+<p>See also <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R207' title="">[DEXT-R207]</a> for combining DID data.</p>
+<h3 id="diagnostic-read-memory-by-address-0x23">Diagnostic-Read-Memory-By-Address (0x23)</h3>
+<ul>
+<li>Export does not create references to the Memory-Identifier.</li>
+</ul>
+<h3 id="diagnostic-security-access">Diagnostic-Security-Access (0x27)</h3>
+<ul>
+<li>Export creates a Diagnostic-Security-Access for each pair (Request Seed / Send Key) of diagnostic instances.</li>
+<li>Export uses name and description of the &quot;Request Seed&quot; diagnostic instance, ...</li>
+<li>and the state transitions from the &quot;Send Key&quot; diagnostic instance.</li>
+</ul>
+<p>See <a href="#security-levels">Security Levels</a>.</p>
+<h3 id="diagnostic-communication-control-0x28">Diagnostic-Communication-Control (0x28)</h3>
+<ul>
+<li>Export uses the category e.g. <code>ENABLE_RX_AND_TX</code>.</li>
+<li>If the diagnostic instance is OEM spefic, export sets the <code>customSubFunctionNumber</code>.</li>
+</ul>
+<h3 id="diagnostic-read-data-by-periodic-id-0x2a">Diagnostic-Read-Data-By-Periodic-Id (0x2A)</h3>
+<ul>
+<li>Export uses the reference to the Diagnostic-Data-Identifier,</li>
+<li>... and the state transitions (from any service of the diagnostic instance).</li>
+</ul>
+<h3 id="dddi-0x2c">Diagnostic-Dynamically-Define-Data-Identifier (0x2C)</h3>
+<ul>
+<li>Export uses the category e.g. <code>DEFINE_BY_IDENTIFIER</code></li>
+<li>and the reference to the Diagnostic-Data-Identifier.</li>
+<li>Export sets the <code>maxSourceElement</code> to the value of the ECU attribute <code>MaxNumberOfDynDefinedDidReferences</code>.</li>
+</ul>
+<h3 id="diagnostic-write-data-by-identifier-0x2e">Diagnostic-Write-Data-By-Identifier (0x2E)</h3>
+<ul>
+<li>Export uses the reference to the Diagnostic-Data-Identifier.</li>
+</ul>
+<p>Customer specific:</p>
+<ul>
+<li><span id="DEXT-R610" class="rqDef">[DEXT-R610]</span> in a variant coding diagnostic instance, for use by the SSA module in daVinci, DEXT writes the <strong>service attribute &quot;secured by signature&quot;</strong> to an SDG.</li>
+</ul>
+
+<h3 id="diagnostic-io-control-0x2f">Diagnostic-IO-Control (0x2F)</h3>
+<ul>
+<li>Export creates a Diagnostic-IO-Control for each 0x2F service referring the same data identifier.</li>
+<li>Export uses the reference to the Diagnostic-Data-Identifier,</li>
+<li>... and the information about the defined sub-services
+<ul>
+<li><code>returnControlToECU</code> must be defined,</li>
+<li><code>resetToDefault</code>, <code>freezeCurrentState</code> and <code>shortTermAdjustment</code> are optional.</li>
+</ul></li>
+<li>Export uses the state transitions (from any of the services).</li>
+<li>Note: DEXT cannot store the Control Enable Mask Record, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R202' title="">[DEXT-R202]</a>.</li>
+</ul>
+<h3 id="diagnostic-routine-control-0x31">Diagnostic-Routine-Control (0x31)</h3>
+<ul>
+<li>Export uses the reference to the Diagnostic-Data-Identifier,</li>
+<li>Export uses the state transitions (from any of the services).</li>
+</ul>
+<h3 id="diagnostic-request-download-0x34">Diagnostic-Request-Download (0x34)</h3>
+<ul>
+<li>Export does not create references to the Memory-Identifier.</li>
+</ul>
+<h3 id="diagnostic-request-upload-0x35">Diagnostic-Request-Upload (0x35)</h3>
+<ul>
+<li>Export does not create references to the Memory-Identifier.</li>
+</ul>
+<h3 id="diagnostic-data-transfer-0x36">Diagnostic-Data-Transfer (0x36)</h3>
+<ul>
+<li>Export does not create references to the Memory-Identifier.</li>
+</ul>
+<h3 id="diagnostic-transfer-exit-0x37">Diagnostic-Transfer-Exit (0x37)</h3>
+<ul>
+<li>(no special data)</li>
+</ul>
+<h3 id="diagnostic-request-file-transfer-0x38">Diagnostic-Request-File-Transfer (0x38)</h3>
+<ul>
+<li>(no special data)</li>
+</ul>
+<h3 id="diagnostic-write-memory-by-address-0x3d">Diagnostic-Write-Memory-By-Address (0x3D)</h3>
+<ul>
+<li>Export does not create references to the Memory-Identifier.</li>
+</ul>
+<h3 id="diagnostic-control-dtc-setting-0x85">Diagnostic-Control-DTC-Setting (0x85)</h3>
+<ul>
+<li>Export writes the second byte into the <code>dtcSettingParameter</code>.</li>
+</ul>
+<h3 id="diagnostic-response-on-event-0x86">Diagnostic-Response-On-Event (0x86)</h3>
+<ul>
+<li>If an event type <code>onDTCChange</code> is defined, export creates an Diagnostic-DTC-Change-Trigger and references it.</li>
+</ul>
+<h2 id="diagnostic-service-mapping">Diagnostic Service Mapping</h2>
+<p><span id="DEXT-R710" class="rqDef">[DEXT-R710]</span> The <code>DIAGNOSTIC-SERVICE-SW-MAPPING</code> is specified using attributes in the CANdela document. See ASR SWC ServiceDependency Ref <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D030' title="">[ASR-D030]</a> and ASR SWC DataElement Ref <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D040' title="">[ASR-D040]</a> for details about the attributes.</p>
+<p>Note:</p>
+<ul>
+<li>CANdelaStudio fills the attributes during the <a href="../../30%20Features/Import/SWC%20Sync%20Introduction.htm">SWC Sync</a> operation.</li>
+<li>For the mapping of SWC with DTC vs. Event, see <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D050' title="">[ASR-D050]</a>.</li>
+</ul>
+<h3 id="new-diagnostic-service-mapping-in-autosar-4.3.0">New Diagnostic Service Mapping in AUTOSAR 4.3.0</h3>
+<table>
+<colgroup>
+<col width="23%" />
+<col width="36%" />
+<col width="39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left"><code>&lt;MAPPED-SWC-SERVICE-DEPENDENCY-IREF&gt;</code></th>
+<th><code>&lt;MAPPED-SWC-SERVICE-DEPENDENCY-IN-SYSTEM-IREF&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>In AUTOSAR since</td>
+<td align="left">v4.2.x</td>
+<td>v4.3.0</td>
+</tr>
+<tr class="even">
+<td>Valid in v4.3.0</td>
+<td align="left">x</td>
+<td>x</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">just marked as deleted in the AUTOSAR 4.3.0 Schema Definition, should not be used any more</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Written by DDM version</td>
+<td align="left">up to v16</td>
+<td>since v17</td>
+</tr>
+<tr class="odd">
+<td>Imported by Cfg 5 version</td>
+<td align="left">any version</td>
+<td>since Cfg 5.20</td>
+</tr>
+</tbody>
+</table>
+<h3 id="routines-1">Routines</h3>
+<p>Definition: a &quot;<strong>linked routine</strong>&quot; is a routine where the attribute defined in <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D030' title="">[ASR-D030]</a> exists and has got a value.</p>
+<p>If at least one linked routine exists, the exported DIAG-EX shall contain a package <code>Diagnostics/…/Mapping&quot;</code>.</p>
+<p>For each linked routine, the &quot;Mapping&quot; package shall contain a <strong>DIAGNOSTIC-SERVICE-SW-MAPPING</strong> element, where...</p>
+<ul>
+<li><strong>SERVICE-INSTANCE-REF</strong> references the SERVICE-INSTANCE created for the routine, and</li>
+<li><strong>MAPPED-SWC-SERVICE-DEPENDENCY-IREF</strong> contains the AUTOSAR instance ref coded within the attribute value.</li>
+</ul>
+<h3 id="data-objects">Data Objects</h3>
+<p>Definition: a &quot;<strong>linked data object</strong>&quot; is a data object, where the attribute defined in <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D040' title="">[ASR-D040]</a> exists and has got a value.</p>
+<p>Candidates are all data objects which will be exported as <strong>DIAGNOSTIC-DATA-ELEMENT</strong> in the DIAG-EX, namely the following:</p>
+<ul>
+<li>Data objects of DIDs</li>
+<li>Data objects passed as routine parameters</li>
+<li>Data objects passed within an IO control state</li>
+</ul>
+<p>If at least one linked data object exists, the exported DIAG-EX shall contain a package <code>/Diagnostics/…/Mapping</code></p>
+<p>For each linked data object, the &quot;Mapping&quot; package shall contain a <strong>DIAGNOSTIC-SERVICE-DATA-MAPPING</strong> element, where</p>
+<ul>
+<li><strong>DIAGNOSTIC-DATA-ELEMENT-REF</strong> references the DIAGNOSTIC-DATA-ELEMENT created for the linked data object, and</li>
+<li><strong>MAPPED-DATA-ELEMENT-IREF</strong> contains the AUTOSAR instance reference coded within the attribute value.</li>
+</ul>
+<p>The <strong>SW-DATA-DEF-PROPS</strong> element of a DIAGNOSTIC-DATA-ELEMENT that represents a linked data object...</p>
+<ul>
+<li>shall not contain a COMPU-METHOD-REF and</li>
+<li>shall not contain a DATA-CONSTR-REF.</li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>Only the BASE-TYPE-REF is relevant,</li>
+<li>it references a SW-BASE-TYPE within the DIAG-EX,
+<ul>
+<li>which includes the BYTE-ORDER (e.g. &quot;uint16_mot&quot;).</li>
+</ul></li>
+<li>This is according to the current implementation in MSR4-R15.</li>
+<li>The COMPU-METHOD and the DATA-CONSTR are implicitly given via the DIAGNOSTIC-SERVICE-DATA-MAPPING.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>List of <a href="../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm">Attributes for AUTOSAR Diagnostic Extract export</a></li>
+<li>Checkbox to create <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm">Attributes for AUTOSAR Diagnostic Extract export</a> (in File|Properties|Document Info)</li>
+<li><a href="../../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></li>
+<li><a href="../../30%20Features/AUTOSAR/AUTOSAR%20Adaptive.htm">AUTOSAR Adaptive</a></li>
+<li><a href="../../30%20Features/AUTOSAR/AUTOSAR%20Diagnostic%20Workflow.htm">AUTOSAR Diagnostic Workflow</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#autosar">AUTOSAR Command Line Operation Examples</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Licensing.htm">Licensing</a></li>
+<li>Menu <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R130' title="">[MENU-R130]</a> for AUTOSAR Diagnostic Extract</li>
+<li><a href="../../30%20Features/DID/Multiple%20Identifier%20Request.htm">Multiple Identifier Request</a></li>
+<li><a href="../../30%20Features/Installation/Bundled%20Products.htm">Bundled Products</a></li>
+<li><a href="../../30%20Features/Import/SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a></li>
+</ul>
+
+</body>
+</html>

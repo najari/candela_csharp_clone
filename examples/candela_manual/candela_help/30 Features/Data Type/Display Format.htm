@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Display Format</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="display-format"><span id='_index_446727960'>Display Format</span></h1>
+<p><span id="DTDF-R100" class="rqDef">[DTDF-R100]</span> The <strong>display format</strong> controls how data is presented to the user.</p>
+<ul>
+<li>... as opposed to the encoding <a class='rqRef' href='../../30%20Features/Data%20Type/Encoding.htm#DTENC-R100' title="">[DTENC-R100]</a></li>
+<li>which defines the convention how data is stored in memory and transported on the line.</li>
+<li>See also chapter &quot;Encoding and Display Format&quot; <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type%20Property%20Dependencies.htm#DTDEP-R120' title="">[DTDEP-R120]</a>.</li>
+</ul>
+<p><span id="DTDF-R110" class="rqDef">[DTDF-R110]</span> Possible values:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Display Format</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">hex</td>
+<td align="left"><span id="DTDF-R110-hex" class="rqDef">[DTDF-R110-hex]</span> hexadecimal, base 16, digits 0..9 and A..F</td>
+<td align="left"><code>0xFF</code></td>
+</tr>
+<tr class="even">
+<td align="right">dec</td>
+<td align="left"><span id="DTDF-R110-dec" class="rqDef">[DTDF-R110-dec]</span> decimal, base 10, digits 0..9, minus</td>
+<td align="left"><code>-1</code></td>
+</tr>
+<tr class="odd">
+<td align="right">oct</td>
+<td align="left"><span id="DTDF-R110-oct" class="rqDef">[DTDF-R110-oct]</span> octal, base 8, digits 0..7</td>
+<td align="left"><code>o377</code></td>
+</tr>
+<tr class="even">
+<td align="right">bin</td>
+<td align="left"><span id="DTDF-R110-bin" class="rqDef">[DTDF-R110-bin]</span> binary, base 2, digits 0..1</td>
+<td align="left"><code>%11111111</code></td>
+</tr>
+<tr class="odd">
+<td align="right">float</td>
+<td align="left"><span id="DTDF-R110-flt" class="rqDef">[DTDF-R110-flt]</span> floating point, digits 0..9 and decimal point</td>
+<td align="left">3.1415</td>
+</tr>
+<tr class="even">
+<td align="right">text</td>
+<td align="left"><span id="DTDF-R110-txt" class="rqDef">[DTDF-R110-txt]</span> Ascii or Unicode character(s)</td>
+<td align="left">&quot;VIN&quot;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-1-for-unsigned-and-ascii">Example 1 for Unsigned and Ascii</h2>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="12%" />
+<col width="34%" />
+<col width="31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Bits in memory</th>
+<th align="left">Encoding</th>
+<th align="left">Value per display format</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0010 0000</td>
+<td align="left">unsigned</td>
+<td align="left">dec 32</td>
+<td align="left">integer decimal 32</td>
+</tr>
+<tr class="even">
+<td align="left">&quot;</td>
+<td align="left">&quot;</td>
+<td align="left">hex 0x20</td>
+<td align="left">dito</td>
+</tr>
+<tr class="odd">
+<td align="left">&quot;</td>
+<td align="left">ascii</td>
+<td align="left">text &quot; &quot;</td>
+<td align="left">&quot; &quot; (space character)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-2-for-unsigned-and-ascii">Example 2 for Unsigned and Ascii</h2>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="10%" />
+<col width="30%" />
+<col width="39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Bits in memory</th>
+<th align="left">Encoding</th>
+<th align="left">Value per display format</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1001 0000</td>
+<td align="left">unsigned</td>
+<td align="left">dec 144</td>
+<td align="left">integer decimal 144</td>
+</tr>
+<tr class="even">
+<td align="left">&quot;</td>
+<td align="left">&quot;</td>
+<td align="left">hex 0x90</td>
+<td align="left">dito</td>
+</tr>
+<tr class="odd">
+<td align="left">&quot;</td>
+<td align="left">signed</td>
+<td align="left">dec -112</td>
+<td align="left">integer decimal -112</td>
+</tr>
+<tr class="even">
+<td align="left">&quot;</td>
+<td align="left">&quot;</td>
+<td align="left">hex 0x90<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></td>
+<td align="left">dito</td>
+</tr>
+<tr class="odd">
+<td align="left">&quot;</td>
+<td align="left">BCD</td>
+<td align="left">dec 90<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></td>
+<td align="left">integer decimal 90<br />
+(internally saved as 0x90 = dec 144)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>for a one byte value, -112 becomes 0x90;</li>
+<li>for a two byte value, -112 becomes 0xFF90 (cf. CDS-38828).</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="Encoding.htm">Encoding</a></li>
+<li><a href="Data%20Type%20Property%20Dependencies.htm">Data Type Property Dependencies</a></li>
+</ul>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The hex value shows the representation in memory and depends on the length of the value:<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>See <a href="../../20%20UserInterface/Common%20Properties/Value.htm#CDS-38786">display and editing of a value</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+</body>
+</html>

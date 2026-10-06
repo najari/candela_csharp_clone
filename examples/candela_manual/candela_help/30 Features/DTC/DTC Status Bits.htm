@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DTC Status Bits</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dtc-status-bits"><span id='_index_446728016' title='Bit' data-term='Bit'>DTC Status Bits</span><span id='_index_446728017' title='DTC: DTC Status' data-term='DTC' data-text='DTC Status'></span></h1>
+<h2 id="introduction">Introduction</h2>
+<div class="figure">
+<img src="../../30%20Features/Images/Fault%20Memory%20System%20Context.jpg" alt="Fault Memory in System Context" />
+<p class="caption">Fault Memory in System Context</p>
+</div>
+<p>An ECU implementation manages state for a <a href="DTC.htm">DTC</a> using <strong>DTC Status Bits</strong>.</p>
+<p>For UDS, see &quot;UDS DTC Status Byte&quot; <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm#FMUDS-D050' title="">[FMUDS-D050]</a> and &quot;Uses of DTC Status in UDS Services&quot; <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm#FMUDS-D560' title="">[FMUDS-D560]</a></p>
+<h2 id="dtc-status-bits-in-candela">DTC Status Bits in CANdela</h2>
+<p>CANdelaStudio represents DTC Status Bits in <strong>4 contexts</strong>:</p>
+<table>
+<colgroup>
+<col width="41%" />
+<col width="58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Context</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>ECU</strong>: DTC Status Mask supported by an ECU</td>
+<td align="left">Setup in the template on <a href="#document-level">document level (see below)</a>. For editing, see next item in this list.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Services</strong>: DTC Status Bits in services</td>
+<td align="left">Setup in the template in the Fault Memory Protocol Services and Diagnostic Class Templates using a <a href="../../30%20Features/Protocol%20Service/DTC%20Status%20Proxy%20Component.htm">DTC Status Proxy Component</a>. The dialog also defines the DTC Status Bits common on document level.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Request</strong>: Default values to be sent by a test system to the ECU</td>
+<td align="left">Described in the <a href="../../20%20UserInterface/DTC/DTC%20Status%20Bits.htm">DTC Status Bits Dialog</a> in a Fault Memory diagnostic instance.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Response</strong>: Values reported by the ECU</td>
+<td align="left">described in the same dialog</td>
+</tr>
+</tbody>
+</table>
+<p>The following diagram shows the related CANdela objects.</p>
+<div class="figure">
+<img src="Images/DTC%20Status%20Bits.jpg" alt="DTC Status Bits Overview" />
+<p class="caption">DTC Status Bits Overview</p>
+</div>
+<p>In the diagnostic instance, the CANdela data model represents...</p>
+<ul>
+<li>a checked DTC Status Bit by a data object <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R100' title="">[DO-R100]</a>,</li>
+<li>an un-checked DTC Status Bit by a reserved data object <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R200' title="Reserved">[DO-R200]</a>.</li>
+</ul>
+<p>The following diagram shows the <strong>dialogs</strong> that represent the DTC Status Bits in CANdelaStudio (using example data):</p>
+<div class="figure">
+<img src="Images/DTC%20Status%20Bits%20in%20GUI.jpg" alt="DTC Status Bits in the CANdelaStudio User Interface" />
+<p class="caption">DTC Status Bits in the CANdelaStudio User Interface</p>
+</div>
+<p>Note: CANdelaStudio shows the central DTC Status Mask (defined at the document) only in the properties dialog of the respective Protocol Service components, not in a central place.</p>
+<ul>
+<li>You can edit them even if they are used (CDS-68818 9.1).</li>
+<li>Erroneously, v10 does not show them (CDS-70696).</li>
+</ul>
+<h2 id="document-level">DTC Status Mask (Document Level)</h2>
+<p><span id="DTCSB-R010" class="rqDef">[DTCSB-R010]</span> Several DTC Status Bits may be combined in a <strong>DTC Status Bit Group</strong> (defined in a CANdela template).</p>
+<p><span id="DTCSB-R050" class="rqDef">[DTCSB-R050]</span> The total length of the DTC Status Bits is defined by a <a href="../../30%20Features/Data%20Type/References.htm">data type</a>.</p>
+<p>A <strong>DTC Status Bit Group</strong></p>
+<ul>
+<li>describes one or multiple <strong>DTC status bits</strong></li>
+<li>at a fix position within the DTC status byte object</li>
+<li><span id="DTCSB-R060" class="rqDef">[DTCSB-R060]</span> has a <strong>Convention</strong> = info whether in a document derived from the template, the bits of the group are either...
+<ul>
+<li>mandatory, or</li>
+<li>optional, available by default, or</li>
+<li>optional, not available by default</li>
+</ul></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>KWP
+<ul>
+<li>&quot;DTC Fault Symptom&quot; (4 bit, bits 0-3, optional, available by default);</li>
+</ul></li>
+<li>UDS
+<ul>
+<li>&quot;Test failed&quot; (1 bit, bit 0),</li>
+<li>&quot;Test failed this monitoring cycle&quot; (1 bit, bit 1).</li>
+</ul></li>
+</ul>
+<p>The DTC Status Bit Groups are defined in one place (since 8.0) in the template, i.e. they are common to all ProtocolServices.</p>
+<h2 id="dtc-status-in-the-diagnostic-class-template">DTC Status in the Diagnostic Class Template</h2>
+<p><span id="DTCSB-D560" class="rqDef">[DTCSB-D560]</span></p>
+<ul>
+<li>For proper <strong>AUTOSAR code generation</strong>,
+<ul>
+<li>the <strong>DTCStatusAvailabilityMask</strong> Proxy Components must be combined,</li>
+<li>the <strong>StatusOfDTC</strong> Proxy Components must be combined,</li>
+<li>but no DTCStatusAvailabilityMask Proxy Component may be combined with any StatusOfDTC Proxy Component.
+<ul>
+<li>otherwise the <code>DEM_STATUS_AVAILABILITY_MASK</code> value will not be detected and will default to <strong>0xFF</strong>.</li>
+</ul></li>
+</ul></li>
+<li>Cf. <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm#FMUDS-D560' title="">[FMUDS-D560]</a> for the types of Proxy Components.</li>
+</ul>
+
+<p>Note: For <strong>CANdesc</strong> code generation (as of 2019-07), the document will be converted to 6.5 format which includes an 8.0 to 7.5 migration that <strong>separates</strong> any DTCStatus Proxy Components contained in one collection in a primitive (CDS-23911 8.0).</p>
+<p>Example:</p>
+<ul>
+<li><code>59 0C tt zz tt</code> will be migrated to <code>59 0C pp zz tt</code> which produces the expected values in CANdesc</li>
+<li><code>59 0C tt *[zz tt]</code> will be left unchanged and lets CANdesc default to 0xFF (not expected)</li>
+<li><code>59 0C pp *[zz tt]</code> will be left unchanged and lets CANdesc use the values specified in the document, as expected.</li>
+</ul>
+<p>See...</p>
+<ul>
+<li>DTC Status in UDS <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm#FMUDS-D560' title="">[FMUDS-D560]</a> for the meaning of DTCStatusAvailabilityMask vs. StatusOfDTC.</li>
+<li>as an example: DTC Status in the Vector UDS Template <a class='rqRef' href='../../40 Templates\Vector UDS\Diagnostic Class Templates.htm#VUDS-R560' title="">[VUDS-R560]</a></li>
+</ul>
+<h2 id="migration-7.5-to-8.1-cds-31607-8.1">Migration 7.5 to 8.1 (CDS-31607 8.1)</h2>
+<p><span id="DTCSB-D200" class="rqDef">[DTCSB-D200]</span> DtcStatusBit old data type attribute:</p>
+<ul>
+<li>attribute at data object</li>
+<li>type string (not translatable)</li>
+<li>qualifier &quot;OldDtcStatusBitDataTypeQualifier&quot;</li>
+</ul>
+<p>Not relevant to identify the attribute:</p>
+<ul>
+<li>diagnostic class restriction: qualifier of 3-byte FaultMemory (if such a diagnostic class template exists)</li>
+<li>type restriction: only data objects</li>
+<li>suggested category: &quot;Editor&quot;</li>
+<li>&quot;Visible in Standard view&quot; = false</li>
+<li>&quot;Properties modifiable&quot; = false</li>
+<li>&quot;Export to specification&quot; = false</li>
+<li>default value = &quot;&quot;</li>
+</ul>
+
+<p><span id="DTCSB-R200" class="rqDef">[DTCSB-R200]</span> when loading a 7.5 file in <code>&gt;=</code> 8.0,</p>
+<ul>
+<li>if in 7.5 format the Convention values <a class='rqRef' href='../../30%20Features/DTC/DTC%20Status%20Bits.htm#DTCSB-R060' title="">[DTCSB-R060]</a> of two DtcStatusBitGroups are different,</li>
+<li>then CANdelaStudio sets the global DtcStatusBitGroupList convention...
+<ul>
+<li>to &quot;required&quot;, &quot;never&quot; or &quot;optionalDefaultNo&quot; only if all original conventions have the respective value</li>
+<li>otherwise to &quot;optionalDefaultYes&quot;</li>
+</ul></li>
+</ul>
+<p><span id="DTCSB-R210" class="rqDef">[DTCSB-R210]</span> If the data type of a DTCStatusbit data object has been changed, CANdelaStudio...</p>
+<ul>
+<li>stores the qualifier of the old data type in the attribute <a class='rqRef' href='../../30%20Features/DTC/DTC%20Status%20Bits.htm#DTCSB-D200' title="">[DTCSB-D200]</a></li>
+<li>sets the data type authorization to not modifiable, not deletable, with debug message.</li>
+</ul>
+<p><a class='rqRef' href='../../30%20Features/Export/100_ODXExport_Data%20objects%20and%20bitfields.htm#ODXE-R220' title="">[ODXE-R220]</a> ODX Export evaluates the attribute.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Fault Memory Introduction</a></li>
+<li><a href="DTC.htm">DTC Feature</a></li>
+<li><a href="../../20%20UserInterface/DTC/DTC%20Status%20Bits.htm">DTC Status Bits (Dialog)</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/DTC%20Status%20Proxy%20Component.htm">DTC Status Proxy Component</a></li>
+<li>UDS DTC Status Byte <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm#FMUDS-D050' title="">[FMUDS-D050]</a></li>
+<li>Uses of DTC Status in UDS Services <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm#FMUDS-D560' title="">[FMUDS-D560]</a></li>
+</ul>
+</body>
+</html>

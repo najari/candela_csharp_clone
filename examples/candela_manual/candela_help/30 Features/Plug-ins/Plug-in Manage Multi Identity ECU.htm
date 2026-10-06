@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Plug-in Manage Multi Identity ECU</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="plug-in-manage-multi-identity-ecu-cds-22808-8.0-cds-829">Plug-in &quot;<span id='_index_446728083' title='Plug-in' data-term='Plug-in'>Manage Multi Identity ECU</span>&quot;<span id='_index_446728084' title='Multi-Identity ECU' data-term='Multi-Identity ECU'></span><span id='_index_446728085' title='Communication Parameter: Multi-Identity ECU' data-term='Communication Parameter' data-text='Multi-Identity ECU'></span> (CDS-22808 8.0, CDS-829)</h1>
+<p>See also the procedure <a href="../../15%20Procedures/ECU/How%20to%20Manage%20a%20Multi%20Identity%20ECU.htm">How to Manage a Multi Identity ECU</a>.</p>
+<h2 id="use-case">Use-Case</h2>
+<p>Efficiently describe ECUs which are nearly identical.</p>
+<p>Example:</p>
+<ul>
+<li>Door ECU has multiple identities,</li>
+<li>... it decides at runtime whether it has been assembled left or right, front or rear.</li>
+<li>Depending on the assembly location, the ECU uses a different CAN ID:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ECU Name</th>
+<th align="left">CAN ID</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Door front left</td>
+<td align="left">CAN ID 0xA1</td>
+</tr>
+<tr class="even">
+<td align="left">Door front right</td>
+<td align="left">CAN ID 0xA2</td>
+</tr>
+<tr class="odd">
+<td align="left">Door rear left</td>
+<td align="left">CAN ID 0xA3</td>
+</tr>
+<tr class="even">
+<td align="left">Door rear right</td>
+<td align="left">CAN ID 0xA4</td>
+</tr>
+</tbody>
+</table>
+<p>In general:</p>
+<ul>
+<li>multiple ECUs (&quot;identities&quot;) are based on the same CDD file</li>
+<li>only few parameters differ, typically...
+<ul>
+<li>ECU name</li>
+<li>CAN ID (also if an ECU is used in different architectures)</li>
+</ul></li>
+</ul>
+
+<h2 id="solution-overview">Solution Overview</h2>
+<p>CANdelaStudio does not support to describe multiple ECUs directly in <strong>one</strong> CANdela document.</p>
+<p>But you may...</p>
+<ul>
+<li>maintain one document as the <strong>master</strong></li>
+<li>do each modification in the master document</li>
+<li>after each modification, <strong>clone</strong> the master document to copies, one for each other &quot;identity&quot;</li>
+<li>in each copy, again <strong>change the ECU name and the CAN ID</strong></li>
+</ul>
+<p>The plug-in <strong>Manage Multi Identity ECU</strong> automates this process:</p>
+<ul>
+<li>it provides a dialog where you define the differing properties for the other identities</li>
+<li>a button creates the document copies</li>
+<li>the copies are regular CANdela documents, which you can also edit manually if needed.</li>
+</ul>
+<p>The plug-in stores the info from the dialog in an ECU attribute in the master document.</p>
+<p>See also the procedure <a href="../../15%20Procedures/ECU/How%20to%20Manage%20a%20Multi%20Identity%20ECU.htm">How to Manage a Multi Identity ECU</a>.</p>
+<h2 id="specification">Specification</h2>
+<div class="figure">
+<img src="Images/Dialog%20Plug-in%20Manage%20Multi%20Identity%20ECU.jpg" alt="Dialog for Plug-in &quot;Manage Multi Identity ECU&quot;" />
+<p class="caption">Dialog for Plug-in &quot;Manage Multi Identity ECU&quot;</p>
+</div>
+<h3 id="definitions">Definitions</h3>
+<p><span id="PMulti-D001" class="rqDef" title="INI file structure">[PMulti-D001.0 INI file structure]</span>:</p>
+<pre><code>[Group]
+Key=Value</code></pre>
+<h3 id="dialog">Dialog</h3>
+<p><span id="PMulti-R010" class="rqDef" title="Dialog">[PMulti-R010.0 Dialog]</span>: the dialog shall describe ...</p>
+<ul>
+<li><span id="PMulti-R010-a" class="rqDef">[PMulti-R010-a]</span> a <strong>list of alternative ECUs</strong> (excluding the one described in the ECU passed to the plugin).</li>
+</ul>
+<p>For each alternative ECU:</p>
+<ul>
+<li><span id="PMulti-R010-b" class="rqDef">[PMulti-R010-b]</span> the <strong>qualifier</strong> and <strong>name</strong> (name in the current language)</li>
+<li><span id="PMulti-R010-c" class="rqDef">[PMulti-R010-c]</span> the <strong>path</strong> to save (optionally; default: temporary directory).</li>
+<li><span id="PMulti-R010-d" class="rqDef">[PMulti-R010-d]</span> For each supported interface in the ECU passed to the plugin: a list of...
+<ul>
+<li><span id="PMulti-R010-d1" class="rqDef">[PMulti-R010-d1]</span> <strong>communication parameter qualifier</strong></li>
+<li><span id="PMulti-R010-d2" class="rqDef">[PMulti-R010-d2]</span> a <strong>value</strong> for the communication parameter</li>
+</ul></li>
+</ul>
+<p><span id="PMulti-R040" class="rqDef" title="Text Area">[PMulti-R040.1 Text Area]</span>: the dialog shall contain a big edit control (text area) that edits the string of <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R020' title="Mapping to String">[PMulti-R020]</a>.</p>
+<h3 id="insert-alternative-ecu">Insert Alternative ECU</h3>
+<p><span id="PMulti-R050" class="rqDef" title="Button &quot;Insert alternative ECU&quot;">[PMulti-R050.1 Button &quot;Insert alternative ECU&quot;]</span>: the dialog shall contain a button &quot;Insert alternative ECU&quot;, for which it...</p>
+<ul>
+<li><span id="PMulti-R050-a" class="rqDef">[PMulti-R050-a]</span> ... generates a string as described in <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R020' title="Mapping to String">[PMulti-R020]</a>
+<ul>
+<li>from the communication parameters of the open ECU,</li>
+<li>the name and qualifier shall be name and qualifier of the open ECU with a suffix,</li>
+<li>path: empty <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R010-c' title="">[PMulti-R010-c]</a>.</li>
+</ul></li>
+<li><span id="PMulti-R050-b" class="rqDef">[PMulti-R050-b]</span> ... appends that string at the end of the edit control of <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R040' title="Text Area">[PMulti-R040]</a>.</li>
+</ul>
+<h3 id="generate-documents">Generate Documents</h3>
+<p><span id="PMulti-R060" class="rqDef" title="Button &quot;Generate documents&quot;">[PMulti-R060.1 Button &quot;Generate documents&quot;]</span>: the dialog shall contain a button &quot;Generate documents&quot;. On pressing the button, ...</p>
+<ul>
+<li><span id="PMulti-R070-a" class="rqDef">[PMulti-R070-a]</span> the dialog shall check the contents of the edit control syntactically as described in <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R090' title="Button &quot;Check&quot;">[PMulti-R090]</a>.</li>
+<li><span id="PMulti-R070-b" class="rqDef">[PMulti-R070-b]</span> If no syntax error is detected, document generation shall continue as follows:</li>
+<li><span id="PMulti-R060-a" class="rqDef">[PMulti-R060-a]</span> generate one <strong>CANdela document</strong> per alternative ECU...</li>
+<li><span id="PMulti-R060-b" class="rqDef">[PMulti-R060-b]</span> ... in the <strong>path</strong> defined at the alternative ECU (if path given, see <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R020-c' title="">[PMulti-R020-c]</a>, otherwise in the temporary folder);</li>
+<li><span id="PMulti-R060-c" class="rqDef">[PMulti-R060-c]</span> if not given in the path, the file name shall be the <strong>qualifier</strong> of the alternative ECU;</li>
+<li><p><span id="PMulti-R060-d" class="rqDef">[PMulti-R060-d]</span> each document shall contain the contents of the ECU passed to the dialog, but superseded by the data of <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R010' title="Dialog">[PMulti-R010]</a> -b and -d.</p>
+<p>Note: if the description of the alternative ECU contains e.g. one communication parameter, only that one is superseded, the other ones remain unchanged.</p></li>
+<li><p><span id="PMulti-R060-e" class="rqDef">[PMulti-R060-e]</span> On exporting the superseded data of <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R010-b' title="">[PMulti-R010-b]</a> to the cloned document, the dialog shall check the superseded data semantically if it corresponds to a communication parameter.</p></li>
+<li><p><span id="PMulti-R060-f" class="rqDef">[PMulti-R060-f]</span> If it detects a semantic error, &quot;Generate documents&quot; shall stop at once (the CANdela documents written to disk up to the interruption persist afterwards).</p></li>
+<li><span id="PMulti-R060-empty" class="rqDef">[PMulti-R060-empty]</span> (CDS-29391 R010) for a communication parameter that has an empty value in the edit control, ...
+<ul>
+<li>if the communication parameter is of type &quot;string&quot;, the value in the document shall be an empty string;</li>
+<li>if the communication parameter is <em>not</em> of type &quot;string&quot; (including an enum), the value in the document shall be the same as in the master document (i.e. generation shall ignore the empty string).</li>
+<li>for communication parameter type, see <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020' title="Attribute Type">[ATTR-R020]</a>.</li>
+</ul></li>
+</ul>
+<h3 id="okcancel">OK/Cancel</h3>
+<p><span id="PMulti-R075" class="rqDef" title="Pressing OK">[PMulti-R075.1 Pressing OK]</span>: on pressing OK, ...</p>
+<ul>
+<li><span id="PMulti-R075-check" class="rqDef">[PMulti-R075-check]</span> the dialog shall check the contents of the edit control against the syntax described in <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R020' title="Mapping to String">[PMulti-R020]</a>.</li>
+<li><span id="PMulti-R075-nok" class="rqDef">[PMulti-R075-nok]</span> If the contents violates the syntax, the dialog shall let the user confirm to leave the dialog.</li>
+<li><span id="PMulti-R075-a" class="rqDef">[PMulti-R075-a]</span> If the contents matches the syntax, or the user confirms to leave, the dialog shall be left obeying <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R030' title="ECU Attribute">[PMulti-R030]</a> and <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R035' title="">[PMulti-R035]</a></li>
+<li><span id="PMulti-R075-b" class="rqDef">[PMulti-R075-b]</span> otherwise, the dialog shall inform the user.</li>
+</ul>
+<p><span id="PMulti-R080" class="rqDef" title="Cancel">[PMulti-R080.0 Cancel]</span>: on leaving with ESC or Cancel, ...</p>
+<ul>
+<li><span id="PMulti-R080-a" class="rqDef">[PMulti-R080-a]</span> if the user has modified the contents of the control of <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R040' title="Text Area">[PMulti-R040]</a>,</li>
+<li><span id="PMulti-R080-b" class="rqDef">[PMulti-R080-b]</span> the dialog shall confirm with the user whether to really leave the dialog and discard all changes.</li>
+</ul>
+<h2 id="check">Check</h2>
+<p><span id="PMulti-R090" class="rqDef" title="Button &quot;Check&quot;">[PMulti-R090.1 Button &quot;Check&quot;]</span>: the dialog shall contain a button &quot;Check&quot;, which checks the syntax of the edit control contents against the syntax described in <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R020' title="Mapping to String">[PMulti-R020]</a>.</p>
+<ul>
+<li><span id="PMulti-R090-empty" class="rqDef">[PMulti-R090-empty]</span> (CDS-29391 R001): the check shall ignore communication parameters with empty contents.</li>
+<li><span id="PMulti-R090-key" class="rqDef">[PMulti-R090-key]</span>: the check requires the key to contain only <code>[a-zA-Z0-9_]</code> (CDS-29662 R010 a).</li>
+</ul>
+<p>The check shall...</p>
+<ul>
+<li>... <span id="PMulti-R090-string" class="rqDef">[PMulti-R090-string]</span> for a communication parameter of type string, text (translatable), or enumeration <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020' title="Attribute Type">[ATTR-R020]</a>: ignore the value (CDS-29662 R010 b);</li>
+<li>... <span id="PMulti-R090-nonString" class="rqDef">[PMulti-R090-nonString]</span>: for all other types, require the value to contain only <code>[a-zA-Z0-9_]</code> (it may be empty) (CDS-29662 R010 b).</li>
+</ul>
+<p>For the first line that does not match the syntax, the dialog shall...</p>
+<ul>
+<li><span id="PMulti-R090-a" class="rqDef">[PMulti-R090-a]</span> inform the user in a static text,</li>
+<li><span id="PMulti-R090-b" class="rqDef">[PMulti-R090-b]</span> select the line (or even part of it),</li>
+<li><span id="PMulti-R090-c" class="rqDef">[PMulti-R090-c]</span> stay in the dialog.</li>
+<li><span id="PMulti-R090-d" class="rqDef">[PMulti-R090-d]</span> If no syntax error is detected, the dialog shall inform the user in a static text.</li>
+</ul>
+<h2 id="storage">Storage</h2>
+<p><span id="PMulti-R020" class="rqDef" title="Mapping to String">[PMulti-R020.0 Mapping to String]</span>: the dialog shall map the info of <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R010' title="Dialog">[PMulti-R010]</a> to a string as follows (= structure of an INI file, see <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-D001' title="INI file structure">[PMulti-D001]</a>):</p>
+<ul>
+<li><span id="PMulti-R020-a" class="rqDef">[PMulti-R020-a]</span> the <strong>ECU qualifier</strong> is a group</li>
+<li><span id="PMulti-R020-b" class="rqDef">[PMulti-R020-b]</span> <strong>name</strong> is a key/value pair in the group, with key &quot;Name&quot;</li>
+<li><span id="PMulti-R020-c" class="rqDef">[PMulti-R020-c]</span> <strong>path</strong> is a key/value pair in the group, with key &quot;Path&quot;</li>
+<li><span id="PMulti-R020-d" class="rqDef">[PMulti-R020-d]</span> each <strong>communication parameter value</strong> is a key/value pair, with
+<ul>
+<li><span id="PMulti-R020-d1" class="rqDef">[PMulti-R020-d1]</span> <strong>key</strong> = interface qualifier &quot;.&quot; communication parameter qualifier</li>
+<li><span id="PMulti-R020-d2" class="rqDef">[PMulti-R020-d2]</span> <strong>value</strong> = the value shown in CANdelaStudio (e.g. enum symbol)</li>
+</ul></li>
+<li><span id="PMulti-R020-e" class="rqDef">[PMulti-R020-e]</span> empty lines shall be ignored</li>
+<li><p><span id="PMulti-R020-f" class="rqDef">[PMulti-R020-f]</span> lines starting with &quot;#&quot; shall be ignored (= comments)</p>
+<p>Example:</p>
+<pre><code>  [DoorFrontLeft]
+  Name=Tür vorne links
+  Path=
+  CAN_D.CANID=0x602</code></pre></li>
+<li><span id="PMulti-R030" class="rqDef" title="ECU Attribute">[PMulti-R030.0 ECU Attribute]</span>: the dialog shall take/store the string defined in <a class='rqRef' href='../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm#PMulti-R020' title="Mapping to String">[PMulti-R020]</a> from the value of an ECU attribute with...
+<ul>
+<li><span id="PMulti-R030-a" class="rqDef">[PMulti-R030-a]</span> <strong>qualifier</strong> &quot;MultiECU&quot;</li>
+<li><span id="PMulti-R030-b" class="rqDef">[PMulti-R030-b]</span> <strong>type</strong> = language independent</li>
+</ul></li>
+<li><span id="PMulti-R035" class="rqDef">[PMulti-R035.0]</span>: if such an attribute does not exist, the dialog shall create one on OK exit, with
+<ul>
+<li><span id="PMulti-R035-c" class="rqDef">[PMulti-R035-c]</span> <strong>category</strong> &quot;Editor&quot;</li>
+<li><span id="PMulti-R035-d" class="rqDef">[PMulti-R035-d]</span> <strong>name</strong> &quot;MultiECU&quot;</li>
+<li><span id="PMulti-R035-e" class="rqDef">[PMulti-R035-e]</span> <strong>authorization</strong>: not visible</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Procedure <a href="../../15%20Procedures/ECU/How%20to%20Manage%20a%20Multi%20Identity%20ECU.htm">How to Manage a Multi Identity ECU</a></li>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a></li>
+<li><a href="../../30%20Features/Attributes/Special%20Attributes.htm">Special Attributes</a></li>
+<li><a href="../../30%20Features/Interface/Communication%20Parameter.htm">Communication Parameter</a></li>
+<li><a href="../../30%20Features/Plug-ins/Introduction.htm">Plug-in Introduction</a></li>
+</ul>
+</body>
+</html>

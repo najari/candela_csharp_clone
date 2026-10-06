@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Event Operations</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="events-operations-cds-42224-v12">Events Operations (CDS-42224 v12)</h1>
+<p>See also the <a href="Events%20Introduction.htm">Events Introduction</a>, the <a href="Events%20Data%20Model.htm">Events Data Model</a> and the Event <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm#events">Consistency Conditions</a>.</p>
+<h2 id="supports-events">Supports Events</h2>
+<p><span id="EVOP-R010" class="rqDef">[EVOP-R010]</span> Modify the document-level Boolean switch <strong>Supports Events</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a>.</p>
+<ul>
+<li>only in Expert View
+<ul>
+<li>Motivation: let the person responsible for the template (process) decide.</li>
+</ul></li>
+<li>User Interface: File | Properties | Document Info <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R600' title="">[DOCUI-R600]</a></li>
+<li>When set from true to false:
+<ul>
+<li>CANdelaStudio deletes all Events <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a> in the document.</li>
+</ul></li>
+</ul>
+<h2 id="authorization">Authorization</h2>
+<p><a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> All the following operations are subject to basic restrictions for editing in a diagnostic instance. For the effect in the user interface, see <a class='rqRef' href='../../20 UserInterface\Event\Events.htm#EVUI-R010' title="">[EVUI-R010]</a>.</p>
+<h2 id="event-list">Event List</h2>
+<p>See the Event list in the user interface <a class='rqRef' href='../../20 UserInterface\Event\Events.htm#EVUI-R020' title="">[EVUI-R020]</a>.</p>
+<p><span id="EVOP-R020" class="rqDef" title="New">[EVOP-R020 New]</span> in a Diagnostic Instance, create an Event</p>
+<ul>
+<li>CANdelaStudio creates an Event with</li>
+<li>... <strong>name</strong> and <strong>qualifier</strong> <strong>unique</strong> in the Events list</li>
+<li>... atomic Event properties set to the <strong>default values</strong> specified in the <a href="Events%20Data%20Model.htm">data model</a>
+<ul>
+<li>especially this means <strong>no reference</strong> to Operation Cycle <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R120' title="">[EV-R120]</a>, Enable Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R200' title="">[EV-R200]</a>, Storage Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R210' title="">[EV-R210]</a>, Debounce Algorithm <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R220' title="">[EV-R220]</a>, Connected Indicators <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R140' title="">[EV-R140]</a></li>
+</ul></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+<li>not possible if the flag &quot;Supports Events&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a> is false</li>
+</ul>
+<p><span id="EVOP-R030" class="rqDef" title="Modify">[EVOP-R030 Modify]</span> modify an Event</p>
+<ul>
+<li>respects the Event <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm#events">Consistency Conditions</a></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EVOP-R040" class="rqDef" title="Delete">[EVOP-R040 Delete]</span> delete an Event</p>
+<ul>
+<li>CANdelaStudio deletes the Event from the Event list <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a> in the diagnostic instance.</li>
+<li>Note: since the Event carries the association to a DTC <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a>, that association is automatically deleted, too.</li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<h2 id="clipboard-operations">Clipboard Operations</h2>
+<p><span id="EVOP-R050" class="rqDef">[EVOP-R050]</span> Paste Event <strong>within</strong> a Diagnostic Instance</p>
+<ul>
+<li>inserts a copy of the Event</li>
+<li>with a number suffix for name and qualifier to make it unique (as usual)</li>
+<li><span id="EVOP-R050-Ref" class="rqDef">[EVOP-R050-Ref]</span> <strong>keeps</strong> the optional reference to a DTC <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a></li>
+<li>references the same Event Master Data than the original Event</li>
+<li>respects the Event <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm#events">Consistency Conditions</a></li>
+<li>not possible if the flag &quot;Supports Events&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a> is false
+<ul>
+<li>this should not be relevant, since the Diagnostic Instance cannot contain an Event to be copied.</li>
+</ul></li>
+</ul>
+<p><span id="EVOP-R060" class="rqDef">[EVOP-R060]</span> Paste Event into a <strong>different</strong> Diagnostic Instance</p>
+<ul>
+<li>inserts a copy of the Event</li>
+<li>makes name and qualifier unique if necessary (as usual)</li>
+<li><span id="EVOP-R060-Master" class="rqDef">[EVOP-R060-Master]</span> if the source Event references an Event Master Data object <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D040' title="">[EV-D040]</a>,
+<ul>
+<li>and the target diagnostic instance contains an Event Master Data object M with the same qualifier (other properties may differ),</li>
+<li>then the operation lets the Event copy reference that object M;</li>
+<li>otherwise the operation copies the object and lets the resulting Event reference the copy.</li>
+</ul></li>
+<li><span id="EVOP-R060-Ref" class="rqDef">[EVOP-R060-Ref]</span> if the source Event references a DTC <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a>,
+<ul>
+<li>and the target Diagnostic Instance contains a DTC with the same code,</li>
+<li>then the Event copy references that DTC,</li>
+<li>otherwise the Event does not reference a DTC.</li>
+<li>Cf. Procedure <a href="../../15%20Procedures/Event/How%20to%20Copy%20Events%20and%20DTCs.htm">How to Copy Events and DTCs</a> and DTC Paste <a class='rqRef' href='../../30%20Features/DTC/DTC%20Operations.htm#DTCOP-R040' title="">[DTCOP-R040]</a>.</li>
+</ul></li>
+<li>respects the Event <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm#events">Consistency Conditions</a></li>
+<li>not possible if the flag &quot;Supports Events&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a> is false</li>
+</ul>
+<h2 id="operation-cycle">Operation Cycle</h2>
+<p><span id="EVOP-R510" class="rqDef" title="New">[EVOP-R510 New]</span> in a Diagnostic Instance, create an Operation Cycle.</p>
+<ul>
+<li>respects the Event <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm#events">Consistency Conditions</a></li>
+</ul>
+<p><span id="EVOP-R520" class="rqDef" title="Modify">[EVOP-R520 Modify]</span> modify an Operation Cycle.</p>
+<ul>
+<li>respects the Event <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm#events">Consistency Conditions</a></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EVOP-R530" class="rqDef" title="Delete">[EVOP-R530 Delete]</span> delete an Operation Cycle.</p>
+<ul>
+<li>the operation...
+<ul>
+<li>deletes the Operation Cycle from the list of Operation Cycles <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a> in the diagnostic instance</li>
+<li>in Events that reference the Operation Cycle <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R120' title="">[EV-R120]</a>, resets the reference</li>
+<li>in Events where an Indicator Connection <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R140' title="">[EV-R140]</a> references the Operation Cycle as its Healing Cycle <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R320' title="">[EV-R320]</a>, deletes the Indicator Connection.</li>
+</ul></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<h2 id="indicator">Indicator</h2>
+<p><span id="EVOP-R610" class="rqDef" title="New">[EVOP-R610 New]</span> in a Diagnostic Instance, create an Indicator.</p>
+<p><span id="EVOP-R620" class="rqDef" title="Modify">[EVOP-R620 Modify]</span> modify an Indicator.</p>
+<ul>
+<li>respects the Event <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm#events">Consistency Conditions</a></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EVOP-R630" class="rqDef" title="Delete">[EVOP-R630 Delete]</span> delete an Indicator.</p>
+<ul>
+<li>the operation...
+<ul>
+<li>deletes the Indicator from the list of Indicators <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R600' title="">[EV-R600]</a> in the diagnostic instance</li>
+<li>in Events where an Indicator Connection <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R140' title="">[EV-R140]</a> references the Indicator <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R300' title="">[EV-R300]</a>, deletes the Indicator Connection.</li>
+</ul></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<h2 id="condition">Condition</h2>
+<p><span id="EVOP-R710" class="rqDef" title="New">[EVOP-R710 New]</span> in a Diagnostic Instance, create a Condition.</p>
+<ul>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EVOP-R720" class="rqDef" title="Modify">[EVOP-R720 Modify]</span> modify a Condition.</p>
+<ul>
+<li>respects the Event <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm#events">Consistency Conditions</a></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EVOP-R730" class="rqDef" title="Delete">[EVOP-R730 Delete]</span> delete a Condition.</p>
+<ul>
+<li>the operation...
+<ul>
+<li>deletes the Condition from the list of Conditions <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a> in the diagnostic instance</li>
+<li>in Events that reference the Condition as Enable Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R200' title="">[EV-R200]</a> or Storage Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R210' title="">[EV-R210]</a>, resets the reference</li>
+<li>in Condition Groups that contain the Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R830' title="">[EV-R830]</a>, removes the Condition
+<ul>
+<li>... even if the Condition Group is empty afterwards, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R830-nonEmpty' title="">[EV-R830-nonEmpty]</a>.</li>
+</ul></li>
+</ul></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<h2 id="condition-groups">Condition Groups</h2>
+<p><span id="EVOP-R810" class="rqDef" title="New">[EVOP-R810 New]</span> in a Diagnostic Instance, create a Condition Group.</p>
+<ul>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EVOP-R820" class="rqDef" title="Add">[EVOP-R820 Add]</span> adds a Condition to the Condition Group</p>
+<ul>
+<li>respects the Event <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm#events">Consistency Conditions</a>
+<ul>
+<li>especially <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R830-unique' title="">[EV-R830-unique]</a></li>
+</ul></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EVOP-R825" class="rqDef" title="Remove">[EVOP-R825 Remove]</span> removes a Condition from the Condition Group</p>
+<ul>
+<li>the operation...
+<ul>
+<li>removes the Condition from the Condition Group <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R830' title="">[EV-R830]</a>
+<ul>
+<li>... even if the Condition Group is empty afterwards, see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R830-nonEmpty' title="">[EV-R830-nonEmpty]</a>.</li>
+</ul></li>
+</ul></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EVOP-R830" class="rqDef" title="Delete">[EVOP-R830 Delete]</span> removes a Condition Group from the diagnostic instance</p>
+<ul>
+<li>the operation...
+<ul>
+<li>deletes the Condition Group from the list of Condition Groups <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800' title="">[EV-R800]</a> in the diagnostic instance</li>
+<li>in Events that reference the Condition Group as Enable Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R200' title="">[EV-R200]</a> or Storage Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R210' title="">[EV-R210]</a>, resets the reference</li>
+</ul></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<h2 id="debounce-algorithm">Debounce Algorithm</h2>
+<p><span id="EVOP-R1120" class="rqDef" title="Modify">[EVOP-R1120 Modify]</span> modify a Debounce Algorithm.</p>
+<ul>
+<li>respects the Event <a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm#events">Consistency Conditions</a></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EVOP-R1130" class="rqDef" title="Delete">[EVOP-R1130 Delete]</span> delete a Debounce Algorithm.</p>
+<ul>
+<li>the operation...
+<ul>
+<li>deletes the Debounce Algorithm from the list of Debounce Algorithms <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1100' title="">[EV-R1100]</a> in the diagnostic instance</li>
+<li>in Events that reference the Debounce Algorithm <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R220' title="">[EV-R220]</a>, resets the reference</li>
+</ul></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<h3 id="counter-based-debounce-algorithm">Counter-Based Debounce Algorithm</h3>
+<p><span id="EVOP-R1210" class="rqDef" title="New">[EVOP-R1210 New]</span> in a Diagnostic Instance, create a Counter-Based Debounce Algorithm.</p>
+<ul>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<h3 id="time-based-debounce-algorithm">Time-Based Debounce Algorithm</h3>
+<p><span id="EVOP-R1310" class="rqDef" title="New">[EVOP-R1310 New]</span> in a Diagnostic Instance, create a Time-Based Debounce Algorithm.</p>
+<ul>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<h2 id="event-and-dtc">Event and DTC</h2>
+<p><span id="EVOP-R230" class="rqDef">[EVOP-R230]</span> Associate an Event with a DTC:</p>
+<ul>
+<li>lets the Event reference <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a> the DTC
+<ul>
+<li>ensuring <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R240' title="">[EV-R240]</a>: the Event and the referenced DTC must both exist within the same diagnostic instance.</li>
+</ul></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EVOP-R235" class="rqDef">[EVOP-R235]</span> Associate an Event with a different DTC:</p>
+<ul>
+<li>lets the Event reference <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a> the DTC
+<ul>
+<li>ensuring <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R240' title="">[EV-R240]</a>: the Event and the referenced DTC must both exist within the same diagnostic instance.</li>
+</ul></li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+<li>Note: used e.g. in...
+<ul>
+<li>Delete DTC in DTC Pool <a class='rqRef' href='../../30%20Features/DTC/DTC%20Operations.htm#DTCP-R018' title="Delete DTC in DTC Pool">[DTCP-R018]</a></li>
+<li>DTC: Replace Reference with Copy <a class='rqRef' href='../../30%20Features/DTC/DTC%20Operations.htm#DTCOP-R050' title="Replace Reference with Copy">[DTCOP-R050]</a></li>
+<li>DTC: Replace Copy with Reference <a class='rqRef' href='../../30%20Features/DTC/DTC%20Operations.htm#DTCOP-R060' title="Replace Copy with Reference">[DTCOP-R060]</a></li>
+</ul></li>
+</ul>
+<p><span id="EVOP-R240" class="rqDef">[EVOP-R240]</span> Remove the association of an Event with a DTC</p>
+<ul>
+<li>as a result, the Event references <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a> no DTC</li>
+<li>possible in Standard View, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EVOP-R244" class="rqDef">[EVOP-R244]</span> Create / Map Events</p>
+<div class="figure">
+<img src="Images/CreateAndMapEvents.jpg" alt="Data Constellations for Create / Map Events" />
+<p class="caption">Data Constellations for Create / Map Events</p>
+</div>
+<ul>
+<li><strong>for each DTC</strong> in a given list of DTCs,
+<ul>
+<li>no matter whether Events exist that reference the DTC <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a> or not,</li>
+</ul></li>
+<li>if there is an <strong>Event</strong> whose <strong>name</strong> equals the <strong>DTC error text</strong>,
+<ul>
+<li>if the Event already references any DTC <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a>: no action (with status message)</li>
+<li>otherwise: lets the Event <strong>reference the DTC</strong> <a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R230' title="">[EVOP-R230]</a></li>
+</ul></li>
+<li>otherwise: <strong>creates a new Event</strong> <a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R020' title="New">[EVOP-R020]</a>:
+<ul>
+<li>sets Event name and qualifier from the DTC error text (no FTB/FMI handling),</li>
+<li>if the resulting qualifier already existed: makes it unique,</li>
+<li>leaves defaults for all other Event properties.</li>
+<li>lets the new Event reference the DTC <a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R230' title="">[EVOP-R230]</a>.</li>
+</ul></li>
+<li>possible in Standard View,
+<ul>
+<li>see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul></li>
+<li>not possible if the flag &quot;Supports Events&quot; <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R010' title="">[EV-R010]</a> is false</li>
+<li>See also the user interface <a class='rqRef' href='../../20 UserInterface\Event\DTC Events Mapping.htm#EVUI-R284' title="">[EVUI-R284]</a>.</li>
+</ul>
+<p><span id="EVOP-R284" class="rqDef">[EVOP-R284]</span> Create / Map DTCs</p>
+<div class="figure">
+<img src="Images/CreateAndMapDTCs.jpg" alt="Data Constellations for Create / Map DTCs" />
+<p class="caption">Data Constellations for Create / Map DTCs</p>
+</div>
+<ul>
+<li><strong>for each Event</strong> in a given list of Events
+<ul>
+<li>that does not reference a DTC <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R230' title="">[EV-R230]</a>,</li>
+</ul></li>
+<li>if there is no <strong>DTC</strong> whose <strong>error text</strong> equals the Event <strong>name</strong>,
+<ul>
+<li><strong>creates a new DTC</strong> <a class='rqRef' href='../../30%20Features/DTC/DTC%20Operations.htm#DTCOP-R010' title="Create DTC">[DTCOP-R010]</a>,</li>
+<li>sets the error text from the Event name (no handling for FTB/FMI),</li>
+<li>sets the error code to the maximum existing error code <code>+ 1</code>
+<ul>
+<li>wrapping around from 0xFFFFFF to 0x000000</li>
+<li>avoiding error codes used by DTCs &quot;Required&quot; or &quot;Required as Reference&quot; <a class='rqRef' href='../../30%20Features/DTC/DTC%20Authorization.htm#DTC-R012' title="Required in all Variants">[DTC-R012]</a> in the DTC pool</li>
+</ul></li>
+</ul></li>
+<li>lets the Event <strong>reference</strong> the (existing or new) DTC <a class='rqRef' href='../../30%20Features/Event/Event%20Operations.htm#EVOP-R230' title="">[EVOP-R230]</a></li>
+<li>possible in Standard View,
+<ul>
+<li>see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a> and</li>
+<li><a class='rqRef' href='../../30%20Features/DTC/DTC%20Operations.htm#DTCOP-R010-PoolOnly' title="">[DTCOP-R010-PoolOnly]</a> document authorization &quot;Creation of DTCs&quot;</li>
+</ul></li>
+<li>See also the user interface <a class='rqRef' href='../../20 UserInterface\Event\DTC Events Mapping.htm#EVUI-R284' title="">[EVUI-R284]</a>.</li>
+</ul>
+<h2 id="event-operations-in-document-context">Event Operations in Document Context</h2>
+<p><span id="EVOP-R500" class="rqDef">[EVOP-R500]</span> For Diagnostic Instance see...</p>
+<ul>
+<li>Paste <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R010-Events' title="">[DIOP-R010-Events]</a></li>
+<li>Paste as Reference <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D030-Events' title="">[DIOP-D030-Events]</a></li>
+<li>Replace Reference with Copy <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R040-Events' title="">[DIOP-R040-Events]</a></li>
+<li>Replace Copy with Reference in Base Variant <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R050-Events' title="">[DIOP-R050-Events]</a></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Procedure <a href="../../15%20Procedures/Event/How%20to%20Copy%20Events%20and%20DTCs.htm">How to Copy Events and DTCs</a></li>
+<li><a href="Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="Events%20Data%20Model.htm">Events Data Model</a></li>
+</ul>
+</body>
+</html>

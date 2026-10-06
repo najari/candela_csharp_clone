@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Object Paths</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="object-paths">Object paths<span id='_index_446727923' title='Path' data-term='Path'></span></h1>
+<h2 id="use-cases">Use cases</h2>
+<ul>
+<li>in a dialog, show the position of a diagnostic object within the document (e.g. in &quot;References&quot; dialog)</li>
+<li>remember the position of a diagnostic object within a document and again navigate to it later</li>
+<li>specify a diagnostic object to another person having the same document</li>
+<li>refer to a diagnostic object within a document (e.g. from an <a href="../../30%20Features/Variant/Variant%20Identification.htm">identifying feature</a>; as of CANdelaStudio 8.2)</li>
+</ul>
+<h2 id="definition">Definition</h2>
+<p>The structure of an object path resembles that of an URL <code>protocol://host/path...</code>:</p>
+<ul>
+<li><strong>syntax</strong> (corresponds with URL <code>protocol</code>): <code>npath</code>, <code>qpath</code>, <code>rpath</code>, <code>xpath</code>, see next chapter.</li>
+<li><strong>host</strong>: (not used, like in URLs where the default “localhost” may be omitted)</li>
+<li><strong>path</strong>: starts with a top-level object of a CANdela document, e.g. a variant. An object path does not include the ECU.</li>
+</ul>
+<p>The path of an object contains the objects in the document structure, starting at the ECU, down to the object.</p>
+<h2 id="syntax">Syntax</h2>
+<ul>
+<li><code>npath</code>: a <a href="#npath">name path</a> contains the names of objects, like <code>npath:/C Sample</code></li>
+<li><code>qpath</code>: a <a href="#qpath">qualifier path</a> contains the language-independent qualifiers, like <code>qpath:/C_Sample</code></li>
+<li><code>rpath</code>: a <a href="#rpath">runtime path</a> contains a path to a service, like <code>rpath://ABS_ESP/C_Sample/DefaultSession_Start</code></li>
+<li>(no syntax part) denoting an <a href="#xpath">ODX xpath</a>, like <code>ODX/DIAG-LAYER-CONTAINER[SHORT-NAME='ABS_ESP']/ECU-VARIANTS/ECU-VARIANT[SHORT-NAME='C_Sample']</code></li>
+<li>(no syntax part) denoting a <strong>qpath</strong> - if you leave out the syntax part, CANdelaStudio assumes that the path is a qpath, i.e. primarily contains qualifiers.</li>
+</ul>
+<h2 id="path-elements">Path Elements</h2>
+<p>Path elements are separated by a forward slash <code>/</code>.</p>
+<p>If an object contains multiple types of other objects, at this place the path to a contained object includes an &quot;object type selector&quot; (see below) in square brackets to the left of the name or qualifier of the contained object. The selector may be omitted if the contained object is the main type contained. E.g. in an ECU, the main contained type is the variant.</p>
+<p>A path can contain both names and qualifiers:</p>
+<ul>
+<li>names may be placed in double quotation marks <code>&quot;Present Values...&quot;</code>;</li>
+<li>qualifiers may be placed in single quotation marks <code>'Present_Values'</code>.</li>
+</ul>
+<p>If a name contains one of the characters that have special meaning in a path (i.e. <code>/</code>, <code>[</code>, <code>]</code>, double and single quotation marks), then you can &quot;escape&quot; that character with a reverse slash <code>\</code> placed in front of the character.</p>
+<h2 id="npath">Name Path (<span id='_index_446727924'>npath</span>)</h2>
+<p>A <a href="Name.htm">name</a> path will always be created based on the language in which the document has been opened.</p>
+<h3 id="npath-examples">npath Examples</h3>
+<ul>
+<li>Name path: <code>npath:/Common Diagnostics/Start Session/Default Session</code></li>
+<li>Path to a data type: <code>npath://[DATATYPE]HexDump (1Byte)</code></li>
+<li>Path to a data type which contains <code>/</code> in the name: <code>npath://[DATATYPE]HexDump on\/off (1Byte)</code></li>
+</ul>
+<h2 id="qpath">Qualifier Path (<span id='_index_446727925'>qpath</span>)</h2>
+<p>A <a href="Qualifier.htm">qualifier</a> path can be processed independent from the language in which the document has been opened.</p>
+<p>Since qualifiers cannot contain special characters, no escape characters are needed for such path elements.</p>
+<h3 id="qpath-examples">qpath Examples</h3>
+<ul>
+<li><code>qpath:/V/[DID]Braking</code></li>
+<li><code>qpath:/Common_Diagnostics/Identification/ECU_Identification</code></li>
+</ul>
+<h2 id="xpath">ODX Path (<span id='_index_446727926'>xpath</span>)</h2>
+<h3 id="use-case">Use-case</h3>
+<p>Resolve <strong>ODX xpath expressions</strong> (e.g. thrown by an ASAM ODX checker) within CANdelaStudio (CDS-9744, 7.1 SP2).</p>
+<h3 id="definition-1">Definition</h3>
+<p>Since the CANdela data model differs from ODX, CANdelaStudio cannot directly map an ODX xpath to an opened CANdela document. Therefore CANdelaStudio internally uses the ODX export to find an ODX element that matches the xpath.</p>
+<p>There are 3 <strong>ODX versions</strong> available: 2.0.1, 2.1.0, 2.2.0. CANdelaStudio uses the ODX version from the <strong>last ODX export</strong> you executed interactively in CANdelaStudio (the info is available even after a re-start of CANdelaStudio - stored in the registry). During resolution of an xpath, CANdelaStudio writes the used ODX version to the <a href="../../30%20Features/CANdelaStudio%20Editor/Logging.htm">logging</a>.</p>
+<p>Different ODX checkers generate different <strong>variations of xpaths</strong> (CDS-23830, 7.1 SP2). In the following xpath,</p>
+<pre><code>ODX/DIAG-LAYER-CONTAINER/ECU-VARIANTS/ECU-VARIANT[SHORT-NAME=&#39;SCRCM3_B30P0&#39;]/DIAG-COMMS/DIAG-SERVICE[100]</code></pre>
+<p>there are multiple ways to identify the <code>ECU-VARIANT</code>:</p>
+<ul>
+<li>SHORT-NAME </li>
+<li>ID </li>
+<li>index </li>
+</ul>
+<p>The xpath may optionally start with &quot;/&quot; (CDS-24166, 7.1 SP2) - both are accepted:</p>
+<pre><code> ODX/...
+/ODX/...</code></pre>
+<h3 id="xpath-examples">xpath Examples</h3>
+<pre><code>ODX/DIAG-LAYER-CONTAINER/ECU-VARIANTS/ECU-VARIANT[SHORT-NAME=&#39;SCRCM3_B30P0&#39;]/DIAG-COMMS/DIAG-SERVICE[100]
+ODX/DIAG-LAYER-CONTAINER[SHORT-NAME=&#39;ABS_ESP&#39;]/ECU-VARIANTS/ECU-VARIANT[SHORT-NAME=&#39;C_Sample&#39;]</code></pre>
+<h2 id="rpath">Runtime Path (<span id='_index_446727927'>rpath</span>)</h2>
+<h3 id="use-case-1">Use-case</h3>
+<p>Start CANdelaStudio via URL (CDS-11284, 6.0) from a CANoe.DiVa report or an HTML page and navigate to a given service using a path to the service.</p>
+<h3 id="definition-2">Definition</h3>
+<p>A <strong>runtime path</strong> has the form:</p>
+<pre><code>rpath://&lt;ECU qualifier&gt;/&lt;Variant qualifier&gt;/&lt;Service Shortcut qualifier&gt;</code></pre>
+<p>The &quot;syntax&quot; is &quot;rpath&quot; (according to &quot;npath&quot; and &quot;qpath&quot;).</p>
+<p>Note the two <code>//</code>.</p>
+<p>The path denotes a service, ending in a <a href="../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm">service shortcut qualifier</a>.</p>
+<p>CANdelaStudio ignores all elements to the right of the service shortcut qualifier element of the path.</p>
+<h3 id="rpath-examples">rpath Examples</h3>
+<pre><code>rpath://ABS_ESP/BaseVariant/FaultMemory_ReadEnvironmentData
+rpath://ABS_ESP/C_Sample/DefaultSession_Start</code></pre>
+<h2 id="which-objects-have-a-path">Which Objects Have a Path?</h2>
+<p>Any object with a qualifier, i.e. ECU, Variant, Diagnostic Class, Diagnostic Instance, Job Container, Service, Job, Data Object, Data Type, Default Attribute, Overridden Attribute, Attribute Category, State, State Group, Vehicle System Group etc.</p>
+<p>No other object has a path (e.g. DTC column, conversion in data type etc.).</p>
+<h2 id="object-type-selector">Object Type Selectors</h2>
+<p><span id="OBJP-R200" class="rqDef">[OBJP-R200]</span> <strong>Object Type Selectors</strong> for npath and qpath:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Object Type Selector</th>
+<th align="left">CANdela Object</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AFMSNAPSHOTDATA</td>
+<td align="left">Snapshot Data (CDS-71541 v13)</td>
+</tr>
+<tr class="even">
+<td align="left">AFMSNAPSHOTRECORD</td>
+<td align="left">Snapshot Record (CDS-71541 v13)</td>
+</tr>
+<tr class="odd">
+<td align="left">AFMEXTENDEDDATARECORD</td>
+<td align="left">Extended Data Record (CDS-71541 v13)</td>
+</tr>
+<tr class="even">
+<td align="left">ATTRCAT</td>
+<td align="left">Attribute Category</td>
+</tr>
+<tr class="odd">
+<td align="left">COMPDEFATTR</td>
+<td align="left">Default attribute (Components)</td>
+</tr>
+<tr class="even">
+<td align="left">CONDITION</td>
+<td align="left"><span id="OBJP-R200-Cond" class="rqDef">[OBJP-R200-Cond]</span> Condition <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R700' title="">[EV-R700]</a> and Condition Group <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R800' title="">[EV-R800]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">CONTENT (optional)</td>
+<td align="left">Content of a diagnostic instance</td>
+</tr>
+<tr class="even">
+<td align="left">DATAOBJDEFATTR</td>
+<td align="left">Default attribute (Data object)</td>
+</tr>
+<tr class="odd">
+<td align="left">DATAOBJECT (optional)</td>
+<td align="left">Data object</td>
+</tr>
+<tr class="even">
+<td align="left">DATATYPE</td>
+<td align="left">Data type</td>
+</tr>
+<tr class="odd">
+<td align="left">DATATYPEDEFATTR</td>
+<td align="left">Default attribute (Data type)</td>
+</tr>
+<tr class="even">
+<td align="left">DEBOUNCEALGORITHM</td>
+<td align="left"><span id="OBJP-R200-DebAlg" class="rqDef">[OBJP-R200-DebAlg]</span> Debounce Algorithm <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1100' title="">[EV-R1100]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">DIAGCLASS (optional)</td>
+<td align="left">Diagnostic class</td>
+</tr>
+<tr class="even">
+<td align="left">DIAGCLASSDEFATTR</td>
+<td align="left">Default attribute (Diagnostic class)</td>
+</tr>
+<tr class="odd">
+<td align="left">DIAGCLASSSERVICETMPLDEFATTR</td>
+<td align="left">Default attribute (Used Protocol services)</td>
+</tr>
+<tr class="even">
+<td align="left">DIAGCLASSTMPL</td>
+<td align="left">Diagnostic class template</td>
+</tr>
+<tr class="odd">
+<td align="left">DIAGCLASSTMPLDEFATTR</td>
+<td align="left">Default attribute (Diagnostic class template)</td>
+</tr>
+<tr class="even">
+<td align="left">DIAGINST (optional)</td>
+<td align="left">Diagnostic instance</td>
+</tr>
+<tr class="odd">
+<td align="left">DIAGINSTDEFATTR</td>
+<td align="left">Default attribute (Diagnostic instance)</td>
+</tr>
+<tr class="even">
+<td align="left">DID</td>
+<td align="left">DID</td>
+</tr>
+<tr class="odd">
+<td align="left">DOCTMPL</td>
+<td align="left">Document Template Information</td>
+</tr>
+<tr class="even">
+<td align="left">ECU (optional)</td>
+<td align="left">ECU</td>
+</tr>
+<tr class="odd">
+<td align="left">ECUDEFATTR</td>
+<td align="left">Default attribute (ECU)</td>
+</tr>
+<tr class="even">
+<td align="left">EVENT</td>
+<td align="left"><span id="OBJP-R200-Event" class="rqDef">[OBJP-R200-Event]</span> Event <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020' title="">[EV-R020]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">INDICATOR</td>
+<td align="left"><span id="OBJP-R200-Ind" class="rqDef">[OBJP-R200-Ind]</span> Indicator <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R600' title="">[EV-R600]</a></td>
+</tr>
+<tr class="even">
+<td align="left">JOBCONTDEFATTR</td>
+<td align="left">Default attribute (Job container)</td>
+</tr>
+<tr class="odd">
+<td align="left">JOBDEFATTR</td>
+<td align="left">Default attribute (Job)</td>
+</tr>
+<tr class="even">
+<td align="left">LIBRARY</td>
+<td align="left"><span id="OBJP-R200-LIB" class="rqDef">[OBJP-R200-LIB]</span> Library <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R010' title="Library Definition">[LIB-R010]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">NRC</td>
+<td align="left">Negative Response Code</td>
+</tr>
+<tr class="even">
+<td align="left">OPERATIONCYCLE</td>
+<td align="left"><span id="OBJP-R200-OpCycle" class="rqDef">[OBJP-R200-OpCycle]</span> Operation Cycle <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">PRIMITIVE</td>
+<td align="left">Service Primitive (request or pos./neg. response)</td>
+</tr>
+<tr class="even">
+<td align="left">PRIMITIVEDEFATTR</td>
+<td align="left">Default attribute (Primitives)</td>
+</tr>
+<tr class="odd">
+<td align="left">PROTOCOLSERVICE</td>
+<td align="left">Protocol service</td>
+</tr>
+<tr class="even">
+<td align="left">PROTOCOLSERVICEDEFATTR</td>
+<td align="left">Default attribute (Protocol services)</td>
+</tr>
+<tr class="odd">
+<td align="left">RECORDDEFATTR</td>
+<td align="left">Default attribute (DTC)</td>
+</tr>
+<tr class="even">
+<td align="left">RECORDTMPL</td>
+<td align="left">Record Template (for columns in the DTC Table)</td>
+</tr>
+<tr class="odd">
+<td align="left">SERVICE</td>
+<td align="left">Service</td>
+</tr>
+<tr class="even">
+<td align="left">SERVICECOMP</td>
+<td align="left">Service Component</td>
+</tr>
+<tr class="odd">
+<td align="left">SERVICEDEFATTR</td>
+<td align="left">Default attribute (Service)</td>
+</tr>
+<tr class="even">
+<td align="left">SHAREDPROXY</td>
+<td align="left">Combined proxy component</td>
+</tr>
+<tr class="odd">
+<td align="left">SHAREDPROXYDEFATTR</td>
+<td align="left">Default attribute (Combined proxy components)</td>
+</tr>
+<tr class="even">
+<td align="left">SHAREDSTATIC</td>
+<td align="left">Combined variable value</td>
+</tr>
+<tr class="odd">
+<td align="left">SHAREDSTATICDEFATTR</td>
+<td align="left">Default attribute (Combined variable values)</td>
+</tr>
+<tr class="even">
+<td align="left">STATE</td>
+<td align="left">State</td>
+</tr>
+<tr class="odd">
+<td align="left">STATEDEFATTR</td>
+<td align="left">Default attribute (State)</td>
+</tr>
+<tr class="even">
+<td align="left">STATEGROUP</td>
+<td align="left">State group</td>
+</tr>
+<tr class="odd">
+<td align="left">STATEGROUPDEFATTR</td>
+<td align="left">Default attribute (State group)</td>
+</tr>
+<tr class="even">
+<td align="left">STATICVAL</td>
+<td align="left">Variable value</td>
+</tr>
+<tr class="odd">
+<td align="left">TARGETGROUP</td>
+<td align="left">Target group</td>
+</tr>
+<tr class="even">
+<td align="left">UNSUPPORTEDSERVICENEGRESP</td>
+<td align="left">Service primitive for error handling</td>
+</tr>
+<tr class="odd">
+<td align="left">VARIANT (optional)</td>
+<td align="left">Variant</td>
+</tr>
+<tr class="even">
+<td align="left">VARIANTDEFATTR</td>
+<td align="left">Default attribute (Variant)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<ul>
+<li>Path to a DID (<span id="R150">DID R150.0</span>):
+<ul>
+<li>the qpath for a DID with qualifier D in variant V is <code>qpath:/V/[DID]D</code></li>
+<li>ditto for the name</li>
+</ul></li>
+</ul>
+<h2 id="command-line-support-cds-11284-6.0">Command-Line Support (CDS-11284 6.0)</h2>
+<p>The CANdelaStudio command-line supports a file name argument with an optional object path, see <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#CLI-R100-argument' title="">[CLI-R100-argument]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/Attribute%20Export.htm">Attribute Export</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/candelastudio%20URI%20Scheme.htm">candelastudio URI Scheme</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Name.htm">Name</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Qualifier.htm">Qualifier</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Navigation%20Area.htm">Ribbon Navigation Area</a></li>
+</ul>
+</body>
+</html>

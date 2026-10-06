@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Properties of Snapshot Record</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="properties-of-snapshot-record">Properties of Snapshot Record</h1>
+<p>See also the overview of the <a href="GUI%20Snapshot%20Records.htm">v13 Snapshot Records GUI</a>.</p>
+<div class="figure">
+<img src="Images/SnapshotRecordsConfiguredWithOBD.png" alt="Snapshot Records Page" />
+<p class="caption">Snapshot Records Page</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p><span id="SRUI-R2000" class="rqDef">[SRUI-R2000]</span> The <strong>property sheet</strong> to the right provides editing of the properties also shown in the Snapshot Record list, plus Qualifier and Description.</p>
+<p><span id="SRUI-R2010" class="rqDef">[SRUI-R2010]</span> The property sheet supports <strong>mass editing</strong>:</p>
+<p>If you select multiple Snapshot Records in the list:</p>
+<ul>
+<li>if all selected Snapshot Records have the same value,
+<ul>
+<li>the control in the sheet shows that value;</li>
+<li>when you enter a different value, CANdelaStudio assigns that value to all selected Snapshot Records.</li>
+</ul></li>
+<li>if the selected Snapshot Records have different values,
+<ul>
+<li>the control in the sheet shows an &quot;indifferent&quot; state;</li>
+<li>when you enter a value, CANdelaStudio assigns that value to all selected Snapshot Records;</li>
+<li>the control does not provide a way back to the &quot;indifferent&quot; state.</li>
+</ul></li>
+</ul>
+<p>For details, see <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-D410' title="">[UI-D410]</a> in the Basic User Interface Rules.</p>
+<h2 id="number">Number</h2>
+<p><span id="SRUI-R2120" class="rqDef">[SRUI-R2120]</span> The control shows the Snapshot Record Number <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R120' title="">[SR-R120]</a>.</p>
+<p>See <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R220' title="">[SRUI-R220]</a> for the Number column of the Snapshot Record list.</p>
+<ul>
+<li><span id="SRUI-R2120-Mod" class="rqDef">[SRUI-R2120-Mod]</span>
+<ul>
+<li>When you modify the <strong>Snapshot Record Number</strong>,</li>
+<li>CANdelaStudio v13 allows only values valid for UDS:</li>
+<li>not 0x00 (OBD II Freeze Frame)</li>
+<li>not 0xFF (wildcard in 0x19 0x04 request)</li>
+</ul></li>
+</ul>
+<h2 id="name-qualifier-description">Name, Qualifier, Description</h2>
+<p><span id="SRUI-R2130" class="rqDef">[SRUI-R2130]</span> The controls show the Snapshot Record name, qualifier and description <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R110' title="">[SR-R110]</a>.</p>
+<p>See <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R230' title="">[SRUI-R230]</a> for the Name column of the Snapshot Record list.</p>
+<p>The description can be multi-line, but plain text only (no rich-text).</p>
+<h2 id="protocol">Protocol</h2>
+<p><span id="SRUI-R2140" class="rqDef">[SRUI-R2140]</span> The control shows the Protocol <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R130' title="">[SR-R130]</a> of the Snapshot Record.</p>
+<ul>
+<li>See <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R240' title="">[SRUI-R240]</a> for the Snapshot Records list.</li>
+<li>See the note <a class='rqRef' href='../../30 Features\Fault Memory\Fault Memory.htm#FM-D050' title="">[FM-D050]</a> about OBD on UDS.</li>
+</ul>
+<h2 id="storage-trigger">Storage Trigger</h2>
+<p><span id="SRUI-R2150" class="rqDef">[SRUI-R2150]</span> Shows the Storage Trigger <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R150' title="">[SR-R150]</a> as a group of radio buttons.</p>
+<ul>
+<li>See <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R250' title="">[SRUI-R250]</a> for the Snapshot Records list.</li>
+</ul>
+<h2 id="custom-trigger">Custom Trigger</h2>
+<p><span id="SRUI-R2155" class="rqDef">[SRUI-R2155]</span> Shows the customTrigger string <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R155' title="">[SR-R155]</a> as an edit control.</p>
+<ul>
+<li>The edit control is sensitive iff. Trigger has the value &quot;custom&quot;.</li>
+<li>See <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R250' title="">[SRUI-R250]</a> for display in the Snapshot Records list.</li>
+</ul>
+<h2 id="updated">Updated</h2>
+<p><span id="SRUI-R2160" class="rqDef">[SRUI-R2160]</span> shows the Boolean property <strong>Updated</strong> <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R160' title="">[SR-R160]</a> as a checkbox.</p>
+<ul>
+<li>See <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Records.htm#SRUI-R260' title="">[SRUI-R260]</a> for the Snapshot Records list.</li>
+</ul>
+<h2 id="snapshot-record-attributes">Snapshot Record Attributes</h2>
+<p>Snapshot Record attributes are not available in the property page.</p>
+<p>You may use the <strong>Attribute Overview</strong> on the Diagnostic Instance (e.g. via the context menu of the tree node).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> (Export)</li>
+<li><a href="../../20%20UserInterface/Fault%20Memory/AUTOSAR%20Fault%20Memory%20GUI.htm">GUI AUTOSAR Fault Memory</a> (overview)</li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm">Snapshot Record Data Model</a></li>
+<li><a href="../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Operations.htm">Snapshot Record Operations</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+</ul>
+</body>
+</html>

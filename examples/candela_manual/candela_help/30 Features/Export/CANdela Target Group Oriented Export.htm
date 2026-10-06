@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CANdela Target Group Oriented Export</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="export-candela-target-group-oriented-cds-1233-1.4">Export CANdela (Target Group Oriented) (CDS-1233 1.4)</h1>
+<p>Use-case: a supplier defines special services that shall not be visible to the manufacturer.</p>
+<p>Solution: CANdelaStudio provides an export to the CANdela (CDD) format, filtered by variants and <a href="../../30%20Features/Target%20Groups/Target%20Groups.htm">target groups</a>.</p>
+<p>The export is available in ribbon tab Data Exchange | Export <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R170' title="">[MENU-R170]</a>.</p>
+<h2 id="read-only">Read-Only</h2>
+<p>The exported file is set <strong>read-only</strong> to indicate that the reduced document should not be changed (CDS-6406).</p>
+<h2 id="version">Version</h2>
+<p>The export can create a file in the current or a different CANdela format.</p>
+<h2 id="variants">Variants</h2>
+<p>The export can include all variants or a subset of variants (CDS-2197 3.0). The base variant is mandatory (CDS-3510).</p>
+<h2 id="target-groups">Target Groups</h2>
+<p>A diagnostic instance or job container is included in the exported document if...</p>
+<ul>
+<li>its set of target groups</li>
+<li>intersects with the set of target groups specified for the export</li>
+</ul>
+<p>... in other words, if...</p>
+<ul>
+<li>at least one of the target groups checked in the <a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance%20Property%20Page%20Target%20Groups.htm">diagnostic instance property page for target groups</a></li>
+<li>is also checked in the export dialog.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Ribbon Tab Data Exchange | Export | CANdela (Target Group Oriented) <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R170' title="">[MENU-R170]</a></li>
+<li><a href="../../20%20UserInterface/Export/SaveAs%20CANdela%20Target%20Group%20Oriented%20Export.htm">SaveAs Dialog</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Attributes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="attribute">Attribute</h1>
+<p><strong>Attributes</strong> are a generic data-driven way to extend the data model implemented in CANdelaStudio.</p>
+<p>The user of expert view can define an additional property (“attribute”) for a given object type.</p>
+<p>The user of standard view can then specify a value at each object of the given object type.</p>
+<p><strong>Attribute definitions</strong> are called <strong>&quot;Default Attributes&quot;</strong> in the CANdelaStudio user interface.</p>
+<p>An attribute definition is not effective at subordinated objects (there is no implicit inheritance). If you define some attribute for the ECU, it is not effective for the variants.</p>
+<p><span id="ATTR-D010" class="rqDef">[ATTR-D010]</span> Note that CANdelaStudio describes <strong>Communication Parameters</strong> using attributes, therefore Communication Parameters have the same properties as attributes.</p>
+<h2 id="use-cases">Use-Cases</h2>
+<ul>
+<li>describe object properties for code generation of software-components</li>
+<li>describe object properties for a customer specific process</li>
+</ul>
+<h2 id="properties">Properties</h2>
+<p>Attribute definitions are modifiable in Expert view only.</p>
+<ul>
+<li><p><span id="ATTR-R010" class="rqDef">[ATTR-R010]</span> Properties of a <strong>qualified object</strong></p>
+<ul>
+<li><span id="ATTR-R010-Name" class="rqDef">[ATTR-R010-Name]</span> Name,</li>
+<li><span id="ATTR-R010-Qual" class="rqDef">[ATTR-R010-Qual]</span> Qualifier,</li>
+<li><span id="ATTR-R010-Desc" class="rqDef">[ATTR-R010-Desc]</span> Description.</li>
+</ul></li>
+<li><p><span id="ATTR-R020" class="rqDef" title="Attribute Type">[ATTR-R020 Attribute Type]</span> (cannot be modified after creation of the attribute):</p>
+<ul>
+<li><span id="ATTR-R020-uns" class="rqDef">[ATTR-R020-uns]</span> unsigned</li>
+<li><span id="ATTR-R020-sgn" class="rqDef">[ATTR-R020-sgn]</span> signed</li>
+<li><span id="ATTR-R020-flt" class="rqDef">[ATTR-R020-flt]</span> float</li>
+<li><span id="ATTR-R020-text" class="rqDef">[ATTR-R020-text]</span> text (multi-language), see also <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R025-length' title="">[ATTR-R025-length]</a></li>
+<li><span id="ATTR-R020-string" class="rqDef">[ATTR-R020-string]</span> string (single language)
+<ul>
+<li>see also <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R025-length' title="">[ATTR-R025-length]</a></li>
+<li>see also <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R150' title="">[ATTR-R150]</a> for an optional format restriction</li>
+</ul></li>
+<li><span id="ATTR-R020-enum" class="rqDef">[ATTR-R020-enum]</span> enumeration, a list of ID + multi-language symbol. The list of enumeration symbols must not be empty.
+<ul>
+<li><span id="ATTR-R020-enumDel" class="rqDef">[ATTR-R020-enumDel]</span> Deleting an enum symbol used in overriding values resets these overriding values to the default value. (CDS-68862 v11).</li>
+<li><span id="ATTR-R020-display" class="rqDef">[ATTR-R020-display]</span> Display an enum symbol used in overriding values</li>
+</ul></li>
+</ul></li>
+<li><p><span id="ATTR-R022" class="rqDef">[ATTR-R022]</span> <strong>Display Format</strong></p>
+<ul>
+<li>For Attribute Type &quot;unsigned&quot; <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-uns' title="">[ATTR-R020-uns]</a> only</li>
+<li>One of:
+<ul>
+<li><span id="ATTR-R022-dec" class="rqDef">[ATTR-R022-dec]</span> <strong>dec</strong></li>
+<li><span id="ATTR-R022-hex" class="rqDef">[ATTR-R022-hex]</span> <strong>hex</strong></li>
+<li><span id="ATTR-R022-bin" class="rqDef">[ATTR-R022-bin]</span> <strong>binary</strong></li>
+</ul></li>
+<li>Default: dec</li>
+</ul></li>
+<li><p><span id="ATTR-R024" class="rqDef">[ATTR-R024]</span> <strong>Display Order</strong></p>
+<ul>
+<li>For Attribute Type &quot;enum&quot; <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-enum' title="">[ATTR-R020-enum]</a> only</li>
+<li>One of:
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R024' title="">[ATTR-R024]</a> <strong>Sort by ID</strong></li>
+<li><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R024' title="">[ATTR-R024]</a> <strong>Sort by Symbol</strong></li>
+</ul></li>
+<li>Default: Sort by ID</li>
+</ul></li>
+<li><p><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R100' title="">[ATTR-R100]</a> category (see below)</p></li>
+<li><span id="ATTR-R040" class="rqDef">[ATTR-R040]</span> <strong>Default value</strong>: value effective at all objects of the object type, if the attribute has not been individually overridden at the object
+<ul>
+<li><span id="ATTR-R040-mod" class="rqDef">[ATTR-R040-mod]</span> Modifying the default value of an attribute does not reset the overriding values (CDS-68862 v11).</li>
+<li>See also the format restriction <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R150-Value' title="">[ATTR-R150-Value]</a>.</li>
+</ul></li>
+<li><p><span id="ATTR-R060" class="rqDef">[ATTR-R060]</span> <strong>Qualifier Uniqueness</strong> the <strong>qualifier</strong> has to be unique within the set of attribute definitions for one object type, without regard for the category. Example: there may be an attribute with Qualifier &quot;X&quot; at the Service as well as at the data object. If at the data object there is an attribute &quot;X&quot; in category A, then there cannot be an attribute &quot;X&quot; in category B.</p></li>
+<li><p><span id="ATTR-R070" class="rqDef">[ATTR-R070]</span> <strong>Usage</strong> specific semantics <strong>„usage“</strong>, defines whether CANdelaStudio treats the attribute in a special way:</p>
+<ul>
+<li>&quot;<strong>user</strong>&quot;: regular user-defined attribute
+<ul>
+<li>shown e.g. in the overview and property dialogs</li>
+</ul></li>
+<li>&quot;<strong>admin</strong>&quot;: protected attribute (hidden like &quot;system&quot;)</li>
+<li>&quot;<strong>system</strong>&quot;: hidden attribute, used internally to for specific functionality of CANdelaStudio
+<ul>
+<li>information that Vector <em>could</em> hard-code in the data model, but keeps it as an attribute to save implementation effort.</li>
+<li>E.g. communication parameters, requirementsID, IDs for data exchange... </li>
+</ul></li>
+</ul></li>
+<li><p><span id="ATTR-R080" class="rqDef" title="Authorization">[ATTR-R080 Authorization]</span> <strong>authorization</strong></p>
+<ul>
+<li><span id="ATTR-R080-view" class="rqDef">[ATTR-R080-view]</span> iff. true, the attribute is shown in Standard View (independent of isUser)</li>
+<li><span id="ATTR-R080-modify" class="rqDef">[ATTR-R080-modify]</span> iff. true, the attribute value can be modified in Standard View (independent of isUser)</li>
+<li><span id="ATTR-R080-report" class="rqDef">[ATTR-R080-report]</span> iff. true, report lists the attribute value (&quot;Export to Specification&quot;)</li>
+</ul></li>
+<li><p><span id="ATTR-R090" class="rqDef" title="VisibleInTableColumn">[ATTR-R090 VisibleInTableColumn]</span> the flag <strong>“visible in separate table column”</strong> controls whether the attribute values are not only shown in the property dialog of the object, but also in a list view of the object.</p>
+CANdelaStudio supports this property for:
+<ul>
+<li><span id="ATTR-R090-DiagInst" class="rqDef">[ATTR-R090-DiagInst]</span> diagnostic instances in right side of diagnostic class <a class='rqRef' href='../../20 UserInterface\Diagnostic Instance\Diagnostic Instances.htm#DIUI-R400' title="">[DIUI-R400]</a>;</li>
+<li><span id="ATTR-R090-DTC" class="rqDef">[ATTR-R090-DTC]</span> DTCs <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R050-Attributes' title="">[DTCUI-R050-Attributes]</a>;</li>
+<li><span id="ATTR-R090-DataObj" class="rqDef">[ATTR-R090-DataObj]</span> data objects <a class='rqRef' href='../../20%20UserInterface/Data%20Objects/Data%20Objects.htm#DOUI-R700' title="">[DOUI-R700]</a>;</li>
+<li><span id="ATTR-R090-Job" class="rqDef">[ATTR-R090-Job]</span> job <a class='rqRef' href='../../20 UserInterface\Job Container\Job Container.htm#JCUI-R200' title="">[JCUI-R200]</a> (CDS-27480 8.0).</li>
+</ul>
+The flag also applies to the <strong>report</strong> (CDS-68616 9.1), but...
+<ul>
+<li><strong>only for the DTC list</strong> (where an attribute creates a new line);</li>
+<li>not for data objects or jobs (where an attribute would create a further column which may break the page layout);</li>
+<li>not for the separate Attributes chapter.</li>
+</ul></li>
+</ul>
+<h2 id="attribute-value-length">Attribute Value Length</h2>
+<p><span id="ATTR-R025-length" class="rqDef">[ATTR-R025-length]</span></p>
+<ul>
+<li>The text control in the user interface limits the length of an edited text to 30000 characters.</li>
+<li>For values set by an implementation (e.g. import), the limit depends upon your system. 4MB have be seen working. When you only enter the text control without typing, the long text is not shown correctly but preserved.</li>
+</ul>
+
+<h2 id="attribute-categories">Attribute categories</h2>
+<p><span id="ATTR-R100" class="rqDef">[ATTR-R100]</span> Each attribute belongs to an attribute category.</p>
+<p>The user of the Expert View can create, change and delete attribute categories.</p>
+<p>Attribute categories visible in Standard View form an unstructured set.</p>
+<p><span id="ATTR-R110" class="rqDef">[ATTR-R110]</span> Each <strong>attribute category</strong> (for attribute semantics, see above) has a semantics „usage“:</p>
+<ul>
+<li>user</li>
+<li>system (maintained by CANdelaStudio internally)</li>
+</ul>
+<p>It controls whether the attribute category is displayed, e.g. in a drop-down list that filters attributes in property sheet. Besides that, there is no recursive effect on attributes - attributes have their own &quot;view&quot; right which should be consistent with that of the attribute category, but that is not enforced.</p>
+<p>Convention: attribute categories of <a href="../../30%20Features/Interface/Interface.htm">communication parameters</a> have a qualifier prefix “COM”.</p>
+<p>See also the migration of attribute category &quot;UDS&quot; <a class='rqRef' href='../../30%20Features/Migrations/CANdelaStudio%208.5.htm#MIG85-R001' title="">[MIG85-R001]</a>.</p>
+<h2 id="overridden">Overriding Attributes at CANdela Objects</h2>
+<p><span id="ATTR-R140" class="rqDef">[ATTR-R140]</span> As a default, the value from the attribute definition is effective at all CANdela objects of the given type (e.g. at all data types).</p>
+<p>At an individual object, that default value may be optionally <strong>overridden</strong> by a specific value.</p>
+<p>It makes even sense to <strong>specify an overriding value equal to the default value</strong>. It fixes the value at the object, so that it does not change even if the default value is changed at the attribute definition.</p>
+<p>Note: the <strong>overriding value</strong> at at an individual object is called <strong>overwritten value</strong> in CANdelaStudio (for historical reasons).</p>
+<p>See also the format restriction <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R150-Value' title="">[ATTR-R150-Value]</a>.</p>
+<p><span id="ATTR-D140" class="rqDef">[ATTR-D140]</span> The Effective Value at a CANdela object is...</p>
+<ul>
+<li>the Overridden Value <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R140' title="">[ATTR-R140]</a>, if the attribute is overridden at the object;</li>
+<li>otherwise the Default Value <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R040' title="">[ATTR-R040]</a>.</li>
+</ul>
+
+<h2 id="occurrence">Occurrence</h2>
+<p>Attributes are available at most CANdela objects (ECU, Variant, Diagnostic Instance, Service, Data object...).</p>
+<p><span id="ATTR-R050" class="rqDef">[ATTR-R050]</span> The following overview lists CANdela objects which were enabled to hold attributes only in a recent CANdelaStudio version:</p>
+<table style="width:98%;">
+<colgroup>
+<col width="26%" />
+<col width="71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">CANdelaStudio Version</th>
+<th align="left">Attributes at Object Type...</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">5.0 (CDS-4073)</td>
+<td align="left"><span id="ATTR-R050-DTC" class="rqDef">[ATTR-R050-DTC]</span> DTC</td>
+</tr>
+<tr class="even">
+<td align="left">6.0 (CDS-10713)</td>
+<td align="left"><span id="ATTR-R050-StateGroup" class="rqDef">[ATTR-R050-StateGroup]</span> State Groups<br />
+<span id="ATTR-R050-State" class="rqDef">[ATTR-R050-State]</span> States</td>
+</tr>
+<tr class="odd">
+<td align="left">6.0 (CDS-10219)</td>
+<td align="left"><span id="ATTR-R050-Template" class="rqDef">[ATTR-R050-Template]</span> Template Data, i.e.:<br />
+<br />
+<span id="ATTR-R050-Prim" class="rqDef">[ATTR-R050-Prim]</span> Primitive (Req, Pos, Neg)<br />
+<span id="ATTR-R050-Comp" class="rqDef">[ATTR-R050-Comp]</span> ProtocolService Component<br />
+<span id="ATTR-R050-DClT" class="rqDef">[ATTR-R050-DClT]</span> DiagClassTemplate<br />
+<span id="ATTR-R050-UsedPS" class="rqDef">[ATTR-R050-UsedPS]</span> Used ProtocolService<br />
+<span id="ATTR-R050-CombComp" class="rqDef">[ATTR-R050-CombComp]</span> Combined Component<br />
+<span id="ATTR-R050-CombVV" class="rqDef">[ATTR-R050-CombVV]</span> Combined Variable Value</td>
+</tr>
+<tr class="even">
+<td align="left">7.0 (CDS-13030)</td>
+<td align="left"><span id="ATTR-R050-Reserved" class="rqDef">[ATTR-R050-Reserved]</span> Reserved objects (gaps)</td>
+</tr>
+<tr class="odd">
+<td align="left">8.0 (CDS-26227)</td>
+<td align="left"><span id="ATTR-R050-VSG" class="rqDef">[ATTR-R050-VSG]</span> Vehicle System Group</td>
+</tr>
+<tr class="even">
+<td align="left">8.1 (CDS-19553)</td>
+<td align="left"><span id="ATTR-R050-DID" class="rqDef">[ATTR-R050-DID]</span></td>
+</tr>
+<tr class="odd">
+<td align="left">8.2 (CDS-32676)</td>
+<td align="left">obsoleted by v13 (see below)<br />
+Snapshot Record (ECU level)<br />
+Common Snapshot Data (ECU level)<br />
+Extended Data Record (ECU level)</td>
+</tr>
+<tr class="even">
+<td align="left">8.5 (CDS-37946)</td>
+<td align="left"><span id="ATTR-R050-LIB" class="rqDef">[ATTR-R050-LIB]</span> Library</td>
+</tr>
+<tr class="odd">
+<td align="left">12 (CDS-42224)</td>
+<td align="left"><span id="ATTR-R050-Event" class="rqDef">[ATTR-R050-Event]</span> Event<br />
+(attributes for Event Master Data only in v13, see below)</td>
+</tr>
+<tr class="even">
+<td align="left">13 (CDS-71541)</td>
+<td align="left"><span id="ATTR-R050-SR" class="rqDef">[ATTR-R050-SR]</span> AUTOSAR Snapshot Record <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R030' title="">[SR-R030]</a><br />
+<span id="ATTR-R050-EDR" class="rqDef">[ATTR-R050-EDR]</span> AUTOSAR Extended Data Record <a class='rqRef' href='../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm#EDR-R030' title="">[EDR-R030]</a></td>
+</tr>
+<tr class="odd">
+<td align="left">13 (CDS-71547)</td>
+<td align="left"><span id="ATTR-R050-EvMaster" class="rqDef">[ATTR-R050-EvMaster]</span> Event Master Data, i.e.:<br />
+<br />
+<span id="ATTR-R050-OpCyc" class="rqDef">[ATTR-R050-OpCyc]</span> Event Operation Cycles <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R500' title="">[EV-R500]</a><br />
+<span id="ATTR-R050-Ind" class="rqDef">[ATTR-R050-Ind]</span> Event Indicators <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R600' title="">[EV-R600]</a><br />
+<span id="ATTR-R050-IndConn" class="rqDef">[ATTR-R050-IndConn]</span> Event Indicator Connections <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R300' title="">[EV-R300]</a><br />
+<span id="ATTR-R050-EvCond" class="rqDef">[ATTR-R050-EvCond]</span> Event Conditions <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-D700' title="">[EV-D700]</a><br />
+<span id="ATTR-R050-Deb" class="rqDef">[ATTR-R050-Deb]</span> Event Debounce Algorithms <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R1100' title="">[EV-R1100]</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="occurrence-restrictions">Occurrence Restrictions</h2>
+<p><span id="ATTR-R200" class="rqDef">[ATTR-R200]</span> As a default, an attribute definition is effective <strong>at all instances</strong> of the object type.</p>
+<p>The attribute definition for some object types supports an optional <strong>occurrence restriction</strong>:</p>
+<ul>
+<li>since CANdelaStudio 1.3: restricts attributes of diagnostic instances for a subset of diagnostic classes;</li>
+<li>since CANdelaStudio 6.0(CDS-10512): restricts attributes of for further objects besides diagnostic instances.</li>
+</ul>
+<p>CANdelaStudio supports the following attribute restrictions implemented:</p>
+<table style="width:99%;">
+<colgroup>
+<col width="10%" />
+<col width="14%" />
+<col width="31%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Requirement</th>
+<th align="left">Attributable Object</th>
+<th align="left">Restriction Tag Types</th>
+<th align="left">Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span id="ATTR-R210" class="rqDef">[ATTR-R210]</span></td>
+<td align="left">DiagInstance</td>
+<td align="left">DiagClassTemplate Qualifier</td>
+<td align="left">The attribute is only visible at diagnostic instances which are based on the specified diagnostic class templates.</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="ATTR-R220" class="rqDef">[ATTR-R220]</span></td>
+<td align="left">DiagClass</td>
+<td align="left">DiagClassTemplate Qualifier</td>
+<td align="left">The attribute is only visible at diagnostic classes which are based on the specified diagnostic class templates.</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="ATTR-R230" class="rqDef">[ATTR-R230]</span></td>
+<td align="left">Service</td>
+<td align="left">DiagClassTemplate Qualifier</td>
+<td align="left">The attribute is only visible at service of a diagnostic instance which are based on the specified diagnostic class templates.</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="ATTR-R240" class="rqDef">[ATTR-R240]</span></td>
+<td align="left">BaseDataObject</td>
+<td align="left"><span id="ATTR-R240-Qual" class="rqDef">[ATTR-R240-Qual]</span> 1) DiagClassTemplate Qualifier<br />
+<span id="ATTR-R240-Type" class="rqDef">[ATTR-R240-Type]</span> 2) (Sub)Class Type:<br />
+Data Object<br />
+Bitfield<br />
+Reserved<br />
+DID Data Reference (8.1 CDS-19553 R342) <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R160' title="">[DID-R160]</a><br />
+DID Reference (8.1 CDS-19553 R344) <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R180' title="">[DID-R180]</a></td>
+<td align="left">The attribute is only visible at data objects which are contained in a diagnostic instance with the specified class templates <strong>and</strong> the specified class type. If the restriction string contains no tag of either type 1) or 2) the attribute is not restricted in this regard (either visible at all diagnostic instances or at all data type derivations).</td>
+</tr>
+<tr class="odd">
+<td align="left"><span id="ATTR-R250" class="rqDef">[ATTR-R250]</span></td>
+<td align="left">DataType</td>
+<td align="left">(Sub)Class Type<br />
+(Identity, TextTable, …)</td>
+<td align="left">The attribute is only visible at data types of the specified (sub) type</td>
+</tr>
+<tr class="even">
+<td align="left"><span id="ATTR-R260" class="rqDef">[ATTR-R260]</span></td>
+<td align="left">ProtocolService component</td>
+<td align="left">(Sub)Class Type (Constant, Fixed data, etc.)</td>
+<td align="left">The attribute is only visible at component derivations of the specified (sub) type</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="format">String Attribute Values: Format Restriction (7.0 CDS-13042)</h2>
+<p><span id="ATTR-R150" class="rqDef">[ATTR-R150]</span> A string attribute <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020-string' title="">[ATTR-R020-string]</a> can have a <strong>format restriction</strong> for the allowed default value <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R040' title="">[ATTR-R040]</a> and overriding values <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R140' title="">[ATTR-R140]</a>:</p>
+<ul>
+<li>the format restriction is defined by a <strong>string</strong> (not multi-language)</li>
+<li>an <strong>empty string</strong> means &quot;no restriction&quot;</li>
+<li>the <strong>character set</strong> of the string is not restricted
+<ul>
+<li>you should not add linefeed!</li>
+</ul></li>
+<li>CANdelaStudio interprets the string as a regular expression (regex).</li>
+<li><span id="ATTR-R150-Value" class="rqDef">[ATTR-R150-Value]</span> For a given string attribute, the default value and overriding values must match the format restriction.
+<ul>
+<li>A violation is treated as a non-fatal warning,</li>
+<li>prevents from exports,</li>
+<li><p>reported using the format description <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R155' title="">[ATTR-R155]</a>, like</p>
+<pre><code>  String attribute value &#39;4.0.1b&#39; does not match pattern &#39;\d+\.\d+\.\d+&#39;</code></pre></li>
+</ul></li>
+</ul>
+
+<p><span id="ATTR-R155" class="rqDef">[ATTR-R155]</span> The string property <strong>Format Description</strong> provides a human readable description of the format restriction <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R150' title="">[ATTR-R150]</a>.</p>
+<ul>
+<li>the description is a regular string (not multi-language).</li>
+</ul>
+<h3 id="migration">Migration</h3>
+<p><span id="ATTR-R157" class="rqDef">[ATTR-R157]</span> Migrations for the two above properties added in 7.0:</p>
+<ul>
+<li><span id="ATTR-R157-Load" class="rqDef">[ATTR-R157-Load]</span> When loading a file with version <code>&lt;</code> 7.0 (forward migration), ...
+<ul>
+<li>CANdelaStudio leaves the properties empty.</li>
+<li>In particular, it does <strong>not</strong> modify existing default values or overriding values of an attribute.</li>
+</ul></li>
+<li><span id="ATTR-R157-Save" class="rqDef">[ATTR-R157-Save]</span> When saving to a file with version <code>&lt;</code> 7.0 (backward migration), ...
+<ul>
+<li>CANdelaStudio drops the properties.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/Attribute%20Export.htm">Attribute Export</a></li>
+<li><a href="../../30%20Features/Import/Attribute%20Import.htm">Attribute Import</a></li>
+<li><a href="../../20%20UserInterface/Attributes/Attribute%20Overview.htm">Attribute Overview</a></li>
+<li><a href="../../30%20Features/Interface/Interface.htm">Interfaces Using the Attributes Implementation</a></li>
+<li><a href="Special%20Attributes.htm">List of Special Attributes</a></li>
+<li>Multi-Language <a class='rqRef' href='../../30%20Features/Multi-Language/Multi-Language.htm#ML-R100' title="Translatables">[ML-R100]</a></li>
+<li>Object Paths <a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200' title="">[OBJP-R200]</a></li>
+<li>User Interface: <a href="../../20%20UserInterface/Attributes/Attribute%20Definition.htm">Attribute Definition</a></li>
+<li>User Interface: <a href="../../20%20UserInterface/Attributes/Attribute%20Value.htm">Attribute Values</a></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Install to a Different Folder</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-install-to-a-different-folder">How to Install to a Different Folder</h1>
+<p>Typically you should install CANdelaStudio using its installer, the file <code>CANdelaStudio&lt;version&gt;.exe</code>.</p>
+<p>The installer puts CANdelaStudio into a <strong>default location</strong>. It lets you select a different installation directory for <strong>CANdelaStudio</strong>, but not for the <a href="../../30%20Features/Installation/Bundled%20Products.htm">bundled products</a> (as of 8.5).</p>
+<p>Likewise, if you install e.g. <strong>Vector CANoe</strong>, the installer puts CANdelaStudio into the default location.</p>
+<p>In order to install CANdelaStudio to a different folder <strong>in exceptional cases</strong>:</p>
+<ul>
+<li>extract the CANdelaStudio <code>.msi</code> file from the <code>.exe</code> installer (using an unzip application)</li>
+<li>open a command prompt, e.g. by typing <code>cmd</code> in the Windows start menu</li>
+<li>type the command: <code>msiexec /i CANdelaStudio&lt;version&gt;.msi INSTALLDIR=&quot;&lt;your target path&gt;&quot;</code></li>
+<li>example: <code>msiexec /i CANdelaStudio8.5.msi INSTALLDIR=&quot;D:\Temp&quot;</code></li>
+<li>click through the wizard</li>
+</ul>
+<p>Note: this does not install <strong>prerequisites</strong> and Vector products <strong>bundled</strong> with CANdelaStudio!</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Installation/Bundled%20Products.htm">Bundled Products</a></li>
+<li><a href="../../30%20Features/Installation/Installation%20Folder.htm">Installation Folder</a></li>
+<li><a href="../../30%20Features/Installation/Prerequisites.htm">Prerequisites</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Extended Data Record Operations</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="extended-data-record-operations-v13-autosar-fault-memory-cds-71541">Extended Data Record Operations (v13 AUTOSAR Fault Memory, CDS-71541)</h1>
+<p>See also the <a href="Extended%20Data%20Record%20Data%20Model.htm">Extended Data Record Data Model</a> and <a href="../../20%20UserInterface/Extended%20Data%20Records/GUI%20Extended%20Data.htm">GUI Extended Data Records</a>.</p>
+<p><strong>Contents</strong>:</p>
+<ul>
+<li><a href="#ECU">ECU</a></li>
+<li><a href="#PS">Protocol Service</a></li>
+<li><a href="#DClT">Diagnostic Class Template</a></li>
+<li><a href="#DI">Diagnostic Instance</a></li>
+</ul>
+<h2 id="ECU">ECU</h2>
+<h2 id="PS">Protocol Service</h2>
+<h2 id="DClT">Diagnostic Class Template</h2>
+<h2 id="DI">Diagnostic Instance</h2>
+<h2 id="SR">Extended Data Record</h2>
+<p>2019-08-28 Sb: TODO</p>
+<p><span id="EDOP-R100" class="rqDef">[EDOP-R100]</span> Creating a new Extended Data Record</p>
+<ul>
+<li>with given Extended Data Record Number and Protocol</li>
+<li>If this is the first Extended Data Record for a Protocol, CANdelaStudio creates Extended Data Data for the Protocol <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200' title="">[SR-R200]</a>, with...
+<ul>
+<li>empty DID lists</li>
+<li>no Specific Extended Data Data</li>
+</ul></li>
+<li>Depends on authorization &quot;Primary properties modifiable&quot; [DIA-R040-Extended DataData], see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EDOP-R110" class="rqDef">[EDOP-R110]</span> Deleting one or multiple Extended Data Records:</p>
+<ul>
+<li>If the operation deletes the last Extended Data Record for a Protocol, CANdelaStudio deletes all Extended Data Data for the Protocol <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R200' title="">[SR-R200]</a>.</li>
+<li>Depends on authorization &quot;Primary properties modifiable&quot; [DIA-R040-Extended DataData], see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EDOP-R120" class="rqDef">[EDOP-R120]</span> Modifying Extended Data Record Name / Qualifier</p>
+<ul>
+<li>Depends on authorization &quot;Primary properties modifiable&quot; [DIA-R040-Extended DataData], see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EDOP-R130" class="rqDef">[EDOP-R130]</span> Modifying further Extended Data Record Properties</p>
+<ul>
+<li>Properties:
+<ul>
+<li>Description</li>
+<li>Trigger, customTrigger</li>
+<li>Updated</li>
+<li>Attributes</li>
+</ul></li>
+<li>Depends on authorization &quot;Secondary properties modifiable&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R050' title="Secondary properties modifiable">[DIA-R050]</a>, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<h2 id="Stored">Extended Data Record Stored for DTC</h2>
+<p><span id="EDOP-R260" class="rqDef">[EDOP-R260]</span> Check &quot;Stored&quot;</p>
+<ul>
+<li>Sets &quot;Extended Data Record Stored for DTC&quot; <a class='rqRef' href='../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm#EDR-R300' title="">[EDR-R300]</a> to true for the given DTC and Extended Data Record</li>
+<li>Depends on authorization &quot;Primary properties modifiable&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R040-ExtendedData' title="">[DIA-R040-ExtendedData]</a>, see also <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-D010' title="">[DIOP-D010]</a></li>
+</ul>
+<p><span id="EDOP-R265" class="rqDef">[EDOP-R265]</span> Un-check &quot;Stored&quot;</p>
+<ul>
+<li>Same as previous operation, but setting to false.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm">Diagnostic Instance Operations</a></li>
+<li><a href="Extended%20Data%20Record%20Data%20Model.htm">Extended Data Record Data Model</a></li>
+</ul>
+</body>
+</html>

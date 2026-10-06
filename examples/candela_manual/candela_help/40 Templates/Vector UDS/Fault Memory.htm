@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Fault Memory</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="vector-uds-template---fault-memory">Vector UDS Template - Fault Memory</h1>
+<h2 id="dtc-status-bits">DTC Status Bits</h2>
+<p><span id="VUDS-R730" class="rqDef">[VUDS-R730]</span> The template supports all DTC Status Bits (CDS-72058 v13), in...</p>
+<ul>
+<li>DTC Status Mask</li>
+<li>DTC Status Availability Mask</li>
+<li>DTC Status</li>
+</ul>
+<p>... since the AUTOSAR Diagnostic Event Manager supports all DTC Status Bits.</p>
+<h2 id="snapshot-records">Snapshot Records</h2>
+<h3 id="snapshot-record-numbers-v11-cds-70902">Snapshot Record Numbers (v11 CDS-70902)</h3>
+<p><span id="VUDS-R710" class="rqDef">[VUDS-R710]</span> The first existing Snapshot Record has the number 0x01.</p>
+<ul>
+<li>... so it can be used for &quot;Snapshot Record Numeration Type&quot; <a class='rqRef' href='../../30 Features\Fault Memory\Snapshot Records Generic.htm#SR-R023' title="">[SR-R023]</a> <code>Calculated</code> as well as for <code>Configured</code>.</li>
+</ul>
+<h1 id="user-defined-fault-memory">User Defined Fault Memory</h1>
+<p><span id="VUDS-R740" class="rqDef">[VUDS-R740]</span> The template contains <strong>one diagnostic instance</strong> of User Defined Fault Memory (CDS-71889 13.0).</p>
+<ul>
+<li>Motivation: Vector DEM supports only one.</li>
+<li>Note: the template supports creating additional ones, controlled by the <a href="Data%20Types.htm#user-defined-fault-memories">User Defined Fault Memories</a> Text Table.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Fault%20Memory/AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a></li>
+<li><a href="../../40%20Templates/Vector%20UDS/Diagnostic%20Class%20Templates.htm">Diagnostic Class Templates</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service (Feature)</a></li>
+<li><a href="Introduction.htm">Vector UDS Template - Introduction</a></li>
+<li><a href="Diagnostic%20Class%20Templates.htm#user-defined-fault-memories">User Defined Fault Memories</a> (Diagnostic Class Template)</li>
+<li><a href="Data%20Types.htm#user-defined-fault-memories">User Defined Fault Memories</a> (Text Table)</li>
+</ul>
+</body>
+</html>

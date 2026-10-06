@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Events</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="events-cds-42224-v12">Events (CDS-42224 v12)</h1>
+<p>See also</p>
+<ul>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="Properties%20of%20Event.htm">Properties of Event</a> (right side)</li>
+<li><a href="../../30%20Features/Event/Events%20Data%20Model.htm">Events Data Model</a> (detailed)</li>
+<li><a href="DTC%20Events%20Mapping.htm">DTC Events Mapping</a> page</li>
+<li><a href="Event%20Master%20Data.htm">Event Master Data</a> page</li>
+</ul>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Events.jpg" alt="Events Page" />
+<p class="caption">Events Page</p>
+</div>
+<p><span id="EVUI-R005" class="rqDef">[EVUI-R005]</span> The <strong>Events</strong> page is located in the right side of a <strong>Fault Memory</strong> diagnostic instance, opened via button <img src="../../20%20UserInterface/Images/Events%20Button.jpg" /> at the bottom.</p>
+<ul>
+<li><span id="EVUI-R005-OBDII" class="rqDef">[EVUI-R005-OBDII]</span> The Events page is not available in a diagnostic instance with <strong>OBDII DTCs</strong>.
+<ul>
+<li>Reason: Events are not allowed in an OBDII Fault Memory Diagnostic Instance <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R020-OBDII' title="">[EV-R020-OBDII]</a>, so an Event cannot reference an OBDII DTC <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R230-OBDII' title="">[EV-R230-OBDII]</a>.</li>
+</ul></li>
+</ul>
+<p>The Events page shows...</p>
+<ul>
+<li>a list of <strong>Events</strong> (left; details follow below)</li>
+<li>a property sheet with <strong>Event properties</strong> (right; described in <a href="Properties%20of%20Event.htm">Properties of Event</a>)</li>
+</ul>
+
+<h2 id="authorization">Authorization</h2>
+<p>The operations in the Event dialogs are subject to authorization, see <a class='rqRef' href='../../30 Features\Diagnostic Instance\Diagnostic Instance Operations.htm#DIOP-D010' title="">[DIOP-D010]</a>.</p>
+<p><span id="EVUI-R010" class="rqDef">[EVUI-R010]</span> In a diagnostic instance where the authorization forbids operations, ...</p>
+<ul>
+<li>the dialogs offer the operation anyway (e.g. with buttons sensitive), but shows a hint.</li>
+<li>This includes showing the &quot;magic line&quot; (&quot;Create here to create a new element&quot;).</li>
+<li><span id="EVUI-R010-MultiSel" class="rqDef">[EVUI-R010-MultiSel]</span> For multiple selected objects, if an operation is forbidden on some objects, CANdelaStudio performs the operation on the rest and finally informs about the remaining unmodified objects (see the Basic User Interface Rules <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-R340-SelDel' title="">[UI-R340-SelDel]</a>).</li>
+</ul>
+<h2 id="confirmation">Confirmation</h2>
+<p><span id="EVUI-R015" class="rqDef">[EVUI-R015]</span> Before any deletion, CANdelaStudio shows a confirmation dialog which allows to cancel the operation.</p>
+<h2 id="event-list">Event List</h2>
+<p><span id="EVUI-R020" class="rqDef">[EVUI-R020]</span> The Event List shows and edits the Events <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R020' title="">[EV-R020]</a> defined in the diagnostic instance.</p>
+<ul>
+<li><span id="EVUI-R020-Sort" class="rqDef">[EVUI-R020-Sort]</span> By default, the list is sorted by name.</li>
+<li><span id="EVUI-R020-New" class="rqDef">[EVUI-R020-New]</span> Clicking the magic line &quot;Please click here...&quot; creates a new Event <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R020' title="New">[EVOP-R020]</a>.</li>
+<li><span id="EVUI-R020-Del" class="rqDef">[EVUI-R020-Del]</span> Pressing the <code>Del</code> key deletes the selected Events <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R040' title="Delete">[EVOP-R040]</a>, with confirmation <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R015' title="">[EVUI-R015]</a>.</li>
+</ul>
+<p><span id="EVUI-R025" class="rqDef">[EVUI-R025]</span> Pressing the <code>F1</code> key leads to the page here.</p>
+<h3 id="hint-for-supports-events">Hint for Supports Events</h3>
+<p><span id="EVUI-R030" class="rqDef">[EVUI-R030]</span> If...</p>
+<ul>
+<li>the document property <strong>Supports Events</strong> <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R010' title="">[EV-R010]</a> is false
+<ul>
+<li>(modifiable in Expert View in File | Properties | Document Info <a class='rqRef' href='../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm#DOCUI-R600' title="">[DOCUI-R600]</a>),</li>
+</ul></li>
+<li>then CANdelaStudio shows a hint above the Event list:
+<ul>
+<li>&quot;This document does not support Events.&quot;</li>
+<li>with an info button that shows an explanation in a tooltip.</li>
+</ul></li>
+</ul>
+<h3 id="name">Name</h3>
+<p><span id="EVUI-R100" class="rqDef">[EVUI-R100]</span> The Name column shows the Event name <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R100' title="">[EV-R100]</a>, which must be unique <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R100-Qualified' title="">[EV-R100-Qualified]</a> in the list.</p>
+<h3 id="kind">Kind</h3>
+<p><span id="EVUI-R110" class="rqDef">[EVUI-R110]</span> The Kind column shows the Event kind <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R110' title="">[EV-R110]</a>:</p>
+<ul>
+<li>&quot;SWC&quot; (Software Component)</li>
+<li>&quot;BSW&quot; (Basis Software)</li>
+</ul>
+<h3 id="operation-cycle">Operation Cycle</h3>
+<p><span id="EVUI-R120" class="rqDef">[EVUI-R120]</span> The Operation Cycle column shows the optional Operation Cycle <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R120' title="">[EV-R120]</a> of the Event.</p>
+
+<h3 id="failure-cycle-counter-threshold">Failure Cycle Counter Threshold</h3>
+<p><span id="EVUI-R130" class="rqDef">[EVUI-R130]</span> The column shows the optional Failure Cycle Counter Threshold <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R130' title="">[EV-R130]</a> of the Event.</p>
+<h3 id="indicator-connections">Indicator Connections</h3>
+<p><span id="EVUI-R140" class="rqDef">[EVUI-R140]</span> The column shows the list of Indicator Connections <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R140' title="">[EV-R140]</a>:</p>
+<ul>
+<li>possibly empty</li>
+<li>comma separated</li>
+<li>read-only</li>
+<li>sorted by Indicator name</li>
+<li>in the data model, these are the names of the Indicators referenced in Indicator Connections <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R300' title="">[EV-R300]</a> of the Event.</li>
+</ul>
+<p>You can edit the list in the property sheet, see <a class='rqRef' href='../../20%20UserInterface/Event/Properties%20of%20Event.htm#EVUI-R2140' title="">[EVUI-R2140]</a>.</p>
+<h3 id="prestore-freeze-frame-prestoragefreezeframe">Prestore Freeze Frame (&quot;prestorageFreezeFrame&quot;)</h3>
+<p><span id="EVUI-R150" class="rqDef">[EVUI-R150]</span> The column shows the mandatory Freeze Frame Prestored flag <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R150' title="">[EV-R150]</a>, i.e. whether the Event uses a prestored freeze frame.</p>
+<h3 id="in-memory-freeze-frame-prestored-nonvolatile-prestoredfreezeframestoredinnvm">... in Memory (&quot;Freeze Frame Prestored nonvolatile&quot;, &quot;prestoredFreezeframeStoredInNvm&quot;)</h3>
+<p><span id="EVUI-R155" class="rqDef">[EVUI-R155]</span> If the Freeze Frame is prestored (as of the previous column), the column shows one of the available values &quot;undefined&quot;, &quot;volatile&quot; and &quot;non-volatile&quot;.</p>
+<p>If the Freeze Frame is not prestored, the column value should be &quot;undefined&quot; (CANdelaStudio does not enforce this, <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-D155' title="">[EV-D155]</a>).</p>
+<h3 id="clear-fault-memory-allowed-eventclearallowed">Clear Fault Memory Allowed (&quot;eventClearAllowed&quot;)</h3>
+<p><span id="EVUI-R165" class="rqDef">[EVUI-R165]</span> The column shows one of the available values &quot;always&quot; and &quot;requires callback execution&quot; for the Clear Allowed <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R165' title="">[EV-R165]</a> property.</p>
+<h3 id="if-clear-denied-clear-behavior-cleareventbehavior">If Clear Denied (&quot;Clear Behavior&quot;, &quot;clearEventBehavior&quot;)</h3>
+<p><span id="EVUI-R170" class="rqDef">[EVUI-R170]</span> The column shows one of the available values &quot;undefined&quot;, &quot;no status byte change&quot; and &quot;reset operation cycle and readiness&quot; for the Clear Fault Memory Allowed (Clear Behavior) <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R170' title="">[EV-R170]</a> property.</p>
+<h3 id="recoverable-in-same-operation-cycle">Recoverable in Same Operation Cycle</h3>
+<p><span id="EVUI-R190" class="rqDef">[EVUI-R190]</span> The column provides a combo-box for selecting from the available values &quot;undefined&quot;, &quot;no&quot; and &quot;yes&quot; for the Recoverable in Same Operation Cycle <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R190' title="">[EV-R190]</a> property.</p>
+<h3 id="enable-conditions">Enable Conditions</h3>
+<p><span id="EVUI-R200" class="rqDef">[EVUI-R200]</span> The column shows the Condition or Condition Group of the Event <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R200' title="">[EV-R200]</a>.</p>
+<p>Condition Groups are marked by a special symbol <img src="../../20%20UserInterface/Images/Condition%20Group%20Symbol.jpg" />.</p>
+<p>It provides a combo-box for selecting from the Conditions <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R700' title="">[EV-R700]</a> and Condition Groups <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R800' title="">[EV-R800]</a> defined in the Event Master Data page <a class='rqRef' href='../../20%20UserInterface/Event/Event%20Master%20Data.htm#EVMUI-R700' title="">[EVMUI-R700]</a> and <a class='rqRef' href='../../20%20UserInterface/Event/Event%20Master%20Data.htm#EVMUI-R800' title="">[EVMUI-R800]</a>.</p>
+<p>You may select <strong>no</strong> Condition or Condition Group.</p>
+<p>Note: in the CANdela data model, you can directly reference a Condition, as opposed to AUTOSAR DEXT where the reference is always to a Condition Group, see <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R720-Condition' title="">[EV-R720-Condition]</a>.</p>
+<h3 id="storage-conditions">Storage Conditions</h3>
+<p><span id="EVUI-R210" class="rqDef">[EVUI-R210]</span> The column behaves exactly as the previous column &quot;Enable Conditions&quot;.</p>
+<p>Note: in the CANdela data model, the same Condition can be used for Enable Condition <strong>and</strong> for Storage Condition, it does not have this type in itself which is the case in AUTOSAR DEXT, see <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R215' title="">[EV-R215]</a> and <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R720-Use' title="">[EV-R720-Use]</a>.</p>
+<h3 id="debounce-algorithm">Debounce Algorithm</h3>
+<p><span id="EVUI-R220" class="rqDef">[EVUI-R220]</span> The column shows the optional Debounce Algorithm of the Event <a class='rqRef' href='../../30 Features\Event\Events Data Model.htm#EV-R220' title="">[EV-R220]</a>.</p>
+<p>It provides a combo-box for selecting from the Debounce Algorithms defined in the Event Master Data page: Counter-Based Debounce Algorithms <a class='rqRef' href='../../20%20UserInterface/Event/Event%20Master%20Data.htm#EVMUI-R1200' title="">[EVMUI-R1200]</a> and Time-Based Debounce Algorithms <a class='rqRef' href='../../20%20UserInterface/Event/Event%20Master%20Data.htm#EVMUI-R1300' title="">[EVMUI-R1300]</a></p>
+<p>You may select <strong>no</strong> Debounce Algorithm.</p>
+<h2 id="clipboard-operations">Clipboard Operations</h2>
+<p><span id="EVUI-R500" class="rqDef">[EVUI-R500]</span> Clipboard operations available:</p>
+
+<ul>
+<li><span id="EVUI-R520" class="rqDef">[EVUI-R520]</span> Copy <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R413' title="">[MENU-R413]</a> - same as &quot;Copy&quot; <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R620' title="">[EVUI-R620]</a> below</li>
+<li><span id="EVUI-R530" class="rqDef">[EVUI-R530]</span> Paste <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R415' title="">[MENU-R415]</a> - same as &quot;Paste&quot; <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R630' title="">[EVUI-R630]</a> below</li>
+<li><span id="EVUI-R540" class="rqDef">[EVUI-R540]</span> Delete <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R420' title="">[MENU-R420]</a> - same as &quot;Delete&quot; <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R640' title="">[EVUI-R640]</a> below</li>
+</ul>
+<h2 id="context-menu">Context Menu</h2>
+<p><span id="EVUI-R600" class="rqDef">[EVUI-R600]</span> Context Menu</p>
+
+<p><span id="EVUI-R620" class="rqDef">[EVUI-R620]</span> Copy: copies the selected Event(s) to the clipboard.</p>
+<p><span id="EVUI-R630" class="rqDef">[EVUI-R630]</span> Paste: pastes Event(s) from the clipboard into the list.</p>
+<ul>
+<li>The menu item is insensitive if no Events were copied previously.</li>
+<li>Uses operation <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R050' title="">[EVOP-R050]</a> (within diagnostic instance) or <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R060' title="">[EVOP-R060]</a> (across diagnostic instances).</li>
+<li>The operation <strong>preserves a DTC reference</strong>, based on the error code, see <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R060-Ref' title="">[EVOP-R060-Ref]</a>.</li>
+<li>If <strong>referenced Event Master Data</strong> in source and target diagnostic instance is different, ...
+<ul>
+<li>CANdelaStudio <strong>preserves references to Event Master Data</strong>, based on the qualifier, see <a class='rqRef' href='../../30 Features\Event\Event Operations.htm#EVOP-R060-Master' title="">[EVOP-R060-Master]</a>.</li>
+</ul></li>
+</ul>
+
+
+<p><span id="EVUI-R640" class="rqDef">[EVUI-R640]</span> Delete: removes the selected Event(s), with confirmation <a class='rqRef' href='../../20%20UserInterface/Event/Events.htm#EVUI-R015' title="">[EVUI-R015]</a>.</p>
+<h2 id="dragn-drop">Drag'n Drop</h2>
+<p><span id="EVUI-D700" class="rqDef">[EVUI-D700]</span> Drag'n drop is not available.</p>
+<h3 id="related-topics">Related Topics</h3>
+<ul>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> (Export)</li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="DTC%20Events%20Mapping.htm">DTC Events Mapping</a> page</li>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="Properties%20of%20Event.htm">Properties of Event</a> (right side)</li>
+<li><a href="../../30%20Features/Event/Events%20Data%20Model.htm">Events Data Model</a></li>
+<li><a href="Event%20Master%20Data.htm">Event Master Data</a> page</li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+</ul>
+</body>
+</html>

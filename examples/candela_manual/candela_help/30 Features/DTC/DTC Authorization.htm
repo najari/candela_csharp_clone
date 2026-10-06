@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DTC Authorization</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="dtc-authorization">DTC Authorization</h1>
+<p>Authorization settings for a DTC can be specified in the DTC Pool in Expert View.</p>
+<h2 id="overview">Overview</h2>
+<p>The following overview shows depending on the DTC Authorization whether a DTC...</p>
+<ul>
+<li>may be <strong>missing</strong> (&quot;-&quot;)</li>
+<li>may exist as a <strong>copy</strong></li>
+<li>must exist as a <strong>reference</strong> (&quot;ref&quot;)</li>
+</ul>
+<p>... in the DTC list of the respective Error Code Table <a class='rqRef' href='../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm#ECT-R001' title="">[ECT-R001]</a> in Fault Memory:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="19%" />
+<col width="17%" />
+<col width="29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Fault Memory</th>
+<th>DTC not required</th>
+<th align="left">DTC required</th>
+<th>DTC required as reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">in Variant</td>
+<td></td>
+<td align="left"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">- Primary / WWH-OBD</td>
+<td>- / copy / ref</td>
+<td align="left">copy / ref</td>
+<td>ref</td>
+</tr>
+<tr class="odd">
+<td align="left">- except: User Defined Fault Memory only <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D105' title="">[UDFM-D105]</a></td>
+<td>- / copy</td>
+<td align="left">- / copy</td>
+<td>- / copy</td>
+</tr>
+<tr class="even">
+<td align="left">- OBDII</td>
+<td>- / copy / ref</td>
+<td align="left">copy / ref</td>
+<td>ref</td>
+</tr>
+<tr class="odd">
+<td align="left">in Library</td>
+<td>- / copy / ref</td>
+<td align="left">- / copy / ref</td>
+<td>- / copy / ref</td>
+</tr>
+</tbody>
+</table>
+<p>Note: there is no Pool for User Defined Fault Memory <a class='rqRef' href='../../30%20Features/DTC/Available%20DTCs.htm#DTCP-R003' title="">[DTCP-R003]</a>.</p>
+<h2 id="may-be-modified">May Be Modified</h2>
+<p><span id="DTC-R010" class="rqDef">[DTC-R010]</span> <strong>May Be Modified</strong></p>
+<ul>
+<li>default true</li>
+</ul>
+<p><span id="DTC-D210-mayBeModified" class="rqDef">[DTC-D210-mayBeModified]</span> The DTC <strong>&quot;may be modified&quot; authorization</strong>...</p>
+<ul>
+<li>can be set in the DTC Pool and</li>
+<li>applies to the “<strong>DTC instance</strong>”, i.e. to the DTC in all places where it is <strong>referenced</strong> (like for diagnostic instances).</li>
+<li>As a consequence, if authorization allows deletion of a DTC, and you delete and re-create the DTC, modification is possible for the new DTC by default.</li>
+</ul>
+<p><span id="DTCA-R030-mayBeModified" class="rqDef">[DTCA-R030-mayBeModified]</span>: In standard view, CANdelaStudio shall <strong>forbid modification and deletion</strong> of DTCs with “mayBeModified”=false (CDS-13824 R031).</p>
+<p>Note: this property does not extend to <strong>snapshot or extended data</strong>, which are <strong>not</strong> considered <strong>properties of the DTC per se</strong>.</p>
+<h2 id="required-in-all-variants">Required in all Variants</h2>
+<p><span id="DTC-R012" class="rqDef" title="Required in all Variants">[DTC-R012 Required in all Variants]</span>:</p>
+<ul>
+<li><span id="DTC-R012-No" class="rqDef">[DTC-R012-No]</span> “<strong>no</strong>”
+<ul>
+<li>the DTC is not required,</li>
+<li>the DTC can be deleted in Standard View.</li>
+</ul></li>
+<li><span id="DTC-R012-Yes" class="rqDef">[DTC-R012-Yes]</span> “<strong>yes</strong>” (= “required”)
+<ul>
+<li>the DTC is required: a DTC with the given numeric code must exist in all variants (as a reference or as a copy).</li>
+<li>All these DTC instances must have required=&quot;yes&quot;.</li>
+<li>Use this setting to ensure the code exists, but allow modification of other DTC properties.</li>
+<li>You cannot delete such a DTC in Standard View.</li>
+<li>You may replace a reference by a copy, or vice versa.</li>
+<li>See also the <a href="#common-rules">common rules</a> above.</li>
+</ul></li>
+<li><span id="DTC-R012-ReqAsRef" class="rqDef">[DTC-R012-ReqAsRef]</span> “<strong>as reference</strong>” (= “required as reference”)
+<ul>
+<li>the DTC is required: the DTC from the DTC Pool must be <strong>referenced</strong> in all variants.</li>
+<li>You cannot replace the reference to such a DTC by a copy of the DTC.</li>
+<li>Use this setting to ensure the DTC exists exactly with the properties defined in Expert view.</li>
+<li>See also the common rules in the next chapter.</li>
+</ul></li>
+<li><span id="DTC-R012-Default" class="rqDef">[DTC-R012-Default]</span> default: “no”,</li>
+<li>can be set in the DTC Pool</li>
+</ul>
+<p>Note: the document level authorization <a class='rqRef' href='../../30%20Features/Document/Authorization.htm#DLA-R100-PoolOnly' title="">[DLA-R100-PoolOnly]</a> does not enforce “as reference” in the data model.</p>
+<h3 id="common-rules">Common Rules</h3>
+<p><span id="DTCA-R020" class="rqDef" title="Semantics">[DTCA-R020.0 Semantics]</span>:</p>
+<ul>
+<li><span id="DTCA-R020-reqDel" class="rqDef">[DTCA-R020-reqDel]</span> The Fault Memory diagnostic instance as a whole may be missing.
+<ul>
+<li>This does not violate the DTC authorization.</li>
+</ul></li>
+<li><span id="DTCA-R020-reqCodeText" class="rqDef">[DTCA-R020-reqCodeText]</span> For a DTC with required “yes” or “as reference”, in Standard View, you cannot modify the DTC code and error text.</li>
+</ul>
+<h4 id="in-library">In Library</h4>
+<ul>
+<li><span id="DTCA-R020-reqLIB" class="rqDef">[DTCA-R020-reqLIB]</span> <span id="DTCA-R020-reqAsRefLIB" class="rqDef">[DTCA-R020-reqAsRefLIB]</span> The property has no effect on the use of the DTC in a Library, i.e. a library...
+<ul>
+<li>need not contain a DTC with the given code, or</li>
+<li>may contain it as a copy.</li>
+<li>See also <a href="../../30%20Features/Library/Library.htm#library-document-context">Libraries in Document Context</a>.</li>
+</ul></li>
+<li><span id="DTCA-R020-LIB" class="rqDef">[DTCA-R020-LIB]</span>: a DTC...
+<ul>
+<li>in a library</li>
+<li>that is not referenced from the DTC Pool</li>
+<li>shall have required = &quot;No&quot;.</li>
+</ul></li>
+</ul>
+<h4 id="in-user-defined-fault-memory">In User Defined Fault Memory</h4>
+<ul>
+<li><span id="DTCA-R020-UDFM" class="rqDef">[DTCA-R020-UDFM]</span>: a DTC...
+<ul>
+<li>in a DTC List for User Defined Fault Memory only <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D105' title="">[UDFM-D105]</a></li>
+<li>is not affected by the &quot;Required&quot; property of a DTC in DTC Pool</li>
+<li>must not be referenced from the DTC Pool <a class='rqRef' href='../../30%20Features/DTC/Available%20DTCs.htm#DTCP-R002-UDFM' title="">[DTCP-R002-UDFM]</a>,</li>
+<li>shall have required = &quot;No&quot;.</li>
+</ul></li>
+</ul>
+<h3 id="required-yes">Required &quot;Yes&quot;</h3>
+<ul>
+<li><span id="DTCA-R020-req" class="rqDef" title="Required &quot;Yes&quot;">[DTCA-R020-req Required &quot;Yes&quot;]</span>:
+<ul>
+<li>the DTC is required: a DTC with the given numeric code must exist in all variants (as a reference or as a copy).</li>
+<li>All these DTC instances must have required=&quot;yes&quot;.</li>
+<li>Use this setting to ensure the code exists, but allow modification of other DTC properties.</li>
+<li>You cannot delete such a DTC in Standard View.</li>
+<li>You may replace a reference by a copy, or vice versa.</li>
+<li>See also the <a href="#common-rules">common rules</a> above.</li>
+</ul></li>
+</ul>
+<h3 id="required-as-reference">Required &quot;as Reference&quot;</h3>
+<ul>
+<li><span id="DTCA-R020-reqAsRef" class="rqDef" title="&quot;Required as reference&quot;">[DTCA-R020-reqAsRef &quot;Required as reference&quot;]</span>:
+<ul>
+<li>the DTC is required: the DTC from the DTC Pool must be <strong>referenced</strong> in all variants.</li>
+<li>You cannot replace the reference to such a DTC by a copy of the DTC.</li>
+<li>Use this setting to ensure the DTC exists exactly with the properties defined in Expert view.</li>
+<li>See also the <a href="#common-rules">common rules</a> above.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC (Feature)</a></li>
+<li><a href="../../30%20Features/DTC/Available%20DTCs.htm">Available DTCs (Feature)</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Authorization.htm">Authorization Feature</a></li>
+</ul>
+</body>
+</html>

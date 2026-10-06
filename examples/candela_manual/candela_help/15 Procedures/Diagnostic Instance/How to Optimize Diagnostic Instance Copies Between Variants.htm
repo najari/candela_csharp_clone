@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Optimize Diagnostic Instance Copies Between Variants</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-optimize-diagnostic-instance-copies-between-variants">How to Optimize Diagnostic Instance Copies Between Variants</h1>
+<p>Within a CANdela document, a diagnostic instance can...</p>
+<ul>
+<li>either be referenced between two or more variants (modifications apply to all respective variants),</li>
+<li>or it can be a &quot;copy&quot; (= non-referenced; modifications apply only to the variant that contain it).</li>
+</ul>
+<p>Diagnostic instances can exist as independent &quot;copies&quot; even if their content is equal. Such unnecessary copies...</p>
+<ul>
+<li>waste space in a document</li>
+<li>and hide the intention that the contents shall be identical.</li>
+</ul>
+<p>To re-establish a diagnostic instance to be <strong>referenced</strong> between variants, you can do the following:</p>
+<h2 id="document-wide">Document-Wide</h2>
+<ul>
+<li>run ribbon tab Home | Replace | &quot;Reference Identical Diagnostic Instances and Job Container&quot;</li>
+<li>this compares the object properties and replaces copies by references where possible</li>
+</ul>
+<h2 id="for-an-individual-diagnostic-instance">For an Individual Diagnostic Instance</h2>
+<p>If one of the variants is the base variant (&quot;Common Diagnostics&quot;):</p>
+<ul>
+<li>run ribbon tab Home | Replace | &quot;Replace Copy with Reference in Base Variant&quot;</li>
+</ul>
+<p>Or in any case:</p>
+<ul>
+<li>in one variant, delete the non-referenced diagnostic instance;</li>
+<li>in the other variant, copy the diagnostic instance;</li>
+<li>in the one variant, paste the diagnostic instance as a reference
+<ul>
+<li>ribbon tab Home | &quot;Paste as Reference&quot;</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm">Ribbon Tab Home</a></li>
+<li><a href="../../30%20Features/Common%20Properties/References.htm">References (Feature)</a></li>
+</ul>
+</body>
+</html>

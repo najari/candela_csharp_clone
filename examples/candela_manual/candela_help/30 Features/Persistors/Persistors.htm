@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Persistors</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="persistors-add-on">Persistors Add-on</h1>
+<h2 id="motivation">Motivation</h2>
+<p>Due to customer-driven extensions of the CANdela data model, each new release of CANdelaStudio (7.5, 7.0, 5.5…) implements a modified CDD file format, which older CANdelaStudio versions cannot read per se.</p>
+<p>Up to CANdelaStudio 3.0, the load/save component delivered with CANdelaStudio and other Vector tools was able to read and write all older file formats (read: down to v1.1, save: 2.0). A tool based on the CANdelaStudio 2.0 format could not read v3.0 CDD files.</p>
+<h2 id="use-cases">Use-cases</h2>
+<ul>
+<li><p>Migrate data from an older to a current file format when loading file in CANdelaStudio</p></li>
+<li><p>Allow loading newer a file format in other Vector tools (e.g. CANoe; note that in CANoe COM environment no user interaction is possible)</p></li>
+<li><p>Allow loading a newer file format in an older CANdelaStudio (e.g. in case OEM and supplier exchange CDD files, and one of the process partners has not yet updated to the newer CANdelaStudio)</p></li>
+</ul>
+<h2 id="compatibility">Compatibility</h2>
+<p>The document migration tries to preserve the structure of the communication (services, data objects).</p>
+<p>It cannot in general preserve all additional authoring features. Features which are supported only in a newer version may be dropped or replaced by data structures available in the older versions, so that the net communication is the same.</p>
+<p>See the hints about <a href="../../30%20Features/CANdelaStudio%20Editor/Version%20Compatibility.htm">Version Compatibility</a>.</p>
+<h2 id="download-persistors-add-on">Download Persistors Add-On</h2>
+<p>The add-on is available in the Vector Download Center http://vector.com/persistors/ as &quot;Converters for CANdela Diagnostic Descriptions&quot;.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Installation/Bundled%20Products.htm">Bundled Products</a></li>
+</ul>
+</body>
+</html>

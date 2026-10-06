@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Fault Memory in UDS</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="fault-memory-in-uds">Fault Memory in UDS</h1>
+<p>See also the <a href="Fault%20Memory.htm">Fault Memory</a> introduction, and <a href="Fault%20Memory%20in%20CANdela.htm">Fault Memory in CANdela</a>.</p>
+<p>Contents:</p>
+<ul>
+<li><a href="#main">UDS Services for the Main Protocol Use-Cases</a></li>
+<li><a href="#read-dtcs">Read DTCs</a></li>
+<li><a href="#sr-uds">Snapshot Record in UDS</a></li>
+<li><a href="#ed">Extended Data Record in UDS</a></li>
+<li><a href="#user-defined">User-Defined Fault Memory in UDS</a></li>
+<li>Uses of DTC Status in UDS Services <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm#FMUDS-D560' title="">[FMUDS-D560]</a></li>
+<li>UDS DTC Status Byte <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm#FMUDS-D050' title="">[FMUDS-D050]</a></li>
+</ul>
+<h2 id="main">UDS Services for the Main Protocol Use-Cases</h2>
+<p>For the <strong>protocol use-cases</strong> listed in the <a href="Fault%20Memory.htm">Fault Memory</a> chapter, UDS provides the following <strong>services</strong>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Use-case</th>
+<th align="left">UDS Primary</th>
+<th>UDS User-Defined</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Read DTCs</td>
+<td align="left">19 02</td>
+<td>19 17</td>
+</tr>
+<tr class="even">
+<td align="left">Read Snapshot Data</td>
+<td align="left">19 04</td>
+<td>19 18</td>
+</tr>
+<tr class="odd">
+<td align="left">Read Extended Data</td>
+<td align="left">19 06</td>
+<td>19 19</td>
+</tr>
+<tr class="even">
+<td align="left">Clear Diagnostic Information</td>
+<td align="left">14</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+<h2 id="read-dtcs">Read DTCs</h2>
+<ul>
+<li>a test system requests the list of <a href="../../30%20Features/DTC/DTC.htm">DTCs</a></li>
+<li>in the response, the header of the list contains the number of DTCs</li>
+<li>each list entry includes...
+<ul>
+<li>a 2 or 3 byte DTC (error code)</li>
+<li>a 1-byte status value about the DTC status (maturity - confirmed or not...)</li>
+</ul></li>
+</ul>
+<h2 id="sr-uds">Snapshot Record in UDS</h2>
+<p>“Snapshot Records” are part of the <strong>UDS service 0x19 0x04</strong>.</p>
+<p>They are also called “<strong>Environment Data</strong>” or “<strong>Freeze Frames</strong>”.</p>
+<p>UDS 2020:</p>
+<blockquote>
+<p><strong>The typical usage of DTC Snapshots is to store data upon detection of a system malfunction.</strong></p>
+</blockquote>
+<p>In UDS, the service 0x19 0x04 has the following structure:</p>
+<div class="figure">
+<img src="Images/UDS%2019%2004.jpg" alt="UDS Service 19 04" />
+<p class="caption">UDS Service 19 04</p>
+</div>
+<p>The main data returned in the positive response:</p>
+<ul>
+<li>DTCSnapshotRecordNumber</li>
+<li>DTCSnapshotRecordNumberOfIdentifiers</li>
+<li>DTCSnapshotRecord</li>
+<li>dataIdentifier</li>
+<li>snapshotData</li>
+</ul>
+<p>See also <a href="Fault%20Memory%20in%20CANdela.htm">Fault Memory in CANdela</a>.</p>
+<h2 id="ed">Extended Data Record in UDS</h2>
+<p>“Extended Data Records” are part of the <strong>UDS service 0x19 0x06</strong>. Such data is also called “<strong>Statistical Data</strong>”.</p>
+<p>UDS 2020:</p>
+<blockquote>
+<p><strong>DTCExtendedData consists of extended status information associated with a DTC.</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>DTCExtendedData contains DTC parameter values, which have been identified at the time of the request. A typical use of DTCExtendedData is to store dynamic data associated with the DTC...</strong></p>
+</blockquote>
+<p>Examples: DTC occurrence counter, DTC aging counter, time of last occurrence.</p>
+<p>See also <a href="Fault%20Memory%20in%20CANdela.htm">Fault Memory in CANdela</a>.</p>
+<h2 id="user-defined">User-Defined Fault Memory in UDS</h2>
+<p>UDS defines services</p>
+<ul>
+<li>19 17 Read DTCs</li>
+<li>19 18 Read Snapshot Data</li>
+<li>19 19 Read Extended Data</li>
+</ul>
+<p>for User-Defined Fault Memory.</p>
+<div class="figure">
+<img src="Images/User-Defined%20Fault%20Memory.jpg" alt="User-Defined Fault Memory" />
+<p class="caption">User-Defined Fault Memory</p>
+</div>
+<p>See also <a href="User-Defined%20Fault%20Memory%20in%20CANdela.htm">User-Defined Fault Memory in CANdela</a>.</p>
+<h2 id="uses-of-dtc-status-in-uds-services">Uses of DTC Status in UDS Services</h2>
+<p><span id="FMUDS-D560" class="rqDef">[FMUDS-D560]</span> The <strong>UDS</strong> Fault Memory Services contain <strong>different types of DTC Status information</strong> (8 bits each):</p>
+<ul>
+<li><strong>DTCStatusMask</strong>:
+<ul>
+<li>used in a Request</li>
+<li>bit-wise filter for StatusOfDTC values stored in the ECU</li>
+<li>the default value (CDS-10222, 6.0) specifies a proposal to the user of a test system.</li>
+</ul></li>
+<li><strong>DTCStatusAvailabilityMask</strong>:
+<ul>
+<li>used in a Positive Response</li>
+<li>describes which DTC Status bits the ECU implementations supports</li>
+<li>at runtime, will be the same for all services</li>
+</ul></li>
+<li><strong>StatusOfDTC</strong>:
+<ul>
+<li>used in a Positive Response</li>
+<li>describes the status of a concrete DTC</li>
+<li>at runtime, will vary depending on DTC information stored in Fault Memory</li>
+</ul></li>
+</ul>
+<p>For hints about DTC Status in CANdela, see <a class='rqRef' href='../../30%20Features/DTC/DTC%20Status%20Bits.htm#DTCSB-D560' title="">[DTCSB-D560]</a>.</p>
+<h2 id="uds-dtc-status-byte">UDS DTC Status Byte</h2>
+<p><span id="FMUDS-D050" class="rqDef">[FMUDS-D050]</span> UDS DTC Status Byte</p>
+<ul>
+<li>bit 0 <code>testFailed</code>: result of the most recent test of the monitor
+<ul>
+<li>OBD relevant</li>
+</ul></li>
+<li>bit 1 <code>testFailedThisOperationCycle</code>: whether <code>testFailed</code> occurred in the current Operation Cycle.
+<ul>
+<li>set when result is FAILED,</li>
+<li>reset on start of the Operation Cycle.</li>
+<li>OBD relevant</li>
+</ul></li>
+<li>bit 2 <code>pendingDTC</code>: whether <code>testFailed</code> occurred in the current or last completed Operation Cycle
+<ul>
+<li>set when result is FAILED,</li>
+<li>reset on start of the Operation Cycle, if test passed in the current Operation Cycle</li>
+<li>OBD relevant</li>
+</ul></li>
+<li>bit 3 <code>confirmedDTC</code>: malfunction detected enough times so that DTC shall be stored in memory
+<ul>
+<li>set when result is FAILED and the failure counter exceeds a defined threshold</li>
+<li>reset by aging at start of an Operation Cycle, or by clearing or overwriting the DTC</li>
+<li>OBD relevant</li>
+</ul></li>
+<li>bit 4 <code>testNotCompletedSinceLastClear</code>: test never completed since last call to ClearDiagnosticInformation
+<ul>
+<li>set when result is FAILED or PASSED</li>
+<li>reset by clearing the DTC</li>
+<li>OBD relevant</li>
+</ul></li>
+<li>bit 5 <code>testFailedSinceLastClear</code>: test failed since last call to ClearDiagnosticInformation
+<ul>
+<li>set when result is FAILED</li>
+<li>reset by aging, or by clearing or overwriting the DTC</li>
+<li>OBD: optional for OEM</li>
+</ul></li>
+<li>bit 6 <code>testNotCompletedThisOperationCycle</code>: test never completed during the current Operation Cycle
+<ul>
+<li>set when result is FAILED or PASSED</li>
+<li>reset by starting an Operation Cycle, or by clearing the DTC</li>
+<li>OBD relevant</li>
+</ul></li>
+<li>bit 7 <code>warningIndicatorRequested</code>: status of warning Indicators associated with the DTC
+<ul>
+<li>set when result is FAILED, and the criteria for at least one warning Indicator are fulfilled (AUTOSAR <code>[SWS_Dem_00566]</code>)</li>
+<li>reset when the criteria for the Indicators are not fulfilled, or by clearing the DTC</li>
+<li>OBD: optional for OEM</li>
+</ul></li>
+<li>Value after DTC clear: 0x50 (bits 4 and 6 set; cf. AUTOSAR <code>[SWS_Dem_00385]</code>).</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Fault%20Memory.htm">Fault Memory</a> introduction</li>
+<li><a href="Fault%20Memory%20in%20CANdela.htm">Fault Memory in CANdela</a></li>
+<li><a href="Fault%20Memory%20Terms.htm">Fault Memory Terms</a></li>
+<li><a href="19%2006%20Wizard%20Data%20Model.htm">19 06 Wizard</a> (Extended Data per DTC)</li>
+<li><a href="AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory Introduction</a></li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC (Feature)</a></li>
+<li><a href="../../30%20Features/DTC/DTC%20Status%20Bits.htm">DTC Status Bits</a></li>
+<li><a href="../../30%20Features/DTC/Failure%20Type%20Byte.htm">Failure Type Byte</a></li>
+<li><a href="../../30%20Features/DTC/Failure%20Mode%20Identifier.htm">Failure Mode Identifier</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a> (setup in template)</li>
+<li><a href="User-Defined%20Fault%20Memory%20in%20CANdela.htm">User-Defined Fault-Memory in CANdela</a></li>
+</ul>
+</body>
+</html>

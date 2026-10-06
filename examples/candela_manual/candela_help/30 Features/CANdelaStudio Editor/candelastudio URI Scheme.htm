@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>candelastudio URI Scheme</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="candelastudio-uri-scheme-cds-11284-6.0"><span id='_index_446727903'>candelastudio:</span> <span id='_index_446727904'>URI Scheme</span> (CDS-11284 6.0)</h1>
+<h2 id="opening-a-candela-document-via-software">Opening a CANdela Document via Software</h2>
+<p><span id="URI-R010" class="rqDef">[URI-R010]</span> Any application may open a CANdela document using the <code>candelastudio:</code> URI <strong>scheme</strong>.</p>
+<p><span id="URI-R020" class="rqDef">[URI-R020]</span> CANdelaStudio opens the CANdela document passed in the URI <strong>path</strong>.</p>
+<p><span id="URI-R030" class="rqDef">[URI-R030]</span> CANdelaStudio navigates to the object passed in the URI <strong>fragment</strong> as an <a href="../../30%20Features/Common%20Properties/Object%20Paths.htm">object path</a>.</p>
+<h3 id="example">Example</h3>
+<p>For the following simple HTML code in an HTML file:</p>
+<pre><code>&lt;html&gt;
+&lt;body&gt;
+    &lt;a href=&quot;candelastudio://C:\Users\Public\Documents\Vector\CANdelaStudio\9.0\Examples\ABS_ESP-Example.cdd#qpath:/BaseVariant/Sessions/DefaultSession/Data&quot;&gt;Open ABS_ESP-Example.cdd&lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<ul>
+<li>if you open the HTML file in a web browser...</li>
+<li>and click the hyperlink (which must contain the path to a CANdela document on your computer),</li>
+<li>the web browser will start CANdelaStudio</li>
+<li>which will open the CANdela document...</li>
+<li>and navigate to the default session.</li>
+</ul>
+<h2 id="background">Background</h2>
+<h3 id="uniform-resource-identifier-uri"><span id='_index_446727905'>Uniform Resource Identifier</span> (URI)</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">Uniform Resource Identifier</a> (URI) is a concept from the world wide web to identify a <strong>resource</strong>.</p>
+<p>In general, it consists of the following parts:</p>
+<pre><code> scheme:[//[user[:password]@]host[:port]][/path][?query][#fragment]</code></pre>
+<h3 id="uri-in-windows">URI in Windows</h3>
+<p>The Windows operating system can automatically <strong>open an application</strong> associated with a given file...</p>
+<ul>
+<li>based on the <strong>file type</strong>, e.g. <code>.cdd</code></li>
+<li>or using an <strong>URI scheme</strong>, e.g. <code>candelastudio</code>.</li>
+</ul>
+<h3 id="uri-for-candelastudio">URI for CANdelaStudio</h3>
+<p>For a CANdela document in the local file system, the <strong>relevant URI parts</strong> are:</p>
+<pre><code> scheme:///path[#fragment]</code></pre>
+<p>where ...</p>
+<ul>
+<li><code>scheme</code> is &quot;candelastudio&quot;</li>
+<li><code>/path</code> is the path in the local file system, e.g. <code>C:\Users\Public\Documents\Vector\CANdelaStudio\9.0\Examples\ABS_ESP-Example.cdd</code></li>
+<li><code>#fragment</code> (optional) is an object path, e.g. <code>qpath:/BaseVariant/Sessions/DefaultSession/Data</code></li>
+</ul>
+<p>Complete Example:</p>
+<pre><code>candelastudio://C:\Users\Public\Documents\Vector\CANdelaStudio\9.0\Examples\ABS_ESP-Example.cdd#qpath:/BaseVariant/Sessions/DefaultSession/Data</code></pre>
+<p>If you enter this string with an existing file path in HTML code (see above) or into the address entry field of the Windows Explorer, it will...</p>
+<ul>
+<li>start CANdelaStudio or bring it to front,</li>
+<li>open the CANdela document and</li>
+<li>navigate to the given object path.</li>
+</ul>
+<p>The mechanism uses...</p>
+<ul>
+<li>a running instance of CANdelaStudio,</li>
+<li>otherwise the most recently installed CANdelaStudio version.</li>
+</ul>
+<h3 id="setup">Setup</h3>
+<p><span id="URI-R040" class="rqDef">[URI-R040]</span> The CANdelaStudio installer associates</p>
+<ul>
+<li>the <code>candelastudio:</code> URI scheme</li>
+<li>with the CANdelaStudio application.</li>
+</ul>
+<p>Therefore the CANdelaStudio version most recently installed &quot;wins&quot;.</p>
+<h1 id="related-topics">Related Topics</h1>
+<ul>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm">Command Line</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Object%20Paths.htm">Object Paths</a>
+<ul>
+<li><a href="../../30%20Features/Common%20Properties/Object%20Paths.htm#xpath">ODX Path</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Object%20Paths.htm#rpath">Runtime Paths</a></li>
+</ul></li>
+<li><a href="../../30%20Features/Installation/Windows%20Settings.htm">Windows Settings</a></li>
+</ul>
+</body>
+</html>

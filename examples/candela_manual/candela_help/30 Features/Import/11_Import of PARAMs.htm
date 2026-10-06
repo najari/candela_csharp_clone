@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>11_Import of PARAMs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="PARAMs">Import of PARAMs</h1>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ODX PARAM</th>
+<th align="left">Imported into CANdelaStudio as</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">VALUE</td>
+<td align="left">if VALUE references a SimpleDOP import as data object having a default value optionally</td>
+</tr>
+<tr class="even">
+<td align="left">RESERVED</td>
+<td align="left">Reserved object</td>
+</tr>
+<tr class="odd">
+<td align="left">CODED-CONST</td>
+<td align="left">ConstComp/StaticComp or data object with const value (depending on the template and DIAG-SERVICE structure). Note: The ODX Export exports every data object with const value as PHYS-CONST</td>
+</tr>
+<tr class="even">
+<td align="left">PHYS-CONST</td>
+<td align="left">Data object with const value (raw value is calculated from physical value) or ConstComp/StaticComp depending on the position in the ODX primitive.</td>
+</tr>
+<tr class="odd">
+<td align="left">SYSTEM</td>
+<td align="left">Data object with semantics</td>
+</tr>
+<tr class="even">
+<td align="left">TABLE-KEY</td>
+<td align="left">Static value of a DiagInstance</td>
+</tr>
+<tr class="odd">
+<td align="left">TABLE-STRUCT</td>
+<td align="left">Telegram table content of the DiagInstance for the referenced TABLE-KEY. The content is the data of the (statically or dynamically) referenced STRUCTURE.</td>
+</tr>
+<tr class="even">
+<td align="left">TABLE-ENTRY</td>
+<td align="left">object(s) for referenced KEY and/or STRUCTURE content</td>
+</tr>
+</tbody>
+</table>
+<h2 id="import-of-positionable-params">Import of POSITIONABLE-PARAMs</h2>
+<h3 id="import-of-values">Import of VALUEs</h3>
+<p>If VALUE has a PHYSICAL-DEFAULT-VALUE the raw value of the default value is calculated and imported as default value of the data object.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">DOP-BASE referenced by VALUE</th>
+<th align="left">VALUE is imported into CANdelaStudio as</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">DATA-OBJECT-PROP</td>
+<td align="left">Data object</td>
+</tr>
+<tr class="even">
+<td align="left">DTC-DOP</td>
+<td align="left">DTC Table</td>
+</tr>
+<tr class="odd">
+<td align="left">COMPLEX-DOP</td>
+<td align="left">see previous chapter</td>
+</tr>
+</tbody>
+</table>
+<h3 id="import-of-coded-const">Import of CODED-CONST</h3>
+<p>Depending on the CANdelaStudio template it is imported as ConstComp/StaticComp value or data object with const value.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">DIAG-CODED-TYPE</th>
+<th align="left">CODED-CONST is imported into CANdelaStudio as</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">STANDARD-LENGTH-TYPE</td>
+<td align="left">ConstComp/StaticComp value or data object with const value</td>
+</tr>
+</tbody>
+</table>
+<h3 id="import-of-systems">Import of SYSTEMs</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ODX SYSPARAM value</th>
+<th align="left">Semantics of CANdelaStudio Data Object</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">TIMEZONE</td>
+<td align="left">not importable</td>
+</tr>
+<tr class="even">
+<td align="left">YEAR</td>
+<td align="left">YEAR</td>
+</tr>
+<tr class="odd">
+<td align="left">MONTH</td>
+<td align="left">MONTH</td>
+</tr>
+<tr class="even">
+<td align="left">DAY</td>
+<td align="left">DAY</td>
+</tr>
+<tr class="odd">
+<td align="left">HOUR</td>
+<td align="left">HOUR</td>
+</tr>
+<tr class="even">
+<td align="left">MINUTE</td>
+<td align="left">MINUTE</td>
+</tr>
+<tr class="odd">
+<td align="left">SECOND</td>
+<td align="left">SECOND</td>
+</tr>
+<tr class="even">
+<td align="left">TESTERID</td>
+<td align="left">TESTERID</td>
+</tr>
+<tr class="odd">
+<td align="left">USERID</td>
+<td align="left">USERID</td>
+</tr>
+<tr class="even">
+<td align="left">CENTURY</td>
+<td align="left">not importable</td>
+</tr>
+<tr class="odd">
+<td align="left">WEEK</td>
+<td align="left">not importable</td>
+</tr>
+</tbody>
+</table>
+<h2 id="synch-attribute">Synch attribute</h2>
+<p>On importing parts (data types, parameters, ...) from ODX into the data type list or the import pool of a CANdela document, it is possible to specify a synchronization attribute.</p>
+<p>Details on the CANdelaStudio synchronization feature can be found in the application note &quot;AN-IDG-1-014_How_to_synchronize_Data_Objects_via_Import_Pool&quot; and in the reference for the Import Pool regarding the use of <a href="../../30%20Features/Import%20Pool/Import%20Pool.htm#ProcessingInstruction">Processing Instructions</a> and <a href="../../30%20Features/Import%20Pool/Import%20Pool.htm#SDGs">SDGs</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="ODX%20Import%20Introduction.htm">ODX Import Introduction</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">Data Objects</a></li>
+</ul>
+</body>
+</html>

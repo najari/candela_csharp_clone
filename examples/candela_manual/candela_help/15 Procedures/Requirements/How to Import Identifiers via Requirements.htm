@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Import Identifiers via Requirements</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-import-identifiers-via-requirements">How to Import Identifiers via Requirements</h1>
+<h2 id="use-case">Use-Case</h2>
+<p>Transport <strong>DIDs</strong> including their <strong>identifier</strong> from an Excel table into a CANdela document, using the <strong>import of requirements</strong> <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R270' title="">[MENU-R270]</a> from .csv.</p>
+<p>By default, requirements in CANdelaStudio do not support the <strong>identifier</strong>.</p>
+<h2 id="solution">Solution</h2>
+<p>In the Requirements <a href="../../20%20UserInterface/Requirements/Property%20Page%20Settings.htm">settings</a>, define a specific column &quot;Identifier&quot; <a class='rqRef' href='../../30 Features\Requirements\Data Model.htm#RQ-R030-Identifier' title="Requirement &quot;Identifier&quot; Property">[RQ-R030-Identifier]</a>.</p>
+<p>Now the update of diagnostic objects operation <a class='rqRef' href='../../30 Features\Requirements\Update Diagnostic Objects.htm#RQ-R550' title="">[RQ-R550]</a> uses the new requirements property &quot;Identifier&quot; to update the identifier of DIDs.</p>
+<p>For the number format, see <a class='rqRef' href='../../30 Features\Requirements\Update Diagnostic Objects.htm#RQ-R550-Format' title="">[RQ-R550-Format]</a>.</p>
+<p>Note: when CANdelaStudio updates requirements from diagnostic objects, it generates the identifier as decimal string.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/DID/DIDs.htm">DID (List)</a></li>
+<li><a href="../../30%20Features/DID/DID.htm">DID Feature</a></li>
+<li><a href="../../30%20Features/Requirements/Requirements.htm">Requirements</a></li>
+<li><a href="../../30%20Features/Requirements/Update%20Diagnostic%20Objects.htm">Update Diagnostic Objects</a></li>
+<li><a href="../../30%20Features/Requirements/Update%20Requirements.htm">Update Requirements</a></li>
+</ul>
+</body>
+</html>

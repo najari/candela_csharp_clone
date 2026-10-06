@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Group of DTC</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="group-of-dtc-cds-448"><span id='_index_446728021' title='DTC' data-term='DTC'>Group of DTC</span> (CDS-448)</h1>
+<p>Some services reading/clearing DTCs let you specify <strong>groups of DTCs</strong> to be used in a request, e.g. UDS 0x14 &quot;Clear Diagnostic Information&quot;.</p>
+<p>Optionally, the request may contain a concrete <strong>individual DTC</strong> instead of a group.</p>
+<p><strong>Typical groups</strong> are: powertrain, chassis, body, network communication, emission related systems.</p>
+<p>A group is a numeric value that specifies a <strong>range of DTCs</strong>, e.g. Chassis group value 0x400000 for the range 0x400000 .. 0x7FFFFF.</p>
+<p>Special numeric values denote e.g. &quot;All groups&quot; 0xFFFFFF.</p>
+<p>See also the <a href="../../20%20UserInterface/DTC/Group%20of%20DTC.htm">Group of DTC user interface</a>.</p>
+<h2 id="group-of-dtc-in-candela">Group of DTC in CANdela</h2>
+<div class="figure">
+<img src="Images/GroupOfDTC.jpg" alt="Group of DTC Data Model" />
+<p class="caption">Group of DTC Data Model</p>
+</div>
+<p>In the <strong>template</strong>, ...</p>
+<ul>
+<li>a <strong>text table data type</strong> defines which groups are supported by the ECU.
+<ul>
+<li>The data type is shown in the data type list.</li>
+</ul></li>
+<li>a <a href="../../30%20Features/Protocol%20Service/Group%20of%20DTC%20Proxy%20Component.htm">Group of DTC Proxy Component</a> references the data type
+<ul>
+<li>... in all <strong>Protocol Service</strong> components that represent a group of DTCs.</li>
+</ul></li>
+</ul>
+<p>In a <strong>diagnostic instance</strong>, <strong>Group of DTC</strong> is represented by a special <a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">data object</a>. It...</p>
+<ul>
+<li>is typically used...
+<ul>
+<li>in a Fault Memory diagnostic instance</li>
+<li>in Control DTC Setting (UDS 0x85)</li>
+</ul></li>
+<li>corresponds with the Group of DTC Proxy Component (see above)</li>
+</ul>
+<h3 id="supported-groups">Supported Groups</h3>
+<ul>
+<li>the Group of DTC Data Object contains a &quot;local&quot; <strong>text table</strong> that describes the <strong>supported groups</strong>;
+<ul>
+<li>the set of text table entries is a <strong>subset</strong> of the entries of the &quot;master&quot; text table referenced at the Proxy Component</li>
+<li>the text table entries are copies of the master text table entries</li>
+<li>each group not supported is missing in the local text table</li>
+</ul></li>
+<li>For a DTC group that is declared to be supported, CANdelaStudio does not check whether the DTC list actually contains a DTC in that range.</li>
+</ul>
+<h3 id="supports-individual-dtcs">Supports Individual DTCs</h3>
+<ul>
+<li>the Group of DTC Data Object contains a flag indicating whether it <strong>supports individual DTCs</strong></li>
+<li>the <strong>possible values</strong> of the data object on the line are...
+<ul>
+<li>the &quot;group&quot; text table entries</li>
+<li>plus (if &quot;supports individual DTCs&quot; is true) all individual DTCs defined in the DTC list in the diagnostic instance.</li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="DTC.htm">DTC Feature</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">Data Object Feature</a></li>
+<li><a href="../../20%20UserInterface/DTC/Group%20of%20DTC.htm">Group of DTC (User Interface)</a></li>
+</ul>
+
+</body>
+</html>

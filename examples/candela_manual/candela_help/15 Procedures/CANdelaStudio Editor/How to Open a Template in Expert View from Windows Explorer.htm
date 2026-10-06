@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Open a Template in Expert View from Windows Explorer</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-open-a-template-in-expert-view-from-windows-explorer">How to Open a Template in Expert View from Windows Explorer</h1>
+<p>If you have <a href="../../30%20Features/CANdelaStudio%20Editor/Editions.htm">CANdelaStudio Admin edition</a> installed and want to open CANdela templates (<code>.cddt</code> files) directly from the context menu in Windows Explorer, do the following:</p>
+<div class="figure">
+<img src="Images/How%20to%20Open%20a%20Template%20in%20Expert%20View%20from%20Windows%20Explorer.jpg" alt="Windows Registry Editor Showing the Key to Create" />
+<p class="caption">Windows Registry Editor Showing the Key to Create</p>
+</div>
+<ul>
+<li>open the Windows registry editor (e.g. open the Windows start menu, type &quot;regedit&quot;, ENTER)</li>
+<li>confirm the prompt to let the application perform changes</li>
+<li>in the tree, navigate to <code>HKEY_CLASSES_ROOT/CANdelaDiagnosticTemplate/shell</code></li>
+<li>press right mouse on &quot;shell&quot;, select &quot;New&quot; - &quot;Key&quot;, enter e.g. &quot;CANdelaStudio 8.2 (Expert View)&quot; (corresponding with your version of CANdelaStudio)</li>
+<li>press right mouse on the new entry, select &quot;New&quot; - &quot;Key&quot;, enter &quot;command&quot;</li>
+<li>in the right side, double click on &quot;(Standard)&quot;, a dialog appears</li>
+<li>enter the following command line: <code>&quot;C:\Program Files (x86)\Vector CANdelaStudio 8.2\Bin\CANdelaStudio.exe&quot; /expert 1 &quot;%1&quot;</code></li>
+<li>close the registry editor</li>
+<li>after a Windows restart, the context menu item is shown in Windows explorer on <code>.cddt</code> files</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">Views</a></li>
+<li>&quot;Reopen in Expert View&quot; <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Document.htm#MENU-R785' title="">[MENU-R785]</a></li>
+</ul>
+</body>
+</html>

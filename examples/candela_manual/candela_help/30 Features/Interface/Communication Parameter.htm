@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Communication Parameter</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="communication-parameter"><span id='_index_446728068' title='Feature' data-text='Feature'>Communication Parameter</span></h1>
+<h2 id="introduction">Introduction</h2>
+<p>In a <strong>data driven test system</strong>, communication parameters are not hard-coded but taken from the CANdela document. Therefore a communication parameter typically parameterizes the communication between an ECU and a test system, e.g.</p>
+<ul>
+<li>Bus type: &quot;CAN&quot;</li>
+<li>CAN-ID: 0x0700</li>
+<li>P2 Client: 150ms</li>
+</ul>
+<p>Communication parameters have the same types as CANdela attributes <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R020' title="Attribute Type">[ATTR-R020]</a>.</p>
+<h3 id="list">List</h3>
+<p>The list of communication parameters is <strong>defined in the CANdela template</strong> in Expert View, see <a class='rqRef' href='../../20 UserInterface\Interface\Communication Parameters.htm#CPUI-R050' title="">[CPUI-R050]</a>.</p>
+<ul>
+<li>some of them may control the behavior of a specific tool only,</li>
+<li>typically to support an OEM specific process.</li>
+</ul>
+<h3 id="values">Values</h3>
+<p>You can edit the values of communication parameters (e.g. the CAN-ID) in <strong>Standard View</strong> in a CANdela document.</p>
+<h3 id="use">Use</h3>
+<p>A data driven test system...</p>
+<ul>
+<li>typically uses the communication parameter values from a CANdela document</li>
+<li>... but may also allow modifying them directly in the test system.</li>
+</ul>
+<h2 id="meaning-of-communication-parameters">Meaning of Communication Parameters</h2>
+<p>For some protocol standards (e.g. UDSonCAN), the communication parameters and their meaning are standardized in the <strong>D-PDU API</strong> (see below <a class='rqRef' href='../../30%20Features/Interface/Communication%20Parameter.htm#CP-R060' title="">[CP-R060]</a>). E.g. the ODX standard specifies communication parameters by referencing the D-PDU API.</p>
+<p>For communication parameters created with the CANdelaStudio wizard, the <strong>description</strong> column contains the available information about the meaning and use of the communication parameter.</p>
+<p>A CANdela template may contain any user-defined communication parameters, therefore CANdelaStudio does not provide further information beyond the description given in the template.</p>
+<h2 id="category">Category</h2>
+<p><span id="CP-R020" class="rqDef">[CP-R020]</span> The category roughly classifies the use of a communication parameter in the network stack. CANdelaStudio provides the categories...</p>
+<ul>
+<li>Communication</li>
+<li>Timing</li>
+<li>Initialization</li>
+</ul>
+<p>... but more can be defined for specific purposes in the CANdela template.</p>
+<p><strong>Vector tools do not rely on the category</strong>, since the standardized qualifier already defines how a communication parameter is to be used. The category may be used in other tools, or for documentation purposes.</p>
+<h2 id="symbol">Symbol</h2>
+<p><span id="CP-R030" class="rqDef">[CP-R030]</span> A communication parameter of type &quot;Enum&quot; (enumeration) contains a list of symbols (strings). One of these symbols gets selected as default and optionally as overriding value, respectively.</p>
+<ul>
+<li>The list of symbols can be defined freely in the CANdela template.
+<ul>
+<li>For restrictions, see <a class='rqRef' href='../../20 UserInterface\Interface\Communication Parameters.htm#CPUI-R070' title="">[CPUI-R070]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="display">Display</h2>
+<p><span id="CP-R040" class="rqDef">[CP-R040]</span> Depending on the type of communication parameter, the &quot;Display&quot; property...</p>
+<ul>
+<li>describes the <strong>numeric format</strong> (decimal, hexadecimal, binary)</li>
+<li>describes the <strong>sort order</strong> of enumeration symbols.</li>
+</ul>
+<h2 id="default-value">Default Value</h2>
+<p><span id="CP-R050" class="rqDef" title="Default Value">[CP-R050 Default Value]</span> The <strong>default value</strong> of a communication parameter is defined in the CANdela template.</p>
+<ul>
+<li><span id="CP-R050-OverridingValue" class="rqDef">[CP-R050-OverridingValue]</span> In a CANdela document in Standard View, you can optionally specify an <strong>overriding value</strong>.
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Document%20Template/Convert%20to%20Template.htm#DOC-R710' title="">[DOC-R710]</a> &quot;Convert document to template&quot; drops it.</li>
+<li>Loading a template drops it (CDS-38382 8.2 SP3)</li>
+</ul></li>
+<li><span id="CP-R050-Default" class="rqDef">[CP-R050-Default]</span> As long as there is no overriding value, the default value takes effect.</li>
+</ul>
+<h2 id="is-standard-d-pdu-cds-32611-8.2">Is Standard (D-PDU) (CDS-32611 8.2)</h2>
+<p><span id="CP-R060" class="rqDef">[CP-R060]</span> The <strong>qualifier</strong> of the communication parameter can be classified whether it corresponds with the <strong>D-PDU API standard</strong>, and whether the Vector diagnostic toolchain can handle it:</p>
+<ul>
+<li><p><span id="CP-R060-yes" class="rqDef">[CP-R060-yes]</span>: <strong>yes</strong> - the qualifier is one of the qualifiers defined in the D-PDU API</p></li>
+<li><span id="CP-R060-mapped" class="rqDef">[CP-R060-mapped]</span>: <strong>Mapped by Alias</strong> - the qualifier is <em>not</em> one of the qualifiers defined in the D-PDU API, but the Vector diagnostic toolchain knows how to map it to such a standardized qualifier.
+<ul>
+<li>This typically applies if a qualifier cannot be changed to the standardized qualifier without breaking an existing OEM specific toolchain.</li>
+<li>This especially holds for interfaces where the D-PDU API does not define communication parameters (e.g. ISO 10681 FlexRay).</li>
+<li>It also holds for special non-standard communication parameters (see next chapter).</li>
+</ul></li>
+<li><p><span id="CP-R060-no" class="rqDef">[CP-R060-no]</span>: <strong>no</strong> the qualifier does not correspond with the D-PDU API and will not be handled by the Vector diagnostic toolchain.</p></li>
+</ul>
+<p>This information is displayed in the <a href="../../20%20UserInterface/Interface/Communication%20Parameters.htm">communication parameter list</a> in Expert view.</p>
+<h2 id="unit"><span id='_index_446728069' title='at Communication Parameter' data-text='at Communication Parameter'>Unit</span></h2>
+<p>A CANdela communication parameter does <strong>not</strong> have a &quot;Unit&quot; property.</p>
+<p>Recommended practice: describe the unit in the description field.</p>
+<p>The ODX Export supports a <strong>convention</strong>, see <a class='rqRef' href='../../30%20Features/Export/40_ODXExport_ECU%20Properties.htm#ODXE-R900' title="">[ODXE-R900]</a>.</p>
+<p>The CANdela toolchain assumes the unit (e.g. for P3) as <strong>milliseconds</strong> (ms).</p>
+<h3 id="special">Special Non-Standard Communication Parameters</h3>
+<p>The communication parameters</p>
+<ul>
+<li>Bus type (CAN)</li>
+<li>Max Length of TP Message (4095)</li>
+<li>Transport Protocol Type (ISO15765)</li>
+</ul>
+<p>have no direct representation in the D-PDU API.</p>
+<p>In an <a href="../../30%20Features/Export/40_ODXExport_ECU%20Properties.htm#special">ODX document</a>, they are defined implicitly by the use of a PHYSICAL-LINK-TYPE and PROTOCOL-TYPE.</p>
+<p>Templates (such as the Vector UDS template) may nonetheless define these communication parameters, in order to make the information more <strong>explicit</strong>. The Vector toolchain evaluates these communication parameters. Consequently, CANdelaStudio shows them as &quot;Mapped by Alias&quot;.</p>
+<h2 id="specific-use-in-toolchain">Specific Use in Toolchain</h2>
+<p>CANoe.DiVa uses P2 and P2* from the CANdela document by default. You can configure it to use what is configured in CANoe (which should equal the values in the CANdela document if not modified):</p>
+<div class="figure">
+<img src="Images/DiVa%20P2%20Timings.png" alt="P2/P2* Timing Settings in CANoe.DiVa" />
+<p class="caption">P2/P2* Timing Settings in CANoe.DiVa</p>
+</div>
+<h2 id="use-in-odx-export">Use in ODX Export</h2>
+<p>See <a href="../../30%20Features/Export/40_ODXExport_ECU%20Properties.htm">ECU properties</a> in the ODX Export documentation.</p>
+<h2 id="data-model">Data Model</h2>
+<p>As of CANdelaStudio 8.5, communication parameters are stored using <a href="../../30%20Features/Attributes/Attributes.htm">attributes</a>, see the <a href="../../30%20Features/Interface/Interface.htm">Interfaces Feature</a>.</p>
+<h2 id="semantics-usage">Semantics &quot;Usage&quot;</h2>
+<ul>
+<li><span id="CP-R070" class="rqDef" title="Usage">[CP-R070 Usage]</span> A communication parameter (like an attribute) has a specific semantics <strong>„usage“</strong> <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R070' title="">[ATTR-R070]</a>.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/Interface/Interface.htm">Interfaces</a></li>
+<li><a href="../../20%20UserInterface/Interface/Communication%20Parameters.htm">Communication Parameters</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="Addressing%20Schemes.htm">Addressing Schemes</a></li>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes</a></li>
+<li><a href="../../30%20Features/Interface/Communication%20Parameters%20at%20Services%20and%20Jobs.htm">Communication Parameters at Services and Jobs</a></li>
+<li><a href="../../30%20Features/Export/40_ODXExport_ECU%20Properties.htm">Communication Parameters in ODX Export</a></li>
+<li><a href="Dynamic%20Addressing.htm">Dynamic Addressing</a></li>
+<li><a href="../../30%20Features/Service/Service.htm#addressing">Physical Addressing and Functional Addressing</a></li>
+<li><a href="../../30%20Features/Plug-ins/Plug-in%20Manage%20Multi%20Identity%20ECU.htm">Plug-in &quot;Manage Multi Identity ECU&quot;</a></li>
+</ul>
+</body>
+</html>

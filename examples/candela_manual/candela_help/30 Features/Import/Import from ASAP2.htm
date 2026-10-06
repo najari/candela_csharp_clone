@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Import from ASAP2</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="import-from-asap2-cds-3791-4.0-sp2">Import from <span id='_index_446728053' title='Import from' data-text='Import from'>ASAP2</span> (CDS-3791 4.0 SP2)</h1>
+<p>Import of data types and data objects from an ASAM MCD-2MC (ASAP2, .a2L) file.</p>
+<h2 id="use-case">Use-Case</h2>
+<p>In a <strong>ASAP2</strong> (.a2L) file, you have defined calibration and measurement data (&quot;labels&quot;).</p>
+<p>You may want some of the labels to be accessible via the diagnostic protocol to a test system (using diagnostic <strong>data objects</strong>).</p>
+<h2 id="import">Import</h2>
+<p><span id="IA2L-R100" class="rqDef">[IA2L-R100]</span> ASAP2 import handles</p>
+<ul>
+<li>data types (<code>COMPUMETHOD</code>)
+<ul>
+<li>coefficients form</li>
+<li>formula</li>
+<li>tables: number -&gt; number, and number -&gt; string</li>
+</ul></li>
+<li>data objects
+<ul>
+<li>name</li>
+<li>reference to a <code>COMPUMETHOD</code></li>
+<li>address (but no relation to a diagnostic service)</li>
+<li><span id="IA2L-R100-DA" class="rqDef">[IA2L-R100-DA]</span> if...
+<ul>
+<li>the document has the attribute category &quot;CANdesc&quot;,</li>
+<li>and the <code>sourceInfo</code> is set in the ASAP2 file,</li>
+<li>then import assigns the <code>sourceInfo</code> to the attribute with qualifier <a href="../../30%20Features/Attributes/Special%20Attributes.htm#VariableForDirectAccess">VariableForDirectAccess</a> (CDS-4740 4.0 SP2)</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm">Ribbon Tab Data Exchange</a></li>
+<li>Data overview export - <a href="../../30%20Features/Export/Data%20Overview%20Export.htm#label">Label</a>.</li>
+</ul>
+</body>
+</html>

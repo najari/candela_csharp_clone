@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Addressing Schemes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="addressing-schemes"><span id='_index_446728070' title='Addressing: Schemes' data-term='Addressing' data-text='Schemes'>Addressing Schemes</span></h1>
+<h2 id="overview">Overview</h2>
+<p>Addressing schemes are described in ISO 15765-2.</p>
+
+<table>
+<colgroup>
+<col width="12%" />
+<col width="39%" />
+<col width="19%" />
+<col width="28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Addressing Scheme</th>
+<th align="left">Description</th>
+<th align="left">Advantage</th>
+<th align="left">Disadvantage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Normal</strong></td>
+<td align="left">CAN ID contains <strong>source and target</strong> address.<br />
+<strong>2</strong> CAN IDs for each ECU (send/receive).<br />
+E.g. OBD: <code>0x7DF..0x7EF</code>.</td>
+<td align="left">All data bytes can be used.</td>
+<td align="left">Requires two CAN IDs per ECU.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Extended</strong></td>
+<td align="left">CAN ID contains <strong>source address</strong>,<br />
+first data (payload) byte contains <strong>target address</strong>.<br />
+<strong>1</strong> CAN ID for <strong>all requests</strong> of all ECUs:<br />
+<strong>base address</strong> + <strong>source address</strong>.<br />
+<strong>1</strong> CAN ID per ECU for the <strong>response</strong>.<br />
+E.g. 11-bit: <code>0xNss, Data: 0xtt...</code>.<br />
+E.g. 29-bit: <code>0xNnNnNnss, Data: 0xtt...</code>. </td>
+<td align="left">Requires fewer CAN IDs.</td>
+<td align="left">Addressing consumes 1 data byte.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Normal Fixed</strong><br />
+(29-bit only)</td>
+<td align="left">CAN ID contains <strong>source and target address</strong>.<br />
+<strong>2</strong> CAN IDs for each ECU (send/receive). E.g.<br />
+<code>0x0CDAttss</code> (physical addressing)<br />
+<code>0x0CDBttss</code> (functional addressing)<br />
+<br />
+Note: the string &quot;NormalFixed&quot; works, &quot;Normal Fixed Addressing&quot; does not.</td>
+<td align="left">All data bytes can be used.</td>
+<td align="left">Requires two CAN IDs per ECU.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Mixed</strong><br />
+(29-bit only)</td>
+<td align="left">For ECUs in different <strong>subnets</strong>:<br />
+CAN ID contains the <strong>local</strong> addresses,<br />
+of which one is the <strong>gateway</strong> address;<br />
+first data byte contains the <strong>remote address</strong> (local address in the other subnet, also called <strong>Address Extension</strong> AE). E.g.<br />
+<code>0x0CEAggss, Data: 0xtt...</code> (physical addressing)<br />
+<code>0x0CDAggss, Data: 0xtt...</code> (functional addressing)</td>
+<td align="left">Supports subnets.</td>
+<td align="left">Requires two CAN IDs per ECU.<br />
+Addressing consumes 1 data byte.<br />
+Not directly supported in ODX (see below).</td>
+</tr>
+</tbody>
+</table>
+<p>Legend:</p>
+<ul>
+<li><code>gg</code>: gateway address</li>
+<li><code>ss</code>: source address</li>
+<li><code>tt</code>: target address</li>
+<li><code>Nn</code>: any</li>
+</ul>
+<h3 id="mixed-addressing">Mixed Addressing</h3>
+<ul>
+<li>is often mistaken for <strong>Extended Addressing</strong>
+<ul>
+<li>both use an additional byte in the data (payload) of the CAN frame.</li>
+</ul></li>
+<li>... but the meaning of the byte and the uniqueness conditions for the CAN-ID parts are different.</li>
+<li>ODX doesn’t know “mixed”
+<ul>
+<li>ODX data usually stores Mixed Addressing as Extended Addressing,</li>
+<li>using the same extension byte for requests and responses.</li>
+</ul></li>
+</ul>
+<h2 id="addressing-schemes-in-candela">Addressing Schemes in CANdela</h2>
+<p>A CANdela document typically contains several <a href="Communication%20Parameter.htm">communication parameters</a> that describe the Addressing Scheme of the ECU.</p>
+<p>CANdelaStudio provides a <strong>wizard</strong> for creating a new interface.</p>
+<ul>
+<li>the wizard lets you select the addressing scheme,</li>
+<li>then creates the following communication parameters relevant for addressing:</li>
+</ul>
+<table>
+<colgroup>
+<col width="18%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Addressing Scheme</th>
+<th align="center">CAN-ID Type</th>
+<th align="center">Request CAN-ID</th>
+<th align="center">Response CAN-ID</th>
+<th align="center">Base Adress</th>
+<th align="center">ECU Address</th>
+<th align="center">Default Tester Address</th>
+<th align="center">Address Extension</th>
+<th align="center">Default Tx-Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Normal</td>
+<td align="center">11-Bit/29-Bit</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Normal Fixed</td>
+<td align="center">J1939</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+</tr>
+<tr class="odd">
+<td align="left">Extended (Free) (*)</td>
+<td align="center">11-Bit/29-Bit</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center">Tester Address</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Extended (Base) (*)</td>
+<td align="center">11-Bit/29-Bit</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Mixed - 11 Bit</td>
+<td align="center">11-Bit</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Mixed - J1939</td>
+<td align="center">11-Bit/J1939</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+</tr>
+</tbody>
+</table>
+<h3 id="authoring-choice-for-extended-addressing">(*) Authoring Choice for Extended Addressing</h3>
+<p>For <strong>Extended Addressing</strong>, CANdelaStudio provides an additional choice <strong>for authoring</strong>:</p>
+<ul>
+<li>&quot;<strong>Extended (Free)</strong>&quot;: creates communication parameters to specify...
+<ul>
+<li>the <strong>absolute</strong> CAN ID for request, and</li>
+<li>the <strong>absolute</strong> CAN ID for response.</li>
+</ul></li>
+<li>&quot;<strong>Extended (Base)</strong>&quot;: creates communication parameters to specify...
+<ul>
+<li>one <strong>base address</strong>,</li>
+<li>a <strong>relative offset</strong> for the request CAN ID, and</li>
+<li>a <strong>relative offset</strong> for the response CAN ID.</li>
+</ul></li>
+</ul>
+<p>Note: this is just a matter of <strong>authoring</strong> - for communication with the ECU, only the resulting CAN IDs are relevant.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Interface.htm">Interfaces (User Interface)</a></li>
+<li><a href="../../30%20Features/Interface/Interface.htm">Interface (Feature)</a></li>
+<li><a href="../../30%20Features/Interface/Communication%20Parameter.htm">Communication Parameter (Feature)</a></li>
+</ul>
+</body>
+</html>

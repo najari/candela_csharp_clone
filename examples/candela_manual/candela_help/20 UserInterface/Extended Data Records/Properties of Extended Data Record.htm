@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Properties of Extended Data Record</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="properties-of-extended-data-record">Properties of Extended Data Record</h1>
+<h2 id="introduction">Introduction</h2>
+<p><span id="EDUI-R2000" class="rqDef">[EDUI-R2000]</span> The <strong>property sheet</strong> to the right provides editing of the properties also shown in the Extended Data Record list, plus Qualifier and Description.</p>
+<p><span id="EDUI-R2010" class="rqDef">[EDUI-R2010]</span> The property sheet supports <strong>mass editing</strong>:</p>
+<p>If you select multiple Extended Data Records in the list:</p>
+<ul>
+<li>if all selected Extended Data Records have the same value,
+<ul>
+<li>the control in the sheet shows that value;</li>
+<li>when you enter a different value, CANdelaStudio assigns that value to all selected Extended Data Records.</li>
+</ul></li>
+<li>if the selected Extended Data Records have different values,
+<ul>
+<li>the control in the sheet shows an &quot;indifferent&quot; state;</li>
+<li>when you enter a value, CANdelaStudio assigns that value to all selected Extended Data Records;</li>
+<li>the control does not provide a way back to the &quot;indifferent&quot; state.</li>
+</ul></li>
+</ul>
+<p>For details, see <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#UI-D410' title="">[UI-D410]</a> in the Basic User Interface Rules.</p>
+<h2 id="number">Number</h2>
+<p><span id="EDUI-R2120" class="rqDef">[EDUI-R2120]</span> The control shows the Extended Data Record Number <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R120' title="">[EDR-R120]</a>.</p>
+<p>See <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20Records.htm#EDUI-R220' title="">[EDUI-R220]</a> for the Number column of the Extended Data Record list.</p>
+<h2 id="name-qualifier-description">Name, Qualifier, Description</h2>
+<p><span id="EDUI-R2130" class="rqDef">[EDUI-R2130]</span> The controls show the Extended Data Record name, qualifier and description <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R110' title="">[EDR-R110]</a>.</p>
+<p>See <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20Records.htm#EDUI-R230' title="">[EDUI-R230]</a> for the Name column of the Extended Data Record list.</p>
+<p>The description can be multi-line, but plain text only (no rich-text).</p>
+<h2 id="storage-trigger-custom-trigger-updated">Storage Trigger, Custom Trigger, Updated</h2>
+<p><span id="EDUI-R2150" class="rqDef">[EDUI-R2150]</span> Shows the Storage Trigger <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R150' title="">[EDR-R150]</a> and Updated <a class='rqRef' href='../../30 Features\Extended Data Records\Extended Data Record Data Model.htm#EDR-R160' title="">[EDR-R160]</a> of the Extended Data Record(s).</p>
+<ul>
+<li>Same as <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R150' title="">[SR-R150]</a> and <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R160' title="">[SR-R160]</a> for Snapshot Data Records.</li>
+<li>See <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20Records.htm#EDUI-R250' title="">[EDUI-R250]</a> and <a class='rqRef' href='../../20%20UserInterface/Extended%20Data%20Records/TAB%20Extended%20Data%20Records.htm#EDUI-R260' title="">[EDUI-R260]</a> for display in the Extended Data Records list.</li>
+</ul>
+<h2 id="extended-data-record-attributes">Extended Data Record Attributes</h2>
+<p>Extended Data Record attributes are not available in the property page.</p>
+<p>You may use the <strong>Attribute Overview</strong> on the Diagnostic Instance (e.g. via the context menu of the tree node).</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> (Export)</li>
+<li><a href="../../20%20UserInterface/Fault%20Memory/AUTOSAR%20Fault%20Memory%20GUI.htm">AUTOSAR Fault Memory GUI</a> (overview)</li>
+<li><a href="../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm">Extended Data Record Data Model</a></li>
+<li><a href="../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Operations.htm">Extended Data Record Operations</a></li>
+</ul>
+</body>
+</html>

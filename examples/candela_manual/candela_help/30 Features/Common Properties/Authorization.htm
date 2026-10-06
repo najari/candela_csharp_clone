@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Authorization</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="authorization"><span id='_index_446727920' title='for authoring control' data-text='for authoring control'>Authorization</span></h1>
+<p>(see State Dependency/<a href="../../30%20Features/State%20Dependency/Authorization.htm">Authorization</a> for the <strong>runtime security</strong> topic)</p>
+<p><strong>Authorization</strong> for an object controls...</p>
+<ul>
+<li><strong>editing</strong>: e.g. whether you can view, modify or delete the object in Standard View;</li>
+<li><strong>allowed data constellations</strong>, e.g. that an object is &quot;required as a reference&quot; in all variants.</li>
+</ul>
+<p>CANdelaStudio supports different authorization properties for <strong>different object types</strong> (see the links below).</p>
+<p>You can <strong>modify</strong> the authorization settings in <strong>Expert View</strong> only.</p>
+<p>Authorization restrictions for...</p>
+<ul>
+<li><strong>editing</strong>: apply <strong>in Standard View</strong> only - editing is not restricted in Expert View.</li>
+<li><p><strong>allowed data constellations</strong>: apply in <strong>Standard and Expert View</strong>:</p>
+<ul>
+<li>if a data type is referenced by a data object, you cannot delete the data type in Expert View;</li>
+<li>if a diagnostic instance is &quot;required as reference&quot; in all variants, you cannot replace it by a copy in Expert View (but you can modify the &quot;required as reference&quot; authorization and then create the copy).</li>
+</ul></li>
+</ul>
+<p>The authorization settings of an object are shown in the <a href="../../20%20UserInterface/Common%20Properties/Authorization.htm">page &quot;Authorization&quot;</a> in the Properties dialog.</p>
+<p><strong>Translatable strings</strong> (name, description...) may be translated even if the modify flag is set to &quot;modify not allowed&quot;.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attribute%20Authorization.htm">Attribute Authorization</a></li>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type%20Authorization.htm">Data Type Authorization</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm">Diagnostic Instance Authorization</a></li>
+<li><a href="../../30%20Features/DID/DID.htm#document">DID Authorization</a> (Document and DID properties)</li>
+<li><a href="../../30%20Features/Document/Authorization.htm">Document-Level Authorization</a></li>
+<li><a href="../../30%20Features/Document/Password%20Protection.htm">Document Password Protection</a></li>
+<li><a href="../../30%20Features/DTC/DTC%20Authorization.htm">DTC Authorization</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Qualifier.htm#fixed-qualifier">Fixed Qualifier</a></li>
+<li><a href="../../30%20Features/Job/Job%20Authorization.htm">Job Authorization</a></li>
+<li><a href="../../30%20Features/Variant/Lock%20Variant.htm">Lock Variant</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service%20Authorization.htm">Protocol Service Authorization</a></li>
+<li><a href="../../30%20Features/Service/Service%20Authorization.htm">Service Authorization</a></li>
+<li><a href="../../30%20Features/State%20Dependency/State.htm#authorization">State Authorization</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Authorization.htm">Dialog Page &quot;Authorization&quot;</a></li>
+</ul>
+</body>
+</html>

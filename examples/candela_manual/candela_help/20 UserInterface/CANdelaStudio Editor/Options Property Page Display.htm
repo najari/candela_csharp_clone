@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Options Property Page Display</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="file-options-display">File | Options | Display</h1>
+<div class="figure">
+<img src="Images/Options%20Property%20Page%20Display.jpg" alt="Ribbon Tab File | Options, Page &quot;Display&quot;" />
+<p class="caption">Ribbon Tab File | Options, Page &quot;Display&quot;</p>
+</div>
+<h2 id="general---fill-hexadecimal-values-with-leading-zeroes">General - Fill hexadecimal values with leading zeroes</h2>
+<p>Select this option if you would like CANdelaStudio to edit hexadecimal values filled up with leading zeroes, up to the maximum size of the value.</p>
+<p>Example: the hexadecimal value &quot;0xA1&quot; with 2 Byte length will be edited as &quot;0x00A1.&quot;</p>
+<p>When CANdelaStudio <em>displays</em> hexadecimal values, it fills byte-wise, up to the size of the actual value.</p>
+<p>Example: the hexadecimal value &quot;0xA1&quot; with 2 Byte length will be displayed as &quot;0xA1.&quot;</p>
+<h2 id="diagnostic-instance-names">Diagnostic instance names</h2>
+<h3 id="identifier">Identifier</h3>
+<p>Check this option to show Identifier, Local IDs, Addresses, Subfunctions etc. beside the diagnostic instance name in the navigation tree.</p>
+<h3 id="target-groups">Target groups</h3>
+<p>Check this option to show the target groups to which a diagnostic instance or job container is assigned in the name of the object in the navigation tree.</p>
+<h2 id="service-addressing">Service addressing</h2>
+<p>Check this option to show the service addressing (functional and/or physical) in the navigation tree.</p>
+<h3 id="maturity">Maturity</h3>
+<p>Check this option to <a href="../../20%20UserInterface/Tree/Navigation%20Tree.htm#maturity">show the maturity</a> of a diagnostic instance or a job container in the navigation tree.</p>
+<h2 id="font">State Diagrams - Font</h2>
+<p>Select the font that CANdelaStudio shall use for the state transition diagrams in the chapter &quot;States/Dependencies&quot; of a CANdela document (in the user interface and in a report).</p>
+<h2 id="graphviz-dot.exe---path">GraphViz (dot.exe) - Path</h2>
+<p><span id="OPT-R250" class="rqDef">[OPT-R250]</span> optionally specify the <strong>folder</strong> of <code>dot.exe</code> to be used by CANdelaStudio.</p>
+<ul>
+<li>CANdelaStudio uses the tool &quot;GraphViz&quot; to visualize the state dependency of service execution <a class='rqRef' href='../../20%20UserInterface/State%20Dependency/Dependencies.htm#STUI-R180' title="">[STUI-R180]</a>.</li>
+<li>The CANdelaStudio installation does not include GraphViz <a class='rqRef' href='../../30 Features\Installation\Bundled Products.htm#IBP-D090' title="">[IBP-D090]</a></li>
+<li>If GraphViz has been installed on your system, but CANdelaStudio <strong>does not show the diagram</strong>, the reason may be an incorrect path in the Windows PATH environment variable. In this case, you may either...
+<ul>
+<li>correct the Windows PATH environment variable <a class='rqRef' href='../../30 Features\Installation\Windows Settings.htm#IWS-D200' title="">[IWS-D200]</a> directly, or</li>
+<li>use the option here to specify the path to the folder of <code>dot.exe</code>, like <code>C:\Program Files (x86)\Graphviz2.38\bin</code>.</li>
+</ul></li>
+</ul>
+<h2 id="dtc">Format of Error Codes</h2>
+<p><span id="OPT-R260" class="rqDef">[OPT-R260]</span> This option is only applied if <a href="../../20%20UserInterface/Document/Property%20Page%20Display%20of%20DTCs.htm">File | Properties | &quot;Display of DTCs&quot;</a> is &quot;ISO-14229/Hex&quot;.</p>
+<ul>
+<li><strong>Hexadecimal:</strong> The error codes (DTCs) in the error memory are displayed in hexadecimal notation.</li>
+<li><strong>SAE format:</strong> The error codes are displayed in SAE notation, like &quot;P0001&quot;.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Prefix</th>
+<th>Hex Prefix Starting at</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P</td>
+<td>0x0</td>
+</tr>
+<tr class="even">
+<td>C</td>
+<td>0x4</td>
+</tr>
+<tr class="odd">
+<td>B</td>
+<td>0x8</td>
+</tr>
+<tr class="even">
+<td>U</td>
+<td>0xC</td>
+</tr>
+</tbody>
+</table>
+<p>Note for Daimler documents: there is an <a href="../../30%20Features/Export/Diogenes%20Export.htm#dtcs">additional convention</a> for the export of DTCs.</p>
+<p>The option has <a href="../../30%20Features/Export/1_ODXExport_Introduction.htm#SAECodes">impact on ODX Export</a>.</p>
+<h2 id="object-path">Object Path</h2>
+<ul>
+<li><strong>Name</strong>: All paths of CANdela objects are displayed as name paths. Exception: The paths of identifying features are always displayed as qualifier paths.</li>
+<li><strong>Qualifier</strong>: All paths are displayed as qualifier paths.</li>
+</ul>
+<p>See <a href="../../30%20Features/Common%20Properties/Object%20Paths.htm">Object Paths</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Options.htm">File | Options Dialog</a></li>
+</ul>
+</body>
+</html>

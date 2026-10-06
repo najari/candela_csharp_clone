@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Library</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="library">Library</h1>
+<p><span id="LIBUI-R340" class="rqDef" title="Contents of Library Tree Node">[LIBUI-R340.0 Contents of Library Tree Node]</span></p>
+<ul>
+<li><a class='rqRef' href='../../20%20UserInterface/Tree/Navigation%20Tree.htm#TREE-R010-LIB1' title="">[TREE-R010-LIB1]</a> Libraries are shown as child of the „Libraries“ tree node.</li>
+<li><span id="LIBUI-R340-a" class="rqDef">[LIBUI-R340-a]</span> CANdelaStudio shall show the right side as for an ECU Variant</li>
+<li><span id="LIBUI-R340-c" class="rqDef">[LIBUI-R340-c]</span> no Identification Feature tree node</li>
+<li><span id="LIBUI-R340-d" class="rqDef">[LIBUI-R340-d]</span> no Identification Pattern tree node</li>
+<li><span id="LIBUI-R340-e" class="rqDef">[LIBUI-R340-e]</span> For a locked Library, do not allow interactive modification of the contents in Standard Mode.</li>
+<li><span id="LIBUI-R340-f" class="rqDef">[LIBUI-R340-f]</span> For a locked Library, allow interactive modification in Expert Mode</li>
+<li><span id="LIBUI-R340-g" class="rqDef">[LIBUI-R340-g]</span> for a diagnostic instance in a Library, show the tree icon as if the diagnostic instance were in the Base Variant:
+<ul>
+<li><span id="LIBUI-R340-g1" class="rqDef">[LIBUI-R340-g1]</span> In library only: dark</li>
+<li><span id="LIBUI-R340-g2" class="rqDef">[LIBUI-R340-g2]</span> Otherwise (referenced in other library or any variant): dark on bright.</li>
+</ul></li>
+</ul>
+<h2 id="operations">Operations</h2>
+<p><span id="LIBUI-R350" class="rqDef" title="New Button">[LIBUI-R350 New Button]</span> in the right side, CANdelaStudio shall show the button <a class='rqRef' href='../../20%20UserInterface/Library/Libraries.htm#LIBUI-R332-New' title="">[LIBUI-R332-New]</a>.</p>
+<p><span id="LIBUI-R352" class="rqDef" title="Delete Button">[LIBUI-R352 Delete Button]</span> in the right side, CANdelaStudio shall show a button &quot;Delete&quot;. If pressed, CANdelaStudio shows an information if deletion is not possible, or prompts and on confirmation deletes the library selected in the tree <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R105' title="Delete Library">[LIB-R105]</a>.</p>
+
+<h2 id="context-menu">Context Menu</h2>
+<p><span id="LIBUI-R360" class="rqDef">[LIBUI-R360]</span> CANdelaStudio shall provide a context menu for the Libraries tree node.</p>
+<ul>
+<li><span id="LIBUI-R360-New" class="rqDef">[LIBUI-R360-New]</span> &quot;Create New Library&quot; creates another library <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R100' title="New Library">[LIB-R100]</a> with a default name and qualifier, like <a class='rqRef' href='../../20%20UserInterface/Library/Libraries.htm#LIBUI-R332-New' title="">[LIBUI-R332-New]</a>.</li>
+<li><span id="LIBUI-R360-Delete" class="rqDef">[LIBUI-R360-Delete]</span> &quot;Delete&quot; deletes the library like <a class='rqRef' href='../../20%20UserInterface/Library/Library.htm#LIBUI-R352' title="Delete Button">[LIBUI-R352]</a>.</li>
+<li>separator</li>
+<li><span id="LIBUI-R360-Lock" class="rqDef">[LIBUI-R360-Lock]</span> &quot;Lock&quot; is sensitive iff. the library is not locked <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R020' title="Property „locked“">[LIB-R020]</a>. When pressed, after confirmation, CANdelaStudio locks the library <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R120' title="Lock/Unlock">[LIB-R120]</a>.</li>
+<li><span id="LIBUI-R360-Unlock" class="rqDef">[LIBUI-R360-Unlock]</span> &quot;Unlock&quot; is sensitive iff. the library is locked <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R020' title="Property „locked“">[LIB-R020]</a>. When pressed, after confirmation, CANdelaStudio unlocks the library <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R120' title="Lock/Unlock">[LIB-R120]</a>.</li>
+<li>separator</li>
+<li><span id="LIBUI-R360-ExportODX" class="rqDef">[LIBUI-R360-ExportODX]</span> &quot;Export Open Diagnostic Data Exchange (ODX)...&quot;. When pressed, prompts for a file path and exports the library to that path <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIBDX-R630' title="">[LIBDX-R630]</a>.</li>
+<li>separator</li>
+<li><span id="LIBUI-R360-QualifierOverview" class="rqDef">[LIBUI-R360-QualifierOverview]</span> &quot;Qualifier Overview...&quot; like <a class='rqRef' href='../../20%20UserInterface/Library/Libraries.htm#LIBUI-R332-QualifierOverview' title="">[LIBUI-R332-QualifierOverview]</a>, with &quot;Current Namespace&quot; = the library.</li>
+<li><span id="LIBUI-R360-AttributeOverview" class="rqDef">[LIBUI-R360-AttributeOverview]</span> &quot;Attribute Overview...&quot; like <a class='rqRef' href='../../20%20UserInterface/Library/Libraries.htm#LIBUI-R332-AttributeOverview' title="">[LIBUI-R332-AttributeOverview]</a>, with &quot;Current subtree&quot; = the library.</li>
+<li><span id="LIBUI-R360-TargetGroupOverview" class="rqDef">[LIBUI-R360-TargetGroupOverview]</span> &quot;Target Group Overview...&quot; like <a class='rqRef' href='../../20%20UserInterface/Library/Libraries.htm#LIBUI-R332-TargetGroupOverview' title="">[LIBUI-R332-TargetGroupOverview]</a>, with &quot;Current subtree&quot; = the library.</li>
+<li>separator</li>
+<li><span id="LIBUI-R360-SelectAsLeft" class="rqDef">[LIBUI-R360-SelectAsLeft]</span> &quot;Select as Left Side for Compare&quot; remembers the library for later compare.</li>
+<li><span id="LIBUI-R360-CompareTo" class="rqDef">[LIBUI-R360-CompareTo]</span> &quot;Compare to...&quot;
+<ul>
+<li>shall be sensitive if <a class='rqRef' href='../../20%20UserInterface/Library/Library.htm#LIBUI-R360-SelectAsLeft' title="">[LIBUI-R360-SelectAsLeft]</a> has been performed on a library;</li>
+<li>shows the name of the library in double-quotes, like <code>Compare to &quot;Base Library&quot;...</code>;</li>
+<li>opens <a href="../../20%20UserInterface/Compare/Compare%20View.htm">Compare View</a> comparing the two libraries selected.</li>
+</ul></li>
+<li>separator</li>
+<li><span id="LIBUI-R360-MoveUp" class="rqDef">[LIBUI-R360-MoveUp]</span> &quot;Move up&quot;
+<ul>
+<li>sensitive if the library is not the first one</li>
+<li>moves the library to the front of the libraries list <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R108' title="Move Library">[LIB-R108]</a></li>
+</ul></li>
+<li><span id="LIBUI-R360-MoveDown" class="rqDef">[LIBUI-R360-MoveDown]</span> &quot;Move down&quot;
+<ul>
+<li>sensitive if the library is not the last one</li>
+<li>moves the library one element to the back of the libraries list <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R108' title="Move Library">[LIB-R108]</a></li>
+</ul></li>
+<li>separator</li>
+<li><span id="LIBUI-R360-RevisionHistory" class="rqDef">[LIBUI-R360-RevisionHistory]</span> &quot;Revision History...&quot;
+<ul>
+<li>shall be visible if Variant and Library specific <a href="../../30%20Features/Revision%20History/Revision%20History.htm">Revision History</a> has been enabled <a class='rqRef' href='../../30 Features\Revision History\Revision History.htm#REV-R050-LIB' title="">[REV-R050-LIB]</a>;</li>
+<li>shall open the <a href="../../20%20UserInterface/Document/Property%20Page%20Revision%20History.htm">Revision History Dialog</a> on the revision history of the selected library.</li>
+</ul></li>
+<li><span id="LIBUI-R360-Properties" class="rqDef">[LIBUI-R360-Properties]</span> &quot;Properties...&quot;</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Library/Libraries.htm">Libraries (List)</a></li>
+<li><a href="../../30%20Features/Library/Library.htm">Library Feature</a></li>
+</ul>
+</body>
+</html>

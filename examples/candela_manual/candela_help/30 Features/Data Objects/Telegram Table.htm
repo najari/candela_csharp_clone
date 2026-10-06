@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Telegram Table</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="telegram-table-list-of-data-objects">Telegram Table (List of Data Objects)</h1>
+<p>Typically a request or positive response contains a list of <a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">Data Objects</a>. CANdelaStudio shows this list in a <strong>Telegram Table</strong>.</p>
+<p>Note: this documentation uses the user interface term &quot;Telegram Table&quot; also for the list in the data model.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Telegram%20Table.jpg" alt="CANdelaStudio Telegram Table Showing Various Kinds of Data Objects" />
+<p class="caption">CANdelaStudio Telegram Table Showing Various Kinds of Data Objects</p>
+</div>
+<h2 id="positions">Positions</h2>
+<p>Data objects have no explicit byte and bit positions. The byte and bit position always results from the <strong>relative position</strong> within the list that contains them, based on the length of each data object (defined at the data type, or at a reserved data object directly).</p>
+<p>Positions are relative within the telegram table and therefore always start with zero.</p>
+<p>Only byte-sized data objects starting at byte positions can be positioned directly in the list. Other data must be put into a bit-field.</p>
+<h2 id="usage">Usage</h2>
+<p>A telegram table may be contained...</p>
+<ul>
+<li>in a Fixed Data Component in the template</li>
+<li>directly in a diagnostic instance</li>
+<li>in a multiplexer in a diagnostic instance</li>
+<li>as input or output job parameter list</li>
+<li>in Extended Data (v13)</li>
+</ul>
+<p>If used within a diagnostic instance,</p>
+<ul>
+<li>a telegram table must reference a combined proxy component that references Proxy Components in the Protocol Service;</li>
+<li>a multiplexer must reference a combined proxy compoennt that references Mux Component in the Protocol Service.</li>
+</ul>
+<p>See the <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service Overview</a>.</p>
+<h2 id="namespace-in-telegram-table">Namespace in telegram table</h2>
+<p>In a telegram table, top-level elements are in a namespace (with uniqueness of qualifiers and names).</p>
+<p>Elements within a bitfield are in a namespace of their own. I.e. the following is ok:</p>
+<pre><code>DataObject “Object1”
+Bitfield “Object2”
+  DataObject “Object1” // == top-level object, == object within other bitfield!
+  DataObject “Object2” // == top-level object (the parent bitfield itself)!
+Bitfield “Object3”
+  DataObject “Object1”
+  DataObject “Object2”</code></pre>
+<h2 id="multiplexer">Multiplexer</h2>
+<p>A multiplexer in a diagnostic instance contains</p>
+<ul>
+<li>a list of telegram tables (&quot;cases&quot;), each one is selected by a <strong>selector</strong> number or range</li>
+<li>a mandatory <strong>default</strong> telegram table which applies to selector values for which no case exists.</li>
+</ul>
+
+<h2 id="did-semantics">DID Semantics</h2>
+<h3 id="semantics-did-data-reference">Semantics “DID Data Reference”</h3>
+<p><span id="TT-R240" class="rqDef" title="consistency condition">[TT-R240.0 consistency condition]</span>:</p>
+<ul>
+<li>the telegram table of a Combined Component with semantics “DID Data Reference” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050-DIDDataReference' title="">[DID-R050-DIDDataReference]</a></li>
+<li>shall <strong>contain exactly one DID Data Reference</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R160' title="">[DID-R160]</a>.</li>
+<li>On violation, emit a warning, prevent from export.</li>
+</ul>
+<p><span id="TT-R241" class="rqDef">[TT-R241.1]</span>:</p>
+<ul>
+<li>in the telegram table of a Combined Component with semantics “DID Data Reference” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050-DIDDataReference' title="">[DID-R050-DIDDataReference]</a>,</li>
+<li>a constraints check shall report a warning (prevent from exports)</li>
+<li>if the <strong>Identifier length</strong> of the diagnostic instance  is &gt; 1 Byte</li>
+<li>and the <strong>Identifier is not equal to the DID number</strong></li>
+<li>(cf. similar check for DID Reference in <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R182' title="">[DID-R182]</a>).</li>
+</ul>
+<p><span id="TT-R242" class="rqDef">[TT-R242.0]</span>: as a default, <strong>name and qualifier</strong> of the diagnostic instance shall be taken from the DID.</p>
+<p><span id="TT-R244" class="rqDef">[TT-R244.0]</span>: as a default, the <strong>“identifier”</strong> shall be taken from the DID number in an UDS Diagnostic Instance / shall be the low byte of the UDS DID Number in an OBDII Diagnostic Instance.</p>
+<p>Note: <strong>no consistency condition</strong> for <strong>name, qualifier</strong> of a DID Definition Diagnostic Instance.</p>
+<h3 id="semantics-did-data-references">Semantics “DID Data References“</h3>
+<p><span id="TT-R310" class="rqDef" title="consistency condition">[TT-R310.1 consistency condition]</span>:</p>
+<ul>
+<li>a telegram for a Combined Component with semantics “<strong>DID Data References</strong>” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050-DIDDataReferences' title="">[DID-R050-DIDDataReferences]</a></li>
+<li>shall contain <strong>only DID Data References</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R180' title="">[DID-R180]</a> or reserved data objects.</li>
+<li>On violation, emit a warning, prevent from exports.</li>
+</ul>
+<h3 id="semantics-did-references">Semantics “DID References“</h3>
+<p><span id="TT-R315" class="rqDef" title="consistency condition">[TT-R315.0 consistency condition]</span>:</p>
+<ul>
+<li>a telegram for a Combined Component with semantics “<strong>DID References</strong>” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050-DIDReferences' title="">[DID-R050-DIDReferences]</a></li>
+<li>shall contain <strong>only DID References</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R180' title="">[DID-R180]</a>.</li>
+<li>On violation, emit an error, prevent from exports.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Objects.htm">Data Objects Feature</a></li>
+<li><a href="../../20%20UserInterface/Data%20Objects/Data%20Objects.htm">Data Objects User Interface</a></li>
+<li><a href="../../20%20UserInterface/Data%20Objects/Graphical%20Telegram%20Table.htm">Graphical Telegram Table</a></li>
+<li><a href="../../20%20UserInterface/Data%20Objects/Data%20Objects.htm">Telegram Table (User Interface)</a></li>
+</ul>
+
+</body>
+</html>

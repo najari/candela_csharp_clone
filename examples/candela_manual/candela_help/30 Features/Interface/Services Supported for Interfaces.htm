@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Services Supported for Interfaces</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="services-supported-for-interfaces-cds-22520-7.5"><span id='_index_446728067'>Services Supported for Interfaces</span> (CDS-22520 7.5)</h1>
+<p>See also the <a href="../../20%20UserInterface/Interface/Services%20Supported%20for%20Interfaces.htm">user interface</a>.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Services%20Supported%20for%20Interfaces.jpg" alt="Services Supported for Interfaces" />
+<p class="caption">Services Supported for Interfaces</p>
+</div>
+<h2 id="use-cases">Use-Cases</h2>
+<ul>
+<li>describe OBD and Enhanced diagnostic services in one document, restricting OBD services to the OBD interface</li>
+<li>describe K-Line services (Start/Stop) not available for a CAN interface</li>
+<li>distinguish LIN services</li>
+<li>describe services available in a flash bootloader via a specific interface</li>
+<li>evaluate the restriction in CANoe.DiVa</li>
+</ul>
+<h2 id="data-model">Data Model</h2>
+<p><span id="SSI-R100" class="rqDef">[SSI-R100]</span> The feature specifies whether...</p>
+<ul>
+<li>a <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used Protocol Service</a></li>
+<li>is supported by a given <a href="../../30%20Features/Interface/Interface.htm">Interface</a> or not.</li>
+</ul>
+<p><span id="SSI-R110" class="rqDef">[SSI-R110]</span> The default is &quot;yes&quot;.</p>
+<h2 id="consistency-condition">Consistency Condition</h2>
+<p><a class='rqRef' href='../../30%20Features/Interface/Communication%20Parameters%20at%20Services%20and%20Jobs.htm#LCP-R200' title="">[LCP-R200]</a> If a “Used Protocol Service” is not supported for an Interface, you cannot specify communication parameters of the Interface locally at a Service based on the “Used Protocol Service”.</p>
+<h2 id="migration">Migration</h2>
+<p>See down migration <a class='rqRef' href='../../30%20Features/Migrations/CANdelaStudio%207.5.htm#MIG75-R200' title="Down Migration">[MIG75-R200]</a> and up migration <a class='rqRef' href='../../30%20Features/Migrations/CANdelaStudio%207.5.htm#MIG75-R210' title="Up Migration">[MIG75-R210]</a>.</p>
+<h2 id="uses-of-the-information">Uses of the Information</h2>
+<p>The information is listed in the report <a class='rqRef' href='../../30%20Features/Report/Report%20Generator.htm#RP-R175' title="">[RP-R175]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>User interface for <a href="../../20%20UserInterface/Interface/Services%20Supported%20for%20Interfaces.htm">Services Supported for Interfaces</a></li>
+<li><a href="Communication%20Parameters%20at%20Services%20and%20Jobs.htm">Communication Parameters at Services and Jobs.htm</a></li>
+<li>Consistency Condition <a class='rqRef' href='../../30%20Features/Interface/Communication%20Parameters%20at%20Services%20and%20Jobs.htm#LCP-R200' title="">[LCP-R200]</a></li>
+<li><a href="Interface.htm">Interface (Feature)</a></li>
+<li>Services Supported for Interfaces in report generator <a class='rqRef' href='../../30%20Features/Report/Report%20Generator.htm#RP-R175' title="">[RP-R175]</a></li>
+</ul>
+</body>
+</html>

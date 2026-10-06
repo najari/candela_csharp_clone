@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>End-Marker Iteration</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="end-marker-iteration"><span id='_index_446727986'>End-Marker Iteration</span></h1>
+<p>For an overview, see the <a href="Complex%20Data%20Types%20Introduction.htm">Complex Data Types Introduction</a>.</p>
+<p>An end-marker iteration data type describes iterated transmission of data objects in a telegram until a specific value, the &quot;end marker&quot; or &quot;termination value&quot;, is transmitted.</p>
+<ul>
+<li>needs selector: no</li>
+<li>stores termination value as unsigned int</li>
+<li>end marker position is at relative bit position 0 (as in ODX).</li>
+<li>Note: the bytes which will be used to match the termination value are determined by the byte size of the first data object in the iterator’s data object collection.</li>
+<li>The <strong>termination value</strong> must fit the size of the <strong>first data object</strong> in the iterator’s collection, i.e. termination value <code>&lt; 2^(MaxBitLen of first data object)</code>.</li>
+<li>As the termination value is an unsigned value, the first data object must have a fixed size <code>&lt;=</code> 8 bytes (no variable size), and must be byte sized (for bit fields at position 0, the top level data object is taken).</li>
+<li>must not be used at a <strong>position before the end of the PDU</strong>.</li>
+<li>More constraints: see <a href="Iteration%20Data%20Type%20Constraints.htm">Iteration Data Type Constraints</a>.</li>
+</ul>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20End-Marker%20Iteration.htm">dialog</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="Complex%20Data%20Types%20Introduction.htm">Complex Data Types Introduction</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+<li><a href="Fixed%20Count%20Iteration.htm">Fixed Count Iteration</a></li>
+<li><a href="Counter%20Iteration.htm">Counter Iteration</a></li>
+<li><a href="End-of-Service%20Iteration.htm">End-of-Service Iteration</a></li>
+<li><a href="Iteration%20Data%20Type%20Constraints.htm">Iteration Data Type Constraints</a></li>
+</ul>
+</body>
+</html>

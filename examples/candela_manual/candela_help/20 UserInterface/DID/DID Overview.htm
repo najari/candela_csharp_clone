@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DID Overview</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="did-overview-cds-37944-8.5">DID Overview (CDS-37944 8.5)</h1>
+<div class="figure">
+<img src="Images/DID%20Overview.jpg" alt="DID Overview (8.5)" />
+<p class="caption">DID Overview (8.5)</p>
+</div>
+<p>The <strong>DID overview</strong> shows...</p>
+<ul>
+<li>for <strong>all DIDs</strong> of the document</li>
+<li>in which libraries/variants they <strong>occur</strong> (= yes/no), and</li>
+<li>in which libraries/variants they have the <strong>same properties and data</strong> (= shown on the same line).</li>
+</ul>
+<p>Using the context menu on a cell, you can directly <strong>navigate to the DID</strong> in the respective library/variant.</p>
+<p>The <strong>filter</strong> at top right provides convenient search for a DID and data objects of a DID.</p>
+<h2 id="did-overview">DID Overview</h2>
+<p><span id="DIDOV-R610" class="rqDef">[DIDOV-R610]</span>: in the tree, CANdelaStudio shows a top-level node “DID Overview”, see <a class='rqRef' href='../../20%20UserInterface/Tree/Navigation%20Tree.htm#TREE-R010' title="">[TREE-R010]</a>.</p>
+<p><span id="DIDOV-R630" class="rqDef">[DIDOV-R630]</span> The right side contains a <strong>list of DIDs in libraries/variants</strong>, like in <a href="../../20%20UserInterface/DTC/DTC%20Overview.htm">DTC Overview</a>.</p>
+<p><span id="DIDOV-R640" class="rqDef">[DIDOV-R640]</span> The list shows one line per DID that has identical properties and data (with OID and TextID differences ignored)</p>
+<ul>
+<li>Future: may distinguish DIDs that are referenced (as of <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R040' title="">[DID-R040]</a>) vs. ones with just identical properties.</li>
+</ul>
+<p><span id="DIDOV-R650" class="rqDef">[DIDOV-R650]</span> List columns:</p>
+<ul>
+<li><span id="DIDOV-R650-ID" class="rqDef">[DIDOV-R650-ID]</span> “Identifier”</li>
+<li><span id="DIDOV-R650-Name" class="rqDef">[DIDOV-R650-Name]</span> “Name”</li>
+<li><span id="DIDOV-R650-Var" class="rqDef">[DIDOV-R650-Var]</span> One column per library/variant,
+<ul>
+<li><span id="DIDOV-R650-yes" class="rqDef">[DIDOV-R650-yes]</span> with “yes” if the DID is in that object, otherwise “no”.</li>
+<li>For the display of libraries, see the checkbox <a class='rqRef' href='../../20%20UserInterface/DID/DID%20Overview.htm#DIDOV-R670' title="">[DIDOV-R670]</a> below.</li>
+<li>Order of columns: according with <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R060' title="Document Order">[LIB-R060]</a> and <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-D300' title="Order of the Variants">[DID-D300]</a>.</li>
+<li><span id="DIDOV-R650-Unique" class="rqDef">[DIDOV-R650-Unique]</span> (CDS-70864 v12) If objects have the same name, the column header of each one except the first...
+<ul>
+<li>gets the suffix &quot; (Library)&quot; or &quot; (Variant)&quot;;</li>
+<li>if the resulting name is still duplicate, the dialog adds a number like &quot; (1)&quot;, with the number increased until the name is unique.</li>
+<li>Note: in a valid document, a name can be duplicate only at one library and one variant <a class='rqRef' href='../../30%20Features/Library/Library.htm#LIB-R012-bVar' title="">[LIB-R012-bVar]</a>.</li>
+</ul></li>
+</ul></li>
+<li><span id="DIDOV-R650-Data" class="rqDef">[DIDOV-R650-Data]</span> a column “DID Data”
+<ul>
+<li>format see <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R155-DefaultDisplay' title="">[DID-R155-DefaultDisplay]</a></li>
+<li>CANdelaStudio shows the column iff. the checkbox <a class='rqRef' href='../../20%20UserInterface/DID/DID%20Overview.htm#DIDOV-R660' title="">[DIDOV-R660]</a> described next is checked.</li>
+</ul></li>
+</ul>
+<p><span id="DIDOV-R660" class="rqDef">[DIDOV-R660]</span> The dialog provides a checkbox <strong>“Show DID Data”</strong></p>
+<ul>
+<li>it controls whether CANdelaStudio shows the above column &quot;DID Data&quot; <a class='rqRef' href='../../20%20UserInterface/DID/DID%20Overview.htm#DIDOV-R650-Data' title="">[DIDOV-R650-Data]</a>.</li>
+</ul>
+<p><span id="DIDOV-R670" class="rqDef">[DIDOV-R670]</span> The dialog provides a checkbox <strong>“Show Libraries”</strong>.</p>
+<ul>
+<li>The list shows columns for libraries <a class='rqRef' href='../../20%20UserInterface/DID/DID%20Overview.htm#DIDOV-R650-Var' title="">[DIDOV-R650-Var]</a> iff. the checkbox is checked.</li>
+</ul>
+<p><span id="DIDOV-R620" class="rqDef">[DIDOV-R620]</span> Action to go to the selected DID:</p>
+<ul>
+<li>For each library/variant, the context menu contains an item
+<ul>
+<li>“Go To &lt;Identifier&gt; &lt;Name&gt; in &lt;Library/Variant Name&gt;”</li>
+<li>in the order of the columns <a class='rqRef' href='../../20%20UserInterface/DID/DID%20Overview.htm#DIDOV-R650-Var' title="">[DIDOV-R650-Var]</a>.</li>
+<li>If a DID is referenced in multiple libraries/variants, a menu item is shown for each one.</li>
+<li>If you select the menu item, CANdelaStudio navigates to the DID in the DID list in the respective library/variant.</li>
+</ul></li>
+<li>If you open the context menu in the column of a library/variant, it contains the item for this object only (like in DTC overview).</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Data%20Objects/Data%20Objects.htm">Data Objects</a></li>
+<li><a href="DIDs.htm">DIDs (List)</a></li>
+<li><a href="../../30%20Features/DID/DID.htm">DID (Feature)</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+</ul>
+</body>
+</html>

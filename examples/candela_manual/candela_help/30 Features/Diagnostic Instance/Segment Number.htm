@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Segment Number</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="segment-number"><span id='_index_446727994'>Segment Number</span></h1>
+<p><span id="SEGNUM-R100" class="rqDef">[SEGNUM-R100]</span> CANdelaStudio has special support for a &quot;<strong>segment number</strong>&quot; used in the specific <strong>Daimler variant coding process</strong>.</p>
+<p>This chapter describes the feature in CANdelaStudio. For information about the process, please contact Daimler.</p>
+<h2 id="segment-number-1">Segment Number</h2>
+<p>In CANdelaStudio, the segment number is an optional property of a diagnostic instance.</p>
+<ul>
+<li>Before v10, there were <strong>at most 99 segments</strong>.</li>
+<li>Starting with v10, the <strong>maximum number</strong> can be defined in the CANdela template, in the range 100 - 65535.</li>
+</ul>
+<h2 id="display">Display</h2>
+<p>CANdelaStudio shows the segment number...</p>
+<ul>
+<li>in the tree, see <a class='rqRef' href='../../20 UserInterface\Tree\Navigation Tree.htm#TREE-R210' title="Segment Number in Tree">[TREE-R210]</a>;</li>
+<li>in the diagnostic instance property dialog, see next chapter.</li>
+</ul>
+<h2 id="editing">Editing</h2>
+<p>You can modify the segment number in the <a href="../../20%20UserInterface/Attributes/Attribute%20Value.htm">Attributes Property Page</a> of the diagnostic instance.</p>
+<p>CANdelaStudio allows to edit the segment number even if <a href="../../30%20Features/Variant/Variant%20Coding%20Keys.htm">Variant Coding Keys</a> mode is &quot;none&quot; (CDS-19410 7.0 SP1).</p>
+<h2 id="data-storage">Data Storage</h2>
+<p>CANdelaStudio stores the Segment Number in a Special Attribute &quot;Segment_Number&quot;.</p>
+<h3 id="maximum-99-segments-old-mechanism">Maximum 99 Segments (Old Mechanism)</h3>
+<ul>
+<li>This is the only constellation supported in CANdelaStudio before v10.</li>
+<li><span id="SEGNUM-D010" class="rqDef" title="Old SegNum Mechanism">[SEGNUM-D010 Old SegNum Mechanism]</span> It still works in newer versions, ...
+<ul>
+<li>either with an attribute configured as follows,</li>
+<li>or with an attribute <code>MaxAmountSegmentNumber</code> (see next chapter) set to value 99.</li>
+</ul></li>
+</ul>
+<p>Attribute type:</p>
+<ul>
+<li><strong>enum</strong></li>
+<li><strong>string</strong> (since 6.5 SP2, CDS-20790)</li>
+<li>Initially, it was of type unsigned (cf. CDS-7363).</li>
+</ul>
+<p>Attribute values for <strong>99 segments</strong>:</p>
+<ul>
+<li>enum tag id=0, string = &quot;none&quot; (default),</li>
+<li>tag id=1, string = &quot;01&quot;, up to...</li>
+<li>tag id=99, string = &quot;99&quot;.</li>
+</ul>
+<p>Attribute creation:</p>
+<ul>
+<li>see plugin &quot;DCSAddDiogenesAttribute&quot; (CDS-6803 5.0 SP1).</li>
+</ul>
+<p>Setting a value:</p>
+<ul>
+<li>You can manually set the value 0.
+<ul>
+<li>This value may occur any times within a variant.</li>
+</ul></li>
+<li>You can manually set a segment number in the range 1..99.
+<ul>
+<li>Each value may occur only once within a variant <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Segment%20Number.htm#SEGNUM-R330' title="">[SEGNUM-R330]</a>.</li>
+</ul></li>
+<li>CANdelaStudio automatically sets the segment number to 0, if...
+<ul>
+<li>you create a new diagnostic instance in the diagnostic class Variant Coding;</li>
+<li>the maximum number of 99 segments already exist;</li>
+<li>you paste the diagnostic instance from another variant or document.</li>
+</ul></li>
+<li>In all these cases, CANdelaStudio writes a warning to the Output Window.</li>
+</ul>
+
+<h3 id="segnum-99-cds-68973-v10">SegNum <code>&gt;</code> 99 (CDS-68973 v10)</h3>
+<ul>
+<li>This constellation is supported in CANdelaStudio v10 and newer only.</li>
+<li>If the value of the new attribute MaxAmountSegmentNumber is <strong>99</strong>, the <strong>old mechanism</strong> applies, as described in the see previous chapter.</li>
+<li>When you create a diagnostic instance, a default applies <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DI-R010-SegNum' title="">[DI-R010-SegNum]</a>.</li>
+</ul>
+<p><span id="SEGNUM-R410" class="rqDef" title="MaxAmountSegmentNumber">[SEGNUM-R410 MaxAmountSegmentNumber]</span></p>
+<div class="figure">
+<img src="Images/MaxAmountSegmentNumber.jpg" alt="Attribute MaxAmountSegmentNumber - the Identifier must be set to the desired amount" />
+<p class="caption">Attribute MaxAmountSegmentNumber - the Identifier must be set to the desired amount</p>
+</div>
+<ul>
+<li>Attribute qualifier: <code>MaxAmountSegmentNumber</code></li>
+<li>at a variant</li>
+<li>Attribute type: <strong>enum</strong>
+<ul>
+<li>Motivation: with an <strong>integer attribute</strong>, the user in a document would be free to set any integer value. With an <strong>enum attribute</strong>, the use can only select between values specified by the template author.</li>
+</ul></li>
+<li>Attribute category: &quot;SDG&quot;</li>
+<li>Default value (id): 99</li>
+<li>The template editor may add/remove enum symbols
+<ul>
+<li>The symbols list defines the choices from which a user who is editing a document may select. In the document, the user cannot define another amount besides the predefined symbols.</li>
+<li><strong>id value range</strong>: 99..65535;</li>
+<li>The <strong>enum symbols (strings)</strong> have no restriction, CANdelaStudio just displays them;</li>
+<li>CANdelaStudio does not check the value range!</li>
+</ul></li>
+<li>Semantics:
+<ul>
+<li>The <strong>value 99</strong> selects the <strong>old mechanism with maximum 99 Segment Numbers</strong> (see previous chapter)! Otherwise...:</li>
+<li><span id="SEGNUM-R410-Amount" class="rqDef">[SEGNUM-R410-Amount]</span> the attribute value specifies <strong>how many segment numbers you may assign at most</strong> within a variant.</li>
+<li>Note: the attribute value does <strong>not</strong> restrict the segment number <strong>values</strong>, only <strong>how many of them</strong> there may be.</li>
+</ul></li>
+</ul>
+
+<p><span id="SEGNUM-R420" class="rqDef" title="Segment_Number">[SEGNUM-R420 Segment_Number]</span></p>
+<ul>
+<li>Attribute qualifier: <code>Segment_Number</code></li>
+<li>at a diagnostic instance</li>
+<li>Attribute type: <strong>signed</strong>
+<ul>
+<li>Motivation: represent special value -1 (see below).</li>
+</ul></li>
+<li>Attribute category: &quot;ODX-Daimler&quot;</li>
+<li>Default value: 0</li>
+<li>Semantics of the segment number values:
+<ul>
+<li><span id="SEGNUM-R420-Auto" class="rqDef">[SEGNUM-R420-Auto]</span> <strong>-1</strong>: special value - the effective segment number shall be taken automatically from the identifier of the diagnostic instance.</li>
+<li>In this case, a direct or indirect change of the identifier of an instance has no impact on the value of the segment number attribute, but may be detected by the consistency check if the effective segment number is no more unique.</li>
+<li><span id="SEGNUM-R420-None" class="rqDef">[SEGNUM-R420-None]</span> <strong>0</strong>: the diagnostic instance has no segment number assigned;</li>
+<li><span id="SEGNUM-R420-Manual" class="rqDef">[SEGNUM-R420-Manual]</span> <strong>1..65535</strong>: a segment number manually assigned by the user.</li>
+</ul></li>
+</ul>
+<p>Setting a value:</p>
+<ul>
+<li>You can manually set the value -1.
+<ul>
+<li>This value may occur any times within a variant.</li>
+</ul></li>
+<li>You can manually set the value 0.
+<ul>
+<li>This value may occur any times within a variant.</li>
+</ul></li>
+<li>You can manually set a segment number in the range 1..65535.
+<ul>
+<li>Each value may occur only once within a variant <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Segment%20Number.htm#SEGNUM-R330' title="">[SEGNUM-R330]</a>.</li>
+</ul></li>
+<li>CANdelaStudio automatically sets the segment number to 0, if...
+<ul>
+<li>you create a new diagnostic instance in the diagnostic class Variant Coding;</li>
+<li>the maximum number of segments specified by the attribute <code>MaxAmountSegmentNumber</code> already exist (value <code>-1</code> or <code>&gt; 0</code>);</li>
+<li>you paste the diagnostic instance from another variant or document.</li>
+</ul></li>
+<li>In all these cases, CANdelaStudio writes a warning to the Output Window.</li>
+</ul>
+
+<h2 id="consistency-check-cdc-44004-v10">Consistency Check (CDC-44004 v10)</h2>
+<ul>
+<li><span id="SEGNUM-R300" class="rqDef">[SEGNUM-R300]</span> If the <strong>&quot;Old Mechanism&quot;</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Segment%20Number.htm#SEGNUM-D010' title="Old SegNum Mechanism">[SEGNUM-D010]</a> is activated, CANdelaStudio does <strong>not check</strong> the following conditions.</li>
+<li><span id="SEGNUM-R310" class="rqDef">[SEGNUM-R310]</span> The id values of the MaxAmountSegmentNumber enum symbols are not checked.</li>
+<li><span id="SEGNUM-R320" class="rqDef">[SEGNUM-R320]</span> The segment number must be in the range -1..65535.</li>
+<li><span id="SEGNUM-R330" class="rqDef">[SEGNUM-R330]</span> A segment number value <code>&gt; 0</code> must be unique in the variant (CDS-22114 7.1 SP2).</li>
+<li><span id="SEGNUM-R340" class="rqDef">[SEGNUM-R340]</span> At most <code>MaxAmountSegmentNumber</code> segment numbers may have a value <code>-1</code> or <code>&gt; 0</code>.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Default Attribute</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance Feature</a></li>
+<li>Segment Number in Tree <a class='rqRef' href='../../20 UserInterface\Tree\Navigation Tree.htm#TREE-R210' title="Segment Number in Tree">[TREE-R210]</a></li>
+<li><a href="../../30%20Features/Attributes/Special%20Attributes.htm">Special Attributes</a></li>
+</ul>
+
+</body>
+</html>

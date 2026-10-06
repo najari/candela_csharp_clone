@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Events Introduction</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="events-introduction-cds-42224-v12"><span id='_index_446728035' title='Event' data-term='Event'>Events</span> Introduction (CDS-42224 v12)</h1>
+<p>See also...</p>
+<ul>
+<li>the <a href="../../20%20UserInterface/Event/Events.htm">Events List</a> (in the user interface),</li>
+<li>the <a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a> for an overview of Fault Memory, and</li>
+<li>the detailed <a href="Events%20Data%20Model.htm">Events Data Model</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory%20Terms.htm">Fault Memory Terms</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<div class="figure">
+<img src="../../30%20Features/Images/Fault%20Memory%20System%20Context.jpg" alt="Fault Memory in System Context" />
+<p class="caption">Fault Memory in System Context</p>
+</div>
+<p>In a <strong>Fault Memory</strong> implementation,</p>
+<ul>
+<li>a <strong>Monitor</strong> (routine) watches for failure of a hardware component, communication or algorithm.</li>
+<li>A Monitor identifies a specific fault type (e.g. short to ground).</li>
+<li>A Monitor reports an <strong>Event</strong> if it detects a failure,
+<ul>
+<li>the <strong>status</strong> of the Event represents the monitor result: Boolean <code>FAILED</code>.</li>
+</ul></li>
+<li>The Event <strong>Kind</strong> represents the location of the Monitor:
+<ul>
+<li><code>SWC</code>: in a Software Component (reported via RTE <code>SetEventStatus</code>), or</li>
+<li><code>BSW</code>: in a Basis Software module (via C-API <code>Dem_SetEventStatus</code>).</li>
+</ul></li>
+<li>The AUTOSAR Diagnostic Event Manager (DEM) receives and processes these Events.</li>
+<li>A Monitor may debounce internally
+<ul>
+<li>call the DEM only when the result changes,</li>
+<li>i.e. when there is a qualified result (passed or failed),</li>
+<li>otherwise it calls the DEM for every test result, even if unchanged.</li>
+</ul></li>
+<li>Based on the Event result, the DEM manages the <strong>UDS Status Byte</strong> <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20UDS.htm#FMUDS-D050' title="">[FMUDS-D050]</a>.</li>
+<li>When requested over a <strong>diagnostic protocol</strong> like UDS,
+<ul>
+<li>... a <strong>DTC</strong> represents one or multiple Events.</li>
+</ul></li>
+<li>A DTC is either...
+<ul>
+<li>a <strong>UDS DTC</strong> (non OBD-relevant)</li>
+<li>an <strong>OBDII DTC</strong> (OBD-relevant)</li>
+</ul></li>
+<li>A <strong>UDS DTC</strong> directly represents Events,
+<ul>
+<li>an <strong>OBDII DTC</strong> is associated with one or multiple <strong>UDS DTCs</strong>, <strong>not directly with Events</strong>.</li>
+</ul></li>
+<li>The DTC <strong>significance</strong> is either...
+<ul>
+<li><strong>fault</strong>: a failure of the component/ECU itself</li>
+<li><strong>occurrence</strong>: indicates additional information, maybe a condition outside the ECU</li>
+</ul></li>
+</ul>
+<p>The relationship of <strong>Events and DTCs</strong> can be...</p>
+<ul>
+<li>1:1 - each Event is directly represented by a DTC;</li>
+<li>n:1 - multiple Events are <strong>combined</strong> to one DTC</li>
+<li>1:0 - an <strong>internal Event</strong> has no DTC representation.</li>
+<li>1:n - one Event is represented by multiple DTCs
+<ul>
+<li>Note: the CANdela data model does not support this cardinality.</li>
+</ul></li>
+</ul>
+<p>In <strong>AUTOSAR</strong>, ...</p>
+<ul>
+<li>the <strong>Diagnostic Event Manager</strong> (DEM) <strong>module</strong> handles Events as an atomic unit;</li>
+<li>the <strong>Diagnostic Extract</strong> (DEXT) <strong>specification</strong> describes a format to exchange a description of Events.</li>
+</ul>
+
+<p><strong>Diagnostic formats</strong> to describe Events:</p>
+<ul>
+<li>According with the DEXT specification, other formats are not well suited:</li>
+<li>&quot;ODX lacks in fault memory details and ECU-C (which was never designed for becoming the vehicle for data exchange between different organizations) has a very generic nature that renders the enforcement of a strict model formalization very difficult.&quot;</li>
+<li><a class='rqRef' href='../../30%20Features/Export/1_ODXExport_Introduction.htm#ODXE-D115' title="">[ODXE-D115]</a> describes this for ODX export.</li>
+<li><a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R160' title="">[MENU-R160]</a> describes this for MDX export.</li>
+</ul>
+<h2 id="terms">Terms</h2>
+<p>See <a href="../../30%20Features/Fault%20Memory/Fault%20Memory%20Terms.htm">Fault Memory Terms</a>.</p>
+<h2 id="events-in-candelastudio-before-v12-based-on-dtcs">Events in CANdelaStudio before v12: Based on DTCs</h2>
+<p>From the beginning, the CANdela data model...</p>
+<ul>
+<li>described <strong>DTCs</strong> with a set of properties (<a href="../../30%20Features/Fault%20Memory%20(Template)/DTC%20Columns.htm">DTC Columns</a>) defined in the OEM specific <strong>template</strong>,
+<ul>
+<li>like &quot;Enable Conditions&quot;, &quot;Operation Cycle&quot;, &quot;Self-Healing Counter&quot;, &quot;DTC Failed Threshold&quot;</li>
+</ul></li>
+<li>but did not describe <strong>Events</strong> as separate objects, because they are not directly represented in the diagnostic protocol.</li>
+</ul>
+<p>In the past, in typical templates some <strong>DTC properties</strong> actually represented <strong>Event properties</strong>.</p>
+<p>The <strong>DEXT export</strong> implements heuristics for a fixed set of known OEM templates to <strong>derive AUTOSAR Events</strong> from properties of DTCs.</p>
+<h2 id="events-in-candelastudio-12">Events in CANdelaStudio 12</h2>
+<p>Starting with CANdelaStudio 12, ...</p>
+<ul>
+<li>the CANdela data model represents <strong>Events as separate objects</strong>.</li>
+<li>This clarifies the distinction between Event properties and DTC properties,</li>
+<li>... allows <strong>Event Combination</strong> (n Events for 1 DTC)</li>
+<li>... and (in the future) will support direct exchange of Event descriptions via DEXT.</li>
+</ul>
+<p>Events are part of a <strong>Fault Memory diagnostic instance</strong> (like DTCs and Snapshot Data).</p>
+<h3 id="protocol">Events, DTCs and Protocol</h3>
+<ul>
+<li>You can describe Events independently of DTCs.</li>
+<li>Optionally, an <strong>Event</strong> may <strong>reference</strong> a <strong>DTC</strong>.</li>
+<li>Unlike DTCs, Events are not available in the <a href="../../30%20Features/DTC/Available%20DTCs.htm">DTC Pool</a> on document level.</li>
+<li>Since Events are a topic of the <strong>ECU implementation</strong>, they are independent of the diagnostic protocol
+<ul>
+<li>Therefore Events can be defined for any value of the Protocol Standard <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R120' title="">[DOCUI-R120]</a> in a CANdela document <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020-Protocol' title="">[EV-R020-Protocol]</a>.</li>
+<li>But note: Events are not allowed in an OBDII Fault Memory Diagnostic Instance <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R020-OBDII' title="">[EV-R020-OBDII]</a>.</li>
+</ul></li>
+</ul>
+<h3 id="events-and-variants">Events and Variants</h3>
+<p>When using <strong>variants</strong> in a CANdela document, ...</p>
+<ul>
+<li>the Fault Memory including its Events can be <strong>referenced</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#DI-D010' title="">[DI-D010]</a> in multiple variants, to keep them identical.</li>
+<li>If you want to modify <strong>one variant only</strong>, e.g. ...
+<ul>
+<li>add an Event,</li>
+<li>modify an Event Property or</li>
+<li>map the Event with a different DTC,</li>
+</ul></li>
+<li>... you must first perform &quot;Replace Reference with Copy&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R040' title="Replace Reference with Copy">[DIOP-R040]</a> on the diagnostic instance.</li>
+</ul>
+<h3 id="using-events-in-documents-created-before-v12">Using Events in Documents Created before v12</h3>
+<p>For consistency of <strong>existing CANdela documents</strong>, DEXT export...</p>
+<ul>
+<li>as a default still <strong>derives DEXT Events from CANdela DTCs</strong>,</li>
+<li><strong>ignoring Events</strong> described in the CANdela document.</li>
+<li>You can explore the Events feature and describe Events, but using them for DEXT export needs an explicit <strong>setup step</strong> <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R600' title="">[DOCUI-R600]</a> in the CANdela document.
+<ul>
+<li>In this case, you should review the existing DTC columns, some may become obsolete.</li>
+<li>See <a class='rqRef' href='../../40 Templates\Vector UDS\DTC Columns.htm#VUDS-D410' title="">[VUDS-D410]</a> for this step done in the Vector UDS Template.</li>
+</ul></li>
+<li>CANdelaStudio does <strong>not automatically migrate DTC column values</strong> <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R250-DTC' title="">[EV-R250-DTC]</a> to Event properties, since DTC columns vary from template to template.</li>
+<li>For migrating data of a given template, Vector may support you on basis of a service project.</li>
+<li>See also the migration chapter <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R250' title="">[EV-R250]</a>.</li>
+</ul>
+<h3 id="using-events-in-new-documents-v12">Using Events in New Documents (v12)</h3>
+<ul>
+<li>In templates based on CANdelaStudio 12 or newer, you can enable the use of Events <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R600' title="">[DOCUI-R600]</a> right away.</li>
+<li>You may consider removing all DTC columns that actually represent Event properties.</li>
+<li>See also the migration chapter <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R250' title="">[EV-R250]</a>.</li>
+</ul>
+<h3 id="events-in-report">Events in Report</h3>
+<p>Events are not contained in the Report, see <a class='rqRef' href='../../30%20Features/Report/Report%20Generator.htm#RP-R320' title="">[RP-R320]</a>.</p>
+<h3 id="toolchain">Events in the Vector Toolchain</h3>
+<p>See Mapping SWC with DTC vs. Event <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D050' title="">[ASR-D050]</a>.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> (Export)</li>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Description.htm">Description</a></li>
+<li><a href="../../20%20UserInterface/Event/Events.htm">Events List</a> (user interface)</li>
+<li><a href="Events%20Data%20Model.htm">Events Data Model</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory%20Terms.htm">Fault Memory Terms</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Name.htm">Name</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Qualifier.htm">Qualifier</a></li>
+<li>AUTOSAR Standard: Specification of Diagnostic Extract (on autosar.org, package &quot;Methodology and Templates&quot;)</li>
+</ul>
+</body>
+</html>

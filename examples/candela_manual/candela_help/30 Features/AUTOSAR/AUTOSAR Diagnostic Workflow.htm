@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>AUTOSAR Diagnostic Workflow</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="autosar-diagnostic-workflow"><span id='_index_446727901' title='AUTOSAR: Workflow' data-term='AUTOSAR' data-text='Workflow'>AUTOSAR Diagnostic Workflow</span></h1>
+<h2 id="objectives">Objectives</h2>
+<p>AUTOSAR aims to</p>
+<ul>
+<li>improve software quality and</li>
+<li>reduce costs</li>
+</ul>
+<p>by reuse of...</p>
+<ul>
+<li>functions across carlines and across OEM boundaries</li>
+<li>development methods and tools</li>
+<li>basic software</li>
+</ul>
+<h2 id="vector-diagnostic-tool-chain">Vector Diagnostic Tool Chain</h2>
+<p>The diagnostic configuration workflow is supported by the following Vector tools:</p>
+<div class="figure">
+<img src="../../30%20Features/Images/Diagnostic%20Configuration%20Workflow.jpg" alt="Vector Tools in the AUTOSAR Workflow" />
+<p class="caption">Vector Tools in the AUTOSAR Workflow</p>
+</div>
+<h2 id="top-down-approach">Top-Down Approach</h2>
+<p>The following diagram visualizes the <strong>top-down approach</strong> for developing a diagnostic software component (SWC) using...</p>
+<ul>
+<li><strong>PREEvision</strong></li>
+<li><strong>DaVinci Developer</strong></li>
+<li><strong>DaVinci Configurator Pro</strong>.</li>
+</ul>
+<div class="figure">
+<img src="Images/Top%20Down%20Approach.jpg" alt="Top Down Approach for Developing a Diagnostic Software Component" />
+<p class="caption">Top Down Approach for Developing a Diagnostic Software Component</p>
+</div>
+<p><strong>CANdelaStudio</strong> allows to specify additional details for</p>
+<ul>
+<li>documentation,</li>
+<li>tester parameterization</li>
+<li>validation</li>
+<li>data exchange with further tools</li>
+<li>...</li>
+</ul>
+
+<h2 id="components-workflow">Components Workflow</h2>
+<div class="figure">
+<img src="Images/AUTOSAR%20Workflow.jpg" alt="Workflow of AUTOSAR Components" />
+<p class="caption">Workflow of AUTOSAR Components</p>
+</div>
+<p>Typical steps and data involved in an AUTOSAR workflow:</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="49%" />
+<col width="41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Who</th>
+<th align="left">Step</th>
+<th align="left">Data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">OEM</td>
+<td align="left">Model the application as a composition of interconnected <strong>software components</strong>,<br />
+don't care whether<br />
+they are mapped to multiple ECUs (communicate over a bus),<br />
+or are mapped to one ECU (communicate within the ECU).<br />
+</td>
+<td align="left">Software Component Description</td>
+</tr>
+<tr class="even">
+<td align="left">OEM</td>
+<td align="left">Map available components to specific ECUs</td>
+<td align="left">System Description (whole system)</td>
+</tr>
+<tr class="odd">
+<td align="left">OEM</td>
+<td align="left">Describe the bus communication</td>
+<td align="left">Communication matrix in System Description<br />
+(cf. DBC, LDF, FIBEX)</td>
+</tr>
+<tr class="even">
+<td align="left">OEM</td>
+<td align="left">From the system description,<br />
+extract signals and messages relevant for one specific ECU</td>
+<td align="left">ECU Extract of a System Description</td>
+</tr>
+<tr class="odd">
+<td align="left">Supplier</td>
+<td align="left">Configure the ECU:<br />
+connect the software component implementation to the basis software</td>
+<td align="left">ECU Configuration Description</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-topics">Related Topics</h2>
+<p>CANdelaStudio features:</p>
+<ul>
+<li><a href="../../30%20Features/Requirements/Requirements.htm">Requirements</a> import and synchronisation</li>
+<li><a href="../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm">AUTOSAR Diagnostic Extract</a> (Export)</li>
+<li><a href="Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm">Attributes for AUTOSAR Diagnostic Extract Export</a></li>
+<li><a href="../../30%20Features/Import/SWC%20Sync%20Introduction.htm">SWC Sync</a> (Import)</li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Command%20Line.htm#autosar">AUTOSAR Command Line Operation Examples</a></li>
+</ul>
+<p>General:</p>
+<ul>
+<li><a href="../../15%20Procedures/AUTOSAR/How%20to%20Configure%20the%20Diagnostic%20Basic%20Software%20of%20an%20AUTOSAR%204%20ECU.htm">How to Configure the Diagnostic Basic Software of an AUTOSAR 4 ECU</a></li>
+<li><a href="../../30%20Features/ODX/ODX.htm">ODX</a></li>
+<li><a href="../../10%20Introduction/Vector%20Diagnostic%20Toolchain.htm">Vector Diagnostic Toolchain</a></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Edit DTCs Efficiently</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-edit-dtcs-efficiently">How to Edit DTCs Efficiently</h1>
+<h2 id="context">Context</h2>
+<p>You edit DTCs either...</p>
+<ul>
+<li>in the &quot;DTC Pool&quot; in the top-level <a href="../../20%20UserInterface/Tree/Navigation%20Tree.htm">tree node</a> Fault Memory/Diagnostic Trouble Codes</li>
+<li>or in a variant in the diagnostic instance typically named &quot;Fault Memory&quot; (the name is defined in the manufacturer specific template, names also seen are &quot;DTCs&quot; or &quot;Events&quot;).</li>
+</ul>
+<h2 id="features">Features</h2>
+<div class="figure">
+<img src="Images/DTC%20List.jpg" alt="DTC List" />
+<p class="caption">DTC List</p>
+</div>
+<p>The following features help for efficient editing in the DTC list.</p>
+<p>See also the description of <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm">Basic User Interface Rules</a> in general, e.g. for sorting, navigating and editing of multiple values at once.</p>
+<ul>
+<li><p><strong>filter</strong> the DTC list:</p>
+<ul>
+<li>enter a filter term in the edit control at top right of the list</li>
+</ul></li>
+<li><p><span id="PRDTC-R035" class="rqDef">[PRDTC-R035]</span> <strong>copy a cell value to multiple other DTCs</strong> at once <a class='rqRef' href='../../30 Features\DTC\DTC Operations.htm#DTCOP-R035' title="Copy Value into Selected DTCs">[DTCOP-R035]</a>:</p>
+<ul>
+<li>left click one of the target DTC rows,</li>
+<li>in order to copy to a range of DTCs: hold the <code>Shift</code> key and left click the last DTC row</li>
+<li>in order to copy to individual other DTCs: hold the <code>Ctrl</code> key and left click each desired DTC row</li>
+<li>finally hold the <code>Ctrl</code> key and left click the source DTC <strong>in the column you want to copy from</strong></li>
+<li>press right mouse, select context menu item &quot;Copy Value into Selected DTCs&quot;</li>
+<li>CANdelaStudio copies the value in the source DTC column to the same column of the other selected DTCs.</li>
+</ul></li>
+<li><p><strong>inspect the <a href="../../30%20Features/Common%20Properties/Qualifier.htm">qualifier</a></strong> of the DTC column:</p>
+<ul>
+<li>hold the mouse over the table header to show the tooltip</li>
+</ul></li>
+<li><p><strong>inspect the <a href="../../30%20Features/Common%20Properties/Description.htm">description</a></strong> of the DTC column:</p>
+<ul>
+<li>press the button [Show Column Info] on top of the list.</li>
+</ul></li>
+<li><p><strong>conveniently edit multi-line properties</strong>:</p>
+<ul>
+<li>open the <a href="../../20%20UserInterface/DTC/DTC%20Property%20Page.htm">DTC Property Page</a>,</li>
+<li>in the &quot;General&quot; page, select the property</li>
+<li>and ensure &quot;Show details&quot; at the bottom is checked.</li>
+</ul></li>
+</ul>
+<h2 id="dtc-property-page">DTC Property Page</h2>
+<p>The <a href="../../20%20UserInterface/DTC/DTC%20Property%20Page.htm">DTC Property Page</a> provides convenient access to...</p>
+<ul>
+<li>the DTC column properties,</li>
+<li>Vehicle System Groups,</li>
+<li>attributes (note that attributes are shown in the DTC <em>list</em> only if this has been specified in the template <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R090' title="VisibleInTableColumn">[ATTR-R090]</a>, but all attributes are shown in the dialog).</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li><a href="../../20%20UserInterface/DTC/DTC%20Property%20Page.htm">DTC Property Page</a></li>
+<li>Selecting Multiple Objects in a List <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Basic User Interface Rules.htm#LIST-R110' title="">[LIST-R110]</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="../../30%20Features/DTC/DTC.htm">DTC Feature</a></li>
+<li><a href="../../30%20Features/DTC/DTC%20Operations.htm">DTC Operations</a></li>
+</ul>
+</body>
+</html>

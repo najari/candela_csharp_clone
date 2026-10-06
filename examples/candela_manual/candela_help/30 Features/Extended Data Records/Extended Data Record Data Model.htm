@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Extended Data Record Data Model</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="extended-data-record-data-model-v13-autosar-fault-memory-cds-71541">Extended Data Record Data Model (v13 AUTOSAR Fault Memory, CDS-71541)</h1>
+<p>See also the <a href="Extended%20Data%20Record%20Operations.htm">Extended Data Record Operations</a> and <a href="../../20%20UserInterface/Extended%20Data%20Records/GUI%20Extended%20Data.htm">GUI Extended Data Records</a>.</p>
+<p><strong>Contents</strong>:</p>
+<ul>
+<li><a href="#ECU">ECU</a></li>
+<li><a href="#PS">Protocol Service</a></li>
+<li><a href="#DClT">Diagnostic Class Template</a></li>
+<li><a href="#DI">Diagnostic Instance</a></li>
+<li>Consistency Conditions <a class='rqRef' href='../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm#EDR-D100' title="">[EDR-D100]</a></li>
+<li>Migration <a class='rqRef' href='../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm#EDR-R250' title="">[EDR-R250]</a></li>
+</ul>
+<h2 id="ECU">ECU</h2>
+<h2 id="PS">Protocol Service</h2>
+<p>For v13 AUTOSAR Fault Memory, a Proxy Component has additional semantics for Extended Data Records:</p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-edr' title="">[PC-R050-edr]</a> Extended Data Records</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-ed' title="">[PC-R050-ed]</a> Extended Data</li>
+</ul>
+<p>Note: edr/ed are relevant for the UDS Protocol Services (cf. concept slide 12):</p>
+<ul>
+<li>19 06 reportDTCExtDataRecordByDTCNumber</li>
+<li>19 10 reportMirrorMemoryDTCExtDataRecordByDTCNumber</li>
+<li>19 16 reportDTCExtDataRecordByRecordNumber (rarely used)</li>
+<li>19 19 reportUserDefMemoryDTCExtDataRecordByDTCNumber</li>
+</ul>
+<h2 id="DClT">Diagnostic Class Template</h2>
+<h2 id="DI">Diagnostic Instance</h2>
+<h2 id="extended-data-records-list">Extended Data Records List</h2>
+<p><span id="EDR-R030" class="rqDef">[EDR-R030]</span> A Fault Memory Diagnostic Instance contains a list of 0..n Extended Data Records.</p>
+<ul>
+<li><span id="EDR-R030-Card" class="rqDef">[EDR-R030-Card]</span> Cardinality: Diagnostic Instance 1..1 -- 0..n Extended Data Records</li>
+<li><span id="EDR-R030-Type" class="rqDef">[EDR-R030-Type]</span> Extended Data Records are <strong>not allowed</strong> in a Diagnostic Instance of a <strong>type</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLT-R200' title="">[DCLT-R200]</a> other than &quot;Fault Memory&quot;.
+<ul>
+<li>cf. modification of the class type <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#DCLTOP-R200-EDR' title="">[DCLTOP-R200-EDR]</a></li>
+<li>and the correction on loading <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Loading%20a%20Document%20or%20Template.htm#LOAD-R200-EDR' title="">[LOAD-R200-EDR]</a>.</li>
+</ul></li>
+<li><span id="EDR-R030-OBDII" class="rqDef">[EDR-R030-OBDII]</span> Extended Data Records are <strong>not allowed</strong> in an <strong>OBDII</strong> Fault Memory Diagnostic Instance.</li>
+<li><span id="EDR-R030-Protocol" class="rqDef">[EDR-R030-Protocol]</span> Extended Data Records are <strong>allowed</strong> without restriction by the <strong>Protocol Standard</strong> <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R120' title="">[DOCUI-R120]</a>.</li>
+<li><span id="EDR-R030-UserDef" class="rqDef">[EDR-R030-UserDef]</span> Extended Data Records are <strong>allowed</strong> in a Fault Memory diagnostic instance of any Fault Memory Type: <strong>Primary</strong> or <strong>User Defined Memory</strong> <a class='rqRef' href='../../30%20Features/Fault%20Memory/User-Defined%20Fault%20Memory%20in%20CANdela.htm#UDFM-D100' title="">[UDFM-D100]</a>.</li>
+</ul>
+<p><span id="EDR-R035" class="rqDef">[EDR-R035]</span> The Extended Data Records have no persistent <strong>sort order</strong>.</p>
+<ul>
+<li>Assumption: the user interface sorts them ascending by Number.</li>
+</ul>
+<h2 id="extended-data-record-properties">Extended Data Record Properties</h2>
+<p>This chapter describes all <strong>properties</strong> and <strong>relationships</strong> of an Extended Data Record.</p>
+<p><span id="EDR-R110" class="rqDef">[EDR-R110]</span> An Extended Data Record has Name, Qualifier, Description.</p>
+<ul>
+<li><span id="EDR-R110-Qualified" class="rqDef">[EDR-R110-Qualified]</span> Name and Qualifier must be unique in the list <a class='rqRef' href='../../30%20Features/Extended%20Data%20Records/Extended%20Data%20Record%20Data%20Model.htm#EDR-R030' title="">[EDR-R030]</a>.</li>
+</ul>
+<p><a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-EDR' title="">[ATTR-R050-EDR]</a> An Extended Data Record has Default Attributes.</p>
+<h3 id="extended-data-record-number">Extended Data Record Number</h3>
+<p><span id="EDR-R120" class="rqDef">[EDR-R120]</span> An Extended Data Record has a <strong>Extended Data Record Number (SRN)</strong></p>
+<ul>
+<li><span id="EDR-R120-Range" class="rqDef">[EDR-R120-Range]</span> Value range: <strong>1..0xEF</strong>.</li>
+<li>Note - UDS reserves the other values:
+<ul>
+<li><strong>0x00</strong>: reserved by ISO/SAE.</li>
+<li><strong>0xF0 – 0xFD</strong>: &quot;reserved by ISO/SAE for future reporting of groups in a single response message.&quot;</li>
+<li><strong>0xFE</strong>: &quot;requests the server to report all legislated OBD stored DTCExtendedData records in a single response message.&quot;</li>
+<li><strong>0xFF</strong>: &quot;requests the server to report all stored DTCExtendedData records in a single response message.&quot;</li>
+</ul></li>
+<li><span id="EDR-R120-Unique" class="rqDef">[EDR-R120-Unique]</span> Extended Data Record Numbers shall be unique in the Extended Data Records list (i.e. within the Fault Memory).</li>
+<li><span id="EDR-R120-DefaultDisplay" class="rqDef">[EDR-R120-DefaultDisplay]</span> <strong>Default display</strong> of the Extended Data Record Number:
+<ul>
+<li>2 hex characters</li>
+<li>upper case</li>
+<li>with leading zeroes</li>
+<li>examples: &quot;0x01&quot;, &quot;0xF0&quot;</li>
+</ul></li>
+</ul>
+<h3 id="storage-trigger">Storage Trigger</h3>
+<p><span id="EDR-R150" class="rqDef">[EDR-R150]</span> An Extended Data Record has an enumeration property <strong>Storage Trigger</strong> (CDS-71894).</p>
+<ul>
+<li>Values, default and order of the values are as for Snapshot Records, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R150' title="">[SR-R150]</a>.</li>
+</ul>
+<p><span id="EDR-R155" class="rqDef">[EDR-R155]</span> An Extended Data Record has a string property <strong>customTrigger</strong></p>
+<ul>
+<li>Details are as for Snapshot Records, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R155' title="">[SR-R155]</a>.</li>
+</ul>
+<h3 id="updated">Updated</h3>
+<p><span id="EDR-R160" class="rqDef">[EDR-R160]</span> An Extended Data Record has a Boolean property <strong>Updated</strong> (CDS-71894).</p>
+<ul>
+<li>Details are as for Snapshot Records, see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-R160' title="">[SR-R160]</a>.</li>
+</ul>
+<p>Motivation:</p>
+<ul>
+<li>The property has no use for DEM internal elements</li>
+<li>... but it is relevant for DEM external data elements:
+<ul>
+<li>DEM must “update” their internal representation.</li>
+</ul></li>
+</ul>
+
+<h2 id="extended-data">Extended Data</h2>
+<p><span id="EDR-R200" class="rqDef">[EDR-R200]</span> A Fault Memory Diagnostic Instance contains <strong>Extended Data</strong>.</p>
+<ul>
+<li><span id="EDR-R200-DataObjects" class="rqDef">[EDR-R200-DataObjects]</span> Extended Data consists of a list of 0..n Parameters <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R010' title="">[DO-R010]</a> (a Telegram Table).</li>
+<li>TODO use in path, <a class='rqRef' href='../../30%20Features/Common%20Properties/Object%20Paths.htm#OBJP-R200' title="">[OBJP-R200]</a></li>
+</ul>
+<h2 id="extended-data-stored-for-extended-data-records">Extended Data stored for Extended Data Records</h2>
+<p><span id="EDR-R300" class="rqDef">[EDR-R300]</span> The diagnostic in contains a Boolean for each (DTC, Extended Data Record) combination.</p>
+<ul>
+<li>It describes whether the ECU shall at runtime store the Extended Data Record for the given DTC.
+<ul>
+<li>Example: specify that the ECU does not store the Occurrence Counter for DTC 0xC003113.</li>
+</ul></li>
+<li><span id="EDR-R300-Default" class="rqDef">[EDR-R300-Default]</span> Default: true.</li>
+</ul>
+<h2 id="consistency">Consistency Conditions</h2>
+<p><span id="EDR-D100" class="rqDef">[EDR-D100]</span></p>
+<ul>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-D050-ededrUse' title="">[PC-D050-ededrUse]</a> If a Primitive contains an <code>ed</code> proxy component, it must also contain an <code>edr</code>proxy component.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-edrUnique' title="">[PC-R050-edrUnique]</a> A Primitive may contain at most one <code>edr</code> proxy component.</li>
+<li><a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-edUnique' title="">[PC-R050-edUnique]</a> A Primitive may contain at most one <code>ed</code> proxy component.</li>
+<li>see more in the Proxy Semantics chapter <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R100' title="Proxy Semantics">[PC-R100]</a></li>
+</ul>
+<h2 id="migration">Migration</h2>
+<p><span id="EDR-R250" class="rqDef">[EDR-R250]</span></p>
+<p>When <strong>loading</strong> a file with version <code>&lt;</code> 13 (forward migration), ...</p>
+<p>When <strong>saving</strong> to a file with version <code>&lt;</code> 13 (backward migration), ...</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Protocol%20Service/Components.htm">Components</a></li>
+<li><a href="../../30%20Features/Fault%20Memory%20(Template)/Error%20Code%20Table.htm">Error Code Table</a></li>
+<li><a href="../../30%20Features/Fault%20Memory/Fault%20Memory.htm">Introduction to Fault Memory</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="Extended%20Data%20Record%20Operations.htm">Extended Data Record Operations</a></li>
+<li><a href="../../20%20UserInterface/Extended%20Data%20Records/GUI%20Extended%20Data.htm">GUI Extended Data</a>.</li>
+</ul>
+</body>
+</html>

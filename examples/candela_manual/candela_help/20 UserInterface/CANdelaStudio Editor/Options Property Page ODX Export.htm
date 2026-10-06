@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Options Property Page ODX Export</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="file-options-odx-export">File | Options | ODX Export</h1>
+<div class="figure">
+<img src="Images/Options%20Property%20Page%20ODX%20Export.jpg" alt="Ribbon Tab File | Options, Page &quot;ODX Export&quot;" />
+<p class="caption">Ribbon Tab File | Options, Page &quot;ODX Export&quot;</p>
+</div>
+<p>The dialog represents the ODX Export Options <a class='rqRef' href='../../30 Features\Export\1_ODXExport_Introduction.htm#ODXE-R200' title="">[ODXE-R200]</a>, ...</p>
+<ul>
+<li>stored in the <a href="../../30%20Features/CANdelaStudio%20Editor/Options.htm#ODX20Export">INI file</a></li>
+<li>possibly overridden by a <a href="../../30%20Features/Attributes/Special%20Attributes.htm#OdxExportOption">Special Attribute</a>
+<ul>
+<li>with the qualifier equal to the name of the INI option;</li>
+<li>the dialog does <strong>not</strong> visualize such an override (cf. CDS-35047).</li>
+</ul></li>
+<li>The dialog can be <a href="../../30%20Features/CANdelaStudio%20Editor/Options.htm#options-studio">write-protected</a>.</li>
+</ul>
+<h2 id="general">General</h2>
+<h3 id="format-the-odx-file">Format the ODX file</h3>
+<p>Check this option if you want the ODX file to be output in formatted form (i.e. including indentations).</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\1_ODXExport_Introduction.htm#ODXE-R300' title="">[ODXE-R300]</a>.</p>
+<h3 id="store-log-messages-within-odx-file">Store log messages within ODX file</h3>
+<p>Check this option if you would like to export output messages in the ODX file.</p>
+<p>CANdelaStudio stores the messages in an XML comment at the beginning of the ODX file.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\30_ODXExport_Administrative data.htm#ODXE-R1030-Log' title="">[ODXE-R1030-Log]</a>.</p>
+<h3 id="abort-on-warnings">Abort on warnings</h3>
+<p><span id="OPT-R240" class="rqDef">[OPT-R240]</span> Check this option if you would like the export to abort if warnings occur.</p>
+<p>If the option is not checked, the export ignores warnings (but still stops if errors occur).</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\1_ODXExport_Introduction.htm#ODXE-R1001-Warnings' title="">[ODXE-R1001-Warnings]</a>.</p>
+<h3 id="always-use-local-odx-export-installation">Always use local ODX export installation</h3>
+<p><span id="OPT-R245" class="rqDef">[OPT-R245]</span> Check this option if you...</p>
+<ul>
+<li>have installed a newer version of the ODX export as an independent application, but</li>
+<li>want to use the older built-in version (stored locally to the CANdelaStudio installation)</li>
+</ul>
+<p>For details, see <a class='rqRef' href='../../30 Features\Installation\Export Installed as Independent Application.htm#DXEXE-R110' title="">[DXEXE-R110]</a>.</p>
+<h2 id="layerscategories">Layers/Categories</h2>
+<h3 id="one-separate-file-per-diag-layer">One separate file per DIAG-LAYER</h3>
+<p>Check this option if you would like to export every DIAG-LAYER in a separate file.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\50_ODXExport_CANdela base variant and variants.htm#ODXE-R1050-Files' title="">[ODXE-R1050-Files]</a>.</p>
+<h3 id="protocol-layer-for-supported-interfaces">PROTOCOL layer for supported interfaces</h3>
+<p>Check this option if you would like to export a protocol layer for each supported interface.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\40_ODXExport_ECU Properties.htm#ODXE-R1040-ComParam' title="">[ODXE-R1040-ComParam]</a>.</p>
+<h3 id="comparam-spec">COMPARAM-SPEC</h3>
+<p>Check this option if you would like to export COMPARAM-SPECS.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\40_ODXExport_ECU Properties.htm#ODXE-R1040-ComParam' title="">[ODXE-R1040-ComParam]</a>.</p>
+<h3 id="only-necessary-comparam-refs">Only necessary COMPARAM-REFs</h3>
+<p><span id="OPT-R360" class="rqDef">[OPT-R360]</span> Check this option if you would like to export a COMPARAM-REF only if the value of the corresponding communication parameter of the CANdela document differs from the value of the COMPARAM-SPEC.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\40_ODXExport_ECU Properties.htm#ODXE-R1040-ComParam' title="">[ODXE-R1040-ComParam]</a>.</p>
+<h3 id="iso-comparam-specs">ISO COMPARAM-SPECs</h3>
+<p>Check this option if you would like to export ISO COMPARAM-SPECs.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\40_ODXExport_ECU Properties.htm#ODXE-R1040-ComParam' title="">[ODXE-R1040-ComParam]</a>.</p>
+<h3 id="vehicle-info-spec">VEHICLE-INFO-SPEC</h3>
+<p>Check this option if you would like to export VEHICLE-INFO-SPEC.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\130_ODXExport_VEHICLE-INFO-SPEC.htm#ODXE-R1130' title="">[ODXE-R1130]</a>.</p>
+<h3 id="contained-ecu-shared-data">Contained ECU-SHARED-DATA</h3>
+<p>Check this option if you would like to export contained ECU-SHARED-DATA.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\120_ODXExport_ECU-SHARED-DATA.htm#ODXE-R1120' title="">[ODXE-R1120]</a>.</p>
+<h3 id="available-dtcs-as-ecu-shared-data">Available DTCs as ECU-SHARED-DATA</h3>
+<p>Check this option if you would like the DTC pool (&quot;Available DTCs&quot;) to be exported as ECU-SHARED-DATA. The DTCs of the DTC pool will be referenced by the BASE-VARIANT and the ECU-VARIANTs by using DTC-REFs.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\40_ODXExport_ECU Properties.htm#ODXE-R1040-ComParam' title="">[ODXE-R1040-ComParam]</a>.</p>
+<h3 id="tmx-file-multi-language-odx">TMX file (multi-language ODX)</h3>
+<p><span id="OPT-R350" class="rqDef">[OPT-R350]</span> Check this option if you would like to create a TMX file (Translation Memory eXchange) while exporting.</p>
+<ul>
+<li>You can have multiple languages in a CANdela document and translate using the Translation View (in Pro / Admin edition).</li>
+<li>Then you can let ODX export create a TMX file, which contains the translations of the multi-language document.</li>
+<li>By this, you will have the <strong>ODX file for diagnostics</strong>, and the <strong>TMX file for translations</strong>.</li>
+</ul>
+<p>See ODX Export <a class='rqRef' href='../../30 Features\Export\Export Multi-Language ODX Files.htm#ODXE-R1160' title="">[ODXE-R1160]</a>.</p>
+<h2 id="optimizations">Optimizations</h2>
+<h3 id="export-only-referenced-data-types">Export only referenced data types</h3>
+<p>This option excludes unused data types.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\1_ODXExport_Introduction.htm#ODXE-R310' title="">[ODXE-R310]</a>.</p>
+<h3 id="export-only-java-jobs">Export only Java-Jobs</h3>
+<p>Check this option if you would like to export Java jobs only, not jobs of other types.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\90_ODXExport_Jobs.htm#ODXE-R1090-Jobs' title="">[ODXE-R1090-Jobs]</a>.</p>
+<h3 id="export-two-params-for-a-bitfield-only-if-necessary">Export two PARAMs for a bitfield only if necessary</h3>
+<p>Check this option if you would like to export bit fields in two PARAMs. This is necessary if bit fields are used as identifying features.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\100_ODXExport_Data objects and bitfields.htm#ODXE-R1100-PhysBitfield' title="">[ODXE-R1100-PhysBitfield]</a>.</p>
+<h3 id="reuse-dtcs">Reuse DTCs</h3>
+<p>Check this option if you would like identical DTCs to be reused by using DTC-REFs.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\100_ODXExport_Data objects and bitfields.htm#ODXE-R1100-ReuseDTCs' title="">[ODXE-R1100-ReuseDTCs]</a>.</p>
+<h3 id="reuse-identical-environment-data">Reuse identical environment data</h3>
+<p>Check this option if you would like identical environment (snapshot) data to be reused.</p>
+<p>see <a class='rqRef' href='../../30 Features\Export\100_ODXExport_Data objects and bitfields.htm#ODXE-R1000-EnvData' title="">[ODXE-R1000-EnvData]</a>.</p>
+<h2 id="specific-properties">Specific properties</h2>
+<h3 id="description">DESCRIPTION</h3>
+<p>Check this option if you would like to export DESCRIPTIONs.</p>
+<ul>
+<li><p><strong>formatted</strong>: Check this option if you want the DESCRIPTIONs to be output with formattings (bold, italic, etc.).</p></li>
+<li><p><strong>with attachments</strong>: Check this option if you want to export attachments contained in description fields.</p></li>
+</ul>
+<p>See <a class='rqRef' href='../../30 Features\Export\1_ODXExport_Introduction.htm#ODXE-R320' title="">[ODXE-R320]</a>.</p>
+<h3 id="sdg-at-dtc-dop">SDG at DTC-DOP</h3>
+<p>Check this option if you would like to export SDGs to the DTC-DOP.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\100_ODXExport_Data objects and bitfields.htm#ODXE-R1100-FaultMem' title="">[ODXE-R1100-FaultMem]</a>.</p>
+<h3 id="candela-service-information">CANdela service information</h3>
+<p>Check this option if you would like to export CANdela specific service information.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\80_ODXExport_Services and telegrams.htm#ODXE-R1080-ExportService' title="">[ODXE-R1080-ExportService]</a>.</p>
+<h3 id="object-id-oid">Object ID (OID)</h3>
+<p>Check this option if you would like to export Object IDs.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\20_ODXExport_Common properties.htm#ODXE-R1020-OID' title="">[ODXE-R1020-OID]</a>.</p>
+<h3 id="make-ecu-variant.short-names-unique">Make ECU-VARIANT.SHORT-NAMEs unique</h3>
+<p>Check this option if you would like to export unique ECU-VARIANT.SHORT-NAMEs.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\50_ODXExport_CANdela base variant and variants.htm#ODXE-R1050-Unique' title="">[ODXE-R1050-Unique]</a>.</p>
+<h3 id="odx-id-use-ecu-qualifier-as-prefix">ODX-ID: Use ECU qualifier as prefix</h3>
+<p>Check this option if you would like to use the ECU qualifier as a prefix for ODX-IDs.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\20_ODXExport_Common properties.htm#ODXE-R1020-ID' title="">[ODXE-R1020-ID]</a>.</p>
+<h3 id="create-matching-request-param-in-response">Create MATCHING-REQUEST-PARAM in response</h3>
+<p>Check this option if you would like to export parameters of type MATCHING-REQUEST-PARAM within positive responses (ODX: POS-RESPONSE)</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\80_ODXExport_Services and telegrams.htm#ODXE-R1080-Matching' title="">[ODXE-R1080-Matching]</a>.</p>
+<h3 id="use-pos-response-suppressable-odx-2.2.0">Use POS-RESPONSE-SUPPRESSABLE (ODX 2.2.0)</h3>
+<p>This option is relevant for ODX 2.2.0 only.</p>
+<p>Check this option if you would like to export elements of type POS-RESPONSE-SUPPRESSABLE for those services having the suppress positive response message indication bit set with setting &quot;User defined&quot;. In doing so, the POS-RESPONSE-SUPPRESSABLE elements are pointing to a parameter in the request which is used to decide whether the service responds with a positive response or whether the response is suppressed.</p>
+<p>See <a class='rqRef' href='../../30 Features\Export\80_ODXExport_Services and telegrams.htm#ODXE-R1080-DiagClass' title="">[ODXE-R1080-DiagClass]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Export/1_ODXExport_Introduction.htm">ODX Export Introduction</a></li>
+<li><a href="Options.htm">File | Options Dialog</a></li>
+<li>Menu for ODX Export <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm#MENU-R120' title="">[MENU-R120]</a></li>
+</ul>
+</body>
+</html>

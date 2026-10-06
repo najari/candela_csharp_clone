@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CANdelaStudio 7.5</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="migrations-candelastudio-7.5">Migrations CANdelaStudio 7.5</h1>
+<h2 id="ford-communication-parameter-cds-26020">Ford Communication Parameter (CDS-26020)</h2>
+<div class="figure">
+<img src="Images/Ford%20CAN_Identifier%20Migrations%20CDS-26020.jpg" alt="Ford CAN_Identifier Migrations" />
+<p class="caption">Ford CAN_Identifier Migrations</p>
+</div>
+<p><strong>Up Migration</strong></p>
+<ul>
+<li>For a template/document with manufacturer Ford,</li>
+<li>version <code>&lt;</code> 7.5 SP2,</li>
+<li>interface qualifier <code>HS_CAN</code> or <code>MS_CAN</code></li>
+<li>ComParam with qualifier <code>CAN_Identifier</code></li>
+<li><span id="MIG75-R010" class="rqDef">[MIG75-R010]</span> CANdelaStudio since <strong>7.5 SP2</strong> (CDS-26020) migrates to...
+<ul>
+<li>qualifier <code>CanIdType</code></li>
+<li>name <code>CAN-ID Type</code></li>
+<li>If a ComParam with qualifier CanIdType already exists, 7.5 SP2 <strong>creates a duplicate</strong> (=&gt; fails to load).</li>
+</ul></li>
+<li><span id="MIG75-R020" class="rqDef">[MIG75-R020]</span> CANdelaStudio since <strong>7.5 SP3 P2</strong> and <strong>8.0 SP1</strong>:
+<ul>
+<li>If a ComParam with qualifier <code>CanIdType</code> already exists, <strong>does not create a duplicate</strong>.</li>
+</ul></li>
+</ul>
+<p>The migration writes the following debug output:</p>
+<pre><code>D: Migration 7.5.2100: renamed communication parameter &#39;CAN_Identifier&#39; of interface &#39;HS_CAN&#39; to &#39;CanIdType&#39;.
+D: Migration 7.5.2100: renamed communication parameter &#39;CAN_Identifier&#39; of interface &#39;MS_CAN&#39; to &#39;CanIdType&#39;.</code></pre>
+<p><strong>Down Migration</strong></p>
+<ul>
+<li><span id="MIG75-R110" class="rqDef">[MIG75-R110]</span> CANdelaStudio since <strong>7.5 SP2</strong> (CDS-26020)
+<ul>
+<li>saves the <code>CanIdType</code> ComParam unchanged (no clone)</li>
+</ul></li>
+<li><span id="MIG75-R120" class="rqDef">[MIG75-R120]</span> CANdelaStudio since <strong>7.5 SP3 P2</strong> (CDS-30383) and <strong>8.0 SP1</strong> (CDS-29690)
+<ul>
+<li>clones the <code>CanIdType</code> ComParam to a <code>CAN_Identifier</code> ComParam (if the latter does not exist)</li>
+</ul></li>
+</ul>
+
+<h2 id="services-supported-for-interfaces">Services Supported for Interfaces</h2>
+<p><span id="MIG75-R200" class="rqDef" title="Down Migration">[MIG75-R200 Down Migration]</span> If you save a 7.5 or newer document to a document format before 7.5, and...</p>
+<ul>
+<li>any <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used Protocol Service</a></li>
+<li>is not supported at some interface <a class='rqRef' href='../../30%20Features/Interface/Services%20Supported%20for%20Interfaces.htm#SSI-R100' title="">[SSI-R100]</a>,</li>
+<li>the migration creates the special attribute <a href="../../30%20Features/Attributes/Special%20Attributes.htm#InterfaceExcludedForService">InterfaceExcludedForService</a>
+<ul>
+<li>authorization: visible=false, modifiable=false, export to specification=false</li>
+<li>usage=system (= not visible even in Expert View)</li>
+</ul></li>
+<li>and stores the information in it.</li>
+</ul>
+<p><span id="MIG75-R210" class="rqDef" title="Up Migration">[MIG75-R210 Up Migration]</span> If you load from a document format before 7.5, ...</p>
+<ul>
+<li>if the special attribute <a href="../../30%20Features/Attributes/Special%20Attributes.htm#InterfaceExcludedForService">InterfaceExcludedForService</a> exists,</li>
+<li>migration reads &quot;Services Supported for Interfaces&quot; information <a class='rqRef' href='../../30%20Features/Interface/Services%20Supported%20for%20Interfaces.htm#SSI-R100' title="">[SSI-R100]</a> from the attribute</li>
+<li>and deletes the attribute.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Migrations.htm">Migrations (Overview)</a></li>
+<li>Migrations <a href="CANdelaStudio%208.0.htm">CANdelaStudio 8.0</a>.</li>
+<li><a href="../../30%20Features/Persistors/Persistors.htm">Persistors</a></li>
+</ul>
+</body>
+</html>

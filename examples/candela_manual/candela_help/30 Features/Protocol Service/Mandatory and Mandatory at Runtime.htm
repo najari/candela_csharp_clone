@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Mandatory and Mandatory at Runtime</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="mandatory-and-mandatory-at-runtime-cds-2532">Mandatory and Mandatory at Runtime (CDS-2532)</h1>
+<div class="figure">
+<img src="Images/Component%20Property%20Page%20Proxy.jpg" alt="Component Property Page Proxy" />
+<p class="caption">Component Property Page Proxy</p>
+</div>
+<h2 id="properties">Properties</h2>
+<p>Protocol Service <a href="Components.htm">components</a> have the properties</p>
+<ul>
+<li><span id="PS-R510" class="rqDef">[PS-R510]</span> <strong>mandatory</strong>
+<ul>
+<li>(user interface: &quot;<strong>required</strong> in document&quot;)</li>
+<li>controls <strong>authoring</strong>: whether data must be specified in the CANdela document;</li>
+<li>opposite: <strong>optional</strong>.</li>
+</ul></li>
+<li><span id="PS-R520" class="rqDef">[PS-R520]</span> <strong>mandatory at runtime</strong>
+<ul>
+<li>controls <strong>execution</strong>: whether data specified in the CANdela document may be omitted at runtime.</li>
+<li>If one Component is <strong>optional</strong>, all the <strong>Components following</strong> are <strong>optional</strong>, too.</li>
+<li>If one Component has been <strong>omitted</strong> at runtime, all the <strong>Components following</strong> must be <strong>omitted</strong>, too.</li>
+<li>See <a class='rqRef' href='../../30%20Features/Protocol%20Service/Mandatory%20and%20Mandatory%20at%20Runtime.htm#PS-R540' title="">[PS-R540]</a> below for the effect in a telegram table in a diagnostic instance.</li>
+</ul></li>
+</ul>
+<p><strong>Constellations:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Mandatory</th>
+<th align="center">Document: Data specified</th>
+<th align="left">Mandatory at Runtime</th>
+<th align="left">Effect at Runtime</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">no</td>
+<td align="center">yes</td>
+<td align="left">yes</td>
+<td align="left">Data must be present</td>
+</tr>
+<tr class="even">
+<td align="right"></td>
+<td align="center"></td>
+<td align="left">no</td>
+<td align="left">Data may be present or not</td>
+</tr>
+<tr class="odd">
+<td align="right"></td>
+<td align="center">no</td>
+<td align="left">yes</td>
+<td align="left">No data present, since not specified</td>
+</tr>
+<tr class="even">
+<td align="right"></td>
+<td align="center"></td>
+<td align="left">no</td>
+<td align="left">dito</td>
+</tr>
+<tr class="odd">
+<td align="right">yes</td>
+<td align="center">yes</td>
+<td align="left">yes</td>
+<td align="left">Data must be present</td>
+</tr>
+<tr class="even">
+<td align="right"></td>
+<td align="center"></td>
+<td align="left">no</td>
+<td align="left">Data may be present or not</td>
+</tr>
+<tr class="odd">
+<td align="right"></td>
+<td align="center">no: constellation not allowed!</td>
+<td align="left">(n/a)</td>
+<td align="left">(n/a)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example">Example</h2>
+<p>To describe an optional parameter, you can either...</p>
+<ul>
+<li>define two Protocol Services:</li>
+</ul>
+<div class="figure">
+<img src="Images/2A%20Two%20Services.jpg" alt="2A: Two Services" />
+<p class="caption">2A: Two Services</p>
+</div>
+<ul>
+<li>... or define only one Protocol Service, with Mandatory at Runtime un-checked:</li>
+</ul>
+<div class="figure">
+<img src="Images/2A%20One%20Service%20with%20MandatoryAtRuntime%20False.jpg" alt="2A: One Service with MandatoryAtRuntime False" />
+<p class="caption">2A: One Service with MandatoryAtRuntime False</p>
+</div>
+<h2 id="effect-at-different-types-of-components">Effect at Different Types of Components</h2>
+<p><span id="RS-R430" class="rqDef">[RS-R430]</span></p>
+<table>
+<colgroup>
+<col width="18%" />
+<col width="81%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Component</th>
+<th align="left">Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Constant</td>
+<td align="left">Component is optional.</td>
+</tr>
+<tr class="even">
+<td align="left">Variable Value</td>
+<td align="left">Component is optional.</td>
+</tr>
+<tr class="odd">
+<td align="left">Proxy</td>
+<td align="left">Component is optional. See <a class='rqRef' href='../../30%20Features/Protocol%20Service/Mandatory%20and%20Mandatory%20at%20Runtime.htm#PS-R540' title="">[PS-R540]</a> below.</td>
+</tr>
+<tr class="even">
+<td align="left">Multiplexer</td>
+<td align="left">Component is optional.</td>
+</tr>
+<tr class="odd">
+<td align="left">Iteration</td>
+<td align="left">&quot;Mandatory&quot; is implicitly set, since the definition of Components within the Iteration already fulfills the &quot;mandatory&quot; condition.</td>
+</tr>
+<tr class="even">
+<td align="left">Fixed Data</td>
+<td align="left">dito.</td>
+</tr>
+</tbody>
+</table>
+<p><span id="PS-R540" class="rqDef">[PS-R540]</span> If...</p>
+<ul>
+<li>a <strong>Proxy Component</strong> is optional,</li>
+<li>and within a diagnostic instance, in a telegram table that refers the Proxy Component,</li>
+<li>you define top-level data objects,</li>
+<li>then the <strong>individual top-level data objects</strong> can be omitted at runtime, starting from the end.</li>
+</ul>
+<h2 id="mandatory-vs.-minimum-length">Mandatory vs. Minimum Length</h2>
+<p><span id="PS-R550" class="rqDef">[PS-R550]</span> There are <strong>two</strong> related properties that control the length of telegrams in diagnostic instances:</p>
+<ul>
+<li><strong>minimum length</strong>
+<ul>
+<li><span id="PS-R550-MinLength" class="rqDef">[PS-R550-MinLength]</span> must be <code>&gt; 0</code> always</li>
+</ul></li>
+<li><strong>mandatory</strong>
+<ul>
+<li><span id="PS-R550-Mandatory" class="rqDef">[PS-R550-Mandatory]</span> if true, data length must be at least the <strong>minimum length</strong>;</li>
+<li><span id="PS-R550-Optional" class="rqDef">[PS-R550-Optional]</span> if false (optional), data length may be <strong>0</strong> or at least the <strong>minimum length</strong>.</li>
+</ul></li>
+</ul>
+<p><strong>Constellations:</strong></p>
+<table>
+<colgroup>
+<col width="23%" />
+<col width="34%" />
+<col width="42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">mandatory</th>
+<th align="left">optional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">min. length <code>0</code></td>
+<td align="left">(not allowed, cf. CDS-5034)</td>
+<td align="left">(not allowed; would be redundant)</td>
+</tr>
+<tr class="even">
+<td align="left">min. length <code>x &gt; 0</code></td>
+<td align="left">telegram length <code>&gt;= x</code></td>
+<td align="left">telegram length is <code>0</code> or <code>&gt;= x</code></td>
+</tr>
+</tbody>
+</table>
+<p><span id="PS-R550-Mux" class="rqDef">[PS-R550-Mux]</span> For a <strong>Multiplexer</strong>, ...</p>
+<ul>
+<li>mandatory and minimum length apply to <strong>each Mux case</strong> individually,</li>
+<li>i.e. the following Multiplexer Proxy Component constellation is valid:
+<ul>
+<li>mandatory: false</li>
+<li>min. length: 1 byte</li>
+<li>Mux case 0x01:
+<ul>
+<li>data object with 1 byte fix length</li>
+</ul></li>
+<li>Mux case 0x02:
+<ul>
+<li>data object with 0..5 bytes</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="consistency-conditions">Consistency Conditions</h2>
+<p>See <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#CPC-R120' title="">[CPC-R120]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm">Combined Component</a></li>
+<li><a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Service</a></li>
+<li><a href="../../20%20UserInterface/Protocol%20Service/Protocol%20Service%20Property%20Page%20Extended.htm">Protocol Service Property Page &quot;Extended&quot;</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Move Data from a Diagnostic Instance to a DID</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-move-data-from-a-diagnostic-instance-to-a-did">How to Move Data from a Diagnostic Instance to a DID</h1>
+<h2 id="context">Context</h2>
+<p>In the CANdela data model, DIDs are defined within a variant:</p>
+<ul>
+<li>DID Data (without services): in the <a href="../../20%20UserInterface/DID/DIDs.htm">DID list</a> (since <strong>version 8.2</strong>)</li>
+<li>DID Services: in a <a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance.htm">diagnostic instance</a></li>
+</ul>
+<p>See the overview in the <a href="../../30%20Features/DID/DID.htm">DID Introduction</a>.</p>
+<p>The following procedure applies to...</p>
+<ul>
+<li><p>a diagnostic instance that <strong>does not reference a DID</strong>:</p>
+<p><img src="Images/Diagnostic%20Instance%20References%20no%20DID.jpg" /></p></li>
+<li><p><strong>not</strong> to a diagnostic instance that <strong>references a DID</strong>:</p>
+<p><img src="Images/Diagnostic%20Instance%20References%20a%20DID.jpg" /></p></li>
+</ul>
+<h2 id="objective">Objective</h2>
+<ul>
+<li><strong>Move</strong> the data objects from the diagnostic instance <strong>into a DID in the DID list</strong>.</li>
+</ul>
+<h2 id="move-data-of-multiple-diagnostic-instances-to-new-dids">Move Data of Multiple Diagnostic Instances to New DIDs</h2>
+<ul>
+<li>in the CANdelaStudio <a href="../../20%20UserInterface/Tree/Navigation%20Tree.htm">tree</a>, navigate to the variant in which you want to create a DID</li>
+<li>navigate to the <strong>diagnostic class</strong> in the tree</li>
+<li>in the <strong>list of diagnostic instances</strong> in the right side, open the context menu (right mouse)
+<ul>
+<li>Note: the menu item is also available in the navigation tree on individual diagnostic instances.</li>
+</ul></li>
+<li><p>select &quot;Move Data to New DID&quot;</p>
+<div class="figure">
+<img src="Images/Diagnostic%20Instance%20List%20Move%20Data%20to%20New%20DID.jpg" alt="Context Menu of Diagnostic Instances" />
+<p class="caption">Context Menu of Diagnostic Instances</p>
+</div></li>
+<li>CANdelaStudio...
+<ul>
+<li>creates <strong>DIDs</strong> in the DID list, which contain the <strong>data objects</strong> from the selected diagnostic instances;</li>
+<li>and replaces the data objects by a <strong>DID Data Reference</strong> to the each new DID</li>
+</ul></li>
+</ul>
+<p>Now you may select one of the diagnostic instances in the tree and <strong>inspect its telegram table</strong>:</p>
+<ul>
+<li><p>it contains a DID Data Reference <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R160' title="">[DID-R160]</a> to the new DID:</p>
+<div class="figure">
+<img src="Images/DID%20Data%20Reference.jpg" alt="DID Data Reference to the new DID" />
+<p class="caption">DID Data Reference to the new DID</p>
+</div></li>
+</ul>
+<h2 id="move-individual-data-objects-to-a-new-did">Move Individual Data Objects to a New DID</h2>
+<ul>
+<li>navigate to the <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram table</a> in the diagnostic instance that contains the data objects</li>
+<li>select the data objects you want to move</li>
+<li>open the context menu (right mouse)</li>
+<li><p>select &quot;Copy to New DID&quot;</p>
+<div class="figure">
+<img src="Images/Telegram%20Table%20Copy%20to%20New%20DID.jpg" alt="Telegram Table: Context Menu &quot;Copy to New DID&quot;" />
+<p class="caption">Telegram Table: Context Menu &quot;Copy to New DID&quot;</p>
+</div></li>
+<li>depending on the data context, CANdelaStudio will ask for confirmation about diagnostic instances referencing, or about a conflict with an existing DID</li>
+<li>then CANdelaStudio...
+<ul>
+<li>creates a <strong>DID</strong> in the DID list, the DID contains the selected <strong>data objects</strong>;</li>
+<li>replaces the selected data objects by a <strong>DID Data Reference</strong> to the new DID</li>
+</ul>
+<div class="figure">
+<img src="Images/DID%20Data%20Reference.jpg" alt="DID Data Reference to the new DID" />
+<p class="caption">DID Data Reference to the new DID</p>
+</div></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="How%20to%20Create%20a%20DID.htm">How to Create a DID</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#relevant-for-DIDs">Diagnostic classes relevant for DIDs</a></li>
+<li><a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm">Diagnostic Instance (Feature)</a></li>
+<li><a href="../../20%20UserInterface/DID/DID%20Overview.htm">DID Overview (List)</a></li>
+<li><a href="../../20%20UserInterface/DID/DIDs.htm">DID (List)</a></li>
+<li><a href="../../30%20Features/DID/DID.htm">DID Feature</a></li>
+</ul>
+</body>
+</html>

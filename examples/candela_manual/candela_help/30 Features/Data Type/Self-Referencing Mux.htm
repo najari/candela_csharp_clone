@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Self-Referencing Mux</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="self-referencing-multiplexer-cds-37611-8.5-sp2"><span id='_index_446727982' title='Multiplexer' data-term='Multiplexer'>Self-Referencing Multiplexer</span> (CDS-37611 8.5 SP2)</h1>
+<p>A general <a href="Mux.htm">Multiplexer</a> data type (Mux) defines multiple telegram tables (&quot;<strong>Mux cases</strong>&quot;), selected at runtime by the value of a <strong>selector data object</strong>.</p>
+<p>A &quot;<strong>self-referencing Mux</strong>&quot; is a Mux which <strong>refers to itself as a selector</strong>. In other words, it is a way to describe <strong>multiple interpretations</strong> of a part of the telegram.</p>
+<p>While ODX allows to describe a self-referencing Mux, the CANdela data model <strong>does not support it directly</strong>.</p>
+<h2 id="use-case">Use-case</h2>
+<p>One use-case is to describe <strong>invalid values</strong>, like</p>
+<ul>
+<li><code>0x00</code>: not installed</li>
+<li><code>0x01</code>: no signal available</li>
+<li><code>0x02</code> .. <code>0xFE</code>: valid values</li>
+<li><code>0xFF</code>: value out of range</li>
+</ul>
+
+<h2 id="alternatives">Alternatives</h2>
+<p>Actually, to describe such data, ...</p>
+<ul>
+<li>ODX provides the more appropriate <code>ODX-CONSTRAINTs</code></li>
+<li>CANdela provides the &quot;Invalid Values&quot; feature at a <a href="../../30%20Features/Data%20Type/Data%20Type.htm">data type</a>.</li>
+</ul>
+<h2 id="support-in-candelastudio">Support in CANdelaStudio</h2>
+<p>In an ODX based process, you may want to...</p>
+<ul>
+<li>import ODX data including a self-referencing Mux into a CANdela document and</li>
+<li>export it back to ODX.</li>
+</ul>
+<p>To avoid loss of information, CANdelaStudio (since 8.5 SP2) uses a workaround to store data of an ODX self-referencing Mux:</p>
+<p><span id="DTMUX-R800" class="rqDef" title="Self-Referencing Mux">[DTMUX-R800 Self-Referencing Mux]</span> CANdelaStudio shall represent an ODX self-referencing Mux...</p>
+<ul>
+<li><span id="DTMUX-R800-Identity" class="rqDef">[DTMUX-R800-Identity]</span> using an identity data type that takes the role of the <strong>selector</strong>,
+<ul>
+<li><span id="DTMUX-R800-Mux" class="rqDef">[DTMUX-R800-Mux]</span> which <em>indirectly</em> reference a Multiplexer data type that takes the role of the <strong>Multiplexer</strong>;</li>
+<li><a class='rqRef' href='../../30%20Features/Attributes/Special%20Attributes.htm#DTMUX-R800-Attribute' title="">[DTMUX-R800-Attribute]</a> the <em>indirect</em> reference at the identity data type is represented by a special attribute which contains the qualifier of the Multiplexer;</li>
+<li><span id="DTMUX-R800-AttributeDangling" class="rqDef">[DTMUX-R800-AttributeDangling]</span> if the attribute value is non-empty but does not denote a Mux qualifier, the identity data type shall not be treated as a self-referencing Mux.</li>
+<li>This situation may arise e.g. when you copy the identity data type but not the Mux to another document. </li>
+</ul></li>
+<li><span id="DTMUX-R800-Import" class="rqDef">[DTMUX-R800-Import]</span> ODX import shall represent an ODX Mux using such a data object (CDS-39873);</li>
+<li><span id="DTMUX-R800-Export" class="rqDef">[DTMUX-R800-Export]</span> ODX export shall reconstruct the self-referencing Mux in ODX from the data object;</li>
+<li><a class='rqRef' href='../../20%20UserInterface/Data%20Objects/Data%20Objects.htm#DOUI-R800' title="Self-Referencing Mux">[DOUI-R800]</a> the CANdelaStudio user interface shall provide special support.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Mux.htm">Multiplexer</a></li>
+<li><a href="../../30%20Features/ODX/ODX.htm">ODX</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+</ul>
+</body>
+</html>

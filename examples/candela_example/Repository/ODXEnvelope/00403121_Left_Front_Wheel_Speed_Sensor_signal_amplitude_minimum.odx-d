@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?><ODX MODEL-VERSION="2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="odx.xsd">
+<DIAG-LAYER-CONTAINER ID="DLC.EnvelopeSample">
+<SHORT-NAME>EnvelopeSample</SHORT-NAME>
+<LONG-NAME>EnvelopeSample</LONG-NAME>
+<ECU-SHARED-DATAS>
+<ECU-SHARED-DATA ID="DL_Envelope">
+<SHORT-NAME>Envelope</SHORT-NAME>
+<LONG-NAME>Envelope</LONG-NAME>
+<DIAG-DATA-DICTIONARY-SPEC>
+<DTC-DOPS>
+<DTC-DOP ID="DTC_DOP">
+<SHORT-NAME>RecordDataType</SHORT-NAME>
+<LONG-NAME>RecordDataType</LONG-NAME>
+<DIAG-CODED-TYPE BASE-TYPE-ENCODING="NONE" BASE-DATA-TYPE="A_UINT32" xsi:type="STANDARD-LENGTH-TYPE">
+<BIT-LENGTH>24</BIT-LENGTH>
+</DIAG-CODED-TYPE>
+<PHYSICAL-TYPE BASE-DATA-TYPE="A_UINT32" DISPLAY-RADIX="HEX"/>
+<COMPU-METHOD>
+<CATEGORY>IDENTICAL</CATEGORY>
+</COMPU-METHOD>
+<DTCS>
+<DTC ID="TransferDTC">
+<SHORT-NAME>Left_Front_Wheel_Speed_Sensor_signal_amplitude_minimum</SHORT-NAME>
+<TROUBLE-CODE>4206881</TROUBLE-CODE>
+<DISPLAY-TROUBLE-CODE>0x00403121</DISPLAY-TROUBLE-CODE>
+<TEXT>Left Front Wheel Speed Sensor - signal amplitude &lt; minimum</TEXT>
+<SDGS>
+<SDG>
+<SDG-CAPTION ID="SetCondition">
+<SHORT-NAME>SetCondition</SHORT-NAME>
+<LONG-NAME>Set Condition</LONG-NAME>
+</SDG-CAPTION>
+<SD>Voltage amplitude &lt; 2V</SD>
+</SDG>
+<SDG>
+<SDG-CAPTION ID="ResetCondition">
+<SHORT-NAME>ResetCondition</SHORT-NAME>
+<LONG-NAME>Reset condition &amp; self healing</LONG-NAME>
+</SDG-CAPTION>
+<SD>Voltage amplitude &gt; 2V for 10s.</SD>
+</SDG>
+<SDG>
+<SDG-CAPTION ID="CorrectiveAction">
+<SHORT-NAME>CorrectiveAction</SHORT-NAME>
+<LONG-NAME>Corrective action</LONG-NAME>
+</SDG-CAPTION>
+<SD>No known corrective action</SD>
+</SDG>
+<SDG>
+<SDG-CAPTION ID="SpecialInstruction">
+<SHORT-NAME>SpecialInstruction</SHORT-NAME>
+<LONG-NAME>Special instruction</LONG-NAME>
+</SDG-CAPTION>
+<SD/>
+</SDG>
+</SDGS>
+</DTC>
+</DTCS>
+</DTC-DOP>
+</DTC-DOPS>
+</DIAG-DATA-DICTIONARY-SPEC>
+</ECU-SHARED-DATA>
+</ECU-SHARED-DATAS>
+</DIAG-LAYER-CONTAINER>
+</ODX>
+

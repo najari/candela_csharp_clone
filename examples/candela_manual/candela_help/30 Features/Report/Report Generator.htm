@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Report Generator</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="report">Report</h1>
+<h2 id="format">Format</h2>
+<p>CANdelaStudio can export a document to...</p>
+<ul>
+<li>RTF</li>
+<li>HTML (CDS-4432 6.5)</li>
+</ul>
+<h2 id="filter">Filter</h2>
+<p><span id="RP-R100" class="rqDef" title="Filter">[RP-R100 Filter]</span> The document can be filtered by</p>
+<ul>
+<li><span id="RP-R100-Variants" class="rqDef">[RP-R100-Variants]</span> Variants</li>
+<li><span id="RP-R100-Audience" class="rqDef">[RP-R100-Audience]</span> Audience (Target Groups)</li>
+<li><span id="RP-R100-VSG" class="rqDef">[RP-R100-VSG]</span> Vehicle System Groups.</li>
+</ul>
+<p><span id="RP-R110" class="rqDef" title="Language">[RP-R110 Language]</span> You can select the language for fix strings contained in the report.</p>
+<p>Report skips...</p>
+<ul>
+<li>de-activated diagnostic instances and job containers</li>
+<li>diagnostic instances and job containers assigned to a specific target group that you have excluded from export</li>
+</ul>
+<p>Cf. the diagnostic instance icons in the navigation <a href="../../20%20UserInterface/Tree/Icons.htm">tree</a>.</p>
+<h2 id="report-structure">Report Structure</h2>
+<h3 id="front-page">Front Page</h3>
+<p><span id="RP-R120" class="rqDef" title="Front Page">[RP-R120 Front Page]</span> The front page contains</p>
+<ul>
+<li>the ECU name</li>
+<li>the manufacturer string</li>
+<li>the editor (from the last revision item)</li>
+<li>the version (dito)</li>
+<li>for a document: the template</li>
+<li>the target group selection for the report</li>
+</ul>
+<p>For export to RTF, you can <a href="Manufacturer%20Specific%20Layout.htm">adapt the layout</a> of the front page (requires knowledge of RTF).</p>
+<h3 id="authors-and-revision-history">Authors and Revision History</h3>
+<p><span id="RP-R130" class="rqDef">[RP-R130]</span> Contains the information entered in the <a href="../../20%20UserInterface/Revision%20History/Revision%20History%20Dialog.htm">Revision History Dialog</a>, if enabled in Ribbon Tab File | Options <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Specification Chapters.htm#OPT-R500' title="">[OPT-R500]</a>.</p>
+<h3 id="document-conventions">Document Conventions</h3>
+<p><span id="RP-R140" class="rqDef">[RP-R140]</span> Contains a fixed text.</p>
+<h3 id="abstract">Abstract</h3>
+<p><span id="RP-R150" class="rqDef">[RP-R150]</span> Contains the text entered in the dialog <a href="../../20%20UserInterface/Document/Property%20Page%20Short%20Description.htm">File | Properties dialog &quot;Short Description&quot;</a>.</p>
+<h3 id="overview">Overview</h3>
+<p><span id="RP-R160" class="rqDef">[RP-R160]</span> Describes</p>
+<ul>
+<li>the ECU (name, description)</li>
+<li>each variant (name, description, <a href="../../20%20UserInterface/Variant/Identifying%20Patterns.htm">Identifying Patterns</a>)</li>
+</ul>
+<p><strong>R075.0 (Report):</strong> in the overview chapter, for a <a href="../../30%20Features/Variant/Lock%20Variant.htm">locked variant</a>, add “(locked)” behind the variant name.</p>
+<h3 id="communication-parameter">Communication Parameter</h3>
+<p><span id="RP-R170" class="rqDef">[RP-R170]</span> Contains the <a href="../../30%20Features/Interface/Interface.htm">interfaces</a> and <a href="../../30%20Features/Interface/Communication%20Parameter.htm">communication parameters</a>.</p>
+<h3 id="services-supported-for-interfaces">Services Supported for Interfaces</h3>
+<p><span id="RP-R175" class="rqDef">[RP-R175]</span> For a given interface, ...</p>
+<ul>
+<li>if there is at least one <a href="../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm">Used Protocol Service</a> that is not supported <a class='rqRef' href='../../30%20Features/Interface/Services%20Supported%20for%20Interfaces.htm#SSI-R100' title="">[SSI-R100]</a> for the interface,</li>
+<li>then the report lists all supported Used Protocol Services for the interface.</li>
+</ul>
+<h3 id="diagnostic-content">Diagnostic Content</h3>
+<p><span id="RP-R180" class="rqDef">[RP-R180]</span> Contains the <a href="../../30%20Features/Variant/Variant.htm">variants</a>.</p>
+<p>See details below for...:</p>
+<ul>
+<li>DIDs <a class='rqRef' href='../../30%20Features/Report/Report%20Generator.htm#RP-R900' title="">[RP-R900]</a></li>
+<li>DTCs <a class='rqRef' href='../../30%20Features/Report/Report%20Generator.htm#RP-R310' title="">[RP-R310]</a></li>
+<li>Events <a class='rqRef' href='../../30%20Features/Report/Report%20Generator.htm#RP-R320' title="">[RP-R320]</a></li>
+<li>Write Description of Data Objects <a class='rqRef' href='../../30%20Features/Report/Report%20Generator.htm#RP-R260' title="">[RP-R260]</a></li>
+</ul>
+<h3 id="state-dependency-of-service-execution">State Dependency of Service Execution</h3>
+<p><span id="RP-R190" class="rqDef">[RP-R190]</span> Contains the <a href="../../30%20Features/State%20Dependency/State%20Dependency.htm">State Dependency</a> info.</p>
+<h3 id="data-types">Data Types</h3>
+<p><span id="RP-R200" class="rqDef">[RP-R200]</span> Contains the <a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Types</a>.</p>
+<p>Option &quot;Write even objects not used in document&quot; <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Specification General.htm#OPT-R440' title="">[OPT-R440]</a> applies to this chapter.</p>
+<h3 id="attributes-overview">Attributes Overview</h3>
+<p><span id="RP-R210" class="rqDef">[RP-R210]</span> Contains the <a href="../../30%20Features/Attributes/Attributes.htm">Attribute</a> values of all objects in the document.</p>
+<p>Note: the chapter does not list <strong>DTC</strong> attributes (which would make the list very long). DTC attributes with setting “visible in separate table column” <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R090' title="VisibleInTableColumn">[ATTR-R090]</a> are exported in the contents chapter <a class='rqRef' href='../../30%20Features/Report/Report%20Generator.htm#RP-R180' title="">[RP-R180]</a>.</p>
+<h3 id="protocol-services">Protocol Services</h3>
+<p><span id="RP-R220" class="rqDef">[RP-R220]</span> Contains the <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">Protocol Services</a>.</p>
+<h3 id="negative-responses">Negative Responses</h3>
+<p><span id="RP-R230" class="rqDef">[RP-R230]</span> Contains the <a href="../../30%20Features/Negative%20Response/Negative%20Response.htm">Negative Response Codes</a> on document level and for unsupported services.</p>
+<h3 id="service-index">Service Index</h3>
+<p><span id="RP-R240" class="rqDef">[RP-R240]</span> Lists <a href="../../30%20Features/Service/Service.htm">Services</a> by their <a href="../../20%20UserInterface/Service/Services.htm#abstract">abstract</a>.</p>
+<h3 id="index">Index</h3>
+<p><span id="RP-R250" class="rqDef">[RP-R250]</span> Lists the diagnostic objects by their name.</p>
+<h2 id="descriptions">Write Description of Data Objects (CDS-1562)</h2>
+<h3 id="use-case">Use Case</h3>
+<p>You may want to...</p>
+<ul>
+<li>see the name and complete description of a data object at a glance (in the table),</li>
+<li>avoid long descriptions printed into a table cell.</li>
+</ul>
+<h3 id="writing-descriptions">Writing Descriptions</h3>
+<p><span id="RP-R260" class="rqDef">[RP-R260]</span> Writing Descriptions</p>
+<p><span id="RP-R260-Cell" class="rqDef">[RP-R260-Cell]</span> Report prints the description in italic font if written with the name in one table cell.</p>
+<p><span id="RP-R260-Option" class="rqDef">[RP-R260-Option]</span> A <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Specification%20Chapters.htm#descriptions">user option</a> controls how descriptions are exported:</p>
+<ul>
+<li><strong>never:</strong> data object descriptions are not included in the report</li>
+<li><strong>always:</strong> data object descriptions are always included in the table cells (with the data object name)</li>
+<li><strong>large ones as table footnote:</strong> a long data object description is numbered and shown in the report as a footnote below the table, if...
+<ul>
+<li>it is longer than 60 characters, or</li>
+<li>it contains a line break;</li>
+<li>otherwise it is included in the table cell.</li>
+</ul></li>
+</ul>
+<h2 id="fix-strings">Fix Strings from TMX File (CDS-2630)</h2>
+<h3 id="use-case-1">Use case</h3>
+<p>You want to generate the RTF or HTML report with explaining texts in his language.</p>
+<p>This is about generated text (fix strings) like “Author:”, not about texts specified in the CANdela document.</p>
+<h3 id="specification">Specification</h3>
+<p>In the file selection dialog for report, you can select from a set of languages, which is taken from the file Bin\Report\FixStr.tmx in the CANdelaStudio installation folder. The file contains fix string translations.</p>
+<p>For detailed information about the TMX standard refer to &quot;Translation Memory eXchange&quot; (&quot;TMX&quot;) at http://www.gala-global.org/lisa-oscar-standards .</p>
+<h2 id="state-dependency">State Dependency</h2>
+<p>There are a lot of different state graphs (service- and variant centric graphs) and therefore not all of them are shown within the RTF-Export. Additional information (provided in tooltips within CANdelaStudio) must be presented in another form (e.g. in tables).</p>
+<p>The state groups are listed under every variant. The corresponding State Graph (see 2.1) is shown and a table describes the state dependencies in detail.</p>
+<p>Services of the same DiagClassServiceTemplate which are all of the same behavior are combined (DiagClassName/*/DiagClassServiceTemplateName). Services which cannot be combined are listed separately with their service prefix and their name (DiagClass-Name/InstanceName/ServiceTemplateName). If the behavior of a Service differs from the behavior in other variants then the name and the service prefix is printed italic.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Service</strong></th>
+<th align="left"><strong>Prefix</strong></th>
+<th align="left"><strong>State1</strong></th>
+<th align="left"><strong>State2</strong></th>
+<th align="left"><strong>State3</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AnyClass/*/AnyServiceTmpl</td>
+<td align="left">12 xx</td>
+<td align="left">-</td>
+<td align="left">n.a.</td>
+<td align="left">State1</td>
+</tr>
+<tr class="even">
+<td align="left">SomeClass/Instance1/ServiceTmpl1</td>
+<td align="left">13 01</td>
+<td align="left">-</td>
+<td align="left">n.a.</td>
+<td align="left">n.a.</td>
+</tr>
+<tr class="odd">
+<td align="left">SomeClass/Instance2/ServiceTmpl1</td>
+<td align="left">13 02</td>
+<td align="left">-</td>
+<td align="left">n.a.</td>
+<td align="left">n.a.</td>
+</tr>
+<tr class="even">
+<td align="left">SomeClass/Instance3/ServiceTmpl1</td>
+<td align="left">13 03</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">n.a.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>-</code> executable</li>
+<li><code>n.a.</code> Service(s) are not applicable within this state.</li>
+<li><code>StateX</code> executable with state change to &lt;State&gt;.</li>
+<li>Services which are not relevant are also listed.</li>
+</ul>
+<h2 id="dids">DIDs</h2>
+<p>Note: available since 8.1 (CDS-19553), per variant since 8.5 (CDS-37944).</p>
+<div class="figure">
+<img src="Images/DIDs.png" alt="DIDs in Report" />
+<p class="caption">DIDs in Report</p>
+</div>
+<p><span id="RP-R900" class="rqDef">[RP-R900]</span> if the variant contains at least one DID, Report writes DIDs in the chapter of the variant, before the diagnostic instances (CDS-37944 R900, 8.5).</p>
+<p><span id="RP-R910" class="rqDef">[RP-R910]</span> the chapter contains</p>
+<ul>
+<li>a sub-chapter for each DID,
+<ul>
+<li>including the DID number (like at diagnostic instances), and</li>
+</ul></li>
+<li>a table showing DID Data.</li>
+</ul>
+<p><span id="RP-R920" class="rqDef">[RP-R920]</span> Report writes a DID Data Reference...</p>
+<ul>
+<li>like a data object referring to a data type;</li>
+<li>the “data type” part is a hyperlink to the DID in the variant (even if one or both are shared in multiple variants),</li>
+<li>it contains the name of the DID and the DID Number, like <code>Engine Speed ($0101)</code>.</li>
+</ul>
+<p><span id="RP-R925" class="rqDef">[RP-R925]</span> Report writes for a DID Reference (CDS-37676)...</p>
+<ul>
+<li>a data object for the identifier (from the piggyback data object stored in the DID Reference)</li>
+<li>the DID data, like for a DID Data Reference (see R920).</li>
+</ul>
+<p><span id="RP-R960" class="rqDef">[RP-R960]</span> Report puts each DID occurrence into the index, ...</p>
+<ul>
+<li>like for diagnostic instances</li>
+<li>for variant oriented and compact report</li>
+</ul>
+<h2 id="dtcs">DTCs</h2>
+<p><span id="RP-R310" class="rqDef">[RP-R310]</span> The report represents...</p>
+<ul>
+<li>a DTC in an own subchapter;</li>
+<li>each DTC property as a table row;</li>
+<li>the properties in the order (as in the <a href="../../20%20UserInterface/DTC/DTCs.htm#columns">user interface</a>):
+<ul>
+<li>DTC Columns <a class='rqRef' href='../../30%20Features/DTC/DTC.htm#DTC-R040' title="DTC Columns">[DTC-R040]</a></li>
+<li>Vehicle System Groups <a class='rqRef' href='../../30%20Features/Vehicle%20System%20Group/Vehicle%20System%20Group.htm#VSG-R100-DTC' title="">[VSG-R100-DTC]</a></li>
+<li>Attributes with “visible in separate table column” set <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R090' title="VisibleInTableColumn">[ATTR-R090]</a> (without regard to &quot;Export to specification&quot; <a class='rqRef' href='../../30%20Features/Attributes/Attribute%20Authorization.htm#ATTRA-R030' title="Export to specification">[ATTRA-R030]</a>)</li>
+</ul></li>
+</ul>
+<h2 id="events">Events</h2>
+<p><span id="RP-R320" class="rqDef">[RP-R320]</span> The Report does not write Events.</p>
+<p>Motivation:</p>
+<ul>
+<li>Events are a new feature in v12 anyway, and the <strong>use-case</strong> for representing Events in the Report is not clear</li>
+<li>the Event list <a class='rqRef' href='../../20 UserInterface\Event\Events.htm#EVUI-R020' title="">[EVUI-R020]</a> in the user interface has <strong>many columns</strong> which would not fit into an RTF report page as is</li>
+<li>the Event list may contain a <strong>huge number</strong> of Events, which would make the Report file huge (cf. Microsoft Word limits <a class='rqRef' href='../../30%20Features/Report/Report%20Generator.htm#RP-D410-Limit' title="">[RP-D410-Limit]</a> below).</li>
+</ul>
+<h2 id="automatic-update-of-fields">Automatic Update of Fields</h2>
+<p><span id="RP-R410" class="rqDef">[RP-R410]</span> This feature is controlled by the option <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Specification General.htm#OPT-R410' title="">[OPT-R410]</a>.</p>
+<ul>
+<li><span id="RP-R410-Check" class="rqDef">[RP-R410-Check]</span> If you check the option, CANdelaStudio automatically runs Microsoft Word after the export, so that Microsoft Word updates fields in the generated RTF document, e.g. ...
+<ul>
+<li>the table of contents</li>
+<li>cross-references</li>
+</ul></li>
+<li><span id="RP-R410-Uncheck" class="rqDef">[RP-R410-Uncheck]</span> If you uncheck this option, ...
+<ul>
+<li>the generated RTF document contains the fields,</li>
+<li>but when you open the document, Microsoft Word does not update the fields automatically,</li>
+<li>so e.g. the table of contents will not be shown.</li>
+<li>In Microsoft Word, you can then press <code>Ctrl-A F9</code> to update all fields.</li>
+</ul></li>
+</ul>
+<h3 id="microsoft-word-limit-for-fields">Microsoft Word: Limit for Fields</h3>
+<p><span id="RP-D410-Limit" class="rqDef">[RP-D410-Limit]</span> Microsoft Word (as of 2016) has a <strong>built-in limit</strong> for the number of fields it can handle in a document.</p>
+<ul>
+<li>In a huge exported RTF document, Microsoft Word may leave some fields empty.</li>
+</ul>
+<h3 id="huge-rtf-files-with-graphical-state-dependency">Huge RTF Files with Graphical State Dependency</h3>
+<p><span id="RP-D420-Image" class="rqDef">[RP-D420-Image]</span> Automatic update of fields in the generated RTF document may take a long time in case Microsoft Word additionally saves each image in <code>WMF</code> (Windows Meta File) format.</p>
+<p>You may...</p>
+<ul>
+<li>either disable automatic updates of fields <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page Specification General.htm#OPT-R410' title="">[OPT-R410]</a>,
+<ul>
+<li>open the file in Microsoft Word,</li>
+<li>save it to <code>DOCX</code> format,</li>
+<li>then update fields manually in Microsoft Word;</li>
+</ul></li>
+<li>or apply a fix for Microsoft Word, see http://support.microsoft.com/kb/224663.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Compact%20Report.htm">Compact Report</a></li>
+<li><a href="Manufacturer%20Specific%20Layout.htm">Manufacturer Specific Layout</a></li>
+<li>Options - Property Page Specification
+<ul>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Specification%20General.htm">General</a></li>
+<li><a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Specification%20Chapters.htm">Chapters</a></li>
+</ul></li>
+</ul>
+</body>
+</html>

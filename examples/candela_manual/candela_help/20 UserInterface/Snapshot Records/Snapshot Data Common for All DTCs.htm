@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Snapshot Data Common for All DTCs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="snapshot-data-common-for-all-dtcs">Snapshot Data Common for All DTCs</h1>
+<p>See also the overview of the <a href="GUI%20Snapshot%20Records.htm">v13 Snapshot Records GUI</a>.</p>
+<div class="figure">
+<img src="Images/CommonSnapshotData.png" alt="Common Snapshot Data" />
+<p class="caption">Common Snapshot Data</p>
+</div>
+<p><span id="SRUI-R300" class="rqDef">[SRUI-R300]</span> The &quot;Common Snapshot Data&quot; area shows...</p>
+<ul>
+<li><span id="SRUI-R300-UDS" class="rqDef">[SRUI-R300-UDS]</span> <strong>UDS Snapshot Data</strong> <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R200-UDS' title="">[SR-R200-UDS]</a></li>
+<li><span id="SRUI-R300-OBDonUDS" class="rqDef">[SRUI-R300-OBDonUDS]</span> <strong>OBD on UDS Snapshot Data</strong> <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R200-OBDonUDS' title="">[SR-R200-OBDonUDS]</a>
+<ul>
+<li>iff. an OBD on UDS Snapshot Record <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-D130-OBDonUDS' title="">[SR-D130-OBDonUDS]</a> exists.</li>
+<li>See the note <a class='rqRef' href='../../30 Features\Fault Memory\Fault Memory.htm#FM-D050' title="">[FM-D050]</a> about OBD on UDS.</li>
+</ul></li>
+<li>a unique <strong>heading</strong> for either one</li>
+<li>a <strong>filter</strong> control</li>
+<li>a <strong>list</strong> of <strong>Common Snapshot Data</strong> <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R230-Common' title="">[SR-R230-Common]</a>, i.e. <strong>DIDs stored for all DTCs</strong>.
+<ul>
+<li><span id="SRUI-R310" class="rqDef">[SRUI-R310]</span> The list is sorted by the order of the data <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R240-Ordered' title="">[SR-R240-Ordered]</a>.</li>
+<li><span id="SRUI-R314" class="rqDef">[SRUI-R314]</span> You can move the selected list items up/down (affecting the order of the data).</li>
+<li><span id="SRUI-R312" class="rqDef">[SRUI-R312]</span> There is no way to change the displayed sort order without affecting the order of the data.</li>
+<li><span id="SRUI-R318" class="rqDef">[SRUI-R318]</span> The list contains a line &quot;Add DID...&quot;. TODO effect: dialog, DIDs not in Specific...</li>
+<li><span id="SRUI-R320" class="rqDef">[SRUI-R320]</span> The list supports multi-selection.</li>
+<li><span id="SRUI-R322" class="rqDef">[SRUI-R322]</span> The list can be filtered by a text control at top right, which applies to all texts shown.</li>
+</ul></li>
+</ul>
+<h2 id="list-columns">List Columns</h2>
+<ul>
+<li><span id="SRUI-R330" class="rqDef">[SRUI-R330]</span> <strong>Identifier</strong>
+<ul>
+<li>shows the DID Identifier <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R025' title="Identifier">[DID-R025]</a></li>
+<li>formatted as in the DID List <a class='rqRef' href='../../20%20UserInterface/DID/DIDs.htm#DIDUI-R702-Identifier' title="">[DIDUI-R702-Identifier]</a></li>
+</ul></li>
+<li><span id="SRUI-R335" class="rqDef">[SRUI-R335]</span> <strong>Name</strong>
+<ul>
+<li>shows the name of the DID</li>
+</ul></li>
+<li><span id="SRUI-R340" class="rqDef">[SRUI-R340]</span> <strong>DID Data</strong> <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R155' title="">[DID-R155]</a>
+<ul>
+<li>shows as comma separated list of data, like in the DID list <a class='rqRef' href='../../20%20UserInterface/DID/DIDs.htm#DIDUI-R702' title="">[DIDUI-R702]</a> and DID Overview <a class='rqRef' href='../../20%20UserInterface/DID/DID%20Overview.htm#DIDOV-R660' title="">[DIDOV-R660]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="context-menu">Context Menu</h2>
+<p><span id="SRUI-R350" class="rqDef">[SRUI-R350]</span> <strong>Common Snapshot Data Context Menu</strong></p>
+<p>For details, see next chapter &quot;Actions&quot;.</p>
+<ul>
+<li><span id="SRUI-R352" class="rqDef">[SRUI-R352]</span> <strong>Add DID(s)...</strong></li>
+<li><span id="SRUI-R354" class="rqDef">[SRUI-R354]</span> <strong>Remove Selected DID(s)</strong></li>
+<li><span id="SRUI-R356" class="rqDef">[SRUI-R356]</span> <strong>Move selected DID Up</strong></li>
+<li><span id="SRUI-R358" class="rqDef">[SRUI-R358]</span> <strong>Move selected DID Down</strong></li>
+</ul>
+<h2 id="actions">Actions</h2>
+<ul>
+<li><span id="SRUI-R360" class="rqDef">[SRUI-R360]</span> <strong>Add DID(s)</strong>
+<ul>
+<li>Triggered by line &quot;Add DID...&quot; <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Data%20Common%20for%20All%20DTCs.htm#SRUI-R318' title="">[SRUI-R318]</a> or context menu <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Data%20Common%20for%20All%20DTCs.htm#SRUI-R352' title="">[SRUI-R352]</a>.</li>
+<li>If all DIDs of the variant are already used in the Common Snapshot Data, CANdelaStudio shows a message &quot;No further DID is available&quot;.</li>
+<li>Note: if you add a DID already used in Default Snapshot Data or Specific Snapshot Data, CANdelaStudio removes it there without notice <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R220-OnlyCommon' title="">[SROP-R220-OnlyCommon]</a>.
+<ul>
+<li>This preserves condition <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Data Model.htm#SR-R230-OnlyCommon' title="">[SR-R230-OnlyCommon]</a>.</li>
+<li>Motivation: your intention to use the DID for all DTCs wins.</li>
+</ul></li>
+<li>See operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R220' title="">[SROP-R220]</a>.</li>
+</ul></li>
+<li><span id="SRUI-R365" class="rqDef">[SRUI-R365]</span> <strong>Remove DID(s)</strong>
+<ul>
+<li>Triggered by context menu &quot;Delete DID...&quot; or context menu <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Data%20Common%20for%20All%20DTCs.htm#SRUI-R354' title="">[SRUI-R354]</a></li>
+<li>If no further DID is available, CANdelaStudio shows a message &quot;No further DID is available&quot;.</li>
+<li>See operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R220' title="">[SROP-R220]</a>.</li>
+</ul></li>
+<li><span id="SRUI-R370" class="rqDef">[SRUI-R370]</span> <strong>Move Up</strong>
+<ul>
+<li>Triggered by Ribbon button &quot;Up&quot; <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R480' title="">[MENU-R480]</a>, context menu <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Data%20Common%20for%20All%20DTCs.htm#SRUI-R356' title="">[SRUI-R356]</a> or <code>Ctrl-U</code>.</li>
+<li>Not available if the first DID is selected,</li>
+<li>... or the selected DIDs are not in a continuous range.</li>
+<li>Moves the selected DIDs up one row.</li>
+<li>See operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R200' title="">[SROP-R200]</a>.</li>
+</ul></li>
+<li><span id="SRUI-R375" class="rqDef">[SRUI-R375]</span> <strong>Move Down</strong>
+<ul>
+<li>Triggered by Ribbon button &quot;Down&quot; <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R480' title="">[MENU-R480]</a>, context menu <a class='rqRef' href='../../20%20UserInterface/Snapshot%20Records/Snapshot%20Data%20Common%20for%20All%20DTCs.htm#SRUI-R358' title="">[SRUI-R358]</a> or <code>Ctrl-D</code>.</li>
+<li>Not available if the last DID is selected,</li>
+<li>... or the selected DIDs are not in a continuous range.</li>
+<li>Moves the selected DIDs down one row.</li>
+<li>See operation <a class='rqRef' href='../../30 Features\Snapshot Records\Snapshot Record Operations.htm#SROP-R210' title="">[SROP-R210]</a>.</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<p>GUI:</p>
+<ul>
+<li><a href="GUI%20Snapshot%20Records.htm">GUI Snapshot Records</a></li>
+<li><a href="TAB%20Snapshot%20Records.htm">TAB Snapshot Records</a></li>
+<li><a href="Snapshot%20Records.htm">Snapshot Records</a> List</li>
+</ul>
+</body>
+</html>

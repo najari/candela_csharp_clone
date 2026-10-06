@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Combined Component</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="combined-component"><span id='_index_446727992'>Combined Component</span></h1>
+<p>See also the <a href="../../20%20UserInterface/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#combined">dialog description</a> and the <a href="../../30%20Features/Protocol%20Service/Protocol%20Service.htm">overview of Protocol Service Components</a>.</p>
+<p>A <strong>Combined Component</strong> represents (references) one or multiple <a href="../../30%20Features/Protocol%20Service/Components.htm">Protocol Service Components</a> within a Diagnostic Class Template:</p>
+<ul>
+<li>a <strong>Combined Variable Value Component</strong> references one or multiple Variable Value Components (for the identifier, subfunction...);</li>
+<li>a <strong>Combined Proxy Component</strong> references one or multiple Proxy Components (for the data to read or write).</li>
+</ul>
+<p><span id="CCM-R020" class="rqDef">[CCM-R020]</span> A Combined Component may reference Components even from different Protocol Services.</p>
+<h2 id="combined-variable-value-component">Combined Variable Value Component</h2>
+<p><span id="CVC-R050" class="rqDef">[CVC-R050]</span> <strong>All</strong> Variable Value Components of the Used ProtocolServices are combined in one Combined Variable Value Component.</p>
+<p>See <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Used%20Protocol%20Service.htm#DCLT-R400' title="">[DCLT-R400]</a> for a Text Table restricting Identifier values.</p>
+<h2 id="combined-proxy-component">Combined Proxy Component</h2>
+<ul>
+<li>All Proxy Components referenced by a Combined Proxy Component will transmit the <strong>same data</strong>.</li>
+<li>CANdelaStudio represents all Proxy Components of one Combined Component by a <strong>single</strong> <a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">telegram table</a> in the entry masks for diagnostic instances.</li>
+<li>A Combined Component has a DID Semantics <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050' title="Combined Component DID Semantics">[DID-R050]</a>.</li>
+<li>A Combined Proxy Component can restrict the use of kinds of data types in its telegram tables, see <a class='rqRef' href='../../30%20Features/Data%20Type/Data%20Type%20Authorization.htm#DTAUTH-R210' title="">[DTAUTH-R210]</a>.</li>
+<li><span id="CPC-R060" class="rqDef">[CPC-R060]</span> A Combined Component can restrict the use of variable but deterministic length <a class='rqRef' href='../../30%20Features/Data%20Type/Length.htm#DTL-D120' title="Deterministic Variable Length">[DTL-D120]</a> data objects in its telegram tables:
+<ul>
+<li><span id="CPC-R060-End" class="rqDef">[CPC-R060-End]</span> Only at the end of a telegram</li>
+<li><span id="CPC-R060-Anywhere" class="rqDef">[CPC-R060-Anywhere]</span> Anywhere</li>
+<li>The setting is shown in the Combined Proxy Component Property Page Extended <a class='rqRef' href='../../20 UserInterface\Diagnostic Class Template\Combined Component Property Page Extended.htm#CPCUI-R060' title="">[CPCUI-R060]</a>.</li>
+<li>The document level setting <a class='rqRef' href='../../30%20Features/Document/Authorization.htm#DLA-R060' title="">[DLA-R060]</a> may already restrict this for the entire document.</li>
+</ul></li>
+<li><span id="CPC-R020" class="rqDef">[CPC-R020]</span> Editing Combined Components is possible in <strong>Expert View</strong> only.</li>
+<li><span id="CPC-R070" class="rqDef">[CPC-R070]</span> Proxy Components in Negative Responses are <strong>never</strong> combined.</li>
+</ul>
+<h2 id="combined-proxy-component-semantics">Combined Proxy Component Semantics</h2>
+<ul>
+<li><span id="CPC-R100" class="rqDef">[CPC-R100]</span> The <code>Semantics</code> property has the same value as the semantics of the referenced Proxy Components <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R100' title="Proxy Semantics">[PC-R100]</a>.</li>
+<li><span id="CPC-R102" class="rqDef">[CPC-R102]</span> All <strong>combined proxy components</strong> must have the <strong>same semantics</strong>.</li>
+<li><span id="CPC-R104" class="rqDef">[CPC-R104]</span> All proxy components with semantics <strong>dtc</strong> must be combined (CDS-3384).</li>
+<li><span id="CPC-R106" class="rqDef">[CPC-R106]</span> All proxy components with semantics <strong>obdDtc</strong> must be combined.</li>
+<li><span id="CPC-R108" class="rqDef">[CPC-R108]</span> All proxy components of the same semantics <strong>must be combined</strong>, for the following semantics:
+<ul>
+<li><span id="CPC-R108-sr" class="rqDef">[CPC-R108-sr]</span> <code>sr</code> <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sr' title="">[PC-R050-sr]</a></li>
+<li><span id="CPC-R108-sd" class="rqDef">[CPC-R108-sd]</span> <code>sd</code> <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-sd' title="">[PC-R050-sd]</a></li>
+<li><span id="CPC-R108-edr" class="rqDef">[CPC-R108-edr]</span> <code>edr</code> <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-edr' title="">[PC-R050-edr]</a></li>
+<li><span id="CPC-R108-ed" class="rqDef">[CPC-R108-ed]</span> <code>ed</code> <a class='rqRef' href='../../30%20Features/Protocol%20Service/Proxy%20Component.htm#PC-R050-ed' title="">[PC-R050-ed]</a></li>
+</ul></li>
+</ul>
+
+<h2 id="consistency-conditions">Consistency Conditions</h2>
+<p>See also conditions for semantics <a class='rqRef' href='../../30%20Features/Diagnostic%20Class%20Template/Combined%20Component.htm#CPC-R100' title="">[CPC-R100]</a>ff.</p>
+<p><span id="CPC-R110" class="rqDef">[CPC-R110]</span> When multiple <strong>variable value components</strong> are combined in a Diagnostic Class Template, they must have the same byte-order (CDS-4453).</p>
+<p><span id="CPC-R120" class="rqDef">[CPC-R120]</span> All Proxy Components referenced by a Combined Proxy Component must have the same value for &quot;mandatory at runtime&quot;.</p>
+<p>Note: this condition may force the use of <strong>two separate Protocol Services</strong> instead of using only one with an optional part (as shown in the example in the <a href="../../30%20Features/Protocol%20Service/Mandatory%20and%20Mandatory%20at%20Runtime.htm#example">Mandatory and Mandatory at Runtime</a> chapter), if the Proxy Component of the Protocol Service shall be combined with non-optional Proxy Components from other Protocol Services.</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Diagnostic%20Class%20Template/Combined%20Component%20Property%20Page%20Extended.htm">Combined Component Property Page &quot;Extended&quot;</a></li>
+<li><a href="../../30%20Features/Consistency%20Check/Consistency%20Check.htm">Consistency Check</a></li>
+<li><a href="Diagnostic%20Class%20Template.htm">Diagnostic Class Template</a></li>
+<li><a href="../../30%20Features/Document/Authorization.htm">Document Authorization</a> (relevant: variable length of data objects)</li>
+<li><a href="../../30%20Features/Protocol%20Service/Mandatory%20and%20Mandatory%20at%20Runtime.htm">Mandatory and Mandatory at Runtime</a></li>
+</ul>
+</body>
+</html>

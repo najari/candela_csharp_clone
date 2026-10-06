@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Snapshot Records Generic</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="snapshot-records-generic">Snapshot Records (Generic)</h1>
+<p>CANdelaStudio provides <strong>two ways</strong> to describe the layout of Snapshot Data, see <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20CANdela.htm#FM-D200' title="">[FM-D200]</a>.</p>
+<p>This chapter provides details about the <strong>generic</strong>, Multiplexer based Snapshot Records data structure.</p>
+<p>It does <strong>not</strong> apply for the specialized AUTOSAR based data structure (v13).</p>
+<h2 id="snapshot-record-numeration-type-in-generic-fault-memory-v11-cds-70902">Snapshot Record Numeration Type in Generic Fault Memory (v11 CDS-70902)</h2>
+<p>In <strong>AUTOSAR</strong>, a Fault Memory has the property <code>DemTypeOfFreezeFrameRecordNumeration</code> with the values <code>Calculated</code> and <code>Configured</code>, for details see <a class='rqRef' href='../../30%20Features/Snapshot%20Records/Snapshot%20Record%20Data%20Model.htm#SR-D050' title="">[SR-D050]</a>.</p>
+<p><span id="SR-R023" class="rqDef">[SR-R023]</span> A <strong>CANdela template</strong> using the <strong>generic Snapshot Record data model</strong> <a class='rqRef' href='../../30%20Features/Fault%20Memory/Fault%20Memory%20in%20CANdela.htm#FM-D200-Generic' title="">[FM-D200-Generic]</a> can support this distinction for each <strong>Fault Memory diagnostic instance</strong> using a special attribute.</p>
+<ul>
+<li>Qualifier: <code>Snapshot_Record_Numeration_Type</code></li>
+<li>Type: Enum</li>
+<li>Values:
+<ul>
+<li><span id="SR-R023-Calculated" class="rqDef">[SR-R023-Calculated]</span> 0: Calculated</li>
+<li><span id="SR-R023-Configured" class="rqDef">[SR-R023-Configured]</span> 1: Configured</li>
+</ul></li>
+</ul>
+<p>The DEXT Export uses this attribute <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R340' title="">[DEXT-R340]</a>.</p>
+<p>Note: in v13, this info can be described directly as a property of the diagnostic instance, if the template has been setup for the <a href="AUTOSAR%20Fault%20Memory%20Introduction.htm">AUTOSAR Fault Memory</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Introduction to <a href="Fault%20Memory.htm">Fault Memory</a></li>
+<li><a href="../../20%20UserInterface/Protocol%20Service/Protocol%20Services.htm">Protocol Services (List)</a></li>
+<li><a href="../../15%20Procedures/Protocol%20Service/How%20to%20Create%20a%20New%20UDS%20Protocol%20Service.htm">How to create new UDS Protocol Service</a></li>
+<li><a href="../../40%20Templates/Vector%20UDS/Fault%20Memory.htm">Vector UDS Template - Fault Memory</a></li>
+</ul>
+</body>
+</html>

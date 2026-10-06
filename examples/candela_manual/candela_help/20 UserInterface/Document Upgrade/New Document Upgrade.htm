@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>New Document Upgrade</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="new-document-upgrade-dialog-cds-70041-v11"><span id='_index_446727886'>New Document Upgrade</span> Dialog (CDS-70041 v11)</h1>
+<p><span id="DUUI-R100" class="rqDef">[DUUI-R100]</span> The dialog controls the New Document Upgrade operation <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R600' title="">[DOCUP-R600]</a>.</p>
+<p>You start it via ribbon tab Document | Template | New Document Upgrade <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Document.htm#MENU-R568' title="">[MENU-R568]</a>.</p>
+<p>The dialog provides 3 steps (described below):</p>
+<ol style="list-style-type: decimal">
+<li><a href="#configure">Configure</a></li>
+<li><a href="#resolve">Resolve Conflicts</a></li>
+<li><a href="#finish">Finish</a></li>
+</ol>
+<div class="figure">
+<img src="Images/New%20Document%20Upgrade.jpg" alt="New Document Upgrade Dialog" />
+<p class="caption">New Document Upgrade Dialog</p>
+</div>
+
+<h2 id="configure">1. Configure</h2>
+<h3 id="show-paths">Show Paths</h3>
+<p><span id="DUUI-R105" class="rqDef">[DUUI-R105]</span> The checkbox &quot;Show Paths&quot;...</p>
+<ul>
+<li>takes effect on...
+<ul>
+<li>the edit control <strong>Old Template</strong></li>
+<li>the edit control <strong>New Template</strong></li>
+<li>the fixed text <strong>Document</strong>.</li>
+</ul></li>
+<li>When <strong>un-checked</strong>,
+<ul>
+<li>the controls show the <strong>file name only</strong>,</li>
+<li>the edit controls are read-only (when editing, the folder info would be missing);</li>
+</ul></li>
+<li>when <strong>checked</strong>,
+<ul>
+<li>the controls show the <strong>complete path</strong> to the files (folder and file name).</li>
+</ul></li>
+</ul>
+<h3 id="current-template">Current Template</h3>
+<p><span id="DUUI-R110" class="rqDef">[DUUI-R110]</span> In this edit control, please specify the CANdela template on which the <strong>current document</strong> is based.</p>
+<p>Use the button &quot;...&quot; to the right for a file selection dialog.</p>
+<h3 id="new-template">New Template</h3>
+<p><span id="DUUI-R120" class="rqDef">[DUUI-R120]</span> In this edit control, please specify the <strong>newer CANdela template</strong> from which you want to <strong>transfer data</strong> into the current document.</p>
+<p>Use the button &quot;...&quot; to the right for a file selection dialog.</p>
+<h3 id="document">Document</h3>
+<p><span id="DUUI-R130" class="rqDef">[DUUI-R130]</span> For information, the path to the currently opened document.</p>
+<p>The operation modifies the document.</p>
+<h3 id="variants-to-be-upgraded">Variants to be Upgraded</h3>
+<p><span id="DUUI-R140" class="rqDef">[DUUI-R140]</span> The list shows all variants of the document.</p>
+<p>The document upgrade will transfer data from the new template to the variants you select here.</p>
+<p>Note:</p>
+<ul>
+<li>modifications to <strong>template data</strong> (like adding a default attribute) automatically take effect for <strong>all variants</strong> <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R640-Global' title="">[DOCUP-R640-Global]</a>.</li>
+<li>The operation will enumerate them in the Rework List <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R640-ReworkList' title="">[DOCUP-R640-ReworkList]</a>.</li>
+</ul>
+<p><span id="DUUI-R145" class="rqDef">[DUUI-R145]</span> The checkbox &quot;All Variants&quot; allows to select / de-select all variants in the list.</p>
+<h3 id="document-upgrade-transports-only-selected-template-objects-t">&quot;Document Upgrade transports only selected template objects T&quot;</h3>
+<p><span id="DUUI-R150" class="rqDef">[DUUI-R150]</span> The static text documents the coverage of the implementation <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R610-Coverage' title="">[DOCUP-R610-Coverage]</a> for template objects.</p>
+<h2 id="resolve">2. Resolve Conflicts</h2>
+<p><span id="DUUI-R200" class="rqDef">[DUUI-R200]</span> In the second step, the dialog shows all objects where a <strong>conflict</strong> <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R620' title="">[DOCUP-R620]</a> must be resolved.</p>
+<p><span id="DUUI-R200-Default" class="rqDef">[DUUI-R200-Default]</span> As a default, the dialog puts the <strong>value from the new template</strong> into column &quot;Result Document&quot;</p>
+<p><span id="DUUI-R200-Order" class="rqDef">[DUUI-R200-Order]</span> The order of objects corresponds with the one in the CANdelaStudio tree <a class='rqRef' href='../../20%20UserInterface/Tree/Navigation%20Tree.htm#TREE-R010' title="">[TREE-R010]</a> (CDS-71518 v12).</p>
+<p><span id="DUUI-R200-NonSelVariants" class="rqDef">[DUUI-R200-NonSelVariants]</span> Non-selected variants are shown in red (CDS-71372 v12).</p>
+<div class="figure">
+<img src="Images/New%20Document%20Upgrade%20Step%202.jpg" alt="New Document Upgrade Step 2" />
+<p class="caption">New Document Upgrade Step 2</p>
+</div>
+<h3 id="search">Search</h3>
+<p><span id="DUUI-R230" class="rqDef">[DUUI-R230]</span> The edit control at top right provides a filter: the list...</p>
+<ul>
+<li>filters all shown texts by your input</li>
+<li>always shows the elements in the tree hierarchy above the element that contains a match.</li>
+</ul>
+<h3 id="description-of-columns">Description of Columns</h3>
+<p><span id="DUUI-R240" class="rqDef">[DUUI-R240]</span></p>
+<p><span id="DUUI-R240-Type" class="rqDef">[DUUI-R240-Type]</span> <strong>Object Type</strong>:</p>
+<ul>
+<li>shows the tree structure of the document and template.</li>
+</ul>
+<p><span id="DUUI-R240-Document" class="rqDef">[DUUI-R240-Document]</span> <strong>Document Based Changes</strong>:</p>
+<ul>
+<li>shows the values from the document.</li>
+</ul>
+<p><span id="DUUI-R240-Right" class="rqDef">[DUUI-R240-Right]</span> <strong>Right arrow</strong>:</p>
+<ul>
+<li>lets you take over the value(s) <strong>from the document</strong> to the Result Document.</li>
+<li>A double arrow indicates the <strong>entire subtree</strong> of values will be transferred.</li>
+<li>The button is insensitive if column &quot;Result Document&quot; already contains the value from the document.</li>
+</ul>
+<p><span id="DUUI-R240-Result" class="rqDef">[DUUI-R240-Result]</span> <strong>Result Document</strong>:</p>
+<ul>
+<li>shows the values to be used if you leave the dialog with &quot;Continue with Result Document&quot; <a class='rqRef' href='../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm#DUUI-R220' title="">[DUUI-R220]</a>.</li>
+<li>You resolve the conflicts by putting either values into this column.</li>
+<li><span id="DUUI-R240-Desc" class="rqDef">[DUUI-R240-Desc]</span> For a <strong>conflict in a description</strong>, the cell contains a button to open the <strong>Description Merge Editor</strong> (see next chapter).</li>
+</ul>
+<p><span id="DUUI-R240-Left" class="rqDef">[DUUI-R240-Left]</span> <strong>Left arrow</strong> (like Right arrow above):</p>
+<ul>
+<li>lets you take over the value(s) <strong>from the new template</strong> to the Result Document.</li>
+</ul>
+<p><span id="DUUI-R240-Template" class="rqDef">[DUUI-R240-Template]</span> <strong>Template Based Changes</strong>:</p>
+<ul>
+<li>shows the values from the new template.</li>
+</ul>
+<h3 id="description-merge-editor-cds-70745-v11"><span id='_index_446727887'>Description Merge Editor</span> (CDS-70745 v11)</h3>
+<p><span id="DUUI-R250" class="rqDef">[DUUI-R250]</span> The Description Merge Editor is available in the column &quot;Result Document&quot; for conflicting descriptions (see <a class='rqRef' href='../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm#DUUI-R240-Desc' title="">[DUUI-R240-Desc]</a> above).</p>
+<div class="figure">
+<img src="Images/New%20Document%20Upgrade%20Step%202%20Description%20Merge%20Editor.jpg" alt="Description Merge Editor" />
+<p class="caption">Description Merge Editor</p>
+</div>
+<ul>
+<li><span id="DUUI-R250-Default" class="rqDef">[DUUI-R250-Default]</span> On entry, the dialog shows the description from the &quot;Result Document&quot; cell.</li>
+<li>You can freely modify the text.</li>
+<li><span id="DUUI-R250-Reset" class="rqDef">[DUUI-R250-Reset]</span> Button &quot;Reset Merge&quot; puts both conflicting texts into the edit field:
+<ul>
+<li>the description from the document, followed by</li>
+<li>the description from the new template.</li>
+</ul></li>
+<li>Button &quot;OK&quot; closes the dialog and puts the current description into cell &quot;Result Document&quot;.</li>
+<li>Button &quot;Cancel&quot; closes the dialog and leaves the description in cell &quot;Result Document&quot; unchanged.</li>
+</ul>
+<p>Note: to accept one of the texts and discard the other one, you can simply use the respective arrow button in the table directly.</p>
+
+<h3 id="export">Export</h3>
+<p><span id="DUUI-R260" class="rqDef">[DUUI-R260]</span> Ribbon Tab Export provides an export of the conflicts shown:</p>
+<ul>
+<li><span id="DUUI-R260-XML" class="rqDef">[DUUI-R260-XML]</span> ... to an XML format</li>
+<li><span id="DUUI-R260-TXT" class="rqDef">[DUUI-R260-TXT]</span> ... to plain text</li>
+<li><span id="DUUI-R260-HTML" class="rqDef">[DUUI-R260-HTML]</span> ... to HTML</li>
+<li><span id="DUUI-R260-Filter" class="rqDef">[DUUI-R260-Filter]</span> The export contains information about the filter <a class='rqRef' href='../../20%20UserInterface/Document%20Upgrade/New%20Document%20Upgrade.htm#DUUI-R230' title="">[DUUI-R230]</a> (CDS-71383 v12).</li>
+</ul>
+<h3 id="button-continue">Button &quot;Continue&quot;</h3>
+<p><span id="DUUI-R220" class="rqDef">[DUUI-R220]</span> This button...</p>
+<ul>
+<li>performs the Document Upgrade,
+<ul>
+<li>using data <strong>from the document or</strong> from the <strong>template</strong>,</li>
+<li>as shown in <strong>column &quot;Result Document&quot;</strong>,</li>
+<li>i.e. the button preserves your choices in resolving the conflicts;</li>
+</ul></li>
+<li>proceeds to &quot;3. Finish&quot;.</li>
+</ul>
+
+
+<h2 id="finish">3. Finish</h2>
+<p><span id="DUUI-R300" class="rqDef">[DUUI-R300]</span> As a last step, the dialog shows the results.</p>
+<ul>
+<li>The operation has finished, the document has been modified.</li>
+</ul>
+<div class="figure">
+<img src="Images/New%20Document%20Upgrade%20Step%203.jpg" alt="New Document Upgrade Step 3" />
+<p class="caption">New Document Upgrade Step 3</p>
+</div>
+<p><span id="DUUI-R310" class="rqDef">[DUUI-R310]</span> Button &quot;Create Revision&quot; lets you can optionally create a revision entry...</p>
+<ul>
+<li>using the <a href="../../20%20UserInterface/Revision%20History/Revision%20History%20Dialog%20Property%20Page%20Revision.htm">&quot;Edit Revision&quot; Dialog</a>,</li>
+<li>pre-filled with information generated by the New Document Upgrade.</li>
+<li>After closing the revision dialog, the button will be insensitive.
+<ul>
+<li><span id="DUUI-R310-Cancel" class="rqDef">[DUUI-R310-Cancel]</span> (v11) ... even when you left the dialog with Cancel (CDS-71266). Note:</li>
+</ul></li>
+<li><span id="DUUI-R310-NoAuthor" class="rqDef">[DUUI-R310-NoAuthor]</span> If the document does <strong>not</strong> contain an <strong>author</strong>,
+<ul>
+<li>CANdelaStudio shows the Revision History Dialog <a class='rqRef' href='../../20%20UserInterface/Revision%20History/Revision%20History%20Dialog.htm#REVUI-R010' title="">[REVUI-R010]</a> so that you can create an author first.</li>
+<li>(v11) When you create a <strong>new revision</strong> item within this dialog, the information generated by the New Document Upgrade is <strong>not available</strong> (CDS-71266).</li>
+</ul></li>
+</ul>
+<p><span id="DUUI-R320" class="rqDef">[DUUI-R320]</span> Button &quot;Help&quot; shows this page.</p>
+<h2 id="rework-list">Rework List</h2>
+<p>After finishing the operation, you can inspect the <a href="New%20Document%20Upgrade%20Rework%20List.htm">Rework List</a> for objects to check.</p>
+<p>For details about the Rework List contents, see <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R650' title="">[DOCUP-R650]</a>.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Revision%20History/Revision%20History%20Dialog%20Property%20Page%20Revision.htm">&quot;Edit Revision&quot; Dialog</a></li>
+<li>New Document Upgrade (Feature) <a class='rqRef' href='../../30%20Features/Document%20Upgrade/New%20Document%20Upgrade.htm#DOCUP-R600' title="">[DOCUP-R600]</a></li>
+<li><a href="New%20Document%20Upgrade%20Rework%20List.htm">New Document Upgrade Rework List</a></li>
+<li>Ribbon Tab Document | Upgrade | Template Data Sync <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Document.htm#MENU-R568' title="">[MENU-R568]</a></li>
+<li>Ribbon Tab Views | Rework List <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20View.htm#MENU-R625' title="">[MENU-R625]</a></li>
+</ul>
+</body>
+</html>

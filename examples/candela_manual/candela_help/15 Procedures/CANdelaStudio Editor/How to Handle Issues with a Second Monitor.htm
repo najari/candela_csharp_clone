@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>How to Handle Issues with a Second Monitor</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="how-to-handle-issues-with-a-second-monitor-cds-68957">How to Handle Issues with a Second Monitor (CDS-68957)</h1>
+<h2 id="context">Context</h2>
+<ul>
+<li>When you have been using CANdelaStudio on a second monitor (e.g. notebook at the desk)</li>
+<li>and later restart it with a single monitor only (e.g. notebook undocked),</li>
+<li>then CANdelaStudio <strong>should be shown on the single monitor</strong>.</li>
+</ul>
+<p>If this does not work as expected, the following workarounds may help.</p>
+<h2 id="workaround-using-windows-key">Workaround Using Windows Key</h2>
+<ol style="list-style-type: decimal">
+<li>Select CANdelaStudio in the Windows Task bar</li>
+<li>Hold the Windows key</li>
+<li>Press the arrow left key</li>
+<li>Press the arrow right key</li>
+</ol>
+<p>This typically brings CANdelaStudio back to the main screen.</p>
+<h2 id="workaround-using-ini-file">Workaround Using INI File</h2>
+<ol style="list-style-type: decimal">
+<li>Close CANdelaStudio</li>
+<li>Open <a href="../../30%20Features/CANdelaStudio%20Editor/Options.htm">CANdelaStudio.ini</a></li>
+<li>Delete the Parameter <code>FnMainFormPos</code></li>
+<li>Restart CANdelaStudio</li>
+</ol>
+<h2 id="workaround-using-taskbar-context-menu">Workaround Using Taskbar Context Menu</h2>
+<ol style="list-style-type: decimal">
+<li>Start CANdelaStudio twice</li>
+<li>In the Windows taskbar, in the context menu (right mouse) of the second CANdelaStudio instance, select option &quot;Move to monitor 1&quot; (or just &quot;Move&quot;).</li>
+</ol>
+</body>
+</html>

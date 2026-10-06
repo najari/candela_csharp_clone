@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Property Page Qualifier Generation Options</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="file-properties-property-page-qualifier-generation-options">File | Properties Property Page &quot;Qualifier Generation Options&quot;</h1>
+<div class="figure">
+<img src="Images/Property%20Page%20Qualifier%20Generation%20Options.jpg" alt="Menu File | Properties, Page &quot;Qualifier Generation Options&quot;" />
+<p class="caption">Menu File | Properties, Page &quot;Qualifier Generation Options&quot;</p>
+</div>
+<p>The page <strong>Qualifier Generation Options</strong> lets you set global options <a class='rqRef' href='../../30 Features\Common Properties\Qualifier.htm#QUAL-R200' title="">[QUAL-R200]</a> for automatic generation of qualifiers from names.</p>
+<h2 id="use-case">Use-Case</h2>
+<p>A tool in the diagnostic tool-chain cannot handle qualifiers up to the maximum length allowed by CANdela, so qualifiers must be shorter.</p>
+<h2 id="solution">Solution</h2>
+<p>Each CANdela document contains a setting to further limit the length of qualifiers generated in the future. The maximum value is as given by the <a href="../../30%20Features/Common%20Properties/Qualifier.htm">Qualifier Feature</a>.</p>
+<h2 id="length">Length</h2>
+<p>The limit is not automatically applied to existing qualifiers; you can apply it using the <a href="../../20%20UserInterface/Common%20Properties/Qualifier%20Overview.htm">Qualifier Overview Dialog</a>.</p>
+<p>Qualifiers that are longer than the limit are reported during a consistency check...</p>
+<ul>
+<li>... in a template (CDDT): as a warning (CDC-28381 8.2 SP3)</li>
+<li>... in a document (CDD): as a status message (CDC-38846 8.2 SP3)</li>
+</ul>
+<h2 id="on-regeneration-of-qualifiers">On Regeneration of Qualifiers</h2>
+<p><span id="DOCUI-R700" class="rqDef">[DOCUI-R700]</span> The radio buttons specify the document-wide Qualifier Generation Options <a class='rqRef' href='../../30 Features\Common Properties\Qualifier.htm#QUAL-R200' title="">[QUAL-R200]</a>:</p>
+<ul>
+<li>Use upper-/lowercase characters of names</li>
+<li>Use uppercase characters only</li>
+<li>Use lowercase characters only</li>
+<li>VW 5 Character Rule (80124)</li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>the setting may be locally overridden in the &quot;Recreate Qualifier&quot; dialog <a class='rqRef' href='../../20%20UserInterface/Common%20Properties/Recreate%20Qualifier.htm#RCRQ-R200' title="">[RCRQ-R200]</a> of the Qualifier Overview</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Properties.htm">File | Properties</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">Object Property Page &quot;General&quot;</a></li>
+<li><a href="../../30%20Features/Common%20Properties/Qualifier.htm">Qualifier (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Qualifier%20Overview.htm">Qualifier Overview dialog</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Recreate%20Qualifier.htm">Recreate Qualifier</a></li>
+</ul>
+</body>
+</html>

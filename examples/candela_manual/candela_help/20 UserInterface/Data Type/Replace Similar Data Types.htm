@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Replace Similar Data Types</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="replace-similar-data-types-dialog-cds-68992-v11">Replace Similar Data Types Dialog (CDS-68992 v11)</h1>
+<p>This chapter describes the &quot;Replace Similar Data Types&quot; <strong>dialog</strong>.</p>
+<p>For details of the <strong>operation</strong>, see the <a href="../../30%20Features/Data%20Type/Replace%20Similar%20Data%20Types.htm">&quot;Replace Similar Data Types&quot; Feature</a>.</p>
+<p>You can open the dialog via <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Home.htm#MENU-R500' title="">[MENU-R500]</a>.</p>
+<p>The dialog proceeds in <strong>3 steps</strong>:</p>
+<h2 id="step-1">Step 1</h2>
+<div class="figure">
+<img src="Images/Replace%20Similar%20Data%20Types%20Dialog%20First%20Step.jpg" alt="&quot;Replace Similar Data Types&quot; Dialog (1)" />
+<p class="caption">&quot;Replace Similar Data Types&quot; Dialog (1)</p>
+</div>
+<h3 id="select-data-types">Select Data Types</h3>
+<p><span id="RDTUI-R110" class="rqDef">[RDTUI-R110]</span> Shows the types of <strong>conversions</strong> that the replace operation supports <a class='rqRef' href='../../30%20Features/Data%20Type/Replace%20Similar%20Data%20Types.htm#RDT-R010' title="">[RDT-R010]</a>.</p>
+<p>You have to select at least one conversion to search for similar data types.</p>
+<h3 id="select-ignored-properties-for-xxx">Select Ignored Properties for 'XXX'</h3>
+<p><span id="RDTUI-R120" class="rqDef">[RDTUI-R120]</span> For the configuration selected in the list described above, un-check the crucial properties <a class='rqRef' href='../../30%20Features/Data%20Type/Replace%20Similar%20Data%20Types.htm#RDT-R020' title="">[RDT-R020]</a> (that shall not be ignored).</p>
+<p>Example for two data types differing in <strong>encoding</strong> only:</p>
+<ul>
+<li>if &quot;Encoding&quot; is <strong>checked</strong>, such data types are <strong>similar</strong> (may be deleted)</li>
+<li>if &quot;Encoding&quot; is <strong>un-checked</strong>, these data types are <strong>not similar</strong> (will be kept)</li>
+</ul>
+<p>If the check boxes are <strong>greyed out</strong>, the setting has been frozen in the CANdelaStudio options <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Options.htm#INI-R500' title="">[INI-R500]</a>.</p>
+<p><span id="RDTUI-R120-TextID" class="rqDef">[RDTUI-R120-TextID]</span> The checkbox for &quot;TextID&quot; is shown only if the current document supports TextIDs <a class='rqRef' href='../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm#DOCUI-R320' title="">[DOCUI-R320]</a>.</p>
+<p>Note the <strong>known issues</strong> for v11 <a class='rqRef' href='../../30%20Features/Data%20Type/Replace%20Similar%20Data%20Types.htm#RDT-R020-v11' title="">[RDT-R020-v11]</a>.</p>
+<h3 id="compute-groups">Compute Groups</h3>
+<p><span id="RDTUI-R130" class="rqDef">[RDTUI-R130]</span> The button &quot;Compute Groups&quot;...</p>
+<ul>
+<li><strong>analyzes</strong> all data types of the data type list,</li>
+<li>puts each set of similar data types into a <strong>group</strong>, based on the configuration described above,</li>
+<li>and navigates to the next step.</li>
+</ul>
+<h2 id="step-2">Step 2</h2>
+<div class="figure">
+<img src="Images/Replace%20Similar%20Data%20Types%20Dialog%20Second%20Step.jpg" alt="&quot;Replace Similar Data Types&quot; Dialog (2)" />
+<p class="caption">&quot;Replace Similar Data Types&quot; Dialog (2)</p>
+</div>
+<p><span id="RDTUI-R210" class="rqDef">[RDTUI-R210]</span> The table shows all detected <strong>groups of similar data types</strong>.</p>
+<p>For each group:</p>
+<ul>
+<li><span id="RDTUI-R210-Original" class="rqDef">[RDTUI-R210-Original]</span> you can define one data type as &quot;Is Original&quot;.
+<ul>
+<li>All references to other deleted data types of this group will be replaced by a reference to the original.</li>
+<li>These data types will be deleted.</li>
+</ul></li>
+<li><span id="RDTUI-R210-Keep" class="rqDef">[RDTUI-R210-Keep]</span> If you additionally want to keep a data type besides the &quot;original&quot;:
+<ul>
+<li>check &quot;Keep Data Type&quot; for it</li>
+<li>the operation will not delete that data type</li>
+<li>the operation will not change references to this data type</li>
+</ul></li>
+<li><span id="RDTUI-R210-KeepAll" class="rqDef">[RDTUI-R210-KeepAll]</span> If you want to keep all data types of a group:
+<ul>
+<li>check &quot;Keep Data Type&quot; for all data types in the group.</li>
+<li>In this case, you do not need to choose a data type as &quot;Is Original&quot;.</li>
+</ul></li>
+</ul>
+<p><span id="RDTUI-R220" class="rqDef">[RDTUI-R220]</span> You can still cancel the operation here.</p>
+<h2 id="replace-data-types">Replace Data Types</h2>
+<p><span id="RDTUI-R230" class="rqDef">[RDTUI-R230]</span> The button &quot;Replace Data Types&quot; performs the replace operation as specified in the table described above.</p>
+<p>The operation does not modify data types...</p>
+<ul>
+<li>which have &quot;Is Original&quot; or &quot;Keep Data Type&quot; checked, or</li>
+<li>which are used in some <strong>special context</strong> in the document
+<ul>
+<li>e.g. in a DTC status mask.</li>
+</ul></li>
+</ul>
+<h2 id="step-3">Step 3</h2>
+<div class="figure">
+<img src="Images/Replace%20Similar%20Data%20Types%20Dialog%20Third%20Step.jpg" alt="&quot;Replace Similar Data Types&quot; Dialog (3)" />
+<p class="caption">&quot;Replace Similar Data Types&quot; Dialog (3)</p>
+</div>
+<p><span id="RDTUI-R310" class="rqDef">[RDTUI-R310]</span> The last page shows a summary of the result:</p>
+<ul>
+<li><span id="RDTUI-R320" class="rqDef">[RDTUI-R320]</span> the list of data types actually replaced and deleted, and</li>
+<li><span id="RDTUI-R330" class="rqDef">[RDTUI-R330]</span> the affected variants.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Data%20Type/Replace%20Similar%20Data%20Types.htm">&quot;Replace Similar Data Types&quot; Feature</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Replace%20Data%20Type.htm">&quot;Replace Data Type&quot; Dialog</a></li>
+<li><a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types List</a></li>
+</ul>
+</body>
+</html>

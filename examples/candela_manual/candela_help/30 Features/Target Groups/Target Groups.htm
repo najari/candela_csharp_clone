@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Target Groups</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="target-groups-audience-cds-1226">Target Groups (Audience) (CDS-1226)</h1>
+<p>You can describe for which target groups he considers a diagnostic instance or service to be interesting for (or being too much detailed). This set of target groups is the &quot;audience&quot; of the diagnostic instance or service.</p>
+<p>Typical target groups: Supplier, Development, Manufacturing, After-sales.</p>
+<p>For various exports, you can select the audience: which diagnostic instances and services should be put into the exported file, and which are filtered, i.e. not exported.</p>
+<p>Administration as well as an overview of target groups are available in ribbon tab Documents.</p>
+<h2 id="target-groups">Target groups</h2>
+<p>In the document template, a collection of <strong>target groups</strong> is predefined and not changeable in standard mode. In expert mode, it may be changed in a template and even in a document. The collection must not be empty. At most 16 target groups are supported.</p>
+<p>Each target group consists of a name and description (multi-language).</p>
+<p>The sequence of target Groups should be user-defined. It seems to be appropriate to sort the target Groups in a process-chronological order.</p>
+<h2 id="audience-for-which-objects">Audience for which Objects</h2>
+<ul>
+<li>Diagnostic instance (to entirely hide data objects, e. g. base configuration for any supplier), see <a href="../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance.htm#target-groups">Target Groups at a Diagnostic Instance</a>.</li>
+<li>Service (to hide the fact that data objects can be written, not only read)</li>
+</ul>
+<p>If not all target groups are set on a diagnostic instance, service or job container, a <a href="../../20%20UserInterface/Tree/Icons.htm">special icon</a> indicates this state in the Tree view.</p>
+<h2 id="relation-to-authorization">Relation to &quot;Authorization&quot;</h2>
+<p>Definition of target groups is possible in expert mode only.</p>
+<p>Modification of audience is controlled by authorization.</p>
+<h2 id="filtering-reduces-information">Filtering Reduces Information</h2>
+<p>Audience works as a filter and allows to exclude information from an exported document. Consequently, you can effectively &quot;remove&quot; information from an exported document even if you do not have authorization to erase it from the CANdela document itself.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Diagnostic%20Class%20Template/Diagnostic%20Class%20Template.htm#default-target-groups">Default Target Groups</a> at a diagnostic class</li>
+<li><a href="../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instance%20Property%20Page%20Target%20Groups.htm">Diagnostic Instance Property Page &quot;Target Groups&quot;</a></li>
+<li>Ribbon Document | Administration | Edit Target Groups <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Document.htm#MENU-R520' title="">[MENU-R520]</a></li>
+<li>Ribbon Document | Overview | Target Groups <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Document.htm#MENU-R760' title="">[MENU-R760]</a></li>
+</ul>
+</body>
+</html>

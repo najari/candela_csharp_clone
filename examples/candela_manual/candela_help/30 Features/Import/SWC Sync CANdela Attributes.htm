@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>SWC Sync CANdela Attributes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="swc-sync-candela-attributes">SWC Sync CANdela Attributes</h1>
+<p>SWC Sync identifies attributes by their qualifier without regard to the name. The following table shows recommended names (attribute names are defined in Expert View).</p>
+<p>For details how the attributes are used, inspect the above chapters for references to the <a href="../../15%20Procedures/Help/How%20to%20Search%20for%20a%20FeatureID.htm">FeatureIDs</a> like <code>[SWC-R200]</code>.</p>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Attribute Qualifier</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>typically</em>: <code>SYNCHELEMENT</code><br />
+or <code>RequirementsId</code></td>
+<td align="left">See <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R115' title="Requirements ID Storage">[RQ-R115]</a>. The attribute qualifier varies depending on the template.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>Instance_Type</code></td>
+<td align="left"><span id="SWC-R200" class="rqDef">[SWC-R200]</span>: (string) port interface requirement ID of a SYS-EX routine or IO Control.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>ASR_SWC_ServiceDependency_Ref</code></td>
+<td align="left"><span id="SWC-R210" class="rqDef">[SWC-R210]</span>: (string) instance ref from a DTC or routine.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ASR_SWC_DataElement_Ref</code></td>
+<td align="left"><span id="SWC-R220" class="rqDef">[SWC-R220]</span>: (string) at a diagnostic instance and data object, instance ref of the originating SYS-EX object.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>ASR_Encoding</code></td>
+<td align="left"><span id="SWC-R230" class="rqDef">[SWC-R230]</span>: (string) at a data type. Valid values:<br />
+<br />
+UNDEFINED<br />
+TWOCOMP<br />
+IEEE754<br />
+ISO88591<br />
+ISO88592<br />
+WIN1252<br />
+UTF8<br />
+UTF16<br />
+UCS2<br />
+NONE<br />
+BOOLEAN</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Attributes/Attributes.htm">Attributes (Feature)</a></li>
+<li><a href="../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm">Attributes for AUTOSAR Diagnostic Extract export</a></li>
+<li><a href="SWC%20Sync%20Introduction.htm">SWC Sync Introduction</a></li>
+<li><a href="../../20%20UserInterface/Import/SWC%20Sync%20Dialog.htm">SWC Sync Dialog</a></li>
+</ul>
+</body>
+</html>

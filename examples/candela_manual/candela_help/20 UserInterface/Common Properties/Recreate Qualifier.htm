@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Recreate Qualifier</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="recreate-qualifier">Recreate Qualifier</h1>
+<p>This dialog is used by the <a href="Qualifier%20Overview.htm">Qualifier Overview</a> dialog.</p>
+<div class="figure">
+<img src="Images/Recreate%20Qualifiers.jpg" alt="Recreate Qualifier Dialog" />
+<p class="caption">Recreate Qualifier Dialog</p>
+</div>
+<h2 id="max.-length">Max. Length</h2>
+<p>Edit field (spinner control) whichholds the maximum length of the qualifier. Valid lengths are between 8 and the <a href="../../30%20Features/Common%20Properties/Qualifier.htm">maximum qualifier length</a>. Default length is always the maximum length defined by the template.</p>
+<p><strong>Note:</strong> it must be impossible to increase the length beyond the maximum length defined by the template!</p>
+<h2 id="on-recreation-of-qualifiers...">On Recreation of Qualifiers...</h2>
+<p><span id="RCRQ-R200" class="rqDef">[RCRQ-R200]</span> Selects the algorithm for re-computing qualifiers, see <a class='rqRef' href='../../30 Features\Common Properties\Qualifier.htm#QUAL-R200' title="">[QUAL-R200]</a>.</p>
+<ul>
+<li><span id="RCRQ-R200-VW5CharRule" class="rqDef">[RCRQ-R200-VW5CharRule]</span> If the document specifies Qualifier Generation Option &quot;VW 5 Character Rule&quot; <a class='rqRef' href='../../30 Features\Common Properties\Qualifier.htm#QUAL-R200-VW5CharRule' title="">[QUAL-R200-VW5CharRule]</a>, then all radio buttons are insensitive.
+<ul>
+<li>Motivation: ensure the setting is used consistently in the whole document.</li>
+</ul></li>
+</ul>
+<h2 id="language">Language</h2>
+<ul>
+<li>CANdelaStudio re-computes qualifiers from the names, which may occur in multiple languages.</li>
+<li>In <strong>Expert View</strong>, the combobox “Language” allows <strong>selection from one of the document languages</strong>.</li>
+<li>Re-computation will use the names in the selected language.</li>
+</ul>
+<p><strong>Incomplete Translation:</strong></p>
+<ul>
+<li>To be used for a qualifier, the respective name must be translated.</li>
+<li>A language in which not all translatable strings have been translated is shown with a hint like in the File|Open dialog: “(translation incomplete)”.</li>
+<li>On [OK], if the document is not completely translated in the chosen language, CANdelaStudio shows a warning message:</li>
+</ul>
+<div class="figure">
+<img src="Images/LanguageNotCompletelyTranslated.jpg" alt="Prompt for Languages not Completely Translated" />
+<p class="caption">Prompt for Languages not Completely Translated</p>
+</div>
+<p>Choices:</p>
+<ul>
+<li>“Skip not translated names”:
+<ul>
+<li>the Recreate Qualifier dialog will close immediately after clicking [OK] of the warning dialog.</li>
+<li>Re-computation will skip all names which are not translated.</li>
+<li>This results in not all qualifiers being re-computed, but saves the document from being potentially inconsistent.</li>
+</ul></li>
+<li>“Choose another language”:
+<ul>
+<li>the Recreate Qualifier dialog will stay open after clicking [OK] of the warning dialog.</li>
+<li>You may then choose another (translated) language.</li>
+</ul></li>
+</ul>
+<p>Default: “Choose another language”.</p>
+<h2 id="options">Options</h2>
+<p>Options for...</p>
+<ul>
+<li>re-computing a selection of qualifier,</li>
+<li>all qualifier shown in the overview,</li>
+<li>all qualifier of the document.</li>
+</ul>
+<p>The default is</p>
+<ul>
+<li>either “Re-compute only selected qualifier”, if there is at least one row selected, or</li>
+<li>“Re-compute all qualifier shown in overview”, if nothing is selected (in this case, the first option must be insensitive).</li>
+</ul>
+<h2 id="ok">OK</h2>
+<p>Re-computation of the qualifier starts as soon as you click button [OK] to close the options dialog.</p>
+<p>After re-computation, the qualifier overview list updated.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../20%20UserInterface/Common%20Properties/Object%20Property%20Page%20General.htm">Object Property Page &quot;General&quot;</a></li>
+<li><a href="../../20%20UserInterface/Document/Property%20Page%20Qualifier%20Generation%20Options.htm">File | Properties Property Page &quot;Qualifier Generation Options&quot;</a></li>
+<li><a href="../../20%20UserInterface/Common%20Properties/Qualifier%20Overview.htm">Qualifier Overview dialog</a></li>
+<li><a href="../../30%20Features/Multi-Language/Romanization.htm">Romanization</a></li>
+<li><a href="../../30%20Features/Service/Shortcut%20Qualifier%20and%20Shortcut%20Name.htm">Shortcut Qualifier</a></li>
+</ul>
+</body>
+</html>

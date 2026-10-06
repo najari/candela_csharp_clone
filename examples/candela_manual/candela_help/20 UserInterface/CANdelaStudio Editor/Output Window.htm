@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Output Window</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="output-window"><span id='_index_446727853'>Output Window</span></h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Output%20Window.jpg" alt="Output Window with Details Area" />
+<p class="caption">Output Window with Details Area</p>
+</div>
+<p>During execution, CANdelaStudio logs messages (see the <a href="../../30%20Features/CANdelaStudio%20Editor/Logging.htm">Logging Feature</a>) and shows them in the Output Window.</p>
+<p>You can copy the contents of the Output Window and insert it in another application (a spreadsheet or text editor) using its toolbar or the context menu.</p>
+<p>The Output Window has been modernized in CANdelaStudio 9.1 (CDS-68999).</p>
+<h2 id="position-and-opening">Position and Opening</h2>
+<p><span id="OW-R010" class="rqDef">[OW-R010]</span> The Output Window is located below the work area.</p>
+<ul>
+<li><span id="OW-R010-Default" class="rqDef">[OW-R010-Default]</span> It is closed as a default.</li>
+</ul>
+<p><span id="OW-R020" class="rqDef">[OW-R020]</span> To open the Output Window, use...</p>
+<ul>
+<li>Ribbon tab &quot;View&quot; <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20View.htm#MENU-R610' title="">[MENU-R610]</a>,</li>
+<li>click &quot;Output&quot; at the bottom of the CANdelaStudio window:</li>
+</ul>
+<div class="figure">
+<img src="Images/Closed%20Output%20Window.jpg" alt="Closed Output Window at the Window Bottom" />
+<p class="caption">Closed Output Window at the Window Bottom</p>
+</div>
+<p><span id="OW-R030" class="rqDef">[OW-R030]</span> The Output Window automatically closes after some time.</p>
+<p><span id="OW-R035" class="rqDef">[OW-R035]</span> The pin at top-right...</p>
+<ul>
+<li><span id="OW-R035-KeepOpen" class="rqDef">[OW-R035-KeepOpen]</span> if ticked, keeps the Output Window open;</li>
+<li><span id="OW-R035-Close" class="rqDef">[OW-R035-Close]</span> if un-ticked, closes the Output Window. You can also use ribbon tab &quot;View&quot; <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20View.htm#MENU-R610' title="">[MENU-R610]</a> to close the Output Window.</li>
+</ul>
+<div class="figure">
+<img src="Images/Output%20Window%20Pin%20Top-Right.jpg" alt="Pin at Top Right of Output Window" />
+<p class="caption">Pin at Top Right of Output Window</p>
+</div>
+<p><span id="OW-R040" class="rqDef">[OW-R040]</span> CANdelaStudio <strong>switches to the Output Window</strong> if...</p>
+<ul>
+<li>the Output Window is not shown,</li>
+<li>but Revision view is shown, and</li>
+<li>CANdelaStudio writes a new message to the Output Window.</li>
+</ul>
+<h2 id="columns">Columns</h2>
+<h3 id="type">Type</h3>
+<p><span id="OW-R100" class="rqDef">[OW-R100]</span> Shows the type <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Logging.htm#LOG-R100' title="">[LOG-R100]</a> of the message.</p>
+<h3 id="timestamp">Timestamp</h3>
+<p><span id="OW-R110" class="rqDef">[OW-R110]</span> shows the time stamp <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Logging.htm#LOG-R110' title="">[LOG-R110]</a>, with two digits for milliseconds.</p>
+<p>Cf. the option <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Logfile.htm#OPT-R640' title="">[OPT-R640]</a> for the logfile.</p>
+<h3 id="origin">Origin</h3>
+<p><span id="OW-R120" class="rqDef">[OW-R120]</span> shows the origin <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Logging.htm#LOG-R120' title="">[LOG-R120]</a> of the message.</p>
+<h3 id="link">Link</h3>
+<p><span id="OW-R130" class="rqDef">[OW-R130]</span> If the message references an object <a class='rqRef' href='../../30 Features\CANdelaStudio Editor\Logging.htm#LOG-R130' title="">[LOG-R130]</a>, the table cell shows a symbol to click.</p>
+<ul>
+<li><span id="OW-R130-Click" class="rqDef">[OW-R130-Click]</span> When clicked, CANdelaStudio navigates to the object <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R240' title="">[OW-R240]</a>.</li>
+</ul>
+<h3 id="message">Message</h3>
+<p><span id="OW-R140" class="rqDef">[OW-R140]</span> The text of the message.</p>
+<ul>
+<li><span id="OW-R140-Truncate" class="rqDef">[OW-R140-Truncate]</span> Texts longer than the visible area are shown with &quot;...&quot; at the end (CDS-70752 v11).</li>
+</ul>
+<h2 id="message-details-cds-70752-v11">Message Details (CDS-70752 v11)</h2>
+<p><span id="OW-R050" class="rqDef">[OW-R050]</span> For better handling of long messages, CANdelaStudio optionally shows a <strong>details area</strong> at the right edge of the output window, controlled by a toolbar button <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R430' title="">[OW-R430]</a>.</p>
+<ul>
+<li><span id="OW-R050-Splitter" class="rqDef">[OW-R050-Splitter]</span> You can move the border between the message list and the details area.</li>
+<li><span id="OW-R050-ReadOnly" class="rqDef">[OW-R050-ReadOnly]</span> The details area is read-only.</li>
+<li><span id="OW-R050-Copy" class="rqDef">[OW-R050-Copy]</span> You can copy text from the details area to the clipboard, using the keyboard shortcuts or the context menu items for the clipboard.</li>
+<li><span id="OW-R050-Selection" class="rqDef">[OW-R050-Selection]</span> If you click a line in the list, CANdelaStudio shows the following properties in the details window:
+<ul>
+<li>Type</li>
+<li>Time Stamp</li>
+<li>Origin</li>
+<li>Message</li>
+</ul></li>
+<li><span id="OW-R050-Multiselection" class="rqDef">[OW-R050-Multiselection]</span> If you select multiple lines in the message list, the contents of the details area does not change (just select a single line).</li>
+</ul>
+<h2 id="operations">Operations</h2>
+<h3 id="show-logfile">Show Logfile</h3>
+<p><span id="OW-R200" class="rqDef">[OW-R200]</span> opens the currently written logfile in the application registered in Windows.</p>
+<p>The path is defined in the dialog of Ribbon Tab <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Logfile.htm">File | Options | Logfile</a>.</p>
+<h3 id="show-logfile-backup-version">Show Logfile (Backup Version)</h3>
+<p><span id="OW-R210" class="rqDef">[OW-R210]</span> opens the logfile written in the previous run of CANdelaStudio in the application registered in Windows.</p>
+<h3 id="select-all">Select All</h3>
+<p><span id="OW-R220" class="rqDef">[OW-R220]</span> Selects all visible messages (not the message suppressed by filters).</p>
+<h3 id="copy">Copy</h3>
+<p><span id="OW-R225" class="rqDef">[OW-R225]</span> Copies the selected messages to the clipboard.</p>
+<h3 id="clear">Clear</h3>
+<p><span id="OW-R230" class="rqDef">[OW-R230]</span> Deletes all Output Window messages, independent from the filter settings.</p>
+<h3 id="navigate-to-object">Navigate to Object</h3>
+<p><span id="OW-R240" class="rqDef">[OW-R240]</span> CANdelaStudio switches the active document to the document the link refers, and navigates to the object referenced in the message.</p>
+<h3 id="filters">Filters</h3>
+<p><span id="OW-R300" class="rqDef">[OW-R300]</span> The Output Window always collects all messages, independent from filters. The filters control the display only.</p>
+<p><span id="OW-R310" class="rqDef">[OW-R310]</span> The filters work together with an &quot;AND&quot; relationship.</p>
+<h3 id="type-filter">Type Filter</h3>
+<p><span id="OW-R320" class="rqDef">[OW-R320]</span> The &quot;Type&quot; filter suppresses messages depending on their type, which is shown in the first column <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R100' title="">[OW-R100]</a>.</p>
+<p><span id="OW-R335" class="rqDef">[OW-R335]</span> The filter for type &quot;Status&quot; is disabled by default.</p>
+<h3 id="origin-filter">Origin Filter</h3>
+<p><span id="OW-R340" class="rqDef">[OW-R340]</span> The &quot;Origin&quot; filter suppresses messages issued by a specific functional part of CANdelaStudio <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R120' title="">[OW-R120]</a>.</p>
+<h3 id="text-filter">Text Filter</h3>
+<p><span id="OW-R350" class="rqDef">[OW-R350]</span> The &quot;Text&quot; filter suppresses messages that do not contain some text fragment. It applies to all displayed message properties, as shown in the list.</p>
+<h3 id="reset-filters">Reset Filters</h3>
+<p><span id="OW-R360" class="rqDef">[OW-R360]</span> Resets all filters (Type, Origin and Text), so that all messages are displayed.</p>
+<h3 id="showhide-toolbar">Show/Hide Toolbar</h3>
+<p><span id="OW-R400" class="rqDef">[OW-R400]</span> Shows or hides the toolbar.</p>
+<p>Note: if the toolbar is hidden, you can show it again via the context menu <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R600' title="">[OW-R600]</a>.</p>
+<h3 id="showhide-column-headers">Show/Hide Column Headers</h3>
+<p><span id="OW-R410" class="rqDef">[OW-R410]</span> Shows or hides the line with the column headers (&quot;Type&quot;, &quot;Time Stamp&quot; etc.).</p>
+<h3 id="auto-scroll">Auto-Scroll</h3>
+<p><span id="OW-R420" class="rqDef">[OW-R420]</span> Controls whether the list automatically scrolls to new messages. Default: on.</p>
+<p>If you inspect some existing messages, turning off auto-scroll prevents the list from automatically scrolling to new messages which CANdelaStudio may show while you navigate in the CANdela document.</p>
+<h3 id="showhide-details">Show/Hide Details</h3>
+<p><span id="OW-R430" class="rqDef">[OW-R430]</span> Controls whether the message details area <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R050' title="">[OW-R050]</a> to the right is shown. Default: off.</p>
+<h2 id="toolbar">Toolbar</h2>
+<p><span id="OW-R500" class="rqDef">[OW-R500]</span> The toolbar provides the following operations:</p>
+<ul>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R200' title="">[OW-R200]</a> Show Logfile</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R210' title="">[OW-R210]</a> Show Logfile (backup version)</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R225' title="">[OW-R225]</a> Copy (enabled if rows are selected)</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R230' title="">[OW-R230]</a> Clear</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R320' title="">[OW-R320]</a> Type filter</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R340' title="">[OW-R340]</a> Origin filter</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R350' title="">[OW-R350]</a> Text filter</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R360' title="">[OW-R360]</a> Reset filters</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R400' title="">[OW-R400]</a> Show/Hide Toolbar</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R410' title="">[OW-R410]</a> Show/Hide Column Headers</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R420' title="">[OW-R420]</a> Auto-Scroll</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R430' title="">[OW-R430]</a> Show/Hide Details</li>
+</ul>
+<h2 id="context-menu">Context Menu</h2>
+<p><span id="OW-R600" class="rqDef">[OW-R600]</span> The context menu in the list provides the following operations:</p>
+<ul>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R220' title="">[OW-R220]</a> Select All Rows</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R225' title="">[OW-R225]</a> Copy (enabled if rows are selected)</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R200' title="">[OW-R200]</a> Show Logfile</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R210' title="">[OW-R210]</a> Show Logfile (backup version)</li>
+<li><a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Output%20Window.htm#OW-R400' title="">[OW-R400]</a> Show Toolbar (disabled if the toolbar is already shown)</li>
+</ul>
+<h2 id="persistent-properties">Persistent Properties</h2>
+<p><span id="OW-R700" class="rqDef">[OW-R700]</span> The Output Window remembers the following properties across CANdelaStudio sessions:</p>
+<ul>
+<li>State of filter buttons</li>
+<li>State of other check-buttons</li>
+<li>Grid column visibility, sort, position.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Docking%20Windows.htm">Docking Windows</a></li>
+<li>Dialog in Ribbon Tab <a href="Options%20Property%20Page%20Logfile.htm">File | Options | Logfile</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Logging.htm">Logging (Feature)</a></li>
+<li>Dialog <a href="Latest%20Revision.htm">Latest Revision</a></li>
+</ul>
+</body>
+</html>

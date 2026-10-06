@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Import Pool</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="import-pool">Import Pool</h1>
+<p>See also the <a href="../../20%20UserInterface/Import%20Pool/Import%20Pool.htm">Import Pool User Interface</a>.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The Import Pool (since 6.0, CDS-11531) contains</p>
+<ul>
+<li>imported data objects</li>
+<li>with related data types</li>
+</ul>
+<p>When you import a data object, CANdelaStudio automatically puts the referenced data type into the data types list.</p>
+<p>The contents of the Import Pool is <strong>not stored in the CANdela document</strong> and will therefore be lost when you close the document!</p>
+<p>Use e.g. ODX Import <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R210' title="">[MENU-R210]</a> or Import from CDI <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R220' title="">[MENU-R220]</a> to fill the Import Pool.</p>
+<h3 id="use-case">Use-case</h3>
+<p>Create or synchronize diagnostic objects in a CANdela document</p>
+<ul>
+<li>from data of an external source (like a database for modelling data types),</li>
+<li>transported in an ODX or CDI file.</li>
+</ul>
+<p>In detail:</p>
+<ul>
+<li>Add a data object to a diagnostic service (no reserved objects, no bit fields);</li>
+<li>synchronize default or constant values;</li>
+<li>synchronize the data type for an existing data object.</li>
+</ul>
+<h3 id="importing-data-objects">Importing data objects</h3>
+<p>On importing data objects (from ODX or CDI) via the “Import of selected parts” function,</p>
+<ol style="list-style-type: decimal">
+<li><p>The data objects in the Import Pool may carry a CANdela data object attribute value read from the source media. The attribute values are not required. The existing attribute values shall be unique within the Import Pool.</p></li>
+<li><p>The Import Pool contains all data objects from the source media, but for data objects with an identifying attribute value, only unique ones with respect to 1 will be imported.</p></li>
+</ol>
+<p>The data constellation may be one of the following:</p>
+<div class="line-block">A: Data object in Import Pool and in ECU: automatic update<br />
+B1: Data object in Import Pool, not in ECU: manual insertion<br />
+B1: Data object in Import Pool, not in ECU: Setting identifying attribute value at existing data object manually<br />
+C: Data object not in Import Pool, but in ECU: automatic reset of identifying attribute value<br />
+D: Data object not in Import Pool, not in ECU: Not relevant for use case</div>
+<h3 id="cases-ac-update-data-objects-automatically">Cases A/C: Update data objects automatically</h3>
+<p>The user shall have the possibility to synchronize all data objects (carrying an identifying attribute value) specified within the ECU description with all data objects (carrying an identifying attribute value) within the Import Pool. (No support for selection in Import Pool) This means:</p>
+<ul>
+<li><p>A) Update existing data objects from out of the Import-Pool. The target object will be replaced by the object from the Import Pool. CANdela OID and TextId will be taken from the Import Pool</p></li>
+<li><p>C) Deleting identifying attribute values (cf. User Interface <a class='rqRef' href='../../20%20UserInterface/Import%20Pool/Import%20Pool.htm#IPUI-R024' title="Sync Dialog with Checkbox">[IPUI-R024]</a>) of all data objects where the current identifying attribute values is not available in Import Pool. Note: Not the data object will be deleted, but its identifying attribute value.</p></li>
+</ul>
+<p>Note: OID can’t be used as an identifying attribute as the data object may be inserted more than once.</p>
+<p>Note: Data objects with same value for identifying attribute may have different qualifiers/names.</p>
+<h3 id="case-b-inserting-data-objects">Case B: Inserting data objects</h3>
+<p>On inserting (pasting/dropping) the data object, the identifying attribute value of the data object shall not get lost.</p>
+<p>The data object may by be inserted multiple times in the ECU description. Note: the attribute values will not be unique within the ECU description.</p>
+<h2 id="detailed-requirements">Detailed Requirements</h2>
+<h3 id="general-requirements">General requirements</h3>
+<p><span id="IP-R010" class="rqDef">[IP-R010]</span> The Import Pool synchronization is only available, if an ECU non translatable String <a href="../../30%20Features/Attributes/Special%20Attributes.htm#SynchronizationAttribute">attribute with Qualifier “SynchronizationAttribute”</a> exists and its effective (default or overwritten) value is the qualifier of a data object attribute with the following specification: the Attribute is of type String (default value is empty string “”).</p>
+<p>Note: It is up to the template owner to set write protection for the synchronization attribute so that the Standard User can not overwrite the value.</p>
+<h3 id="on-executing-synchronize-data-objects-in-ecu-description">On executing “Synchronize data objects in ECU description”</h3>
+<p><span id="IP-R030" class="rqDef" title="Synchronize">[IP-R030.1 Synchronize]</span> For each data object in the Import Pool with a non empty value of the identifying attribute, search all data objects with the same value in the data type list and in all variants.</p>
+<p>Replace the target object with the object from the Import Pool. (Default values, constants, … are also available in Import Pool) if</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>the authorization of the diagnostic instance allows the modification of the properties, and</p></li>
+<li><p>the update of the data type does not violate any maximum size restrictions of a telegram table (component).</p></li>
+</ol>
+<p>Note: DIDs (DID Referencer) constraints violations and loss of environment data (multiplexer cases) as a consequence of an update of data objects are not checked.</p>
+<p>Note: the synchronization uses the same requirements ID as the requirements feature <a class='rqRef' href='../../30%20Features/Requirements/Requirements%20and%20Diagnostic%20Objects.htm#RQ-R110' title="Requirements and Import Pool">[RQ-R110]</a>.</p>
+<p><span id="IP-R030-Nonunique" class="rqDef">[IP-R030-Nonunique]</span> CANdelaStudio (after confirmation) allows the synchronization even if elements with ambiguous identification exist (CDS-69197 9.1).</p>
+<ul>
+<li>Such elements can occur after import of bitfields, where every bit becomes a dataobject with the same identification attribute value.</li>
+</ul>
+<p>These bits shall be ignored. Today, all elements with ambiguous identification attribute need to be deleted before synchronization can be performed.</p>
+<p><strong>R031.1:</strong> Depending on the check box of <a class='rqRef' href='../../20%20UserInterface/Import%20Pool/Import%20Pool.htm#IPUI-R024' title="Sync Dialog with Checkbox">[IPUI-R024]</a> reset all identifying attribute values (set attribute value to empty string or drop overridden value) in data objects as of R030.0 if this value is not contained in the Import Pool.</p>
+<p><strong>R032.0</strong>: Identifying attribute value uniqueness: if the import pool contains data objects with the same value for the synchronisation attribute, only show a user error message and do not synchronize.</p>
+<h3 id="ProcessingInstruction">Import of selected parts (ODX 2.0.1 Crumbs Import):</h3>
+<p><strong>R040.0</strong> On importing selected parts into the CANdelaStudio Import Pool the “identifying attribute values” of all data objects (PARAMs) shall be read from ODX model.</p>
+<p><strong>R041.0</strong> The “identifying attribute values” will be read from a processing instruction directly at the PARAM.</p>
+<p><strong>R042.0</strong> The processing instruction has the following specification:</p>
+<div class="sourceCode">
+<pre class="sourceCode xml"><code class="sourceCode xml">
+<span class="sourceLine"><span class="kw">&lt;?CANdelaStudio</span><span class="ot"> SynchronizationId=SomeIdentifier</span><span class="kw"> ?&gt;</span></span>
+</code></pre>
+</div>
+<p>Sample code for Import Pool SynchronizationId:</p>
+<div class="sourceCode">
+<pre class="sourceCode xml"><code class="sourceCode xml">
+<span class="sourceLine"><span class="kw">&lt;PARAM</span><span class="ot"> SEMANTIC=</span><span class="st">&quot;DATA&quot;</span><span class="ot"> xsi:type=</span><span class="st">&quot;VALUE&quot;</span><span class="kw">&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;?CANdelaStudio</span><span class="ot"> SynchronizationId=_0815</span><span class="kw">?&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;SHORT-NAME&gt;</span>Original_Odometer_Value<span class="kw">&lt;/SHORT-NAME&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;LONG-NAME&gt;</span>Odometer value first occurance<span class="kw">&lt;/LONG-NAME&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;BYTE-POSITION&gt;</span>2<span class="kw">&lt;/BYTE-POSITION&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;DOP-REF</span><span class="ot"> ID-REF=</span><span class="st">&quot;_261&quot;</span><span class="kw">/&gt;</span></span>
+<span class="sourceLine"><span class="kw">&lt;/PARAM&gt;</span></span>
+</code></pre>
+</div>
+<h3 id="SDGs">Import of selected parts (ODX 2.2.0 Crumbs Import):</h3>
+<p><strong>R050.0</strong> On importing selected parts into the CANdelaStudio Import Pool the “identifying attribute values” of all data objects (PARAMs) shall be read from ODX model.</p>
+<p><strong>R051.0</strong> The “identifying attribute values” will be read from a SDG structure directly at a PARAM.</p>
+<p><strong>R052.0</strong> The SDG structure shall have the following specification:</p>
+<p>Sample code for Import Pool SDGs:</p>
+<div class="sourceCode">
+<pre class="sourceCode xml"><code class="sourceCode xml">
+<span class="sourceLine"><span class="kw">&lt;PARAM</span><span class="ot"> SEMANTIC=</span><span class="st">&quot;DATA&quot;</span><span class="ot"> xsi:type=</span><span class="st">&quot;VALUE&quot;</span><span class="kw">&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;SDGS&gt;</span></span>
+<span class="sourceLine">    <span class="kw">&lt;SDG&gt;</span></span>
+<span class="sourceLine">      <span class="kw">&lt;SDG-CAPTION</span><span class="ot"> ID=</span><span class="st">&quot;_an_SDG_CAPTION_ID&quot;</span><span class="kw">&gt;</span></span>
+<span class="sourceLine">        <span class="kw">&lt;SHORT-NAME&gt;</span>SynchronizationId<span class="kw">&lt;/SHORT-NAME&gt;</span></span>
+<span class="sourceLine">      <span class="kw">&lt;/SDG-CAPTION&gt;</span></span>
+<span class="sourceLine">      <span class="kw">&lt;SD&gt;</span>_0815<span class="kw">&lt;/SD&gt;</span></span>
+<span class="sourceLine">    <span class="kw">&lt;/SDG&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;/SDGS&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;SHORT-NAME&gt;</span>Original_Odometer_Value<span class="kw">&lt;/SHORT-NAME&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;LONG-NAME&gt;</span>Odometer value first occurance<span class="kw">&lt;/LONG-NAME&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;BYTE-POSITION&gt;</span>2<span class="kw">&lt;/BYTE-POSITION&gt;</span></span>
+<span class="sourceLine">  <span class="kw">&lt;DOP-REF</span><span class="ot"> ID-REF=</span><span class="st">&quot;_261&quot;</span><span class="kw">/&gt;</span></span>
+<span class="sourceLine"><span class="kw">&lt;/PARAM&gt;</span></span>
+</code></pre>
+</div>
+<h2 id="synchronization-state-cds-18753-in-7.0">Synchronization State (CDS-18753 in 7.0)</h2>
+<h3 id="purpose-of-the-function-use-cases-and-application-domain-analysis">Purpose of the Function, Use Cases and Application-Domain Analysis</h3>
+<p>The feature: CDS-11531 “Feature: Support of Import Pool synchronization” allows to synchronize changes to diagnostic data objects described e.g. in DOORS with data objects in a CANdela document.</p>
+<p>The process is described in the Vector application note AN-IDG-1-014 “CDS-18753 Extend import pool synchronization”.</p>
+<p>A common scenario is: the user modifies details of a datatype in DOORS, and then synchronizes the modifications to the CANdela document:</p>
+<div class="figure">
+<img src="Images/Import%20Pool%20Scenario.png" alt="Scenario of Data Type Synchronization" />
+<p class="caption">Scenario of Data Type Synchronization</p>
+</div>
+<p>CANdelaStudio detects the data type differences and informs the user (in the import pool table) that the respective data object(s) are not up-to-date. But CANdelaStudio does not show detail differences. The existing and the modified datatype have the same qualifier, therefore during synchronization one of them must get a suffix (like “_1”). If the data type which will be imported gets the suffix, the import pool still detects a difference of the synchronized data object in the document and the import pool and shows “synchronization not up to date” due to the different qualifier.</p>
+<h3 id="general-functional-requirements-optional">General Functional Requirements (optional)</h3>
+<p>Improve data exchange from DOORS to CANdelaStudio:</p>
+<ul>
+<li><p>give the user more information about the status of datatypes in the import pool</p></li>
+<li><p>give the user a chance to conveniently adapt datatypes so that synchronization leads to the desired results</p></li>
+</ul>
+<h3 id="functional-requirements">Functional Requirements</h3>
+<div class="figure">
+<img src="Images/Import%20Pool%20Column%20Synchronization%20State.png" alt="Import Pool: Column &quot;Synchronization State&quot;" />
+<p class="caption">Import Pool: Column &quot;Synchronization State&quot;</p>
+</div>
+<p><strong>R001.0:</strong> in Import Pool <strong>datatypes list</strong>, add a column “” right to “Description”. The column represents the relation of the datatype in the import pool to datatypes in the datatypes list of the document.</p>
+<p>Possible values (cf. the respective values for the data object column in CDS-11531 R023):</p>
+<table style="width:98%;">
+<colgroup>
+<col width="36%" />
+<col width="61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">“Not used”</td>
+<td align="left">The qualifier of the datatype does not occur in the document, or a data type exists with the same qualifier but is not referenced by any data object.</td>
+</tr>
+<tr class="even">
+<td align="left">“In Use (up to date)”</td>
+<td align="left">The document contains a datatype with the same qualifier and identical properties.</td>
+</tr>
+<tr class="odd">
+<td align="left">“In Use (ready for synchronize)”</td>
+<td align="left">The document contains a data type with the same qualifier and different properties. The data type is either not used by any data object in the document or all data objects that reference the data type will be updated during synchronization.</td>
+</tr>
+<tr class="even">
+<td align="left">“In Use (conflict)”<br />
+- to be shown e.g. red</td>
+<td align="left">The document contains a datatype with the same qualifier and different properties, and it contains data objects that refer the datatype that a) must be synchronized to the new datatype in the import pool, and some that b) will not be synchronized to this datatype. Just overwriting the existing datatype properties would implicitly change the data objects b).</td>
+</tr>
+<tr class="odd">
+<td align="left">“Not relevant for synchronization“</td>
+<td align="left">The data type is not referenced by any data object which will be synchronized, for either its synchronization attribute is not set or its value does not match any data object’s attribute value.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>R010.0:</strong> in Import Pool <strong>datatypes list</strong>, for all datatypes which also exist in the document. except those with states “Not used” and “In Use (up to date)” or “Not relevant…”, through context menu provide a <strong>Diff to the respective datatype</strong> in the document.</p>
+<p><strong>R015.0:</strong> in Import Pool <strong>datatypes list</strong>, through context menu provide a way to inspect the <strong>references of the</strong> <strong>respective datatype</strong> in the document (for a datatype with state “Not used”, the references list will be empty).</p>
+<p><strong>R020.0:</strong> Resolving data type conflicts for data types with “” = “In Use (conflict)”:</p>
+<p>Rename the data type in the document to a new unique name in the data type list. Thus, all data objects continue to reference the existing data type.</p>
+<p>Example result:</p>
+<div class="figure">
+<img src="Images/Import%20Pool%20Example%20Result.png" alt="Import Pool Example Result" />
+<p class="caption">Import Pool Example Result</p>
+</div>
+<p>On synchronization the data type of the import pool is inserted into the document’s data type collection and the data objects will have the new data type reference set.</p>
+<p><strong>R030.2:</strong> in Import Pool <strong>data objects list</strong>, if user starts synchronization, and there are data types in Import Pool in state “In Use (conflict)”, <strong>show confirmation</strong> like:</p>
+<blockquote>
+<p>“Some of the data types that will be synchronized are in conflict. The document already contains one or more data types with identical qualifiers but different properties which are used by data objects that are not subject of synchronization. The name and qualifier of the existing data type which will be referenced by all non synchronized data objects in the document will be changed during synchronization.</p>
+</blockquote>
+<blockquote>
+<p>The data types list in the import pool shows more details.</p>
+</blockquote>
+<blockquote>
+<p>Do you want to proceed?” If yes, just update the data types. If no, stop.</p>
+</blockquote>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Import from CDI <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R220' title="">[MENU-R220]</a></li>
+<li><a href="../../20%20UserInterface/Import%20Pool/Import%20Pool.htm">Import Pool User Interface</a></li>
+<li>ODX Import <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Ribbon Tab Data Exchange.htm#MENU-R210' title="">[MENU-R210]</a></li>
+<li><a href="../../30%20Features/Requirements/Requirements.htm">Requirements Feature</a></li>
+</ul>
+
+</body>
+</html>

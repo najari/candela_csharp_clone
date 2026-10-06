@@ -1,0 +1,485 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>DID Operations</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="did-operations">DID Operations</h1>
+<p>Note: this chapter describes the pure operations on the data, not the user interface with confirmations etc.</p>
+<p>Note: for the term &quot;obvious&quot;, see <a href="../../30%20Features/CANdelaStudio%20Editor/Commands%20Menus.htm">Commands/Menus</a>.</p>
+<h2 id="document">Document</h2>
+<p><span id="DID-R190" class="rqDef">[DID-R190.0]</span>: modify “<strong>may modify allow duplicate DIDs</strong>”.</p>
+<p>Adapt the value of the property <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R005' title="May Modify Allow Duplicate DIDs">[DID-R005]</a>. No further change in the document.</p>
+<p>Do not allow this…</p>
+<ul>
+<li>in Standard View</li>
+</ul>
+<p><span id="DID-R192" class="rqDef">[DID-R192.0]</span>: modify “<strong>allow duplicate DIDs</strong>”</p>
+<p>Adapt the value of the property of <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R008' title="Allow Duplicate DIDs">[DID-R008]</a>.</p>
+<p>Do not allow this…</p>
+<ul>
+<li>if “may modify allow duplicate DIDs” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R005' title="May Modify Allow Duplicate DIDs">[DID-R005]</a> is false (obvious) (in Standard View)</li>
+<li>when setting to false, and any variant contains two DIDs that have the same identifier</li>
+</ul>
+<h2 id="did">DID</h2>
+<p><span id="DID-R200" class="rqDef" title="New">[DID-R200.1 New]</span>: in a variant V, create a DID (<strong>not referenced</strong>).</p>
+<p>Make the identifier unique, except if all identifiers are used in the variant, and “allow duplicate DIDs” is true (fulfill <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R030' title="Constraints">[DID-R030]</a>)</p>
+<p><span id="DID-R200-BasedOn" class="rqDef">[DID-R200-BasedOn]</span>: CANdelaStudio creates the <strong>new DID based on a &quot;reference&quot; DID R</strong> (CDS-68394 9.1),</p>
+<ul>
+<li>as described in the Basic User Interface Rules <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Basic User Interface Rules.htm#UI-R340' title="">[UI-R340]</a>
+<ul>
+<li>object: DID</li>
+<li>number: the DID identifier.</li>
+</ul></li>
+<li>CANdelaStudio takes for Diagnostic Class...
+<ul>
+<li>none, if there is no Reference DID,</li>
+<li>the Diagnostic Class of the Reference DID R,
+<ul>
+<li>if R has a single Diagnostic Class,</li>
+<li>and no conflict arises,</li>
+</ul></li>
+<li>otherwise none.</li>
+</ul></li>
+</ul>
+<p>CANdelaStudio ensures name and qualifier are unique (fulfilling <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R030' title="Constraints">[DID-R030]</a>).</p>
+<p><span id="DID-R200-NoData" class="rqDef">[DID-R200-NoData]</span> CANdelaStudio does not create a data object in the new DID (CDS-41535 9.1).</p>
+<p>Do not allow this…</p>
+<ul>
+<li>if the variant is locked.</li>
+<li>if all identifiers are used in the variant, and “allow duplicate DIDs” is false</li>
+</ul>
+<p>Note: it is not possible that a DID in the base variant with required “yes” or “in all variants” has the same qualifier as the new DID – for such a DID, a DID with the same qualifier must already exist in the variant V, and the new DID must get a different qualifier.</p>
+<p>Note: a DID in the base variant may have the same qualifier, but modifiable <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R010' title="Modifiable">[DID-R010]</a> = false. The new DID will get the default modifiable = true, anyway, see <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D210' title="DID Identity and Authorization">[DID-D210]</a>.</p>
+<p>See also <a href="../../15%20Procedures/DID/How%20to%20Create%20a%20DID.htm">Procedure &quot;How to Create a DID&quot;</a>.</p>
+<p><span id="DID-R202" class="rqDef" title="New in All Variants">[DID-R202.1 New in All Variants]</span>: create a DID...</p>
+<ul>
+<li><span id="DID-R202-AllVariants" class="rqDef">[DID-R202-AllVariants]</span> referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a> in all variants</li>
+<li><span id="DID-R202-Libraries" class="rqDef">[DID-R202-Libraries]</span> not referenced in any library (CDS-42589)</li>
+</ul>
+<p>Make name and qualifier unique in all variants (fulfill <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R030' title="Constraints">[DID-R030]</a>).</p>
+<p>If there is a DID identifier value not used in any variant, set the identifier of the new DID to that value (fulfill <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R030' title="Constraints">[DID-R030]</a>).</p>
+<p>Otherwise, if “allow duplicate DIDs” is true, assign an identifier already used.</p>
+<p>Do not allow this…</p>
+<ul>
+<li>if there is a variant that is locked;</li>
+<li>if there is no DID identifier value not used in any variant (= each possible identifier value is used in at least one variant), and “allow duplicate DIDs” is false.</li>
+</ul>
+<p><span id="DID-R205" class="rqDef" title="New Reference">[DID-R205.0 New Reference]</span>: in a variant, create a DID which already exists in another variant (same document).</p>
+<p>Do not allow this…</p>
+<ul>
+<li>if the variant is locked.</li>
+<li>for a unique property <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R030' title="Constraints">[DID-R030]</a> if the property exists at another DID in the variant. Note: this means the flag of <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R008' title="Allow Duplicate DIDs">[DID-R008]</a> controls whether a reference with a duplicate identifier can be added.</li>
+</ul>
+<p><span id="DID-R210" class="rqDef" title="Modify">[DID-R210.1 Modify]</span>: modify a DID property or DID Data (except the name or Identifier, see below).</p>
+<p>Do not allow this (= set the DID Data telegram table read-only, with a status message in the output window)…</p>
+<ul>
+<li>if the DID is referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a> in any locked variant.</li>
+<li>in Standard view if the DID is not modifiable <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R010' title="Modifiable">[DID-R010]</a>.</li>
+<li>for a unique property <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R030' title="Constraints">[DID-R030]</a> if the property exists at another DID in any variant in which the DID is referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a>.</li>
+</ul>
+<p><span id="DID-R211" class="rqDef">[DID-R211]</span> <strong>Modify Name</strong>: when you...</p>
+<ul>
+<li>modify the name of a DID,</li>
+<li>and there is a Diagnostic Instance in the variant that has the same name,</li>
+<li>and the Diagnostic Instance references the DID using a DID Data Reference as the single data object in a telegram (cf. <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001-b2' title="">[DCL-D001-b2]</a>),</li>
+<li>then CANdelaStudio shall assign the new name also to the Diagnostic Instance.</li>
+</ul>
+<p>Do not allow this…</p>
+<ul>
+<li>if the DID is referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a> in any locked variant.</li>
+<li>in Standard view if the DID is not modifiable <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R010' title="Modifiable">[DID-R010]</a>.</li>
+<li>since name is a unique property <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R030' title="Constraints">[DID-R030]</a>: if the name exists at another DID in any variant in which the DID is referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a>.</li>
+</ul>
+<p><span id="DID-R212" class="rqDef" title="Modify Identifier">[DID-R212.1 Modify Identifier]</span>:</p>
+<p>a) modify the Identifier.</p>
+<p>Automatically update...</p>
+<p>b) the identifier of a corresponding <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D214' title="DID and Diagnostic Instance Correspond">[DID-D214]</a> diagnostic instance (i.e. only when diagnostic instance identifier and DID identifier correspond!)</p>
+<p>c) the constant in the Identifier Data Object of a DID Reference which references the DID (even if the previous constant was different from the previous Identifier value).</p>
+<p>Do not allow this…</p>
+<ul>
+<li>if the DID is referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a> in any locked variant.</li>
+<li>in Standard view if the DID is not modifiable <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R010' title="Modifiable">[DID-R010]</a>.</li>
+<li>if the Identifier (= a unique property <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R030' title="Constraints">[DID-R030]</a>) exists at another DID in any variant in which the DID is referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a>.</li>
+</ul>
+<p>Do not perform b) or c)…</p>
+<ul>
+<li>if the respective diagnostic instance is referenced in any locked variant.</li>
+<li>in Standard view if the diagnostic instance has modifyPrimary = false.</li>
+</ul>
+<p><span id="DID-R215" class="rqDef" title="Compare/Update/Document Upgrade">[DID-R215.0 Compare/Update/Document Upgrade]</span>:</p>
+<p>Handle variant local DIDs <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R020' title="Existence">[DID-R020]</a> in compare and update.</p>
+<p>For DID creation/modification, obey the rules of the basic operations.</p>
+<h2 id="copypaste">Copy/Paste</h2>
+<p><span id="DID-R500" class="rqDef" title="Copy/Paste">[DID-R500 Copy/Paste]</span>: copy/paste for a DID within a document...</p>
+<ul>
+<li>resets authorization
+<ul>
+<li><span id="DID-R500-mod" class="rqDef">[DID-R500-mod]</span> “modifiable” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R010' title="Modifiable">[DID-R010]</a> to “yes”;</li>
+<li><span id="DID-R500-rq" class="rqDef">[DID-R500-rq]</span> “required in all variants” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R012' title="Required in all Variants">[DID-R012]</a> to “no”.</li>
+</ul></li>
+</ul>
+<p>See <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R280' title="Paste across Documents">[DID-R280]</a> below for Paste across Documents.</p>
+
+<p><span id="DID-R220" class="rqDef" title="Delete">[DID-R220 Delete]</span>: in a variant, delete a DID:</p>
+<ul>
+<li>delete the DID in the current variant (= break the sharing);</li>
+<li>delete any reference to the DID
+<ul>
+<li>e.g. DID Data Reference in some service like 0x37,</li>
+<li>uses of the DID on ECU level <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001' title="DID Used">[DID-D001]</a>, e.g. the reference from a global Common Snapshot Data;</li>
+</ul></li>
+<li>additionally delete a diagnostic instance in the current variant (CDS-40000 9.1) (i.e. break the sharing) if
+<ul>
+<li>the DID Semantics <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050-DIDDataReference' title="">[DID-R050-DIDDataReference]</a> is set,</li>
+<li>or the diagnostic instance is in a &quot;DID Enabled&quot; <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001' title="">[DCL-D001]</a> diagnostic class and D is the single data object in a telegram <a class='rqRef' href='../../30%20Features/Diagnostic%20Class/Diagnostic%20Class.htm#DCL-D001-b2' title="">[DCL-D001-b2]</a></li>
+<li>e.g. not in an arbitrary diagnostic class with some service like 0x37 (i.e. not &quot;DID enabled&quot;), in that case, delete only the DID Data Reference.</li>
+<li>Note: the former requirement <code>[DID-R220-e]</code> is now obsolete, it prohibited DID deletion due to Rule <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D020' title="Consistency Rule for References">[DID-D020]</a>.</li>
+</ul></li>
+<li><span id="DID-R220-Rq" class="rqDef">[DID-R220-Rq]</span> in Expert View (CDS-70802 v12)...
+<ul>
+<li>if the DID is required in all variants “yes” or “as reference” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R012' title="Required in all Variants">[DID-R012]</a>,</li>
+<li>the operation resets the property to &quot;no&quot;.</li>
+</ul></li>
+</ul>
+<p>Do not allow this…</p>
+<ul>
+<li><span id="DID-R220-a" class="rqDef">[DID-R220-a]</span> if the variant is locked.</li>
+<li><span id="DID-R220-b" class="rqDef">[DID-R220-b]</span> in Standard View if the DID is required in all variants “as reference” or “yes” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R012' title="Required in all Variants">[DID-R012]</a>. Note: for Expert View, see <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R220-Rq' title="">[DID-R220-Rq]</a> above.</li>
+<li><span id="DID-R220-c" class="rqDef">[DID-R220-c]</span> in Standard view if the DID is used by read-only <strong>Common Snapshot Data</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001' title="DID Used">[DID-D001]</a>.</li>
+<li><span id="DID-R220-d" class="rqDef">[DID-R220-d]</span> in all views if the DID is used by <strong>fixed data</strong> (cf. <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001' title="DID Used">[DID-D001]</a> e+f). Note: even in Expert View, the data need &quot;use by fixed data&quot; must be fulfilled.</li>
+<li><span id="DID-R220-f" class="rqDef">[DID-R220-f]</span> if the DID is used in the variant by a <strong>DID Reference</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001-c' title="">[DID-D001-c]</a> in a diagnostic instance that does not allow to <strong>modify primary properties</strong>.</li>
+<li><span id="DID-R220-g" class="rqDef">[DID-R220-g]</span> if the DID is used in the variant by a <strong>DID Data Reference</strong> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001-d' title="">[DID-D001-d]</a> in a diagnostic instance that does not allow to <strong>modify primary properties</strong> or is <strong>required</strong> <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Authorization.htm#DIA-R020' title="Property „required“">[DIA-R020]</a> (CDS-40000 9.1; before 9.1, DID deletion was not possible in this constellation).</li>
+</ul>
+<p><span id="DID-R222" class="rqDef">[DID-R222.1]</span>: modify the DID property “modifiable” (as in 8.2).</p>
+<p>Adapt the value of <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R010' title="Modifiable">[DID-R010]</a> in the variants in which the DID is referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a>.</p>
+<p>Note: not necessarily in all variants – see <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D210' title="DID Identity and Authorization">[DID-D210]</a>.</p>
+<p>Do not allow this…</p>
+<ul>
+<li>in Standard View</li>
+</ul>
+<p><span id="DID-R224" class="rqDef">[DID-R224.2]</span>: modify the DID property “required in all variants”.</p>
+<p>Adapt the value of R011 in all variants – see <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D210' title="DID Identity and Authorization">[DID-D210]</a>.</p>
+<p>Do not allow this…</p>
+<ul>
+<li>in Standard View</li>
+<li>in an extended variant</li>
+<li>when setting to “yes”, and there is a variant which does not contain a DID with the qualifier of the DID to modify</li>
+<li>when setting to “as reference”, and there is a variant in which the DID is not referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R040' title="">[DID-R040]</a></li>
+</ul>
+<h2 id="references-sharing">References (Sharing)</h2>
+<p><span id="DID-R230" class="rqDef" title="Replace Reference with Copy">[DID-R230.1 Replace Reference with Copy]</span>:</p>
+<p>Preserve all DID properties, including the authorization properties.</p>
+<p>If the DID is used in the variant (cf. <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001' title="DID Used">[DID-D001]</a> b-d) by a diagnostic instance that is referenced in another variant (cf. Rule <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D020' title="Consistency Rule for References">[DID-D020]</a>), then also replace that diagnostic instance with a copy (CDS-40001 8.5 SP3).</p>
+<p>Do not allow this…</p>
+<ul>
+<li>if the variant is locked.</li>
+<li>(also in expert view!) if the DID is required in all variants “as reference” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R012' title="Required in all Variants">[DID-R012]</a>.</li>
+<li>if the DID is used by Common Snapshot Data <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R130' title="">[DID-R130]</a></li>
+<li>if the DID is used by fixed data <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R140' title="">[DID-R140]</a></li>
+</ul>
+<p>Note: possible GUI improvement – apply the operation also to the diagnostic instance (cf. CDS-33373).</p>
+<p>Note: this means modify <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R010' title="Modifiable">[DID-R010]</a> = false is preserved, but can be changed via delete + re-create (see <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D210' title="DID Identity and Authorization">[DID-D210]</a>).</p>
+<p>See also <a href="../../15%20Procedures/DID/How%20to%20Modify%20a%20DID%20in%20a%20New%20Variant.htm">Procedure &quot;How to Modify a DID in a New Variant&quot;</a>.</p>
+
+<p><span id="DID-R235" class="rqDef" title="Replace Copy with Reference in Base Variant">[DID-R235.0 Replace Copy with Reference in Base Variant]</span>: delete the DID D from the variant, insert a reference to the DID from Common Diagnostics that has the same qualifier as D.</p>
+<p>Do not allow this…</p>
+<ul>
+<li>if the variant is locked.</li>
+<li>in Base Variant.</li>
+<li>if Base Variant does not contain a DID with the qualifier of D.</li>
+<li>if <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R030' title="Constraints">[DID-R030]</a> (uniqueness) would be violated. Example:</li>
+</ul>
+<pre><code>Base Variant
+  DID 0x1000 “WheelSpeed”
+Variant
+  DID 0x1000 “Temperature”
+  DID 0x2000 “WheelSpeed” &lt;= “Replace Copy…” conflict with 0x1000 of Temperature</code></pre>
+<p>Note: the GUI may ask for confirmation in case the DID in Common Diagnostics has a different identifier.</p>
+<p><span id="DID-R235-IdenticalID" class="rqDef">[DID-R235-IdenticalID]</span> If the identifier of the DID is identical to the identifier of a DID in the base variant that has a different qualifier, CANdelaStudio shows an error message (CDS-69849 v10) like</p>
+<blockquote>
+<p>Cannot replace DID &quot;Supply_Voltage_ECU&quot; in variant/library &quot;A&quot; with a reference into the base variant: the identifier is already in use by DID &quot;xxx&quot;.</p>
+</blockquote>
+<h2 id="did-uses">DID Uses</h2>
+<p><span id="DID-R240" class="rqDef" title="Common Snapshot Data">[DID-R240.1 Common Snapshot Data]</span>: in Common Snapshot Data (=: CSD), add a reference to a DID (as a direct reference, or a DID Reference or DID Data Reference).</p>
+<p>Do not allow this…</p>
+<ul>
+<li>in Standard View, if CSD is write-protected (obvious)</li>
+<li>if any variant (not library) is locked (not obvious)</li>
+<li>if there exists a variant in which the DID is not referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R040' title="">[DID-R040]</a>, this fulfills <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R130' title="">[DID-R130]</a>).</li>
+</ul>
+<p><span id="DID-R245" class="rqDef" title="Fixed Data">[DID-R245.0 Fixed Data]</span>: in a fixed data list in a ProtocolService (see “Data Identifier” R183 d), create a <strong>DID Reference or DID Data Reference</strong> (possible in Expert View only).</p>
+<p>Do not allow this…</p>
+<ul>
+<li>if any variant (not library) is locked (not obvious). Note: in 8.5, this case should not occur since editing of fixed data is possible in Expert view on a template only in which only the base variant exists.</li>
+<li>if there exists a variant in which the DID is not referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R040' title="">[DID-R040]</a>, this fulfills <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R140' title="">[DID-R140]</a>. Note: in 8.5, this case should not occur for the same reason.</li>
+</ul>
+<p><span id="DID-R250" class="rqDef" title="Diagnostic Instance">[DID-R250.0 Diagnostic Instance]</span>: in a diagnostic instance in a variant, create a <strong>DID Reference</strong> or <strong>DID Data Reference</strong> to a DID in the same variant.</p>
+<ul>
+<li><span id="DID-R250-Empty" class="rqDef">[DID-R250-Empty]</span> If the <strong>DID list is empty</strong>, show a message to create a DID in the DID list first (CDS-39871 8.5).</li>
+<li><span id="DID-R250-Available" class="rqDef">[DID-R250-Available]</span> Available are all DIDs that are referenced at least in the variants in which the diagnostic instance is referenced, see DID Data Reference <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R160-Var' title="">[DID-R160-Var]</a> and DID Reference <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R180-Var' title="">[DID-R180-Var]</a>.
+<ul>
+<li>Fixed in CDS-70756 v11.</li>
+</ul></li>
+</ul>
+<p>Do not allow this…</p>
+<ul>
+<li>if any of the variants in which the diagnostic instance is referenced is locked (not obvious)</li>
+<li>if the diagnostic instance does not allow to modify primary properties (not obvious)</li>
+<li>if the DID is not referenced in at least the variants in which the diagnostic instance is referenced (this fulfills D020) (not obvious)</li>
+</ul>
+<p>CANdelaStudio shall use the DID name/qualifier as default name/qualifier for a new DID Reference or DID Data Reference (CDS-38519 8.5).</p>
+<h2 id="objects-containing-dids">Objects Containing DIDs</h2>
+<p><span id="DID-R260" class="rqDef" title="New Variant">[DID-R260.0 New Variant]</span>: when creating a variant on base of another variant within a document <a class='rqRef' href='../../30%20Features/Variant/Variant%20Operations.htm#VAR-R700' title="CopyNPaste IntraCdd">[VAR-R700]</a> (e.g. Variant Wizard), take over all DIDs from the other variant as a reference <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R040' title="">[DID-R040]</a>.</p>
+<p>Motivation for “as a reference”: minimize space as a default. The user can break the reference later if desired.</p>
+<p>Motivation for “all DIDs”: assume a typical use-case that the new variant has only few differences to the existing one.</p>
+
+<p><span id="DID-R262" class="rqDef" title="Paste Variant">[DID-R262.0 Paste Variant]</span>: when pasting a variant from another document <a class='rqRef' href='../../30%20Features/Variant/Variant%20Operations.htm#VAR-R705' title="CopyNPaste InterCdd">[VAR-R705]</a>, take over all DIDs from the other variant:</p>
+<ul>
+<li><span id="DID-R262-RqAsRef" class="rqDef">[DID-R262-RqAsRef]</span> If...
+<ul>
+<li>a &quot;required as reference&quot; DID with the same qualifier already exists in the base variant of the target document,</li>
+<li>then reference that DID in the pasted variant,</li>
+<li>and use <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D001' title="DID Used">[DID-D001]</a> the one from the base variant instead of the source DID.</li>
+<li>If this is not possible, paste fails.</li>
+</ul></li>
+<li><span id="DID-R262-RqAsRefName" class="rqDef">[DID-R262-RqAsRefName]</span> If...
+<ul>
+<li>a &quot;required as reference&quot; DID with different qualifier but same name already exists in the base variant of the target document,</li>
+<li>... then paste fails.</li>
+</ul></li>
+</ul>
+
+<ul>
+<li><span id="DID-R262-RqAsRefIdentifier" class="rqDef">[DID-R262-RqAsRefIdentifier]</span> If...
+<ul>
+<li>a &quot;required as reference&quot; DID with different qualifier but same identifier already exists in the base variant of the target document and duplicate DID identifier are not allowed in the target,</li>
+<li>... then paste fails.</li>
+</ul></li>
+</ul>
+
+<ul>
+<li><span id="DID-R262-Copy" class="rqDef">[DID-R262-Copy]</span> Otherwise, paste creates a copy of the DID which is not referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D005' title="DID Referenced">[DID-D005]</a> in other variants.</li>
+<li><span id="DID-R262-DataType" class="rqDef">[DID-R262-DataType]</span> For each data type referenced from within the source DID (even indirectly e.g. via a packet data type), ...
+<ul>
+<li>paste adds the data type in the target document;</li>
+<li>if an equal data type already exists in the target document, paste uses that data type;</li>
+<li>if a data type with same qualifier but different properties already exists in the target document, paste renames the new one to make it unique,</li>
+<li>... and does the same for the name.</li>
+</ul></li>
+<li><span id="DID-R262-Identifier" class="rqDef">[DID-R262-Identifier]</span> If...
+<ul>
+<li>the source document contains multiple DIDs with the same identifier,</li>
+<li>but duplicate identifiers are not allowed <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R008' title="Allow Duplicate DIDs">[DID-R008]</a> in the target,</li>
+<li>... then paste fails.</li>
+</ul></li>
+</ul>
+
+<p><span id="DID-R265" class="rqDef" title="Delete Variant">[DID-R265.0 Delete Variant]</span>: when deleting a variant <a class='rqRef' href='../../30%20Features/Variant/Variant%20Operations.htm#VAR-R750' title="Delete Variant">[VAR-R750]</a>,...</p>
+<ul>
+<li>delete all DIDs contained in the variant (like for diagnostic instances).</li>
+</ul>
+<p>Note: if one of these DID is referenced in another variant <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R040' title="">[DID-R040]</a>, that variant is not affected.</p>
+<p><span id="DID-R270" class="rqDef" title="Implicit Add within variant">[DID-R270.0 Implicit Add within variant]</span>: in a variant, implicitly add <strong>a DID Reference</strong> or <strong>DID Data Reference</strong> from the <strong>same variant</strong>. These use a <strong>DID D</strong> in the variant.</p>
+<p>Example operations: Paste of a Diagnostic Instance.</p>
+<p>Let the new objects use the same DID D.</p>
+<p>Note: no check whether there are two DID Data References for the same DID.</p>
+<p>Note: the diagnostic instance may even be referenced in other variants, this makes no difference.</p>
+<p>Do not allow this…</p>
+<ul>
+<li>if the variant is locked (should be handled in 8.2 already).</li>
+</ul>
+<p><span id="DID-R274" class="rqDef" title="Implicit Add within document">[DID-R274.2 Implicit Add within document]</span>: in a variant, implicitly add <strong>a DID Reference</strong> or <strong>DID Data Reference</strong> from <strong>another variant</strong>. These use a <strong>DID D</strong> in the other variant.</p>
+<p>Example operations: Paste of a Diagnostic Instance, Transfer in Compare, Replace Copy with Reference in Base Variant, Reference Identical Diagnostic Instances and Job Container, Document Upgrade.</p>
+<p>a) If a DID with the qualifier of D exists in the variant: reject the operation .</p>
+
+<p>b) Otherwise, paste D as a reference, see <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R205' title="New Reference">[DID-R205]</a> (motivation: save space)</p>
+<p>Do not allow this…</p>
+<ul>
+<li><p>if the DID cannot be pasted as a reference due to conditions in <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-R205' title="New Reference">[DID-R205]</a></p></li>
+<li><p>for a): if that DID is not referenced in the variant from which the diagnostic instance originates (which would violate D020 after the operation). E.g. for &quot;Replace Copy with Reference in Common Diagnostics&quot;, the DID of the extended variant must already be referenced in the Base Variant.</p></li>
+</ul>
+
+<p><span id="DID-R276" class="rqDef">[DID-R276]</span> <strong>Implicit Add across document</strong>: in a variant, implicitly add <strong>a DID Reference</strong> or <strong>DID Data Reference</strong> from <strong>another document</strong> (i.e. these use a <strong>DID D</strong> in the other document).</p>
+<p>Example operations: Paste of a Diagnostic Instance <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R025-OtherDoc' title="">[DIOP-R025-OtherDoc]</a>, Transfer in Compare.</p>
+<ul>
+<li>If a DID with the qualifier of D exists in the variant, CANdelaStudio re-uses that one, see <a class='rqRef' href='../../30%20Features/Diagnostic%20Instance/Diagnostic%20Instance%20Operations.htm#DIOP-R025-OtherDoc' title="">[DIOP-R025-OtherDoc]</a>.
+<ul>
+<li>Before v13, CANdelaStudio rejected the operation .</li>
+</ul></li>
+<li>Otherwise, CANdelaStudio pastes D (as a copy).</li>
+</ul>
+<p>Do not allow this…</p>
+<ul>
+<li>if the DID cannot be created due to conditions in R200</li>
+</ul>
+<p><span id="DID-R280" class="rqDef" title="Paste across Documents">[DID-R280 Paste across Documents]</span>: in a variant, <strong>paste a DID</strong> from another document.</p>
+<p>Resets authorization...</p>
+<ul>
+<li><span id="DID-R280-mod" class="rqDef">[DID-R280-mod]</span> “modifiable” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R010' title="Modifiable">[DID-R010]</a> to “yes”;</li>
+<li><span id="DID-R280-rq" class="rqDef">[DID-R280-rq]</span> “required in all variants” <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R012' title="Required in all Variants">[DID-R012]</a> to “no” (CDS-70632 v11).</li>
+<li>Motivation:
+<ul>
+<li>in Standard View, the operation shall not create a data constellation that you cannot create by modifying the DID properties alone.</li>
+<li>In Expert View, the default is to reset the properties; if desired, you can tighten them as desired.</li>
+</ul></li>
+</ul>
+<p>Do not allow this…</p>
+<ul>
+<li>if the DID cannot be created due to conditions in R200</li>
+</ul>
+<p><span id="DID-R290" class="rqDef" title="Reference Identical Diagnostic Instances and Job Container">[DID-R290.1 Reference Identical Diagnostic Instances and Job Container]</span>:</p>
+<p>Do not reference diagnostic instances in 2 variants...</p>
+<ul>
+<li>if they are equal but use a DID which is not referenced in the variants.</li>
+</ul>
+<h2 id="common-properties">Common Properties</h2>
+<p><span id="DID-R295" class="rqDef">[DID-R295.1]</span>: handle DIDs in a variant in the operations:</p>
+<p>a) <a href="../../20%20UserInterface/Common%20Properties/Qualifier%20Overview.htm">Qualifier Overview</a></p>
+<p>b) <a href="../../20%20UserInterface/Attributes/Attribute%20Overview.htm">Attribute Overview</a></p>
+<p>c) <a href="../../20%20UserInterface/Multi-Language/Translation%20View.htm">Translation View</a></p>
+<p>d) Adding / deleting a language</p>
+<p>e) <a href="../../30%20Features/Common%20Properties/TextID.htm">TextID operations</a></p>
+<p>f) <a href="../../30%20Features/Common%20Properties/OID.htm">OID operations</a></p>
+<p>g) check whether document is up-to-date in a language</p>
+<p>h) consistency checks</p>
+<p>i) update from/to <a href="../../30%20Features/Requirements/Requirements.htm">requirements</a></p>
+<p>j) find DID based on its path (cf. <a href="../../30%20Features/Common%20Properties/Object%20Paths.htm#R150">R150</a>)</p>
+<p>k) find data objects within the DID based on its path</p>
+<p>L) find data objects within the DID based on its path through a diagnostic instance and a DID Data Referencer</p>
+<p>m) deleting a <a href="../../30%20Features/Attributes/Attributes.htm">default attribute</a> (delete overridden attributes)</p>
+<p>Note: no action at <a href="../../30%20Features/Variant/Lock%20Variant.htm">lock variant</a>.</p>
+<h2 id="migration-from-8.1-to-before-8.1">Migration from 8.1 to before 8.1</h2>
+<p><span id="DID-R440" class="rqDef">[DID-R440.2]</span> (ad R050) a) modified semantics - as described by <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050' title="Combined Component DID Semantics">[DID-R050]</a>.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>(CDC-33807, 8.1 SP2) in the &gt;= 8.1 file, ...</li>
+</ol>
+<ul>
+<li>in diagnostic instances of Diagnostic Classes that have „DID Data Reference“ semantics set (see <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050' title="Combined Component DID Semantics">[DID-R050]</a>),</li>
+<li>if there are multiple „DID Data Reference“ objects</li>
+<li>that reference the same DID</li>
+</ul>
+<p>... then drop the „DID Data Reference“ semantics at these Diagnostic Classes.</p>
+<p><span id="DID-D444" class="rqDef">[DID-D444.0]</span>: attribute for DID name: attribute at Packet Data Type, type string (not translated), qualifier “DIDName81”, category “Migration”.</p>
+<p><span id="DID-D446" class="rqDef">[DID-D446.0]</span>: attribute for DID number: attribute at Packet Data Type, type integer, qualifier “DIDNumber81”, category “Migration”. Motivation: the 8.1 DID number may differ from the static value.</p>
+<p><span id="DID-D447" class="rqDef">[DID-D447.0]</span>: attribute for DID qualifier: attribute at Packet Data Type, type string (not translated), qualifier “DIDQualifier81”, category “Migration”.</p>
+<p><span id="DID-R448" class="rqDef">[DID-R448.0]</span> (R110 DID List with all properties – cf. R430 for 8.0 =&gt; 8.1)</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Migrate DID to 8.0 packet data type.</p></li>
+<li><p>Create attribute for the DID number (see <strong>D446</strong>).</p></li>
+<li><p>if the DID qualifier is duplicate with a packet data type qualifier, preserve the 8.1 DID qualifier in an attribute (see <strong>D447</strong>).</p></li>
+<li><p>if the DID name is duplicate with a packet data type name, preserve the 8.1 DID name in an attribute (see <strong>D444</strong>).</p></li>
+</ol>
+<p><span id="DID-R450" class="rqDef">[DID-R450.0]</span> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R160' title="">[DID-R160]</a></p>
+<p>Insert reference from data object in telegram of DID Definition Diagnostic Instance to packet data type of R448 a).</p>
+<p><span id="DID-R452" class="rqDef">[DID-R452.0]</span> <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R180' title="">[DID-R180]</a></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>insert the data object contained in the DID Reference. (Note: the qualifier is already unique due to constraints check see R182 e).</p></li>
+<li><p>insert a data object representing the DID Reference, let it refer to the packet data type of R448.</p></li>
+</ol>
+<h2 id="migration-from-before-8.1-to-8.1">Migration from before 8.1 to 8.1</h2>
+<p><span id="DID-R426" class="rqDef">[DID-R426.0]</span>: modified semantics - as described in <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R050' title="Combined Component DID Semantics">[DID-R050]</a>.</p>
+<p><span id="DID-R430" class="rqDef">[DID-R430.1]</span>: if old document has <strong>semantics “DID Definition”</strong> anywhere:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><strong>create a DID from each packet data type</strong> referenced by a DID Definition Diagnostic Instance.</p></li>
+<li><p>take DID name/qualifier/description/OIDs/attributes from the packet data type.</p></li>
+<li><p>take DID number…<br />
+c1) … from attribute described in <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-D446' title="">[DID-D446]</a> (if present), or<br />
+c2) … from the identifier in the Diagnostic Instance<br />
+c3) drop the default attribute described in <a class='rqRef' href='../../30%20Features/DID/DID%20Operations.htm#DID-D446' title="">[DID-D446]</a></p></li>
+<li><p>replace references to the packet data type by references to the DID. This must be possible by definition at all locations where a packet data type was referenced.<br />
+e1) if the packet data type is still referenced, do not drop it, compute <strong>new OIDs</strong> for the DID a).<br />
+Emit a warning like: DID X and packet data type X may result in different export than in 8.0.<br />
+e2) otherwise drop the packet data type,</p></li>
+<li><p>if attribute of <strong>D447</strong> exists and is overwritten at the packet data type, take DID qualifier from the attribute value, drop attribute value.</p></li>
+<li><p>Drop the attribute definition of <strong>D447</strong> if it is no more overwritten.</p></li>
+<li><p>If one of packet data types for which a DID is created in a) has an overwritten attribute (except those for migration), create the same default attribute for DIDs, transfer the overwritten values.</p></li>
+</ol>
+<p>Do not drop the default attribute at packet data types (even if no more overwritten).</p>
+<p><span id="DID-D436" class="rqDef">[DID-D436]</span>: a consistent 8.0 <strong>“DID Referencer with Number”</strong> telegram contains</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>a data object <strong>N</strong> with constant value (DID number), followed by</p></li>
+<li><p>a data object <strong>D</strong> that references a packet data type <strong>P</strong> (DID Data).</p></li>
+</ol>
+<p>In 8.0, the packet data type P must be referenced in a DID definition, but this is not checked as a condition for the following migrations. The size of N shall not be checked.</p>
+<p><span id="DID-R436" class="rqDef">[DID-R436.1]</span> in telegram of 8.0 Combined Component semantics “<strong>DID Reference with DID Number</strong>”: a) for each pair of objects N+D and a packet data type P (see <strong>D436</strong>), CANdelaStudio shall<br />
+a0) ensure there is a DID for P;<br />
+a1) replace N+D by a <strong>DID Reference</strong> to that DID;<br />
+a2) the DID Reference shall contain the preceding data object N (cf. R182). b) CANdelaStudio shall leave all other 8.0 objects unchanged, they remain inconsistent in 8.1 as they were in 8.0.</p>
+<p><strong>Note</strong>: this applies to telegrams of Mux and non-Mux (but: 8.1 up to 8.2 SP2 migrated only non-Mux, CDC-38030 8.2 SP3 covers Mux).</p>
+<p><span id="DID-R438" class="rqDef">[DID-R438.0]</span> in telegram for 8.0 Combined Component semantics “<strong>DID Reference without DID number</strong>”: a) CANdelaStudio shall replace a data object that refers to a packet data type P also referenced in a DID definition by a <strong>DID Data Reference</strong> to the DID created for P. b) CANdelaStudio shall leave all other 8.0 objects unchanged; they remain inconsistent in 8.1 as they were in 8.0.</p>
+<p><strong>Note</strong>: this applies to telegrams of Mux and non-Mux (same as DID-R436 above).</p>
+<h2 id="migration85">Migration 8.5</h2>
+<p><strong>Background</strong></p>
+<p>In an <strong>8.0 document</strong>, DIDs are packet data types.</p>
+<p>In an <strong>8.2 document</strong>, DIDs are on document level, qualifiers are unique, <strong>identifiers are not unique</strong> (motivation was: support multiple protocols).</p>
+<p>Assumption:</p>
+<ul>
+<li>most DIDs are equal in all variants,</li>
+<li>only few DIDs differ between variants.</li>
+</ul>
+<h3 id="migration-use-cases">Migration Use-Cases</h3>
+<p>Use case 1: data originally created in 8.2, load in 8.5 – must handle non-unique identifiers.</p>
+<p>Use case 2: data originally created in 8.5, saved to 8.2 – must handle local changes in a variant.</p>
+<p>Use case 3: data loaded in 8.5 (use case 1), save to 8.2 again.</p>
+<p>Use case 4: data saved to 8.2 (use case 2), load in 8.5 again.</p>
+<h3 id="constellations-in-8.2">Constellations in 8.2</h3>
+<ul>
+<li>“<strong>global DIDs</strong>”: all 8.2 DIDs have <strong>unique identifiers</strong>.</li>
+<li>“<strong>local DIDs</strong>”: multiple 8.2 DIDs have the same identifiers, and they are used in different variants (not in a global object).</li>
+<li>“<strong>conflicting DIDs</strong>”: multiple 8.2 DIDs have the same identifiers,
+<ul>
+<li>both are used in global objects, or</li>
+<li>one is used in a global object, the other one in a variant, or</li>
+<li>both are used in the same variant.</li>
+</ul></li>
+</ul>
+<p>Note: there may be additional DIDs not used in an 8.2 variant.</p>
+<h3 id="loading-an-8.2-document">Loading an 8.2 Document</h3>
+<p><span id="DID-R300" class="rqDef">[DID-R300.0]</span>: Load DIDs from documents older than 8.2 as if they had been migrated to 8.2 first.</p>
+<p><span id="DID-R310" class="rqDef">[DID-R310.0]</span>: CANdelaStudio shall set “may modify allow duplicate DIDs” to true.</p>
+<p>Note: with more effort, the value could be preserved in round-trip using a document-level attribute with “properties modifiable” = false.</p>
+<p><span id="DID-R312" class="rqDef">[DID-R312.0]</span>: CANdelaStudio shall set “allow duplicate DIDs” to true iff. the 8.2 DID list contains duplicate DIDs.</p>
+<p><span id="DID-R314" class="rqDef">[DID-R314.0]</span>: CANdelaStudio shall <strong>preserve</strong> the 8.2 “<strong>modifiable</strong>” authorization (cf. <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R010' title="Modifiable">[DID-R010]</a>) in 8.5.</p>
+<p><span id="DID-R316" class="rqDef">[DID-R316.0]</span>: CANdelaStudio shall set the “<strong>required in all variants</strong>” authorization (cf. R012) as defined in <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D320' title="Authorization Mapping">[DID-D320]</a>, the 8.2 ambiguous value deletable=“No” shall be set to “required in all variants” = Yes.</p>
+<p><span id="DID-R320" class="rqDef">[DID-R320.1]</span>: (DID Existence, in the following order)</p>
+<p>1. if an 8.2 DID has “<strong>required in all variants</strong>” = “as reference” or “yes”, then CANdelaStudio shall reference the 8.2 DID <strong>in each 8.5 variant</strong>.</p>
+<p>2. if a DID from the other 8.2 DIDs does <strong>not have a qualifier suffix</strong> as described by D310, then CANdelaStudio shall reference the 8.2 DID <strong>in each 8.5 variant</strong>. Note: there are no name or qualifier conflicts in 8.5 with the DIDs of 1., since the DIDs of 1. and 2. are in the same DID list in 8.2.</p>
+<p>3. for each remaining 8.2 DID <strong>with a qualifier suffix</strong> V as described by D310,</p>
+<p>for the set VAR of variants := {V + the variants in which the DID is used}, insert the DID into VAR…</p>
+<p>3a) with qualifier Q, if this does not result in a conflict in any of the variants; otherwise</p>
+<p>3b) with qualifier Q[8.2], if this does not result in a conflict in any of the variants; otherwise</p>
+<p>3c) with qualifier Q[8.2] + a usual suffix like “_2” that makes the qualifier unique in all the variants (against all DIDs of the 8.2 DID list processed so far, assuming processing in the order of the DID list).</p>
+<p>3d) set the DID name according with the rules 3a)-3c), with separator blank instead of underscore.</p>
+<p><span id="DID-R330" class="rqDef">[DID-R330.1]</span>: replace all uses of the DID in document level or in a variant of the 8.2 document by uses of the respective DID in the 8.5 document.</p>
+<h3 id="save-82">Saving to an 8.2 Document</h3>
+<p><span id="DID-R350" class="rqDef">[DID-R350.0]</span>: Save DIDs to documents older than 8.2 as if they had been migrated to 8.2 first, then migrated to the older document as done in 8.2 already.</p>
+<p><span id="DID-R360" class="rqDef">[DID-R360.0]</span>: ignore the properties of <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R005' title="May Modify Allow Duplicate DIDs">[DID-R005]</a> and <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R008' title="Allow Duplicate DIDs">[DID-R008]</a>.</p>
+<p><span id="DID-R370" class="rqDef">[DID-R370.0]</span>: CANdelaStudio shall <strong>preserve</strong> the 8.5 “<strong>modifiable</strong>” authorization (cf. <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R010' title="Modifiable">[DID-R010]</a>) in 8.2.</p>
+<p><span id="DID-R372" class="rqDef">[DID-R372.0]</span>: CANdelaStudio shall write the <strong>authorization properties</strong> (see R012) as defined in <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-D320' title="Authorization Mapping">[DID-D320]</a>.</p>
+<p><span id="DID-R380" class="rqDef" title="DID Existence">[DID-R380.1 DID Existence]</span>:</p>
+<p>a) if there is only <strong>one DID instance</strong> for a given qualifier X (i.e. all DIDs that have qualifier X are referenced <a class='rqRef' href='../../30%20Features/DID/DID.htm#DID-R040' title="">[DID-R040]</a> together), then CANdelaStudio shall put the DID into the 8.2 DID list with name and qualifier <strong>not modified</strong>.</p>
+<p>b) otherwise, CANdelaStudio shall put the DID into the 8.2 DID list with name and qualifier encoded as described by D310.</p>
+<p>c) if b) results in a duplicate qualifier or name in the 8.2 DID list, CANdelaStudio shall make them unique by adding a number suffix (obeying e.g. length restrictions).</p>
+<p><span id="DID-R390" class="rqDef">[DID-R390.0]</span>: replace all uses of the DID in a variant of the 8.5 document by uses of the respective DID in the global list of the 8.2 document.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="DID.htm">DID (Feature)</a></li>
+<li>Migrations <a href="../../30%20Features/Migrations/CANdelaStudio%208.1.htm">CANdelaStudio 8.1</a></li>
+<li>Migrations <a href="../../30%20Features/Migrations/CANdelaStudio%208.5.htm">CANdelaStudio 8.5</a></li>
+<li>Procedure <a href="../../15%20Procedures/DID/How%20to%20Create%20a%20DID.htm">How to Create a DID</a></li>
+<li>Procedure <a href="../../15%20Procedures/DID/How%20to%20Modify%20a%20DID%20in%20a%20New%20Variant.htm">How to Modify a DID in a New Variant</a></li>
+<li>Procedure <a href="../../15%20Procedures/DID/How%20to%20Move%20Data%20from%20a%20Diagnostic%20Instance%20to%20a%20DID.htm">How to Move Data from a Diagnostic Instance to a DID</a></li>
+</ul>
+</body>
+</html>

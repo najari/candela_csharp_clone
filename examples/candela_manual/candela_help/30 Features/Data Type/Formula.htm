@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Formula</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="formula"><span id='_index_446727976'>Formula</span></h1>
+<p>A Formula data type uses...</p>
+<ul>
+<li>a mathematical formula “f(x) =…” defined as a text string for converting <strong>raw to physical</strong> values, and</li>
+<li>an <strong>optional</strong> other formula string for converting <strong>physical to raw</strong> values.</li>
+</ul>
+<p>The formula can use a hard-coded <strong>set of supported mathematical functions</strong> (sin, asin, ... min, max, abs) and a C-like “<strong>switch</strong>”.</p>
+<p>Example:</p>
+<pre><code>y = f(x) = 2*cos(x+1)
+  x = 2.14159
+  y = -2</code></pre>
+<p>See also the <a href="../../20%20UserInterface/Data%20Type/Data%20Type%20Property%20Page%20Formula.htm">dialog</a>.</p>
+<h2 id="input-value">Input Value</h2>
+<p>The <strong>input value</strong> is represented by the <strong>variable „x“</strong>, like in the formula <code>1/x</code>.</p>
+<ul>
+<li>for the raw to phys. conversion, <code>x</code> represents the raw value,</li>
+<li>for the phys. to raw conversion in the &quot;Phys-&gt;Raw&quot; page, <code>x</code> represents the physical value.</li>
+</ul>
+<p>No other variable names are supported.</p>
+<h2 id="operators">Operators</h2>
+<p>The following operators are supported in formulas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Operator</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">+</td>
+<td align="left">Plus</td>
+<td align="left"><code>8  + 2 = 10</code></td>
+</tr>
+<tr class="even">
+<td align="left">-</td>
+<td align="left">Minus</td>
+<td align="left"><code>8  - 2 =  6</code></td>
+</tr>
+<tr class="odd">
+<td align="left">*</td>
+<td align="left">Multiplication</td>
+<td align="left"><code>8  * 2 = 16</code></td>
+</tr>
+<tr class="even">
+<td align="left">/</td>
+<td align="left">Division</td>
+<td align="left"><code>8  / 2 =  4</code></td>
+</tr>
+<tr class="odd">
+<td align="left">&amp;</td>
+<td align="left">Binary and</td>
+<td align="left"><code>8  &amp; 2 =  0</code></td>
+</tr>
+<tr class="even">
+<td align="left">|</td>
+<td align="left">Binary or</td>
+<td align="left"><code>8  | 2 = 10</code></td>
+</tr>
+<tr class="odd">
+<td align="left">^</td>
+<td align="left">Binary xor</td>
+<td align="left"><code>8  ^ 2 = 10</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="constants">Constants</h2>
+<p>Numbers can be represented in different <strong>number formats</strong>:</p>
+<table style="width:39%;">
+<colgroup>
+<col width="13%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Format</th>
+<th align="left">Prefix</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Hex</td>
+<td align="left">0x<br />
+$</td>
+<td align="left">0x32<br />
+$32</td>
+</tr>
+<tr class="even">
+<td align="left">Bin</td>
+<td align="left">%</td>
+<td align="left">%100101</td>
+</tr>
+<tr class="odd">
+<td align="left">Octal</td>
+<td align="left">0</td>
+<td align="left">071</td>
+</tr>
+<tr class="even">
+<td align="left">Decimal</td>
+<td align="left"></td>
+<td align="left">0<br />
+1289</td>
+</tr>
+</tbody>
+</table>
+<p>The following <strong>special constants</strong> are allowed:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Constant</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">pi</td>
+<td align="left">3.141...</td>
+</tr>
+<tr class="even">
+<td align="left">e</td>
+<td align="left">2.71828... (Euler number)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="functions">Functions</h2>
+<p>The following functions are allowed:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">sin</td>
+<td align="left">Calculate sine</td>
+<td align="left">sin(x)</td>
+</tr>
+<tr class="even">
+<td align="left">asin</td>
+<td align="left">Calculate arcsine</td>
+<td align="left">asin(x)</td>
+</tr>
+<tr class="odd">
+<td align="left">sinh</td>
+<td align="left">Calculate hyperbolic sine</td>
+<td align="left">sinh(x)</td>
+</tr>
+<tr class="even">
+<td align="left">cos</td>
+<td align="left">Calculate cosine</td>
+<td align="left">cos(x)</td>
+</tr>
+<tr class="odd">
+<td align="left">acos</td>
+<td align="left">Calculate arccosine</td>
+<td align="left">acos(x)</td>
+</tr>
+<tr class="even">
+<td align="left">cosh</td>
+<td align="left">Calculate hyperbolic cosine</td>
+<td align="left">cosh(x)</td>
+</tr>
+<tr class="odd">
+<td align="left">tan</td>
+<td align="left">Calculate tangent</td>
+<td align="left">tan(x)</td>
+</tr>
+<tr class="even">
+<td align="left">atan</td>
+<td align="left">Calculate arctangent</td>
+<td align="left">atan(x)</td>
+</tr>
+<tr class="odd">
+<td align="left">tanh</td>
+<td align="left">Calculate hyperbolic tangent</td>
+<td align="left">tanh(x)</td>
+</tr>
+<tr class="even">
+<td align="left">exp</td>
+<td align="left">Calculate exponential function</td>
+<td align="left">exp(x)</td>
+</tr>
+<tr class="odd">
+<td align="left">pow</td>
+<td align="left">Calculate value raised to a power</td>
+<td align="left">pow(x,3)</td>
+</tr>
+<tr class="even">
+<td align="left">sqrt</td>
+<td align="left">Find square root</td>
+<td align="left">sqrt(x)</td>
+</tr>
+<tr class="odd">
+<td align="left">log</td>
+<td align="left">Calculate natural logarithm</td>
+<td align="left">log(x)</td>
+</tr>
+<tr class="even">
+<td align="left">log10</td>
+<td align="left">Calculate base-10 logarithm</td>
+<td align="left">log10(x)</td>
+</tr>
+<tr class="odd">
+<td align="left">max</td>
+<td align="left">Return larger of two values</td>
+<td align="left">max(x1,x2)</td>
+</tr>
+<tr class="even">
+<td align="left">Min</td>
+<td align="left">Return smaller of two values</td>
+<td align="left">min(x1,x2)</td>
+</tr>
+<tr class="odd">
+<td align="left">Abs</td>
+<td align="left">Find absolute value</td>
+<td align="left">abs(x)</td>
+</tr>
+<tr class="even">
+<td align="left">switch</td>
+<td align="left">switch(selector, default value, x1, value1, x2, value2,…)</td>
+<td align="left">switch(x,99999,1,x+2,2,x-2,3,x*2,4,x/2)</td>
+</tr>
+</tbody>
+</table>
+<p>Note: for trigonometric functions, the <code>x</code> value is in radian (rad), e.g. <code>cos(pi) = -1</code>.</p>
+
+<h2 id="odx">ODX</h2>
+<ul>
+<li><strong>ODX</strong> does not support this kind of <em>general</em> formula.</li>
+<li>It supports a rational function (ISO 22901-1: 7.3.6.6.3),
+<ul>
+<li>like <code>y = 10000/x</code>,</li>
+<li>with any exponent <code>&gt;= 0</code> in the numerator and denominator, respectively.</li>
+</ul></li>
+</ul>
+<p><a href="../../30%20Features/Export/110_ODXExport_CANdela%20data%20types%20mapped%20to%20DOPs.htm">ODX export</a> converts a formula to an ODX COMPU-METHOD <code>IDENTITY</code>.</p>
+<p><strong>ODX import</strong> converts a rational function into a formula (which is always possible since a formula is more general).</p>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Type.htm#conversions">Conversions</a></li>
+<li><a href="Data%20Type.htm">Data Type (Feature)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Types.htm">Data Types (List)</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Data%20Type.htm">Data Type - Properties Dialog</a></li>
+<li><a href="../../20%20UserInterface/Data%20Type/Icons.htm">Data Type Icons</a></li>
+</ul>
+</body>
+</html>

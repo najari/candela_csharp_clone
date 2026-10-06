@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>ODX Import</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="odx-import">ODX Import</h1>
+<h2 id="start">Start</h2>
+<p>ODX Import is available in ribbon tab Data Exchange | ODX Process <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm#MENU-R210' title="">[MENU-R210]</a>.</p>
+<h2 id="scope-of-import-data">Scope of Import Data</h2>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/ODX%20Import%20Scopes.jpg" alt="ODX Import Scopes with &quot;Library&quot;" />
+<p class="caption">ODX Import Scopes with &quot;Library&quot;</p>
+</div>
+<p>The first page of the ODX import wizard selects the scope of the data to import (click a link to read the details in the following chapters):</p>
+<ul>
+<li><a href="#complete">Complete ODX ECU description</a></li>
+<li><a href="#variants">Variants with selection of services/jobs</a></li>
+<li><a href="#parts">Selected parts only</a></li>
+<li><a href="#library">Library</a></li>
+</ul>
+<h3 id="deactivate">Checkbox: &quot;Deactivate all CANdela diagnostic instances and job containers...&quot;</h3>
+<p>See at the <a href="../../30%20Features/Import/5_Selective%20Topics.htm#deactivate-jobs">ODX Import Feature</a>.</p>
+<h2 id="complete">Import Scope: Complete ODX ECU Description</h2>
+<p>Context: you import a complete ODX BASE-VARIANT (corresponding with the CANdela ECU).</p>
+<p>Dialogs:</p>
+<ul>
+<li><a href="#file-selection">File Selection</a></li>
+<li><a href="#summary">Import Summary</a></li>
+<li><a href="#progress">Import Progress</a></li>
+</ul>
+<p>See the <a href="../../30%20Features/Import/4_Import%20of%20Libraries.htm#complete">handling of libraries in the Complete ODX ECU Description import</a>.</p>
+<h2 id="variants">Import Scope: Variants with Selection of Services/Jobs</h2>
+<p>Context: you import selected CANdela variants, based on variants of one ODX BASE-VARIANT.</p>
+<p>Dialogs:</p>
+<ul>
+<li><a href="#file-selection">File Selection</a></li>
+<li><a href="#assigning-diagnostic-variants">Assigning Diagnostic Variants</a></li>
+<li><a href="#select-services-jobs">Select Services/Jobs</a> (optional)</li>
+<li><a href="#summary">Import Summary</a></li>
+<li><a href="#progress">Import Progress</a></li>
+</ul>
+<p>See the <a href="../../30%20Features/Import/4_Import%20of%20Libraries.htm#variants">handling of libraries in the Variants with Selection... import</a>.</p>
+<h2 id="parts">Import Scope: Selected Parts only</h2>
+<p>Context: you import selected parts from the ODX file.</p>
+<p>Dialogs:</p>
+<ul>
+<li><a href="#file-selection">File Selection</a></li>
+<li><a href="#parts-selection">Parts Selection</a></li>
+<li>Diagnostic trouble codes (repeated for each target DTC list):
+<ul>
+<li><a href="#dtcs">Assign Import Target</a></li>
+<li><a href="#linking-of-dtc-columns">Linking of DTC Columns</a></li>
+<li><a href="#dtc-filter">DTC Filter</a></li>
+</ul></li>
+<li>Data types:
+<ul>
+<li><a href="#filter-data-types">Filter Data Types</a></li>
+</ul></li>
+<li>Data objects:
+<ul>
+<li><a href="#data-object-steps-selection">Data Object Steps Selection</a></li>
+</ul></li>
+<li><a href="#summary">Import Summary</a></li>
+<li><a href="#progress">Import Progress</a></li>
+</ul>
+<p>See the <a href="../../30%20Features/Import/4_Import%20of%20Libraries.htm#parts">handling of libraries in the Selected Parts only import</a>.</p>
+<h2 id="library">Import Scope: Library</h2>
+<p>Context: you import one ECU-SHARED-DATA into a library.</p>
+<p>Dialogs:</p>
+<ul>
+<li><a href="#file-selection">File Selection</a></li>
+<li><a href="#select-esd">Select ECU-SHARED-DATA</a></li>
+<li><a href="#summary">Import Summary</a></li>
+<li><a href="#progress">Import Progress</a></li>
+</ul>
+<p>See the <a href="../../30%20Features/Import/4_Import%20of%20Libraries.htm#library">handling of libraries in the Library import</a>.</p>
+<h2 id="file-selection">File Selection</h2>
+<!-- cf. screenshots for DTC import in "How to Import DTCs from Excel" -->
+<div class="figure">
+<img src="Images/File%20Selection.jpg" alt="File Selection for ODX Import" />
+<p class="caption">File Selection for ODX Import</p>
+</div>
+<h3 id="import-data-from-files">Import data from file(s)</h3>
+<p>Specify the path to one or more ODX files, or to a PDX file.</p>
+<p>For convenience, use the file selection dialog available via the <code>...</code> button to the right.</p>
+<h3 id="show-odx-data">Show ODX Data</h3>
+<p>The button opens Vector ODXStudio on the ODX file specified in the edit control.</p>
+<h2 id="assigning-diagnostic-variants">Assigning Diagnostic Variants</h2>
+<div class="figure">
+<img src="Images/Assigning%20Diagnostic%20Variants.jpg" alt="Assigning Diagnostic Variants" />
+<p class="caption">Assigning Diagnostic Variants</p>
+</div>
+<p>The dialog lets you select for each ODX DIAG-LAYER in the import file(s) whether to...</p>
+<ul>
+<li>ignore it: select &quot;<em>Ignore</em>&quot;;</li>
+<li>import it as a new variant: select the name of a DIAG-LAYER (shown in bold face);</li>
+<li>import it into a variant existing in the CANdela document: select the name of the existing variant (shown in normal face).</li>
+</ul>
+<h3 id="checkbox-select-servicesjobs">Checkbox &quot;Select services/jobs&quot;</h3>
+<p>Check this in order to show the <a href="#select-services-jobs">Select Services/Jobs</a> dialog as the next wizard step.</p>
+<p>If the checkbox is un-checked, the wizard will skip the dialog.</p>
+<h2 id="select-services-jobs">Select Services/Jobs</h2>
+<div class="figure">
+<img src="Images/Select%20Services%20Jobs.jpg" alt="Select Services Jobs" />
+<p class="caption">Select Services Jobs</p>
+</div>
+<p>Shows the services/jobs from the import files grouped by DIAG-LAYER (variant) and lets you select each service individually.</p>
+<h2 id="parts-selection">Parts Selection</h2>
+<div class="figure">
+<img src="Images/Parts%20Selection.jpg" alt="Parts Selection" />
+<p class="caption">Parts Selection</p>
+</div>
+<p>The dialog lets you select which parts of the ODX file(s) to import:</p>
+<ul>
+<li>Diagnostic trouble codes: dialogs <a href="#dtcs">Assign Import Target</a>, <a href="#linking-of-dtc-columns">Linking of DTC Columns</a>, <a href="#dtc-filter">DTC Filter</a> (repeated for each target DTC list)</li>
+<li>Data types: dialog <a href="#filter-data-types">Filter Data Types</a></li>
+<li>Data objects: dialog <a href="#data-object-steps-selection">Data Object Steps Selection</a></li>
+</ul>
+<p>For each part, you have the choice to...</p>
+<ul>
+<li>import immediately (shows no further dialog for this part)</li>
+<li>edit (shows a detail dialog for this part)</li>
+</ul>
+<p>Note: import shows the progress of selection at the lower left: the current part is shown in bold face.</p>
+<h2 id="dtcs">Import Target DTCs</h2>
+<div class="figure">
+<img src="Images/DTCs%20Import%20Target.jpg" alt="Import Target Selection for DTCs" />
+<p class="caption">Import Target Selection for DTCs</p>
+</div>
+<p>The combobox <strong>Source in Import File</strong> at the bottom contains all <strong>DTCs lists</strong> available in the <strong>import file(s)</strong>, e.g. from multiple ODX variants.</p>
+<p>The <strong>tree view</strong> in the main dialog area shows the <strong>DTC lists</strong> available in the <strong>target document</strong>:</p>
+<ul>
+<li>in the &quot;Available DTCs&quot; (DTC Pool)</li>
+<li>in the variants (not libraries)</li>
+</ul>
+<p>Each of them may contain multiple DTCs lists of different length (2 byte, 3 byte).</p>
+<p>The string <code>[--]</code> behind a DTC list denotes that it has no DTC list from the import file(s) assigned yet.</p>
+<p>Press button <strong>Assign source</strong> to assign the currently selected <strong>Source in Import File</strong> to the currently selected target DTC list in the document. As a result, the source is shown behind the target:</p>
+<div class="figure">
+<img src="Images/DTCs%20Import%20Target%20Assigned.jpg" alt="Import Targets Assigned for DTCs" />
+<p class="caption">Import Targets Assigned for DTCs</p>
+</div>
+<p>In the tree, the <a href="../../20%20UserInterface/Tree/Icons.htm">icon</a> of the Fault Memory diagnostic instance shows whether the diagnostic instance is referenced in multiple variants or libraries. You can assign an import source only <strong>to all referenced diagnostic instances together</strong>.</p>
+<h2 id="linking-of-dtc-columns">Linking of DTC Columns</h2>
+<div class="figure">
+<img src="Images/DTCs%20Linking%20of%20Columns.jpg" alt="Linking of DTC Columns" />
+<p class="caption">Linking of DTC Columns</p>
+</div>
+<p>The columns of the DTC table are defined in the CANdela template and may therefore differ from document to document. In ODX, the corresponding information is defined in SDGs. Import associates the columns based on their <strong>qualifier</strong>.</p>
+<p>The dialog lets you <strong>change the qualifier based default linking</strong>:</p>
+<ul>
+<li>select a cell of the column &quot;Import target (qualifier)&quot;, then</li>
+<li>click again, or press F2</li>
+</ul>
+<p>... to get a combobox with a selection of the remaining (not yet linked) target columns.</p>
+<p>The <strong>DTC number</strong> and the <strong>error text</strong> are fix properties in the CANdela and in the ODX data model, therefore they are not associated via qualifier and cannot be linked to another column.</p>
+<p>Depending on the <a href="../../20%20UserInterface/Document/Property%20Page%20Display%20of%20DTCs.htm">Display of DTCs</a> setup in the File|Property dialog, there may be additional columns representing <strong>parts</strong> of the DTC, e.g. the Failure Type Byte and its associated text. You cannot link such part columns individually, they go with the DTC as a whole.</p>
+<p>Button <strong>Save</strong> lets you save the column mapping for later reuse. It prompts for the path and writes the info into that file, like</p>
+<pre><code>CorrectiveAction =&gt; SpecialInstruction
+SetCondition =&gt; SetCondition
+ResetCondition =&gt; ResetCondition</code></pre>
+<p>Button <strong>Load</strong> lets you re-apply a previously saved column mapping. After you selected the text file, it immediately adjust the values of the &quot;Import target (qualifier)&quot; column.</p>
+<p>Button <strong>Preview</strong> opens a dialog that shows the DTC columns with the values in the linked columns:</p>
+<p><img src="Images/Preview%20of%20Column%20Mapping.jpg" alt="Preview of Column Mapping" />.</p>
+<h2 id="dtc-filter">DTC Filter</h2>
+<div class="figure">
+<img src="Images/DTC%20Filter.jpg" alt="DTC Filter" />
+<p class="caption">DTC Filter</p>
+</div>
+<p>The dialog lets you include or exclude individual DTCs from the import.</p>
+<p>Buttons <strong>Deselect all</strong> and <strong>Select all</strong> un-check or check all DTCs that can be imported.</p>
+<p>DTCs that cannot be imported are shown in <strong>red color</strong>. When you move the mouse over the row of such a DTC, a tooltip will explain the reason, e.g. the list of enumeration symbols does not match.</p>
+<p>Buttons <strong>Reduce by criteria</strong> and <strong>Extend by criteria</strong> let you conveniently un-check or check multiple DTCs:</p>
+<div class="figure">
+<img src="Images/Reduce%20by%20DTC%20Criteria.jpg" alt="Reduce by DTC Criteria" />
+<p class="caption">Reduce by DTC Criteria</p>
+</div>
+<h2 id="filter-data-types">Filter Data Types</h2>
+<div class="figure">
+<img src="Images/Filter%20Data%20Types.jpg" alt="Filter Data Types" />
+<p class="caption">Filter Data Types</p>
+</div>
+<p>The dialog lets you include or exclude individual data types from the import.</p>
+<p>Buttons <strong>Deselect all</strong> and <strong>Select all</strong> un-check or check all data types that can be imported.</p>
+<p>Data types that cannot be imported are shown in <strong>red color</strong>. When you move the mouse over the row of such a data type, a tooltip will explain the reason, e.g. a data type with the given qualifier already exists and is referenced in the target document.</p>
+<p>Buttons <strong>Reduce by criteria</strong> and <strong>Extend by criteria</strong> let you conveniently un-check or check multiple data types:</p>
+<div class="figure">
+<img src="Images/Reduce%20by%20Data%20Type%20Criteria.jpg" alt="Reduce by Data Type Criteria" />
+<p class="caption">Reduce by Data Type Criteria</p>
+</div>
+<h2 id="data-object-steps-selection">Data Object Steps Selection</h2>
+<div class="figure">
+<img src="Images/Data%20Object%20Steps%20Selection.jpg" alt="Data Object Steps Selection" />
+<p class="caption">Data Object Steps Selection</p>
+</div>
+<ul>
+<li>&quot;Import (without further steps)&quot; continues import, with the choice to
+<ul>
+<li>Overwrite existing data objects (without further confirmation)</li>
+<li>Preserve existing data objects</li>
+</ul></li>
+<li>&quot;Edit&quot; shows the following wizard page &quot;Filter Data Objects&quot;</li>
+</ul>
+<h2 id="filter-data-objects">Filter Data Objects</h2>
+<div class="figure">
+<img src="Images/Filter%20Data%20Objects.jpg" alt="Filter Data Objects" />
+<p class="caption">Filter Data Objects</p>
+</div>
+<p>The dialog lets you include or exclude individual data objects from the import.</p>
+<p>Buttons <strong>Deselect all</strong> and <strong>Select all</strong> un-check or check all data objects that can be imported.</p>
+<p>Data objects that cannot be imported are shown in <strong>red color</strong>. When you move the mouse over the row of such a data object, a tooltip will explain the reason.</p>
+<p>Buttons <strong>Reduce by criteria</strong> and <strong>Extend by criteria</strong> let you conveniently un-check or check multiple data objects:</p>
+<div class="figure">
+<img src="Images/Reduce%20by%20Data%20Object%20Criteria.jpg" alt="Reduce by Data Object Criteria" />
+<p class="caption">Reduce by Data Object Criteria</p>
+</div>
+<h2 id="select-esd">Select ECU-SHARED-DATA</h2>
+<div class="figure">
+<img src="Images/Select%20ECU-SHARED-DATA.jpg" alt="Select ECU-SHARED-DATA" />
+<p class="caption">Select ECU-SHARED-DATA</p>
+</div>
+<p>The dialog...</p>
+<ul>
+<li>shows all ECU-SHARED-DATA contained in the import file(s) in a list</li>
+<li>and lets you select one of them for <a href="../../30%20Features/Import/4_Import%20of%20Libraries.htm#library">import as a library</a>.</li>
+</ul>
+<h2 id="summary">Import Summary</h2>
+<div class="figure">
+<img src="Images/Summary.jpg" alt="Import Summary" />
+<p class="caption">Import Summary</p>
+</div>
+<p>Shows a summary of data that will be imported.</p>
+<p>You can</p>
+<ul>
+<li>&quot;Previous&quot;: go back to the previous wizard pages,</li>
+<li>&quot;Finish&quot;: finish import as described in the summary, or</li>
+<li>&quot;Cancel&quot;: cancel without any modification to the CANdela document.</li>
+</ul>
+<h2 id="progress">Import Progress</h2>
+<div class="figure">
+<img src="Images/Import%20Progress.jpg" alt="Import Progress" />
+<p class="caption">Import Progress</p>
+</div>
+<p>The dialog shows the progress of the import with details about the imported objects and the percentage done, and lets you finally <strong>Close</strong> the dialog.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../15%20Procedures/DTC/How%20to%20Import%20DTCs%20from%20Excel.htm">How to Import DTCs from Excel</a></li>
+<li><a href="../../30%20Features/ODX/ODX.htm">Introduction to ODX</a></li>
+<li><a href="../../30%20Features/Import/ODX%20Import%20Introduction.htm">ODX Import</a></li>
+<li><a href="../../30%20Features/Import/4_Import%20of%20Libraries.htm">ODX Import of Libraries</a></li>
+<li>Ribbon Tab Data Exchange | ODX Process | ODX Import <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Ribbon%20Tab%20Data%20Exchange.htm#MENU-R210' title="">[MENU-R210]</a></li>
+</ul>
+</body>
+</html>

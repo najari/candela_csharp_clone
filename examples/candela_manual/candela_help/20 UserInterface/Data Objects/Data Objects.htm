@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Objects</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-objects-telegram-table">Data Objects (Telegram Table)</h1>
+<p>See the <a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">Data Objects Feature</a>.</p>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Telegram%20Table.jpg" alt="CANdelaStudio Telegram Table Showing Various Kinds of Data Objects" />
+<p class="caption">CANdelaStudio Telegram Table Showing Various Kinds of Data Objects</p>
+</div>
+<p>A telegram table displays data objects in a list.</p>
+<h2 id="columns">Columns</h2>
+<h3 id="byte-no.-bit-pos.">Byte No., Bit Pos.</h3>
+<p>The &quot;Byte No.&quot; and &quot;Bit Pos.&quot; columns contain the start position of a data object within the telegram.</p>
+<ul>
+<li>The &quot;Byte No.&quot; is relative within the telegram table and therefore always starts with zero.</li>
+<li>If the data object is on top-level (directly in the list), the &quot;Bit Pos.&quot; is empty.</li>
+<li>Only byte-sized data starting at byte positions can be positioned directly in the list. Other data must be put into a bit-field.</li>
+<li>If the data object is within a bitfield, the &quot;Byte No.&quot; is empty, and &quot;Bit Pos.&quot; denotes the relative position within the bitfield.</li>
+<li>&quot;Bit Pos.&quot; normally starts with zero, but CANdelaStudio supports starting with the most significant bit, see <a href="../../30%20Features/Common%20Properties/Bit%20and%20Byte%20Positions.htm#bitfield-display-variation">Bitfield Display Variation</a>.</li>
+</ul>
+<p>CANdelaStudio calculates the values in these columns automatically from the lengths of the data objects, you cannot modify them directly.</p>
+<h3 id="name">Name</h3>
+<p>The &quot;Name&quot; column contains the name of the data object.</p>
+<p>For reserved objects, the name is typically &quot;(reserved)&quot;.</p>
+<!--TODO: describe data object icon-->
+<h3 id="data-type">Data Type</h3>
+<p><span id="DOUI-R200" class="rqDef">[DOUI-R200]</span></p>
+<ul>
+<li><p><span id="DOUI-R200-DataObject" class="rqDef">[DOUI-R200-DataObject]</span> For a <strong>data object</strong>, CANdelaStudio shows the name of the referenced data type <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DO-R100' title="">[DO-R100]</a>.</p></li>
+<li><p><span id="DOUI-R200-Bitfield" class="rqDef">[DOUI-R200-Bitfield]</span> For a <strong>bitfield</strong>, CANdelaStudio shows the name of the referenced data type <a class='rqRef' href='../../30 Features\Data Objects\Bit Field.htm#BF-R100' title="">[BF-R100]</a>.</p></li>
+<li><span id="DOUI-R200-Reserved" class="rqDef">[DOUI-R200-Reserved]</span> For a <strong>reserved object</strong> [DO-R200 Reserved], CANdelaStudio shows &quot;reserved (n bytes)&quot; (the number &quot;n&quot; must be &gt; 0).</li>
+<li><span id="DOUI-R200-DIDDataReference" class="rqDef">[DOUI-R200-DIDDataReference]</span> For a <strong>DID Data Reference</strong> <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R160' title="">[DID-R160]</a> in a telegram table, CANdelaStudio shows in the &quot;Data Type&quot; column (CDS-38517)...
+<ul>
+<li>the DID identifier (hexadecimal, leading &quot;0x&quot;, zero filled to 2 bytes)</li>
+<li>a blank</li>
+<li>the DID name</li>
+<li>Example: &quot;0x100 Braking&quot;.</li>
+</ul></li>
+<li><p><span id="DOUI-R200-DIDReference" class="rqDef">[DOUI-R200-DIDReference]</span> For a <strong>DID Reference</strong> <a class='rqRef' href='../../30 Features\DID\DID.htm#DID-R180' title="">[DID-R180]</a> in a telegram table, CANdelaStudio shows in the &quot;Data Type&quot; column the same info as for a DID Data Reference (see above).</p></li>
+</ul>
+<h3 id="default">Default</h3>
+<p>The &quot;Default&quot; value is typically used when a test system constructs a request, but may be changed by the user of the test system.</p>
+<p>How the value is displayed depends on the display format set up in the data type.</p>
+<h3 id="constant">Constant</h3>
+<p>The &quot;Constant&quot; value describes a value known to be fix in the ECU implementation, e.g. a version number. A test system (like the Vector CANoe diagnostic console) may hide the constant value when asking the user for input of request data.</p>
+<p>The &quot;Constant&quot; value described at a data object is not directly used to identify the ECU variant - a test system typically uses a separate description in the <a href="../../30%20Features/Variant/Variant%20Identification.htm">variant identification</a>.</p>
+<h3 id="description">Description</h3>
+<p>The &quot;Description&quot; column contains the description of the data object.</p>
+<p><strong>Multiple lines</strong> are <strong>shown</strong> in the list as one line, separated by a blank. To comfortably <strong>edit</strong> a description that contains multiple lines, the property dialog provides a large edit control.</p>
+<h2 id="attributes">Attributes</h2>
+<p><span id="DOUI-R700" class="rqDef">[DOUI-R700]</span> The telegram table shows data object attributes that have the &quot;visible in separate table column&quot; flag <a class='rqRef' href='../../30 Features\Attributes\Attributes.htm#ATTR-R090-DataObj' title="">[ATTR-R090-DataObj]</a> set.</p>
+<h2 id="new-did-reference-did-data-reference">New DID Reference / DID Data Reference</h2>
+<p>See DID Operations <a class='rqRef' href='../../30 Features\DID\DID Operations.htm#DID-R250' title="Diagnostic Instance">[DID-R250]</a>.</p>
+<h2 id="move-to-new-did-cds-36881-8.2-sp2">Move to New DID (CDS-36881 8.2 SP2)</h2>
+<p><span id="DOUI-R110" class="rqDef">[DOUI-R110]</span> See operation &quot;Move to New DID&quot; <a class='rqRef' href='../../30%20Features/Data%20Objects/Data%20Objects.htm#DOOP-R110' title="">[DOOP-R110]</a>.</p>
+<p>See <a class='rqRef' href='../../20%20UserInterface/Diagnostic%20Instance/Diagnostic%20Instances.htm#DIUI-R070' title="">[DIUI-R070]</a> for the same operation on diagnostic instances.</p>
+<h2 id="properties-of-self-referencing-multiplexer-cds-40502-8.5-sp2">Properties of Self-Referencing Multiplexer (CDS-40502 8.5 SP2)</h2>
+<ul>
+<li><span id="DOUI-R800" class="rqDef" title="Self-Referencing Mux">[DOUI-R800 Self-Referencing Mux]</span> for a data object that references an identity data type <a class='rqRef' href='../../30 Features\Data Type\Self-Referencing Mux.htm#DTMUX-R800-Identity' title="">[DTMUX-R800-Identity]</a> which represents a <a href="../../30%20Features/Data%20Type/Self-Referencing%20Mux.htm">self-referencing Mux</a>, ...
+<ul>
+<li><span id="DOUI-R800-a" class="rqDef">[DOUI-R800-a]</span> CANdelaStudio shall additionally provide a context menu item &quot;Properties of Self-Referencing Multiplexer&quot; below &quot;Properties of Data Type&quot;.</li>
+<li><span id="DOUI-R800-b" class="rqDef">[DOUI-R800-b]</span> if the user selects the context menu item, CANdelaStudio shall open the data type property dialog for the referenced Mux data type.</li>
+</ul></li>
+</ul>
+<p>Note: for a data object that does <em>not</em> represent a self-referencing Mux, CANdelaStudio shall not show the context menu item.</p>
+<h2 id="using-keyboard-cds-71870-v13">Using Keyboard (CDS-71870 v13)</h2>
+<ul>
+<li><span id="DOUI-R810" class="rqDef">[DOUI-R810]</span> TAB leaves editing and navigates to the next cell.</li>
+<li><span id="DOUI-R815" class="rqDef">[DOUI-R815]</span> Shift-TAB leaves editing and navigates to the previous cell.</li>
+<li><span id="DOUI-R820" class="rqDef">[DOUI-R820]</span> ESC leaves editing, discarding changes.</li>
+<li><span id="DOUI-R830" class="rqDef">[DOUI-R830]</span> In the description control (multi-line):
+<ul>
+<li><span id="DOUI-R830-ENTER" class="rqDef">[DOUI-R830-ENTER]</span> ENTER inserts a line-break in the text.</li>
+<li><span id="DOUI-R830-CtrlENTER" class="rqDef">[DOUI-R830-CtrlENTER]</span> Ctrl-ENTER leaves editing, accepting changes.</li>
+<li><span id="DOUI-R830-Focus" class="rqDef">[DOUI-R830-Focus]</span> after leaving editing (with a key above, button OK or Cancel), a cell has focus,
+<ul>
+<li>such that e.g. pressing key Cursor-left navigates to the previous cell, F2 edits a cell.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="Data%20Object%20Property%20Page%20Data.htm">Data Object Property Page &quot;Data&quot;</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Data%20Objects.htm">Data Objects Feature</a></li>
+<li><a href="Graphical%20Telegram%20Table.htm">Graphical Telegram Table</a></li>
+<li>Lists of Objects <a class='rqRef' href='../../20%20UserInterface/CANdelaStudio%20Editor/Basic%20User%20Interface%20Rules.htm#LIST-D100' title="Lists of Objects">[LIST-D100]</a></li>
+<li><a href="../../30%20Features/Data%20Objects/Telegram%20Table.htm">Telegram Table Feature</a></li>
+</ul>
+</body>
+</html>

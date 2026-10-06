@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Document</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="document"><span id='_index_446728002'>Document</span></h1>
+<p>The following describes properties on the CANdela document level.</p>
+<p>See also the <a href="../../30%20Features/Requirements/Requirements%20Settings.htm">document-level settings for Requirements</a></p>
+<h2 id="template">Template Info</h2>
+<p>In a <strong>template</strong>: empty.</p>
+<p><span id="DOC-R100" class="rqDef">[DOC-R100]</span> In a <strong>document</strong>: stores info about the <a href="../../30%20Features/Document%20Template/Document%20Template.htm">Document Template</a> on which the CANdela document is based:</p>
+<ul>
+<li>name</li>
+<li>qualifier</li>
+<li>label (version number of the last revision entry <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R130' title="">[DOC-R130]</a>)</li>
+<li><span id="DOC-R100-SaveNumber" class="rqDef">[DOC-R100-SaveNumber]</span> save number of the document's template (taken from the save number <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R200' title="Save Number">[DOC-R200]</a>)</li>
+</ul>
+<p>Note: CANdelaStudio shows the info in File|Properties page <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm">Document Info</a>.</p>
+<h2 id="manufacturer-related-properties-diagnostics-based-on-vs.-manufacturer">Manufacturer Related Properties: Diagnostics Based on vs. Manufacturer</h2>
+<div class="figure">
+<img src="Images/Manufacturer%20Related%20Properties.jpg" alt="Manufacturer Related Properties" />
+<p class="caption">Manufacturer Related Properties</p>
+</div>
+
+<h3 id="diagnostics-based-on">Diagnostics Based on</h3>
+<p><span id="DOC-R110" class="rqDef">[DOC-R110]</span> This is the key information about any process specific handling of the <a href="../../30%20Features/Document%20Template/Document%20Template.htm">Document Template</a> or document, like hard-coded behavior in a data export or in a test system.</p>
+<p>Shown in menu <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm#diagnostics-based-on">File | Properties | &quot;Document Info&quot; | &quot;Diagnostics based on&quot;</a>.</p>
+<p>The property is fix, you cannot change it in CANdelaStudio (not even in Expert View).</p>
+<p>It either contains</p>
+<ul>
+<li><span id="DOC-R110-Enum" class="rqDef">[DOC-R110-Enum]</span> a value from a predefined set of &quot;manufacturers&quot; (this was the initial way in CANdelaStudio), or</li>
+<li><span id="DOC-R110-String" class="rqDef">[DOC-R110-String]</span> the special predefined value &quot;Standard&quot; followed by a free-text specification (since 6.5; it avoids incompatible extension of the predefined set)
+<ul>
+<li>Versions older than 5.0 will not load such files, see <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Version%20Compatibility.htm#VCMP-R051' title="">[VCMP-R051]</a>.</li>
+</ul></li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>before CANdelaStudio 5.5 added the modifiable string property &quot;manufacturer&quot; described in the following chapter, the &quot;Diagnostics Based on&quot; property was called &quot;manufacturer&quot;.</li>
+<li>it is sometimes still referenced as &quot;the manufacturer of the document&quot;.</li>
+</ul>
+
+<h3 id="manufacturer"><span id='_index_446728003'>Manufacturer</span> (5.5, CDS-7869)</h3>
+<p><span id="DOC-R120" class="rqDef">[DOC-R120]</span> The &quot;Manufacturer&quot; property is a free text...</p>
+<div class="figure">
+<img src="Images/Property%20Page%20Document%20Info%20-%20Manufacturer%20Free%20Text.jpg" alt="Manufacturer Free Text" />
+<p class="caption">Manufacturer Free Text</p>
+</div>
+<p>... that will be printed on the title page of a report:</p>
+<div class="figure">
+<img src="Images/Property%20Page%20Document%20Info%20-%20Manufacturer%20Free%20Text%20in%20Report.jpg" alt="Manufacturer Free Text in Report" />
+<p class="caption">Manufacturer Free Text in Report</p>
+</div>
+<p>It has no effect on the processing of the diagnostic description in the toolchain (as opposed to &quot;Diagnostics Based on&quot; <a href="#diagnostics-based-on">above</a>).</p>
+<p>Do not confuse with <a href="#diagnostics-based-on">Diagnostics Based on (above)</a>!</p>
+<p>Shown in menu <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm#manufacturer">File | Properties | &quot;Document Info&quot; | Manufacturer</a>.</p>
+
+<h2 id="version"><span id='_index_446728004'>Version</span></h2>
+<p><span id="DOC-R130" class="rqDef">[DOC-R130]</span> The <strong>version</strong> of a document or template is the <strong>version number</strong> <a class='rqRef' href='../../30%20Features/Revision%20History/Revision%20History.htm#REV-R010-Version' title="">[REV-R010-Version]</a> of the <strong>last revision entry</strong>.</p>
+<p>CANdelaStudio <strong>uses</strong> the document version in these contexts:</p>
+<ul>
+<li>template info in a document <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R100' title="">[DOC-R100]</a> (above)</li>
+<li>saving a document using a base directory with a version subdirectory <a class='rqRef' href='../../20 UserInterface\CANdelaStudio Editor\Options Property Page General.htm#OPT-R155' title="">[OPT-R155]</a></li>
+</ul>
+<p>See also Version Numbering of the Vector UDS Template <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Version%20Numbering.htm#VER-R300' title="">[VER-R300]</a>.</p>
+<h2 id="protocol-standard-cds-2371-3.0"><span id='_index_446728005'>Protocol Standard</span> (CDS-2371 3.0)</h2>
+<p><span id="DOC-R140" class="rqDef">[DOC-R140]</span> A CANdela document contains information about the Protocol Standard:</p>
+<ul>
+<li>&quot;J1939&quot;</li>
+<li>&quot;KWP&quot;</li>
+<li>&quot;UDS&quot;</li>
+<li>&quot;OBD2&quot; (CDS-5233 5.0)</li>
+</ul>
+<p>shown in File | Properties | Document Info <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R120' title="">[DOCUI-R120]</a>.</p>
+
+<h2 id="save-number">Save Number</h2>
+<p><span id="DOC-R200" class="rqDef" title="Save Number">[DOC-R200 Save Number]</span> A document has an unsigned integer value that CANdelaStudio...</p>
+<ul>
+<li>increments with each <a href="Document%20Operations.htm#save">Save</a> operation</li>
+<li>shows in <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm">File|Properties|Document Info</a></li>
+<li>remembers separately <a class='rqRef' href='../../30%20Features/Document/Document.htm#DOC-R100-SaveNumber' title="">[DOC-R100-SaveNumber]</a> for the document template</li>
+<li>handles in the &quot;convert document to template&quot; operation <a class='rqRef' href='../../30%20Features/Document%20Template/Convert%20to%20Template.htm#DOC-R710' title="">[DOC-R710]</a></li>
+</ul>
+
+<h2 id="vck">Variant Coding Keys</h2>
+<p><span id="DOC-VCK" class="rqDef">[DOC-VCK]</span> The document has a top-level VCK Mode setting:</p>
+<ul>
+<li>none</li>
+<li>numeric (&quot;native&quot; mode, display as unsigned int)</li>
+<li>StringsDC (DCS supplement key string)</li>
+</ul>
+<p>See <a href="../../30%20Features/Variant/Variant%20Coding%20Keys.htm">Variant Coding Keys</a>.</p>
+<h2 id="languages">Languages</h2>
+<p><span id="DOC-R300" class="rqDef" title="Languages">[DOC-R300 Languages]</span> A document stores...</p>
+<ul>
+<li>a set of languages.</li>
+<li>including some country-specific variations of languages, like “English (USA)”, “English (Great Britain)”.</li>
+</ul>
+<p>You may edit the set of languages in the File|Properties dialog, page <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm">Document Info</a>.</p>
+<p>See the <a href="../../30%20Features/Multi-Language/Multi-Language.htm">Multi-Language Feature</a>.</p>
+<p><span id="DOC-R300-Uptodate" class="rqDef">[DOC-R300-Uptodate]</span> A <strong>document</strong> is <strong>up-to-date</strong> for a language if all multi-language strings are up-to-date <a class='rqRef' href='../../30%20Features/Multi-Language/Multi-Language.htm#ML-R110-Uptodate' title="">[ML-R110-Uptodate]</a> for that language.</p>
+<p><span id="DOC-R300-First" class="rqDef">[DOC-R300-First]</span> The <strong>first language</strong> in the document must always be <strong>up-to-date</strong>.</p>
+<ul>
+<li>When you open a document for editing a non-first language, then on saving, CANdelaStudio <strong>puts that language first</strong>.</li>
+</ul>
+<h2 id="dtc-format">DTC Format</h2>
+<p><span id="DOC-R400" class="rqDef">[DOC-R400]</span> The DTC numbers in a CANdela document can be specified using one of the following conventions:</p>
+<ul>
+<li><span id="DOC-R400-14229" class="rqDef">[DOC-R400-14229]</span> <strong>ISO 14229-1 / HEX</strong>
+<ul>
+<li>The 3 byte DTC number is used as a <strong>single value</strong>.</li>
+<li>Display of DTCs: hexadecimal or with prefixes &quot;PCBU&quot;, controlled by the global editor setting in Ribbon Tab <a href="../../20%20UserInterface/CANdelaStudio%20Editor/Options%20Property%20Page%20Display.htm">File | Options | Display</a>.</li>
+</ul></li>
+<li><span id="DOC-R400-J2012" class="rqDef">[DOC-R400-J2012]</span> ISO 15031-6 / SAE J2012
+<ul>
+<li>The 3 byte DTC number is structured in <strong>16 + 8 bits</strong>,</li>
+<li>Byte 0 (LSB) is the <a href="../../30%20Features/DTC/Failure%20Type%20Byte.htm">Failure Type Byte (FTB)</a>.</li>
+<li><a class='rqRef' href='../../30%20Features/DTC/Failure%20Type%20Byte.htm#DTC-R500' title="">[DTC-R500]</a> A text table data type with <strong>8 bits</strong> size specifies the <strong>FTB values</strong>.</li>
+<li>Display of DTCs: decimal (defined by the SAE standard)</li>
+</ul></li>
+<li><span id="DOC-R400-J1939" class="rqDef">[DOC-R400-J1939]</span> SAE J1939-73 (Version 4)
+<ul>
+<li>The 3 byte DTC number is structured in <strong>19 + 5 bits</strong>,</li>
+<li>bits 0..4 are the <a href="../../30%20Features/DTC/Failure%20Mode%20Identifier.htm">Failure Mode Identifier (FMI)</a>.</li>
+<li><a class='rqRef' href='../../30%20Features/DTC/Failure%20Mode%20Identifier.htm#DTC-R510' title="">[DTC-R510]</a> A text table data type with <strong>5 bits</strong> size specifies the <strong>FMI values</strong> .</li>
+<li>Display of DTCs: decimal (defined by the SAE standard)</li>
+</ul></li>
+</ul>
+<p>The DTC Format can be edited in the template via File | Properties | Display of DTCs <a class='rqRef' href='../../20 UserInterface\Document\Property Page Display of DTCs.htm#DOCUI-R610' title="">[DOCUI-R610]</a>.</p>
+<p>The DTC list applies the DTC Format, see &quot;Editing Failure Type Byte&quot; <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R030' title="">[DTCUI-R030]</a> and &quot;Editing Failure Mode Identifier&quot; <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R040' title="">[DTCUI-R040]</a>.</p>
+<h2 id="autosar-cds-71296-v13">AUTOSAR (CDS-71296 v13)</h2>
+<h3 id="autosar-type">AUTOSAR Type</h3>
+<p><span id="DOC-R530" class="rqDef">[DOC-R530]</span> The ECU attribute <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_AUTOSAR_Type' title="">[ASR-D001_AUTOSAR_Type]</a> controls the DEXT export of the document:</p>
+<ul>
+<li><span id="DOC-R530-None" class="rqDef">[DOC-R530-None]</span> &quot;None&quot;: the document does not support AUTOSAR
+<ul>
+<li>You can the DEXT export on such a document, see <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-R130-Warn' title="">[DEXT-R130-Warn]</a>.</li>
+</ul></li>
+<li><span id="DOC-R530-Classic" class="rqDef">[DOC-R530-Classic]</span> &quot;Classic&quot;</li>
+<li><span id="DOC-R530-Adaptive" class="rqDef">[DOC-R530-Adaptive]</span> &quot;Adaptive&quot;</li>
+<li>You specify the AUTOSAR Type in Ribbon Tab File | Properties | Document Info <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R500' title="">[DOCUI-R500]</a>.</li>
+</ul>
+<h3 id="autosar-version">AUTOSAR Version</h3>
+<ul>
+<li><span id="DOC-R540" class="rqDef">[DOC-R540]</span> The ECU attribute <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_AUTOSAR_Version' title="">[ASR-D001_AUTOSAR_Version]</a> specifies the AUTOSAR version.</li>
+<li>The value is free text.</li>
+<li>You specify the AUTOSAR Version in Ribbon Tab File | Properties | Document Info <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R500' title="">[DOCUI-R500]</a>.</li>
+</ul>
+
+<p>See the list of available AUTOSAR versions <a class='rqRef' href='../../30%20Features/Export/AUTOSAR%20Diagnostic%20Extract.htm#DEXT-D050' title="">[DEXT-D050]</a>.</p>
+<h2 id="supports-pvcdi">Supports PVCDI</h2>
+<p><span id="DOC-R420" class="rqDef">[DOC-R420]</span> Boolean property &quot;Supports PVCDI&quot; specifies whether the document is relevant for PREEvision CANdela Data Interchange (PVCDI).</p>
+<ul>
+<li>If set, this triggers the PREEvision UUID Repair <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Saving%20a%20Document%20or%20Template.htm#SV-R110' title="">[SV-R110]</a> on saving.</li>
+</ul>
+
+<h2 id="related-topics">Related Topics</h2>
+<p>User Interface:</p>
+<ul>
+<li>Editing Failure Type Byte <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R030' title="">[DTCUI-R030]</a></li>
+<li>Editing Failure Mode Identifier <a class='rqRef' href='../../20 UserInterface\DTC\DTCs.htm#DTCUI-R040' title="">[DTCUI-R040]</a></li>
+<li>Menu <a href="../../20%20UserInterface/Document/Property%20Page%20Display%20of%20DTCs.htm">File | Properties | &quot;Display of DTCs&quot;</a></li>
+<li>Menu <a href="../../20%20UserInterface/Document/Property%20Page%20Document%20Info.htm">File | Properties | &quot;Document Info&quot;</a></li>
+</ul>
+<p>Features:</p>
+<ul>
+<li><a href="Bit%20Ordering.htm">Bit Ordering</a> (Option for Bit Fields)</li>
+<li>Document-level <a href="Authorization.htm">Authorization</a></li>
+<li><a href="../../30%20Features/Document%20Template/Document%20Template.htm">Document Template</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Editions.htm">Editions</a></li>
+<li><a href="../../30%20Features/Multi-Language/Multi-Language.htm">Multi-Language</a></li>
+<li><a href="ODX%20ECU-SHARED-DATA.htm">ODX ECU-SHARED-DATA</a></li>
+<li>PREEvision UUID Repair <a class='rqRef' href='../../30%20Features/CANdelaStudio%20Editor/Saving%20a%20Document%20or%20Template.htm#SV-R110' title="">[SV-R110]</a></li>
+<li><a href="Password%20Protection.htm">Password Protection</a></li>
+<li><a href="../../30%20Features/Requirements/Requirements%20Settings.htm">Requirements Settings (Document Level)</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Views.htm">Views</a></li>
+<li><a href="../../30%20Features/CANdelaStudio%20Editor/Version%20Numbering.htm">Version Numbering</a></li>
+</ul>
+
+</body>
+</html>

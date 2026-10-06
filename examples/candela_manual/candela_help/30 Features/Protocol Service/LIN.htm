@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>LIN</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="lin"><span id='_index_446728104'>LIN</span></h1>
+<h2 id="lin-standardization">LIN Standardization</h2>
+<ul>
+<li>&quot;<strong>Road vehicles - Unified diagnostic services (UDS)</strong>&quot;
+<ul>
+<li>was released in a second edition 2013-05-15 as <code>ISO 14229-1 2013(E)</code>.</li>
+</ul></li>
+<li>&quot;Road vehicles -- Unified diagnostic services (UDS) -- <strong>Part 7: UDS on local interconnect network (UDSonLIN)</strong>&quot;
+<ul>
+<li>defines methods to implement diagnostic data transfer between a client and the LIN slave nodes through the LIN master node.</li>
+</ul></li>
+</ul>
+<h2 id="candela-template">CANdela Template</h2>
+<p>See the <a href="../../40%20Templates/Vector%20UDS%20on%20LIN/Introduction.htm">Vector UDS on LIN</a> Template.</p>
+<h2 id="lin-frames-and-supported-interfaces">LIN Frames and Supported Interfaces</h2>
+<ul>
+<li>There is <strong>no need for a LIN specific Interface</strong> in the “Supported Interfaces” list of a LIN CDD.</li>
+<li>The <strong>LIN specification</strong>...
+<ul>
+<li>fixes two <strong>LIN frames</strong> for <strong>Diagnostics</strong> and for <strong>Slave Reconfiguration</strong>:
+<ul>
+<li>0x3C: Master Request Frame</li>
+<li>0x3D: Slave Response Frames</li>
+</ul></li>
+<li>defines the values for the diagnostic timings <strong>P2</strong> and <strong>P2extended</strong></li>
+</ul></li>
+<li>The <strong>LIN Description File (LDF)</strong>...
+<ul>
+<li>defines further settings relevant for diagnostics
+<ul>
+<li>e.g. the node address</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="diagnostics-uds-services">Diagnostics: UDS Services</h2>
+<ul>
+<li>The <strong>CANdela document (CDD)</strong> describes <strong>UDS services</strong> as usual.
+<ul>
+<li>They are transported between Master and Slave using the two LIN frames and timings as described above.</li>
+</ul></li>
+</ul>
+<h2 id="slave-reconfiguration-0xbx-services">Slave Reconfiguration: 0xBx Services</h2>
+<div class="figure">
+<img src="Images/LIN%20Services%20Bx.jpg" alt="LIN Services Bx in the Vector UDS on LIN Template" />
+<p class="caption">LIN Services Bx in the Vector UDS on LIN Template</p>
+</div>
+<p>Note: you can <strong>copy</strong> the 0xBx Services from the <a href="../../40%20Templates/Vector%20UDS%20on%20LIN/Introduction.htm">Vector UDS on LIN</a> Template (in CANdelaStudio Expert View).</p>
+<p>The <strong>0xBx Services</strong> for slave reconfiguration are...</p>
+<ul>
+<li>part of the <strong>LIN protocol</strong> itself;</li>
+<li><strong>not supported</strong> by UDS on LIN
+<ul>
+<li>see UDS on LIN (ISO 14229-7) - <strong>Table 3</strong> &quot;Overview of applicable ISO 14229-1 diagnostic services and data ranges&quot;</li>
+<li>&quot;Services which are not listed in Table 3 are not supported&quot;</li>
+</ul></li>
+<li>The 0xBx Services are somewhat “compatible”,
+<ul>
+<li>i.e. the SID is sent as if these were “normal” UDS services.</li>
+</ul></li>
+<li>However, it is e.g. not allowed to send a Negative Response with NRC=”Response Pending” for them.</li>
+</ul>
+<h3 id="in-canoe">In CANoe</h3>
+<ul>
+<li>Part of CANoe is a <strong>generic diagnostic description for LIN</strong>.
+<ul>
+<li>The 0xBx Services were never defined in this diagnostic description,</li>
+<li>except the <strong>0xB2</strong> service “Read By Identifier”
+<ul>
+<li>(do not mix this with the UDS 0x22 “Read Data by Identifier”)</li>
+</ul></li>
+</ul></li>
+<li><strong>CANoe supports the 0xBx Services</strong>...
+<ul>
+<li>typically as part of the LIN protocol implementation <strong>via CAPL</strong>;</li>
+<li>but you can also send them via the <strong>Diagnostic Feature Set</strong>...
+<ul>
+<li>either with a diagnostic description (CDD, ODX) defining them,</li>
+<li>or in CAPL with the following workaround:</li>
+</ul></li>
+</ul></li>
+</ul>
+<pre><code>testcase TestB4Service()
+{
+  byte buffer[2]={0xB4, 0x08};
+  diagRequest SerialNumber_Read dummyReq; // Use any request defined in the diagnostic description
+  long ret;
+
+  DiagSetTarget(&quot;Door&quot;);
+
+  diagResize(dummyReq, elcount(buffer));
+  diagSetPrimitiveData(dummyReq, buffer, elcount(buffer));
+  DiagSendrequest(dummyReq);
+  ret=testWaitForDiagRequestSent(dummyReq, 1000);
+  // ...
+}</code></pre>
+
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../40%20Templates/Vector%20UDS%20on%20LIN/Introduction.htm">Vector UDS on LIN</a> Template</li>
+<li>www.iso.org: <a href="https://www.iso.org/standard/61221.html">ISO 14229-7:2015</a> (UDS Part 7)</li>
+</ul>
+
+</body>
+</html>

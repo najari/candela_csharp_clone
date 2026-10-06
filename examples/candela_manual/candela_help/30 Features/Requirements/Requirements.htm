@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Requirements</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="requirements">Requirements</h1>
+<div class="figure">
+<img src="../../20%20UserInterface/Images/Requirements.jpg" alt="CANdelaStudio Requirements View" />
+<p class="caption">CANdelaStudio Requirements View</p>
+</div>
+<p>You can use CANdelaStudio to describe requirements for an ECU.</p>
+<h2 id="use-cases">Use-Cases</h2>
+<h3 id="within-candelastudio">Within CANdelaStudio</h3>
+<ul>
+<li><strong>write</strong> requirements <strong>in CANdelaStudio</strong>,</li>
+<li>automatically create diagnostic objects from the requirements.</li>
+</ul>
+<h3 id="use-a-requirements-tool">Use a Requirements Tool</h3>
+<ul>
+<li><strong>write</strong> requirements in a <strong>requirements tool</strong>, like Rational DOORS, or in Vector PREEvision,</li>
+<li><strong>import</strong> the requirements into CANdelaStudio,</li>
+<li>create diagnostic objects from the requirements.</li>
+</ul>
+<h3 id="take-over-from-a-candela-document">Take-over from a CANdela Document</h3>
+<ul>
+<li>based on an <strong>existing CANdela document</strong>, create requirements from the diagnostic objects,</li>
+<li>export the requirements for use in a third-party requirements tool.</li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+<div class="figure">
+<img src="Images/Requirements%20Workflow.jpg" alt="Requirements Workflow DOORS - Converter / PREEvision / .csv / CANdelaStudio Requirements / Diagnostic Objects" />
+<p class="caption">Requirements Workflow DOORS - Converter / PREEvision / .csv / CANdelaStudio Requirements / Diagnostic Objects</p>
+</div>
+<h3 id="requirements-pool">Requirements Pool</h3>
+<p>In a CANdela document, <strong>diagnostic objects</strong> describe the diagnostic behaviour of an ECU (e.g. ECU, variant, service, data object, data type).</p>
+<p>Besides the diagnostic objects, a CANdela document contains a <strong>requirements pool</strong>. The requirements can be...</p>
+<ul>
+<li>imported/exported</li>
+<li>synchronized with diagnostic objects</li>
+</ul>
+<h3 id="file-based-data-exchange">File-Based Data Exchange</h3>
+<p>In order to <strong>exchange requirements with other tools</strong> like Rational DOORS or Vector PREEvision, CANdelaStudio...</p>
+<ul>
+<li>does <strong>not</strong> support a <strong>direct tool coupling</strong>,</li>
+<li>but a <strong>file-based data exchange</strong>: CANdelaStudio supports a <a href="../../30%20Features/Requirements/CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm">.csv based file format</a> to import and export requirements.</li>
+</ul>
+<p>In Rational DOORS, requirement properties can be configured freely (with flexibility like in Microsoft Excel). Therefore you cannot export a .csv file from DOORS and import it <strong>directly</strong> in CANdelaStudio - CANdelaStudio does not know your DOORS conventions. A <strong>converter</strong> is required to adapt the data</p>
+<ul>
+<li>from the conventions used in DOORS</li>
+<li>to the exchange format supported by CANdelaStudio.</li>
+</ul>
+<p>This can be done in both directions.</p>
+<p>Vector is ready to assist you on a service project basis in converting between the CANdelaStudio exchange format and the specific formats of a third-party tool.</p>
+<h3 id="types-of-requirements">Types of Requirements</h3>
+<div class="figure">
+<img src="Images/HeadingAndData.png" alt="Screenshot Showing different Types of Requirements" />
+<p class="caption">Screenshot Showing different Types of Requirements</p>
+</div>
+<p>CANdelaStudio supports different types of requirements:</p>
+<ul>
+<li><strong>Text</strong>: plain text requirement, no properties related with diagnostic objects, therefore ignored when CANdelaStudio creates diagnostic objects from requirements.</li>
+<li><strong>Heading</strong>: to define a nested structure of requirements (like chapters in a text editor)</li>
+<li><strong>&quot;Typed&quot; requirements</strong>, from which CANdelaStudio can automatically <strong>create diagnostic objects</strong> (and vice versa). A typed requirement...
+<ul>
+<li>represents a specific type of diagnostic object,</li>
+<li>and has additional properties like bit length or display format.</li>
+</ul></li>
+</ul>
+<p>Typed requirements cover</p>
+<ul>
+<li>DIDs,</li>
+<li>diagnostic instances,</li>
+<li>DTCs,</li>
+<li>data objects,</li>
+</ul>
+<p>but not services and data types.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li>Requirements <a href="Data%20Model.htm">Data Model</a></li>
+<li>Requirements <a href="Requirements%20Settings.htm">Settings (Document Level)</a></li>
+<li><a href="Requirements%20and%20Diagnostic%20Objects.htm">Requirements and Diagnostic Objects</a></li>
+<li>Requirements <a href="Equality.htm">Equality</a></li>
+<li>Requirements <a href="Link%20Status.htm">Link Status</a></li>
+<li><a href="Update%20Diagnostic%20Objects.htm">Update Diagnostic Objects</a></li>
+<li><a href="Update%20Requirements.htm">Update Requirements</a></li>
+<li>Requirements <a href="../../30%20Features/Export/Requirements%20Export.htm">Export</a></li>
+<li>Requirements <a href="../../30%20Features/Import/Requirements%20Import.htm">Import</a></li>
+<li>Requirements <a href="../../20%20UserInterface/Requirements/Requirements.htm">User Interface</a></li>
+<li><a href="CANdelaStudio%20CSV%20Requirements%20Exchange%20Format.htm">CANdelaStudio CSV Requirements Exchange Format</a></li>
+<li><a href="../../15%20Procedures/Excel/How%20to%20Open%20a%20CSV%20File%20in%20Excel.htm">How to Open CSV in Excel</a></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Data Type</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="data-type---properties-dialog"><span id='_index_446727883' title='Data Type: Properties Dialog' data-term='Data Type' data-text='Properties Dialog'>Data Type - Properties Dialog</span></h1>
+<p>See the <a href="../../30%20Features/Data%20Type/Data%20Type.htm">Data Type Feature</a>.</p>
+<div class="figure">
+<img src="Images/Data%20Type%20Property%20Page%20Raw%20Value.jpg" alt="Data Type Dialog" />
+<p class="caption">Data Type Dialog</p>
+</div>
+<h2 id="restrictions-for-editing">Restrictions for Editing</h2>
+<p>If a datatype is already used, you can no more modify properties that influence the length of the datatype (e.g. bit length and field size).</p>
+<p>Motivation: all telegrams containing data objects that reference the data type would have to be adjusted. If the bit length of the data type changes, the positions of all data objects that follow the data object with this data type must be adjusted. This could have unforeseen consequences.</p>
+<p>Depending on which length you entered under &quot;Bit length / Field size&quot;, the &quot;Encoding&quot; selection list shows available encodings for that length.</p>
+<h2 id="name">Name</h2>
+<p>Shows and lets you edit the <a href="../../30%20Features/Common%20Properties/Name.htm">name</a> of the data type (as in the General page).</p>
+<p><strong>Tip</strong>: it may be helpful to include the size of the data type in its name and qualifier, like “HexDump (1Byte)”, “ASCII (256)”.</p>
+<h2 id="bit-length-field-size">Bit Length / Field Size</h2>
+<p>The length of the data type specifies the length of all data objects and bitfields that reference the data type.</p>
+<h3 id="length-bytebit">Length (Byte:Bit)</h3>
+<p>Specifies...</p>
+<ul>
+<li>for an individual value with fixed length (atomic, non-field): its length</li>
+<li>for a field data type: the length of one element (automatically defined by the encoding)</li>
+</ul>
+<p>The left edit control defines the number of bytes, the right edit control defines the number of bits.</p>
+<p>When you enter a number of bits <code>&gt;= 8</code>, CANdelaStudio automatically computes the number of bytes so that the number of bits is <code>&lt; 8</code>.</p>
+<h3 id="field-fix-elements">Field fix (Elements)</h3>
+<p>Specifies a field (array) with a fixed, specified number of elements (a string for example).</p>
+<p>The input control defines the number of elements.</p>
+<h3 id="field-variable-minmax-elements">Field variable (min:max elements)</h3>
+<p>Specifies a field (array) with a variable number of elements.</p>
+<ul>
+<li>the left input control defines the minimum number of elements,</li>
+<li>the right input control defines the maximum number of elements,</li>
+</ul>
+<h3 id="consumption">Consumption</h3>
+<p>Shows the maximum space consumption of a value created for the given data type, in bits and bytes, including leading size bytes or a terminating zero element.</p>
+<p>For a field (array) data type, the number of elements is appended, e.g.</p>
+<ul>
+<li>&quot;[3]&quot; = 3 array elements</li>
+<li>&quot;[3..5]&quot; = 3 to 5 array elements</li>
+</ul>
+<h2 id="bitmask">Bitmask</h2>
+<p>For numeric encodings, the optional bitmask is applied during the conversion of values.</p>
+<h2 id="byte-order">Byte Order</h2>
+<p>The byte order is applicable for element sizes &gt; 1 byte.</p>
+<h2 id="encoding">Encoding</h2>
+<p>The encoding combo-box shows only entries available for the bit length / field size selected in the controls above.</p>
+<p>Example: to specify an &quot;IEEE Float (double)&quot; encoding, the length must be 8 bytes.</p>
+<h2 id="display-format">Display Format</h2>
+<p>The display format combo-box shows only entries available for the selected encoding <a class='rqRef' href='../../30 Features\Data Type\Data Type Property Dependencies.htm#DTDEP-R120' title="">[DTDEP-R120]</a>.</p>
+<p>CDS-38786 (8.5) corrects the handling of BCD.</p>
+<h2 id="string-type">String Type</h2>
+<p>The &quot;String type&quot; combo-box is only released if you have selected</p>
+<ul>
+<li>&quot;Bit Length / Field Size&quot;: either &quot;Fixed field&quot; or &quot;Variable field (min:max)&quot;, and</li>
+<li>&quot;Encoding&quot; either &quot;ASCII&quot; or &quot;UNICODE&quot;.</li>
+</ul>
+<p>Select here the type of <a href="../../30%20Features/Data%20Type/String%20Termination.htm">string termination</a>.</p>
+<h2 id="precision">Precision</h2>
+<p>The <code>Precision</code> input field in the Properties dialog of a <a href="../../30%20Features/Data%20Type/Data%20Type.htm">data type</a> is enabled if the following conditions are met:</p>
+<ul>
+<li>Raw value and Formula conversions
+<ul>
+<li>Length: 4 or 8 bytes</li>
+<li>Encoding: &quot;IEEE Float (single)&quot; or &quot;IEEE Float (double)&quot;</li>
+<li>Display format: &quot;Floating point&quot;</li>
+</ul></li>
+<li>Linear, Characteristic curve and Piecewise linear conversions:
+<ul>
+<li>Display format: &quot;Floating point&quot;</li>
+</ul></li>
+</ul>
+<p>See Data Type <a href="../../30%20Features/Data%20Type/Precision.htm">Precision</a>.</p>
+<p>Note: CANdelaStudio used to show the explanation &quot;significant digits&quot; in the property dialog (correction: CDS-39461) which was misleading (&quot;significant digits&quot; includes the digits before the decimal point). The toolchain correctly used the value as &quot;decimal places&quot;.</p>
+<h2 id="unit">Unit</h2>
+<p>The input control shows / edits a physical unit (e.g. &quot;°C&quot;, &quot;km&quot;, &quot;U/min&quot;, &quot;kp&quot;, &quot;hp&quot;).</p>
+<p>The unit can consist of any characters and may be a maximum of 65535 characters long.</p>
+<p>If configured in a <a href="../../30%20Features/Attributes/Special%20Attributes.htm#units">special attribute</a>, the dialog allows selection from a list of predefined units.</p>
+<h2 id="pages">Pages</h2>
+<p>The data type property dialog contains multiple pages. Some depend on the <a href="../../30%20Features/Data%20Type/Data%20Type.htm#conversions">kind of conversion</a>:</p>
+<ul>
+<li><a href="Data%20Type%20Property%20Page%20Raw%20Value.htm">Raw Value</a></li>
+<li><a href="Data%20Type%20Property%20Page%20Text%20Table.htm">Text Table</a></li>
+<li><a href="Data%20Type%20Property%20Page%20Linear.htm">Linear</a></li>
+<li><a href="Data%20Type%20Property%20Page%20Characteristic%20Curve.htm">Characteristic Curve</a></li>
+<li><a href="Data%20Type%20Property%20Page%20Piecewise%20Linear.htm">Piecewise Linear</a></li>
+<li><a href="Data%20Type%20Property%20Page%20Procedure.htm">Procedure</a>
+<ul>
+<li><a href="Data%20Type%20Property%20Page%20Procedure%20Raw%20to%20Phys%20Function.htm">Procedure Raw to Phys Function</a>.</li>
+</ul></li>
+<li><a href="Data%20Type%20Property%20Page%20Formula.htm">Formula</a>
+<ul>
+<li><a href="Data%20Type%20Property%20Page%20Formula%20Raw%20to%20Phys%20Formula.htm">Formula Raw to Phys Formula</a>.</li>
+</ul></li>
+<li><a href="Data%20Type%20Property%20Page%20Packet.htm">Packet</a></li>
+<li><a href="Data%20Type%20Property%20Page%20Mux.htm">Mux</a></li>
+<li><a href="Data%20Type%20Property%20Page%20Fixed%20Count%20Iteration.htm">Fixed Count Iteration</a></li>
+<li><a href="Data%20Type%20Property%20Page%20Counter%20Iteration.htm">Counter Iteration</a></li>
+<li><a href="Data%20Type%20Property%20Page%20End-Marker%20Iteration.htm">End-Marker Iteration</a></li>
+<li><p><a href="Data%20Type%20Property%20Page%20End-of-Service%20Iteration.htm">End-of-Service Iteration</a></p></li>
+<li><p><a href="Data%20Type%20Property%20Page%20Invalid%20Values.htm">Invalid Values</a></p></li>
+</ul>
+</body>
+</html>

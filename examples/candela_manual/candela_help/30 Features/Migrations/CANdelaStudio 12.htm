@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CANdelaStudio 12</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../../style/stylesheet.css" type="text/css" />
+</head>
+<body>
+<h1 id="migrations-candelastudio-12">Migrations CANdelaStudio 12</h1>
+<h2 id="events-cds-42224-v12">Events (CDS-42224 v12)</h2>
+<p>Migrations for Events see <a class='rqRef' href='../../30%20Features/Event/Events%20Data%20Model.htm#EV-R250' title="">[EV-R250]</a>.</p>
+<p>Note CDC-44330: in v12, down migration does not remove Event Attributes <a class='rqRef' href='../../30%20Features/Attributes/Attributes.htm#ATTR-R050-Event' title="">[ATTR-R050-Event]</a>.</p>
+<h2 id="autosar-attribute-uuid-cds-71762-v12">AUTOSAR Attribute UUID (CDS-71762 v12)</h2>
+<p><span id="MIG12-R110" class="rqDef">[MIG12-R110]</span></p>
+<ul>
+<li>When CANdelaStudio 12 loads an older document or template,</li>
+<li>and the file contains all AUTOSAR attributes of v11
+<ul>
+<li>i.e. checkbox <a class='rqRef' href='../../20 UserInterface\Document\Property Page Document Info.htm#DOCUI-R500' title="">[DOCUI-R500]</a> checked in v11</li>
+</ul></li>
+<li>then the migration adds the new v12 attribute &quot;UUID&quot; <a class='rqRef' href='../../30%20Features/AUTOSAR/Attributes%20for%20AUTOSAR%20Diagnostic%20Extract%20export.htm#ASR-D001_ASR_UUID' title="">[ASR-D001_ASR_UUID]</a>
+<ul>
+<li>i.e. checkbox checked in v12</li>
+</ul></li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="../../30%20Features/Event/Events%20Introduction.htm">Events Introduction</a></li>
+<li><a href="Migrations.htm">Migrations (Overview)</a></li>
+<li><a href="../../30%20Features/Persistors/Persistors.htm">Persistors</a></li>
+</ul>
+</body>
+</html>

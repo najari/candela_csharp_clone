@@ -1,0 +1,321 @@
+/*
+Stylesheet for online help
+*/
+
+body
+{
+  margin: 20px;
+  padding-bottom: 25pt;
+/*
+  Leave it to the user to narrow down the window
+  max-width: 1024px;
+*/
+
+  font-size: 11pt;
+  font-family: Verdana, arial, sans-serif;
+  color: #000000;
+  background-color: #FFFFFF;
+  text-align: left;
+
+  border-bottom: 1px solid gray;
+}
+
+body h1
+{
+  margin-top: 10pt;
+}
+
+h1, h2, h3
+{
+  margin-top: 30pt;
+  margin-bottom: 30pt;
+  text-align: left;
+  padding: 5pt;
+}
+
+h1
+{
+  font-size: 20pt;
+  font-weight: normal;
+  background-color: #b70032;
+  color: #ffffff;
+}
+
+h2
+{
+  min-height: 30px;
+  margin-top: 3em;
+  line-height: 30px;
+  color: #b70032;
+  background-color: #E5E5E5;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+h3
+{
+  font-size: 14pt;
+  min-height: 20px;
+  font-weight: normal;
+  line-height: 20px;
+  color: #b70032;
+  background-color: #E5E5E5;
+}
+
+h4
+{
+  font-weight: normal;
+  font-size: 12pt;
+  font-weight: normal;
+  color: #b70032;
+  background-color: #E5E5E5;
+  padding: 2pt;
+}
+
+h5
+{
+  font-weight: bold;
+  font-size: 10.0pt;
+}
+
+h6
+{
+  font-weight: bold;
+  font-size: 8.0pt;
+}
+
+p, caption
+{
+  margin: 13pt 0;
+}
+
+pre
+{
+  font-family: 'Courier New';
+  margin-left: 25pt;
+}
+
+ol, ul
+{
+  padding-left: 20pt; /* seems ignored in Help viewer */
+}
+
+ul li
+{
+  list-style-image:url("data:image/gif;base64,R0lGODlhCwAJAIcAAAAAAJCQkJCQo6OQkKOQo5CjyaOjycnt///tye3//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAD/ACwAAAAACwAJAAAIMgARGEjwr6DBgggGBChA8OC/hAEiMjwIMaLEhhUtXswYUcABhAo7fjQI0aPDhwRGngwIADs=");
+}
+
+/* nested list */
+li ul
+{
+    margin-left: 0;
+  padding-left: 15pt; /* seems ignored in Help viewer */
+}
+
+li ul li
+{
+  list-style-image:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAMAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2eKe7jjubr7VG0aTyKY5yFUAMQMMOn45/CtGzuheWyzCKSMH+GQYP/wBce9RRaZaxztNsLuXMg8xtwQk5O0dB/OrlAH//2Q==");
+
+}
+
+
+.figure
+{
+  margin: 25pt;
+}
+
+.figure img
+{
+  border: 1px solid lightgray;
+  padding: 5pt;
+}
+
+.figure .caption,
+table caption
+{
+  color: gray;
+  font-size: 10pt;
+  text-align: left;
+}
+
+.figure .caption:before
+{
+  content: "Figure: ";
+}
+
+img
+{
+/*
+  border: none;
+*/
+}
+
+table {
+  border-collapse: collapse;
+  margin-left: 25pt;
+}
+
+th, td {
+  border: 1px solid darkgray;
+}
+
+table.blind th,
+table.blind td
+{
+  border: 0;
+}
+
+th, td {
+}
+
+td
+{
+  padding: 5pt;
+}
+
+th
+{
+  color: #b70032;
+  background-color: #dddddd;
+  padding: 5pt;
+}
+
+a
+{
+  color: #b70032;
+  text-decoration: underline;
+}
+
+h1 a
+{
+  color: white;
+  text-decoration: underline;
+}
+
+.help {
+  background-color: #cdf6d9;
+  border: 3px dotted #cdf6d9;
+}
+
+body.techref {
+  margin-left: 5px;
+  border-left: 10px solid #f6d9cd;
+  padding-left: 5px;
+}
+  
+div.techref {
+  /* 
+    Define border (or padding) to keep margin around block (avoid reduction of inner p margin),
+    but only for div = paragraph level techref (looks ugly inline).
+  */
+  border: 3px solid #f6d9cd;
+  background-color: #f6d9cd;
+}
+
+div.line-block {
+  white-space: pre-line; /* produced by pandoc 2.1.1 for markdown `|` */
+}
+
+span.techref {
+  background-color: #f6d9cd;
+}
+
+.yellow {
+  background-color: yellow;
+}    
+
+.red {
+  color: red;
+}    
+
+.green {
+  background-color: lightgreen;
+}    
+
+.localId {
+  font-family: 'Courier New';
+  font-weight: bold;
+}
+.valid {
+  color: #0032b7;
+}
+.conflict {
+  color: red;
+}
+
+.rqDef {
+  color: blue;
+  font-family: 'Courier New';
+  font-weight: bold;
+/*
+  font-size: 90%;
+*/
+}
+
+.rqRef {
+  font-family: 'Courier New';
+/*
+  font-size: 90%;
+*/
+}
+
+/*
+a:hover
+{
+  color: #c70032;
+  font-weight: bold;
+}
+
+a:focus
+{
+  color: #b70032;
+}
+
+a:link
+{
+  color: #b70032;
+}
+
+a:visited
+{
+  color: #a70032;
+}
+*/
+
+.where:before
+{
+  content: "Context: ";
+}
+
+.where
+{
+  color: #848B8E;
+  font-size: 9pt;
+  font-style: normal;
+  display: block;
+  width: 65em;
+  padding-bottom: 5pt;
+}
+
+/*Code highlighting*/
+code span.kw { color: #BDB76B; font-weight: bold; } /* Keyword */
+code span.ot { color: #8B008B; } /* Other */
+code span.st { color: #FF1493; } /* String */
+
+
+@media print {
+
+body
+{
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font: 15px "Times New Roman",serif;
+}
+
+h1, h2, h3
+{
+  margin: 10pt 0;
+}
+
+} /* print */
